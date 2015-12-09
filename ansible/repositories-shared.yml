@@ -1,0 +1,34 @@
+- hosts: all
+  remote_user: charles
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    #won't need to pull down... should be there now!
+    #however, shouldn't hurt to double check!
+    - git: repo=https://github.com/charlesbrandt/moments  dest=/c/moments
+
+    - command: python setup.py develop
+      args:
+        chdir: /c/moments 
+
+    - file: src=/c/moments/editors/vi/.exrc dest=/home/charles/.exrc owner=charles group=charles state=link
+
+    - file: dest=/home/charles/.bashrc state=absent
+
+    - file: src=/c/moments/editors/.bashrc dest=/home/charles/.bashrc owner=charles group=charles state=link
+
+    - git: repo=https://github.com/charlesbrandt/templates.git  dest=/c/templates
+
+    #previously at the end of utilities.yml (requires moments repo)
+
+    - file: src=/c/moments/editors/emacs/.emacs dest=/home/charles/.emacs owner=charles group=charles state=link
+
+    - file: src=/c/moments/editors/emacs/.emacs.d dest=/home/charles/.emacs.d owner=charles group=charles state=link
+
+    - command: python setup.py develop
+      args:
+        chdir: /c/mindstream
+

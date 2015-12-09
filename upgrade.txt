@@ -1,0 +1,82 @@
+*2010.08.31 07:47:23 
+/c/technical/system/upgrade.txt
+/c/technical/system/ubuntu.txt
+/c/technical/system/shutdown.txt
+
+*2014.09.15 18:38:52 
+extract any stored data in browser, especially in local apps like "Link Router"
+chrome://extensions-frame/#
+
+*2014.09.15 18:49:42 
+back up Thunderbird and those settings
+charles/communicate/email-backup.txt
+charles/communicate/email-configuration.txt
+
+*2010.08.29 12:12:46 
+upgrading a system, 
+
+should follow all instructions in shutdown.txt 
+(up to actually turning computer off)
+
+usually this amounts to syncing mercurial repositories locally
+
+Binary data should be elsewhere. If not, export that now.
+
+check with:
+du -ms /c/out*
+du -ms /c/binaries*
+
+ls /c/binaries-local
+ls /c/out-backups
+
+*2014.09.16 15:14:42 
+check that nothing is in default system user directory
+
+cd
+du -ms *
+
+Desktop
+and
+Downloads are common options
+
+
+
+move personal data to a separate location
+
+be sure that all personal data and settings are backed up.  
+Settings should be backed up in the form of notes and install procedures.
+Once a structure is in place that is used, everything should be in that structure, and nothing unnecessary should be in it. 
+
+(currently under /c)
+
+
+
+if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
+
+sudo tar -zcvf /media/charles/DRIVE/20130514-old_macbook-c.tgz /c
+
+
+
+creating a bootable USB:
+will need to do this before starting fresh.  On Ubuntu, there is usb-creator built in...
+you can use that on a standard Ubuntu machine, but XUbuntu does not run on Gnome, so usb-creator is not available for it.
+
+Can either make the USB manually:
+http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/
+
+or try this utility:
+http://unetbootin.sourceforge.net/
+
+sudo apt-get install unetbootin
+
+(see also bootable_usb.txt)
+
+****
+make sure any data stored in browser extensions (link router) is also backed up
+****
+
+****
+make sure to synchronize /c 
+(especially if not restoring original directory structure)
+****
+

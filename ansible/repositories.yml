@@ -1,0 +1,40 @@
+- hosts: all
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    #this section previously at the end of python.yml
+    
+    #some of these steps may not be necessary if using a shared /c folder
+    #the files could be available already...
+    #in that case, the process will be different
+    
+    - git: repo=https://github.com/charlesbrandt/moments  dest=/c/moments
+
+    - command: python setup.py develop
+      args:
+        chdir: /c/moments 
+
+    - file: src=/c/moments/editors/vi/.exrc dest=/home/{{ ansible_ssh_user }}/.exrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+
+    - file: dest=/home/{{ ansible_ssh_user }}/.bashrc state=absent
+
+    - file: src=/c/moments/editors/.bashrc dest=/home/{{ ansible_ssh_user }}/.bashrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+
+
+    #previously at the end of utilities.yml (requires moments repo)
+
+    - file: src=/c/moments/editors/emacs/.emacs dest=/home/{{ ansible_ssh_user }}/.emacs owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+    - file: src=/c/moments/editors/emacs/.emacs.d dest=/home/{{ ansible_ssh_user }}/.emacs.d owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+
+    - git: repo=https://github.com/charlesbrandt/templates.git  dest=/c/templates
+      
+    - git: repo=https://github.com/charlesbrandt/mindstream  dest=/c/mindstream
+
+    - command: python setup.py develop
+      args:
+        chdir: /c/mindstream
+
+    - file: path=/c owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} mode=0755 recurse=yes      

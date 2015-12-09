@@ -1,0 +1,43 @@
+*2015.10.29 18:40:04
+Might be nice to reformat the existing drive to give it a label of which version is on the device:
+
+#CHANGE DEV LOCATION!
+#check where your usb is mounted:
+dmesg
+mount
+
+sudo ls #prime sudo
+
+#this is different than disks, but important!
+sudo parted -a optimal /dev/sdf mklabel msdos
+
+sudo parted -a optimal /dev/sdf rm 1
+sudo parted -a optimal /dev/sdf rm 2
+
+#1MB is the start, 2GB is the end
+#sudo parted -a optimal /dev/sdf mkpart primary fat32 1MB 2GB
+sudo parted -a optimal /dev/sdf mkpart primary fat32 1MB 100%
+sudo mkfs.vfat -n SHARE /dev/sdf1
+
+sudo parted -a optimal /dev/sdf set 1 boot on
+
+#not sure if it's necessary to turn off other flags:
+sudo parted -a optimal /dev/sdf set 1 esp off
+
+sudo parted -a optimal /dev/sdf print
+
+
+*2014.03.12 11:02:56
+this is a good guide for creating a bootable USB image on xubuntu...
+
+the normal usb-creator packages are not easily available on xubuntu
+
+http://xubuntugeek.blogspot.com/2013/04/how-to-install-xubuntu-on-usb-device.html
+
+sudo apt-get install unetbootin extlinux -y
+
+Run UNetbootin using the command unetbootin or using the Applications Menu > System > UNetbootin launcher. 
+
+
+*2014.03.19 06:24:50
+(see also: upgrade.txt, toward the end of the file)

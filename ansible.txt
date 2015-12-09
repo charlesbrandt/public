@@ -1,0 +1,68 @@
+*2015.11.08 10:05:04
+ansible-playbook repositories-shared.yml -i hosts.txt --ask-become-pass
+
+*2015.11.05 19:58:19
+ansible-playbook system.yml -i host2.txt --ask-become-pass
+
+*2015.11.06 18:43:48
+instead of using vars:
+
+  vars:
+    #TODO: way to make these global
+    ubuntu_version: 15.10x
+    archive_path: /c/downloads/ubuntu/{{ ubuntu_version }}
+
+using:
+
+  vars_files:
+    - shari_vari.yml
+
+Via:
+http://docs.ansible.com/ansible/playbooks_variables.html
+Variables — Ansible Documentation
+
+*2015.11.07 10:27:17
+https://duckduckgo.com/?q=Ansible+variables&t=canonical
+Ansible variables at DuckDuckGo
+
+http://docs.ansible.com/ansible/playbooks_roles.html
+Playbook Roles and Include Statements — Ansible Documentation
+http://docs.ansible.com/ansible/apt_module.html
+apt - Manages apt-packages — Ansible Documentation
+https://duckduckgo.com/?q=apt+safe-upgrade+dist+full+vs&t=canonical
+apt safe-upgrade dist full vs at DuckDuckGo
+http://www.linuxquestions.org/questions/fedora-35/apt-get-question-dist-upgrade-vs-upgrade-219920/
+apt-get question: dist-upgrade vs upgrade
+http://ubuntuforums.org/showthread.php?t=893793
+[ubuntu] safe-upgrade vs. full-upgrade, best practice?
+https://duckduckgo.com/?q=ansible+mount+all&t=canonical
+ansible mount all at DuckDuckGo
+http://docs.ansible.com/ansible/mount_module.html
+mount - Control active and configured mount points — Ansible Documentation
+https://gist.github.com/malvim/6802083
+Hack in ansible's apt module in order to get general arguments into apt-get (thus being able to install unauthenticated packages by passing '--allow-unauthenticated'). Search for "general_args" in apt.py. (Had to put the .py extension so github would stop treating the file as perl even though I told it it was python.) · GitHub
+
+
+*2015.11.04 12:09:13 links
+https://duckduckgo.com/?q=ansible+check+if+file+exists+wildcard&t=canonical
+ansible check if file exists wildcard at DuckDuckGo
+https://raymii.org/s/tutorials/Ansible_-_Only_if_a_file_exists_or_does_not_exist.html
+Ansible - Only if a file exists or does not exist - Raymii.org
+http://docs.ansible.com/ansible/shell_module.html
+shell - Execute commands in nodes. — Ansible Documentation
+http://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script
+Check if a file exists with wildcard in shell script - Stack Overflow
+http://docs.ansible.com/ansible/playbooks_roles.html
+Playbook Roles and Include Statements — Ansible Documentation
+http://docs.ansible.com/ansible/command_module.html
+command - Executes a command on a remote node — Ansible Documentation
+http://docs.ansible.com/ansible/file_module.html
+file - Sets attributes of files — Ansible Documentation
+http://docs.ansible.com/ansible/git_module.html
+git - Deploy software (or files) from git checkouts — Ansible Documentation
+http://docs.ansible.com/ansible/copy_module.html
+copy - Copies files to remote locations. — Ansible Documentation
+http://docs.ansible.com/ansible/pip_module.html
+pip - Manages Python library dependencies. — Ansible Documentation
+
+

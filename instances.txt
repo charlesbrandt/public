@@ -1,0 +1,51 @@
+*2015.12.08 22:38:45 system
+/c/system/instances.txt
+/c/system/launch.sh
+/c/system/ubuntu-extended.txt
+/c/system/browsers.txt
+/c/system/ubuntu.txt
+
+*2015.12.08 22:35:33 macosx
+/c/system/instances.txt
+/c/system/launch.sh
+/c/system/default_account.txt
+/c/system/browsers.txt
+/c/system/macosx.txt
+
+*2015.11.22 12:39:52 ansible
+/c/system/instances.txt
+/c/system/launch.sh
+/c/system/virtualization.txt
+/c/system/ubuntu-extended.txt
+/c/system/browsers.txt
+/c/system/ansible/hosts.txt
+/c/system/ansible/python.yml
+/c/system/ansible/shari_vari.yml
+/c/system/ansible/common.yml
+/c/system/ansible/utilities.yml
+/c/system/ansible/development.yml
+/c/system/ubuntu.txt
+/c/system/ansible/dirstat.yml
+/c/system/ansible/media.yml
+/c/system/ansible/repositories-shared.yml
+/c/system/ansible.txt
+/c/system/ansible/system.yml
+
+
+*2015.11.08 10:02:19 system
+/c/system/instances.txt
+/c/system/launch.sh
+/c/system/startup-extended.sh
+/c/system/startup.sh
+/c/system/browsers.txt
+/c/system/ubuntu-extended.txt
+/c/system/ubuntu.txt
+
+*2013.11.01 11:52:53 macosx
+/c/system/instances.txt
+/c/system/launch.sh
+/c/system/default_account.txt
+/c/system/python-install.txt
+/c/system/browsers.txt
+/c/system/macosx.txt
+

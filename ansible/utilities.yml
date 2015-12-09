@@ -1,0 +1,76 @@
+- hosts: all
+  remote_user: charles
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    - name: Install qt
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - python-qt4
+        - python-qt4-dbg
+        - libqt4-dev
+        - python-pyside
+
+    - name: check if qt archive path already exists
+      stat: path={{ archive_path }}/qt/
+      register: check_archive_path
+
+    - name: create qt path
+      file: path={{ archive_path }}/qt state=directory mode=0755
+
+    - name: move qt deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/qt/
+      when: not check_archive_path.stat.exists
+
+    - name: Install utilities
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - gstreamer-tools
+        - libjpeg-progs
+        - libgif4
+        - tofrodos
+        - jhead
+        - imagemagick
+        - smartmontools
+        - p7zip
+        - gpick
+        - exfat-utils
+        - exfat-fuse
+        - extlinux
+        #requires qt
+        - unetbootin
+
+    - name: check if utilities archive path already exists
+      stat: path={{ archive_path }}/utilities/
+      register: check_archive_path
+
+    - name: create utilities path
+      file: path={{ archive_path }}/utilities state=directory mode=0755
+
+    - name: move utilities deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/utilities/
+      when: not check_archive_path.stat.exists
+
+
+      
+    - name: Install emacs
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - emacs
+        - emacs-goodies-el
+
+    - name: check if emacs archive path already exists
+      stat: path={{ archive_path }}/emacs/
+      register: check_archive_path
+
+    - name: create emacs path
+      file: path={{ archive_path }}/emacs state=directory mode=0755
+
+    - name: move emacs deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/emacs/
+      when: not check_archive_path.stat.exists
+
+      

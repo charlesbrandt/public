@@ -1,0 +1,135 @@
+- hosts: all
+  remote_user: charles
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:    
+    - name: Install giada packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - giada
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/giada/
+      register: check_archive_path
+
+    - name: create giada path
+      file: path={{ archive_path }}/giada state=directory mode=0755
+
+    - name: move giada deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/giada/
+      when: not check_archive_path.stat.exists
+
+
+    - name: Install inkscape packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - inkscape
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/inkscape/
+      register: check_archive_path
+
+    - name: create inkscape path
+      file: path={{ archive_path }}/inkscape state=directory mode=0755
+
+    - name: move inkscape deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/inkscape/
+      when: not check_archive_path.stat.exists
+
+      
+    - name: Install blender packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - blender
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/blender/
+      register: check_archive_path
+
+    - name: create blender path
+      file: path={{ archive_path }}/blender state=directory mode=0755
+
+    - name: move blender deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/blender/
+      when: not check_archive_path.stat.exists
+
+
+      
+    - name: Install audacity packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - audacity
+        - lame
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/audacity/
+      register: check_archive_path
+
+    - name: create audacity path
+      file: path={{ archive_path }}/audacity state=directory mode=0755
+
+    - name: move audacity deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/audacity/
+      when: not check_archive_path.stat.exists
+
+
+    - name: Install mixxx packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - mixxx
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/mixxx/
+      register: check_archive_path
+
+    - name: create mixxx path
+      file: path={{ archive_path }}/mixxx state=directory mode=0755
+
+    - name: move mixxx deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/mixxx/
+      when: not check_archive_path.stat.exists
+
+
+
+    - name: Install puredata packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - puredata
+        - pd-zexy
+        - pd-cxc
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/puredata/
+      register: check_archive_path
+
+    - name: create puredata path
+      file: path={{ archive_path }}/puredata state=directory mode=0755
+
+    - name: move puredata deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/puredata/
+      when: not check_archive_path.stat.exists
+
+      
+
+    - name: Install scanner packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - xsane
+        - gocr
+
+    - name: check if media archive path already exists
+      stat: path={{ archive_path }}/scanner/
+      register: check_archive_path
+
+    - name: create scanner path
+      file: path={{ archive_path }}/scanner state=directory mode=0755
+
+    - name: move scanner deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/scanner/
+      when: not check_archive_path.stat.exists
+
+      
+      

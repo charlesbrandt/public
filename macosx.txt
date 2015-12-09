@@ -1,0 +1,339 @@
+*2015.10.29 17:56:00
+visual disk usage utility
+#mac:
+http://www.derlien.com/
+http://grandperspectiv.sourceforge.net/
+
+*2009.01.28 12:52:04 
+also [2010.04.16 13:34:19]
+also [2015.04.16 09:10:58] 
+=============================
+Mac OS X Install Notes:
+=============================
+It's that time again.  Maybe you have a brand new computer (yay!), maybe you updated the operating system, or maybe it's just time to do some spring cleaning.  Either way...
+
+Start with a fresh install of the operating system. 
+
+If this is a system with an existing and used operating system in place, I prefer to wipe the drive completely for that "fresh install" feeling. Having install move the previously installed system to "Previous Systems" does not clean everything up. If you want to keep it around, it is better to move it to an archive drive of sorts.  Do that now if you haven't already.
+
+System Images / Restores
+——————————————————————————
+Macs no longer come with optical media for os installations.
+The system is smart enough to download and install a fresh instance for you if you wipe the system clean. 
+
+To be safe, it's always good to take an image of the machine at different stages of installation. That way you can always revert back to an original state. DD is probably the way to go for this, but the approach is seldom used on Macs.
+
+Account Setup
+————————————
+Go through and answer the standard questions for Setup. These should be self explanatory.
+
+If you plan to make more than one system account, consider setting up a default account first to use to propagate (blank) settings.  See:
+default_account.txt
+
+
+Privacy
+——————
+As of OS X 10.10 (Yosemite) Spotlight will send search queries to Apple and Microsoft automatically. Disable this:
+
+"System Preferences...->Spotlight"
+then uncheck "Spotlight Suggestions" and "Bing Web Searches"
+
+More info is available on the "About Spotlight Suggestions & Privacy" button in the Spotlight preferences. 
+
+http://thehackernews.com/2014/10/Aplle-Mac-OS-X-Yosemite-location-privacy.html
+
+
+*2010.04.16 13:58:14 
+Change Desktop Background
+(Ctl-Click on desktop for option)
+For Default I prefer Solid Gray Dark... can always customize later in other instances.
+
+*2010.04.16 13:59:48 wireless network
+Make sure wireless network is enabled and connected.
+Register your computer if your network requires it.
+
+*2009.01.29 14:41:35 
+Open System Preferences
+in Date & Time:
+enable Set date & time automatically
+choose timezone
+use 24-hour clock
+Show date
+
+*2009.10.15 16:20:41 
+System Preferences -> Dock
+Automatically hide and show the Dock
+have been keeping it on the left hand side, but that is a matter of preference
+
+*2012.08.09 11:03
+System Preferences -> Keyboard:
+disable Ctrl-arrows to navigate between spaces in Mission Control.
+this interferes with Emacs
+(be sure to get up and down in addition to left and right)
+for left and right, use "Ctrl-Cmd-Right" or "Ctrl-Cmd-Left"
+this is similar to XUbuntu and transfers easily
+
+Option-arrows is another reasonable choice
+(and doesn't appear to have any conflicts)
+
+*2009.11.20 00:08:56 
+System Preferences -> Sound
+uncheck play user interface sound effects
+turn down alert volume
+
+*2012.08.09 11:11 spaces
+Space have been merged with Mission Control (option-up or F3)
+to add a new Space, open Mission Control, then hover in the upper right corner to see a "+" to add a new space
+http://mattgemmell.com/2011/07/27/using-spaces-on-os-x-lion/
+
+*2015.04.08 17:27:02
+in Security & Privacy, set:
+Require password [immediately] after sleep or screen saver begins
+This way can lock computer with Ctl-Shift-Power
+
+*2009.01.29 14:39:32 
+System Preferences -> Users & Groups:
+Click the lock to make changes.
+Login Options
+Automatic Login: Off
+
+also [2009.06.21 10:57:11]
+Disable guest account
+
+*2009.01.28 19:43:17 
+System Preferences -> Sharing
+change machine name
+
+*2009.02.03 20:43:38 terminal
+change Preferences for Terminal 
+Under Settings
+Use Pro, make it Default, and then make sure Pro is used for:
+On startup, open: New window with settings: Pro
+
+Making the profile Default will ensure that it applies to new tabs as well.
+
+
+
+
+
+*2010.04.16 14:19:55 
+Breathe. :)
+
+*2010.04.16 14:16:42 
+Download the main applications you need. 
+This is a good chance to get updated versions of everything
+
+
+
+*2009.01.30 12:17:06 mercurial
+http://mercurial.selenic.com/downloads/
+download mercurial
+install mercurial
+open Terminal
+which hg
+
+Create a default .hgrc file:
+vi ~/.hgrc
+
+[ui]
+username = Firstname Lastname <firstname.lastname@example.net>
+ui.report_untrusted = False
+
+This can be overridden on a repository by repository basis with the file:
+<repo>/.hg/hgrc
+
+
+
+*2010.04.16 15:16:58 shared space
+make a common directory for all User Accounts to use for shared information on the system. I like to use /c :
+
+sudo mkdir /c
+
+cd /c
+sudo chmod 777 .
+
+*2009.02.07 12:14:34 
+create a link from /Volumes to /media to be more compatible with linux scripts:
+sudo ln -s /Volumes /media
+
+
+*2010.04.16 15:54:50 moments
+install moments
+
+hg clone http://bitbucket.org/cbrandt/moments /c/moments
+#or use a local copy
+#hg clone /Volumes/CONTEXT/moments /c/moments
+
+cd
+ln -s /c/moments/editors/emacs/.emacs .emacs
+ln -s /c/moments/editors/emacs/.emacs.d .emacs.d
+ln -s /c/moments/editors/vi/.exrc .exrc
+
+cp /c/moments/editors/.bashrc ~/.bash_profile
+source ~/.bash_profile 
+
+mkdir /c/out
+
+
+
+
+
+*2009.01.30 12:17:11 emacs
+http://emacsformacosx.com
+download and install
+
+open up your text editor
+
+
+
+*2012.08.09 11:46
+be sure to check in and sync any changes you've made to this document on the USB before cloning locally.
+
+cd /path/to/USB
+hg stat
+hg ci -m "changes to mac os x configuration notes"
+cd /c/technical/
+hg pull /path/to/USB
+hg update
+
+create new clones of any personal mercurial repositories.
+hg clone /media/CONTEXT/technical /c/technical
+
+cd
+#cp /c/technical/.bashrc .bash_profile
+cp /c/moments/editors/.bashrc ~/.bash_profile
+source ~/.bash_profile 
+
+*2012.08.09 12:13:01 
+clone any other personal repositories as needed
+
+hg clone /media/CONTEXT/mindstream /c/mindstream
+
+cd /c/moments
+sudo python setup.py develop
+
+cd /c/mindstream
+sudo python setup.py develop
+
+*2015.04.16 11:51:38
+Install pip:
+
+https://pip.pypa.io/en/stable/installing.html
+
+sudo python get-pip.py
+
+and while you're at it try to use virtualenv
+
+http://docs.python-guide.org/en/latest/dev/virtualenvs/
+
+
+*2009.01.28 20:30:05 
+Check for software updates
+this can take a while to download
+
+
+*2012.08.09 17:49:17 
+consider browser configurations:
+browsers.txt
+
+*2014.11.21 09:10:23
+Make Chrome launch in a private mode by default...
+easy enough to open a non private mode if you want to be tracked (log in to accounts)
+
+Open Apple Script Editor:
+
+tell application "Google Chrome"
+	make new window with properties {mode:"incognito"}
+	activate
+end tell
+
+Export as application. Change icon. Have saved a completed version to /c/out
+
+http://www.addictivetips.com/mac-os/force-google-chrome-to-open-in-incognito-mode-using-applescript/
+
+
+
+*2015.04.14 09:06:43
+get XCode...
+you'll need it eventually for things like Git on the command line
+
+
+*2015.04.16 09:05:52
+install nodejs
+
+http://nodejs.org/
+
+
+
+*2012.10.02 19:52:48
+Install homebrew:
+
+http://brew.sh/
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+use homebrew to install aspell
+brew install aspell --lang=en
+
+via
+http://stackoverflow.com/questions/6748439/r-aspell-homebrew
+
+helps with virtualenv
+https://github.com/kennethreitz/autoenv
+brew install autoenv
+echo 'source /usr/local/opt/autoenv/activate.sh' >> ~/.bash_profile
+
+
+
+*2015.04.01 16:54:05
+probably need to install google drive for this too
+https://www.google.com/drive/download/
+
+*2015.04.01 16:47:50 keepass
+will need to set this up on new machine:
+
+http://keepass.info/download.html
+Downloads - KeePass
+https://www.google.com/search?q=keepass+macosx&ie=utf-8&oe=utf-8
+keepass macosx - Google Search
+https://www.keepassx.org/downloads/
+KeePassX – Downloads
+
+keepassX
+
+
+*2015.04.15 14:51:39 remote_desktop
+USE THIS VERSION:
+https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12
+
+the old version from microsoft directly does not appear to be in development any longer. (or simply not maintained through that channel)
+Going to try out the version from Apple (AppStore) instead
+
+also [2015.04.07 13:46:35]
+remote desktop client for mac os x:
+
+http://www.microsoft.com/en-us/download/details.aspx?id=18140
+
+also recommended by:
+https://www.hamilton.edu/its/rc/using-remote-desktop-in-mac-os-x-to-connect-to-windows-xp
+
+
+
+
+*2010.04.16 16:49:38 
+rearrange notes if anything would have made it easier to edit these instructions on your new system sooner.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

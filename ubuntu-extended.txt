@@ -1,0 +1,466 @@
+The following notes are above and beyond a standard configuration
+but may be useful for other machines as well
+
+If upgrading, start here:
+/c/technical/system/upgrade.txt
+/c/technical/system/shutdown.txt
+
+then move on to: 
+/media/disk/technical/system/ubuntu.txt (for downloading packages)
+/media/disk/technical/system/startup.sh (for installing packages)
+
+This document assumes you've installed a base ubuntu system,
+including all technical/system/ubunut.txt configurations. 
+
+This amounts to having Python, and Moments ready to go.
+
+
+
+#best to run the main installs first to avoid downloading duplicate requirements
+
+#for installing, change to directory and run
+#sudo dpkg -i *.deb
+
+#optionally, link
+#cd /media/
+#sudo ln -s CHARLES/ disk
+
+export VERSION=14.04x
+
+export USBPATH=/media/charles/CHARLES
+export LOCALPATH=/c
+#can choose, based on where archives are located
+export ARCHIVEPATH=$LOCALPATH/downloads/ubuntu/$VERSION
+#export ARCHIVEPATH=$USBPATH/downloads/ubuntu/$VERSION
+
+#mkdir -p $ARCHIVEPATH
+cd $ARCHIVEPATH
+
+#make sure things are clean and empty
+ls /var/cache/apt/archives/
+#mkdir updates2
+#sudo mv /var/cache/apt/archives/*.deb updates2
+#sudo dpkg -i updates/*.deb
+#sudo dpkg -i updates2/*.deb
+
+
+*2012.10.18 11:45:06 
+add link to "/c" in left nav of Finder
+(navigate to folder, then "Bookmarks->Add Bookmark")
+(on some systems it's just a drag and drop to add to the left panel)
+
+
+
+
+OPTIONAL
+============
+
+*2013.10.16 14:37:20 
+disable actions on lid close when plugged in:
+Settings Manager->Power
+"You can select "Do Nothing" in the power settings. Open the dash (super key), search for "power" and then select the correct option in the dropdown. Note that closing the lid will actually turn off the screen though plus any external monitors"
+http://askubuntu.com/questions/15520/how-can-i-tell-ubuntu-to-do-nothing-when-i-close-my-laptop-lid
+
+*2013.05.14 17:36:19 mouse trackpad
+Disable touch trackpad to click
+Change trackpad settings / mouse sensitivity
+
+disable track pad on macbook after enabling wireless mouse...
+too sensitive and gets in the way during typing
+
+*2014.09.25 09:15 universe 
+Check that a universe mirror is listed in your /etc/apt/sources.list file. 
+If you choose "Install third party applications... " during the intial installation, it should be checked.
+
+Open Ubuntu Software Centre, then on the top system bar select Edit->Software Sources and then select Ubuntu Software (default tab). Next tick the boxes next to universe & multiverse, enter your password and click okay.
+This has been enabled by default on xubuntu after enabling third party plugins during installation
+
+*2014.09.25 09:16 gedit
+Configure gedit to insert a date, timestamp in the correct format (from moments/editors/gedit.txt)
+
+Gedit ships with a plug-in that is enabled by default for inserting the date and time. 
+This functionality can be found under:
+Edit->Insert Date and Time...
+
+Edit->Preferences->Plugins->Insert Date/Time->Configure Plugin
+To conform to the moments date/timestamp, use a custom format as follows:
+*%Y.%m.%d %H:%M:%S 
+
+To quickly access this command, type:
+Alt-E, S, Enter
+
+*2012.11.14 15:39:57 ubuntu privacy security
+If using Ubuntu, beware the built in ad tracking... you may want to disable that:
+https://www.eff.org/deeplinks/2012/10/privacy-ubuntu-1210-amazon-ads-and-data-leaks
+(shouldn't be an issue with xubuntu, since xubuntu uses xfce)
+
+
+
+
+cd $ARCHIVEPATH
+
+#for web development:
+#need node, npm, 
+# ?? and lessc on new systems? node-less 
+#ubuntu 13.10 on should use latest node, 
+sudo apt-get install -y -d nodejs npm
+mkdir node
+sudo mv /var/cache/apt/archives/*.deb node
+#sudo dpkg -i node/*.deb
+
+#https://github.com/beautify-web/js-beautify
+#sudo pip install jsbeautifier
+
+#2015.03.19 08:13:10 couchdb
+sudo apt-get install -y -d couchdb
+mkdir couchdb
+sudo mv /var/cache/apt/archives/*.deb couchdb/
+#sudo dpkg -i couchdb/*.deb
+
+
+#TODO:
+# some recent additions to consider
+
+*2015.11.11 11:51:55
+this should be part of ansible configurations
+(or personal ubuntu setup)
+
+sudo mkdir /media/charles/DATA
+sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA/
+
+
+
+#visual disk usage utility:
+http://kdirstat.sourceforge.net/
+sudo apt-get install k4dirstat
+
+
+
+#vnc
+
+
+#atom editor
+
+
+Samba?
+
+
+
+cd $ARCHIVEPATH
+
+
+
+
+
+
+
+
+
+
+
+#this is for finding media dimensions... good to have!
+#(even if you don't plan to have VLC)
+sudo apt-get install -y -d libav-tools
+
+#for merging files, ffmpeg has more features:
+#see:
+#https://trac.ffmpeg.org/wiki/How%20to%20concatenate%20(join,%20merge)%20media%20files
+#also [2015.09.25 06:41:04] seems like it's available in core again
+#sudo add-apt-repository ppa:jon-severinsson/ffmpeg
+#sudo apt-get update
+
+sudo apt-get -y -d install ffmpeg
+
+mkdir libav
+sudo mv /var/cache/apt/archives/*.deb libav
+#sudo dpkg -i libav/*.deb
+
+
+sudo apt-get install -y -d vlc 
+mkdir vlc
+sudo mv /var/cache/apt/archives/*.deb vlc
+#sudo dpkg -i vlc/*.deb
+
+Open VLC
+Tools -> Preferences
+Uncheck:
+  - Integrate video in interface
+  - Use only one instance when started from file manager
+
+View -> Playlist
+Close browser tree in playlist view.
+
+hg clone $USBPATH/medley $LOCALPATH/medley
+cd $LOCALPATH/medley
+sudo python setup.py develop
+
+
+
+
+
+#looper
+sudo apt-get install -y -d giada 
+mkdir giada
+sudo mv /var/cache/apt/archives/*.deb giada/
+#sudo dpkg -i giada/*.deb
+
+sudo apt-get install -y -d inkscape 
+mkdir inkscape
+sudo mv /var/cache/apt/archives/*.deb inkscape/
+#sudo dpkg -i inkscape/*.deb
+
+sudo apt-get install -y -d blender
+mkdir blender
+sudo mv /var/cache/apt/archives/*.deb blender/
+#sudo dpkg -i blender/*.deb
+
+sudo apt-get install -y -d audacity lame
+mkdir audacity
+sudo mv /var/cache/apt/archives/*.deb audacity/
+#sudo dpkg -i audacity/*.deb
+
+#2009.04.05 15:35:38  now available directly via apt-get
+sudo apt-get install -y -d mixxx 
+mkdir mixxx
+sudo mv /var/cache/apt/archives/*.deb mixxx/
+
+sudo apt-get install -y -d puredata pd-zexy pd-cxc
+mkdir puredata
+sudo mv /var/cache/apt/archives/*.deb puredata
+
+#*2012.07.28 19:55:05 
+#gocr is available in menu after a scan!
+sudo apt-get install -y -d xsane gocr
+mkdir scanner
+sudo mv /var/cache/apt/archives/*.deb scanner
+
+
+#*2012.01.04 14:06:24 
+sudo apt-get install -y -d calibre
+mkdir calibre
+sudo mv /var/cache/apt/archives/*.deb calibre
+#sudo dpkg -i calibre/*.deb
+
+#midisport-firmware 
+sudo apt-get install -y -d python-pypm
+mkdir midi
+sudo mv /var/cache/apt/archives/*.deb midi/
+# python
+# import pypm
+
+
+
+
+
+
+sudo apt-get install -y -d chromium-browser
+mkdir chromium
+sudo mv /var/cache/apt/archives/*.deb chromium
+
+#sudo dpkg -i chromium/*.deb
+#check for errors... may need to run this one twice
+
+#apply chromium configs
+
+
+
+
+
+
+sudo apt-get install -y -d arduino arduino-core librxtx-java
+mkdir arduino
+sudo mv /var/cache/apt/archives/*.deb arduino
+#sudo dpkg -i arduino/*.deb
+#http://inotool.org/
+sudo pip install ino
+
+
+
+
+
+#nnumpy is required by inkscape, which is why it shows up first
+#might as well keep it separate
+#(unless inkscape is the first app that needs numpy (and it only needs numpy)
+sudo apt-get install -y -d python-numpy python-matplotlib python-scipy
+mkdir scipy
+sudo mv /var/cache/apt/archives/*.deb scipy
+#sudo dpkg -i scipy/*.deb
+
+#these are only needed by some python programs... not as common
+sudo apt-get install -y -d python-wxversion python-wxtools wx2.8-examples wx2.8-doc 
+mkdir wxpython
+sudo mv /var/cache/apt/archives/*.deb wxpython
+
+#sudo dpkg -i wxpython/*.deb
+
+
+
+
+
+
+sudo apt-get install -y -d chuck
+mkdir chuck
+sudo mv /var/cache/apt/archives/*.deb chuck/
+
+
+
+
+#handbrake
+#http://askubuntu.com/questions/107915/how-do-i-download-and-install-handbrake
+sudo add-apt-repository ppa:stebbins/handbrake-snapshots
+
+sudo apt-get update
+#sudo apt-get install handbrake-gtk
+sudo apt-get install handbrake-cli
+
+
+
+*2014.07.31 12:51:04 epson scanner
+Epson Scanner Perfection V500 PHOTO requires proprietary drivers
+these are available:
+http://download.ebz.epson.net/dsc/search/01/search/searchModule
+Product Name: V500
+Operation System: Linux
+
+Perfection V500…
+Scanner Driver	Linux
+Ver. 2.29.3/1.29.0	core package&data package	All language
+06-26-2014
+
+scan_2.29.3-1~usb0.1.ltdl7_i386.deb
+iscan-data_1.29.0-2_all.deb
+
+also be sure to get the iscan plugin package too:
+iscan-plugin-gt-x770_2.1.2-1_amd64.deb
+
+cd ~/Downloads
+sudo apt-get install xsltproc
+sudo dpkg -i iscan-data_1.29.0-2_all.deb
+sudo dpkg -i iscan_2.29.3-1~usb0.1.ltdl7_amd64.deb 
+sudo dpkg -i iscan-plugin-gt-x770_2.1.2-1_amd64.deb 
+
+http://askubuntu.com/questions/11275/how-can-i-get-my-epson-v500-scanner-working
+
+
+
+#blog.sudobits.com/2012/05/07/how-to-install-android-sdk-on-ubuntu-12-04-lts/
+#assumes arduino installed which should supply java
+#*2011.06.08 11:28:13 android
+sudo apt-get install -y -d eclipse-jdt
+mkdir android
+sudo mv /var/cache/apt/archives/*.deb android
+#sudo dpkg -i android/*.deb
+
+#get the latest SDK:
+http://developer.android.com/sdk/index.html
+
+Open Eclipse IDE and go to Help -> Install New Software  then click on Add and enter the URL :
+https://dl-ssl.google.com/android/eclipse/
+Now select the developer tools, then a couple of Next, followed by Finish would begin the Download/Installation process; Next, restart the Eclipse.
+
+Then open Window -> Preferences and locate your Android SDK starter package.
+Then go to Window -> Android SDK Manager, Select the packages you want to install and click Install [x] Packages.
+
+Packages to select ?
+Mandatory  packages are SDK Tools, SDK – Platform Tools and the SDK platform (2.1 (recommended if you want to target for 97%+ users) or 4.0.3 (the latest version at the time of writing this post)) for which you want to write the Application.
+
+#blog.sudobits.com/2012/05/07/how-to-install-android-sdk-on-ubuntu-12-04-lts/
+
+
+
+
+*2011.08.06 12:38:32 default operating_system
+http://www.google.com/cse?cx=partner-pub-9300639326172081%3A5191442144&ie=UTF-8&sa=Search&q=grub+11.04+windows+primary+boot&hl=en
+Google Custom Search
+https://help.ubuntu.com/community/Grub2#Initial%20Default
+Grub2 - Community Ubuntu Documentation
+http://askubuntu.com/questions/52963/how-do-i-set-windows-to-boot-as-the-default-in-the-boot-loader
+grub - How do I set Windows to boot as the default in the boot loader? - Ask Ubuntu - Stack Exchange
+
+for 11.04
+
+fgrep menuentry /boot/grub/grub.cfg
+
+sudo vi /etc/default/grub
+
+change:
+GRUB_DEFAULT=0
+to
+GRUB_DEFAULT="Windows 7 (loader) (on /dev/sda2)"
+
+i.e. paste the entry you want (including the quotes)
+
+Save, then type
+
+sudo update-grub
+
+*2013.01.29 20:26:34 
+#once you've downloaded everything, install using:
+#startup-extended.sh
+
+*2013.01.29 20:26:38 
+don't forget to sync mercurial before restoring any previous instances of /c/ via rsync
+
+
+
+
+
+########################
+#these have been added earlier
+
+sudo apt-get install -y -d couchdb
+mkdir couchdb
+sudo mv /var/cache/apt/archives/*.deb couchdb
+
+#git not available via apt-get in 10.04... need debian sources (everything after has it?)
+sudo apt-get install -y -d git
+mkdir git
+sudo mv /var/cache/apt/archives/*.deb git/
+#sudo dpkg -i git/*.deb
+
+
+
+#http://lifehacker.com/5873738/the-best-application-launcher-for-linux
+#that link recommends synapse first, launchy second
+
+#xubuntu 14.04 does not have synapse by default, have to use testing:
+#http://askubuntu.com/questions/449285/is-synapse-application-launcher-available
+sudo apt-add-repository ppa:synapse-core/testing
+#(press Enter-key when prompted to continue)
+sudo apt-get update
+
+sudo apt-get install -y -d synapse
+mkdir synapse
+sudo mv /var/cache/apt/archives/*.deb synapse
+#sudo dpkg -i synapse/*.deb
+
+#run synapse the first time from the menu
+#click  preferences from the taskbar icon
+#enable "Startup on login"
+#disable "Show notification icon"
+
+#(if not done previously...)
+#Start->Settings Manager->Window Manager
+#Under the "Keyboard" tab, clear the window operations menu setting
+
+#back in synapse, under shortcuts, change the activate shortcut to alt-space
+
+#sshd
+#this may have been installed sooner, but if not, now is an OK time too!
+sudo apt-get -y -d install openssh-server
+mkdir sshd
+sudo mv /var/cache/apt/archives/*.deb sshd
+#sudo dpkg -i sshd/*.deb
+#sudo /etc/init.d/ssh restart
+
+#for a vnc / server machine, probably won't need anything else here
+
+*2014.09.25 09:16 terminal
+#terminal settings have been good enough lately, but just in case:
+Change terminal profile settings"
+"Edit"->"Profile Preferences..."
+Under "Colors" tab,
+disable "Use colors from system theme"
+just use white on black
+and set the background transparency to about 85%
+

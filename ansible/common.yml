@@ -1,0 +1,110 @@
+#
+# Ansible playbook for setting up a new machine. Yay!
+#
+
+---
+- hosts: all
+  remote_user: charles
+  become: yes
+
+  vars:
+    #these are now defined in vars_files below:
+    #ubuntu_version: 15.10x
+    #archive_path: ~/Downloads/ubuntu/{{ ubuntu_version }}
+    fuzzy: wuzzy
+    
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+
+    - name: create archive path
+      file: path={{ archive_path }} state=directory mode=0755
+
+    #start with just updating the apt cache
+    - apt: update_cache=yes
+
+    #get this so we can use it for upgrade:
+    - apt: name=aptitude state=present
+
+    #http://docs.ansible.com/ansible/apt_module.html
+    - apt: upgrade=full
+
+    # if it already exists, we won't move it again
+    - name: check if updates archive path already exists
+      stat: path={{ archive_path }}/updates/
+      register: check_archive_path
+
+    - name: create updates path
+      file: path={{ archive_path }}/updates state=directory mode=0755
+
+    #this will fail when no updates are available
+    - name: move updates
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path|quote }}/updates/
+      when: not check_archive_path.stat.exists
+
+
+    # TODO:
+    # It may be necessesary to restart the system at this point
+    # On Debian / Ubuntu, it may be possible to check for the presence of:
+    # /var/run/reboot-required
+    # then signal a reboot and have SSH wait for reconnection
+
+    # if the reboot is not completed, subsequent tasks may not run
+      
+
+      
+    #http://docs.ansible.com/ansible/ufw_module.html
+    - name: Enable the firewall
+      ufw: state=enabled policy=deny
+      tags: firewall
+
+    - name: Configure the firewall (ssh)
+      ufw: rule=allow port=ssh
+      tags: firewall
+
+    - name: Configure the firewall (http)
+      ufw: rule=allow port=http
+      tags: firewall
+      
+    - name: Configure the firewall (https)
+      ufw: rule=allow port=https
+      tags: firewall
+
+
+      
+    #want first call to apt to run with update cache set to yes
+    - name: Install ntp 
+      apt: name=ntp state=present 
+      tags: ntp
+
+    - name: Set TimeZone in /etc/localtime
+      #http://askubuntu.com/questions/323131/setting-timezone-from-terminal
+      command: /usr/bin/timedatectl set-timezone America/Indiana/Indianapolis
+      tags: ntp
+      notify: restart ntp
+
+    - name: Start the ntp service
+      service: name=ntp state=started enabled=yes
+      tags: ntp
+
+    # if it already exists, we won't move it again
+    - name: check if ntp archive path already exists
+      stat: path={{ archive_path }}/ntp/
+      register: check_archive_path
+
+    - name: create archive path
+      file: path={{ archive_path }}/ntp state=directory mode=0755
+
+    - name: move ntp .deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path|quote }}/ntp/
+      when: not check_archive_path.stat.exists
+
+
+
+
+  handlers:
+    - name: restart ntp
+      service: name=ntp state=restarted
+
+  

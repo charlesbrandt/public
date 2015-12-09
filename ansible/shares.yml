@@ -1,0 +1,31 @@
+- hosts: all
+  remote_user: charles
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    #only want these in the case that it is a true guest under virtual_box
+    #if using ansible to configure a real machine, don't do this:
+
+    #without this module loaded, the machine will not boot. Will get this:
+    #Error getting authority: Error initializing authority:
+    #Could not connect: No such file or directory (g-io-error-quark, 1)
+    - lineinfile: dest=/etc/modules line="vboxsf"
+
+    #make sure mount points exist:
+    - file: path=/c state=directory mode=0755
+    - file: path=/media/charles/DATA state=directory mode=0755
+      
+    #next configure the shared drive to be part of fstab
+
+    #http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
+    #http://docs.ansible.com/ansible/mount_module.html
+    #sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
+    - mount: name=/c src='c' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
+
+      
+    - mount: name=/media/charles/DATA src='DATA' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
+
+

@@ -1,0 +1,24 @@
+- include: common.yml
+
+# a restart may be required after applying system updates in common.yml
+# before subsequent tasks will complete
+
+# if this is a machine running on a guest VM, set up the shares to be mounted:
+- include: shares.yml
+
+- include: python.yml
+- include: utilities.yml
+- include: development.yml
+
+# two different ways to handle repositories:
+
+# first is to download everything from scratch and install it that way:
+# - include: repositories.yml
+
+# second is to use the locally mounted shared /c/ directory
+# and set those up
+#- include: repositories-shared.yml
+
+#- include: media.yml
+#- include: dirstat.yml
+#- include: make.yml

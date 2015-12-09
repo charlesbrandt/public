@@ -1,0 +1,17 @@
+[base]
+192.168.56.106 ansible_ssh_user=captain
+
+[personal]
+#192.168.56.103
+
+[shared]
+#192.168.56.102
+
+[make]
+#192.168.56.101
+
+[rentrocket]
+#192.168.56.103 ansible_ssh_user=rentrocket
+
+[localhost]
+#127.0.0.1

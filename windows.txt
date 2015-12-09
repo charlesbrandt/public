@@ -1,0 +1,302 @@
+*2015.10.29 17:55:40
+visual disk usage utility
+#windows:
+https://windirstat.info/
+http://stackoverflow.com/questions/868264/du-in-powershell
+
+
+Greeting windows user!
+It's time to set up a system!
+This file might look like gobbledygood (due to incorrect line returns)
+That will be fixed when you install and use Emacs to edit text files.
+
+But first, the best thing to do with a new system, especially one that doesn't have installation media, is to make an image of the drive.  Boot to linux and use dd to copy for a portable way to do this on all machines (not using a proprietary backup imaging mechanism). This way you can always go back to the factory state of the system.  
+
+Or, if you're using virtualization, see virtualization.txt for notes on setting up your virtual machine.
+
+
+
+Connect to a network
+Windows 7 creates a homegroup automatically for you.
+
+*2011.08.04 14:06:14 chrome
+when navigating to google via explorer, prompted to try chrome
+go ahead and install that
+
+*2013.05.20 23:00:33 
+Control Panel -> Appearance and Personalization -> Folder Options
+"Show hidden files and folders"
+Uncheck "Hide extensions for known file types"
+
+*2008.05.30 18:34 emacs
+Install and configure emacs
+http://www.gnu.org/software/emacs/windows/Getting-Emacs.html#Getting-Emacs
+http://ftp.gnu.org/gnu/emacs/windows/
+
+open the compressed version and copy it to C:\Program Files (or someplace else you have permission to use)
+to add start menu shortcuts, you can use:
+emacs-23.3\bin\addpm.exe
+
+Make a desktop shortcut to the runemacs shortcut supplied with emacs
+
+*2009.12.28 08:43
+Copy emacs startup files locally
+with windows it is not possible to link to directories, so any time you make changes to the configuration files that you want available on other machines, you will want to copy those files into your main (synchronized) repository manually anyway.
+Plus, with windows, there are usually special configurations that are not needed on other systems.
+
+*2008.05.30 17:56 emacs init windows
+http://www.gnu.org/software/emacs/windows/Installing-Emacs.html#Installing-Emacs
+
+I just went with the root of C:\
+
+3.5 Where do I put my init file?
+
+On Windows, the .emacs file may be called _emacs for backward compatibility with DOS and FAT filesystems where filenames could not start with a dot. Some users prefer to continue using such a name, because Explorer cannot create a file with a name starting with a dot, even though the filesystem and most other programs can handle it. In Emacs 22 and later, the init file may also be called .emacs.d/init.el. Many of the other files that are created by lisp packages are now stored in the .emacs.d directory too, so this keeps all your Emacs related files in one place.
+
+All the files mentioned above should go in your HOME directory. The HOME directory is determined by following the steps below:
+
+   1. If the environment variable HOME is set, use the directory it indicates.
+   2. If the registry entry HKCU\SOFTWARE\GNU\Emacs\HOME is set, use the directory it indicates.
+   3. If the registry entry HKLM\SOFTWARE\GNU\Emacs\HOME is set, use the directory it indicates. Not recommended, as it results in users sharing the same HOME directory.
+   4. If C:\.emacs exists, then use C:/. This is for backward compatibility, as previous versions defaulted to C:/ if HOME was not set.
+   5. Use the user's AppData directory, usually a directory called Application Data under the user's profile directory, the location of which varies according to Windows version and whether the computer is part of a domain. 
+
+Within Emacs, <~> at the beginning of a file name is expanded to your HOME directory, so you can always find your .emacs file with C-x C-f ~/.emacs. 
+
+
+
+*2009.12.30 09:19:36 mercurial
+I am using the TortoiseHG distribution on windows now.  One install and everything is ready to go. Sweet!
+started [2008.05.30 17:14] mercurial windows
+http://www.google.com/search?hl=en&q=mercurial+windows&btnG=Search
+mercurial windows - Google Search
+http://www.selenic.com/mercurial/wiki/index.cgi/WindowsInstall
+WindowsInstall - Mercurial
+http://www.selenic.com/mercurial/wiki/index.cgi/BinaryPackages
+BinaryPackages - Mercurial
+
+*2008.05.14 11:01 python
+Gotta have it: :)
+python
+http://www.python.org/download/
+pil
+http://www.pythonware.com/products/pil/
+
+*2008.05.30 14:58 python path windows
+This allows python to be found by just typing "python" in the Command Prompt:
+
+http://www.imladris.com/Scripts/PythonForWindows.html
+Right-click on the desktop icon for your machine (captioned My Computer, if you haven't renamed it) and go to Properties.
+(Or Control Panel -> System and Security -> System
+
+This pops up a dialogue box of system information; click on the Advanced tab and then on the Environment Variables  button. In the new dialogue that pops up, click on the Path variable in the System Variables box; then click the Edit button.
+
+Place your cursor in the Variable Value textbox, right before the final double-quote of the string. Type a semicolon (to separate the previous value from the one you're about to add) and then type the location of the python executable on your system-- probably something like C:\Python . Click OK until you're out of all the dialogue boxes. Now, when you type python at any DOS command prompt, Windows will be able to automatically find and run the correct executable. 
+
+
+
+
+
+*2009.12.28 20:46:31 firefox
+install firefox
+install copy all urls for firefox
+
+*2011.10.09 22:06:12 trackpad touchfreeze
+http://code.google.com/p/touchfreeze/
+disable trackpad input while typing to avoid accidental trackpad cursor movement
+
+*2009.12.29 21:20:50 miro
+http://www.getmiro.com/download/for-windows/
+installer requires network access
+
+*2010.06.25 12:56:31 vlc
+vlc is good too
+http://www.videolan.org/vlc/download-windows.html
+
+*2011.08.04 14:32:44 itunes
+http://www.apple.com/itunes/affiliates/download/
+
+*2011.08.04 14:58:57 xbmc
+http://xbmc.org/download/
+
+*2009.12.30 09:36:00 
+http://www.gimp.org/windows/
+GIMP - for Windows
+http://gimp-win.sourceforge.net/faq.html
+GIMP - Windows installers
+http://ftp.gnome.org/pub/GNOME/binaries/win32/pycairo/1.4/
+ftp.gnome.org
+http://ftp.gnome.org/pub/GNOME/binaries/win32/pygobject/2.14/
+ftp.gnome.org
+http://ftp.gnome.org/pub/GNOME/binaries/win32/pygtk/2.12/
+ftp.gnome.org
+http://gimp-win.sourceforge.net/stable.html
+GIMP - Windows installers
+
+*2009.12.30 09:42:43 
+http://audacity.sourceforge.net/
+Audacity: Free Audio Editor and Recorder
+http://audacity.sourceforge.net/download/
+Audacity: Download
+http://audacity.sourceforge.net/help/faq?s=install&item=lame-mp3
+Audacity: How do I download and install the LAME MP3 encoder?
+http://lame.buanzo.com.ar/
+Lame MP3 Encoder Binaries
+
+*2008.05.14 16:40 ssh putty
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
+*2008.05.14 18:10 
+http://www.google.com/search?hl=en&client=firefox-a&rls=com.ubuntu%3Aen-US%3Aofficial&hs=boj&q=blender&btnG=Search
+blender - Google Search
+http://www.blender.org/download/get-blender/
+blender.org - Get Blender
+
+*2011.08.05 14:24:34 sketchup
+http://sketchup.google.com/intl/en/download/
+
+*2010.06.25 13:10:17 vnc
+http://www.tightvnc.com/download.php
+
+*2011.08.06 12:52:46 md5
+this version integrates with explorer, file properties window
+http://www.frozenlogic.org/summerproperties.shtml
+
+*2011.08.06 12:54:16 dvdshrink
+files not hosted on dvdshrink.org site
+just google for dvdshrink32setup.exe
+verify checksum:
+
+DVD Shrink 3.2.0.15 english
+e6b0a6346fe640365f4ab9d5c7d9fb93 *dvdshrink32setup.zip
+efc4643607d821ee5b1e306b5181917c *dvdshrink32setup.exe
+
+*2011.08.06 12:58:50 dvdfab
+http://www.dvdfab.com/hd-decrypter.htm
+
+*2009.12.30 10:29:15 
+stopping here for another image
+this is a good place to get back to
+syncing and then removing local copy of mercurial notes
+these will surely be outdated by the time the instance is reloaded
+no need to keep them there
+plus that ensures a clean start
+
+
+
+
+
+*2008.05.14 11:06 
+set up windows explorer to be best view
+tools -> folder options
+
+*2008.05.14 11:03 
+configure desktop to be in classic windows theme
+change background to black
+
+*2008.05.30 14:56 
+7-zip works well for tar, gz files on windows.... yay!  Free and Open source... thanks guys!
+http://www.7-zip.org/download.html
+
+Next, make sure you have virus protection installed before going on the internet:
+
+*2009.06.19 14:39:41 
+installed avast
+
+Dear user,
+
+Your registration of avast! 4 Home Edition was successful. You must now insert your license key into the program.
+
+Your license key is:
+
+---------- cut here ----------
+W53815684H1400A0511-2DEH102U
+---------- cut here ----------
+
+Next steps:
+1. Check that you have installed avast! antivirus on your computer! To download avast antivirus now, go to http://www.avast.com/eng/programs.html
+2. Highlight the license key above, then right click on it and select “Copy”
+3. right click the blue “a-ball” in the bottom right corner of the screen, then left click “About avast!”
+4. Left click “License key”
+5. Right click in the empty License Key box then select “Paste”
+6. Click “OK”. Your license key is now inserted and the program can now be used free of charge for a further 12 months.
+
+For a video demonstration of how to insert the license key, please click on the following link:
+http://www.avast.com/files/tutorials/insert_key.htm
+
+Please note that under the license conditions avast! 4 Home Edition is for home, personal and non-commercial use only. Commercial versions of avast! can be found at http://www.avast.com/eng/desktop_solutions.html
+
+If you experience any difficulties inserting the license key, please click here:
+http://www.avast.com/eng/faq-registration-license.html
+
+
+Thank you for choosing avast! antivirus software.
+
+The ALWIL Software team.
+
+
+
+
+
+
+*2008.05.14 17:26 launcher launchy
+http://sourceforge.net/projects/launchy/files/
+http://www.launchy.net/
+also [2009.12.30 09:22:21] 
+doesn't seem to find emacs by default
+added a special case to runny plugin
+C:\Documents and Settings\All Users\Start Menu\Programs\Startup
+should be starting automatically... not sure that it is
+
+*2008.05.14 16:39 
+http://filezilla-project.org/download.php?type=client
+
+*2008.05.14 17:22 
+http://www.mozilla.com/en-US/thunderbird/all.html
+
+*2009.12.30 09:25:36 
+resorted and cleaned up start menu items
+
+*2009.12.29 22:55:34 rsync
+http://www.google.com/search?client=firefox-a&rls=org.mozilla%3Aen-US%3Aofficial&channel=s&hl=en&source=hp&q=rsync+windows&btnG=Google+Search
+rsync windows - Google Search
+http://www.aboutmyip.com/AboutMyXApp/DeltaCopy.jsp
+DeltaCopy - Rsync for Windows
+http://www.rsync.net/resources/howto/windows_rsync.html
+http://www.rsync.net/resources/howto/windows_rsync.html
+http://sourceforge.net/projects/sereds/files/
+Browse SysAdmin Tools from ITeF!x Files on SourceForge.net
+http://www.itefix.no/i2/node/10650
+cwrsync - Rsync for Windows | ITeF!x
+
+C:\Program Files\cwRsync\bin\rsync.exe D:\clients\larry_humes\projects
+
+"C:\Program Files\cwRsync\bin\rsync.exe" -av /cygdrive/d/clients/larry_humes/projects/ /cygdrive/c/c/clients/larry_humes/projects 
+*2008.05.30 17:13
+updating windows sendto folders in windows XP
+ http://support.microsoft.com/kb/q310270/
+
+*2008.05.14 18:16 
+http://download.openoffice.org/other.html#en-US
+
+*2010.06.25 13:34:37 
+http://www.bing.com/search?q=windows+sip+phone&pc=Z004&form=ZGAPHP
+windows sip phone - Bing
+http://en.wikipedia.org/wiki/List_of_SIP_software
+List of SIP software - Wikipedia, the free encyclopedia
+http://en.wikipedia.org/wiki/Comparison_of_VoIP_software
+Comparison of VoIP software - Wikipedia, the free encyclopedia
+http://en.wikipedia.org/wiki/Google_Talk
+Google Talk - Wikipedia, the free encyclopedia
+http://en.wikipedia.org/wiki/Mumble_(software)
+Mumble (software) - Wikipedia, the free encyclopedia
+http://en.wikipedia.org/wiki/Skype
+Skype - Wikipedia, the free encyclopedia
+
+
+
+
+
+http://www.emacswiki.org/cgi-bin/wiki/MsWindowsInstallation
+change where emacs starts running in windows by adjusting the properties of the shortcut used to launch emacs.
+also [2009.12.28]

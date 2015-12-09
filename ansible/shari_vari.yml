@@ -1,0 +1,5 @@
+# shared variables for all scripts
+ubuntu_version: 15.10x
+### archive_path: /c/downloads/ubuntu/{{ ubuntu_version }}
+archive_path: /home/{{ ansible_ssh_user }}/Downloads/ubuntu/{{ ubuntu_version }}
+shared_path: /c
