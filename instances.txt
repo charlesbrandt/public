@@ -1,51 +1,51 @@
 *2015.12.08 22:38:45 system
-/c/system/instances.txt
-/c/system/launch.sh
-/c/system/ubuntu-extended.txt
-/c/system/browsers.txt
-/c/system/ubuntu.txt
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/ubuntu-extended.txt
+/c/public/system/browsers.txt
+/c/public/system/ubuntu.txt
 
 *2015.12.08 22:35:33 macosx
-/c/system/instances.txt
-/c/system/launch.sh
-/c/system/default_account.txt
-/c/system/browsers.txt
-/c/system/macosx.txt
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/default_account.txt
+/c/public/system/browsers.txt
+/c/public/system/macosx.txt
 
 *2015.11.22 12:39:52 ansible
-/c/system/instances.txt
-/c/system/launch.sh
-/c/system/virtualization.txt
-/c/system/ubuntu-extended.txt
-/c/system/browsers.txt
-/c/system/ansible/hosts.txt
-/c/system/ansible/python.yml
-/c/system/ansible/shari_vari.yml
-/c/system/ansible/common.yml
-/c/system/ansible/utilities.yml
-/c/system/ansible/development.yml
-/c/system/ubuntu.txt
-/c/system/ansible/dirstat.yml
-/c/system/ansible/media.yml
-/c/system/ansible/repositories-shared.yml
-/c/system/ansible.txt
-/c/system/ansible/system.yml
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/virtualization.txt
+/c/public/system/ubuntu-extended.txt
+/c/public/system/browsers.txt
+/c/public/system/ansible/hosts.txt
+/c/public/system/ansible/python.yml
+/c/public/system/ansible/shari_vari.yml
+/c/public/system/ansible/common.yml
+/c/public/system/ansible/utilities.yml
+/c/public/system/ansible/development.yml
+/c/public/system/ubuntu.txt
+/c/public/system/ansible/dirstat.yml
+/c/public/system/ansible/media.yml
+/c/public/system/ansible/repositories-shared.yml
+/c/public/system/ansible.txt
+/c/public/system/ansible/system.yml
 
 
 *2015.11.08 10:02:19 system
-/c/system/instances.txt
-/c/system/launch.sh
-/c/system/startup-extended.sh
-/c/system/startup.sh
-/c/system/browsers.txt
-/c/system/ubuntu-extended.txt
-/c/system/ubuntu.txt
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/startup-extended.sh
+/c/public/system/startup.sh
+/c/public/system/browsers.txt
+/c/public/system/ubuntu-extended.txt
+/c/public/system/ubuntu.txt
 
 *2013.11.01 11:52:53 macosx
-/c/system/instances.txt
-/c/system/launch.sh
-/c/system/default_account.txt
-/c/system/python-install.txt
-/c/system/browsers.txt
-/c/system/macosx.txt
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/default_account.txt
+/c/public/system/python-install.txt
+/c/public/system/browsers.txt
+/c/public/system/macosx.txt
 

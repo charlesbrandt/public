@@ -3,7 +3,7 @@ Ubuntu / Xubuntu
 
 Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
 
-When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 1024MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 8GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in {{ shared_path }}.
+When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 1024MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 8GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
 
 If installing to a virtual machine, avoid allowing the installation to download and apply updates automatically. Disconnect from the internet. To be sure: Virtual Box -> Devices -> Network -> Disconnect Cable. That way you can apply the updates whenever you want to clone and re-run the setup scripts.
 
@@ -23,6 +23,7 @@ If you encrypted your home drive, it may be a good idea to jot down the key show
 #http://askubuntu.com/questions/451805/screen-resolution-problem-with-ubuntu-14-04-and-virtualbox
 On Guest:
 cd /media/{{ ssh_user }}/VBOXADDITIONS_5.0.8_103449/
+cd /media/charles/VBOXADDITIONS_5.0.10_104061/
 sudo ./VBoxLinuxAdditions.run
 
 #can do this sooner, but it won't work until now:
@@ -34,9 +35,9 @@ Eject Guest Additions form guest OS file browser
 #can now resize screen too
 
 #this requires proprietary oracle guest additions:
-#mkdir {{ shared_path }}
+#mkdir /c
 Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
-Choose "Folder Path": {{ shared_path }}
+Choose "Folder Path": /c
 
 If you might want access to DATA drives, set that up as well
 
@@ -46,6 +47,8 @@ There are some general system settings that are good to take care of first:
 
 Set clock, including time format. Enable Date and Month in menu bar.
 %a, *%Y.%m.%d %H:%M
+
+For multiple monitors, configure them in Settings -> Display
 
 Change Desktop background / wallpaper.
 Right click -> Desktop Settings... ->
@@ -64,7 +67,7 @@ X + _ Title v
 Start->Settings Manager->Window Manager
 Under the "Keyboard" tab, clear the window operations menu setting
 
-Then, under Keyboard settings -> Application Shortcuts find:
+Then, under All Settings -> Keyboard settings -> Application Shortcuts find:
 xfce4-popup-whiskermenu
 and set that to Alt+Space
 
@@ -87,18 +90,20 @@ For "Background color", use color picker to match emacs setting (#1D1F21)
 be sure a Terminal is already open, then:
 Settings -> Session and Startup -> Session -> Save Session
 
-
 *2015.12.06 22:41:05
-#set up a shared directory with all machines. I use /c... use anything you like
+#TODO: (decide if this is worth doing)
+#export SHARED=/c
+sudo mkdir -p /c
+sudo chmod 775 /c
+sudo chown -R charles: /c
 
-sudo mkdir -p {{ shared_path }}
-Drag link to {{ shared_path }} in File Manager
+Drag link to /c in File Manager
 
 
 #this is handled by ansible/shares.yml
 #skip if running that
-sudo chown -R {{ ssh_user }}: {{ shared_path }}
-sudo mount -t vboxsf -o uid=1000,gid=1000 c {{ shared_path }}
+sudo chown -R {{ ssh_user }}: /c
+sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
 #consider adding this to fstab!
 #http://askubuntu.com/questions/481559/how-to-automatically-mount-a-folder-and-change-ownership-from-root-in-virtualbox
 # http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
@@ -127,8 +132,15 @@ ifconfig
 #to find out ip on guest
 #ssh from host to guest first to test (sometimes old keys left around)
 ssh 192.168.56.106
+
+if you haven't already, generate local keys:
+    ssh-keygen -t rsa
+
 #on host, use ssh-copy-id to log in automatically, e.g.:
-ssh-copy-id 192.168.56.106
+ssh-copy-id 192.168.56.101
+
+ssh 127.0.0.1
+ssh-copy-id 127.0.0.1
 
 
 *2015.11.06 19:14:43
@@ -137,128 +149,81 @@ Settings... -> Automatically check for updates: Every two weeks, (Never?)
 (depends on the use case)
 
 
+#for a host OS instance, a few steps need to be done manually: 
 
-#(optionally) shutdown, one more snapshot:
+sudo apt-get install -y python-pip python2.7-dev 
+#ansible
+sudo pip install ansible markupsafe
+
+
+
+#(optionally, on guests) shutdown, one more snapshot:
 SSH Config
 
 
-#for guests, should be able to use ansible from here
-cd {{ shared_path }}/technical/system/ansible 
+#should be able to use ansible from here
+cd /c/public/system/ansible 
 add new machine ip to hosts.txt
 ansible-playbook system.yml -i hosts.txt --ask-become-pass
 
 
+
+
 #apply browser configurations sooner rather than later
 #this way they'll be available for snapshots in virtual machines
-#don't forget mozilla configs... either from scratch: 
-#see browsers.txt then
+
+#either from scratch (see browsers.txt)
+#then copy browser settings for future installs:
+cp -r ~/.mozilla $ARCHIVEPATH/.mozilla
+cp -r ~/.mozilla /c/public/downloads/.mozilla
 
 #or copy previous:
 #cp -r $ARCHIVEPATH/.mozilla ~/.
 
 
-copy browser settings for future installs:
-cp -r ~/.mozilla $ARCHIVEPATH/.mozilla
+
+#don't forget this manual step:
+# Open VLC
+# Tools -> Preferences
+# Uncheck:
+#   - Integrate video in interface
+#   - Use only one instance when started from file manager
+
+# View -> Playlist
+# Close browser tree in playlist view.
+
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+#or
+  cp /c/charles/.gitconfig ~/.gitconfig
 
 
 
 
-#for a host OS instance, this will need to be done manually: (right???)
-
-
-#Location of your local Context instance:
-export USBPATH=/media/disk
-export USBPATH=/media/charles/CHARLES
-
-export VERSION=15.10x
-export PREVIOUS=15.04x
-
-#If this is a new version, backup previous startup notes:
-cp $USBPATH/technical/system/ubuntu.txt $USBPATH/technical/system/ubuntu-$PREVIOUS.txt
-
-
-#If you're *not* on a live instance, you can download everything 
-#locally instead, saving space on your USB device:
-sudo ls
-
-sudo mkdir /c
-sudo chmod 775 /c
-sudo chown -R charles: /c
-#export USBPATH=/c
-#export ARCHIVEPATH=$USBPATH/downloads/ubuntu/$VERSION
-
-export LOCALPATH=/c
-export ARCHIVEPATH=$LOCALPATH/downloads/ubuntu/$VERSION
-
-#create a new directory for archives:
-mkdir -p $ARCHIVEPATH
-cd $ARCHIVEPATH
-
-
-#for local (non-live) system, get base system updates
-#(do not do this first on a live instance)
-sudo apt-get update
-sudo apt-get upgrade
-
-#clean up any updates that have been downloaded
-ls /var/cache/apt/archives/
-sudo mkdir updates
-sudo mv /var/cache/apt/archives/*.deb updates/
-#if previously downloaded but not applied, apply now:
-#sudo dpkg -i updates/*.deb
-#check for any problems... if so:
-#sudo apt-get -f install
-
-
-
-
-#This downloads everything for local/later use.
-#To perform the actual installation, see startup.sh
-
-#still utilized? 
-#python-docutils python-setuptools python-rsvg python-reportlab 
-
-sudo apt-get install -y -d python-pip python2.7-dev python2.7-dbg python-imaging python-nose python-mako python-pyaudio git 
-mkdir python 
-sudo mv /var/cache/apt/archives/*.deb python/
-
-#to apply immediately
-#sudo dpkg -i python/*.deb
-
-#ansible?
-sudo pip install ansible
-
-#if sshd installed, consider installing everything else using ansible
-#(even localhost)
-ssh-keygen -t rsa
-ssh-copy-id 127.0.0.1
-ansible-playbook system.yml -i hosts.txt --ask-become-pass
-
-#many applications require these gui toolkits (including virtualbox)
-
-sudo apt-get install -y -d python-qt4 python-qt4-dbg libqt4-dev python-pyside
-mkdir qt
-sudo mv /var/cache/apt/archives/*.deb qt
-
-#install those first to avoid duplication
-sudo dpkg -i qt/*.deb
-
-
+#set up a shared directory with all machines. I use /c... use anything you like
 
 #virtualbox 
 ----------------------------------------------
-#virtualbox depends on libqt
-sudo apt-get -y -d install virtualbox 
-mkdir virtualbox
-sudo mv /var/cache/apt/archives/*.deb virtualbox
-#sudo dpkg -i virtualbox/*.deb
-
 mkdir -p /c/virtual_box/
 cd /c/virtual_box/
 
+I have found the version from Oracle to be easier to use. They are also more up to date. Yes, some aspects are not open, but I feel comfortable enough having the open version available. 
+
+Download both platform package and Extension Pack. 
+https://www.virtualbox.org/wiki/Downloads
+
+cd /c/virtual_box/installs/5.0.10/
+sudo dpkg -i virtualbox-5.0_5.0.10-104061~Ubuntu~wily_amd64.deb
+
+#In preferences:
 File->Preferences...->Network->Host-only Networks->Add icon (right)->vboxnet0
 
-#In preferences, change Default Machine Folder to be:
+#Add Extension Pack
+File->Preferences...->Extensions
+
+#change Default Machine Folder to be:
 /c/virtual_box/
 
 #or external drive:
@@ -269,124 +234,12 @@ If you use an image often, it would be good to keep it local
 
 
 
-#if display is small on guest (virtual machine), install this on host:
-sudo apt-get install virtualbox-guest-dkms virtualbox-guest-x11
 
+#keep downloaded directories around...
+#they're used as checks by ansible to see if actions are required
+#to save space and clean up downloaded files:
+sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
 
-For USB 2/3 support on guest, also need to install Virtual Box Extension Pack from Oracle (match versions):
-https://www.virtualbox.org/wiki/Download_Old_Builds_5_0
-
-Open VirtualBox, File -> Preferences -> Extensions -> Adds new package.
-
-Seems like maybe it's only supported with the version of VirtualBox available from Oracle directly (not Ubuntu)... giving that a try.
-
-
-sudo adduser USERNAME vboxusers
-
-#I was not able to get automount to work (/media/sf_share). Root permissions fixed:
-Auto-mount, 
-on guest OS
-usermod -aG vboxsf charles
-#with fstab, this is a moot point
-
-
-
-
-
-
-
-#mercurial is installed in startup.sh via pip to enable hg-git installation
-#or remote installations:
-sudo pip install mercurial
-sudo pip install hg-git
-
-#sudo easy_install selenium
-sudo pip install selenium
-sudo pip install cssselect
-
-#for interacting with web APIs (e.g. discogs, rdio, etc)
-sudo pip install oauth2
-
-
-*2013.01.29 20:27:41 
-mercurial (you'll need to configure this to switch to emacs)
-ok to do this before installing mercurial in startup.sh
-#copy a default .hgrc from USB:
-cp /media/charles/CHARLES/.hgrc ~/.hgrc
-
-#or create a default .hgrc file:
-vi ~/.hgrc
-
-[ui]
-username = Firstname Lastname <firstname.lastname@example.net>
-ui.report_untrusted = False
-
-
-#Default mercurial settings can be overridden on a repository by repository basis with the file:
-<repo>/.hg/hgrc
-
-git clone https://github.com/charlesbrandt/moments $LOCALPATH/moments
-ln -s $LOCALPATH/moments/editors/vi/.exrc ~/.exrc
-
-cp $LOCALPATH/moments/editors/.bashrc ~/
-source ~/.bashrc
-cd $LOCALPATH/moments/
-sudo python setup.py develop
-
-mkdir /c/out
-
-
-
-
-#gstreamer-tools is pretty tiny... doesn't look like any dependencies
-#seems like a good fit for utilities... please double check
-sudo apt-get install -y -d gstreamer-tools
-
-#to monitor USB audio input:
-gst-launch pulsesrc device="alsa_input.usb-BurrBrown_from_Texas_Instruments_USB_AUDIO_CODEC-00-CODEC.analog-stereo" ! pulsesink
-
-#The list of valid audio device names can be seen in the listing provided by pactl list or using the command[10]:
-pactl list | grep -A2 'Source #' | grep 'Name: ' | cut -d" " -f2
-
-http://wiki.oz9aec.net/index.php/Gstreamer_cheat_sheet#Adding_Audio
-http://askubuntu.com/questions/2719/how-do-i-output-my-audio-input
-
-
-
-sudo apt-get install -y -d libjpeg-progs libgif4 tofrodos jhead imagemagick smartmontools p7zip gpick
-#this is needed for working with exfat formatted flash drives:
-sudo apt-get install -y -d exfat-utils exfat-fuse
-#color picker... it's pretty tiny
-sudo apt-get install -y -d gpick
-mkdir utilities
-sudo mv /var/cache/apt/archives/*.deb utilities
-
-#wget http://www.sentex.net/~mwandel/jhead/jhead
-#sudo cp jhead /usr/bin
-
-#to apply immediately
-#sudo dpkg -i utilities/*.deb
-
-
-sudo apt-get install -y -d emacs emacs-goodies-el
-mkdir emacs
-sudo mv /var/cache/apt/archives/*.deb emacs
-
-#sudo dpkg -i emacs/*.deb
-#check for errrors... may need to run this one twice
-#make sure emacs has not been run yet... if so: rm -r ~/.emacs.d
-#export LOCALPATH=/c
-ln -s $LOCALPATH/moments/editors/emacs/.emacs ~/.emacs
-ln -s $LOCALPATH/moments/editors/emacs/.emacs.d ~/.emacs.d
-
-
-#these are needed for creating a bootable USB for installation, 
-#but they require libqt... don't move them earlier in the process
-sudo apt-get install -y -d unetbootin extlinux
-mkdir bootable_usb
-sudo mv /var/cache/apt/archives/*.deb bootable_usb
-
-#sudo dpkg -i bootable_usb/*.deb
 
 
 

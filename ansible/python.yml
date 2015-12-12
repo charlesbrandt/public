@@ -40,13 +40,14 @@
     - name: pip install cssselect
       pip: name=cssselect
 
-    #for interacting with web APIs (e.g. discogs, rdio, etc)
+    #for interacting with web APIs (e.g. discogs, etc)
     - name: pip install oauth2
       pip: name=oauth2
 
     - name: copy mercurial config
       # TODO: consider using a local ansible template for this:
-      #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ansible_ssh_user}}/.hgrc owner={{ansible_ssh_user}} group={{ansible_ssh_user}}
-      copy: src=~/.hgrc dest=/home/{{ansible_ssh_user}}/.hgrc owner={{ansible_ssh_user}} group={{ansible_ssh_user}}
+      #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
+      #copy: src=~/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
+      copy: src={{ shared_path }}/{{ ansible_ssh_user }}/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
 
       

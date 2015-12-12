@@ -3,18 +3,16 @@
 # a restart may be required after applying system updates in common.yml
 # to apply kernel updates before subsequent tasks will complete
 
-## see system-2.yml for uncommented version
-
 # if this is a machine running on a guest VM, set up shares to be mounted:
 #- include: shares.yml
 
-#- include: python.yml
-#- include: utilities.yml
-#- include: javascript.yml
+- include: python.yml
+- include: utilities.yml
+- include: javascript.yml
 
 # shouldn't hurt to synchronize even if local repo already exists:
-#- include: repositories.yml
+- include: repositories.yml
 
-#- include: media.yml
-#- include: dirstat.yml
+- include: media.yml
+- include: dirstat.yml
 #- include: create.yml
