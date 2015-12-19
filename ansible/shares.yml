@@ -1,5 +1,4 @@
 - hosts: all
-  remote_user: charles
   become: yes
 
   vars_files:
@@ -25,7 +24,5 @@
     #sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
     - mount: name=/c src='c' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
 
-      
-    - mount: name=/media/charles/DATA src='DATA' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
 
 

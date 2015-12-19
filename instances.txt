@@ -1,3 +1,29 @@
+*2015.12.13 16:55:47 system
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/ubuntu-extended.txt
+/c/public/system/browsers.txt
+/c/public/system/ansible/hosts.txt
+/c/public/system/ubuntu.txt
+
+*2015.12.13 06:05:24 ansible
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/ansible/python.yml
+/c/public/system/ansible/shari_vari.yml
+/c/public/system/ansible/common.yml
+/c/public/system/ansible/utilities.yml
+/c/public/system/ansible/development.yml
+/c/public/system/ansible/dirstat.yml
+/c/public/system/ansible.txt
+/c/public/system/ansible/repositories.yml
+/c/public/system/ansible/permissions.yml
+/c/public/system/ansible/media.yml
+/c/public/system/ansible/shares.yml
+/c/public/system/ansible/system-2.yml
+/c/public/system/ansible/system.yml
+/c/public/system/ansible/hosts.txt
+
 *2015.12.08 22:38:45 system
 /c/public/system/instances.txt
 /c/public/system/launch.sh

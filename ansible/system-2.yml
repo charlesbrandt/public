@@ -4,7 +4,7 @@
 # to apply kernel updates before subsequent tasks will complete
 
 # if this is a machine running on a guest VM, set up shares to be mounted:
-#- include: shares.yml
+- include: shares.yml
 
 - include: python.yml
 - include: utilities.yml
@@ -14,5 +14,6 @@
 - include: repositories.yml
 
 - include: media.yml
-- include: dirstat.yml
 #- include: create.yml
+#- include: dirstat.yml
+#- include: permissions.yml

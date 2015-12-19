@@ -43,4 +43,3 @@
 # View -> Playlist
 # Close browser tree in playlist view.
 
-    - file: path=/c owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} recurse=yes 

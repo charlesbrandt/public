@@ -3,7 +3,7 @@ Ubuntu / Xubuntu
 
 Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
 
-When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 1024MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 8GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
+When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
 
 If installing to a virtual machine, avoid allowing the installation to download and apply updates automatically. Disconnect from the internet. To be sure: Virtual Box -> Devices -> Network -> Disconnect Cable. That way you can apply the updates whenever you want to clone and re-run the setup scripts.
 
@@ -26,16 +26,15 @@ cd /media/{{ ssh_user }}/VBOXADDITIONS_5.0.8_103449/
 cd /media/charles/VBOXADDITIONS_5.0.10_104061/
 sudo ./VBoxLinuxAdditions.run
 
-#can do this sooner, but it won't work until now:
-enable clipboard sharing, bidirectional.
-
 Eject Guest Additions form guest OS file browser
 
 #restart Guest OS
 #can now resize screen too
 
+#can do this sooner, but it won't work until now:
+enable clipboard sharing, bidirectional.
+
 #this requires proprietary oracle guest additions:
-#mkdir /c
 Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
 Choose "Folder Path": /c
 
@@ -90,16 +89,17 @@ For "Background color", use color picker to match emacs setting (#1D1F21)
 be sure a Terminal is already open, then:
 Settings -> Session and Startup -> Session -> Save Session
 
-*2015.12.06 22:41:05
-#TODO: (decide if this is worth doing)
+#server installs can skip much of the above
+
+
+#set up a shared directory with all machines. I use /c... use anything you like
 #export SHARED=/c
 sudo mkdir -p /c
 sudo chmod 775 /c
-sudo chown -R charles: /c
 
 Drag link to /c in File Manager
 
-
+sudo chown -R charles: /c
 #this is handled by ansible/shares.yml
 #skip if running that
 sudo chown -R {{ ssh_user }}: /c
@@ -121,7 +121,6 @@ May need to press "Auto Etherenet" for wired connection
 
 Add "Incomplete Language Support"
 
-#server installs can skip much of the above
 
 #sshd
 #just get this one... will help with remote / automated installations
@@ -131,22 +130,17 @@ sudo apt-get -y install openssh-server
 ifconfig
 #to find out ip on guest
 #ssh from host to guest first to test (sometimes old keys left around)
-ssh 192.168.56.106
+ssh 192.168.56.105
 
 if you haven't already, generate local keys:
     ssh-keygen -t rsa
 
 #on host, use ssh-copy-id to log in automatically, e.g.:
-ssh-copy-id 192.168.56.101
+ssh-copy-id 192.168.56.105
 
 ssh 127.0.0.1
 ssh-copy-id 127.0.0.1
 
-
-*2015.11.06 19:14:43
-launch Software Updater
-Settings... -> Automatically check for updates: Every two weeks, (Never?)
-(depends on the use case)
 
 
 #for a host OS instance, a few steps need to be done manually: 
@@ -169,6 +163,12 @@ ansible-playbook system.yml -i hosts.txt --ask-become-pass
 
 
 
+#don't forget these manual steps:
+
+launch Software Updater
+Settings... -> Automatically check for updates: Every two weeks, (Never?)
+(depends on the use case)
+
 #apply browser configurations sooner rather than later
 #this way they'll be available for snapshots in virtual machines
 
@@ -178,11 +178,10 @@ cp -r ~/.mozilla $ARCHIVEPATH/.mozilla
 cp -r ~/.mozilla /c/public/downloads/.mozilla
 
 #or copy previous:
-#cp -r $ARCHIVEPATH/.mozilla ~/.
+#cp -r /c/public/downloads/.mozilla ~/
 
 
 
-#don't forget this manual step:
 # Open VLC
 # Tools -> Preferences
 # Uncheck:
@@ -191,6 +190,7 @@ cp -r ~/.mozilla /c/public/downloads/.mozilla
 
 # View -> Playlist
 # Close browser tree in playlist view.
+# Uncheck "Docked Playlist
 
 
   git config --global user.email "you@example.com"
@@ -199,10 +199,26 @@ cp -r ~/.mozilla /c/public/downloads/.mozilla
 #or
   cp /c/charles/.gitconfig ~/.gitconfig
 
+#to save space, you can clean up downloaded .deb files, however...
+#keep downloaded directories around...
+#they're used as checks by ansible to see if actions are required
+#to save space and clean up downloaded files:
+sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
+
+rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-20151213
+
+
+#Snapshot here
+
+Base Configuration
+
+Includes:
+ - manual configurations
+ - ansible configurations (up to media)
+ - updates
 
 
 
-#set up a shared directory with all machines. I use /c... use anything you like
 
 #virtualbox 
 ----------------------------------------------
@@ -233,12 +249,6 @@ It worked to boot directly from external drive (may be slower than host)...
 If you use an image often, it would be good to keep it local
 
 
-
-
-#keep downloaded directories around...
-#they're used as checks by ansible to see if actions are required
-#to save space and clean up downloaded files:
-sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
 
 
 

@@ -40,8 +40,3 @@
       args:
         chdir: "{{ public_path }}/mindstream"
 
-    #ansible doesn't want hosts.txt to be executable
-    # mode=0755 recurse=yes      
-    # would it be better to just change permissions for files affected here?
-    # see also media.yml
-    - file: path=/c owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} recurse=yes      
