@@ -22,6 +22,7 @@
     #http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
     #http://docs.ansible.com/ansible/mount_module.html
     #sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
+    #sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA
     - mount: name=/c src='c' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
 
 

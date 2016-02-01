@@ -14,6 +14,6 @@
 - include: repositories.yml
 
 - include: media.yml
-#- include: create.yml
+- include: create.yml
 #- include: dirstat.yml
 #- include: permissions.yml

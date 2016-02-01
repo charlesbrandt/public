@@ -3,16 +3,19 @@ I try to keep browser configurations as simple as possible.
 FIREFOX:
 ========================
 
+*2016.01.02 18:58:17
+https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
+Copy All Tabs :: Add-ons for Firefox
+
+*2016.01.03 19:25:13
+have used this in the past as well:
+https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search
+
 *2015.11.03 11:50:23
 There are a few items that are great additions (Add-ons) (plugins):
 
 #custom new tab screen
 https://addons.mozilla.org/en-us/firefox/addon/moment/
-
-CopyAllUrls (sometimes here instead: http://www.plasser.net/)
-http://www.plasser.net/copyallurls/
-https://addons.mozilla.org/en-US/firefox/addon/copyallurls/
-(copy kept on /media/charles/CHARLES/ for quicker install)
 
 ColorZilla
 https://addons.mozilla.org/en-us/firefox/addon/colorzilla
@@ -128,6 +131,15 @@ google-talkplugin
 
 FIREFOX (old):
 ========================
+
+*2016.01.03 19:25:42
+Now that Firefox requires signing, this is too much of a hassle...
+there are other options available now:
+
+CopyAllUrls (sometimes here instead: http://www.plasser.net/)
+http://www.plasser.net/copyallurls/
+https://addons.mozilla.org/en-US/firefox/addon/copyallurls/
+(copy kept on /media/charles/CHARLES/ for quicker install)
 
 *2013.07.07 05:27:33 
 Ubiquity. Highlight something, then press Ctrl+Space and issue a command

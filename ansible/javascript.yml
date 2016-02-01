@@ -25,6 +25,42 @@
 
     - pip: name=jsbeautifier
 
+    #TODO:
+    #(this is untested)
+    
+    #the version of node installed by packages is woefully out of date
+    #these steps are adapted from:
+    #/c/technical/javascript/node.txt
+
+    #after node is installed from debian packages, it is only available via:
+    #nodejs -v
+
+    #http://docs.ansible.com/npm_module.html
+
+    - shell: npm cache clean -f
+
+    #sudo npm install -g n
+    - npm: name=n global=yes
+
+    - shell: n stable
+
+    #now node command should work as expected:
+    #node -v
+
+
+    #npm -v
+    #sudo npm cache clean -f
+    #sudo npm update npm -g
+    - npm: name=npm global=yes state=latest
+    #npm -v
+
+
+    #TODO:
+    #sudo npm install webpack -g
+    #sudo npm install webpack-dev-server -g
+    - npm: name=webpack global=yes state=latest
+    - npm: name=webpack-dev-server global=yes state=latest
+
 
     - name: Install couch packages.
       action: apt pkg={{ item }} state=present
@@ -41,4 +77,12 @@
     - name: move couch deb files
       shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/couch/
       when: not check_archive_path.stat.exists
-      
+
+    - name: sudo pip install couchdb
+      pip: name=couchdb
+
+    #TODO:
+    #for Firefox browser extensions
+    #npm install jpm --global
+    - npm: name=jpm global=yes state=latest
+    

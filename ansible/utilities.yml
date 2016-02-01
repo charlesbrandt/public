@@ -40,6 +40,7 @@
         - exfat-utils
         - exfat-fuse
         - extlinux
+        - curl
         #requires qt
         - unetbootin
 
