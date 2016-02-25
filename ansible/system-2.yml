@@ -13,7 +13,7 @@
 # shouldn't hurt to synchronize even if local repo already exists:
 - include: repositories.yml
 
-- include: media.yml
-- include: create.yml
+#- include: media.yml
+#- include: create.yml
 #- include: dirstat.yml
 #- include: permissions.yml
