@@ -3,6 +3,8 @@ Ubuntu / Xubuntu
 
 Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
 
+If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
+git tag 15.10
 
 Try using 32bit os on virtual machines... sounds like that is more efficient from a memory stand point... shouldn't need to go over 4gb of ram in a VM anyway.
 
@@ -199,7 +201,8 @@ cd /c/public/system/ansible
 add new machine ip to hosts.txt
 ansible-playbook system.yml -i hosts.txt --ask-become-pass
 
-
+#might need a restart before running this one:
+ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
 
 
 #don't forget these manual steps:
@@ -207,6 +210,8 @@ ansible-playbook system.yml -i hosts.txt --ask-become-pass
 launch Software Updater
 Settings... -> Automatically check for updates: Every two weeks, (Never?)
 (depends on the use case)
+#16.04 adds new option to download and install security updates automatically
+# going to try this out first to see how it impacts things
 
 #apply browser configurations sooner rather than later
 #this way they'll be available for snapshots in virtual machines
@@ -232,7 +237,8 @@ cp -r ~/.mozilla /c/public/downloads/.mozilla
 
 
 #back up downloaded files, if you want
-rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-20151213
+export DATE=$(date +%Y%m%d)
+rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-$DATE
 
 #to save space, you can clean up downloaded .deb files, however...
 #keep downloaded directories around...
@@ -240,6 +246,23 @@ rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-20151213
 #to save space and clean up downloaded files:
 
 sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
+
+
+df -k
+16.04x is ~ 4.1GB used at this point
+
+#Snapshot here
+
+Base Configuration
+
+Includes:
+ - manual configurations
+ - ansible configurations (through system-2, up to media)
+ - updates
+
+
+# go ahead with media application configurations next
+ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
 
 
 # Open VLC
@@ -254,49 +277,9 @@ sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
 
 
 
-
-#Snapshot here
-
-Base Configuration
-
-Includes:
- - manual configurations
- - ansible configurations (up to media)
- - updates
-
-
-
-
-#virtualbox 
-----------------------------------------------
-mkdir -p /c/virtual_box/
-cd /c/virtual_box/
-
-I have found the version from Oracle to be easier to use. They are also more up to date. Yes, some aspects are not open, but I feel comfortable enough having the open version available. 
-
-Download both platform package and Extension Pack. 
-https://www.virtualbox.org/wiki/Downloads
-
-cd /c/virtual_box/installs/5.0.10/
-sudo dpkg -i virtualbox-5.0_5.0.10-104061~Ubuntu~wily_amd64.deb
-
-#In preferences:
-File->Preferences...->Network->Host-only Networks->Add icon (right)->vboxnet0
-
-#Add Extension Pack
-File->Preferences...->Extensions
-
-#change Default Machine Folder to be:
-/c/virtual_box/
-
-#or external drive:
-/media/charles/DATA/virtual_box
-
-It worked to boot directly from external drive (may be slower than host)...
-If you use an image often, it would be good to keep it local
-
-
-
+*2016.05.01 08:43:15
+notes on installing virtual_box moved to virtualization.txt
+(usually only need this for host machines)
 
 
 
@@ -319,9 +302,3 @@ sudo apt-get install -y -d startupmanager
 mkdir startupmanager
 sudo mv /var/cache/apt/archives/*.deb startupmanager
 #remember to run startup manager after installation and choose the correct operating system
-
-
-#now is a good time to run startup.sh
-#additional pip python package installs located there (requires network still)
-
-

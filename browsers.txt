@@ -7,9 +7,10 @@ FIREFOX:
 https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
 Copy All Tabs :: Add-ons for Firefox
 
-*2016.01.03 19:25:13
-have used this in the past as well:
+#have used this in the past as well:
 https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search
+#and this may have similar functionality
+https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
 
 *2015.11.03 11:50:23
 There are a few items that are great additions (Add-ons) (plugins):
@@ -26,6 +27,9 @@ https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 
 via: 
 http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968
+
+#seems like it might be better to deny javascript by default. Give it a try and see how it works out:
+https://addons.mozilla.org/en-US/firefox/addon/noscript
 
 Restart browser, close extra tabs
 
@@ -51,11 +55,22 @@ Clear History
 
 
 
+Flashgot media download add on:
+https://addons.mozilla.org/en-US/firefox/addon/flashgot/?src=hp-dl-featured
+May be similar to:
+https://addons.mozilla.org/en-US/firefox/addon/video-downloadhelper
+https://addons.mozilla.org/en-US/firefox/addon/downthemall
+
 AdBlock Plus?
 https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
 (maybe it's better just to disable javascript for non-trusted sites?)
 
 http://www.mozilla.org/en-US/firefox/new/
+
+#measure pixels, add rulers, etc:
+https://addons.mozilla.org/en-US/firefox/addon/measureit
+#this didn't work for me
+
 
 CHROME / CHROMIUM:
 ========================
