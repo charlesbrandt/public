@@ -6,6 +6,7 @@ Initially, it is a good idea to develop the following steps on a *live* or *virt
 
 Try using 32bit os on virtual machines... sounds like that is more efficient from a memory stand point... shouldn't need to go over 4gb of ram in a VM anyway.
 
+Be sure Virtual Box is up to date... versions change and it's good to use the latest one before setting up new systems. 
 
 When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
 
@@ -27,7 +28,7 @@ If you encrypted your home drive, it may be a good idea to jot down the key show
 #http://askubuntu.com/questions/451805/screen-resolution-problem-with-ubuntu-14-04-and-virtualbox
 On Guest:
 cd /media/{{ ssh_user }}/VBOXADDITIONS_5.0.8_103449/
-cd /media/charles/VBOXADDITIONS_5.0.10_104061/
+cd /media/charles/VBOXADDITIONS
 sudo ./VBoxLinuxAdditions.run
 
 Eject Guest Additions form guest OS file browser
@@ -41,9 +42,13 @@ enable clipboard sharing, bidirectional.
 #this requires proprietary oracle guest additions:
 Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
 Choose "Folder Path": /c
+Check "Make Permanent"
 
-If you might want access to DATA drives, set that up as well
+It's best not to configure any external media until you are working on a cloned system.
+e.g. if you might want access to DATA drives, set that up later
 
+Under Machine -> Settings -> User Interface
+un-check the bottom status bar to hide it... only takes up space in my opinion (can always enable it later if needed)
 
 
 There are some general system settings that are good to take care of first: 
@@ -75,7 +80,7 @@ xfce4-popup-whiskermenu
 and set that to Alt+Space
 
 Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shift+Ctrl+Delete"
-This is to be more in line with the way lock screen works on Macs, but unfortunately Macs are not as configurable
+This is to be more in line with the way lock screen works on Macs. Not my first choice in combinations, but unfortunately Macs are not as configurable
 
 *2015.11.03 09:57:37
 Add workspaces
@@ -137,13 +142,13 @@ sudo apt-get -y install openssh-server
 ifconfig
 #to find out ip on guest
 #ssh from host to guest first to test (sometimes old keys left around)
-ssh 192.168.56.105
+ssh 192.168.56.103
 
 if you haven't already, generate local keys:
     ssh-keygen -t rsa
 
 #on host, use ssh-copy-id to log in automatically, e.g.:
-ssh-copy-id 192.168.56.105
+ssh-copy-id 192.168.56.103
 
 ssh 127.0.0.1
 ssh-copy-id 127.0.0.1

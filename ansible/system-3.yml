@@ -13,9 +13,10 @@
 # shouldn't hurt to synchronize even if local repo already exists:
 - include: repositories.yml
 
-# the following are uncommented in system-3.yml:
-#- include: media.yml
-#- include: create.yml
-#- include: dirstat.yml
-
+- include: media.yml
+- include: create.yml
+- include: dirstat.yml
 #- include: permissions.yml
+
+# only needed for desktop / root /host systems
+#- include: host.yml

@@ -85,6 +85,12 @@ https://chrome.google.com/webstore/detail/link-router/mniabhjoaeegihknhoibknnfni
 
 yay!
 
+*2016.02.06 09:09:25
+http://felixniklas.com/dimensions/
+https://chrome.google.com/webstore/detail/dimensions/baocaagndhipibgklemoalmkljaimfdj
+via:
+https://www.elegantthemes.com/blog/resources/the-best-web-development-tools-you-probably-arent-using
+
 *2014.11.21 08:05:48
 Chrome Apps & Extensions Developer Tool
 https://chrome.google.com/webstore/detail/chrome-apps-extensions-de/ohmmkhmmmpcnpikjeljgnaoabkaalbgc/related?hl=en-US
