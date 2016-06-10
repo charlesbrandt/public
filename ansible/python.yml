@@ -29,6 +29,9 @@
       shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/python/
       when: not check_archive_path.stat.exists
 
+    - name: Upgrade pip
+      pip: name=pip state=latest
+  
     #- name: pip install mercurial
     #  pip: name=mercurial
 

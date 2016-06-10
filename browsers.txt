@@ -18,9 +18,6 @@ There are a few items that are great additions (Add-ons) (plugins):
 #custom new tab screen
 https://addons.mozilla.org/en-us/firefox/addon/moment/
 
-ColorZilla
-https://addons.mozilla.org/en-us/firefox/addon/colorzilla
-
 *2013.04.22 20:36:25 browsers firefox chrome 
 https://disconnect.me/ 
 https://addons.mozilla.org/en-us/firefox/addon/disconnect/
@@ -54,6 +51,8 @@ Advanced -> Data Choices -> disable "Enable Firefox Health Report" and "Enable C
 Clear History
 
 
+ColorZilla
+https://addons.mozilla.org/en-us/firefox/addon/colorzilla
 
 Flashgot media download add on:
 https://addons.mozilla.org/en-US/firefox/addon/flashgot/?src=hp-dl-featured
