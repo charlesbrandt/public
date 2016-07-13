@@ -55,6 +55,7 @@
       pip: name=oauth2
 
     - name: copy mercurial config
+      # remember: this copies from the HOST to the GUEST (not within the guest)
       # TODO: consider using a local ansible template for this:
       #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
       #copy: src=~/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}

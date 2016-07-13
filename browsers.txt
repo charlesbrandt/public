@@ -30,6 +30,14 @@ http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472
 
 #seems like it might be better to deny javascript by default. Give it a try and see how it works out:
 https://addons.mozilla.org/en-US/firefox/addon/noscript
+*2015.11.19 12:58:35 browsers todo systems javascript
+should consider adding noscript to firefox configuration:
+https://noscript.net/
+http://boingboing.net/2015/11/18/the-web-is-pretty-great-with-j.html
+
+*2016.05.03 09:23:04
+https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/
+
 
 Restart browser, close extra tabs
 
@@ -55,6 +63,12 @@ Clear History
 
 
 
+*2016.01.27 08:39:11 browsers todo
+some of these add-ons look promising
+
+https://addons.mozilla.org/en-US/firefox/addon/wired-marker/?src=collection&collection_id=69b74e8b-ed2c-4274-aeff-fc051f2330c4
+Wired-Marker :: Add-ons for Firefox
+
 Flashgot media download add on:
 https://addons.mozilla.org/en-US/firefox/addon/flashgot/?src=hp-dl-featured
 May be similar to:
@@ -70,6 +84,12 @@ http://www.mozilla.org/en-US/firefox/new/
 #measure pixels, add rulers, etc:
 https://addons.mozilla.org/en-US/firefox/addon/measureit
 #this didn't work for me
+
+other noscript like options:
+http://www.gnu.org/software/librejs/
+http://www.gnu.org/philosophy/javascript-trap.html
+
+
 
 
 CHROME / CHROMIUM:

@@ -11,8 +11,8 @@
 #192.168.56.102
 
 [current]
-192.168.56.101
+#192.168.56.101
 
 [different user]
-#192.168.56.103 ansible_ssh_user=brandtc
+192.168.56.101 ansible_ssh_user=yogamala
 

@@ -30,5 +30,12 @@
     #and follow pattern for /c
     #DATA /media/charles/DATA vboxsf uid=1000,gid=1000,auto 0 0
 
+    #to mount samba:
+    #sudo apt-get install cifs-utils
+    #mkdir -p /c/data
+    #sudo mount -t cifs //192.168.1.234/data /c/data
+    
+    #sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA
+
 
 

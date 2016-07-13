@@ -130,6 +130,15 @@ For "Background color", use color picker to match emacs setting (#1D1F21)
 be sure a Terminal is already open, then:
 Settings -> Session and Startup -> Session -> Save Session
 
+*2016.05.18 21:17:13 
+to start Task Manager automatically requires a different tactic...
+save session will not pick it up.
+
+Settings -> Session and Startup -> Application Autostart
+Add a new one:
+Task Manager
+xfce4-taskmanager
+
 #server installs can skip much of the above
 
 
@@ -274,6 +283,15 @@ ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
 # View -> Playlist
 # Close browser tree in playlist view.
 # Uncheck "Docked Playlist
+
+
+
+df -k
+16.04x is ~ 4.8GB used at this point
+
+#No need for snapshots here....
+#at this point you can start making clones for the common configurations
+
 
 
 
