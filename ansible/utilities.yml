@@ -28,6 +28,8 @@
     - name: Install utilities
       action: apt pkg={{ item }} state=present
       with_items:
+        # seems to be there by default now:
+        #- build-essential
         - gstreamer-tools
         #- libjpeg-progs
         # missing as of 16.04... can't remember what depends on it

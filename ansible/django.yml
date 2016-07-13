@@ -1,0 +1,42 @@
+# you can run this on the local machine with:
+# cd /c/public/system/ansible/
+# ansible-playbook django.yml
+# ansible-playbook django.yml -i hosts.txt --ask-become-pass
+- hosts: all
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    # Apt package installation of required software.
+    - name: Install ansible dependencies.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - python-pip
+        - python2.7-dev
+        # via: https://github.com/docker-library/django/blob/master/2.7/Dockerfile
+        - gcc
+        - gettext
+        - mysql-client
+        - libmysqlclient-dev
+        #if you're using postgres or sqlite3:
+        #- postgresql-client
+        #- libpq-dev
+        #- sqlite3
+
+    - name: Upgrade pip
+      pip: name=pip state=latest
+  
+    - name: pip install mysqlclient
+      pip: name=mysqlclient
+
+    #- name: pip install psycopg2
+    #  pip: name=psycopg2
+
+    - name: pip install django
+      pip: name=django version=1.9.7
+    
+      
+
+        

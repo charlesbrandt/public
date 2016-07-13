@@ -1,3 +1,6 @@
+[local]
+#localhost
+
 [localhost]
 #127.0.0.1
 
@@ -14,5 +17,5 @@
 #192.168.56.101
 
 [different user]
-192.168.56.101 ansible_ssh_user=yogamala
+192.168.56.109 ansible_ssh_user=brandtc
 

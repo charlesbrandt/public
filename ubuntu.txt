@@ -194,11 +194,12 @@ ssh-copy-id 127.0.0.1
 
 
 #for a host OS instance, a few steps need to be done manually: 
-
-sudo apt-get install -y python-pip python2.7-dev 
+sudo apt-get install -y python-pip python2.7-dev libffi-dev
 #ansible
 sudo pip install ansible markupsafe
 
+#if you have an ansible host somewhere else, these steps were formalized via:
+ansible-playbook ansible.yml -i hosts.txt --ask-become-pass
 
 
 #(optionally, on guests) shutdown, one more snapshot:
