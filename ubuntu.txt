@@ -3,9 +3,12 @@ Ubuntu / Xubuntu
 
 Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
 
+If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
+git tag 15.10
 
 Try using 32bit os on virtual machines... sounds like that is more efficient from a memory stand point... shouldn't need to go over 4gb of ram in a VM anyway. However, docker requires 64bit to run in a VM, so that could be a good reason to stick with that.
 
+Be sure Virtual Box is up to date... versions change and it's good to use the latest one before setting up new systems. 
 
 When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
 
@@ -27,7 +30,7 @@ If you encrypted your home drive, it may be a good idea to jot down the key show
 #http://askubuntu.com/questions/451805/screen-resolution-problem-with-ubuntu-14-04-and-virtualbox
 On Guest:
 cd /media/{{ ssh_user }}/VBOXADDITIONS_5.0.8_103449/
-cd /media/charles/VBOXADDITIONS_5.0.10_104061/
+cd /media/charles/VBOXADDITIONS
 sudo ./VBoxLinuxAdditions.run
 
 Eject Guest Additions form guest OS file browser
@@ -41,8 +44,39 @@ enable clipboard sharing, bidirectional.
 #this requires proprietary oracle guest additions:
 Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
 Choose "Folder Path": /c
+Check "Make Permanent"
 
-If you might want access to DATA drives, set that up as well
+It's best not to configure any external media until you are working on a cloned system.
+e.g. if you might want access to DATA drives, set that up later
+
+Under Machine -> Settings -> User Interface
+un-check the bottom status bar to hide it... only takes up space in my opinion (can always enable it later if needed)
+
+If running linux on apple hardware (e.g. macbooks) you may need to swap the command key with the alt key to work as expected. Additionally, if running a linux VM on mac hardware using VirtualBox, you may need to first adjust the Host Key Combination from "Left Command" to "Right Command" (via Input -> Keyboard).
+Then, use xev command to see the keys (keycode 133 == Super_L, want to swap with keycode 64 == Alt_L)
+vi modmap.file
+
+keycode 64 = Alt_L
+keycode 133 = Super_L
+remove Mod1 = Alt_L
+remove Mod4 = Super_L
+add Mod1 = Super_L
+add Mod4 = Alt_L
+
+xmodmap -v modmap.file
+#worked for me, then move so it runs by default (this does not run in Xfce):
+mv modmap.file ~/.xmodmaprc
+#this does not run by default, so add a startup item (Settings->Session and Startup):
+/bin/bash -c "sleep 20; /usr/bin/xmodmap /home/$USER/.xmodmaprc"
+
+#this may also work if running linux natively on apple hardware (not in VM):
+echo "1" > /sys/module/hid\_apple/parameters/swap\_opt\_cmd
+#solution via:
+http://unix.stackexchange.com/questions/86933/swap-alt-and-super
+https://wiki.xfce.org/faq
+
+Another setting that helps with scrolling on macs is (when guest is powered off), in VirtualBox->Machine->Settings->System->Motherboard->Pointing Device
+set it to: "PS/2 Mouse"
 
 
 
@@ -75,7 +109,7 @@ xfce4-popup-whiskermenu
 and set that to Alt+Space
 
 Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shift+Ctrl+Delete"
-This is to be more in line with the way lock screen works on Macs, but unfortunately Macs are not as configurable
+This is to be more in line with the way lock screen works on Macs. Not my first choice in combinations, but unfortunately Macs are not as configurable
 
 *2015.11.03 09:57:37
 Add workspaces
@@ -95,6 +129,15 @@ For "Background color", use color picker to match emacs setting (#1D1F21)
 *2015.11.07 15:18:05
 be sure a Terminal is already open, then:
 Settings -> Session and Startup -> Session -> Save Session
+
+*2016.05.18 21:17:13 
+to start Task Manager automatically requires a different tactic...
+save session will not pick it up.
+
+Settings -> Session and Startup -> Application Autostart
+Add a new one:
+Task Manager
+xfce4-taskmanager
 
 #server installs can skip much of the above
 
@@ -137,13 +180,13 @@ sudo apt-get -y install openssh-server
 ifconfig
 #to find out ip on guest
 #ssh from host to guest first to test (sometimes old keys left around)
-ssh 192.168.56.105
+ssh 192.168.56.103
 
 if you haven't already, generate local keys:
     ssh-keygen -t rsa
 
 #on host, use ssh-copy-id to log in automatically, e.g.:
-ssh-copy-id 192.168.56.105
+ssh-copy-id 192.168.56.103
 
 ssh 127.0.0.1
 ssh-copy-id 127.0.0.1
@@ -151,11 +194,12 @@ ssh-copy-id 127.0.0.1
 
 
 #for a host OS instance, a few steps need to be done manually: 
-
-sudo apt-get install -y python-pip python2.7-dev 
+sudo apt-get install -y python-pip python2.7-dev libffi-dev
 #ansible
 sudo pip install ansible markupsafe
 
+#if you have an ansible host somewhere else, these steps were formalized via:
+ansible-playbook ansible.yml -i hosts.txt --ask-become-pass
 
 
 #(optionally, on guests) shutdown, one more snapshot:
@@ -167,7 +211,8 @@ cd /c/public/system/ansible
 add new machine ip to hosts.txt
 ansible-playbook system.yml -i hosts.txt --ask-become-pass
 
-
+#might need a restart before running this one:
+ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
 
 
 #don't forget these manual steps:
@@ -175,6 +220,8 @@ ansible-playbook system.yml -i hosts.txt --ask-become-pass
 launch Software Updater
 Settings... -> Automatically check for updates: Every two weeks, (Never?)
 (depends on the use case)
+#16.04 adds new option to download and install security updates automatically
+# going to try this out first to see how it impacts things
 
 #apply browser configurations sooner rather than later
 #this way they'll be available for snapshots in virtual machines
@@ -190,6 +237,45 @@ cp -r ~/.mozilla /c/public/downloads/.mozilla
 
 #cp /media/charles/CHARLES/charles/.hgrc /c/
 
+#GitHub:
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+#or
+  cp /c/charles/.gitconfig ~/.gitconfig
+
+
+
+#back up downloaded files, if you want
+export DATE=$(date +%Y%m%d)
+rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-$DATE
+
+#to save space, you can clean up downloaded .deb files, however...
+#keep downloaded directories around...
+#they're used as checks by ansible to see if actions are required
+#to save space and clean up downloaded files:
+
+sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
+
+
+df -k
+16.04x is ~ 4.1GB used at this point
+
+#Snapshot here
+
+Base Configuration
+
+Includes:
+ - manual configurations
+ - ansible configurations (through system-2, up to media)
+ - updates
+
+
+# go ahead with media application configurations next
+ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
+
+
 # Open VLC
 # Tools -> Preferences
 # Uncheck:
@@ -201,66 +287,19 @@ cp -r ~/.mozilla /c/public/downloads/.mozilla
 # Uncheck "Docked Playlist
 
 
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
 
-#or
-  cp /c/charles/.gitconfig ~/.gitconfig
+df -k
+16.04x is ~ 4.8GB used at this point
 
-#back up downloaded files, if you want
-rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-20151213
-
-#to save space, you can clean up downloaded .deb files, however...
-#keep downloaded directories around...
-#they're used as checks by ansible to see if actions are required
-#to save space and clean up downloaded files:
-
-sudo find ~/Downloads/ubuntu/* -iname "*.deb" -exec rm \{\} \;
-
-
-
-#Snapshot here
-
-Base Configuration
-
-Includes:
- - manual configurations
- - ansible configurations (up to media)
- - updates
+#No need for snapshots here....
+#at this point you can start making clones for the common configurations
 
 
 
 
-#virtualbox 
-----------------------------------------------
-mkdir -p /c/virtual_box/
-cd /c/virtual_box/
-
-I have found the version from Oracle to be easier to use. They are also more up to date. Yes, some aspects are not open, but I feel comfortable enough having the open version available. 
-
-Download both platform package and Extension Pack. 
-https://www.virtualbox.org/wiki/Downloads
-
-cd /c/virtual_box/installs/5.0.10/
-sudo dpkg -i virtualbox-5.0_5.0.10-104061~Ubuntu~wily_amd64.deb
-
-#In preferences:
-File->Preferences...->Network->Host-only Networks->Add icon (right)->vboxnet0
-
-#Add Extension Pack
-File->Preferences...->Extensions
-
-#change Default Machine Folder to be:
-/c/virtual_box/
-
-#or external drive:
-/media/charles/DATA/virtual_box
-
-It worked to boot directly from external drive (may be slower than host)...
-If you use an image often, it would be good to keep it local
-
-
-
+*2016.05.01 08:43:15
+notes on installing virtual_box moved to virtualization.txt
+(usually only need this for host machines)
 
 
 
@@ -283,9 +322,3 @@ sudo apt-get install -y -d startupmanager
 mkdir startupmanager
 sudo mv /var/cache/apt/archives/*.deb startupmanager
 #remember to run startup manager after installation and choose the correct operating system
-
-
-#now is a good time to run startup.sh
-#additional pip python package installs located there (requires network still)
-
-

@@ -28,11 +28,15 @@
     - name: Install utilities
       action: apt pkg={{ item }} state=present
       with_items:
+        # seems to be there by default now:
+        #- build-essential
         - gstreamer-tools
-        - libjpeg-progs
-        - libgif4
-        - tofrodos
+        #- libjpeg-progs
+        # missing as of 16.04... can't remember what depends on it
+        #- libgif4
+        - libjpeg-turbo-progs
         - jhead
+        - tofrodos
         - imagemagick
         - smartmontools
         - p7zip
@@ -41,8 +45,6 @@
         - exfat-fuse
         - extlinux
         - curl
-        #requires qt
-        - unetbootin
 
     - name: check if utilities archive path already exists
       stat: path={{ archive_path }}/utilities/

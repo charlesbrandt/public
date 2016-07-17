@@ -137,6 +137,8 @@ sudo apt-get install k4dirstat
 
 
 #vnc
+#haven't refined this process yet... notes are in the works here:
+/c/charles/system/vnc.txt
 
 
 #atom editor
@@ -278,7 +280,7 @@ sudo pip install ino
 
 
 
-#nnumpy is required by inkscape, which is why it shows up first
+#numpy is required by inkscape, which is why it shows up first
 #might as well keep it separate
 #(unless inkscape is the first app that needs numpy (and it only needs numpy)
 sudo apt-get install -y -d python-numpy python-matplotlib python-scipy

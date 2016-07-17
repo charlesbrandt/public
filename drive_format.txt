@@ -28,8 +28,11 @@ sudo parted -a optimal /dev/sdb print
 sudo parted -a optimal /dev/sdb rm 1
 sudo parted -a optimal /dev/sdb rm 2
 
-sudo parted -a optimal /dev/sdb mkpart primary NTFS 1MB 2000GB
+sudo parted -a optimal /dev/sdb mkpart primary NTFS 0% 100%
 sudo mkfs.ntfs -L DATA -f /dev/sdb1
+
+#old options:
+#sudo parted -a optimal /dev/sdb mkpart primary NTFS 1MB 2000GB
 (13.04: http://charlesmccolm.com/2013/06/14/making-ntfs-partitions-in-linux
 sudo mkntfs -L DATA -f /dev/sdb1
 
@@ -99,7 +102,13 @@ http://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance
 
 
 
+*2016.05.03 17:19:00
+To find out what filesystem a device is formatted for, use:
 
+sudo file -s /dev/sdd1
+/dev/sdd1: DOS/MBR boot sector, code offset 0x52+2, OEM-ID "NTFS    ", sectors/cluster 8, Media descriptor 0xf8, sectors/track 32, heads 64, hidden sectors 2048, dos < 4.0 BootSector (0x80), FAT (1Y bit by descriptor); NTFS, sectors/track 32, sectors 30494719, $MFT start cluster 4, $MFTMirror start cluster 1905919, bytes/RecordSegment 2^(-1*246), clusters/index block 1, serial number 02167d0f6232476c5; contains Microsoft Windows XP/VISTA bootloader BOOTMGR
+
+This yields more information than mount will (fuseblk is not specific enough)
 
 
 *2012.10.19 06:35:35 drive wipe erase

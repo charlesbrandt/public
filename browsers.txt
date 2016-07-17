@@ -7,9 +7,10 @@ FIREFOX:
 https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
 Copy All Tabs :: Add-ons for Firefox
 
-*2016.01.03 19:25:13
-have used this in the past as well:
+#have used this in the past as well:
 https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search
+#and this may have similar functionality
+https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
 
 *2015.11.03 11:50:23
 There are a few items that are great additions (Add-ons) (plugins):
@@ -17,15 +18,23 @@ There are a few items that are great additions (Add-ons) (plugins):
 #custom new tab screen
 https://addons.mozilla.org/en-us/firefox/addon/moment/
 
-ColorZilla
-https://addons.mozilla.org/en-us/firefox/addon/colorzilla
-
 *2013.04.22 20:36:25 browsers firefox chrome 
 https://disconnect.me/ 
 https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 
 via: 
 http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968
+
+#seems like it might be better to deny javascript by default. Give it a try and see how it works out:
+https://addons.mozilla.org/en-US/firefox/addon/noscript
+*2015.11.19 12:58:35 browsers todo systems javascript
+should consider adding noscript to firefox configuration:
+https://noscript.net/
+http://boingboing.net/2015/11/18/the-web-is-pretty-great-with-j.html
+
+*2016.05.03 09:23:04
+https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/
+
 
 Restart browser, close extra tabs
 
@@ -50,12 +59,37 @@ Advanced -> Data Choices -> disable "Enable Firefox Health Report" and "Enable C
 Clear History
 
 
+ColorZilla
+https://addons.mozilla.org/en-us/firefox/addon/colorzilla
+
+*2016.01.27 08:39:11 browsers todo
+some of these add-ons look promising
+
+https://addons.mozilla.org/en-US/firefox/addon/wired-marker/?src=collection&collection_id=69b74e8b-ed2c-4274-aeff-fc051f2330c4
+Wired-Marker :: Add-ons for Firefox
+
+Flashgot media download add on:
+https://addons.mozilla.org/en-US/firefox/addon/flashgot/?src=hp-dl-featured
+May be similar to:
+https://addons.mozilla.org/en-US/firefox/addon/video-downloadhelper
+https://addons.mozilla.org/en-US/firefox/addon/downthemall
 
 AdBlock Plus?
 https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
 (maybe it's better just to disable javascript for non-trusted sites?)
 
 http://www.mozilla.org/en-US/firefox/new/
+
+#measure pixels, add rulers, etc:
+https://addons.mozilla.org/en-US/firefox/addon/measureit
+#this didn't work for me
+
+other noscript like options:
+http://www.gnu.org/software/librejs/
+http://www.gnu.org/philosophy/javascript-trap.html
+
+
+
 
 CHROME / CHROMIUM:
 ========================
@@ -84,6 +118,12 @@ $title
 https://chrome.google.com/webstore/detail/link-router/mniabhjoaeegihknhoibknnfnidgnecp
 
 yay!
+
+*2016.02.06 09:09:25
+http://felixniklas.com/dimensions/
+https://chrome.google.com/webstore/detail/dimensions/baocaagndhipibgklemoalmkljaimfdj
+via:
+https://www.elegantthemes.com/blog/resources/the-best-web-development-tools-you-probably-arent-using
 
 *2014.11.21 08:05:48
 Chrome Apps & Extensions Developer Tool

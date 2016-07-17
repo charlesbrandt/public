@@ -66,3 +66,10 @@ http://docs.ansible.com/ansible/pip_module.html
 pip - Manages Python library dependencies. — Ansible Documentation
 
 
+*2016.06.07 12:22:15 development contributing
+https://github.com/ansible/ansible-modules-core/blob/devel/CONTRIBUTING.md
+http://docs.ansible.com/ansible/community.html#i-d-like-to-learn-how-to-develop-on-ansible
+https://github.com/ansible/ansible/blob/devel/test/README.md
+
+thoughts of contributing to:
+https://github.com/ansible/ansible-modules-core/issues/3763

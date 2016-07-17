@@ -1,0 +1,136 @@
+Docker is a lighter weight alternative to a full virtual machine.
+Virtual machines are handy tools as well, but more for testing full server configurations and isolating project desktops to a single, portable place.
+
+Docker has great documentation, and I have been following along there:
+https://docs.docker.com/
+
+Engine is the core of it all:
+https://docs.docker.com/engine/
+
+and this is a great overview:
+https://docs.docker.com/engine/understanding-docker/
+
+https://docs.docker.com/engine/userguide/
+
+wasn't sure about how to get one container to talk to another...
+they've documented that well:
+
+https://docs.docker.com/engine/userguide/containers/networkingcontainers/
+
+this cheat sheet is also a great overview:
+https://github.com/wsargent/docker-cheat-sheet
+
+
+*2016.05.11 09:15:14
+(on macs) set up a terminal to know how to interact with docker by running:
+
+    eval "$(docker-machine env default)"
+
+*2016.06.07 14:04:56
+see a list of available docker images:
+
+    sudo docker images
+
+docker images are stored in:
+
+    /var/lib/docker
+    
+(don't forget, on mac docker is running in a VM, so this location is on that VM)
+via:
+http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
+
+
+it is possible to build images, but if an image does not exist before running, then it will be built at that time
+
+
+*2016.05.13 11:16:54
+see a list of docker containers:
+
+    docker ps
+    
+connect to a (already running) docker container:
+
+    docker attach loving_heisenberg 
+
+start and connect to a docker container:
+
+    sudo docker exec -it <containerIdOrName> bash
+    sudo docker exec -it docker_web_run_1 bash
+
+
+    docker run -i -t --entrypoint /bin/bash <imageID>
+    docker run -i -t --entrypoint /bin/bash docker_web_run_1
+    
+via:
+http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode
+
+see a list of all IP addresses for all containers:
+sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
+
+via:
+http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host
+
+
+*2016.06.09 09:15:48
+when it comes time to build a docker image (so you can ultimately deploy a running docker container), there are a few different ways to create the image:
+
+ - start a container, make some changes, and then commit that to a new image
+ - use a dockerfile to create a new image (recommended process)
+ - use ansible to build the image
+    - could install ansible using the docker file and then run the ansible playbook via the docker file
+    - could use docker to connect to a running container (either using docker connection, or by instantiating a ssh connection to the container) and then commit those changes
+
+Using (one of the) ansible concept seems like the ideal approach, but so far I've hit some walls making this work.
+
+start off configuring with just docker to make sure everything works that way first. after that it should be easier to just focus on the ansible integration. 
+
+
+*2016.06.09 15:15:15 security
+you don't want to include sensitive information in an image, especially if that is going to get shared on an image repository. This rules out using a Dockerfile. It's also not ideal to pass these parameters in over the command line interface, since then that gets set in the history file.
+
+This is a nice article on the topic that recommends using docker-compose and reference an .env file for sensitive data:
+https://www.ctl.io/developers/blog/post/tutorial-protecting-sensitive-info-docker
+
+Docker-compose is very similar in function to ansible. And then I'm back to that topic:
+https://www.ansible.com/blog/six-ways-ansible-makes-docker-compose-better
+
+*2016.06.07 11:50:48 
+via [*2016.04.29 15:50:28]
+docker + ansible:
+
+this a good introduction for using ansible within a Docker instance:
+https://www.ansible.com/2014/02/12/installing-and-building-docker-with-ansible
+
+looks like ansible can also control docker directly, if desired:
+http://docs.ansible.com/ansible/docker_module.html
+
+that may be a good alternative to docker-compose
+
+more development is actively happening in this space, but it is not to a stable / usable state yet
+
+https://www.ansible.com/docker
+
+be sure not to use:
+http://docs.ansible.com/ansible/docker_module.html
+it has been deprecated
+
+many others are available as part of the cloud modules in ansible core:
+http://docs.ansible.com/ansible/list_of_cloud_modules.html
+
+These are the main ones:
+http://docs.ansible.com/ansible/docker_image_module.html
+http://docs.ansible.com/ansible/docker_container_module.html
+http://docs.ansible.com/ansible/docker_service_module.html
+
+e.g.
+https://www.reddit.com/r/docker/comments/4421ow/docker_compose_vs_ansible_docker_for_machine/?
+
+
+
+
+*2016.05.11 09:29:01
+docker on mac uses boot2docker to configure the main docker machine
+this assigns a different IP address than localhost (which is often mentioned in many of the guides.) Kitematic can help with determining the ip of the machine.
+
+http://192.168.99.100:8069/web/database/create
+

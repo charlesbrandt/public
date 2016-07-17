@@ -1,0 +1,15 @@
+- hosts: all
+  remote_user: charles
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    #this is only necessary for a desktop / host machine...
+    #shouldn't need to create linux usbs in a virtual machine
+    - name: Install host specific utilites
+      action: apt pkg={{ item }} state=present
+      with_items:
+        #requires qt
+        - unetbootin

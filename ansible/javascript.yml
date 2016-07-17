@@ -85,4 +85,9 @@
     #for Firefox browser extensions
     #npm install jpm --global
     - npm: name=jpm global=yes state=latest
-    
+
+    # for gulp:
+    #sudo npm install --global gulp-cli      
+    #- npm: name=gulp-cli global=yes state=latest
+
+      

@@ -12,7 +12,7 @@
     
     #some of these steps may not be necessary if using a shared /c folder
     #the files could be available already...
-    #in that case, the process will be different
+    #in that case, the process might be different
     
     - name: Clone moments repository ({{ moments_path }})
       git: repo=https://github.com/charlesbrandt/moments  dest={{ moments_path }}
