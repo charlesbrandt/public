@@ -9,7 +9,7 @@
     # mode=0755 recurse=yes      
     # would it be better to just change permissions for files affected here?
     # see also media.yml
-    - file: path=/c owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} recurse=yes
+    - file: path=/c owner={{ ansible_user }} group={{ ansible_user }} recurse=yes
 
     #not exactly permissions, but seems related to when permissions would be set
     - mount: name=/media/charles/DATA src='DATA' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted

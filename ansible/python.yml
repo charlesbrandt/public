@@ -56,8 +56,9 @@
 
     - name: copy mercurial config
       # TODO: consider using a local ansible template for this:
-      #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
-      #copy: src=~/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
-      copy: src={{ shared_path }}/{{ ansible_ssh_user }}/.hgrc dest=/home/{{ ansible_ssh_user }}/.hgrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
+      #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
+      #copy: src=~/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
+      #copy: src={{ shared_path }}/{{ ansible_user }}/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
+      copy: src={{ shared_path }}/configs/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
 
       

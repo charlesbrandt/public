@@ -1,6 +1,12 @@
 # shared variables for all scripts
+
+#previously ansible_ssh_user
+#seems like this no longer gets set by default in Ansible 2.0
+#setting manually:
+ansible_user: charles
+
 ubuntu_version: 15.10x
 ### archive_path: /c/downloads/ubuntu/{{ ubuntu_version }}
-archive_path: /home/{{ ansible_ssh_user }}/Downloads/ubuntu/{{ ubuntu_version }}
+archive_path: /home/{{ ansible_user }}/Downloads/ubuntu/{{ ubuntu_version }}
 shared_path: /c
 public_path: "{{ shared_path }}/public"
