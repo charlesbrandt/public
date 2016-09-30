@@ -1,5 +1,8 @@
+[local]
+#localhost
+
 [localhost]
-#127.0.0.1
+127.0.0.1
 
 [base]
 #192.168.56.101 
@@ -11,8 +14,12 @@
 #192.168.56.102
 
 [current]
-192.168.56.103 ansible_ssh_user=brandtc
+#192.168.56.108
 
-[rentrocket]
-#192.168.56.103 ansible_ssh_user=rentrocket
+[different user]
+#192.168.56.103 ansible_user=brandtc
+
+#old way:
+#192.168.56.109 ansible_ssh_user=brandtc
+
 

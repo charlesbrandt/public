@@ -1,3 +1,19 @@
+*2016.02.06 08:21:52 updates update boot
+sometimes /boot runs out of room
+sudo dpkg --list 'linux-image*' | grep ^ii
+sudo apt-get remove linux-image-VERSION
+sudo apt-get autoremove
+
+#may not be necessary, but harmless
+#sudo update-grub
+
+via:
+http://askubuntu.com/questions/345588/what-is-the-safest-way-to-clean-up-boot-partition
+
+e.g.:
+sudo apt-get remove linux-image-4.2.0-16-generic
+
+
 *2010.08.31 07:47:23 
 /c/technical/system/upgrade.txt
 /c/technical/system/ubuntu.txt

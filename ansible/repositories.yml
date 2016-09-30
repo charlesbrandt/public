@@ -12,25 +12,37 @@
     
     #some of these steps may not be necessary if using a shared /c folder
     #the files could be available already...
-    #in that case, the process will be different
+    #in that case, the process might be different
     
-    - git: repo=https://github.com/charlesbrandt/moments  dest={{ moments_path }}
+    - name: Clone moments repository ({{ moments_path }})
+      git: repo=https://github.com/charlesbrandt/moments  dest={{ moments_path }}
 
-    - command: python setup.py develop
+    - name: Setup moments for development
+      command: python setup.py develop
       args:
         chdir: "{{ moments_path }}" 
 
-    - file: src={{ moments_path }}/editors/vi/.exrc dest=/home/{{ ansible_ssh_user }}/.exrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+    - name: link to vi .exrc
+      file: src={{ moments_path }}/editors/vi/.exrc dest=/home/{{ ansible_user }}/.exrc owner={{ ansible_user }} group={{ ansible_user }} state=link
 
-    - file: dest=/home/{{ ansible_ssh_user }}/.bashrc state=absent
+    - name: remove existing .bashrc (/home/{{ ansible_user }}/.bashrc)
+      file: dest=/home/{{ ansible_user }}/.bashrc state=absent
 
-    - file: src={{ moments_path }}/editors/.bashrc dest=/home/{{ ansible_ssh_user }}/.bashrc owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+    - name: link to moments .bashrc
+      file: src={{ moments_path }}/editors/.bashrc dest=/home/{{ ansible_user }}/.bashrc owner={{ ansible_user }} group={{ ansible_user }} state=link
 
 
     #previously at the end of utilities.yml (requires moments repo)
 
-    - file: src={{ moments_path }}/editors/emacs/.emacs dest=/home/{{ ansible_ssh_user }}/.emacs owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
-    - file: src={{ moments_path }}/editors/emacs/.emacs.d dest=/home/{{ ansible_ssh_user }}/.emacs.d owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }} state=link
+    - name: remove existing .emacs.d (/home/{{ ansible_user }}/.emacs.d)
+      file: dest=/home/{{ ansible_user }}/.emacs.d state=absent
+
+    - name: remove existing .emacs (/home/{{ ansible_user }}/.emacs)
+      file: dest=/home/{{ ansible_user }}/.emacs state=absent
+
+
+    - file: src={{ moments_path }}/editors/emacs/.emacs dest=/home/{{ ansible_user }}/.emacs owner={{ ansible_user }} group={{ ansible_user }} state=link
+    - file: src={{ moments_path }}/editors/emacs/.emacs.d dest=/home/{{ ansible_user }}/.emacs.d owner={{ ansible_user }} group={{ ansible_user }} state=link
 
     - git: repo=https://github.com/charlesbrandt/templates.git  dest={{ public_path }}/templates
       

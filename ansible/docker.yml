@@ -1,0 +1,27 @@
+# see also ansible.yml
+
+# based off of approach outlined in:
+# https://www.ansible.com/2014/02/12/installing-and-building-docker-with-ansible
+
+# uses this role for installing docker:
+# https://galaxy.ansible.com/list#/roles/292
+# via:
+# https://github.com/angstwad/docker.ubuntu
+
+# requires using ansible-galaxy to pull down the role first:
+# sudo ansible-galaxy install angstwad.docker_ubuntu
+
+# could either edit /etc/ansible/hosts
+# or specify the hosts file on the command line
+
+# then you can run this on the local machine with:
+# cd /c/public/system/ansible/
+# ansible-playbook docker.yml
+# ansible-playbook docker.yml -i hosts.txt --ask-become-pass
+
+- hosts: local
+  become: yes
+  connection: local
+  roles:
+    - angstwad.docker_ubuntu
+
