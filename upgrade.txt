@@ -19,14 +19,22 @@ sudo apt-get remove linux-image-4.2.0-16-generic
 /c/technical/system/ubuntu.txt
 /c/technical/system/shutdown.txt
 
-*2014.09.15 18:38:52 
-extract any stored data in browser, especially in local apps like "Link Router"
-chrome://extensions-frame/#
+*2016.09.30 14:05:28
+if not saving the original drive (which is difficult to do) do a full system backup first.
+Many ways to accomplish this:
+
+    sudo rsync -av --exclude-from /Volumes/Backup/excludes.txt / /Volumes/Backup/20160929-mbpr-breathe-everything-root
+
+and / or Timemachine (use disk as Timemachine backup)
 
 *2014.09.15 18:49:42 
 back up Thunderbird and those settings
 charles/communicate/email-backup.txt
 charles/communicate/email-configuration.txt
+
+*2014.09.15 18:38:52 
+extract any stored data in browser, especially in local apps like "Link Router"
+chrome://extensions-frame/#
 
 *2010.08.29 12:12:46 
 upgrading a system, 

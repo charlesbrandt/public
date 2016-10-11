@@ -1,3 +1,9 @@
+*2016.09.29 08:35:16 bootable_usb
+To create a bootable USB for installing the OS:
+https://support.apple.com/en-us/HT201372
+sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/OSX --applicationpath /Applications/Install\ macOS\ Sierra.app/
+
+
 *2015.10.29 17:56:00
 visual disk usage utility
 #mac:
