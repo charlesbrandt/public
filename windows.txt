@@ -113,12 +113,6 @@ installer requires network access
 vlc is good too
 http://www.videolan.org/vlc/download-windows.html
 
-*2011.08.04 14:32:44 itunes
-http://www.apple.com/itunes/affiliates/download/
-
-*2011.08.04 14:58:57 xbmc
-http://xbmc.org/download/
-
 *2009.12.30 09:36:00 
 http://www.gimp.org/windows/
 GIMP - for Windows
@@ -152,15 +146,44 @@ blender - Google Search
 http://www.blender.org/download/get-blender/
 blender.org - Get Blender
 
-*2011.08.05 14:24:34 sketchup
-http://sketchup.google.com/intl/en/download/
-
 *2010.06.25 13:10:17 vnc
 http://www.tightvnc.com/download.php
 
 *2011.08.06 12:52:46 md5
 this version integrates with explorer, file properties window
 http://www.frozenlogic.org/summerproperties.shtml
+
+*2008.05.14 11:06 
+set up windows explorer to be best view
+tools -> folder options
+
+*2016.08.13 10:19:49
+For filesystem backups, windows 8 and above has a feature called "File History"
+This works similar to the Timemachine feature on OS X
+enable this to synchronize changes to an external drive
+cool!
+
+*2008.05.14 11:03 
+configure desktop to be in classic windows theme
+change background to black
+
+*2008.05.30 14:56 
+7-zip works well for tar, gz files on windows.... yay!  Free and Open source... thanks guys!
+http://www.7-zip.org/download.html
+
+Next, make sure you have virus protection installed before going on the internet:
+
+
+*2011.08.05 14:24:34 sketchup
+http://sketchup.google.com/intl/en/download/
+
+
+
+*2011.08.04 14:32:44 itunes
+http://www.apple.com/itunes/affiliates/download/
+
+*2011.08.04 14:58:57 xbmc
+http://xbmc.org/download/
 
 *2011.08.06 12:54:16 dvdshrink
 files not hosted on dvdshrink.org site
@@ -185,20 +208,6 @@ plus that ensures a clean start
 
 
 
-
-*2008.05.14 11:06 
-set up windows explorer to be best view
-tools -> folder options
-
-*2008.05.14 11:03 
-configure desktop to be in classic windows theme
-change background to black
-
-*2008.05.30 14:56 
-7-zip works well for tar, gz files on windows.... yay!  Free and Open source... thanks guys!
-http://www.7-zip.org/download.html
-
-Next, make sure you have virus protection installed before going on the internet:
 
 *2009.06.19 14:39:41 
 installed avast

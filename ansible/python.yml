@@ -46,6 +46,10 @@
 
     - name: pip install hg-git
       pip: name=hg-git
+
+    #https://github.com/gitpython-developers/GitPython
+    - name: pip install gitpython
+      pip: name=gitpython
       
     #sudo easy_install selenium
     - name: pip install selenium
@@ -62,7 +66,7 @@
       # TODO: consider using a local ansible template for this:
       #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
       #copy: src=~/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
-      #copy: src={{ shared_path }}/{{ ansible_user }}/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
-      copy: src={{ shared_path }}/configs/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
+      copy: src={{ shared_path }}/{{ ansible_user }}/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
+      #copy: src={{ shared_path }}/configs/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
 
       

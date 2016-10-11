@@ -69,7 +69,9 @@ Once a structure is in place that is used, everything should be in that structur
 
 if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
 
-sudo tar -zcvf /media/charles/DRIVE/20130514-old_macbook-c.tgz /c
+    sudo tar -zcvf /media/charles/DRIVE/20130514-old_macbook-c.tgz /c
+
+    sudo tar -zcvf /media/charles/DATA/20160728-chip-nuc-c.tgz /c
 
 
 
@@ -77,13 +79,14 @@ creating a bootable USB:
 will need to do this before starting fresh.  On Ubuntu, there is usb-creator built in...
 you can use that on a standard Ubuntu machine, but XUbuntu does not run on Gnome, so usb-creator is not available for it.
 
-Can either make the USB manually:
-http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/
-
-or try this utility:
+or use this utility:
 http://unetbootin.sourceforge.net/
 
 sudo apt-get install unetbootin
+
+Or you can make the USB manually:
+http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/
+
 
 (see also bootable_usb.txt)
 

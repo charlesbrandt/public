@@ -17,7 +17,7 @@ sudo parted -a optimal /dev/sdf rm 2
 #1MB is the start, 2GB is the end
 #sudo parted -a optimal /dev/sdf mkpart primary fat32 1MB 2GB
 sudo parted -a optimal /dev/sdf mkpart primary fat32 1MB 100%
-sudo mkfs.vfat -n SHARE /dev/sdf1
+sudo mkfs.vfat -n XUBUNTU /dev/sdf1
 
 sudo parted -a optimal /dev/sdf set 1 boot on
 

@@ -1,0 +1,33 @@
+- hosts: all
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+
+
+  #for clients, trying:
+  #sudo apt-get install xvnc4viewer
+
+  tasks:
+    # Apt package installation of required software.
+    - name: Install Tight VNC Server.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - tightvncserver 
+
+    - name: Configure the firewall (vncserver)
+      ufw: rule=allow port=5900
+      tags: firewall
+
+    - name: Configure the firewall (vncserver)
+      ufw: rule=allow port=5901
+      tags: firewall
+
+  #you first must run:
+  #    vncserver
+  #on the server to set a password
+  #then, connections should be available via:
+  #vncviewer 192.168.0.101:5901
+
+
+      
