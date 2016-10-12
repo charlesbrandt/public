@@ -159,6 +159,37 @@ sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
 # http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
 
 
+#cp /media/charles/CHARLES/charles/.hgrc /c/
+
+#GitHub:
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+#or
+  cp /c/charles/.gitconfig ~/.gitconfig
+
+
+#apply browser configurations sooner rather than later
+#this way they'll be available for snapshots in virtual machines
+
+#either from scratch (see browsers.txt)
+#then copy browser settings for future installs:
+cp -r ~/.mozilla $ARCHIVEPATH/.mozilla
+cp -r ~/.mozilla /c/public/downloads/.mozilla
+
+#or copy previous:
+#cp -r /c/public/downloads/.mozilla ~/
+#cp -r /media/charles/CHARLES/configs/.mozilla/ ~/.mozilla
+
+
+launch Software Updater
+Settings... -> Automatically check for updates: Every two weeks, (Never?)
+(depends on the use case)
+#16.04 adds new option to download and install security updates automatically
+# going to try this out first to see how it impacts things
+
+
 # shut down, take a snapshot:
 Base Install, GUI Configs
 
@@ -170,6 +201,35 @@ Connect to a network. (Wireless, Wired, your choice!)
 May need to press "Auto Etherenet" for wired connection
 
 Add "Incomplete Language Support"
+
+For VirtualBox, you'll need a "Host-only Adapter" in order to access the machine. When the VM is powered off, add another network interface:
+
+    Virtual Box -> Devices -> Network -> Network Settings...
+    Adapter 2 -> Enable Network Adapter
+    Attached to: Host-only Adapter
+    Name: vboxnet0
+
+Then, when the machine is powered on, do:
+
+    #find all adapters... should be a new one that is unconfigured
+    ip addr
+    #enp0s8 for me
+    sudo vi /etc/network/interfaces
+    #add new section for interface, adapting from lines already there
+
+    # The local network interface
+    auto enp0s8
+    iface enp0s8 inet dhcp
+
+    sudo /etc/init.d/networking restart
+    #check for new ip with:
+    ifconfig
+
+
+Ansible requires Python installed on the host machine, as well:
+
+    bash
+    sudo apt-get install python
 
 
 #sshd
@@ -215,37 +275,8 @@ ansible-playbook system.yml -i hosts.txt --ask-become-pass
 ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
 
 
+
 #don't forget these manual steps:
-
-launch Software Updater
-Settings... -> Automatically check for updates: Every two weeks, (Never?)
-(depends on the use case)
-#16.04 adds new option to download and install security updates automatically
-# going to try this out first to see how it impacts things
-
-#apply browser configurations sooner rather than later
-#this way they'll be available for snapshots in virtual machines
-
-#either from scratch (see browsers.txt)
-#then copy browser settings for future installs:
-cp -r ~/.mozilla $ARCHIVEPATH/.mozilla
-cp -r ~/.mozilla /c/public/downloads/.mozilla
-
-#or copy previous:
-#cp -r /c/public/downloads/.mozilla ~/
-#cp -r /media/charles/CHARLES/configs/.mozilla/ ~/.mozilla
-
-#cp /media/charles/CHARLES/charles/.hgrc /c/
-
-#GitHub:
-
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-
-#or
-  cp /c/charles/.gitconfig ~/.gitconfig
-
-
 
 #back up downloaded files, if you want
 export DATE=$(date +%Y%m%d)
