@@ -1,56 +1,15 @@
 Ubuntu / Xubuntu
 ============================
 
-Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
+This guide picks up once a base operating system has been installed. If you're installing the system on a virtual machine, see here for notes on those configurations:
+
+(virtualization)[virtualization.txt]
 
 If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
-git tag 15.10
 
-Try using 32bit os on virtual machines... sounds like that is more efficient from a memory stand point... shouldn't need to go over 4gb of ram in a VM anyway. However, docker requires 64bit to run in a VM, so that could be a good reason to stick with that.
-
-Be sure Virtual Box is up to date... versions change and it's good to use the latest one before setting up new systems. 
-
-When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
-
-If installing to a virtual machine, avoid allowing the installation to download and apply updates automatically. Disconnect from the internet. To be sure: Virtual Box -> Devices -> Network -> Disconnect Cable. That way you can apply the updates whenever you want to clone and re-run the setup scripts.
-
-Consider implications of using LVM with disks
-
-When the VM is powered off, add another network interface:
-#Virtual Box -> Devices -> Network -> Network Settings...
-Adapter 2 -> Enable Network Adapter
-Attached to: Host-only Adapter
-Name: vboxnet0
-
-Devices -> Shared Clipboard -> Bidirectional
+    git tag 15.10
 
 If you encrypted your home drive, it may be a good idea to jot down the key shown with "ecryptfs-unwrap-passphrase"
-
-#Virtual Box -> Devices -> Insert Guest Additions CD image... -> Download
-#http://askubuntu.com/questions/451805/screen-resolution-problem-with-ubuntu-14-04-and-virtualbox
-On Guest:
-cd /media/{{ ssh_user }}/VBOXADDITIONS_5.0.8_103449/
-cd /media/charles/VBOXADDITIONS
-sudo ./VBoxLinuxAdditions.run
-
-Eject Guest Additions form guest OS file browser
-
-#restart Guest OS
-#can now resize screen too
-
-#can do this sooner, but it won't work until now:
-enable clipboard sharing, bidirectional.
-
-#this requires proprietary oracle guest additions:
-Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
-Choose "Folder Path": /c
-Check "Make Permanent"
-
-It's best not to configure any external media until you are working on a cloned system.
-e.g. if you might want access to DATA drives, set that up later
-
-Under Machine -> Settings -> User Interface
-un-check the bottom status bar to hide it... only takes up space in my opinion (can always enable it later if needed)
 
 If running linux on apple hardware (e.g. macbooks) you may need to swap the command key with the alt key to work as expected. Additionally, if running a linux VM on mac hardware using VirtualBox, you may need to first adjust the Host Key Combination from "Left Command" to "Right Command" (via Input -> Keyboard).
 Then, use xev command to see the keys (keycode 133 == Super_L, want to swap with keycode 64 == Alt_L)
@@ -91,7 +50,6 @@ Change Desktop background / wallpaper.
 Right click -> Desktop Settings... ->
 Style: None
 #7C7C7C ! (or lighter: #C7C7C7)
-
 #if you choose a picture here, it will show up on the login screen!
 
 *2013.05.14 20:14:59 
@@ -153,6 +111,8 @@ sudo chown -R charles: /c
 #this is handled by ansible/shares.yml
 #skip if running that
 sudo chown -R {{ ssh_user }}: /c
+
+#on a virtual machine:
 sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
 #consider adding this to fstab!
 #http://askubuntu.com/questions/481559/how-to-automatically-mount-a-folder-and-change-ownership-from-root-in-virtualbox
@@ -190,7 +150,7 @@ Settings... -> Automatically check for updates: Every two weeks, (Never?)
 # going to try this out first to see how it impacts things
 
 
-# shut down, take a snapshot:
+# if on a VM, shut down, take a snapshot:
 Base Install, GUI Configs
 
 
@@ -353,3 +313,12 @@ sudo apt-get install -y -d startupmanager
 mkdir startupmanager
 sudo mv /var/cache/apt/archives/*.deb startupmanager
 #remember to run startup manager after installation and choose the correct operating system
+
+
+Archived
+----------
+
+Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
+
+Try using 32bit os on virtual machines... sounds like that is more efficient from a memory stand point... shouldn't need to go over 4gb of ram in a VM anyway. However, docker requires 64bit to run in a VM, so that could be a good reason to stick with that.
+
