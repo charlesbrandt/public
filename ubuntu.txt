@@ -47,19 +47,20 @@ Set clock, including time format. Enable Date and Month in menu bar.
 For multiple monitors, configure them in Settings -> Display
 
 Change Desktop background / wallpaper.
-Right click -> Desktop Settings... ->
+Open Settings from menu -> Desktop
+Start->Settings Manager->Desktop
 Style: None
 #7C7C7C ! (or lighter: #C7C7C7)
 #if you choose a picture here, it will show up on the login screen!
 
 *2013.05.14 20:14:59 
+All Settings -> Window Manager
 move window actions ("minimize", "close", etc) to a different position:
 Settings Manager->Windows Manager
 under the Style tab, change "Button layout"
 X + _ Title v
 
-*2015.11.05 22:32:00 
-Start->Settings Manager->Window Manager
+Stay in Window Manager settings
 Under the "Keyboard" tab, clear the window operations menu setting
 
 Then, under All Settings -> Keyboard settings -> Application Shortcuts find:
@@ -70,8 +71,8 @@ Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shi
 This is to be more in line with the way lock screen works on Macs. Not my first choice in combinations, but unfortunately Macs are not as configurable
 
 *2015.11.03 09:57:37
-Add workspaces
-Settings -> Workspaces (start with 4)
+Settings -> Workspaces 
+Add workspaces (start with 4)
 
 Optionally, add workspace switcher to Panel
 Settings -> Panel -> Items -> Add (right icon) -> Workspace Switcher (bottom of list)
@@ -154,13 +155,43 @@ Settings... -> Automatically check for updates: Every two weeks, (Never?)
 Base Install, GUI Configs
 
 
-
+# if on a base / root / hypervisor type machine, install Virtual Box:
 
 
 Connect to a network. (Wireless, Wired, your choice!)
 May need to press "Auto Etherenet" for wired connection
 
 Add "Incomplete Language Support"
+
+
+Install Audacity
+
+sudo apt-get install audacity
+
+sudo apt-get install mercurial
+
+
+
+
+
+# go ahead with media application configurations next
+ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
+
+
+# Open VLC
+# Tools -> Preferences
+# Uncheck:
+#   - Integrate video in interface
+#   - Use only one instance when started from file manager
+
+# View -> Playlist
+# Close browser tree in playlist view.
+# Uncheck "Docked Playlist
+
+
+
+
+
 
 For VirtualBox, you'll need a "Host-only Adapter" in order to access the machine. When the VM is powered off, add another network interface:
 
@@ -240,7 +271,7 @@ ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
 
 #back up downloaded files, if you want
 export DATE=$(date +%Y%m%d)
-rsync -av /home/charles/Downloads/ubuntu/ /c/public/downloads/ubuntu-$DATE
+rsync -av /home/charles/Downloads/ubuntu/ /c/downloads/ubuntu-$DATE
 
 #to save space, you can clean up downloaded .deb files, however...
 #keep downloaded directories around...
@@ -261,21 +292,6 @@ Includes:
  - manual configurations
  - ansible configurations (through system-2, up to media)
  - updates
-
-
-# go ahead with media application configurations next
-ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
-
-
-# Open VLC
-# Tools -> Preferences
-# Uncheck:
-#   - Integrate video in interface
-#   - Use only one instance when started from file manager
-
-# View -> Playlist
-# Close browser tree in playlist view.
-# Uncheck "Docked Playlist
 
 
 
