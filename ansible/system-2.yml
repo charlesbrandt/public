@@ -1,21 +1,42 @@
+## steps are now controlled by hosts file
+
 - include: common.yml
 
 # a restart may be required after applying system updates in common.yml
 # to apply kernel updates before subsequent tasks will complete
 
 # if this is a machine running on a guest VM, set up shares to be mounted:
-#- include: shares.yml
+# (do not run on a primary desktop!)
+- include: shares.yml
 
-- include: python.yml
+- include: python3.yml
 - include: utilities.yml
 - include: javascript.yml
+- include: couchdb.yml
 
 # shouldn't hurt to synchronize even if local repo already exists:
-- include: repositories.yml
+- include: repositories-python3.yml
+
+- include: emacs.yml
+- include: vncserver.yml  
+- include: music.yml
+  
+#medley moved here:
+#not sure what else depends on this besides medley... emacs?
+#- include: qt.yml
+
+# only needed on a primary / main desktop machine
+#- include: desktop-main.yml
+
 
 # the following are uncommented in system-3.yml:
-#- include: media.yml
-#- include: create.yml
-#- include: dirstat.yml
+# maybe not necessary with ubuntu-studio?
 
+# vlc, libav
+#- include: media.yml
+# most of these are in ubuntu-studio (inkscape, blender, etc)
+#- include: create.yml
+
+# not usually necessary:
 #- include: permissions.yml
+

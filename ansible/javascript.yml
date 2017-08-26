@@ -1,5 +1,4 @@
-- hosts: all
-  remote_user: charles
+- hosts: core
   become: yes
 
   vars_files:
@@ -25,9 +24,6 @@
 
     - pip: name=jsbeautifier
 
-    #TODO:
-    #(this is untested)
-    
     #the version of node installed by packages is woefully out of date
     #these steps are adapted from:
     #/c/technical/javascript/node.txt
@@ -54,40 +50,22 @@
     - npm: name=npm global=yes state=latest
     #npm -v
 
-
-    #TODO:
     #sudo npm install webpack -g
     #sudo npm install webpack-dev-server -g
     - npm: name=webpack global=yes state=latest
     - npm: name=webpack-dev-server global=yes state=latest
 
-
-    - name: Install couch packages.
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - couchdb
-
-    - name: check if couch archive path already exists
-      stat: path={{ archive_path }}/couch/
-      register: check_archive_path
-
-    - name: create couch path
-      file: path={{ archive_path }}/couch state=directory mode=0755
-
-    - name: move couch deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/couch/
-      when: not check_archive_path.stat.exists
-
-    - name: sudo pip install couchdb
-      pip: name=couchdb
-
-    #TODO:
-    #for Firefox browser extensions
-    #npm install jpm --global
-    - npm: name=jpm global=yes state=latest
-
     # for gulp:
     #sudo npm install --global gulp-cli      
     #- npm: name=gulp-cli global=yes state=latest
+    # TODO:
+    # if gulp, then also browserify
+    
+    
+    #for Firefox browser extensions
+    #seems like this approach has changed
+    #npm install jpm --global
+    #- npm: name=jpm global=yes state=latest
 
+    
       

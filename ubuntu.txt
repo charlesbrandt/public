@@ -38,11 +38,19 @@ Another setting that helps with scrolling on macs is (when guest is powered off)
 set it to: "PS/2 Mouse"
 
 
+#if you don't have ansible available elsewhere, install it now (ansible.txt)
+#if you do have ansible available, install the requirements to be a 
+https://github.com/city-of-bloomington/system-playbooks
 
-There are some general system settings that are good to take care of first: 
+sudo apt-get update
+sudo apt-get -y install openssh-server
+sudo apt-get install -y python
+
+There are some general system settings that are good to take care of first:
+(it may be possible to copy the ~/.configs folder from a previous installation, but eventually those will grow out of sync with the latest releases)
 
 Set clock, including time format. Enable Date and Month in menu bar.
-%a, *%Y.%m.%d %H:%M
+%a *%Y.%m.%d %H:%M
 
 For multiple monitors, configure them in Settings -> Display
 
@@ -53,7 +61,7 @@ Style: None
 #7C7C7C ! (or lighter: #C7C7C7)
 #if you choose a picture here, it will show up on the login screen!
 
-*2013.05.14 20:14:59 
+*2013.05.14 20:14:59
 All Settings -> Window Manager
 move window actions ("minimize", "close", etc) to a different position:
 Settings Manager->Windows Manager
@@ -71,8 +79,8 @@ Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shi
 This is to be more in line with the way lock screen works on Macs. Not my first choice in combinations, but unfortunately Macs are not as configurable
 
 *2015.11.03 09:57:37
-Settings -> Workspaces 
-Add workspaces (start with 4)
+Settings -> Workspaces
+Add workspaces (start with 4, 5 or 7)
 
 Optionally, add workspace switcher to Panel
 Settings -> Panel -> Items -> Add (right icon) -> Workspace Switcher (bottom of list)
@@ -89,7 +97,7 @@ For "Background color", use color picker to match emacs setting (#1D1F21)
 be sure a Terminal is already open, then:
 Settings -> Session and Startup -> Session -> Save Session
 
-*2016.05.18 21:17:13 
+*2016.05.18 21:17:13
 to start Task Manager automatically requires a different tactic...
 save session will not pick it up.
 
@@ -99,6 +107,13 @@ Task Manager
 xfce4-taskmanager
 
 #server installs can skip much of the above
+
+set task manager default settings:
+  - show all processes
+  - sort by cpu utilization
+
+
+#might be a good point to explore ansible here???
 
 
 #set up a shared directory with all machines. I use /c... use anything you like
@@ -116,11 +131,12 @@ sudo chown -R {{ ssh_user }}: /c
 #on a virtual machine:
 sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
 #consider adding this to fstab!
+#(ansible will also help with this step)
 #http://askubuntu.com/questions/481559/how-to-automatically-mount-a-folder-and-change-ownership-from-root-in-virtualbox
 # http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
 
 
-#cp /media/charles/CHARLES/charles/.hgrc /c/
+#cp /media/charles/CHARLES/charles/.hgrc ~/
 
 #GitHub:
 
@@ -170,12 +186,101 @@ sudo apt-get install audacity
 
 sudo apt-get install mercurial
 
+sudo apt-get install vlc
+
+sudo apt-get install mixxx
+
+sudo apt-get install inkscape
+
+sudo apt-get install blender
+sudo apt-get install gimp
+
+cd /c/public
+git clone https://github.com/charlesbrandt/templates
+#previously:
+git clone https://github.com/charlesbrandt/system
+git clone https://github.com/charlesbrandt/moments
+
+sudo apt-get install build-essential python3-dev
+
+sudo apt-get install python3-pip
+#or:
+cd /c/public/moments
+sudo python3 get-pip.py
+
+sudo pip3 install uwsgi
+sudo apt-get install nginx
+#for notes on configuring, see sortable_list project
+/c/public/sortable_list/nginx-sortable_list.conf
+
+#to install local packages on python3, use:
+sudo pip3 install -e .
+
+
+#screencasting
+
+#via https://en.wikipedia.org/wiki/Comparison_of_screencasting_software:
+#https://obsproject.com/download
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt-get update && sudo apt-get install obs-studio
+
+#see also streaming.txt
+
+
+#Ardour
+
+sudo apt-get install ardour
+
+http://ardour.org/
+
+
+consider starting with:
+http://ubuntustudio.org/tour/audio/
+
+todo
+separate music system notes
 
 
 
+TODO:
+medley?
 
 # go ahead with media application configurations next
 ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TODO:
+try out atom editor?
+sudo apt-cache search atom | grep edit
+#no package found... available via apt-get?
+sudo apt-get install atom
+
+Trying atom (alway emacs if that doesn't work, mousepad doesn't cut it):
+sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
+Ctrl+, to open Settings pane to add packages (online)
+
+install:
+atomic-emacs
+atom-keyboard-macros
+
+via:
+http://askubuntu.com/questions/468359/installing-atom-text-editor-on-32-bit-ubuntu
+
+
 
 
 # Open VLC
@@ -244,7 +349,7 @@ ssh-copy-id 127.0.0.1
 
 
 
-#for a host OS instance, a few steps need to be done manually: 
+#for a host OS instance, a few steps need to be done manually:
 sudo apt-get install -y python-pip python2.7-dev libffi-dev
 #ansible
 sudo pip install ansible markupsafe
@@ -258,7 +363,7 @@ SSH Config
 
 
 #should be able to use ansible from here
-cd /c/public/system/ansible 
+cd /c/public/system/ansible
 add new machine ip to hosts.txt
 ansible-playbook system.yml -i hosts.txt --ask-become-pass
 
@@ -337,4 +442,3 @@ Archived
 Initially, it is a good idea to develop the following steps on a *live* or *virtual* instance in case you install something you didn't mean to.  Eventually things should stabilize enough that you can skip to the locally installed instance and go from there.
 
 Try using 32bit os on virtual machines... sounds like that is more efficient from a memory stand point... shouldn't need to go over 4gb of ram in a VM anyway. However, docker requires 64bit to run in a VM, so that could be a good reason to stick with that.
-

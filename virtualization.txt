@@ -47,6 +47,10 @@ Under Machine -> Settings -> User Interface
 un-check the bottom status bar to hide it... only takes up space in my opinion (can always enable it later if needed)
 
 
+
+
+
+
 *2015.11.07 15:37:14
 when cloning a VM using VMDK with multiple files, the clone does not preserve that setting (lumps everything back in to one big file)
 

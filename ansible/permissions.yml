@@ -11,6 +11,3 @@
     # see also media.yml
     - file: path=/c owner={{ ansible_user }} group={{ ansible_user }} recurse=yes
 
-    #not exactly permissions, but seems related to when permissions would be set
-    - mount: name=/media/charles/DATA src='DATA' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
-      

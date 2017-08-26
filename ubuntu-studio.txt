@@ -1,0 +1,105 @@
+*2017.08.04 08:34:37
+https://duckduckgo.com/?q=linux+music+production&t=canonical&ia=web
+linux music production at DuckDuckGo
+https://www.tecmint.com/free-music-creation-or-audio-editing-softwares-for-linux/
+8 Best Open Source Music Making Softwares for Linux
+http://ajaxsoundstudio.com/software/cecilia/
+Cecilia – AJAX SOUND STUDIO
+https://ardour.org/
+ardour - the digital audio workstation
+http://hydrogen-music.org/hcms/
+Hydrogen | advanced drum machine for GNU/Linux
+http://guitarix.org/
+Guitarix - GNU/Linux Virtual Amplifier
+http://www.rosegardenmusic.com/
+Rosegarden: music software for Linux
+https://qtractor.sourceforge.io/qtractor-index.html
+Qtractor - An Audio/MIDI multi-track sequencer
+http://www.muse-sequencer.org/
+Main Page - www.muse-sequencer.org
+http://www.muse-sequencer.org/index.php/Download
+Download - www.muse-sequencer.org
+https://github.com/muse-sequencer/muse/tree/master/muse3
+muse/muse3 at master · muse-sequencer/muse · GitHub
+https://github.com/muse-sequencer/muse/blob/master/muse3/README
+muse/README at master · muse-sequencer/muse · GitHub
+https://lmms.io/get-involved/
+LMMS • Get Involved
+https://lmms.io/documentation/
+LMMS • Documentation
+https://duckduckgo.com/?q=linux+audio+distributions&t=canonical&ia=web
+linux audio distributions at DuckDuckGo
+http://linux-sound.org/distro.html
+http://linux-sound.org/distro.html
+http://ubuntustudio.org/download/
+Download « Ubuntu Studio
+https://duckduckgo.com/?q=Yoshimi+software&t=canonical&ia=about
+Yoshimi software (Software) at DuckDuckGo
+https://github.com/Yoshimi/yoshimi/blob/master/Dependencies
+yoshimi/Dependencies at master · Yoshimi/yoshimi · GitHub
+http://tangostudio.tuxfamily.org/en/tangostudio
+404 - Error: 404
+http://ww1.dickmacinnis.com/
+dickmacinnis.com - This website is for sale! - dickmacinnis Resources and Information.
+http://libremusicproduction.com/articles/advantages-choosing-audio-orientated-linux-distribution
+The Advantages of Choosing an Audio Orientated Linux Distribution | Libre Music Production
+http://kxstudio.linuxaudio.org/
+KXStudio
+
+
+
+consider starting with:
+http://ubuntustudio.org/tour/audio/
+
+http://ubuntustudio.org/download/
+
+todo
+separate music system notes
+
+
+https://duckduckgo.com/?q=linux+music+production&t=canonical&ia=web
+linux music production at DuckDuckGo
+https://www.tecmint.com/free-music-creation-or-audio-editing-softwares-for-linux/
+8 Best Open Source Music Making Softwares for Linux
+http://ajaxsoundstudio.com/software/cecilia/
+Cecilia – AJAX SOUND STUDIO
+https://ardour.org/
+ardour - the digital audio workstation
+http://hydrogen-music.org/hcms/
+Hydrogen | advanced drum machine for GNU/Linux
+http://guitarix.org/
+Guitarix - GNU/Linux Virtual Amplifier
+http://www.rosegardenmusic.com/
+Rosegarden: music software for Linux
+https://qtractor.sourceforge.io/qtractor-index.html
+Qtractor - An Audio/MIDI multi-track sequencer
+http://www.muse-sequencer.org/
+Main Page - www.muse-sequencer.org
+http://www.muse-sequencer.org/index.php/Download
+Download - www.muse-sequencer.org
+https://github.com/muse-sequencer/muse/tree/master/muse3
+muse/muse3 at master · muse-sequencer/muse · GitHub
+https://github.com/muse-sequencer/muse/blob/master/muse3/README
+muse/README at master · muse-sequencer/muse · GitHub
+https://lmms.io/get-involved/
+LMMS • Get Involved
+https://lmms.io/documentation/
+LMMS • Documentation
+https://duckduckgo.com/?q=linux+audio+distributions&t=canonical&ia=web
+linux audio distributions at DuckDuckGo
+http://linux-sound.org/distro.html
+http://linux-sound.org/distro.html
+http://ubuntustudio.org/tour/audio/
+Tour: Audio « Ubuntu Studio
+https://duckduckgo.com/?q=Yoshimi+software&t=canonical&ia=about
+Yoshimi software (Software) at DuckDuckGo
+https://github.com/Yoshimi/yoshimi/blob/master/Dependencies
+yoshimi/Dependencies at master · Yoshimi/yoshimi · GitHub
+http://tangostudio.tuxfamily.org/en/tangostudio
+404 - Error: 404
+http://ww1.dickmacinnis.com/
+dickmacinnis.com - This website is for sale! - dickmacinnis Resources and Information.
+http://libremusicproduction.com/articles/advantages-choosing-audio-orientated-linux-distribution
+The Advantages of Choosing an Audio Orientated Linux Distribution | Libre Music Production
+http://kxstudio.linuxaudio.org/
+KXStudio

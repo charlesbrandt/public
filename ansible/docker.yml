@@ -19,9 +19,8 @@
 # ansible-playbook docker.yml
 # ansible-playbook docker.yml -i hosts.txt --ask-become-pass
 
-- hosts: local
+- hosts: desktop
   become: yes
-  connection: local
   roles:
     - angstwad.docker_ubuntu
 
