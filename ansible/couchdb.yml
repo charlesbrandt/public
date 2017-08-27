@@ -24,5 +24,8 @@
     - name: sudo pip install couchdb
       pip: name=couchdb
 
-    #TODO:
     #make sure there is a local copy of pouchdb for web development
+    #https://pouchdb.com/download.html
+    - name: npm install pouchdb-browser
+      npm: name=pouchdb-browser global=yes state=latest
+    

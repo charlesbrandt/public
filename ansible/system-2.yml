@@ -9,8 +9,8 @@
 # (do not run on a primary desktop!)
 - include: shares.yml
 
-- include: python3.yml
 - include: utilities.yml
+- include: python3.yml
 - include: javascript.yml
 - include: couchdb.yml
 
