@@ -13,6 +13,7 @@
 - include: python3.yml
 - include: javascript.yml
 - include: couchdb.yml
+- include: ansible.yml
 
 # shouldn't hurt to synchronize even if local repo already exists:
 - include: repositories-python3.yml
@@ -20,6 +21,9 @@
 - include: emacs.yml
 - include: vncserver.yml  
 - include: music.yml
+
+# most of these are in ubuntu-studio (inkscape, blender, etc)
+- include: create.yml
   
 #medley moved here:
 #not sure what else depends on this besides medley... emacs?
@@ -28,14 +32,14 @@
 # only needed on a primary / main desktop machine
 #- include: desktop-main.yml
 
+# don't forget any custom personalized options here
+
 
 # the following are uncommented in system-3.yml:
 # maybe not necessary with ubuntu-studio?
 
 # vlc, libav
 #- include: media.yml
-# most of these are in ubuntu-studio (inkscape, blender, etc)
-#- include: create.yml
 
 # not usually necessary:
 #- include: permissions.yml

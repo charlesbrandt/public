@@ -14,7 +14,6 @@
         - python3-dbg 
         - python3-pil
         - python3-pyaudio
-        - git
 
     - name: check if python archive path already exists
       stat: path={{ archive_path }}/python/
@@ -29,9 +28,11 @@
 
     - name: Upgrade pip
       pip: executable=pip3 name=pip state=latest
-  
-    - name: pip install mercurial
-      pip: executable=pip3 name=mercurial
+
+    # seems to be an issue with mercurial and python3 (relies on python2)
+    # just going to go with system distribution for this
+    #- name: pip install mercurial
+    #  pip: executable=pip3 name=mercurial
 
     #*2015.12.19 07:46:50
     # currently a problem with mercurial 3.6+ and hg-git... downgrading:
@@ -42,8 +43,9 @@
     #- name: pip install mercurial
     #  pip: name=mercurial version=3.5.2
 
-    - name: pip install hg-git
-      pip: executable=pip3 name=hg-git
+    # not using hg-git lately
+    #- name: pip install hg-git
+    #  pip: executable=pip3 name=hg-git
 
     #https://github.com/gitpython-developers/GitPython
     - name: pip install gitpython

@@ -29,6 +29,11 @@
     #http://docs.ansible.com/ansible/apt_module.html
     - apt: upgrade=full
 
+    #make sure old kernels don't linger
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+
     # if it already exists, we won't move it again
     - name: check if updates archive path already exists
       stat: path={{ archive_path }}/updates/

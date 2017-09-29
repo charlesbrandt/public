@@ -1,16 +1,12 @@
-- hosts: all
+- hosts: gui
   become: yes
 
   vars_files:
     - shari_vari.yml
 
-  vars:
-    moments_path: "{{ public_path }}/moments"
-    
   tasks:
 
     # in ubuntu-studio
-
       
     - name: Install inkscape packages.
       action: apt pkg={{ item }} state=present

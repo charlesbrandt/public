@@ -1,6 +1,8 @@
-*2015.10.29 18:40:04
-Might be nice to reformat the existing drive to give it a label of which version is on the device:
+*2017.09.01 16:25:00
+It is important to reformat the existing drive to make sure it is bootable!!
+This is also a chance to to give it a label of which OS/flavor is on the device:
 
+*2015.10.29 18:40:04
 #CHANGE DEV LOCATION!
 #check where your usb is mounted:
 dmesg

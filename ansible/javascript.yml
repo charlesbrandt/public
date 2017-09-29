@@ -22,7 +22,11 @@
       shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/node/
       when: not check_archive_path.stat.exists
 
-    - pip: name=jsbeautifier
+    - name: pip install jsbeautifier
+      pip: executable=pip3 name=jsbeautifier
+      
+    # python2 version
+    #- pip: name=jsbeautifier
 
     #the version of node installed by packages is woefully out of date
     #these steps are adapted from:

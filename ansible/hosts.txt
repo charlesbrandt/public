@@ -6,7 +6,8 @@
 
 #applies common.yml (set to 'all')
 [initialize]
-127.0.0.1 ansible_connection=local
+192.168.56.1
+#127.0.0.1 ansible_connection=local
 #localhost
 #192.168.56.101
 #192.168.0.101
@@ -14,26 +15,32 @@
 
 #applies python3.yml, utilities.yml, javascript.yml, couchdb.yml, repositories-python3.yml
 [core]
-127.0.0.1 ansible_connection=local
+192.168.56.1
+#127.0.0.1 ansible_connection=local
+#192.168.56.101
 
 #applies music.yml, qt.yml?, vncserver
 [gui]
-127.0.0.1 ansible_connection=local
+#127.0.0.1 ansible_connection=local
+#192.168.56.101
 
 
 #the following two groups toggle between type
 #should only want one or the other
 #applies shares.yml
 [vm]
-127.0.0.1 ansible_connection=local
+#127.0.0.1 ansible_connection=local
+#192.168.56.101
 
 #applies desktop-main.yml, docker.yml
 #intended for the root, non-vm host machine
 [desktop]
+192.168.56.1
 #127.0.0.1 ansible_connection=local
 
 #applies ansible.yml
 [ansible]
+192.168.56.1
 #127.0.0.1 ansible_connection=local
 
 

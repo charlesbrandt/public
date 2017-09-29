@@ -14,6 +14,15 @@ e.g.:
 sudo apt-get remove linux-image-4.2.0-16-generic
 
 
+
+(Ideally do this before starting fresh... new installs don't have git)
+(TODO: move to shutdown or upgrade notes; link those two)
+If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
+
+    git tag 15.10
+
+
+
 *2010.08.31 07:47:23 
 /c/technical/system/upgrade.txt
 /c/technical/system/ubuntu.txt

@@ -1,53 +1,85 @@
 Ubuntu / Xubuntu
 ============================
 
-This guide picks up once a base operating system has been installed. If you're installing the system on a virtual machine, see here for notes on those configurations:
+For notes on downloading and creating an image, see:
+
+    linux-distributions.txt
+
+This guide picks up once a base operating system has been installed. (or live run)
+
+If you're installing the system on a virtual machine, see here for notes on those configurations:
 
 (virtualization)[virtualization.txt]
 
-If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
+If on a base / root / hypervisor type machine, install Virtual Box:
 
-    git tag 15.10
+  virtualization-hypervisor.txt
 
 If you encrypted your home drive, it may be a good idea to jot down the key shown with "ecryptfs-unwrap-passphrase"
 
-If running linux on apple hardware (e.g. macbooks) you may need to swap the command key with the alt key to work as expected. Additionally, if running a linux VM on mac hardware using VirtualBox, you may need to first adjust the Host Key Combination from "Left Command" to "Right Command" (via Input -> Keyboard).
-Then, use xev command to see the keys (keycode 133 == Super_L, want to swap with keycode 64 == Alt_L)
-vi modmap.file
+If you're running on non-standard hardware (e.g. macs), see:
 
-keycode 64 = Alt_L
-keycode 133 = Super_L
-remove Mod1 = Alt_L
-remove Mod4 = Super_L
-add Mod1 = Super_L
-add Mod4 = Alt_L
+    ubuntu-mac_hardware.txt
 
-xmodmap -v modmap.file
-#worked for me, then move so it runs by default (this does not run in Xfce):
-mv modmap.file ~/.xmodmaprc
-#this does not run by default, so add a startup item (Settings->Session and Startup):
-/bin/bash -c "sleep 20; /usr/bin/xmodmap /home/$USER/.xmodmaprc"
+sudo apt-get update
+sudo apt-get -y install openssh-server
+sudo apt-get install -y python
+ifconfig
 
-#this may also work if running linux natively on apple hardware (not in VM):
-echo "1" > /sys/module/hid\_apple/parameters/swap\_opt\_cmd
-#solution via:
-http://unix.stackexchange.com/questions/86933/swap-alt-and-super
-https://wiki.xfce.org/faq
 
-Another setting that helps with scrolling on macs is (when guest is powered off), in VirtualBox->Machine->Settings->System->Motherboard->Pointing Device
-set it to: "PS/2 Mouse"
+#set up a shared directory with all machines. I use /c... use anything you like
+#export SHARED=/c
+sudo mkdir -p /c
+sudo chmod 770 /c
+sudo chown -R charles: /c
 
+Drag link to /c in File Manager
+
+
+#might be a good point to explore ansible here???
 
 #if you don't have ansible available elsewhere, install it now (ansible.txt)
 #if you do have ansible available, install the requirements to be a 
 https://github.com/city-of-bloomington/system-playbooks
 
-sudo apt-get update
-sudo apt-get -y install openssh-server
-sudo apt-get install -y python
+if you have ansible installed on another virtual machine, can use that for the bootstrap. edit hosts.txt:
+
+    cd ansible
+    vi hosts.txt
+
+then on control machine run:
+
+    ansible-playbook system-2.yml -i hosts.txt --ask-pass --ask-become-pass
+
+
+
+# Configs
+
+TODO:
+way to boot live with custom configs?
 
 There are some general system settings that are good to take care of first:
-(it may be possible to copy the ~/.configs folder from a previous installation, but eventually those will grow out of sync with the latest releases)
+(it may be possible to copy the ~/.configs and ~/.mozilla folder from a previous installation, but eventually those will grow out of sync with newer releases)
+
+rm -rf ~/.config
+cp -r /c/out-data/.config/ ~/.config
+
+#this does not get startup or session items, but gets most other configurations
+
+rm -rf ~/.mozilla
+cp -r /c/out-data/.mozilla/ ~/.mozilla
+
+#cp /media/charles/CHARLES/charles/.hgrc ~/
+cp /c/charles/.hgrc ~/.hgrc
+
+cp /c/charles/.gitconfig ~/.gitconfig
+
+# to store passwords:
+git config --global credential.helper store
+# these are stored in plaintext, so it could be unsecure
+# https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github
+
+## Manually:
 
 Set clock, including time format. Enable Date and Month in menu bar.
 %a *%Y.%m.%d %H:%M
@@ -57,9 +89,11 @@ For multiple monitors, configure them in Settings -> Display
 Change Desktop background / wallpaper.
 Open Settings from menu -> Desktop
 Start->Settings Manager->Desktop
-Style: None
-#7C7C7C ! (or lighter: #C7C7C7)
-#if you choose a picture here, it will show up on the login screen!
+
+    Style: None
+    #7C7C7C ! (or lighter: #C7C7C7)
+
+if you choose a picture here, it will show up on the login screen!
 
 *2013.05.14 20:14:59
 All Settings -> Window Manager
@@ -73,6 +107,7 @@ Under the "Keyboard" tab, clear the window operations menu setting
 
 Then, under All Settings -> Keyboard settings -> Application Shortcuts find:
 xfce4-popup-whiskermenu
+(xfce4-appfinder may be a better option for this functionality)
 and set that to Alt+Space
 
 Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shift+Ctrl+Delete"
@@ -84,14 +119,6 @@ Add workspaces (start with 4, 5 or 7)
 
 Optionally, add workspace switcher to Panel
 Settings -> Panel -> Items -> Add (right icon) -> Workspace Switcher (bottom of list)
-
-*2015.11.22 12:29:31 terminal
-only a subtle tweak has been required...
-setting background to be the same color as emacs:
-Change terminal profile settings"
-"Edit"->"Profile Preferences..."
-Under "Colors" tab,
-For "Background color", use color picker to match emacs setting (#1D1F21)
 
 *2015.11.07 15:18:05
 be sure a Terminal is already open, then:
@@ -106,45 +133,48 @@ Add a new one:
 Task Manager
 xfce4-taskmanager
 
-#server installs can skip much of the above
+
+Clean up favorite applications in the launcher (xfce4-popup-whiskermenu):
+  - remove old favorites
+  - add new:
+
+Can also consider adding favorites to the desktop
+
+
+
+
+### Application configurations:
+
 
 set task manager default settings:
   - show all processes
   - sort by cpu utilization
 
 
-#might be a good point to explore ansible here???
+*2015.11.22 12:29:31 terminal
+only a subtle tweak has been required...
+setting background to be the same color as emacs:
+Change terminal profile settings"
+"Edit"->"Profile Preferences..."
+Under "Colors" tab,
+For "Background color", use color picker to match emacs setting (#1D1F21)
 
 
-#set up a shared directory with all machines. I use /c... use anything you like
-#export SHARED=/c
-sudo mkdir -p /c
-sudo chmod 775 /c
-
-Drag link to /c in File Manager
-
-sudo chown -R charles: /c
-#this is handled by ansible/shares.yml
-#skip if running that
-sudo chown -R {{ ssh_user }}: /c
-
-#on a virtual machine:
-sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
-#consider adding this to fstab!
-#(ansible will also help with this step)
-#http://askubuntu.com/questions/481559/how-to-automatically-mount-a-folder-and-change-ownership-from-root-in-virtualbox
-# http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
-
-
-#cp /media/charles/CHARLES/charles/.hgrc ~/
-
-#GitHub:
-
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-
-#or
-  cp /c/charles/.gitconfig ~/.gitconfig
+launch inkscape
+  - configre best default settings
+    exit fullscreen
+    - View -> Show/Hide -> Uncheck following:
+       Commands Bar
+       Snap Controls Bar
+       Palette
+    - In this order:
+      - Ctrl - Shift - O
+      - Ctrl - Shift - M
+      - Ctrl - Shift - A
+      - Ctrl - Shift - F
+    
+set inkscape to be the default opener for svg files
+Filemanager -> browse to svg -> right click -> open with -> choose another application -> inkscape -> make default
 
 
 #apply browser configurations sooner rather than later
@@ -167,11 +197,39 @@ Settings... -> Automatically check for updates: Every two weeks, (Never?)
 # going to try this out first to see how it impacts things
 
 
-# if on a VM, shut down, take a snapshot:
-Base Install, GUI Configs
+#GitHub:
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
 
 
-# if on a base / root / hypervisor type machine, install Virtual Box:
+
+TODO:
+ansible script for spotify
+prefer to keep this one on a VM related to music / vinyl / shopping if possible
+not a standard / core system component
+
+via:
+
+https://www.spotify.com/us/download/linux/
+
+# 1. Add the Spotify repository signing keys to be able to verify downloaded packages
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+
+# 2. Add the Spotify repository
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
+# 3. Update list of available packages
+sudo apt-get update
+
+# 4. Install Spotify
+sudo apt-get install spotify-client
+
+
+# configure printer
+
+
+
 
 
 Connect to a network. (Wireless, Wired, your choice!)

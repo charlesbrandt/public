@@ -1,8 +1,3 @@
-*2016.01.31 18:08:03
-consider docker.
-see:
-/c/public/system/docker.txt
-
 *2017.01.11
 If you're installing  a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems. 
 
@@ -50,6 +45,17 @@ un-check the bottom status bar to hide it... only takes up space in my opinion (
 
 
 
+#(ansible will help with this step)
+#consider adding this to fstab!
+sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
+#http://askubuntu.com/questions/481559/how-to-automatically-mount-a-folder-and-change-ownership-from-root-in-virtualbox
+# http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
+
+
+
+
+
+
 
 *2015.11.07 15:37:14
 when cloning a VM using VMDK with multiple files, the clone does not preserve that setting (lumps everything back in to one big file)
@@ -66,28 +72,12 @@ http://www.vmware.com/pdf/esx3_backup_wp.pdf
 When it comes time to migrate between platforms (VMWare vs Virtual Box):
 http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053864
 
-*2016.05.01 08:38:00 
-#virtualbox 
-----------------------------------------------
-mkdir -p /c/virtual_box/installs
-cd /c/virtual_box/installs
 
-I have found the version from Oracle to be easier to use. They are also more up to date. Although some aspects are not open, I feel comfortable enough having the open version available. 
 
-Download both platform package and Extension Pack. 
-https://www.virtualbox.org/wiki/Downloads
+[snip virtualization-hypervisor.txt]
 
-#cd /c/virtual_box/installs/5.0.10/
 
-#2017.01.11
-mkdir -p /c/virtual_box/installs/5.1.12/
-cd /c/virtual_box/installs/5.1.12
-mv ~/Downloads/* .
-sudo dpkg -i virtualbox-5.
-sudo dpkg -i virtualbox-5.1_5.1.12-112440~Ubuntu~xenial_amd64.deb
-sudo apt-get -f install
 
-Start Virtual Box
 
 #In preferences:
 File->Preferences...->Network->Host-only Networks->Add icon (right)->vboxnet0

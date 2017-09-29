@@ -16,10 +16,11 @@
       with_items:
         # seems to be there by default now:
         #- build-essential
-        - gstreamer-tools
-        #- libjpeg-progs
+        # missing as of 17.04... can't remember what depends on it
+        #- gstreamer-tools
         # missing as of 16.04... can't remember what depends on it
         #- libgif4
+        #- libjpeg-progs
         - libjpeg-turbo-progs
         - jhead
         - tofrodos
@@ -32,7 +33,9 @@
         - extlinux
         - curl
         - nginx
-
+        - git
+        - mercurial
+        
     - name: check if utilities archive path already exists
       stat: path={{ archive_path }}/utilities/
       register: check_archive_path

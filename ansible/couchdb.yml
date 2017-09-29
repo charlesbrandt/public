@@ -22,7 +22,8 @@
       when: not check_archive_path.stat.exists
 
     - name: sudo pip install couchdb
-      pip: name=couchdb
+      pip: executable=pip3 name=couchdb
+      #pip: name=couchdb
 
     #make sure there is a local copy of pouchdb for web development
     #https://pouchdb.com/download.html
