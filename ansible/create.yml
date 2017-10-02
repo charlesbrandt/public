@@ -1,28 +1,13 @@
-- hosts: all
-  remote_user: charles
+- hosts: gui
   become: yes
 
   vars_files:
     - shari_vari.yml
-    
-  tasks:    
-    - name: Install giada packages.
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - giada
 
-    - name: check if media archive path already exists
-      stat: path={{ archive_path }}/giada/
-      register: check_archive_path
+  tasks:
 
-    - name: create giada path
-      file: path={{ archive_path }}/giada state=directory mode=0755
-
-    - name: move giada deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/giada/
-      when: not check_archive_path.stat.exists
-
-
+    # in ubuntu-studio
+      
     - name: Install inkscape packages.
       action: apt pkg={{ item }} state=present
       with_items:
@@ -76,22 +61,6 @@
       when: not check_archive_path.stat.exists
 
 
-    - name: Install mixxx packages.
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - mixxx
-
-    - name: check if media archive path already exists
-      stat: path={{ archive_path }}/mixxx/
-      register: check_archive_path
-
-    - name: create mixxx path
-      file: path={{ archive_path }}/mixxx state=directory mode=0755
-
-    - name: move mixxx deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/mixxx/
-      when: not check_archive_path.stat.exists
-
 
 
     - name: Install puredata packages.
@@ -113,23 +82,5 @@
       when: not check_archive_path.stat.exists
 
       
-
-    - name: Install scanner packages.
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - xsane
-        - gocr
-
-    - name: check if media archive path already exists
-      stat: path={{ archive_path }}/scanner/
-      register: check_archive_path
-
-    - name: create scanner path
-      file: path={{ archive_path }}/scanner state=directory mode=0755
-
-    - name: move scanner deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/scanner/
-      when: not check_archive_path.stat.exists
-
       
       

@@ -1,0 +1,22 @@
+*2017.09.01 16:17:31
+Many linux distributions available
+these days for a desktop I've been leaning toward xubuntu (yay XFCE!)
+
+Torrents are a good way to share bandwidth. This is a good cause (and free to you)!
+
+For servers, ubuntu server is good
+
+This is a good local mirror for ubuntu: (don't think xubuntu is there)
+http://ftp.ussg.iu.edu/linux
+
+
+For raspberry pi, going to try Xubuntu for that:
+
+https://ubuntu-pi-flavour-maker.org/download/
+
+Security one:
+
+Private ones:
+
+
+To transfer image, see bootable_usb.txt

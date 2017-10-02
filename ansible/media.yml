@@ -24,14 +24,6 @@
       shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/media/
       when: not check_archive_path.stat.exists
 
-    
-    #shouldn't hurt anything if it's already there:      
-    - git: repo=https://github.com/charlesbrandt/medley  dest={{ public_path }}/medley
-
-    - command: python setup.py develop
-      args:
-        chdir: "{{ public_path }}/medley"
-
         
 #don't forget this manual step:
 # Open VLC

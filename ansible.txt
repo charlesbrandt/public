@@ -1,8 +1,30 @@
+Good instructions available here:
+
+https://github.com/city-of-bloomington/system-playbooks
+
+Distilled version for ansible is:
+
+    sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip sshpass
+
+    #this doesn't work with package managed pip:
+    pip install --upgrade pip
+    pip install ansible
+
+ansible can also be installed by ansible.yml playbook
+
+ansible-playbook system-2.yml -i hosts.txt --ask-pass --ask-become-pass
+
 *2015.11.08 10:05:04
 ansible-playbook repositories-shared.yml -i hosts.txt --ask-become-pass
 
 *2015.11.05 19:58:19
 ansible-playbook system.yml -i host2.txt --ask-become-pass
+
+to run locally, add:
+
+  connection: local
+
+to common.yml
 
 *2015.11.06 18:43:48
 instead of using vars:
@@ -73,3 +95,24 @@ https://github.com/ansible/ansible/blob/devel/test/README.md
 
 thoughts of contributing to:
 https://github.com/ansible/ansible-modules-core/issues/3763
+
+*2017.08.26 12:38:58 links
+https://duckduckgo.com/?q=ansible+restart+server&t=canonical&ia=qa
+ansible restart server at DuckDuckGo
+https://stackoverflow.com/questions/23877781/how-to-wait-for-server-restart-using-ansible
+linux - How to wait for server restart using Ansible? - Stack Overflow
+https://www.linux.com/blog/ansible-reboot-server-play-book-and-wait-it-come-back
+Ansible: Reboot server in play-book and wait for it come back. | Linux.com | The source for Linux information
+http://docs.ansible.com/ansible/latest/intro_inventory.html
+Inventory — Ansible Documentation
+http://docs.ansible.com/ansible/latest/intro_configuration.html#connection-plugins
+Configuration file — Ansible Documentation
+https://raymii.org/s/tutorials/Ansible_-_Add_an_apt-repository_on_Debian_and_Ubuntu.html
+Ansible - Add an apt-repository on Debian and Ubuntu - Raymii.org
+http://docs.ansible.com/ansible/latest/apt_repository_module.html
+apt_repository - Add and remove APT repositories — Ansible Documentation
+http://docs.ansible.com/ansible/latest/apt_module.html
+apt - Manages apt-packages — Ansible Documentation
+http://docs.ansible.com/ansible/latest/pip_module.html
+pip - Manages Python library dependencies. — Ansible Documentation
+

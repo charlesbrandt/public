@@ -1,39 +1,26 @@
-- hosts: all
-  remote_user: charles
+- hosts: core
   become: yes
 
   vars_files:
     - shari_vari.yml
     
   tasks:
-    - name: Install qt
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - python-qt4
-        - python-qt4-dbg
-        - libqt4-dev
-        - python-pyside
 
-    - name: check if qt archive path already exists
-      stat: path={{ archive_path }}/qt/
-      register: check_archive_path
-
-    - name: create qt path
-      file: path={{ archive_path }}/qt state=directory mode=0755
-
-    - name: move qt deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/qt/
-      when: not check_archive_path.stat.exists
+    #had qt installation happening here...
+    #may be possible that some utilities rely on qt
+    #medley does, but I'm not sure what else.
+    #moving it out for now
 
     - name: Install utilities
       action: apt pkg={{ item }} state=present
       with_items:
         # seems to be there by default now:
         #- build-essential
-        - gstreamer-tools
-        #- libjpeg-progs
+        # missing as of 17.04... can't remember what depends on it
+        #- gstreamer-tools
         # missing as of 16.04... can't remember what depends on it
         #- libgif4
+        #- libjpeg-progs
         - libjpeg-turbo-progs
         - jhead
         - tofrodos
@@ -45,7 +32,10 @@
         - exfat-fuse
         - extlinux
         - curl
-
+        - nginx
+        - git
+        - mercurial
+        
     - name: check if utilities archive path already exists
       stat: path={{ archive_path }}/utilities/
       register: check_archive_path
@@ -57,23 +47,5 @@
       shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/utilities/
       when: not check_archive_path.stat.exists
 
-
-      
-    - name: Install emacs
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - emacs
-        - emacs-goodies-el
-
-    - name: check if emacs archive path already exists
-      stat: path={{ archive_path }}/emacs/
-      register: check_archive_path
-
-    - name: create emacs path
-      file: path={{ archive_path }}/emacs state=directory mode=0755
-
-    - name: move emacs deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/emacs/
-      when: not check_archive_path.stat.exists
 
       
