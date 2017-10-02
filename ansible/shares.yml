@@ -27,9 +27,14 @@
     #to make other drives mount automatically when the machine boots
     #(forces them to be there)
     #sudo vi /etc/fstab
-    #and follow pattern for /c
-    #DATA /media/charles/DATA vboxsf uid=1000,gid=1000,auto 0 0
-
+    #and follow pattern for /c:
+    #
+    #    DATA /media/charles/DATA vboxsf uid=1000,gid=1000,auto 0 0
+    #
+    #then make sure destination directory exists:
+    #
+    #    mkdir -p /media/charles/DATA
+    
     #to mount samba:
     #sudo apt-get install cifs-utils
     #mkdir -p /c/data
