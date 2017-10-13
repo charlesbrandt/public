@@ -10,7 +10,7 @@
     
   tasks:
     # Apt package installation of required software.
-    - name: Install ansible dependencies.
+    - name: Install django dependencies.
       action: apt pkg={{ item }} state=present
       with_items:
         - python-pip

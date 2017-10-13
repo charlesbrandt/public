@@ -1,10 +1,24 @@
+*2017.02.01 09:19:27 port_forwarding ssh vm
+to connect to a virtual machine on a host via ssh
+you can expose the virtual machine on the host's IP by forwarding the port to the vm's ssh port:
+
+Virtual Box -> Select Machine in list -> Settings -> Network -> Adapter 1 (NAT) -> Port Forwarding ->
+
+Host IP: None / blank
+Host Port: 8822 (where external clients will connect to)
+Guest IP: 192.168.56.101
+Guest Port: 22
+
+Then, connect remotely by telling ssh which alternative port to try to connect to:
+ssh devops@[vm_host_ip] -p 8822
+
 *2016.01.31 18:08:03
 consider docker.
 see:
 /c/public/system/docker.txt
 
 *2017.01.11
-If you're installing  a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems. 
+If you're installing a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems. 
 
 When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
 
@@ -12,28 +26,68 @@ If installing to a virtual machine, avoid allowing the installation to download 
 
 Consider implications of using LVM with disks
 
-When the VM is powered off, add another network interface:
-#Virtual Box -> Devices -> Network -> Network Settings...
-Adapter 2 -> Enable Network Adapter
-Attached to: Host-only Adapter
-Name: vboxnet0
+For VirtualBox, you'll need a "Host-only Adapter" in order to access the machine. When the VM is powered off, add another network interface:
 
-Devices -> Shared Clipboard -> Bidirectional
+    Virtual Box -> Devices -> Network -> Network Settings...
+    Adapter 2 -> Enable Network Adapter
+    Attached to: Host-only Adapter
+    Name: vboxnet0
+
+Then, when the machine is powered on, do:
+
+    #find all adapters... should be a new one that is unconfigured
+    ip addr
+    #enp0s8 for me
+    sudo vi /etc/network/interfaces
+    #add new section for interface, adapting from lines already there
+
+    # The local network interface
+    auto enp0s8
+    iface enp0s8 inet dhcp
+
+    sudo /etc/init.d/networking restart
+    #check for new ip with:
+    ifconfig
+
+
+If you want to connect to the machine from outside of your local machine, you'll want to set up port forwarding. Back on "Adapter 1", toggle "Advanced" and click the "Port Forwarding" button. Add a new rule:
+
+    - Host IP: blank
+    - Host Port: 8822
+    - Guest IP: 192.168.56.101
+    - Guest Port: 22
+
+Also be sure to open up 8822 (or whatever you choose) in the firewall:
+
+     sudo ufw allow 8822
+    
+Start the system back up.
+
+# on ubuntu server 16.04.1 needed this:
+
+    sudo apt install build-essential
+
+# may need to do this if running before ansible:
+
+    sudo apt update
+    sudo apt upgrade
+
 
 #Virtual Box -> Devices -> Insert Guest Additions CD image... -> Download
-#http://askubuntu.com/questions/451805/screen-resolution-problem-with-ubuntu-14-04-and-virtualbox
-On Guest:
-cd /media/{{ ssh_user }}/VBOXADDITIONS_5.0.8_103449/
-cd /media/charles/VBOXADDITIONS
-sudo ./VBoxLinuxAdditions.run
+sudo mount /dev/sr0 /media/cdrom
+sudo /media/cdrom/VBoxLinuxAdditions.run
 
-Eject Guest Additions form guest OS file browser
+
+Eject Guest Additions form guest OS file browser, or:
+
+    sudo umount /media/cdrom
 
 #restart Guest OS
 #can now resize screen too
 
 #can do this sooner, but it won't work until now:
 enable clipboard sharing, bidirectional.
+Devices -> Shared Clipboard -> Bidirectional
 
 #this requires proprietary oracle guest additions:
 Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
@@ -42,6 +96,24 @@ Check "Make Permanent"
 
 It's best not to configure any external media until you are working on a cloned system.
 e.g. if you might want access to DATA drives, set that up later
+
+see also:
+
+    ansible/shares.yml
+
+
+Decide if you want to clean up any downloaded package files:
+
+    ls /var/cache/apt/archives/*.deb
+
+    sudo rm /var/cache/apt/archives/*.deb
+
+
+
+
+
+
+
 
 Under Machine -> Settings -> User Interface
 un-check the bottom status bar to hide it... only takes up space in my opinion (can always enable it later if needed)
@@ -61,6 +133,8 @@ http://www.vmware.com/pdf/esx3_backup_wp.pdf
 
 When it comes time to migrate between platforms (VMWare vs Virtual Box):
 http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053864
+
+
 
 *2016.05.01 08:38:00 
 #virtualbox 
@@ -143,8 +217,6 @@ For sharing files, it should be possible to have a shared folder between host an
 
 However, it is also possible to just use rsync. 
 This requires SSH to be installed on guest, which is probably a good thing to enable anyway for Ansible
-
-
 
 *2015.10.28 07:33:07 links
 http://xubuntu.org/getxubuntu/
