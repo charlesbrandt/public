@@ -1,0 +1,32 @@
+- hosts: core
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    - name: Install couch packages.
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - couchdb
+
+    - name: check if couch archive path already exists
+      stat: path={{ archive_path }}/couch/
+      register: check_archive_path
+
+    - name: create couch path
+      file: path={{ archive_path }}/couch state=directory mode=0755
+
+    - name: move couch deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/couch/
+      when: not check_archive_path.stat.exists
+
+    - name: sudo pip install couchdb
+      pip: executable=pip3 name=couchdb
+      #pip: name=couchdb
+
+    #make sure there is a local copy of pouchdb for web development
+    #https://pouchdb.com/download.html
+    - name: npm install pouchdb-browser
+      npm: name=pouchdb-browser global=yes state=latest
+    

@@ -1,23 +1,53 @@
-[local]
+#http://docs.ansible.com/ansible/latest/intro_inventory.html
+
+#use host groups to control the different stages of an install
+#previously this was accomplished with multiple system-x.yml files
+#only un-comment the host once you're ready to move to the next stage
+
+#applies common.yml (set to 'all')
+[initialize]
+192.168.56.1
+#127.0.0.1 ansible_connection=local
 #localhost
+#192.168.56.101
+#192.168.0.101
 
-[localhost]
-#127.0.0.1
 
-[base]
-#192.168.56.101 
-
-[personal]
+#applies python3.yml, utilities.yml, javascript.yml, couchdb.yml, repositories-python3.yml
+[core]
+192.168.56.1
+#127.0.0.1 ansible_connection=local
 #192.168.56.101
 
-[shared]
-#192.168.56.102
+#applies music.yml, qt.yml?, vncserver
+[gui]
+#127.0.0.1 ansible_connection=local
+#192.168.56.101
 
-[current]
-#192.168.56.108
-192.168.0.101
 
-[different user]
+#the following two groups toggle between type
+#should only want one or the other
+#applies shares.yml
+[vm]
+#127.0.0.1 ansible_connection=local
+#192.168.56.101
+
+#applies desktop-main.yml, docker.yml
+#intended for the root, non-vm host machine
+[desktop]
+192.168.56.1
+#127.0.0.1 ansible_connection=local
+
+#applies ansible.yml
+[ansible]
+192.168.56.1
+#127.0.0.1 ansible_connection=local
+
+
+
+
+#this group is meant as documentation only:
+[different_user]
 #192.168.56.103 ansible_user=brandtc
 
 #old way:

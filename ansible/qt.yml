@@ -1,0 +1,39 @@
+- hosts: gui
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+    
+  tasks:
+    - name: Install qt
+      action: apt pkg={{ item }} state=present
+      with_items:
+        - python-qt4
+        - python-qt4-dbg
+        - libqt4-dev
+        - python-pyside
+
+    - name: check if qt archive path already exists
+      stat: path={{ archive_path }}/qt/
+      register: check_archive_path
+
+    - name: create qt path
+      file: path={{ archive_path }}/qt state=directory mode=0755
+
+    - name: move qt deb files
+      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/qt/
+      when: not check_archive_path.stat.exists
+
+    - git: repo=https://github.com/charlesbrandt/medley  dest={{ public_path }}/medley
+
+    - command: python setup.py develop
+      args:
+        chdir: "{{ public_path }}/medley"
+    
+    # probably not ready for python3 yet w/ medley
+    #- name: pip install medley
+    #  pip: executable=pip3 name=medley extra_args="-e {{ public_path }}/medley" 
+
+    # Note: medley relies on ffmpeg
+    # ffmpeg is available by default on ubuntu studio
+    # other distributions should run ansible playbook media.yml

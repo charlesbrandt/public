@@ -1,10 +1,14 @@
-- hosts: all
+- hosts: vm
   become: yes
 
   vars_files:
     - shari_vari.yml
     
   tasks:
+    # TODO:
+    # configure username as a variable... shari_vari.yml
+    # a number of names
+
     #only want these in the case that it is a true guest under virtual_box
     #if using ansible to configure a real machine, don't do this:
 
@@ -24,18 +28,34 @@
     #sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
     #sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA
     - mount: name=/c src='c' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
+
     #to make other drives mount automatically when the machine boots
     #(forces them to be there)
     #sudo vi /etc/fstab
     #and follow pattern for /c
     #DATA /media/charles/DATA vboxsf uid=1000,gid=1000,auto 0 0
 
+    # manually:
+    #sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA
+
+    # using ansible:
+    #- mount: name=/media/charles/DATA src='DATA' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
+      
+    
     #to mount samba:
     #sudo apt-get install cifs-utils
     #mkdir -p /c/data
     #sudo mount -t cifs //192.168.1.234/data /c/data
+    #to auto mount this every time the system starts, add an entry to /etc/fstab: 
+    #//192.168.1.234/data /c/data cifs credentials=/home/username/.smbcredentials,uid=1000,gid=1000,auto 0 0
+    #Create the .smbcredentials file in your home directory:
+    #username=shareuser
+    #password=sharepassword
+    #domain=domain_or_workgroupname
+    #Make sure you secure your ~/.smbcredentials file:
+    #chmod 0600 ~/.smbcredentials
+    # via: 
+    #http://askubuntu.com/questions/157128/proper-fstab-entry-to-mount-a-samba-share-on-boot#157140
     
-    #sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA
-
 
 

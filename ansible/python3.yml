@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: core
   become: yes
 
   vars_files:
@@ -9,14 +9,11 @@
     - name: Install python packages.
       action: apt pkg={{ item }} state=present
       with_items:
-        - python-pip 
-        - python2.7-dev 
-        - python2.7-dbg 
-        - python-imaging 
-        - python-nose 
-        - python-mako 
-        - python-pyaudio
-        - git
+        - python3-pip 
+        - python3-dev 
+        - python3-dbg 
+        - python3-pil
+        - python3-pyaudio
 
     - name: check if python archive path already exists
       stat: path={{ archive_path }}/python/
@@ -30,10 +27,12 @@
       when: not check_archive_path.stat.exists
 
     - name: Upgrade pip
-      pip: name=pip state=latest
-  
+      pip: executable=pip3 name=pip state=latest
+
+    # seems to be an issue with mercurial and python3 (relies on python2)
+    # just going to go with system distribution for this
     #- name: pip install mercurial
-    #  pip: name=mercurial
+    #  pip: executable=pip3 name=mercurial
 
     #*2015.12.19 07:46:50
     # currently a problem with mercurial 3.6+ and hg-git... downgrading:
@@ -41,26 +40,40 @@
 
     # if previously installed, uninstall first:
     #sudo pip uninstall mercurial
-    - name: pip install mercurial
-      pip: name=mercurial version=3.5.2
+    #- name: pip install mercurial
+    #  pip: name=mercurial version=3.5.2
 
-    - name: pip install hg-git
-      pip: name=hg-git
+    # not using hg-git lately
+    #- name: pip install hg-git
+    #  pip: executable=pip3 name=hg-git
 
     #https://github.com/gitpython-developers/GitPython
     - name: pip install gitpython
-      pip: name=gitpython
+      pip: executable=pip3 name=gitpython
       
+    - name: pip install nose
+      pip: executable=pip3 name=nose
+    - name: pip install mako
+      pip: executable=pip3 name=mako
+
     #sudo easy_install selenium
     - name: pip install selenium
-      pip: name=selenium
+      pip: executable=pip3 name=selenium
+    #looks like this is already installed:
+    - name: pip install lxml
+      pip: executable=pip3 name=lxml
     - name: pip install cssselect
-      pip: name=cssselect
+      pip: executable=pip3 name=cssselect
 
     #for interacting with web APIs (e.g. discogs, etc)
     - name: pip install oauth2
-      pip: name=oauth2
+      pip: executable=pip3 name=oauth2
 
+    #sudo pip3 install uwsgi
+    - name: pip install uwsgi
+      pip: executable=pip3 name=uwsgi
+      
+      
     - name: copy mercurial config
       # remember: this copies from the HOST to the GUEST (not within the guest)
       # TODO: consider using a local ansible template for this:
