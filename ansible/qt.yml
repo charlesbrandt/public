@@ -3,7 +3,9 @@
 
   vars_files:
     - shari_vari.yml
-    
+
+  #sudo apt-get install python-qt4 python-qt4-dbg libqt4-dev python-pyside
+  
   tasks:
     - name: Install qt
       action: apt pkg={{ item }} state=present

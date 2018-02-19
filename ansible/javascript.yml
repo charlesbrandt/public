@@ -37,12 +37,15 @@
 
     #http://docs.ansible.com/npm_module.html
 
-    - shell: npm cache clean -f
+    - name: clean npm cache
+      shell: npm cache clean -f
 
     #sudo npm install -g n
-    - npm: name=n global=yes
+    - name: sudo npm install -g n
+      npm: name=n global=yes
 
-    - shell: n stable
+    - name: n stable
+      shell: n stable
 
     #now node command should work as expected:
     #node -v
@@ -51,14 +54,25 @@
     #npm -v
     #sudo npm cache clean -f
     #sudo npm update npm -g
-    - npm: name=npm global=yes state=latest
+    - name: sudo npm update npm -g
+      npm: name=npm global=yes state=latest
     #npm -v
 
     #sudo npm install webpack -g
+    - name: sudo npm install webpack -g
+      npm: name=webpack global=yes state=latest
     #sudo npm install webpack-dev-server -g
-    - npm: name=webpack global=yes state=latest
-    - npm: name=webpack-dev-server global=yes state=latest
+    - name: sudo npm install webpack-dev-server -g
+      npm: name=webpack-dev-server global=yes state=latest
 
+    # https://github.com/vuejs/vue-cli
+    #npm install -g vue-cli
+    - name: npm install -g vue-cli
+      npm: name=vue-cli global=yes state=latest
+
+
+
+      
     # for gulp:
     #sudo npm install --global gulp-cli      
     #- npm: name=gulp-cli global=yes state=latest
