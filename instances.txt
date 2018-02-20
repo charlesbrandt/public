@@ -1,3 +1,12 @@
+*2018.02.18 22:17:26 system
+/c/public/system/instances.txt
+/c/public/system/launch.sh
+/c/public/system/ubuntu-extended.txt
+/c/public/system/browsers.txt
+/c/public/system/ansible/hosts.txt
+/c/public/system/linux-distributions.txt
+/c/public/system/ubuntu.txt
+
 *2017.08.25 18:12:18 ansible
 /c/public/system/instances.txt
 /c/public/system/ansible/launch.sh

@@ -51,6 +51,10 @@
     - name: updating sortable_list repository via git
       git: repo=https://github.com/charlesbrandt/sortable_list dest={{ public_path }}/sortable_list
 
+    # get this repo for future updates! :)
+    - name: updating system repository via git
+      git: repo=https://github.com/charlesbrandt/system dest={{ public_path }}/system
+      
     - name: updating mindstream repository via git
       git: repo=https://github.com/charlesbrandt/mindstream dest={{ public_path }}/mindstream
 

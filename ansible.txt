@@ -2,6 +2,11 @@ Good instructions available here:
 
 https://github.com/city-of-bloomington/system-playbooks
 
+On host machine, ensure ssh connections are available:
+
+    sudo apt-get update
+    sudo apt-get -y install openssh-server
+
 Distilled version for ansible is:
 
     sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip sshpass

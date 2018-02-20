@@ -13,7 +13,7 @@ If you're installing the system on a virtual machine, see here for notes on thos
 
 If on a base / root / hypervisor type machine, install Virtual Box:
 
-  virtualization-hypervisor.txt
+    virtualization-hypervisor.txt
 
 If you encrypted your home drive, it may be a good idea to jot down the key shown with "ecryptfs-unwrap-passphrase"
 
