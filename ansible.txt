@@ -14,20 +14,37 @@ On host machine, ensure ssh connections are available:
 
 http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
-
+```
 sudo apt-get update
 sudo apt-get -y install software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 
 sudo apt-get update
 sudo apt-get -y install ansible
+```
+
+*2015.11.08 10:05:04
+ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
+
+*2015.11.05 19:58:19
+ansible-playbook system.yml -i host2.txt --ask-become-pass
+
+to run locally, add:
+
+  connection: local
+
+to common.yml
 
 
 
 
 
 
-Distilled version for ansible is:
+
+
+
+
+Old distilled version for ansible is:
 
     sudo apt-get install build-essential libssl-dev libffi-dev python-dev python-pip sshpass
 
@@ -38,18 +55,6 @@ Distilled version for ansible is:
 ansible can also be installed by ansible.yml playbook
 
 ansible-playbook system-2.yml -i hosts.txt --ask-pass --ask-become-pass
-
-*2015.11.08 10:05:04
-ansible-playbook repositories-shared.yml -i hosts.txt --ask-become-pass
-
-*2015.11.05 19:58:19
-ansible-playbook system.yml -i host2.txt --ask-become-pass
-
-to run locally, add:
-
-  connection: local
-
-to common.yml
 
 *2015.11.06 18:43:48
 instead of using vars:
