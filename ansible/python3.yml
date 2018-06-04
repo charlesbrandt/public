@@ -74,12 +74,12 @@
       pip: executable=pip3 name=uwsgi
       
       
-    - name: copy mercurial config
+    #- name: copy mercurial config
       # remember: this copies from the HOST to the GUEST (not within the guest)
       # TODO: consider using a local ansible template for this:
       #copy: src=/media/charles/CHARLES/charles/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
       #copy: src=~/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
-      copy: src={{ shared_path }}/{{ ansible_user }}/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
+      #copy: src={{ shared_path }}/{{ ansible_user }}/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
       #copy: src={{ shared_path }}/configs/.hgrc dest=/home/{{ ansible_user }}/.hgrc owner={{ ansible_user }} group={{ ansible_user }}
 
       

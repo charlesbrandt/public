@@ -1,0 +1,11 @@
+sudo mkdir -p /c/out-data/$(date +%Y)/screenshots
+which git
+sudo apt-get install git
+sudo mkdir -p /c/public
+sudo chmod -R 755 /c/
+sudo chown -R charles: /c
+cd /c/public
+git clone https://github.com/charlesbrandt/system
+
+move on to:
+/c/public/system/ubuntu.txt
