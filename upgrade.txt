@@ -21,6 +21,10 @@ If you're upgrading to a new version, mark notes in git for the previous version
 
     git tag 15.10
 
+*2018.02.05 06:13:50
+check home drive for any downloads
+any other browser settings?
+
 
 
 *2010.08.31 07:47:23 

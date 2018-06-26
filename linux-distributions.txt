@@ -19,4 +19,6 @@ Security one:
 Private ones:
 
 
+Arch Linux
+
 To transfer image, see bootable_usb.txt
