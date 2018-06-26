@@ -1,4 +1,10 @@
 #Install ansible on the guest OS (ahhh... the metas!)
+
+#sudo git clone https://github.com/ansible/ansible.git /usr/local/src/ansible
+#cd /usr/local/src/ansible
+#sudo chown -R {{ ansible_ssh_user }}: .
+#git submodule update --init --recursive
+#source ./hacking/env-setup
 - hosts: all
   become: yes
 

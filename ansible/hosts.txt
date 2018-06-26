@@ -1,4 +1,5 @@
 #http://docs.ansible.com/ansible/latest/intro_inventory.html
+#http://docs.ansible.com/ansible/latest/playbooks_reuse.html
 
 #use host groups to control the different stages of an install
 #previously this was accomplished with multiple system-x.yml files
@@ -6,8 +7,8 @@
 
 #applies common.yml (set to 'all')
 [initialize]
-192.168.56.1
-#127.0.0.1 ansible_connection=local
+#192.168.56.1
+127.0.0.1 ansible_connection=local
 #localhost
 #192.168.56.101
 #192.168.0.101
@@ -15,14 +16,16 @@
 
 #applies python3.yml, utilities.yml, javascript.yml, couchdb.yml, repositories-python3.yml
 [core]
-192.168.56.1
-#127.0.0.1 ansible_connection=local
+#192.168.56.1
+127.0.0.1 ansible_connection=local
 #192.168.56.101
+#192.168.0.101
 
 #applies music.yml, qt.yml?, vncserver
 [gui]
 #127.0.0.1 ansible_connection=local
 #192.168.56.101
+#192.168.0.101
 
 
 #the following two groups toggle between type
@@ -35,13 +38,15 @@
 #applies desktop-main.yml, docker.yml
 #intended for the root, non-vm host machine
 [desktop]
-192.168.56.1
+#192.168.56.1
 #127.0.0.1 ansible_connection=local
+#192.168.0.101
 
 #applies ansible.yml
 [ansible]
-192.168.56.1
+#192.168.56.1
 #127.0.0.1 ansible_connection=local
+#192.168.0.101
 
 
 

@@ -28,6 +28,7 @@
   #on the server to set a password
   #then, connections should be available via:
   #vncviewer 192.168.0.101:5901
+  # see also ../vnc-remote_desktop.txt
 
 
-      
+  

@@ -1,0 +1,24 @@
+https://github.com/charlesbrandt?tab=repositories
+charlesbrandt (Charles Brandt) / Repositories · GitHub
+
+https://github.com/charlesbrandt/system
+GitHub - charlesbrandt/system: A collection of ansible scripts and notes about setting up different systems. Also includes notes on common system administration tasks. These notes change based on current personal configurations.
+
+https://github.com/charlesbrandt/system/blob/master/ubuntu-bootstrap.txt
+system/ubuntu-bootstrap.txt at master · charlesbrandt/system · GitHub
+
+https://addons.mozilla.org/en-GB/firefox/addon/copy-all-tabs/?src=search
+Copy All Tabs – Add-ons for Firefox
+
+
+sudo mkdir -p /c/out-data/$(date +%Y)/screenshots
+which git
+sudo apt-get install git
+sudo mkdir -p /c/public
+sudo chmod -R 755 /c/
+sudo chown -R $USER: /c
+cd /c/public
+git clone https://github.com/charlesbrandt/system
+
+move on to:
+/c/public/system/ubuntu.txt

@@ -13,9 +13,9 @@ If you're installing the system on a virtual machine, see here for notes on thos
 
 If on a base / root / hypervisor type machine, install Virtual Box:
 
-  virtualization-hypervisor.txt
+    virtualization-hypervisor.txt
 
-If you encrypted your home drive, it may be a good idea to jot down the key shown with "ecryptfs-unwrap-passphrase"
+If you encrypted your home drive, it's a good idea to note the key shown with "ecryptfs-unwrap-passphrase"
 
 If you're running on non-standard hardware (e.g. macs), see:
 
@@ -355,29 +355,6 @@ http://askubuntu.com/questions/468359/installing-atom-text-editor-on-32-bit-ubun
 
 
 
-
-For VirtualBox, you'll need a "Host-only Adapter" in order to access the machine. When the VM is powered off, add another network interface:
-
-    Virtual Box -> Devices -> Network -> Network Settings...
-    Adapter 2 -> Enable Network Adapter
-    Attached to: Host-only Adapter
-    Name: vboxnet0
-
-Then, when the machine is powered on, do:
-
-    #find all adapters... should be a new one that is unconfigured
-    ip addr
-    #enp0s8 for me
-    sudo vi /etc/network/interfaces
-    #add new section for interface, adapting from lines already there
-
-    # The local network interface
-    auto enp0s8
-    iface enp0s8 inet dhcp
-
-    sudo /etc/init.d/networking restart
-    #check for new ip with:
-    ifconfig
 
 
 Ansible requires Python installed on the host machine, as well:
