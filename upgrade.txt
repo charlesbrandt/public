@@ -15,18 +15,12 @@ sudo apt-get remove linux-image-4.2.0-16-generic
 
 
 
-(Ideally do this before starting fresh... new installs don't have git)
-(TODO: move to shutdown or upgrade notes; link those two)
-If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
+*2018.05.05 
+if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
 
-    git tag 15.10
+    sudo tar -zcvf /media/charles/DRIVE/20130514-old_macbook-c.tgz /c
 
-
-
-*2010.08.31 07:47:23 
-/c/technical/system/upgrade.txt
-/c/technical/system/ubuntu.txt
-/c/technical/system/shutdown.txt
+    sudo tar -zcvf /media/charles/DATA/20160728-chip-nuc-c.tgz /c
 
 *2016.09.30 14:05:28
 if not saving the original drive (which is difficult to do) do a full system backup first.
@@ -44,6 +38,21 @@ charles/communicate/email-configuration.txt
 *2014.09.15 18:38:52 
 extract any stored data in browser, especially in local apps like "Link Router"
 chrome://extensions-frame/#
+
+
+
+
+
+*2010.08.31 07:47:23 see_also
+/c/technical/system/upgrade.txt
+/c/technical/system/shutdown.txt
+
+*2018.05.05 20:42:44 
+(Ideally do this before starting fresh... new installs don't have git)
+(TODO: move to shutdown or upgrade notes; link those two)
+If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
+
+    git tag 16.04
 
 *2010.08.29 12:12:46 
 upgrading a system, 
@@ -82,13 +91,6 @@ Once a structure is in place that is used, everything should be in that structur
 
 (currently under /c)
 
-
-
-if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
-
-    sudo tar -zcvf /media/charles/DRIVE/20130514-old_macbook-c.tgz /c
-
-    sudo tar -zcvf /media/charles/DATA/20160728-chip-nuc-c.tgz /c
 
 
 

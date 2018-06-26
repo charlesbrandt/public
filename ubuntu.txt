@@ -9,7 +9,7 @@ This guide picks up once a base operating system has been installed. (or live ru
 
 If you're installing the system on a virtual machine, see here for notes on those configurations:
 
-(virtualization)[virtualization.txt]
+    (virtualization)[virtualization.txt]
 
 If on a base / root / hypervisor type machine, install Virtual Box:
 
@@ -106,8 +106,8 @@ Stay in Window Manager settings
 Under the "Keyboard" tab, clear the window operations menu setting
 
 Then, under All Settings -> Keyboard settings -> Application Shortcuts find:
-xfce4-popup-whiskermenu
-(xfce4-appfinder may be a better option for this functionality)
+xfce4-appfinder
+(xfce4-popup-whiskermenu also works, but is stuck in the upper left corner)
 and set that to Alt+Space
 
 Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shift+Ctrl+Delete"
