@@ -1,3 +1,8 @@
+*2017.10.29 21:24:35
+see what device path gets assigned after mount:
+
+    dmesg
+
 *2014.03.25 16:21:58 wipe
 sudo dd if=/dev/urandom of=/dev/sdb bs=1M
 

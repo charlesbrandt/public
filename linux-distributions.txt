@@ -23,4 +23,8 @@ Private ones:
  - Whonix
  - Tails
 
+Arch Linux
+
 To transfer image, see bootable_usb.txt
+
+See also ubuntu-studio.txt
