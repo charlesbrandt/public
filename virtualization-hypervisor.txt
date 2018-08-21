@@ -17,9 +17,12 @@ Next manually install Extension Pack from within the application
  
 File->Preferences->Extensions
 
-Add NatNetwork and Host Only Networks
-
 File->Preferences->Network
+Add NatNetwork
+
+Use the main UI toolbar for the "Global Tools" button on the right.
+Add Host Only Networks
+
 
 # if common build utilities have not been added already, add them now
 sudo apt-get install -y gcc make perl

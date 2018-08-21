@@ -11,22 +11,22 @@ mount
 sudo ls #prime sudo
 
 #this is different than disks, but important!
-sudo parted -a optimal /dev/sdf mklabel msdos
+sudo parted -a optimal /dev/sdc mklabel msdos
 
-sudo parted -a optimal /dev/sdf rm 1
-sudo parted -a optimal /dev/sdf rm 2
+sudo parted -a optimal /dev/sdc rm 1
+sudo parted -a optimal /dev/sdc rm 2
 
 #1MB is the start, 2GB is the end
-#sudo parted -a optimal /dev/sdf mkpart primary fat32 1MB 2GB
-sudo parted -a optimal /dev/sdf mkpart primary fat32 1MB 100%
-sudo mkfs.vfat -n XUBUNTU /dev/sdf1
+#sudo parted -a optimal /dev/sdc mkpart primary fat32 1MB 2GB
+sudo parted -a optimal /dev/sdc mkpart primary fat32 1MB 100%
+sudo mkfs.vfat -n XUBUNTU /dev/sdc1
 
-sudo parted -a optimal /dev/sdf set 1 boot on
+sudo parted -a optimal /dev/sdc set 1 boot on
 
 #not sure if it's necessary to turn off other flags:
-sudo parted -a optimal /dev/sdf set 1 esp off
+sudo parted -a optimal /dev/sdc set 1 esp off
 
-sudo parted -a optimal /dev/sdf print
+sudo parted -a optimal /dev/sdc print
 
 *2018.05.05 20:50:32
 etcher is a good tool for creating bootable USBs

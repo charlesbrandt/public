@@ -1,0 +1,8 @@
+linux, todo:
+
+  *2018.07.15
+  map ctrl-e and ctrl-a to end and start lines
+
+  disable autocomplete for .md and .txt files
+
+  fix launch terminal

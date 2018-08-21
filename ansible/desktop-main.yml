@@ -4,16 +4,16 @@
 
   vars_files:
     - shari_vari.yml
-    
+
   tasks:
     #these are only necessary for a desktop / root machine...
-    
-    #shouldn't need to create linux usbs in a virtual machine
-    - name: Install host specific utilites
-      action: apt pkg={{ item }} state=present
-      with_items:
-        #requires qt
-        - unetbootin
+
+    # #shouldn't need to create linux usbs in a virtual machine
+    # - name: Install host specific utilites
+    #   action: apt pkg={{ item }} state=present
+    #   with_items:
+    #     #requires qt
+    #     - unetbootin
 
     # an alternative to unetbootin is etcher:
     # https://etcher.io/
@@ -24,8 +24,8 @@
     #sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
     #
     #sudo apt-get update
-    #sudo apt-get install etcher-electron 
-        
+    #sudo apt-get install etcher-electron
+
     #this is a large installation due to the dependencies on KDE
     - name: Install k4dirstat packages.
       action: apt pkg={{ item }} state=present
@@ -49,7 +49,7 @@
     - apt_repository:
         repo: "ppa:obsproject/obs-studio"
         state: present
-    
+
     - apt: update_cache=yes
     #sudo apt-get update && sudo apt-get install obs-studio
 
@@ -58,7 +58,7 @@
       with_items:
         - obs-studio
 
- 
+
     - name: Install scanner packages.
       action: apt pkg={{ item }} state=present
       with_items:
@@ -77,5 +77,3 @@
       when: not check_archive_path.stat.exists
 
     # docker notes are stored in docker.yml
-
-        

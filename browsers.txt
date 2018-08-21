@@ -3,6 +3,13 @@ I try to keep browser configurations as simple as possible.
 FIREFOX:
 ========================
 
+
+update to using nightly builds:
+sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
+sudo apt-get update
+sudo apt-get install firefox-trunk
+
+
 *2016.01.02 18:58:17
 https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
 Copy All Tabs :: Add-ons for Firefox
@@ -18,11 +25,11 @@ There are a few items that are great additions (Add-ons) (plugins):
 #custom new tab screen
 https://addons.mozilla.org/en-us/firefox/addon/moment/
 
-*2013.04.22 20:36:25 browsers firefox chrome 
-https://disconnect.me/ 
+*2013.04.22 20:36:25 browsers firefox chrome
+https://disconnect.me/
 https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 
-via: 
+via:
 http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968
 
 #seems like it might be better to deny javascript by default. Give it a try and see how it works out:
@@ -101,17 +108,17 @@ https://www.google.com/intl/en/chrome/
 Otherwise:
 http://www.chromium.org
 
-*2013.10.15 10:11:17 
+*2013.10.15 10:11:17
 custom new tab page:
 https://chrome.google.com/webstore/detail/currently/ojhmphdkpgbibohbnpbfiefkgieacjmh
 
-*2011.09.05 09:46:51 
+*2011.09.05 09:46:51
 copy
 https://chrome.google.com/webstore/detail/djdmadneanknadilpjiknlnanaolmbfk?hc=search&hcp=main
 
 need to configure the format to be equivalent to copy all urls
 
-right click, options, 
+right click, options,
 $url
 $title
 
@@ -135,21 +142,21 @@ React Developer Tools
 https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
 
 
-*2012.01.20 15:59:07 
+*2012.01.20 15:59:07
 if using chromium, flash is not included by default.  Decide if you want flash:
 http://get.adobe.com/flashplayer/
 
-*2014.01.21 09:10:26 
+*2014.01.21 09:10:26
 be sure no extensions fall into this category:
 http://lifehacker.com/many-browser-extensions-have-become-adware-or-malware-1505117457
 http://discuss.howtogeek.com/t/warning-your-browser-extensions-are-spying-on-you/12394
-also [2014.09.25 13:20:50] 
+also [2014.09.25 13:20:50]
 didn't see the few in use on the list, but good to check every now and again
 
 
 #Not as critical:
 
-*2013.07.07 05:33:22 
+*2013.07.07 05:33:22
 http://www.one-tab.com/
 (might be better than copy)
 
@@ -159,12 +166,12 @@ Awesome New Tab Page is also pretty cool
 
 https://www.dragdis.com/
 
-*2012.08.27 02:33:19 
+*2012.08.27 02:33:19
 Window Size 1.0
 Shows window dimensions on resize
 https://chrome.google.com/webstore/detail/window-size/gocemkoelbpknmanpfcabkbeppbbigio
 
-*2011.08.11 12:14:52 
+*2011.08.11 12:14:52
 google-talkplugin
 
 
@@ -182,7 +189,7 @@ http://www.plasser.net/copyallurls/
 https://addons.mozilla.org/en-US/firefox/addon/copyallurls/
 (copy kept on /media/charles/CHARLES/ for quicker install)
 
-*2013.07.07 05:27:33 
+*2013.07.07 05:27:33
 Ubiquity. Highlight something, then press Ctrl+Space and issue a command
 http://gizmodo.com/what-are-your-hottest-tips-for-browsing-the-web-like-a-687427483
 also [2015.11.03 11:44:03]
@@ -195,7 +202,7 @@ look at invisible hand firefox plug in
 
 Disconnect
 
-*2014.03.11 23:27:08 
+*2014.03.11 23:27:08
 if shopping, consider:
 Honey (automatically apply cupon codes)
 Invisible Hand
@@ -213,7 +220,7 @@ Down them all!
 Javascript Debugger:
 https://addons.mozilla.org/en-US/firefox/addon/216/
 
-#If installing flash (a machine with adequate power), 
+#If installing flash (a machine with adequate power),
 #this addon is also a good one:
 Video DownloadHelper
 
@@ -221,7 +228,7 @@ Flash
 
 Flash Firebug (debug Flash items)
 
-*2010.11.01 13:42:49 
+*2010.11.01 13:42:49
 define (plugin to define words)
 
 error installing toolbar:[Exception... "Node was not found"  code: "8" nsresult: "0x80530008 (NS_ERROR_DOM_NOT_FOUND_ERR)"  location: "chrome://global/content/bindings/toolbar.xml Line: 301"]
@@ -236,11 +243,11 @@ Feedly
 Venkman (javascript debugger)
 Rainbow (color picker)
 
-*2010.07.17 10:13:25 
+*2010.07.17 10:13:25
 http://lifehacker.com/5360263/maximize-firefox-35s-viewing-area-for-your-netbook
 great article on maximizing space available.
 
-essentially customize toolbar to liking manually (drag and drop items) 
+essentially customize toolbar to liking manually (drag and drop items)
 then edit a new file as follows:
 
 ~/.mozilla/firefox/xxxxxxxx.default/chrome/userChrome.css
@@ -272,7 +279,7 @@ cd $DLPATH/ubuntu/install_flash_player_9_linux/
 ./flashplayer-installer
 
 
-*2010.07.17 09:29:03 
+*2010.07.17 09:29:03
 https://addons.mozilla.org/en-US/firefox/
 Add-ons for Firefox
 https://addons.mozilla.org/en-US/firefox/collections/popular?show=7&page=2
@@ -294,7 +301,7 @@ Feedly :: Add-ons for Firefox
 https://addons.mozilla.org/en-US/firefox/addon/398/
 Forecastfox :: Add-ons for Firefox
 
- 
+
 https://addons.mozilla.org/en-US/firefox/addon/12331/?collection_uuid=c867f4e3-1031-72c6-d68a-6d8593691b6b
 AniWeather :: Add-ons for Firefox
 
@@ -308,4 +315,3 @@ SAFARI:
 http://brettterpstra.com/tablinks-safari-extension/
 to configure the format to be equivalent to copy all urls:
 %u%b%t
-

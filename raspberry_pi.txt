@@ -1,3 +1,26 @@
+*2018.07.15
+The original raspberry pi hardware (version 1) cannot run some of the ubuntu flavors that have been developed for newer versions of Raspberry pis. 
+
+https://duckduckgo.com/?q=raspberry+pi+xubuntu&t=canonical&ia=web
+raspberry pi xubuntu at DuckDuckGo
+https://ubuntu-pi-flavour-maker.org/
+Ubuntu Pi Flavour Maker
+https://ubuntu-pi-flavour-maker.org/download/
+Download | Ubuntu Pi Flavour Maker
+https://ubuntu-pi-flavour-maker.org/blog/ubuntu-pi-flavours-for-raspberry-pi-3/
+Ubuntu Pi Flavours for Raspberry Pi 3 are released | Ubuntu Pi Flavour Maker
+https://ubuntu-mate.org/raspberry-pi/
+Ubuntu MATE for the Raspberry Pi 2 and Raspberry Pi 3 | Ubuntu MATE
+https://duckduckgo.com/?q=ubuntu+raspberry+pi+1&t=canonical&ia=web
+ubuntu raspberry pi 1 at DuckDuckGo
+https://wiki.ubuntu.com/ARM/RaspberryPi
+ARM/RaspberryPi - Ubuntu Wiki
+https://duckduckgo.com/?q=mate+desktop&t=canonical&ia=web
+mate desktop at DuckDuckGo
+https://duckduckgo.com/?q=LXDE+desktop&t=canonical&ia=web
+LXDE desktop at DuckDuckGo
+
+
 *2017.11.05 12:03:46
 see also
 https://city-of-bloomington.github.io/timeclock/
@@ -18,7 +41,7 @@ https://ubuntu-pi-flavour-maker.org/download/
 Download | Ubuntu Pi Flavour Maker
 
 
-*2015.06.29 22:38:53 
+*2015.06.29 22:38:53
 
 Download an image from:
 Raspberry Pi Guide - Quick Start Guide for Raspberry Pi
@@ -34,7 +57,7 @@ Connect Card.
 Run df -h again.
 (dmesg and mount are also useful commands to hone in on the correct device)
 
-umount /dev/sdi1   
+umount /dev/sdi1
 
 sudo dd bs=4M if=/c/out-data/2015-05-05-raspbian-wheezy.img of=/dev/sdi
 
@@ -51,5 +74,3 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=23107
 Raspberry Pi • View topic - Xubuntu on the Raspberry Pi
 https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=22992
 Raspberry Pi • View topic - Raspbian: switch from LXDE to XFCE4
-
-

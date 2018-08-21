@@ -35,9 +35,9 @@
         - nginx
         - git
         - mercurial
-	# libgconf-2-4 is needed for appimage applications
-	# https://github.com/electron/electron/issues/1518
-	- libgconf-2-4
+        # libgconf-2-4 is needed for appimage applications
+        # https://github.com/electron/electron/issues/1518
+        - libgconf-2-4
 
         
     - name: check if utilities archive path already exists

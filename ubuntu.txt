@@ -39,7 +39,7 @@ Drag link to /c in File Manager
 #might be a good point to explore ansible here???
 
 #if you don't have ansible available elsewhere, install it now (ansible.txt)
-#if you do have ansible available, install the requirements to be a 
+#if you do have ansible available, install the requirements to be a
 https://github.com/city-of-bloomington/system-playbooks
 
 if you have ansible installed on another virtual machine, can use that for the bootstrap. edit hosts.txt:
@@ -106,8 +106,8 @@ Stay in Window Manager settings
 Under the "Keyboard" tab, clear the window operations menu setting
 
 Then, under All Settings -> Keyboard settings -> Application Shortcuts find:
-xfce4-appfinder
-(xfce4-popup-whiskermenu also works, but is stuck in the upper left corner)
+xfce4-popup-whiskermenu
+(xfce4-appfinder also works, but requires tab to select)
 and set that to Alt+Space
 
 Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shift+Ctrl+Delete"
@@ -160,21 +160,8 @@ Under "Colors" tab,
 For "Background color", use color picker to match emacs setting (#1D1F21)
 
 
-launch inkscape
-  - configre best default settings
-    exit fullscreen
-    - View -> Show/Hide -> Uncheck following:
-       Commands Bar
-       Snap Controls Bar
-       Palette
-    - In this order:
-      - Ctrl - Shift - O
-      - Ctrl - Shift - M
-      - Ctrl - Shift - A
-      - Ctrl - Shift - F
-    
-set inkscape to be the default opener for svg files
-Filemanager -> browse to svg -> right click -> open with -> choose another application -> inkscape -> make default
+[Inkscape Notes](inkscape/inkscape.md)
+
 
 
 #apply browser configurations sooner rather than later
@@ -201,6 +188,15 @@ Settings... -> Automatically check for updates: Every two weeks, (Never?)
 
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
+
+#screencasting
+
+#via https://en.wikipedia.org/wiki/Comparison_of_screencasting_software:
+#https://obsproject.com/download
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt-get update && sudo apt-get install obs-studio
+
+#see also streaming.txt
 
 
 
@@ -274,15 +270,6 @@ sudo apt-get install nginx
 #to install local packages on python3, use:
 sudo pip3 install -e .
 
-
-#screencasting
-
-#via https://en.wikipedia.org/wiki/Comparison_of_screencasting_software:
-#https://obsproject.com/download
-sudo add-apt-repository ppa:obsproject/obs-studio
-sudo apt-get update && sudo apt-get install obs-studio
-
-#see also streaming.txt
 
 
 #Ardour
