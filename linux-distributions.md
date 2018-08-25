@@ -1,4 +1,5 @@
-*2017.09.01 16:17:31
+# Distributions
+
 There are many linux distributions available.
 these days for a desktop I've been leaning toward xubuntu (yay XFCE!)
 

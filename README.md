@@ -1,19 +1,21 @@
-SYSTEM NOTES
------------------
-These notes document how I set up a computer with a fresh operating system. In general, I find it easier to set up a system from scratch quickly, rather than fix a broken system or upgrade an obsolete system.  I feel more confident that the system is clean and stable that way.  This is also a good chance to make sure my note taking and backup habits are working.
+# System Notes
 
-Notes on setting up different operating systems are included in:
-system/
+Try setting up a computer with a fresh operating system. In general, I find it easier to set up a system from scratch quickly, rather than fix a broken system or upgrade an obsolete system.  I feel more confident that the system is clean and stable that way.  This is also a good chance to make sure note taking, configuration management, and backup habits are working.
 
-If you don't already have a preference in operating systems, you might try Ubuntu.
-http://www.ubuntu.com
-
-Ubuntu is an open source operating system.  Open source software is a wonderful thing, and I encourage you to take some time to learn why:
+If you don't have a preferred operating system, consider one that is open source. Open source software is a wonderful thing, and I encourage you to take some time to learn why:
 general/free_software.txt
 
-Ubuntu makes getting started easy.  Start by downloading and burning an image of Ubuntu from their site.
+Linux is the most common on desktop machines in the open source world. There are many flavors:
 
-If you don't have the ability to download and burn CDs, there are also sources to order the system on CD for minimal cost, or you can look into transferring the image to a USB thumb drive.
+[Linux distributions](linux-distributions.md)
+
+Ubuntu is an open source linux operating system.  
+
+http://www.ubuntu.com
+
+Whatever you choose, start by downloading and burning an image of the operating system (OS) of your choice from their site.
+
+If you don't have the ability to download and burn CDs or flash drives, there are also sources to order the system on CD for minimal cost, or you can look into transferring the image to a USB thumb drive.
 
 Once you have your copy of Ubuntu, boot your computer with it and Ubuntu should load into a "Live" instance.  This is a fully functional Linux system.  Cooool.  With enough memory, the only noticable performance hit comes when the system needs to access a program from the source media.  
 

@@ -142,6 +142,24 @@ Can also consider adding favorites to the desktop
 
 
 
+# This is a useful application for adjusting monitor brightness
+
+sudo apt install ddccontrol gddccontrol ddccontrol-db i2c-tools
+
+sudo gddccontrol
+
+https://duckduckgo.com/?q=control+screen+brightness+desktop+monitor+linux&t=canonical&ia=qa
+control screen brightness desktop monitor linux at DuckDuckGo
+https://www.reddit.com/r/linux/comments/3gfa7z/desktop_monitor_brightness_control_script/
+Desktop monitor brightness control script : linux
+https://github.com/zeroping/ddccontrol-backlight
+zeroping/ddccontrol-backlight: Bash script for linking ddccontrol to /sys/class/backlight for desktop monitors
+https://duckduckgo.com/?q=ddcontrol&t=canonical&ia=web
+ddcontrol at DuckDuckGo
+https://github.com/ddccontrol/ddccontrol
+ddccontrol/ddccontrol: DDC Control
+
+
 
 ### Application configurations:
 
