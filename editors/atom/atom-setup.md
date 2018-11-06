@@ -1,5 +1,17 @@
 # Atom Setup
 
+## download
+
+https://duckduckgo.com/?q=atom+editor&t=ffab&ia=web
+atom editor at DuckDuckGo
+https://atom.io/
+Atom
+https://en.wikipedia.org/wiki/Atom_(text_editor)
+Atom (text editor) - Wikipedia
+https://atom.io/
+Atom
+
+
 ## Init, Settings
 
 New editor windows will open with settings already visible. If you need to re-open them later, it's easiest to use Ctrl-comma or the menu:
@@ -10,10 +22,7 @@ Open
 Generally, these files are located in your ~/.atom directory. E.g.
 [~/.atom/init.coffee](https://flight-manual.atom.io/hacking-atom/sections/the-init-file/)
 
-On macs, it's difficult to locate ~/.atom directory in the file browser if hidden files are not visible. To fix, in a terminal you can run: (didn't work)
-
-defaults write com.apple.finder AppleShowAllFiles YES
-
+On macs, it's difficult to locate ~/.atom directory in the file browser if hidden files are not visible. Just use the Ctrl-, -> Settings -> Open Config Folder sequence to open it.
 
 ### Auto-indent, keybindings
 
