@@ -1,20 +1,21 @@
-# Atom Setup
+# Atom Editor
 
-## download
+## Download
 
-https://duckduckgo.com/?q=atom+editor&t=ffab&ia=web
-atom editor at DuckDuckGo
 https://atom.io/
 Atom
 https://en.wikipedia.org/wiki/Atom_(text_editor)
 Atom (text editor) - Wikipedia
-https://atom.io/
-Atom
 
+## Init
 
-## Init, Settings
+<img src="screenshots/default-startup.png">
 
-New editor windows will open with settings already visible. If you need to re-open them later, it's easiest to use Ctrl-comma or the menu:
+On first run, it shows a Welcome Guide. I disable this and allow for Telemetry Consent.
+
+## Settings
+
+Once the welcome screen doesn't show by default, it's important to know how to get back to edit settings.  It's easiest to use Ctrl-comma or the menu:
 
 Open
 ![atom-settings_view-open-ctrl_comma.png](screenshots/atom-settings_view-open-ctrl_comma.png)
@@ -24,12 +25,15 @@ Generally, these files are located in your ~/.atom directory. E.g.
 
 On macs, it's difficult to locate ~/.atom directory in the file browser if hidden files are not visible. Just use the Ctrl-, -> Settings -> Open Config Folder sequence to open it.
 
-### Auto-indent, keybindings
+### Custom Keybindings
 
-First step is to bind TAB to auto indent...
-This is the behavior I've come to expect with an editor when working with Python and Javascript. Manual tab control feels strange now.
+Open Atom settings (press Ctrl-, or choose Edit -> Preferences)   
+Switch to the Keybindings section.  
 
-Open Atom settings (press Ctrl-, or choose Edit -> Preferences), and switch to the Keybindings section. Type spell into the filter field to view all spell-checking commands and their keybindings, and click the Copy to Clipboard icon next to the spell-check:correct-misspelling item. Choose Edit -> Open Your Keymap to open the keymap.cson file, then paste the copied keybinding definition into the file. Modify the default keybinding and save the changes to enable the new keyboard shortcut.
+
+Type spell into the filter field to view all spell-checking commands and their keybindings, and click the Copy to Clipboard icon next to the spell-check:correct-misspelling item.
+
+Choose Edit -> Open Your Keymap to open the keymap.cson file, then paste the copied keybinding definition into the file. Modify the default keybinding and save the changes to enable the new keyboard shortcut.
 
 via:  
 http://www.linux-magazine.com/Online/Blogs/Productivity-Sauce/Custom-Keybindings-in-the-Atom-Editor
@@ -62,10 +66,16 @@ Add the following snippet:
   'shift-ctrl-left': 'editor:select-to-beginning-of-word'
   'shift-ctrl-right': 'editor:select-to-end-of-word'
 
+
+
   # what is this for?
   'ctrl-shift-T': 'unset!'
 
 ```
+
+Command-Shift-P reload
+to reload editor window and make changes take effect
+
 
 More info about keybindings:  
 https://flight-manual.atom.io/using-atom/sections/basic-customization/#customizing-keybindings
@@ -88,39 +98,28 @@ Change "File Blacklist" to:
 
 https://flight-manual.atom.io/using-atom/sections/autocomplete/
 
-
-## Markdown
-
-Atom's markdown-preview is the best!
-
-
-<img src="screenshots/atom-markdown-mode-toggle-2.png" alt="">
-TODO:  
-How to use snippets in atom
-e.g.  
-```
-<img src="screenshots/" alt="">
-```
-
-TODO:  
-link to separate guide for using Markdown
-
 ## Packages
 
 https://atom.io/packages/
 
 https://flight-manual.atom.io/using-atom/sections/atom-packages/
 
+moments-atom
+
+pigments  
+
+https://atom.io/packages/python-indent
+
+
 Atom Beautify may be a good alternative to fixing indentation issues:  
 https://atom.io/packages/atom-beautify  
 (but it's probably good to still have auto-indent enabled as mentioned earlier)
 
-https://atom.io/packages/python-indent
 
 https://atom.io/packages/ide-python
 
 highlight-selected  
-pigments  
+
 
 https://atom.io/packages/path-copy  
 path-copy  
@@ -158,6 +157,27 @@ cd path-to-your-package
 apm publish minor
 
 ```
+
+## Auto-indent
+
+First step is to bind TAB to auto indent...
+This is the behavior I've come to expect with an editor when working with Python and Javascript. Manual tab control feels strange now.
+
+## Markdown
+
+Atom's markdown-preview is the best!
+
+
+<img src="screenshots/atom-markdown-mode-toggle-2.png" alt="">
+TODO:  
+How to use snippets in atom
+e.g.  
+```
+<img src="screenshots/" alt="">
+```
+
+TODO:  
+link to separate guide for using Markdown
 
 
 ## TODO:  
