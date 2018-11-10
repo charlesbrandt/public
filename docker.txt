@@ -1,7 +1,7 @@
 Docker is a lighter weight alternative to a full virtual machine.
-Virtual machines are handy tools as well, but require ore resources and duplicate a lot of the operating system files.
+Virtual machines are handy tools as well, but require more resources and duplicate many of the operating system files.
 
-Docker has great documentation, and I have been following along there:
+Docker has great documentation. I started here:
 https://docs.docker.com/
 
 Engine is the core of it all:
@@ -12,13 +12,12 @@ https://docs.docker.com/engine/understanding-docker/
 
 https://docs.docker.com/engine/userguide/
 
-
-
 This cheat sheet is a great overview, and closely resembles what these notes cover:
 https://github.com/wsargent/docker-cheat-sheet
 
+
 *2017.09.26 11:24:24
-When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if they don't exist already), and then run the command.
+When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
 
     docker run mhart/alpine-node node --version
 
@@ -27,18 +26,23 @@ see a list of *currently running* docker containers:
 
     docker ps
     
-connect to a (already running) docker container:
-
-    docker attach loving_heisenberg 
-
 start and connect to a docker container:
-
-    docker exec -it <containerIdOrName> bash
-    docker exec -it docker_web_run_1 bash
 
     docker run -i -t --entrypoint /bin/bash <imageID>
     docker run -i -t --entrypoint /bin/bash docker_web_run_1
-    
+
+start a new shell in an already running container:
+
+    docker exec -it 393b12a61839 /bin/sh
+    docker exec -it <containerIdOrName> bash
+    docker exec -it docker_web_run_1 bash
+
+
+connect to a (already running) docker container (Note: this will share the same shell if another instance is already connected interactively)
+
+    docker attach loving_heisenberg 
+
+
 via:
 http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode
 
@@ -75,7 +79,7 @@ docker images are stored in:
 
     /var/lib/docker
     
-(don't forget, on mac docker is running in a VM, so this location is on that VM)
+(don't forget, docker sometimes run in a VM, so this location is on that VM)
 via:
 http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
 
@@ -138,6 +142,23 @@ https://docs.docker.com/engine/userguide/containers/networkingcontainers/
     eval "$(docker-machine env default)"
 
 
+*2017.10.26 14:07:28
+troubleshooting connections docker
+
+A successful approach was to launch the server, connect to the container using another shell
+
+# apk update
+# this provides the "ss" command for "socket statistics"
+# RUN apk add --no-cache iproute2
+# e.g. to see if a server is running on expected port:
+#    ss -lntp
+
+verify server was on correct ports using above command
+
+apk add lynx
+
+lynx 127.0.0.1:8080
+
 
 
 
@@ -180,6 +201,22 @@ http://docs.ansible.com/ansible/docker_service_module.html
 
 e.g.
 https://www.reddit.com/r/docker/comments/4421ow/docker_compose_vs_ansible_docker_for_machine/?
+
+
+
+
+
+
+*2017.10.26 09:03:47 docker ubuntu
+Good references for installing docker on Ubuntu: (Digital Ocean guide uses apt-get... start there)
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+
+
+https://www.google.com/search?q=docker+ubuntu&oq=docker+ubuntu&aqs=chrome..69i57j0l5.3936j0j1&sourceid=chrome&ie=UTF-8
+
 
 
 

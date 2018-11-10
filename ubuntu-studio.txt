@@ -1,3 +1,15 @@
+*2018.08.14 book
+
+https://help.ubuntu.com/community/UbuntuStudio/AudioHandbook
+https://help.ubuntu.com/community/UbuntuStudio/AudioHandbook/OverviewInstrumentsEffects
+
+https://www.google.com/search?q=xubuntu+download&oq=xubuntu&aqs=chrome.2.69i57j0l5.11095j0j1&sourceid=chrome&ie=UTF-8
+https://xubuntu.org/download/
+https://ubuntustudio.org/
+https://ubuntustudio.org/2018/06/introducing-the-ubuntu-studio-audio-handbook/
+https://www.google.com/search?q=behringer+u-phoria+umc22&oq=Behringer+U-PHORIA+UMC22&aqs=chrome.0.0l6.357j0j1&sourceid=chrome&ie=UTF-8
+
+
 *2017.08.27 18:56:21
 Ubuntu studio doesn't work well in a virtualized environment
 Not much benefit to running it that way either... it's meant to be the base OS on a real machine

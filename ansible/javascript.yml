@@ -3,7 +3,7 @@
 
   vars_files:
     - shari_vari.yml
-    
+
   tasks:
     - name: Install node packages.
       action: apt pkg={{ item }} state=present
@@ -24,7 +24,7 @@
 
     - name: pip install jsbeautifier
       pip: executable=pip3 name=jsbeautifier
-      
+
     # python2 version
     #- pip: name=jsbeautifier
 
@@ -44,6 +44,7 @@
     - name: sudo npm install -g n
       npm: name=n global=yes
 
+    #then use n to upgrade the version of node available
     - name: n stable
       shell: n stable
 
@@ -57,12 +58,12 @@
       npm: name=npm global=yes state=latest
     #npm -v
 
-    # TODO: 
+    # TODO:
     # install yarn
 
     # TODO:
     # ansible command for yarn?
-    
+
     #sudo npm install webpack -g
     - name: sudo npm install webpack -g
       npm: name=webpack global=yes state=latest
@@ -89,18 +90,15 @@
     - name: npm install -g vue-cli
       npm: name=vue-cli global=yes state=latest
 
-      
+
     # for gulp:
-    #sudo npm install --global gulp-cli      
+    #sudo npm install --global gulp-cli
     #- npm: name=gulp-cli global=yes state=latest
     # TODO:
     # if gulp, then also browserify
-    
-    
+
+
     #for Firefox browser extensions
     #seems like this approach has changed
     #npm install jpm --global
     #- npm: name=jpm global=yes state=latest
-
-    
-      
