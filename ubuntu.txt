@@ -141,6 +141,20 @@ Clean up favorite applications in the launcher (xfce4-popup-whiskermenu):
 Can also consider adding favorites to the desktop
 
 
+Add "Places" to panel so that recent items can be cleaned up / removed:
+
+"I fiured this out.
+Add "places" to your panel. It has the function to clear out all recent documents."
+
+via:
+https://duckduckgo.com/?q=xfce+clear+recent+files&t=canonical&ia=web
+xfce clear recent files at DuckDuckGo
+https://forum.xfce.org/viewtopic.php?id=7163
+[Solved] How to delete recent documents in xfce? / General discussion / Xfce Forums
+https://www.linuxquestions.org/questions/slackware-14/recent-files-in-xfce-711915/
+Recent files in XFCE
+
+
 
 # This is a useful application for adjusting monitor brightness
 
@@ -159,6 +173,41 @@ ddcontrol at DuckDuckGo
 https://github.com/ddccontrol/ddccontrol
 ddccontrol/ddccontrol: DDC Control
 
+
+# Steam Controller
+
+working instructions available:
+/c/charles/hardware/controllers/steam.md
+
+sudo pip3 install libusb1
+sudo pip3 install --upgrade pip
+cd /c/
+mkdir downloads
+cd downloads/
+which git
+git clone https://github.com/ynsta/steamcontroller.git
+cd steamcontroller
+sudo python3 setup.py install
+sudo vi /etc/udev/rules.d/99-steam-controller.rules
+ls /etc/udev/rules.d/
+sudo vi /etc/udev/rules.d/99-steam-controller.rules
+sudo udevadm control --reload
+python3 sc-xbox.py start
+sc-xbox.py start
+sc-xbox.py stop
+sc-desktop.py start
+sc-desktop.py start
+sc-desktop.py stop
+sc-dump.py
+sudo sc-dump.py
+sudo sc-desktop.py start
+
+also remember to:
+  - replace batteries
+  - turn the controller on (hold down steam button for 3+ seconds)
+  - make sure the usb dongle is plugged in and on
+
+  - using sudo is important
 
 
 ### Application configurations:
@@ -216,6 +265,11 @@ sudo apt-get update && sudo apt-get install obs-studio
 
 #see also streaming.txt
 
+
+# Install Javascript / Node / Vue
+/c/charles/technical/javascript/node.txt
+
+/c/charles/technical/javascript/vue/start-here.txt
 
 
 TODO:
@@ -288,6 +342,35 @@ sudo apt-get install nginx
 #to install local packages on python3, use:
 sudo pip3 install -e .
 
+
+
+
+
+# keyboard shortcut for timestamps (system wide!)
+
+https://www.semicomplete.com/projects/xdotool/
+
+   sudo apt-get install xdotool
+
+https://unix.stackexchange.com/questions/36922/keyboard-shortcut-to-send-text-strings-to-program
+
+   xdotool type 'text'
+
+   xdotool type "$(date +'# %Y.%m.%d %H:%M')"
+
+### 2018.11.04 00:25:29
+see screenshots... this attempt doesn't work so far
+
+https://duckduckgo.com/?q=xfce+keyboard+shortcut+output+text&t=canonical&ia=qa
+xfce keyboard shortcut output text at DuckDuckGo
+https://unix.stackexchange.com/questions/36922/keyboard-shortcut-to-send-text-strings-to-program
+Keyboard Shortcut To Send Text Strings To Program - Unix & Linux Stack Exchange
+https://www.semicomplete.com/projects/xdotool/xdotool.xhtml
+404 Page not found - semicomplete
+https://duckduckgo.com/?q=xdotool&t=canonical
+xdotool at DuckDuckGo
+https://www.semicomplete.com/projects/xdotool/
+xdotool - fake keyboard/mouse input, window management, and more - semicomplete
 
 
 #Ardour

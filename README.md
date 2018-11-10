@@ -28,7 +28,7 @@ When running from an Ubuntu live session, I add some configurations with:
 system/startup.sh
 Be sure to update $NAME to be your name/username and $USBPATH to point to where this instance is.
 
-# system
+# ansible
 A collection of ansible scripts and notes about setting up different systems. Also includes notes on common system administration tasks. These notes change based on current personal configurations.
 
 When starting a new system, the trick is getting the pieces you need most installed first.  

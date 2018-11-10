@@ -2,7 +2,7 @@
 
 Add Inskape to favorites
 
-launch inkscape
+Launch inkscape
 
 <img src="screenshots/0001-default-start.png" alt="When Inkscape first starts...">
 
@@ -36,10 +36,7 @@ Exit inkscape so defaults take effect.
 Set inkscape to be the default opener for svg files
 Filemanager -> browse to svg -> right click -> open with -> choose another application -> inkscape -> make default
 
-## TODO
-
-add fonts to the system (see also... ???)
-configure a default font as desired
+## Default template
 
 decide on a default template when it opens...
 
@@ -54,6 +51,46 @@ https://graphicdesign.stackexchange.com/questions/5830/inkscape-changing-default
 
 https://duckduckgo.com/?q=inkscape+default+template&t=canonical&ia=qa
 
+## Default fonts
 
+Set better default font size
+
+    Text -> Text and Font...  
+    (ctrl-alt-t)  
+
+
+<img src="screenshots/.png" alt="">
+
+
+Also choose where you want to start with template
+
+## TODO
+
+
+add fonts to the system (see also... ???)  
+configure a default font as desired
+
+research default dpi conversion:
+https://inkscape.org/en/learn/faq/#dpi_change
 
 <img src="screenshots/" alt="">
+
+How to create arrows? [2018.09.15 05:50:22]
+
+## Links
+
+*2016.02.01 18:06:47 raster vector potrace  
+https://duckduckgo.com/?q=convert+raster+to+svg&t=canonical  
+convert raster to svg at DuckDuckGo  
+https://en.wikipedia.org/wiki/Image_tracing  
+Image tracing - Wikipedia, the free encyclopedia  
+https://en.wikipedia.org/wiki/Potrace  
+Potrace - Wikipedia, the free encyclopedia  
+
+
+*2014.05.07 18:49:09  
+was curious what the tweak tool does...  
+interesting...  
+like a smudge tool for vector  
+
+http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Tweak.html  
