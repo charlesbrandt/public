@@ -3,6 +3,13 @@ window 10 download - Google Search
 https://www.microsoft.com/en-us/software-download/windows10ISO
 Download Windows 10 Disc Image (ISO File)
 
+*2018.07.24 09:40:52
+Occasionally it's a good idea to clean up rollback copies of updates that are kept around:
+https://www.tenforums.com/tutorials/82643-clean-up-component-store-winsxs-folder-windows-10-a.html
+
+May also be a scheduled task that cleans those up every 30 days now.
+(Thanks Seth!)
+
 
 *2015.10.29 17:55:40
 visual disk usage utility
@@ -16,7 +23,7 @@ It's time to set up a system!
 This file might look like gobbledygood (due to incorrect line returns)
 That will be fixed when you install and use Emacs to edit text files.
 
-But first, the best thing to do with a new system, especially one that doesn't have installation media, is to make an image of the drive.  Boot to linux and use dd to copy for a portable way to do this on all machines (not using a proprietary backup imaging mechanism). This way you can always go back to the factory state of the system.  
+But first, the best thing to do with a new system, especially one that doesn't have installation media, is to make an image of the drive.  Boot to linux and use dd to copy for a portable way to do this on all machines (not using a proprietary backup imaging mechanism). This way you can always go back to the factory state of the system.
 
 Or, if you're using virtualization, see virtualization.txt for notes on setting up your virtual machine.
 
@@ -29,7 +36,7 @@ Windows 7 creates a homegroup automatically for you.
 when navigating to google via explorer, prompted to try chrome
 go ahead and install that
 
-*2013.05.20 23:00:33 
+*2013.05.20 23:00:33
 Control Panel -> Appearance and Personalization -> Folder Options
 "Show hidden files and folders"
 Uncheck "Hide extensions for known file types"
@@ -65,9 +72,9 @@ All the files mentioned above should go in your HOME directory. The HOME directo
    2. If the registry entry HKCU\SOFTWARE\GNU\Emacs\HOME is set, use the directory it indicates.
    3. If the registry entry HKLM\SOFTWARE\GNU\Emacs\HOME is set, use the directory it indicates. Not recommended, as it results in users sharing the same HOME directory.
    4. If C:\.emacs exists, then use C:/. This is for backward compatibility, as previous versions defaulted to C:/ if HOME was not set.
-   5. Use the user's AppData directory, usually a directory called Application Data under the user's profile directory, the location of which varies according to Windows version and whether the computer is part of a domain. 
+   5. Use the user's AppData directory, usually a directory called Application Data under the user's profile directory, the location of which varies according to Windows version and whether the computer is part of a domain.
 
-Within Emacs, <~> at the beginning of a file name is expanded to your HOME directory, so you can always find your .emacs file with C-x C-f ~/.emacs. 
+Within Emacs, <~> at the beginning of a file name is expanded to your HOME directory, so you can always find your .emacs file with C-x C-f ~/.emacs.
 
 
 
@@ -97,7 +104,7 @@ Right-click on the desktop icon for your machine (captioned My Computer, if you 
 
 This pops up a dialogue box of system information; click on the Advanced tab and then on the Environment Variables  button. In the new dialogue that pops up, click on the Path variable in the System Variables box; then click the Edit button.
 
-Place your cursor in the Variable Value textbox, right before the final double-quote of the string. Type a semicolon (to separate the previous value from the one you're about to add) and then type the location of the python executable on your system-- probably something like C:\Python . Click OK until you're out of all the dialogue boxes. Now, when you type python at any DOS command prompt, Windows will be able to automatically find and run the correct executable. 
+Place your cursor in the Variable Value textbox, right before the final double-quote of the string. Type a semicolon (to separate the previous value from the one you're about to add) and then type the location of the python executable on your system-- probably something like C:\Python . Click OK until you're out of all the dialogue boxes. Now, when you type python at any DOS command prompt, Windows will be able to automatically find and run the correct executable.
 
 
 
@@ -119,7 +126,7 @@ installer requires network access
 vlc is good too
 http://www.videolan.org/vlc/download-windows.html
 
-*2009.12.30 09:36:00 
+*2009.12.30 09:36:00
 http://www.gimp.org/windows/
 GIMP - for Windows
 http://gimp-win.sourceforge.net/faq.html
@@ -133,7 +140,7 @@ ftp.gnome.org
 http://gimp-win.sourceforge.net/stable.html
 GIMP - Windows installers
 
-*2009.12.30 09:42:43 
+*2009.12.30 09:42:43
 http://audacity.sourceforge.net/
 Audacity: Free Audio Editor and Recorder
 http://audacity.sourceforge.net/download/
@@ -146,7 +153,7 @@ Lame MP3 Encoder Binaries
 *2008.05.14 16:40 ssh putty
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
-*2008.05.14 18:10 
+*2008.05.14 18:10
 http://www.google.com/search?hl=en&client=firefox-a&rls=com.ubuntu%3Aen-US%3Aofficial&hs=boj&q=blender&btnG=Search
 blender - Google Search
 http://www.blender.org/download/get-blender/
@@ -159,7 +166,7 @@ http://www.tightvnc.com/download.php
 this version integrates with explorer, file properties window
 http://www.frozenlogic.org/summerproperties.shtml
 
-*2008.05.14 11:06 
+*2008.05.14 11:06
 set up windows explorer to be best view
 tools -> folder options
 
@@ -169,11 +176,11 @@ This works similar to the Timemachine feature on OS X
 enable this to synchronize changes to an external drive
 cool!
 
-*2008.05.14 11:03 
+*2008.05.14 11:03
 configure desktop to be in classic windows theme
 change background to black
 
-*2008.05.30 14:56 
+*2008.05.30 14:56
 7-zip works well for tar, gz files on windows.... yay!  Free and Open source... thanks guys!
 http://www.7-zip.org/download.html
 
@@ -203,7 +210,7 @@ efc4643607d821ee5b1e306b5181917c *dvdshrink32setup.exe
 *2011.08.06 12:58:50 dvdfab
 http://www.dvdfab.com/hd-decrypter.htm
 
-*2009.12.30 10:29:15 
+*2009.12.30 10:29:15
 stopping here for another image
 this is a good place to get back to
 syncing and then removing local copy of mercurial notes
@@ -215,7 +222,7 @@ plus that ensures a clean start
 
 
 
-*2009.06.19 14:39:41 
+*2009.06.19 14:39:41
 installed avast
 
 Dear user,
@@ -257,19 +264,19 @@ The ALWIL Software team.
 *2008.05.14 17:26 launcher launchy
 http://sourceforge.net/projects/launchy/files/
 http://www.launchy.net/
-also [2009.12.30 09:22:21] 
+also [2009.12.30 09:22:21]
 doesn't seem to find emacs by default
 added a special case to runny plugin
 C:\Documents and Settings\All Users\Start Menu\Programs\Startup
 should be starting automatically... not sure that it is
 
-*2008.05.14 16:39 
+*2008.05.14 16:39
 http://filezilla-project.org/download.php?type=client
 
-*2008.05.14 17:22 
+*2008.05.14 17:22
 http://www.mozilla.com/en-US/thunderbird/all.html
 
-*2009.12.30 09:25:36 
+*2009.12.30 09:25:36
 resorted and cleaned up start menu items
 
 *2009.12.29 22:55:34 rsync
@@ -286,15 +293,15 @@ cwrsync - Rsync for Windows | ITeF!x
 
 C:\Program Files\cwRsync\bin\rsync.exe D:\clients\larry_humes\projects
 
-"C:\Program Files\cwRsync\bin\rsync.exe" -av /cygdrive/d/clients/larry_humes/projects/ /cygdrive/c/c/clients/larry_humes/projects 
+"C:\Program Files\cwRsync\bin\rsync.exe" -av /cygdrive/d/clients/larry_humes/projects/ /cygdrive/c/c/clients/larry_humes/projects
 *2008.05.30 17:13
 updating windows sendto folders in windows XP
  http://support.microsoft.com/kb/q310270/
 
-*2008.05.14 18:16 
+*2008.05.14 18:16
 http://download.openoffice.org/other.html#en-US
 
-*2010.06.25 13:34:37 
+*2010.06.25 13:34:37
 http://www.bing.com/search?q=windows+sip+phone&pc=Z004&form=ZGAPHP
 windows sip phone - Bing
 http://en.wikipedia.org/wiki/List_of_SIP_software
