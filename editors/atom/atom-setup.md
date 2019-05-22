@@ -7,6 +7,18 @@ Atom
 https://en.wikipedia.org/wiki/Atom_(text_editor)
 Atom (text editor) - Wikipedia
 
+You can download it directly from the website. On Linux, you can also install it using apt-get to help with updates:
+
+```
+curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+sudo apt-get update
+sudo apt-get install atom
+```
+
+via:
+https://flight-manual.atom.io/getting-started/sections/installing-atom/
+
 ## Init
 
 <img src="screenshots/default-startup.png">
@@ -42,7 +54,10 @@ Add the following snippet:
 
 ```
 'atom-text-editor':
-  'tab': 'editor:auto-indent'
+  # this interferes with auto-complete
+  #'tab': 'editor:auto-indent'
+  'ctrl-tab': 'editor:auto-indent'
+  
   # macs default to cmd-s
   'ctrl-s': 'core:save'
   'ctrl-j': 'moments-atom:journal'
@@ -66,7 +81,9 @@ Add the following snippet:
   'shift-ctrl-left': 'editor:select-to-beginning-of-word'
   'shift-ctrl-right': 'editor:select-to-end-of-word'
 
-
+  # https://discuss.atom.io/t/resolved-avoid-copying-when-selection-is-empty/16397/11
+  'cmd-c': 'editor:copy-selection'   # mac os
+  'ctrl-c': 'editor:copy-selection'  # linux and windows
 
   # what is this for?
   'ctrl-shift-T': 'unset!'
@@ -98,6 +115,18 @@ Change "File Blacklist" to:
 
 https://flight-manual.atom.io/using-atom/sections/autocomplete/
 
+## Finding a function
+
+Use Ctrl-R to use the built in "Symbols-View" module
+
+https://duckduckgo.com/?q=atom+editor+navigate+to+function&t=canonical&ia=web
+atom editor navigate to function at DuckDuckGo
+https://github.com/atom/symbols-view
+GitHub - atom/symbols-view: Jump to symbols in Atom
+https://stackoverflow.com/questions/31077396/how-can-i-jump-to-class-method-definition-in-atom-text-editor
+How can I jump to class/method definition in Atom text editor? - Stack Overflow
+
+
 ## Packages
 
 https://atom.io/packages/
@@ -110,17 +139,20 @@ pigments
 
 https://atom.io/packages/python-indent
 
+https://atom.io/packages/language-vue
 
 Atom Beautify may be a good alternative to fixing indentation issues:  
 https://atom.io/packages/atom-beautify  
 (but it's probably good to still have auto-indent enabled as mentioned earlier)
 
 
+Not used as frequently
+
 https://atom.io/packages/ide-python
 
 highlight-selected  
 
-
+This seems built in by default now?
 https://atom.io/packages/path-copy  
 path-copy  
 https://atom.io/packages/tree-view-copy-relative-path

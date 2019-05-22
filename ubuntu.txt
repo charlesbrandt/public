@@ -53,6 +53,24 @@ then on control machine run:
 
 
 
+## Choose a Windows Manager
+
+https://i3wm.org/
+i3 - improved tiling wm
+
+via:
+https://i3wm.org/docs/repositories.html
+
+```
+/usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2019.02.01_all.deb keyring.deb SHA256:176af52de1a976f103f9809920d80d02411ac5e763f695327de9fa6aff23f416
+
+sudo dpkg -i ./keyring.deb
+# this throws an error as sudo
+sudo echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" >> /etc/apt/sources.list.d/sur5r-i3.list
+sudo apt update
+sudo apt install i3
+```
+
 # Configs
 
 TODO:
@@ -174,6 +192,17 @@ https://github.com/ddccontrol/ddccontrol
 ddccontrol/ddccontrol: DDC Control
 
 
+## Password Managers
+https://www.google.com/search?q=open+source+password+manager&oq=open+source+passw&aqs=chrome.0.0j69i57j0l4.6551j1j7&client=ubuntu&sourceid=chrome&ie=UTF-8
+open source password manager - Google Search
+https://hackernoon.com/the-best-password-manager-for-you-747b92c43d18
+The Best Password Manager for You – Hacker Noon
+https://www.passwordstore.org/
+Pass: The Standard Unix Password Manager
+https://keepass.info/
+KeePass Password Safe
+
+
 # Steam Controller
 
 working instructions available:
@@ -229,6 +258,19 @@ For "Background color", use color picker to match emacs setting (#1D1F21)
 
 [Inkscape Notes](inkscape/inkscape.md)
 
+
+## FreeCAD
+sudo apt-get install freecad
+
+results in error on 18.04
+
+via:
+https://techoverflow.net/2018/06/03/how-to-fix-freecad-no-module-named-webgui-on-ubuntu-18-04/
+
+    sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
+    sudo apt-get update
+
+sudo apt install freecad
 
 
 #apply browser configurations sooner rather than later

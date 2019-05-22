@@ -19,11 +19,22 @@ https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search
 #and this may have similar functionality
 https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
 
-*2015.11.03 11:50:23
-There are a few items that are great additions (Add-ons) (plugins):
+*2019.02.03 09:18:28
+https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web
+great suspender firefox at DuckDuckGo
+https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/
+Chrome's 'The Great Suspender' for firefox? : firefox
+https://addons.mozilla.org/en-US/firefox/addon/unload-tabs/
+UnloadTabs – Get this Extension for 🦊 Firefox (en-US)
 
-#custom new tab screen
-https://addons.mozilla.org/en-us/firefox/addon/moment/
+#this one didn't work so well for me.. major memory usage
+https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/
+Tab Suspender – Get this Extension for 🦊 Firefox (en-US)
+
+
+*2019.02.09 08:00:12
+https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
+
 
 *2013.04.22 20:36:25 browsers firefox chrome
 https://disconnect.me/
@@ -32,26 +43,6 @@ https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 via:
 http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968
 
-#seems like it might be better to deny javascript by default. Give it a try and see how it works out:
-https://addons.mozilla.org/en-US/firefox/addon/noscript
-*2015.11.19 12:58:35 browsers todo systems javascript
-should consider adding noscript to firefox configuration:
-https://noscript.net/
-http://boingboing.net/2015/11/18/the-web-is-pretty-great-with-j.html
-
-*2016.05.03 09:23:04
-https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/
-
-
-Restart browser, close extra tabs
-
-Be sure to change Moment screen preferences:
-chrome://moment/content/options.html
-
-Farenheit
-Y M D
-Location: Bloomington, IN
-Save
 
 For Firefox preferences:
 Preferences-> General
@@ -67,12 +58,55 @@ Advanced -> Data Choices -> disable "Enable Firefox Health Report" and "Enable C
 Clear History
 
 
+
+
+*2019.02.03 09:23:08
+Similar in goal to Disconnect Me
+AdBlock Plus?
+https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
+(maybe it's better just to disable javascript for non-trusted sites?)
+
+*2019.02.03 09:21:03
 ColorZilla
 https://addons.mozilla.org/en-us/firefox/addon/colorzilla
+
+This is good, but it's usually easier to use a similar function at the operating system level instead -- that way it's not limited to a specific window / application type
+
+*2015.11.19 12:58:35 browsers todo systems javascript
+#seems like it might be better to deny javascript by default. Give it a try and see how it works out:
+https://addons.mozilla.org/en-US/firefox/addon/noscript
+
+should consider adding noscript to firefox configuration:
+https://noscript.net/
+http://boingboing.net/2015/11/18/the-web-is-pretty-great-with-j.html
+
+other noscript like options:
+http://www.gnu.org/software/librejs/
+http://www.gnu.org/philosophy/javascript-trap.html
+
+*2016.05.03 09:23:04
+https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/
+
+*2015.11.03 11:50:23
+There are a few items that are great additions (Add-ons) (plugins):
+
+#custom new tab screen
+https://addons.mozilla.org/en-us/firefox/addon/moment/
+
+Restart browser, close extra tabs
+
+Be sure to change Moment screen preferences:
+chrome://moment/content/options.html
+
+Farenheit
+Y M D
+Location: Bloomington, IN
+Save
 
 *2016.01.27 08:39:11 browsers todo
 some of these add-ons look promising
 
+Highlighter for text?
 https://addons.mozilla.org/en-US/firefox/addon/wired-marker/?src=collection&collection_id=69b74e8b-ed2c-4274-aeff-fc051f2330c4
 Wired-Marker :: Add-ons for Firefox
 
@@ -82,19 +116,11 @@ May be similar to:
 https://addons.mozilla.org/en-US/firefox/addon/video-downloadhelper
 https://addons.mozilla.org/en-US/firefox/addon/downthemall
 
-AdBlock Plus?
-https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
-(maybe it's better just to disable javascript for non-trusted sites?)
-
 http://www.mozilla.org/en-US/firefox/new/
 
 #measure pixels, add rulers, etc:
 https://addons.mozilla.org/en-US/firefox/addon/measureit
 #this didn't work for me
-
-other noscript like options:
-http://www.gnu.org/software/librejs/
-http://www.gnu.org/philosophy/javascript-trap.html
 
 
 
@@ -108,9 +134,17 @@ https://www.google.com/intl/en/chrome/
 Otherwise:
 http://www.chromium.org
 
-*2013.10.15 10:11:17
-custom new tab page:
-https://chrome.google.com/webstore/detail/currently/ojhmphdkpgbibohbnpbfiefkgieacjmh
+   sudo apt-get install chromium-browser
+
+
+*2019.02.09 07:04:35
+The Great Suspender!
+Suspend Tabs after a certain period of inactivity
+This is great!
+Saves so much memory and resources!
+Wish I could find something equivalent that works for Firefox...
+
+https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg/related
 
 *2011.09.05 09:46:51
 copy
@@ -122,10 +156,17 @@ right click, options,
 $url
 $title
 
+*2019.02.09 08:05:54
+https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd
+
 *2014.03.11 23:19:34 link_router
 https://chrome.google.com/webstore/detail/link-router/mniabhjoaeegihknhoibknnfnidgnecp
 
 yay!
+
+*2013.10.15 10:11:17
+custom new tab page:
+https://chrome.google.com/webstore/detail/currently/ojhmphdkpgbibohbnpbfiefkgieacjmh
 
 *2016.02.06 09:09:25
 http://felixniklas.com/dimensions/

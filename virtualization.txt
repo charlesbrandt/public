@@ -1,7 +1,7 @@
 *2017.01.11
-If you're installing a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems. 
+If you're installing a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems.
 
-When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds very cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
+When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds like it's the most cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
 
 If installing to a virtual machine, avoid allowing the installation to download and apply updates automatically. Disconnect from the internet. To be sure: Virtual Box -> Devices -> Network -> Disconnect Cable. That way you can apply the updates whenever you want to clone and re-run the setup scripts.
 
@@ -41,8 +41,11 @@ If you want to connect to the machine from outside of your local machine, you'll
 Also be sure to open up 8822 (or whatever you choose) in the firewall:
 
      sudo ufw allow 8822
-    
+
 Start the system back up.
+
+
+
 
 # on ubuntu server 16.04.1 needed this:
 
@@ -131,8 +134,8 @@ When it comes time to migrate between platforms (VMWare vs Virtual Box):
 http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053864
 
 
-*2016.05.01 08:38:00 
-#virtualbox 
+*2016.05.01 08:38:00
+#virtualbox
 ----------------------------------------------
 mkdir -p /c/virtual_box/installs
 cd /c/virtual_box/installs
@@ -162,16 +165,16 @@ If you use an image often, it would be good to keep it local
 
 
 
-*2013.05.24 10:54:04 
-Setting up a virtual machine is a nice way to run a guest operating system without needing to reboot into that system separately.  Rebooting can often be a hassle if the guest system is not needed as often. 
+*2013.05.24 10:54:04
+Setting up a virtual machine is a nice way to run a guest operating system without needing to reboot into that system separately.  Rebooting can often be a hassle if the guest system is not needed as often.
 
-So far, I'm trying VirtualBox for this task... it's cross platform and open source and free... a tough combination to beat. 
+So far, I'm trying VirtualBox for this task... it's cross platform and open source and free... a tough combination to beat.
 https://www.virtualbox.org/wiki/Downloads
 
 https://www.virtualbox.org/manual/ch01.html
 
 
-VMWare and Parallels (for Mac) get good reviews and apparently perform better, but are pricier.  I'll wait and see if I notice any performance issues with VirtualBox and then go from there. 
+VMWare and Parallels (for Mac) get good reviews and apparently perform better, but are pricier.  I'll wait and see if I notice any performance issues with VirtualBox and then go from there.
 
 Here are some comparisons and links:
 
@@ -199,7 +202,7 @@ Still using VirtualBox... good enough!
 
 For sharing files, it should be possible to have a shared folder between host and guest... have done this on OS X... maybe requires extensions?
 
-However, it is also possible to just use rsync. 
+However, it is also possible to just use rsync.
 This requires SSH to be installed on guest, which is probably a good thing to enable anyway for Ansible
 
 *2015.10.28 07:33:07 links

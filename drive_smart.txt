@@ -1,3 +1,17 @@
+*2019.02.03 20:53:21
+https://stackoverflow.com/questions/17262170/bottle-py-enabling-cors-for-jquery-ajax-requests
+
+sudo apt-get install gnome-disk-utility
+
+The commandline version of the libatasmart library used by Gnome Disks is called skdump part of the libatasmart-bin package which is not installed by default. Install by using:
+
+sudo apt-get install libatasmart-bin
+
+Next run the following command to see the SMART information by running the following command in the terminal (replacing /dev/sda by the path to your drive):
+
+sudo skdump /dev/sda
+
+
 *2014.03.26 10:26:06
 For checking the S.M.A.R.T status of a drive on linux, this looks like a good tool:
 
@@ -74,4 +88,3 @@ The long test can take a significant amount of time. You might want to run it ov
 
 Via:
 http://blog.shadypixel.com/monitoring-hard-drive-health-on-linux-with-smartmontools/
-

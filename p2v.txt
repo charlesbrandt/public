@@ -1,3 +1,37 @@
+*2019.03.19 08:31:32
+This one has the most promise:
+https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk
+
+I would use gparted before running dd. With dd if you have a 200GB Linux OS partition your going to get a 200GB file. Even if you are only using 8GB of it. Then when you convert your going to need 400GB total. So use gparted, shrink to 9GB (give it a little space) then run DD. To note it does take a long time to run gparted, but in the long run its a lot faster then doing a VBoxManage on a 200GB bin DD backup. :) – Psytek7 Dec 1 '12 at 2:26
+
+Yes, however it will most likely take a very long time. I haven't actually tried the steps below, but they should work.
+
+First, you need to make an image of your entire partition. You need to know the partition path of the Ubuntu partition, for example /dev/sda1 would be the first partition on the first attached hard drive.
+
+    sudo dd if=PART_PATH of=OUTPUT_PATH/ubuntu.bin
+
+note that you should do the above command from a liveCD with the partition you are trying to copy unmounted -- i.e. you need to have another hard drive or something to copy all the data to.
+
+You can shut the liveCD down and boot back into Ubuntu to perform the last step:
+
+Convert the binary into a vbox drive:
+
+    VBoxManage convertdd PATH_TO_ubuntu.bin ubuntu.vdi --format VDI
+
+you can then use the resulting ubuntu.vdi as a Virtualbox drive. Just make sure you have plenty of time and hard drive space for this operation. A little tip: commandline tasks can be suspended by hitting Ctrl+Z. The operation will go to sleep, and you can use you computer again. When you are interested in resuming the process, type fg in the terminal, and the operation will resume. Quite handy for long operations like this.
+
+https://www.google.com/search?client=ubuntu&hs=6VY&ei=LnR4XLLtF8retQW5wof4Cw&q=p2v+linux+virtualbox&oq=p2v+linux+virtualbox&gs_l=psy-ab.3..0j0i22i30.128052.132329..132757...0.0..0.99.997.11......0....1..gws-wiz.......0i71j0i67j0i22i10i30.tCZ9-5wcBB8
+p2v linux virtualbox - Google Search
+https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk
+virtualization - Convert my physical Operating System to a VirtualBox Disk - Ask Ubuntu
+https://blogs.technet.microsoft.com/enterprise_admin/2010/05/13/linux-p2v-with-dd-and-vhdtool-easy-and-cheap/
+Linux P2V With DD and VHDTool – EASY and CHEAP! – John Kelbley's real life enterprise interop and administration
+https://www.linux.org/threads/physical-to-virtual-p2v-using-virtualbox.10928/
+Physical To Virtual (P2V) using VirtualBox | Linux.org
+https://askubuntu.com/questions/308897/convert-ubuntu-physical-machine-to-virtual-machine
+virtualbox - Convert Ubuntu Physical machine to Virtual machine - Ask Ubuntu
+
+
 *2018.01.10 18:09:30
 some research in to p2v
 not a real need to actually running the old system
