@@ -63,6 +63,11 @@ make a common directory for all User Accounts to use for shared information on t
     git clone https://github.com/charlesbrandt/system
 
 
+*2016.11.13 07:58:19
+in finder:
+Show status bar
+arrange by: Name
+
 *2010.04.16 15:54:50 moments
 install moments
 
@@ -149,8 +154,11 @@ Use color picker to choose the same background as emacs
 
 *2009.02.07 12:14:34 
 create a link from /Volumes to /media to be more compatible with linux scripts:
-sudo ln -s /Volumes /media
-
+#sudo ln -s /Volumes /media
+#this more closely matches linux:
+sudo mkdir /media
+sudo chown -R charles: media/
+sudo ln -s /Volumes /media/charles
 
 
 
@@ -200,6 +208,11 @@ See also:
 
     https://docs.docker.com/docker-for-mac/
 
+
+*2016.10.12 22:06:09
+Thunderbird
+
+
 *2009.01.30 12:17:06 mercurial
 download and install mercurial directly:
 
@@ -223,22 +236,6 @@ ui.report_untrusted = False
 This can be overridden on a repository by repository basis with the file:
 <repo>/.hg/hgrc
 
-
-*2015.10.29 17:56:00
-visual disk usage utility
-#mac:
-http://www.derlien.com/
-http://grandperspectiv.sourceforge.net/
-
-*2010.04.16 13:58:14 
-Change Desktop Background
-(Ctl-Click on desktop for option)
-For Default I prefer Solid Gray Dark... can always customize later in other instances.
-also [2016.10.04 22:00:28]
-it can be useful to set different backgrounds for different spaces
-this makes it easier to find the one you're looking for if there are many
-
-
 *2012.08.09 12:13:01 
 clone any other personal repositories as needed
 
@@ -249,6 +246,97 @@ sudo python setup.py develop
 
 cd /c/mindstream
 sudo python setup.py develop
+
+
+*2015.04.14 09:06:43
+get XCode...
+you'll need it eventually for things like Git on the command line
+also [2016.10.04 22:05:24]
+maybe not if Command Line Tools are enough???
+
+xcode-select --install
+
+
+*2012.10.02 19:52:48
+Install homebrew:
+
+http://brew.sh/
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+use homebrew to install aspell
+brew install aspell --lang=en
+
+via
+http://stackoverflow.com/questions/6748439/r-aspell-homebrew
+
+
+
+
+
+
+*2015.04.16 09:05:52
+install nodejs
+
+http://nodejs.org/
+
+
+
+*2015.10.29 17:56:00
+visual disk usage utility
+#mac:
+http://www.derlien.com/
+http://grandperspectiv.sourceforge.net/
+
+
+
+
+
+
+
+*2015.04.01 16:47:50 keepass
+will need to set this up on new machine:
+
+http://keepass.info/download.html
+Downloads - KeePass
+https://www.google.com/search?q=keepass+macosx&ie=utf-8&oe=utf-8
+keepass macosx - Google Search
+https://www.keepassx.org/downloads/
+KeePassX – Downloads
+
+keepassX
+
+*2015.04.01 16:54:05
+probably need to install google drive for this too
+https://www.google.com/drive/download/
+
+
+*2015.04.15 14:51:39 remote_desktop
+USE THIS VERSION:
+https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12
+
+the old version from microsoft directly does not appear to be in development any longer. (or simply not maintained through that channel)
+Going to try out the version from Apple (AppStore) instead
+
+also [2015.04.07 13:46:35]
+remote desktop client for mac os x:
+
+http://www.microsoft.com/en-us/download/details.aspx?id=18140
+
+also recommended by:
+https://www.hamilton.edu/its/rc/using-remote-desktop-in-mac-os-x-to-connect-to-windows-xp
+
+
+
+
+*2010.04.16 13:58:14 
+Change Desktop Background
+(Ctl-Click on desktop for option)
+For Default I prefer Solid Gray Dark... can always customize later in other instances.
+also [2016.10.04 22:00:28]
+it can be useful to set different backgrounds for different spaces
+this makes it easier to find the one you're looking for if there are many
+
 
 
 *2009.01.28 20:30:05 
@@ -274,28 +362,9 @@ http://www.addictivetips.com/mac-os/force-google-chrome-to-open-in-incognito-mod
 
 
 
-*2015.04.16 09:05:52
-install nodejs
-
-http://nodejs.org/
 
 
-
-*2012.10.02 19:52:48
-Install homebrew:
-
-http://brew.sh/
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-
-use homebrew to install aspell
-brew install aspell --lang=en
-
-via
-http://stackoverflow.com/questions/6748439/r-aspell-homebrew
-
-
-
+*2016.12.06 21:04:22 python virtualenv
 helps with virtualenv
 https://github.com/kennethreitz/autoenv
 brew install autoenv
@@ -307,45 +376,8 @@ http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
 
 
-*2015.04.01 16:54:05
-probably need to install google drive for this too
-https://www.google.com/drive/download/
-
-*2015.04.01 16:47:50 keepass
-will need to set this up on new machine:
-
-http://keepass.info/download.html
-Downloads - KeePass
-https://www.google.com/search?q=keepass+macosx&ie=utf-8&oe=utf-8
-keepass macosx - Google Search
-https://www.keepassx.org/downloads/
-KeePassX – Downloads
-
-keepassX
 
 
-*2015.04.15 14:51:39 remote_desktop
-USE THIS VERSION:
-https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12
-
-the old version from microsoft directly does not appear to be in development any longer. (or simply not maintained through that channel)
-Going to try out the version from Apple (AppStore) instead
-
-also [2015.04.07 13:46:35]
-remote desktop client for mac os x:
-
-http://www.microsoft.com/en-us/download/details.aspx?id=18140
-
-also recommended by:
-https://www.hamilton.edu/its/rc/using-remote-desktop-in-mac-os-x-to-connect-to-windows-xp
-
-
-
-*2015.04.14 09:06:43
-get XCode...
-you'll need it eventually for things like Git on the command line
-also [2016.10.04 22:05:24]
-maybe not if Command Line Tools are enough???
 
 
 outdated:
