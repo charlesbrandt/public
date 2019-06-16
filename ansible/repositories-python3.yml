@@ -1,0 +1,71 @@
+- hosts: core
+  become: yes
+
+  vars_files:
+    - shari_vari.yml
+
+  vars:
+    moments_path: "{{ public_path }}/moments"
+    
+  tasks:
+    #this section previously at the end of python.yml
+    
+    #some of these steps may not be necessary if using a shared /c folder
+    #the files could be available already...
+    #in that case, the process might be different
+    
+    - name: Clone moments repository ({{ moments_path }})
+      git: repo=https://github.com/charlesbrandt/moments  dest={{ moments_path }}
+      
+
+    # not sure why, but this didn't seem to work in 17.04
+    - name: pip install moments
+    #  pip: executable=pip3 name=moments extra_args="-e {{ moments_path }}" 
+      pip: executable=pip3 name="file://{{ moments_path }}" editable=true 
+
+    - name: link to vi .exrc
+      file: src={{ moments_path }}/editors/vi/.exrc dest=/home/{{ ansible_user }}/.exrc owner={{ ansible_user }} group={{ ansible_user }} state=link
+
+    - name: remove existing .bashrc (/home/{{ ansible_user }}/.bashrc)
+      file: dest=/home/{{ ansible_user }}/.bashrc state=absent
+
+    - name: link to moments .bashrc
+      file: src={{ moments_path }}/editors/.bashrc dest=/home/{{ ansible_user }}/.bashrc owner={{ ansible_user }} group={{ ansible_user }} state=link
+
+
+    #previously at the end of utilities.yml (requires moments repo)
+
+    - name: remove existing .emacs.d (/home/{{ ansible_user }}/.emacs.d)
+      file: dest=/home/{{ ansible_user }}/.emacs.d state=absent
+
+    - name: remove existing .emacs (/home/{{ ansible_user }}/.emacs)
+      file: dest=/home/{{ ansible_user }}/.emacs state=absent
+
+
+    - file: src={{ moments_path }}/editors/emacs/.emacs dest=/home/{{ ansible_user }}/.emacs owner={{ ansible_user }} group={{ ansible_user }} state=link
+    - file: src={{ moments_path }}/editors/emacs/.emacs.d dest=/home/{{ ansible_user }}/.emacs.d owner={{ ansible_user }} group={{ ansible_user }} state=link
+
+    - name: updating templates repository via git
+      git: repo=https://github.com/charlesbrandt/templates.git dest={{ public_path }}/templates
+      
+    - name: updating sortable_list repository via git
+      git: repo=https://github.com/charlesbrandt/sortable_list dest={{ public_path }}/sortable_list
+
+    # get this repo for future updates! :)
+    - name: updating system repository via git
+      git: repo=https://github.com/charlesbrandt/system dest={{ public_path }}/system
+      
+    - name: updating mindstream repository via git
+      git: repo=https://github.com/charlesbrandt/mindstream dest={{ public_path }}/mindstream
+
+    ##old way:
+    #- command: python setup.py develop
+    #  args:
+    #    chdir: "{{ public_path }}/mindstream"
+    - name: pip install mindstream
+    #  pip: executable=pip3 extra_args="-e {{ public_path }}/mindstream" 
+      pip: executable=pip3 name="file://{{ public_path }}/mindstream" editable=true 
+
+
+    
+

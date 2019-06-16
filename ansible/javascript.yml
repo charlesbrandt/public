@@ -1,10 +1,9 @@
-- hosts: all
-  remote_user: charles
+- hosts: core
   become: yes
 
   vars_files:
     - shari_vari.yml
-    
+
   tasks:
     - name: Install node packages.
       action: apt pkg={{ item }} state=present
@@ -23,11 +22,12 @@
       shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/node/
       when: not check_archive_path.stat.exists
 
-    - pip: name=jsbeautifier
+    - name: pip install jsbeautifier
+      pip: executable=pip3 name=jsbeautifier
 
-    #TODO:
-    #(this is untested)
-    
+    # python2 version
+    #- pip: name=jsbeautifier
+
     #the version of node installed by packages is woefully out of date
     #these steps are adapted from:
     #/c/technical/javascript/node.txt
@@ -37,57 +37,68 @@
 
     #http://docs.ansible.com/npm_module.html
 
-    - shell: npm cache clean -f
+    - name: clean npm cache
+      shell: npm cache clean -f
 
     #sudo npm install -g n
-    - npm: name=n global=yes
+    - name: sudo npm install -g n
+      npm: name=n global=yes
 
-    - shell: n stable
+    #then use n to upgrade the version of node available
+    - name: n stable
+      shell: n stable
 
     #now node command should work as expected:
     #node -v
 
-
     #npm -v
     #sudo npm cache clean -f
     #sudo npm update npm -g
-    - npm: name=npm global=yes state=latest
+    - name: sudo npm update npm -g
+      npm: name=npm global=yes state=latest
     #npm -v
 
+    # TODO:
+    # install yarn
 
-    #TODO:
+    # TODO:
+    # ansible command for yarn?
+
     #sudo npm install webpack -g
+    - name: sudo npm install webpack -g
+      npm: name=webpack global=yes state=latest
     #sudo npm install webpack-dev-server -g
-    - npm: name=webpack global=yes state=latest
-    - npm: name=webpack-dev-server global=yes state=latest
+    - name: sudo npm install webpack-dev-server -g
+      npm: name=webpack-dev-server global=yes state=latest
 
+    # https://github.com/vuejs/vue-cli
+    #npm install -g vue-cli
+    #
+    # this is available as 'vue' via the command line
+    # which vue
+    # /usr/local/bin/vue
 
-    - name: Install couch packages.
-      action: apt pkg={{ item }} state=present
-      with_items:
-        - couchdb
+    - name: npm install -g vue-cli
+      npm: name=vue-cli global=yes state=latest
 
-    - name: check if couch archive path already exists
-      stat: path={{ archive_path }}/couch/
-      register: check_archive_path
+    - name: npm install -g vue-cli
+      npm: name=vue-cli global=yes state=latest
 
-    - name: create couch path
-      file: path={{ archive_path }}/couch state=directory mode=0755
+    #https://nuxtjs.org/guide/installation
+    #npm install --save nuxt
 
-    - name: move couch deb files
-      shell: mv /var/cache/apt/archives/*.deb {{ archive_path }}/couch/
-      when: not check_archive_path.stat.exists
+    - name: npm install -g vue-cli
+      npm: name=vue-cli global=yes state=latest
 
-    - name: sudo pip install couchdb
-      pip: name=couchdb
-
-    #TODO:
-    #for Firefox browser extensions
-    #npm install jpm --global
-    - npm: name=jpm global=yes state=latest
 
     # for gulp:
-    #sudo npm install --global gulp-cli      
+    #sudo npm install --global gulp-cli
     #- npm: name=gulp-cli global=yes state=latest
+    # TODO:
+    # if gulp, then also browserify
 
-      
+
+    #for Firefox browser extensions
+    #seems like this approach has changed
+    #npm install jpm --global
+    #- npm: name=jpm global=yes state=latest

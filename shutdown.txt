@@ -1,30 +1,26 @@
-*2010.08.25 21:58:40 
-if possible, sync mercurial 
-/c/moments/mercurial_sync.py
+*2017.09.02 13:19:29
+In order from easiest to most difficult:
 
-or use TortoiseHG on windows (should have minimal repositories there)
-(following does not work currently: [2010.08.26 10:57:14])
-c:\c\scripts\mercurial_sync.py c:\c d:\
+  - Many more options to this process now with VMs in the mix; they are an easy way to save a state without fully shutting down. However, be careful.. if there is a lot of information stored in that saved state it may be possible to loose it if the hypervisor shuts down unexpectedly. It's still a good idea to document, make snapshots, etc.
 
-*2014.09.28 04:45:44 
-try to eject all drives
-if they're busy, it may need to wait until shutdown is complete...
-at that point all processes will have been terminated, even if it means closing without saving
+  - Take screenshots
+    This is an easy way to get a good idea of what is going on on a workspace
+    It may not give everything, however. Things like browser links and the specific contexts loaded in editors may be lost
 
-found this at the bottom of the list...
-should be one of the first things attempted
-also [2010.09.27 15:03:11] 
-unmount any drives that are attached.
-unplug cables
+  - review the corresponding workspaces file.
 
-*2010.08.21 04:46:47 
+
+*2010.08.21 04:46:47
 on posix systems
 note uptime
+
+    uptime
+
 make new entry for that.
 
-*2012.12.02 09:23:49 
-If on a machine with multiple workspaces or desktops, 
-it's probably easiest to update the todo list for that machine 
+*2012.12.02 09:23:49
+If on a machine with multiple workspaces or desktops,
+it's probably easiest to update the todo list for that machine
 to reflect each desktop's current task.
 
 Now that desktops can be ordered, that order should reflect todo list priority.
@@ -35,16 +31,35 @@ you don't have to navigate to them if you're sure you remember
 
 manually note which workspaces are open in a new journal entry:
 [now] instances [system]
-1: 
-2: 
-3: 
-4: 
-5: 
-6: 
-7: 
+1:
+2:
+3:
+4:
+5:
+6:
+7:
 [etc]
 
 remember that specifying *other* could be just about anything (loving, non-violent)
+
+
+
+
+*2014.09.28 04:45:44
+try to eject all drives
+if they're busy, it may need to wait until shutdown is complete...
+at that point all processes will have been terminated, even if it means closing without saving
+
+found this at the bottom of the list...
+should be one of the first things attempted
+also [2010.09.27 15:03:11]
+unmount any drives that are attached.
+unplug cables
+
+
+
+
+
 
 *2009.12.10 11:41:08 reboot.
 reboot.
@@ -60,9 +75,30 @@ reboot.
 
 
 *2009.01.22 15:45:33 update_software
-optionally, if online, check for software updates to your operating system 
+optionally, if online, check for software updates to your operating system
 sometimes these are the actual trigger for a restart (shutdown)
 
 if updates are taking too long, can restart then check for updates before launching again.
 
 
+
+
+
+
+
+
+
+
+*2017.09.02 15:14:56
+back things up somehow
+ - rsync
+ - sync_repos
+ both are good
+
+*2010.08.25 21:58:40
+if possible, sync mercurial
+/c/moments/mercurial_sync.py
+
+or use TortoiseHG on windows (should have minimal repositories there)
+(following does not work currently: [2010.08.26 10:57:14])
+c:\c\scripts\mercurial_sync.py c:\c d:\

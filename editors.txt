@@ -1,0 +1,11 @@
+*2017.05.10 atom
+ctrl-shift-c
+maps to editor:copy-path
+copies the the current file's path
+via:
+https://discuss.atom.io/t/how-do-you-get-file-path/8693/11
+
+*2017.05.10 editors
+general file for editor notes
+maybe this needs it's own directory
+for a while, many of these notes have been collected as part of the moments repository

@@ -1,13 +1,33 @@
+*2017.10.29 21:24:35
+see what device path gets assigned after mount:
+
+    dmesg
+
+*2018.09.15 09:47:27
+to determine current file system format:
+
+    mount
+
+or even:
+
+    sudo fdisk /dev/sdb
+
+FAT32 ==
+/dev/sdb1 on /media/charles/8698-D9F8 type vfat
+
+Device     Boot Start       End   Sectors   Size Id Type
+/dev/sdb1          32 240254975 240254944 114.6G  c W95 FAT32 (LBA)
+
 *2014.03.25 16:21:58 wipe
 sudo dd if=/dev/urandom of=/dev/sdb bs=1M
 
-*2012.03.08 10:29:45 
-be sure to label the drive externally 
+*2012.03.08 10:29:45
+be sure to label the drive externally
 when it was first initialized
 what file system
 capacity (in case it's not clear from the drive)
 
-*2012.03.08 10:37:35 
+*2012.03.08 10:37:35
 looking into Advanced Format drives
 wdc.com/advformat
 
@@ -23,6 +43,8 @@ sudo parted -a optimal /dev/sdb
 sudo ls #prime sudo
 
 sudo parted -a optimal /dev/sdb mklabel gpt
+# for bootable usb flash drives
+sudo parted -a optimal /dev/sdc mklabel msdos
 sudo parted -a optimal /dev/sdb print
 
 sudo parted -a optimal /dev/sdb rm 1
@@ -45,12 +67,15 @@ sudo parted -a optimal /dev/sdb mkpart primary ext4 1MB 2000GB
 sudo mkfs.ext4 -L backups /dev/sdb1
 
 or
+sudo parted -a optimal /dev/sdb mkpart primary fat32 1MB 100%
 sudo mkfs.vfat -n UBUNTU /dev/sdb1
-format USB drive
+
+(doesn't work with android out of the box)
+sudo mkfs.exfat -n Ubuntu /dev/sdb1
 
 
 *2012.10.09 15:00:34 hfs_plus
-on os x 10.8 (10.7+) they've eliminated formatting drive as "Mac OS Extended" (non-journaled). 
+on os x 10.8 (10.7+) they've eliminated formatting drive as "Mac OS Extended" (non-journaled).
 
 Linux cannot write to HFS+ Journal, so must diable Journal:
 To get around this:
@@ -87,7 +112,7 @@ http://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance
     # cat /sys/block/sdc/queue/physical_block_size
     512
 
-(33553920 + 0) / 4096 
+(33553920 + 0) / 4096
 
     Add optimal_io_size to alignment_offset and divide the result by physical_block_size. In my case this was (1048576 + 0) / 512 = 2048.
     This number is the sector at which the partition should start. Your new parted command should look like
@@ -97,7 +122,7 @@ http://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance
     The trailing ‘s’ is important: it tells parted that you’re talking about sectors, not bytes or megabytes.
     If all went well, the partition will have been created with no warnings. You can check the alignment thusly (replacing ‘1’ with the partition number if necessary):
 
-    (parted) align-check optimal 1                                            
+    (parted) align-check optimal 1
     1 aligned
 
 
@@ -127,7 +152,7 @@ sudo wipe /dev/sdb1
 
 
 
-*2012.03.08 11:36:25 
+*2012.03.08 11:36:25
 other options:
 
 sudo parted -a optimal /dev/sdb mklabel mac
@@ -152,7 +177,7 @@ Number  Start   End     Size    File system  Name                  Flags
  1      20.5kB  210MB   210MB   fat32        EFI System Partition  boot
  2      210MB   2000GB  2000GB  hfs+         Untitled
 
-*2009.01.27 13:27:55 
+*2009.01.27 13:27:55
 #open terminal
 #find your drive
 mount
@@ -167,10 +192,10 @@ dmesg
 #set up the one you want to format:
 sudo fdisk /dev/sdc
 
-*2009.02.15 23:03:24 
+*2009.02.15 23:03:24
 consider making swap space on the drive if there is ever a chance that it will be the only drive in a live system
 (if formatting with ext3, there is a good chance of that)
-much easier to spare a few gigs now, than try to create it later. 
+much easier to spare a few gigs now, than try to create it later.
 
 delete
 new
@@ -216,7 +241,7 @@ Mediafour | MacDrive
 http://www.mediafour.com/support/macdrive/
 Mediafour | MacDrive 7
 
-*2008.02.15 10:55 
+*2008.02.15 10:55
 hfsplus, formatted on mac, seems to load no problem in ubuntu
 note [2008.02.15 11:11]
 journaled is only read only on linux.  need to make it non-journaled.
@@ -243,7 +268,7 @@ sudo mkdir /media/data
 sudo mount /dev/md0 /media/data
 sudo mkreiserfs /dev/md0
 
-*2010.05.12 23:20:27 
+*2010.05.12 23:20:27
 having trouble formatting drive as HFS+ after being formatted as ext3 (again... see.. [2008.10.27 14:29]
 partition type set to af already
 able to format it as MS-DOS (VFAT)
@@ -254,7 +279,7 @@ select "2 Partitions"
 allow the 1st to be the largest size allowed by configuration (might lose a few gigabytes here)
 set the second one to be free space (can be reclaimed for swap later if needed)
 
-*2013.06.05 01:30:02 
+*2013.06.05 01:30:02
 sudo parted -a optimal /dev/sdb print
 Model: WD My Passport 0748 (scsi)
 Disk /dev/sdb: 2000GB
@@ -265,7 +290,7 @@ Number  Start   End     Size    Type     File system  Flags
  1      1049kB  2000GB  2000GB  primary  ntfs
 
 
-*2013.06.18 11:22:52 
+*2013.06.18 11:22:52
 sudo parted -a optimal /dev/sdc mklabel gpt
 sudo parted -a optimal /dev/sdc print
 

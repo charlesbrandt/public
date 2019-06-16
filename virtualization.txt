@@ -1,21 +1,150 @@
-*2016.01.31 18:08:03
-consider docker.
-see:
-/c/public/system/docker.txt
+*2017.01.11
+If you're installing a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems.
 
-*2016.05.01 08:38:00 
-#virtualbox 
+When creating a virtual machine in virtual box, I specify the OS type, version and bit type. I start with 2048MB of memory... this is easy to adjust later on. For the hard disk file type, choose VMDK (Virtual Machine Disk). This is VMWare's format, but it sounds like it's the most cross-platform. Also may help with backups, and split the disk image into smaller sizes... all great features! Go with dynamically allocated, and then you'll also have the option to split files. 16GB is a good place to start. (6.4GB minimum needed for Xubuntu). Trying out encrypting home folder for virtual... may not apply to anything in /c.
+
+If installing to a virtual machine, avoid allowing the installation to download and apply updates automatically. Disconnect from the internet. To be sure: Virtual Box -> Devices -> Network -> Disconnect Cable. That way you can apply the updates whenever you want to clone and re-run the setup scripts.
+
+Consider implications of using LVM with disks
+
+For VirtualBox, you'll need a "Host-only Adapter" in order to access the machine. When the VM is powered off, add another network interface:
+
+    Virtual Box -> Devices -> Network -> Network Settings...
+    Adapter 2 -> Enable Network Adapter
+    Attached to: Host-only Adapter
+    Name: vboxnet0
+
+Then, when the machine is powered on, do:
+
+    #find all adapters... should be a new one that is unconfigured
+    ip addr
+    #enp0s8 for me
+    sudo vi /etc/network/interfaces
+    #add new section for interface, adapting from lines already there
+
+    # The local network interface
+    auto enp0s8
+    iface enp0s8 inet dhcp
+
+    sudo /etc/init.d/networking restart
+    #check for new ip with:
+    ifconfig
+
+
+If you want to connect to the machine from outside of your local machine, you'll want to set up port forwarding. Back on "Adapter 1", toggle "Advanced" and click the "Port Forwarding" button. Add a new rule:
+
+    - Host IP: blank
+    - Host Port: 8822
+    - Guest IP: 192.168.56.101
+    - Guest Port: 22
+
+Also be sure to open up 8822 (or whatever you choose) in the firewall:
+
+     sudo ufw allow 8822
+
+Start the system back up.
+
+
+
+
+# on ubuntu server 16.04.1 needed this:
+
+    sudo apt install build-essential
+
+# may need to do this if running before ansible:
+
+    sudo apt update
+    sudo apt upgrade
+
+
+#Virtual Box -> Devices -> Insert Guest Additions CD image... -> Download
+sudo mount /dev/sr0 /media/cdrom
+sudo /media/cdrom/VBoxLinuxAdditions.run
+
+
+Eject Guest Additions form guest OS file browser, or:
+
+    sudo umount /media/cdrom
+
+#restart Guest OS
+#can now resize screen too
+
+#can do this sooner, but it won't work until now:
+enable clipboard sharing, bidirectional.
+Devices -> Shared Clipboard -> Bidirectional
+
+#this requires proprietary oracle guest additions:
+Virtual Box -> Devices -> Shared Folders -> Shared Folders Settings... -> Add icon
+Choose "Folder Path": /c
+Check "Make Permanent"
+
+It's best not to configure any external media until you are working on a cloned system.
+e.g. if you might want access to DATA drives, set that up later
+
+see also:
+
+    ansible/shares.yml
+
+
+Decide if you want to clean up any downloaded package files:
+
+    ls /var/cache/apt/archives/*.deb
+
+    sudo rm /var/cache/apt/archives/*.deb
+
+
+
+
+
+
+
+
+Under Machine -> Settings -> User Interface
+un-check the bottom status bar to hide it... only takes up space in my opinion (can always enable it later if needed)
+
+
+
+
+
+#(ansible will help with this step)
+#consider adding this to fstab!
+sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
+#http://askubuntu.com/questions/481559/how-to-automatically-mount-a-folder-and-change-ownership-from-root-in-virtualbox
+# http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
+
+
+
+
+
+
+
+*2015.11.07 15:37:14
+when cloning a VM using VMDK with multiple files, the clone does not preserve that setting (lumps everything back in to one big file)
+
+research command line options... maybe there is a way to clone and preserve there:
+
+VBoxManage createhd --filename /space/vdis/ubuntu9.10.vmdk --size 10000 --format VMDK --variant Split2G -remember
+
+*2015.11.05 23:52:35
+discovered that VMDK is a better format for disk images... allows image file to be broken in to smaller (2GB) pieces... this allows the image to be copied to a FAT32 system:
+http://superuser.com/questions/360517/what-disk-image-should-i-use-with-virtualbox-vdi-vmdk-vhd-or-hdd
+http://www.vmware.com/pdf/esx3_backup_wp.pdf
+
+When it comes time to migrate between platforms (VMWare vs Virtual Box):
+http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053864
+
+
+*2016.05.01 08:38:00
+#virtualbox
 ----------------------------------------------
-mkdir -p /c/virtual_box/
-cd /c/virtual_box/
+mkdir -p /c/virtual_box/installs
+cd /c/virtual_box/installs
 
-I have found the version from Oracle to be easier to use. They are also more up to date. Although some aspects are not open, I feel comfortable enough having the open version available. 
 
-Download both platform package and Extension Pack. 
-https://www.virtualbox.org/wiki/Downloads
+[snip virtualization-hypervisor.txt]
 
-cd /c/virtual_box/installs/5.0.10/
-sudo dpkg -i virtualbox-5.0_5.0.10-104061~Ubuntu~wily_amd64.deb
+
+
 
 #In preferences:
 File->Preferences...->Network->Host-only Networks->Add icon (right)->vboxnet0
@@ -33,17 +162,19 @@ It worked to boot directly from external drive (may be slower than host)...
 If you use an image often, it would be good to keep it local
 
 
-*2013.05.24 10:54:04 
-Setting up a virtual machine is a nice way to run a guest operating system without needing to reboot into that system separately.  Rebooting can often be a hassle if the guest system is not needed as often. 
 
-So far, I'm trying VirtualBox for this task... it's cross platform and open source and free... a tough combination to beat. 
+
+
+*2013.05.24 10:54:04
+Setting up a virtual machine is a nice way to run a guest operating system without needing to reboot into that system separately.  Rebooting can often be a hassle if the guest system is not needed as often.
+
+So far, I'm trying VirtualBox for this task... it's cross platform and open source and free... a tough combination to beat.
 https://www.virtualbox.org/wiki/Downloads
 
 https://www.virtualbox.org/manual/ch01.html
 
 
-VMWare and Parallels (for Mac) get good reviews and apparently perform better, but are pricier.  I'll wait and see if I notice any performance issues with VirtualBox and then go from there. 
-
+VMWare and Parallels (for Mac) get good reviews and apparently perform better, but are pricier.  I'll wait and see if I notice any performance issues with VirtualBox and then go from there.
 
 Here are some comparisons and links:
 
@@ -57,33 +188,22 @@ https://www.google.com/search?q=virtual+machine+on+mac+os+x&aq=1&oq=virtual+mach
 
 
 
+
+
+
+
+
+
 *2015.11.07 18:32:32
 difficulty getting USB to work on guest VMs... tried the version from Oracle even... hmmm... punting and mounting the device as a shared file for now (if needed)
-
-*2015.11.07 15:37:14
-when cloning a VM using VMDK with multiple files, the clone does not preserve that setting (lumps everything back in to one big file)
-
-research command line options... maybe there is a way to clone and preserve there:
-
-VBoxManage createhd --filename /space/vdis/ubuntu9.10.vmdk --size 10000 --format VMDK --variant Split2G -remember
-
-*2015.11.05 23:52:35
-discovered that VMDK is a better format for disk images... allows image file to be broken in to smaller (2GB) pieces... this allows the image to be copied to a FAT32 system:
-http://superuser.com/questions/360517/what-disk-image-should-i-use-with-virtualbox-vdi-vmdk-vhd-or-hdd
-http://www.vmware.com/pdf/esx3_backup_wp.pdf
-
-When it comes time to migrate between platforms (VMWare vs Virtual Box):
-http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2053864
 
 *2015.10.25 08:27:32
 Still using VirtualBox... good enough!
 
 For sharing files, it should be possible to have a shared folder between host and guest... have done this on OS X... maybe requires extensions?
 
-However, it is also possible to just use rsync. 
+However, it is also possible to just use rsync.
 This requires SSH to be installed on guest, which is probably a good thing to enable anyway for Ansible
-
-
 
 *2015.10.28 07:33:07 links
 http://xubuntu.org/getxubuntu/
