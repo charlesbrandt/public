@@ -10,6 +10,54 @@ https://www.tenforums.com/tutorials/82643-clean-up-component-store-winsxs-folder
 May also be a scheduled task that cleans those up every 30 days now.
 (Thanks Seth!)
 
+*2017.04.20 10:49:04 todo
+how to add alt-space to trigger search?
+
+*2017.04.06 11:07:37 screencapture sharex
+when using screenx for making screen captures, it is helpful to know when a mouse was clicked...
+It's possible to use AutoHotkey to send the "Ctrl" key and set windows to do a mouse animation when the control key is pressed. 
+
+Search -> Mouse Properties -> Pointer Options ->
+Check: Show location of pointer when I press the CTRL key
+Apply
+
+Next download AutoHotkey:
+https://www.autohotkey.com/download/
+AutoHotkey Downloads
+
+Install, then create a new script with the contents:
+
+```
+~LButton::
+Send {Ctrl}
+return
+
+~LButton UP::
+Send {Ctrl}
+return
+```
+
+1. Right-Click on your desktop.
+2. Find "New" in the menu.
+3. Click "AutoHotkey Script" inside the "New" menu.
+4. Give the script a new name. Note: It must end with a .ahk extension. Ex. MyScript.ahk
+5. Find the newly created file on your desktop and Right-Click it.
+6. Click "Edit Script".
+7. A window should have popped up, probably Notepad. If so, SUCCESS! 
+
+https://autohotkey.com/docs/Tutorial.htm#s12
+
+
+
+via:
+https://superuser.com/questions/106815/how-do-you-add-a-visual-effect-to-a-mouse-click-from-within-windows
+How do you add a visual effect to a mouse click from within windows? - Super User
+
+https://www.google.com/?gws_rd=ssl#q=windows+mouse+pointer+show+clicking&*
+windows mouse pointer show clicking - Google Search
+
+
+
 
 *2015.10.29 17:55:40
 visual disk usage utility
