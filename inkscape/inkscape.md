@@ -43,12 +43,17 @@ Filemanager -> browse to svg -> right click -> open with -> choose another appli
 
 Decide on a default template when Inkscape opens...
 
-TODO: This is not the best one. Something 11x8.5 would be better. Does this also affect default zoom levels?
+It's also possible to make a link to the template:
 
-    # there may be newer versions available
-    # update frequently
+    cd ~/.config/inkscape/templates/
+    rm default.svg
+    ln -s /c/public/templates/svg/inches/11x8.5/2x2-wide.svg default.svg
+
+Or you can manually copy in a static version. (There may be newer versions available, so be sure to update frequently.)
+
     cd /c/public/templates/svg/inches/11x8.5/
-    cp 2x2-wide- tab ~/.config/inkscape/templates/default.svg
+    cp 2x2-wide.svg ~/.config/inkscape/templates/default.svg
+
 
 
 Just start with a blank document, change the canvas size to whatever you want, and then save the document as templates/default.svg in your Inkscape config directory (~/.config/inkscape on Linux). Then restart Inkscape, and it should open with whatever document you just saved as the default template.
@@ -73,7 +78,7 @@ Also choose where you want to start with template
 
 ## Importing SVGs
 
-When importing a layer or two from one SVG to another, be sure to remove any non-visible layers from the SVG file being imported. Even if they are not visible, they will still get added to the file. This can quickly cause bloat in the destination SVG file. 
+When importing a layer or two from one SVG to another, be sure to remove any non-visible layers from the SVG file being imported. Even if they are not visible, they will still get added to the file. This can quickly cause bloat in the destination SVG file.
 
 ## Pen input
 
@@ -90,12 +95,23 @@ Fixation set to 0 also makes sure the brush is always perpendicular to the direc
 
 Just play with settings to get the effect you're after.
 
+## TODO - Arrows
+
+How to create arrows? [2018.09.15 05:50:22]
+
+
+
 ## TODO - Convert raster to vector
 
 Path > Trace Bitmap
 
 http://goinkscape.com/how-to-vectorize-in-inkscape/
 https://www.google.com/search?q=raster+to+vector+inkscape
+
+## TODO - fonts
+
+add fonts to the system (see also... ???)  
+configure a default font as desired
 
 ## TODO - default zoom level
 
@@ -110,19 +126,12 @@ Inkscape: Change default document properties | kattekrab
 http://www.inkscapeforum.com/viewtopic.php?t=7189
 Is it possible to set the default zoom for startup? - InkscapeForum.com
 
-## TODO - fonts
-
-add fonts to the system (see also... ???)  
-configure a default font as desired
-
 ## TODO - misc
 
 research default dpi conversion:
 https://inkscape.org/en/learn/faq/#dpi_change
 
 <img src="screenshots/" alt="">
-
-How to create arrows? [2018.09.15 05:50:22]
 
 
 ## Links

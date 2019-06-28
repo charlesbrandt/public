@@ -1,5 +1,21 @@
+*2019.06.28 09:50:42
+trying to remove overscan which results in a black border for pi display
+1824x984
+sudo raspi-config
+Advanced -> Overscan
+
+After a restart, the issue was fixed!
+
+*2019.06.28 09:49:12 power
+mini aukey power supplies do not deliver adequate power for a raspberry pi 3b. Get frequent "yellow lightening icon" in the upper right corner of the display
+
+also [2019.06.28 09:59:34]
+newer "fonken" single usb power supplies are even worse... power warning icon stays lit more frequently
+
+pixel charger works a bit better, but still shows warning
+
 *2018.07.15
-The original raspberry pi hardware (version 1) cannot run some of the ubuntu flavors that have been developed for newer versions of Raspberry pis. 
+The original raspberry pi hardware (version 1) cannot run some of the ubuntu flavors that have been developed for newer versions of Raspberry pis.
 
 https://duckduckgo.com/?q=raspberry+pi+xubuntu&t=canonical&ia=web
 raspberry pi xubuntu at DuckDuckGo
