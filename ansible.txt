@@ -8,10 +8,6 @@ On host machine, ensure ssh connections are available:
     sudo apt-get -y install openssh-server
 
 
-
-
-
-
 http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
 ```
@@ -22,6 +18,69 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get -y install ansible
 ```
+
+*2016.09.22 14:38:17
+change hostname:
+
+sudo vi /etc/hostname
+sudo vi /etc/hosts
+
+*2016.09.22 13:54:14
+static IP
+
+sudo vi /etc/network/interfaces
+
+# The local network interface
+auto enp0s8
+iface enp0s8 inet static
+address 192.168.56.99
+netmask 255.255.255.0
+
+This required a system reboot to take effect for me
+
+*2016.08.26 14:10:53
+set up the local vm to share code (directory) being developed with host
+
+#first, set up the share on VirtualBox via:
+
+Devices -> Shared Folders -> Shared Folder Settings...
+
+Click the folder with the green plus to the right.
+
+
+Using this requires the VirtualBox Guest Additions addons to be installed on the client
+
+Devices > Insert Guest Additions CD image...
+
+sudo mount /dev/cdrom /media/cdrom
+sudo /media/cdrom/VBoxLinuxAdditions.run
+
+lineinfile: dest=/etc/modules line="vboxsf"
+
+
+sudo vi /etc/fstab
+#and follow pattern for /c
+c /c vboxsf uid=1000,gid=1000,auto 0 0
+DATA /media/charles/DATA vboxsf uid=1000,gid=1000,auto 0 0
+
+
+
+    #http://askubuntu.com/questions/252853/how-to-mount-a-virtualbox-shared-folder-at-startup#252865
+    #http://docs.ansible.com/ansible/mount_module.html
+    #sudo mount -t vboxsf -o uid=1000,gid=1000 c /c
+    #sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA
+    - mount: name=/c src='c' fstype=vboxsf opts="uid=1000,gid=1000,auto" state=mounted
+    #to make other drives mount automatically when the machine boots
+    #(forces them to be there)
+
+content_converter /srv/content_converter vboxsf uid=1000,gid=1000,auto 0 0
+
+
+
+
+
+
+
 
 *2015.11.08 10:05:04
 ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
@@ -145,4 +204,3 @@ http://docs.ansible.com/ansible/latest/apt_module.html
 apt - Manages apt-packages — Ansible Documentation
 http://docs.ansible.com/ansible/latest/pip_module.html
 pip - Manages Python library dependencies. — Ansible Documentation
-

@@ -17,17 +17,20 @@
     
   tasks:
 
-    - name: create archive path
+    - name: Create archive path
       file: path={{ archive_path }} state=directory mode=0755
 
     #start with just updating the apt cache
-    - apt: update_cache=yes
+    - name: Update apt cache
+      apt: update_cache=yes
 
     #get this so we can use it for upgrade:
-    - apt: name=aptitude state=present
+    - name: Make sure aptitude is available
+      apt: name=aptitude state=present
 
     #http://docs.ansible.com/ansible/apt_module.html
-    - apt: upgrade=full
+    - name: Upgrade everything
+      apt: upgrade=full
 
     #make sure old kernels don't linger
     - name: Remove dependencies that are no longer required
