@@ -9,3 +9,4 @@
 .Spotlight-V100*
 .fseventsd*
 *.retry
+editors/emacs/.emacs.d/recentf

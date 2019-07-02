@@ -2,9 +2,32 @@
 ; Programming MODES
 ;============================
 
-;use spaces instead of tabs:
-;http://stackoverflow.com/questions/45861/how-do-i-get-js2-mode-to-use-spaces-instead-of-tabs-in-emacs
-(setq-default indent-tabs-mode nil)
+;; see indentation.el for anything related to how indentation works
+
+;;this is how things were in python mode... those are stuck
+;; always have comment region bound to a shortcut
+(global-set-key "\C-c#" 'comment-region)
+
+;; TODO:
+;; could also configure ctrl-/
+;; often used in other languages for commenting
+;; maybe also need a ctrl-; (for lisp languages)
+;; but all should use the mode to determine the comment type to use
+;; and all should work interchangably
+
+;markdown
+;http://jblevins.org/projects/markdown-mode/
+(require 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "gfm-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+
 
 ;; *2018.01.10 18:12:55 
 ;; seems that the python mode has changed a lot over time
@@ -33,20 +56,8 @@
 ;(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
 
 ;https://github.com/yoshiki/yaml-mode
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
-;markdown
-;http://jblevins.org/projects/markdown-mode/
-(require 'markdown-mode)
-(autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-(autoload 'gfm-mode "gfm-mode"
-   "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+;(require 'yaml-mode)
+;(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 
 ;http://web-mode.org/
@@ -100,6 +111,55 @@
 
 ;C/ARDUINO
 (add-to-list 'auto-mode-alist '("\\.ino$" . c-mode)) 
+
+
+;; Emacs Lisp Package Archive
+
+;; https://www.emacswiki.org/emacs/ELPA
+;; https://melpa.org/#/getting-started
+(require 'package) 
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+;; via: http://wikemacs.org/wiki/Package.el
+
+;; may be able to accomplish the following with:
+;; https://github.com/jwiegley/use-package
+
+(require 'cl-lib)
+
+
+;; the python module available here doesn't provide a menu to navigate code
+;; trying both 'python' and 'python-mode'
+(defvar my-packages
+  ;; todo: consider these packages
+  ;; '(ack-and-a-half auctex clojure-mode coffee-mode deft expand-region
+  ;;                  gist groovy-mode haml-mode haskell-mode inf-ruby
+  ;;                  magit magithub paredit projectile 
+  ;;                  rainbow-mode solarized-theme
+  ;;                  volatile-highlights yari zenburn-theme)
+  '(markdown-mode sass-mode scss-mode yaml-mode web-mode vue-mode)
+  "A list of packages to ensure are installed at launch.")
+  ;; https://github.com/AdamNiederer/vue-mode
+
+(defun my-packages-installed-p ()
+  (cl-loop for p in my-packages
+           when (not (package-installed-p p)) do (cl-return nil)
+           finally (cl-return t)))
+
+(unless (my-packages-installed-p)
+  ;; check for new packages (package versions)
+  (package-refresh-contents)
+  ;; install the missing packages
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+;PYTHON
+(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+(setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+
 
 
 
