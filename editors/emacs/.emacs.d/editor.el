@@ -2,7 +2,7 @@
 
 ;; tool-bar-mode not found... m-x tool-bar-mode
 ;; feel free to re-enable if it causes problems
-;; (tool-bar-mode -1) 
+(tool-bar-mode -1) 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 

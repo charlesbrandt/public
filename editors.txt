@@ -1,3 +1,19 @@
+# Text Editor
+
+A good text editor is one of the most important pieces of software for using a computer efficiently. This is not the same as a word processor.
+
+Different text editors have different strengths and weaknesses. It helps to try and use different editors.
+
+Being able to work with more than one editor is important. Depending on the resources that are available, you may not be able to run something as heavy as atom or even visual studio code.
+
+I've been working to standardize on common keymaps for all editors (as much as possible). Standardizing makes it easier and more seamless to transition from one editor to another.
+
+More info:
+editors/emacs.md
+
+
+
+
 *2017.05.10 atom
 ctrl-shift-c
 maps to editor:copy-path

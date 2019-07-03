@@ -1,5 +1,9 @@
 ;; Journal Related Functions
 
+;; 2019.07.03 09:00:53 
+;; This may have some interesting techniques for printing a timestamp:
+;; http://ergoemacs.org/emacs/elisp_insert-date-time.html
+
 (defun today ()
   (interactive)
   (insert (format-time-string "%Y%m%d"))
@@ -18,7 +22,7 @@
 )
 (defun tstamp ()
   (interactive)
-  (insert "*")
+  (insert "# ")
   (date)
   (insert " ")
 )

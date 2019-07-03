@@ -7,6 +7,8 @@
 ;; For more notes about ';' and comments, see:
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Comment-Tips.html
 
+;; see also programming.el for commands for toggling comments
+
 ;; After making any changes to any of these configurations,
 ;; be sure to load a new instance of emacs.
 ;; Make sure everything still loads as expected, 
@@ -28,6 +30,14 @@
 ;; reloading can also be accomplished by selecting a specific region,
 ;; then executing it using the "Emacs-Lisp->Evaluate Region" option/command
 
+
+;; Receiving a warning message for this setting;
+;; Warning (initialization): Your ‘load-path’ seems to contain
+;; your ‘.emacs.d’ directory: ~/.emacs.d/
+;; This is likely to cause problems...
+;; Consider using a subdirectory instead, e.g.: /data/data/com.termux/files/home/.emacs.d/lisp
+
+;; but not having it set causes many other issues
 ;; set load-path .emacs.d/ first
 (setq load-path (cons "~/.emacs.d/" load-path))
 ;; now that "~/.emacs.d/" is in the load path,

@@ -1,21 +1,12 @@
-;============================
-; Programming MODES
-;============================
+;;============================
+;; Programming MODES
+;;============================
 
 ;; see indentation.el for anything related to how indentation works
 
-;;this is how things were in python mode... those are stuck
-;; always have comment region bound to a shortcut
-(global-set-key "\C-c#" 'comment-region)
+;; see keymaps.el for commenting keys
 
-;; TODO:
-;; could also configure ctrl-/
-;; often used in other languages for commenting
-;; maybe also need a ctrl-; (for lisp languages)
-;; but all should use the mode to determine the comment type to use
-;; and all should work interchangably
-
-;markdown
+;; markdown
 ;http://jblevins.org/projects/markdown-mode/
 (require 'markdown-mode)
 (autoload 'markdown-mode "markdown-mode"
