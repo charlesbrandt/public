@@ -1,5 +1,4 @@
-Ubuntu / Xubuntu
-============================
+# Ubuntu / Xubuntu / Ubuntu Studio
 
 For notes on downloading and creating an image, see:
 
@@ -133,7 +132,7 @@ This is to be more in line with the way lock screen works on Macs. Not my first 
 
 *2015.11.03 09:57:37
 Settings -> Workspaces
-Add workspaces (start with 4, 5 or 7)
+Add workspaces (start with 4 - 10)
 
 Optionally, add workspace switcher to Panel
 Settings -> Panel -> Items -> Add (right icon) -> Workspace Switcher (bottom of list)

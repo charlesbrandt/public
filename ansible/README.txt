@@ -4,6 +4,13 @@ ansible-playbook system.yml -i hosts.txt --ask-become-pass
 
 ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
 
+# 
+looking for an easier way to run
+don't want to have to update hosts
+but eventually I know that is necessary
+
+https://stackoverflow.com/questions/33222641/override-hosts-variable-of-ansible-playbook-from-the-command-line
+
 
 #2018 installed
 ansible-playbook python3.yml -i hosts.txt --ask-become-pass

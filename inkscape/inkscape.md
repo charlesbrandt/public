@@ -1,9 +1,6 @@
 # Inkscape
 
-## TODO
-vue based svg editor
-
-Add Inskape to favorites
+Add Inskape to favorites in application launcher
 
 Launch inkscape
 
@@ -27,14 +24,14 @@ Configure best default settings
     - Snap Controls Bar  
     - Palette  
 
-<img src="screenshots/0050-inkscape-view-show_hide.png" alt="">
+<img src="screenshots/0050-inkscape-view-show_hide.png" alt="Chaning view settings to hide command bar, etc">
 
 - Consider showing arrange settings.  
   Object -> Arrange...
 
 Exit inkscape so defaults take effect.
 
-## Default application for SVG in filesystem browser
+## Default application for SVG in file system browser
 
 Set inkscape to be the default opener for svg files
 Filemanager -> browse to svg -> right click -> open with -> choose another application -> inkscape -> make default
@@ -80,6 +77,12 @@ Also choose where you want to start with template
 
 When importing a layer or two from one SVG to another, be sure to remove any non-visible layers from the SVG file being imported. Even if they are not visible, they will still get added to the file. This can quickly cause bloat in the destination SVG file.
 
+## Versioning
+
+With graphics, it can be useful to keep old iterations around for easy snapshots. Sometimes files can change dramatically based on what layers are visible at the time.
+
+Nevertheless, SVGs lend themselves quite well to using a typical version control system like git. They're based on XML, so they're all text!
+
 ## Pen input
 
 A Wacom tablet (e.g. Bamboo) can help with creating strokes with varying width
@@ -95,11 +98,76 @@ Fixation set to 0 also makes sure the brush is always perpendicular to the direc
 
 Just play with settings to get the effect you're after.
 
-## TODO - Arrows
+## Printing
 
-How to create arrows? [2018.09.15 05:50:22]
+If your printer supports the document size of the svg, Inkscape has no problem printing it.
+
+You can also scale the image to fit on a single page. This can be useful for drafts and physical edits.
+
+If you want to print something larger than a single page, you'll need to split it up outside of Inkscape for printing (as of 2019.06.30).
+
+Trying:
+
+```
+Just had to solve this today. I used Inkscape's Print and printed to a PDF file (which is a standard feature on Linux; I don't know about other platforms), and then I used pdfposter to split it into pages:
+
+pdfposter -m a4 -p a3 infile.pdf outfile.pdf
+
+Translation: use A4 pages to build an A3-sized poster.
+```
+
+From the pdfposter man page:
+
+```
+       -m BOX, --media-size=BOX
+              Specify the desired media size to print on.  See below for BOX.
+              The default is A4 in the standard package.
+
+       -p BOX, --poster-size=BOX
+              Specify the poster size. See below for BOX.  pdfposter will
+              autonomously choose scaling and rotation to best fit the input
+              onto the poster (see EXAMPLES below).
+
+              If you give neither the -s nor the -p option, the default poster
+              size is identical to the media size.
+```
+
+    sudo apt-get install pdfposter
+
+This resulted in a slightly off scale... might not be using A4:
+
+    pdfposter -m a4 -p 12x24inch
+
+Trying:
+
+    pdfposter -m 11x8.5inch -p 12x24inch
+
+Still got some down scaling from this setting... maybe:
+
+    pdfposter -m 8.5x11inch -s 1
+
+Still off by 2 inches. Hmmm... TODO.
+
+TODO:
+was not able to get the rotation correct. Something to work on in future iterations
+
+Via:
+https://www.google.com/search?q=print+svg+on+multiple+pages
+https://superuser.com/questions/161313/print-a-huge-svg
+https://bugs.launchpad.net/inkscape/+bug/170274
 
 
+
+## Arrows
+
+How to create arrows --
+
+Some of these are available on Fill and Stroke settings. After creating a line, open Fill and Stroke settings and choose the Stroke style tab. Adjust endpoints with the "Markers" options.
+
+Screenshot_2019-06-30_08-20-08-markers.png
+
+TODO:
+it may be possible to use a custom symbol to represent the arrow heads if the look you want is not available.
 
 ## TODO - Convert raster to vector
 

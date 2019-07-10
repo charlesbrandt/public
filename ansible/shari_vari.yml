@@ -5,7 +5,7 @@
 #setting manually:
 ansible_user: charles
 
-ubuntu_version: 15.10x
+ubuntu_version: 18.04x
 ### archive_path: /c/downloads/ubuntu/{{ ubuntu_version }}
 archive_path: /home/{{ ansible_user }}/Downloads/ubuntu/{{ ubuntu_version }}
 shared_path: /c

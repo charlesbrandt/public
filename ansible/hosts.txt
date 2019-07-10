@@ -48,17 +48,12 @@
 #127.0.0.1 ansible_connection=local
 #192.168.0.101
 
-
-<<<<<<< HEAD
 [current]
 #192.168.56.108
 192.168.56.101
 
-=======
-
-
 #this group is meant as documentation only:
->>>>>>> 9c90b53fbef3d938cd3d8916c62c5e69173bd429
+
 [different_user]
 #192.168.56.103 ansible_user=brandtc
 
