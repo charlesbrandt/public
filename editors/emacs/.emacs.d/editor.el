@@ -1,5 +1,27 @@
 ;; General editor settings
 
+;; Update the frame title:
+
+;; https://www.emacswiki.org/emacs/FrameTitle
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Name-Components.html
+
+(setq frame-title-format
+      '(
+        (:eval (if (buffer-modified-p) 
+                   "• "))
+
+        (:eval (if (buffer-file-name)
+                   (file-name-nondirectory (buffer-file-name))
+                 "%f"))
+        " ("
+        (:eval (if (buffer-file-name)
+                   (file-name-nondirectory
+                    (directory-file-name
+                     (file-name-directory buffer-file-name)))))
+        ")")
+      )
+
+
 ;; tool-bar-mode not found... m-x tool-bar-mode
 ;; feel free to re-enable if it causes problems
 (tool-bar-mode -1) 

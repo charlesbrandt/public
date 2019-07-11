@@ -1,3 +1,13 @@
+# 2019.07.11 08:34:48
+https://atom.io/docs/api/v1.4.1/AtomEnvironment
+Atom
+https://atom.io/packages/project-manager
+project-manager
+https://flight-manual.atom.io/getting-started/sections/atom-basics/
+Atom Basics
+
+https://www.google.com/search?q=atom+switch+to+next+tab
+
 *2014.05.21 11:48:13 light_table atom
 Atom and Light Table are two promising editors.  My only concern at this point is the extra memory requirements if keeping many different editors open at the same time (like I do with Emacs):
 

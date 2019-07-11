@@ -36,3 +36,17 @@ If you use the JSON editor for your settings, add the following line:
 
     "telemetry.enableCrashReporter": false
 Important Notice: This option requires a restart of VS Code to take effect.
+
+### Links
+https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
+
+https://www.google.com/search?q=vs+code&oq=vs+code
+vs code - Google Search
+https://code.visualstudio.com/download
+Download Visual Studio Code - Mac, Linux, Windows
+https://code.visualstudio.com/docs/?dv=linux64_deb
+Documentation for Visual Studio Code
+https://code.visualstudio.com/docs?start=true
+Documentation for Visual Studio Code
+https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
+Visual Studio Code Frequently Asked Questions

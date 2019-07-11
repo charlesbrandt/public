@@ -16,10 +16,6 @@ If on a base / root / hypervisor type machine, install Virtual Box:
 
 If you encrypted your home drive, it's a good idea to note the key shown with "ecryptfs-unwrap-passphrase"
 
-If you're running on non-standard hardware (e.g. macs), see:
-
-    ubuntu-mac_hardware.txt
-
 sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo apt-get install -y python

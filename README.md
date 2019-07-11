@@ -1,5 +1,10 @@
 # System Notes
 
+Be sure to get the submodules:
+
+    git clone --recurse-submodules https://github.com/charlesbrandt/system
+
+
 Try setting up a computer with a fresh operating system. In general, I find it easier to set up a system from scratch quickly, rather than fix a broken system or upgrade an obsolete system.  I feel more confident that the system is clean and stable that way.  This is also a good chance to make sure note taking, configuration management, and backup habits are working.
 
 If you don't have a preferred operating system, consider one that is open source. Open source software is a wonderful thing, and I encourage you to take some time to learn why:
