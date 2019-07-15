@@ -71,3 +71,24 @@
 ;; way to automatically restore previous sessions?
 ;;  (persistent-session-save-alist-to-file)
   
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#E5786D" "#95E454" "#CAE682" "#8AC6F2" "#333366" "#CCAA8F" "#F6F3E8"])
+ '(custom-enabled-themes nil)
+ '(global-font-lock-mode t)
+ '(inhibit-startup-screen t)
+ '(js-indent-level 2 t)
+ '(package-selected-packages
+   (quote
+    (undo-tree yaml-mode web-mode vue-mode scss-mode sass-mode markdown-mode)))
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

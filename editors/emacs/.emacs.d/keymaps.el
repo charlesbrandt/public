@@ -6,6 +6,8 @@
 ;; The terminal may not pass all characters to emacs, which can make it seem like bindings are not taking effect:
 ;; https://stackoverflow.com/questions/11110801/why-does-ctrl-not-work-when-i-bind-it-to-a-command-in-emacs
 
+(global-set-key "\C-b" 'switch-to-buffer)
+
 
 ;; Comments
 

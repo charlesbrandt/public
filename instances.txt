@@ -1,3 +1,22 @@
+# 2019.07.14 07:18:32 linux
+/c/public/system/instances.txt
+/c/public/system/drives/bootable_usb.txt
+/c/public/system/editors/atom/atom.txt
+/c/public/system/editors.txt
+/c/public/system/editors/vs_code/vs_code.md
+/c/public/system/launch.sh
+/c/public/system/browsers.txt
+/c/public/system/ansible/hosts.txt
+/c/public/system/ansible.txt
+/c/public/system/linux/upgrade.txt
+/c/public/system/linux/shutdown.txt
+/c/public/system/linux/window_managers/i3.txt
+/c/public/system/linux/linux-distributions.txt
+/c/public/system/linux/window_managers/window_managers.md
+/c/public/system/linux/overview.md
+/c/public/system/linux/ubuntu-extended.txt
+/c/public/system/linux/ubuntu.md
+
 *2019.07.11 11:05:53 system
 /c/public/system/instances.txt
 /c/public/system/drives/bootable_usb.txt

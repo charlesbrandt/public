@@ -7,7 +7,7 @@
 # ~/.bashrc
 # example .bashrc is available in moments/editors/ directory
 
-launch.py -c /c/public/system system
+launch.py -c /c/public/system linux
 
 echo "see also:
 
