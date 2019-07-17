@@ -1,9 +1,13 @@
-*2017.10.29 21:24:35
+be sure to label the drive externally
+when it was first initialized
+what file system
+capacity (in case it's not clear from the drive)
+
+
 see what device path gets assigned after mount:
 
     dmesg
 
-*2018.09.15 09:47:27
 to determine current file system format:
 
     mount
@@ -12,39 +16,37 @@ or even:
 
     sudo fdisk /dev/sdb
 
-FAT32 ==
-/dev/sdb1 on /media/charles/8698-D9F8 type vfat
+FAT32 == /dev/sdb1 on /media/charles/8698-D9F8 type vfat
 
 Device     Boot Start       End   Sectors   Size Id Type
 /dev/sdb1          32 240254975 240254944 114.6G  c W95 FAT32 (LBA)
 
-*2014.03.25 16:21:58 wipe
-sudo dd if=/dev/urandom of=/dev/sdb bs=1M
 
-*2012.03.08 10:29:45
-be sure to label the drive externally
-when it was first initialized
-what file system
-capacity (in case it's not clear from the drive)
+to wipe first:
 
-*2012.03.08 10:37:35
+    sudo dd if=/dev/urandom of=/dev/sdb bs=1M
+
+
 looking into Advanced Format drives
 wdc.com/advformat
 
 they recommend parted (2.2 and up) instead of fdisk:
-parted -v
 
-#this starts in an interactive mode similar to fdisk:
-sudo parted -a optimal /dev/sdb
+    parted -v
+
+this starts in an interactive mode similar to fdisk:
+
+    sudo parted -a optimal /dev/sdb
 
 
-#can also supply commands via command line:
+can also supply commands via command line:
 
+```
 sudo ls #prime sudo
 
 sudo parted -a optimal /dev/sdb mklabel gpt
 # for bootable usb flash drives
-sudo parted -a optimal /dev/sdc mklabel msdos
+sudo parted -a optimal /dev/sdb mklabel msdos
 sudo parted -a optimal /dev/sdb print
 
 sudo parted -a optimal /dev/sdb rm 1
@@ -70,8 +72,57 @@ or
 sudo parted -a optimal /dev/sdb mkpart primary fat32 1MB 100%
 sudo mkfs.vfat -n UBUNTU /dev/sdb1
 
-(doesn't work with android out of the box)
-sudo mkfs.exfat -n Ubuntu /dev/sdb1
+```
+
+// parted doesn't understand exfat. use gdisk option below
+// sudo parted -a optimal /dev/sdb mkpart primary exfat 0% 100%
+`
+https://matthew.komputerwiz.net/2015/12/13/formatting-universal-drive.html
+
+sudo gdisk /dev/sdb
+
+First, create a new GPT partition table
+
+    Command (? for help): o
+    This option deletes all partitions and creates a new protective MBR.
+    Proceed? (Y/N): Y
+
+Now create a partition. The defaults will create a new partition that spans the whole drive with the first sector already aligned. Be sure to choose the correct type 0700!
+
+Command (? for help): n
+Partition number (1-128, default 1):
+First sector (34-16326462, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-16326462, default = 16326462) or {+-}size{KMGTP}:
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): 0700
+Changed type of partition to 'Microsoft basic data'
+Write the changes to the drive and exit
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+OK; writing new GUID partition table (GPT) to /dev/sdX.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot.
+The operation has completed successfully.
+Finally, format our new partition with the exFAT filesystem.
+
+% sudo mkfs.exfat /dev/sdX1
+mkexfatfs 1.0.1
+Creating... done.
+Flushing... done.
+File system created successfully.
+
+sudo mkfs.exfat -n Storage /dev/sdb1
+
+(android still doesn't like this as of 2019.07.17 09:43:58, pixel3. Just using android to reformat the flash drive yields: vfat (fat32))
+
+
+
+
 
 
 *2012.10.09 15:00:34 hfs_plus
