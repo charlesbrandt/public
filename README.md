@@ -4,6 +4,9 @@ Be sure to get the submodules:
 
     git clone --recurse-submodules https://github.com/charlesbrandt/system
 
+or 
+
+    git submodule update --init --recursive
 
 Try setting up a computer with a fresh operating system. In general, I find it easier to set up a system from scratch quickly, rather than fix a broken system or upgrade an obsolete system.  I feel more confident that the system is clean and stable that way.  This is also a good chance to make sure note taking, configuration management, and backup habits are working.
 
