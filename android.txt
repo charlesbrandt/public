@@ -1,6 +1,22 @@
 Many different topics about Android...
 focusing on installation, backups and core applications here
 
+# 2019.08.02 system android virtual_keyboard
+disabled haptic feedback for keyboard input
+
+found setting in settings -> system -> languages & input -> virtual keyboard -> gboard -> preferences
+
+enable long press for symbols.
+
+right handed mode makes the keys smaller, but there is less distance to travel. i know one handed is slower, but i find it difficult to hold the phone otherwise
+
+also change theme to dark ... ahhh so much better.
+enable glide typing? seems to be disabled in termux?
+
+todo: way to customize the characters available on a virtual keyboard? an arrow key would be nice (i.e. instead of ->)
+
+
+
 
 The main desktop in android is called a launcher or homescreen.
 

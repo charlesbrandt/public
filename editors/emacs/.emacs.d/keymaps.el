@@ -1,5 +1,9 @@
 ;; Keymaps
 
+;; this is useful in termux:
+(global-set-key "\C-h" 'backward-kill-word)
+;; via: https://www.reddit.com/r/termux/comments/cnnkao/is_it_possible_to_change_what_ctrlbackspace_does/
+
 
 ;; To see what a key is currently bound to, use 'Ctrl-h k' myy 
 

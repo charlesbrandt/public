@@ -72,7 +72,9 @@
 
 (defun ss2t ()
   (interactive)
-  (delete-char 1)
+  ;; this depends on the format of the stamp
+  ;; being used.
+  (delete-char 2)
   (insert "[")
   (forward-char 19)
   (insert "]")

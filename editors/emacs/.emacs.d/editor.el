@@ -1,5 +1,9 @@
 ;; General editor settings
 
+;; Disable backup files:
+(setq make-backup-files nil) ; stop creating backup~ files
+;; via: http://ergoemacs.org/emacs/emacs_set_backup_into_a_directory.html
+
 ;; Update the frame title:
 
 ;; https://www.emacswiki.org/emacs/FrameTitle
