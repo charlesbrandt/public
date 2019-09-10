@@ -37,3 +37,26 @@ Then, when cloning this repository, you can get the latest version with:
     
 via: https://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules
 
+
+## Python (TODO)
+
+Would like to enable jedi for goto functionality:
+
+http://lgfang.github.io/mynotes/emacs/emacs-python.html#sec-9-3
+Python Coding in Emacs
+https://duckduckgo.com/?q=python+jedi&t=canonical&ia=software
+python jedi at DuckDuckGo
+https://pypi.org/project/jedi/
+jedi · PyPI
+
+## File Tree (TODO)
+
+This was a nice feature in Atom for quickly navigating to different files in a related project. 
+I especially liked being able to group directories that were spread across different locations into a single project:
+
+https://www.google.com/search?q=emacs+file+tree
+emacs file tree - Google Search
+https://www.emacswiki.org/emacs/NeoTree
+EmacsWiki: Neo Tree
+https://github.com/jaypei/emacs-neotree
+GitHub - jaypei/emacs-neotree: A emacs tree plugin like NerdTree for Vim.
