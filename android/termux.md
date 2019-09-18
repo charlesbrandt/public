@@ -19,6 +19,10 @@ The termux API's require another app to be installed from the app store, but see
 
     apt install termux-api
 
+More info is available:
+
+https://wiki.termux.com/wiki/Termux:API
+
 
 ## Termux configuration
 
@@ -56,6 +60,26 @@ shortcut.rename-session = ctrl + ;
 
 Extra Keys row is also configurable in the same file:
 https://wiki.termux.com/wiki/Touch_Keyboard
+
+
+extra-keys = [ \
+ ['ESC','|','/','-','_','UP','TAB'], \
+ ['[',']','CTRL','ALT','LEFT','DOWN','RIGHT'] \
+]
+
+
+
+extra-keys = [ \
+ ['[','|','/','-','_','UP','ESC'], \
+ [']','TAB','CTRL','ALT','LEFT','DOWN','RIGHT'] \
+]
+
+
+extra-keys = [ \
+ ['ESC','|','/',' ',' ','UP'], \
+ [' ','TAB','CTRL','ALT','LEFT','DOWN','RIGHT'] \
+]
+
 
 extra-keys = [ \
  ['ESC','TAB','/','CTRL','ALT','UP','DOWN'] \
@@ -131,11 +155,13 @@ This is also a good chance to generate ssh keys to simplify connecting to primar
     ssh-keygen -t rsa
     ssh-copy-id demo@198.51.100.0
 
+
 ## Rsync
 
 Another good one to have
 
     pkg install rsync
+
 
 ## Sqlite3
 
@@ -151,23 +177,10 @@ https://sqlite.org/cli.html
     .tables
 
 
-## Node
+## Tmux
 
-At this point you should be compiling the javascript application. hosting on a webserver somewhere.
-
-develipment is better done on a full system. linux or mac. or virtual linux on windows.
-
-see also userland.md()
-
-both are similar in results for full node dev. (as of # 2019.08.25)
-
-
-    pkg install nodejs
-
-Not all npm modules are compatible with Termux. Userland isn't any better (worse in many ways!). Nuxt has problems... next to try is a more simple approach with Vue.
-
-https://dev.to/joelnet/getting-nodejs-and-express-up-and-running-on-my-android-phone-3plp    
-
+    pkg install tmux
+    
 
 ## Upgrades
 
@@ -186,4 +199,23 @@ every now and again
 It's a good idea to work within the same editor rather than different console tab. This way copy and paste are using the same buffer. Emacs / termux has a different clipboard buffer than the native android os.
 
 Additionally, copying from termux using android often includes line continuation characters ('\'). Doesn't work well.
+
+
+
+## Node
+
+At this point you should be compiling the javascript application. hosting on a webserver somewhere.
+
+develipment is better done on a full system. linux or mac. or virtual linux on windows.
+
+see also userland.md()
+
+both are similar in results for full node dev. (as of # 2019.08.25)
+
+
+    pkg install nodejs
+
+Not all npm modules are compatible with Termux. Userland isn't any better (worse in many ways!). Nuxt has problems... next to try is a more simple approach with Vue.
+
+https://dev.to/joelnet/getting-nodejs-and-express-up-and-running-on-my-android-phone-3plp    
 

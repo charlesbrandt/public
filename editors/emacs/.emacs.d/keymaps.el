@@ -77,6 +77,9 @@
 (global-set-key (kbd "M->") 'end-of-buffer)
 (global-set-key (kbd "M-<") 'beginning-of-buffer)
 
+(setq confirm-kill-emacs 'y-or-n-p)
+
+(global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
 
 
 ;; A bit of history of how ergo emacs came up with the keybindings they chose:
