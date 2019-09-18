@@ -5,7 +5,10 @@
 ;; via: https://www.reddit.com/r/termux/comments/cnnkao/is_it_possible_to_change_what_ctrlbackspace_does/
 
 
-;; To see what a key is currently bound to, use 'Ctrl-h k' myy 
+
+;; To see what key syntax to use when defining a new keymap:
+;; Alt+x describe-key 【Ctrl+h k】, then press the key you want. Emacs will then display its syntax.
+;; This also lets you see what a key is currently bound to
 
 ;; The terminal may not pass all characters to emacs, which can make it seem like bindings are not taking effect:
 ;; https://stackoverflow.com/questions/11110801/why-does-ctrl-not-work-when-i-bind-it-to-a-command-in-emacs
@@ -77,9 +80,15 @@
 (global-set-key (kbd "M->") 'end-of-buffer)
 (global-set-key (kbd "M-<") 'beginning-of-buffer)
 
+
 (setq confirm-kill-emacs 'y-or-n-p)
 
 (global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
+
+;; I'm not sure why ctrl-space is considered sub-optimal by ergo-emacs.
+;; I like it though
+(global-set-key (kbd "C-SPC") 'set-mark-command)
+
 
 
 ;; A bit of history of how ergo emacs came up with the keybindings they chose:

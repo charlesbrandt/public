@@ -146,6 +146,8 @@ Wish I could find something equivalent that works for Firefox...
 
 https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg/related
 
+https://github.com/deanoemcke/thegreatsuspender
+
 *2011.09.05 09:46:51
 copy
 https://chrome.google.com/webstore/detail/djdmadneanknadilpjiknlnanaolmbfk?hc=search&hcp=main
