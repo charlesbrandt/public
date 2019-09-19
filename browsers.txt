@@ -3,7 +3,6 @@ I try to keep browser configurations as simple as possible.
 FIREFOX:
 ========================
 
-
 update to using nightly builds:
 sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
 sudo apt-get update
@@ -35,6 +34,10 @@ Tab Suspender – Get this Extension for 🦊 Firefox (en-US)
 *2019.02.09 08:00:12
 https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
+
+# 2019.09.11 20:46:56
+instead of adblock, I have been exploring a more general filter / tracking blocker:
+https://github.com/gorhill/uBlock/
 
 *2013.04.22 20:36:25 browsers firefox chrome
 https://disconnect.me/
