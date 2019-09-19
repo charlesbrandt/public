@@ -80,6 +80,11 @@
 (global-set-key (kbd "M->") 'end-of-buffer)
 (global-set-key (kbd "M-<") 'beginning-of-buffer)
 
+
+(setq confirm-kill-emacs 'y-or-n-p)
+
+(global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
+
 ;; I'm not sure why ctrl-space is considered sub-optimal by ergo-emacs.
 ;; I like it though
 (global-set-key (kbd "C-SPC") 'set-mark-command)
