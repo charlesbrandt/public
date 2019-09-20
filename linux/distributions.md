@@ -2,22 +2,10 @@
 
 There are many linux distributions available.
 
-When downloading an image, torrents are a good way to share bandwidth. This supports a good cause (and is free to you)!
+When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
 
 To transfer image for use, see [creating a bootable usb](../drives/bootable_usb.txt).
 
-## Custom Distribution
-http://www.linuxfromscratch.org/
-Welcome to Linux From Scratch!
-
-https://www.google.com/search?q=build+custom+linux+distribution&ie=utf-8&oe=utf-8&client=firefox-b-1-ab
-build custom linux distribution - Google Search
-https://www.maketecheasier.com/create-linux-distro/
-Create Your Own Linux Distro with Ubuntu Imager
-https://github.com/Distroshare/distroshare-ubuntu-imager
-GitHub - Distroshare/distroshare-ubuntu-imager: Creates an installable live CD from an installed Ubuntu or derivative distribution
-https://help.ubuntu.com/community/MakeALiveCD/DVD/BootableFlashFromHarddiskInstall
-MakeALiveCD/DVD/BootableFlashFromHarddiskInstall - Community Help Wiki
 
 ## Desktop
 
@@ -38,9 +26,18 @@ This is a good local mirror for ubuntu: (don't think xubuntu is there)
 http://ftp.ussg.iu.edu/linux
 
 ## Raspberry Pi
-For raspberry pi, going to try Xubuntu for that:
+
+Hard to beat raspbian. Helps make sure you're starting from common ground when documenting your projects: 
+
+https://www.raspberrypi.org/downloads/raspbian/
+
+
+If you plan to use a Pi as a daily driver / desktop, you may want to customize the desktop / distribution:
 
 https://ubuntu-pi-flavour-maker.org/download/
+
+
+
 
 ## Arch Linux
 
@@ -48,9 +45,6 @@ https://www.google.com/search?q=arch+linux
 arch linux - Google Search
 https://www.archlinux.org/download/
 Arch Linux - Downloads
-
-
-
 
 ## Security
 
@@ -120,4 +114,17 @@ http://www.outofworkpoet.com/initramfs-unable-find-live-medium-containing-live-f
 
 ## Cutting edge
 Arch Linux
+
+## Custom Distribution
+http://www.linuxfromscratch.org/
+Welcome to Linux From Scratch!
+
+https://www.google.com/search?q=build+custom+linux+distribution&ie=utf-8&oe=utf-8&client=firefox-b-1-ab
+build custom linux distribution - Google Search
+https://www.maketecheasier.com/create-linux-distro/
+Create Your Own Linux Distro with Ubuntu Imager
+https://github.com/Distroshare/distroshare-ubuntu-imager
+GitHub - Distroshare/distroshare-ubuntu-imager: Creates an installable live CD from an installed Ubuntu or derivative distribution
+https://help.ubuntu.com/community/MakeALiveCD/DVD/BootableFlashFromHarddiskInstall
+MakeALiveCD/DVD/BootableFlashFromHarddiskInstall - Community Help Wiki
 
