@@ -1,24 +1,29 @@
-I try to keep browser configurations as simple as possible.
+# Browsers
 
-FIREFOX:
-========================
+Keep browser configurations as simple as possible.
 
-update to using nightly builds:
-sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
-sudo apt-get update
-sudo apt-get install firefox-trunk
+## Firefox
 
 
-*2016.01.02 18:58:17
+### Tab Links
+
 https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
 Copy All Tabs :: Add-ons for Firefox
 
-#have used this in the past as well:
+have used this in the past as well:
 https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search
-#and this may have similar functionality
+and this may have similar functionality
 https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
 
-*2019.02.03 09:18:28
+OneTab?
+
+### Tab Suspender
+
+'Auto Tab Discard' does what I'm after. Closest working alternative to 'The Great Suspender'
+
+https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/
+https://www.google.com/search?q=firefox+tab+suspender
+
 https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web
 great suspender firefox at DuckDuckGo
 https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/
@@ -26,32 +31,39 @@ Chrome's 'The Great Suspender' for firefox? : firefox
 https://addons.mozilla.org/en-US/firefox/addon/unload-tabs/
 UnloadTabs – Get this Extension for 🦊 Firefox (en-US)
 
-#this one didn't work so well for me.. major memory usage
+this one didn't work so well for me.. major memory usage
 https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/
 Tab Suspender – Get this Extension for 🦊 Firefox (en-US)
 
 
-*2019.02.09 08:00:12
+### Vue Dev Tools
+
 https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
 
-# 2019.09.11 20:46:56
-instead of adblock, I have been exploring a more general filter / tracking blocker:
+### Ad Blockers
+
+Instead of adblock, I have been exploring a more general filter / tracking blocker:
 https://github.com/gorhill/uBlock/
 
+https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
 
-# 2019.09.17 22:23:37
 Beware of false immitations:
 Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.
 https://www.tomshardware.com/news/adblock-ublock-fake-google-chrome-browser-extensions,40422.html
 
-*2013.04.22 20:36:25 browsers firefox chrome
 https://disconnect.me/
 https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 
 via:
 http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968
 
+Similar in goal to Disconnect Me
+AdBlock Plus?
+https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
+
+
+### General Settings
 
 For Firefox preferences:
 Preferences-> General
@@ -67,13 +79,7 @@ Advanced -> Data Choices -> disable "Enable Firefox Health Report" and "Enable C
 Clear History
 
 
-
-
-*2019.02.03 09:23:08
-Similar in goal to Disconnect Me
-AdBlock Plus?
-https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
-(maybe it's better just to disable javascript for non-trusted sites?)
+### Less Common Add-ons
 
 *2019.02.03 09:21:03
 ColorZilla
@@ -131,11 +137,14 @@ http://www.mozilla.org/en-US/firefox/new/
 https://addons.mozilla.org/en-US/firefox/addon/measureit
 #this didn't work for me
 
+update to using nightly builds:
+sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa
+sudo apt-get update
+sudo apt-get install firefox-trunk
 
 
 
-CHROME / CHROMIUM:
-========================
+## CHROME / CHROMIUM:
 
 For non-linux machines, go with Chrome:
 https://www.google.com/intl/en/chrome/

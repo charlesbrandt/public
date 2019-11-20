@@ -99,8 +99,8 @@
 
 ;; this works, but will probably be global for all instances
 ;; unless frame-setup overrides
-;(set-frame-height (selected-frame) 43)
-;(set-frame-width (selected-frame) 80)
+(set-frame-height (selected-frame) 60)
+(set-frame-width (selected-frame) 80)
 
 (message "SYSTEM NAME:")
 (setq hostname (car (split-string (system-name) "\\.")))
