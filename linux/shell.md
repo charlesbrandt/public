@@ -2,6 +2,12 @@
 
 AKA Prompt Command_Line Command_line_interface cli bash terminal console
 
+## How to print a formatted date in a command?
+
+$(date +%F)
+
+via:
+https://stackoverflow.com/questions/1401482/yyyy-mm-dd-format-date-in-shell-script
 
 ## TMUX
 

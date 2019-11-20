@@ -44,14 +44,11 @@ It's also possible to make a link to the template:
 
     cd ~/.config/inkscape/templates/
     rm default.svg
-    ln -s /c/public/templates/svg/inches/11x8.5/2x2-wide.svg default.svg
+    ln -s ~/templates/template.svg default.svg
 
-Or you can manually copy in a static version. (There may be newer versions available, so be sure to update frequently.)
+Or you can manually copy in a static version. There may be newer versions available, so be sure to update frequently.
 
-    cd /c/public/templates/svg/inches/11x8.5/
-    cp 2x2-wide.svg ~/.config/inkscape/templates/default.svg
-
-
+    cp ~/templates/template.svg ~/.config/inkscape/templates/default.svg
 
 Just start with a blank document, change the canvas size to whatever you want, and then save the document as templates/default.svg in your Inkscape config directory (~/.config/inkscape on Linux). Then restart Inkscape, and it should open with whatever document you just saved as the default template.
 
@@ -104,82 +101,7 @@ If your printer supports the document size of the svg, Inkscape has no problem p
 
 You can also scale the image to fit on a single page. This can be useful for drafts and physical edits.
 
-If you want to print something larger than a single page, you'll need to split it up outside of Inkscape for printing (as of 2019.06.30).
 
-Trying:
-
-```
-Just had to solve this today. I used Inkscape's Print and printed to a PDF file (which is a standard feature on Linux; I don't know about other platforms), and then I used pdfposter to split it into pages:
-
-pdfposter -m a4 -p a3 infile.pdf outfile.pdf
-
-Translation: use A4 pages to build an A3-sized poster.
-```
-
-From the pdfposter man page:
-
-```
-       -m BOX, --media-size=BOX
-              Specify the desired media size to print on.  See below for BOX.
-              The default is A4 in the standard package.
-
-       -p BOX, --poster-size=BOX
-              Specify the poster size. See below for BOX.  pdfposter will
-              autonomously choose scaling and rotation to best fit the input
-              onto the poster (see EXAMPLES below).
-
-              If you give neither the -s nor the -p option, the default poster
-              size is identical to the media size.
-```
-
-    sudo apt-get install pdfposter
-
-This resulted in a slightly off scale... might not be using A4:
-
-    pdfposter -m a4 -p 12x24inch
-
-Trying:
-
-    pdfposter -m 11x8.5inch -p 12x24inch
-
-Still got some down scaling from this setting... maybe:
-
-    pdfposter -m 8.5x11inch -s 1
-
-Still off by 2 inches. Hmmm... TODO.
-
-TODO:
-was not able to get the rotation correct. Something to work on in future iterations
-
-Via:
-https://www.google.com/search?q=print+svg+on+multiple+pages
-https://superuser.com/questions/161313/print-a-huge-svg
-https://bugs.launchpad.net/inkscape/+bug/170274
-
-
-
-## Arrows
-
-How to create arrows --
-
-Some of these are available on Fill and Stroke settings. After creating a line, open Fill and Stroke settings and choose the Stroke style tab. Adjust endpoints with the "Markers" options.
-
-Screenshot_2019-06-30_08-20-08-markers.png
-
-TODO:
-it may be possible to use a custom symbol to represent the arrow heads if the look you want is not available.
-
-## TODO - Convert raster to vector
-
-Path > Trace Bitmap
-
-http://goinkscape.com/how-to-vectorize-in-inkscape/
-https://www.google.com/search?q=raster+to+vector+inkscape
-
-## TODO - fonts
-
-add fonts to the system (see also... ???)  
-configure a default font as desired
 
 ## TODO - default zoom level
 

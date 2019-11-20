@@ -99,6 +99,7 @@
 
 ;; this works, but will probably be global for all instances
 ;; unless frame-setup overrides
+
 (set-frame-height (selected-frame) 60)
 (set-frame-width (selected-frame) 80)
 
@@ -135,9 +136,9 @@
 ;where height and width are for the frame
 (frame-setup
  '(("blank" 29 98 '() ) ;; example
-   ("drishti" 34 125 ) ;; netbook
-   ("context" 32 80  ) ;; laptop
-   ("breathe" 43 80  )
+   ("machine1" 34 125 ) ;; netbook
+   ("machine2" 32 80  ) ;; laptop
+   ("machine3" 43 80  )
    )
 )
 
