@@ -7,7 +7,11 @@ AKA Prompt Command_Line Command_line_interface cli bash terminal console
 $(date +%F)
 
 via:
+
+https://duckduckgo.com/?q=bash+print+formatted+date+in+command&t=canonical&ia=web
+bash print formatted date in command at DuckDuckGo
 https://stackoverflow.com/questions/1401482/yyyy-mm-dd-format-date-in-shell-script
+bash - YYYY-MM-DD format date in shell script - Stack Overflow
 
 ## TMUX
 

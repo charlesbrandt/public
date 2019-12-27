@@ -172,8 +172,9 @@
     (setq list (cdr list)))
 )
 
-;(defun list-print ()
-(defun jp ()
+;; (defun list-print ()
+;; (defun jp ()
+(defun pf ()
   (interactive)
   (setq list (mapcar (function buffer-file-name) (buffer-list)))
   (while list
@@ -181,8 +182,16 @@
 	(progn (insert (car list))
 	 (insert "\n") )
     )
-    (setq list (cdr list)))
-;  (insert (print-list ))
+    (setq list (cdr list))
+    )
+  
+  (let ((case-fold-search t)) ; or nil
+  (goto-char 0)
+  (while (search-forward (getenv "HOME") nil t)
+    (replace-match "~"))
+  )
+
+;;  (insert (print-list ))
 )
 
 (defun jc ()

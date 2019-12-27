@@ -16,25 +16,32 @@ If on a base / root / hypervisor type machine, install Virtual Box:
 
 If you encrypted your home drive, it's a good idea to note the key shown with "ecryptfs-unwrap-passphrase"
 
+```
 sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo apt-get install -y python
 ifconfig
 
+ip address show
+```
 
-#set up a shared directory with all machines. I use /c... use anything you like
-#export SHARED=/c
+set up a shared directory with all machines. I use /c... use anything you like
+```
+export SHARED=/c
 sudo mkdir -p /c
 sudo chmod 770 /c
 sudo chown -R charles: /c
+```
 
 Drag link to /c in File Manager
 
+## Ansible
 
-#might be a good point to explore ansible here???
+might be a good point to explore ansible here???
 
-#if you don't have ansible available elsewhere, install it now (ansible.txt)
-#if you do have ansible available, install the requirements to be a
+if you don't have ansible available elsewhere, install it now (ansible.txt)
+if you do have ansible available, install the requirements to be a
+
 https://github.com/city-of-bloomington/system-playbooks
 
 if you have ansible installed on another virtual machine, can use that for the bootstrap. edit hosts.txt:
