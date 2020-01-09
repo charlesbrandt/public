@@ -25,7 +25,6 @@
         ")")
       )
 
-
 ;; tool-bar-mode not found... m-x tool-bar-mode
 ;; feel free to re-enable if it causes problems
 (tool-bar-mode -1) 
@@ -35,6 +34,61 @@
 ;; newer versions of emacs are opening new frames for multiple files
 ;; this suppresses that behavior
 (setq ns-pop-up-frames nil)
+
+;;; Frame size:
+
+;; this works, but is global for all instances
+;; unless frame-setup overrides
+
+;; use minimum of all maximums of viable height for machine
+;; it is difficult to shrink the frame if too tall
+
+(set-frame-height (selected-frame) 54)
+(set-frame-width (selected-frame) 80)
+
+(message "SYSTEM NAME:")
+(setq hostname (car (split-string (system-name) "\\.")))
+(message hostname)
+
+;; frame setup for different computers
+;(defun setup-frame-for (name h w font)
+(defun setup-frame-for (name h w)
+  (if (equal hostname name)
+      (progn
+        (set-frame-height (selected-frame) h)
+        (set-frame-width (selected-frame) w)
+	;; this applies the height to new frames too 
+	(add-to-list 'default-frame-alist (cons 'height h))
+	(add-to-list 'default-frame-alist (cons 'width w))
+	;(custom-set-faces font)
+	)
+    )
+  )
+
+(defun frame-setup (list)
+  (when window-system
+    (dolist (conf list)
+      ;(setup-frame-for (car conf) (cadr conf) (caddr conf)))))
+      ;(setup-frame-for (car conf) (cadr conf) (caddr conf) (cadddr conf) ))))
+
+      ;(setup-frame-for (car conf) (cadr conf) (cadr (cdr conf)) (cadr (cdr (cdr conf))) ))))
+      (setup-frame-for (car conf) (cadr conf) (cadr (cdr conf)) ))))
+
+
+;(name height width font)
+;where height and width are for the frame
+(frame-setup
+ '(("blank" 29 98 '() ) ;; example
+   ("machine1" 34 125 ) ;; netbook
+   ("machine2" 32 80  ) ;; laptop
+   ("machine3" 43 80  )
+   )
+)
+
+;:height 97 :width normal :foundry "unknown" 
+
+
+
 
 ;; Prevent accidentally killing emacs.
 (global-set-key [(control x) (control c)]
@@ -94,55 +148,6 @@
 ;(color-theme-late-night)
 
 
-
-;;; Frame size:
-
-;; this works, but will probably be global for all instances
-;; unless frame-setup overrides
-
-(set-frame-height (selected-frame) 60)
-(set-frame-width (selected-frame) 80)
-
-(message "SYSTEM NAME:")
-(setq hostname (car (split-string (system-name) "\\.")))
-(message hostname)
-
-;; frame setup for different computers
-;(defun setup-frame-for (name h w font)
-(defun setup-frame-for (name h w)
-  (if (equal hostname name)
-      (progn
-        (set-frame-height (selected-frame) h)
-        (set-frame-width (selected-frame) w)
-	;; this applies the height to new frames too 
-	(add-to-list 'default-frame-alist (cons 'height h))
-	(add-to-list 'default-frame-alist (cons 'width w))
-	;(custom-set-faces font)
-	)
-    )
-  )
-
-(defun frame-setup (list)
-  (when window-system
-    (dolist (conf list)
-      ;(setup-frame-for (car conf) (cadr conf) (caddr conf)))))
-      ;(setup-frame-for (car conf) (cadr conf) (caddr conf) (cadddr conf) ))))
-
-      ;(setup-frame-for (car conf) (cadr conf) (cadr (cdr conf)) (cadr (cdr (cdr conf))) ))))
-      (setup-frame-for (car conf) (cadr conf) (cadr (cdr conf)) ))))
-
-
-;(name height width font)
-;where height and width are for the frame
-(frame-setup
- '(("blank" 29 98 '() ) ;; example
-   ("machine1" 34 125 ) ;; netbook
-   ("machine2" 32 80  ) ;; laptop
-   ("machine3" 43 80  )
-   )
-)
-
-;:height 97 :width normal :foundry "unknown" 
 
 
 
