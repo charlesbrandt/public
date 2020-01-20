@@ -28,7 +28,7 @@ rm .bashrc
 ln -s ~/public/system/linux/.bashrc .bashrc
 ```
 
-TOC / Topics / Categories:
+## TOC / Topics / Categories:
 
   - [System](system/)
 
@@ -39,3 +39,8 @@ TOC / Topics / Categories:
   - [Code](code/)
   
   - [Web](web/)
+
+
+~/public/system/system.md
+
+

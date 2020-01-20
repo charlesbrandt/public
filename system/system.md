@@ -1,9 +1,8 @@
 # System
 
-Try setting up a computer with a fresh operating system. In general, I find it easier to set up a system from scratch quickly, rather than fix a broken system or upgrade an obsolete system.  I feel more confident that the system is clean and stable that way.  This is also a good chance to make sure note taking, configuration management, and backup habits are working.
+Setting up a computer with a fresh operating system. 
 
-If you don't have a preferred operating system, consider one that is open source. Open source software is a wonderful thing, and I encourage you to take some time to learn why:
-general/free_software.txt
+If you don't already have a preferred operating system, consider one that is open source. Open source software is a wonderful thing, [but don't just take my word for it.](https://opensource.guide)
 
 Linux is the most common on desktop machines in the open source world. There are many flavors:
 
@@ -15,7 +14,7 @@ http://www.ubuntu.com
 
 Whatever you choose, start by downloading and burning an image of the operating system (OS) of your choice from their site.
 
-If you don't have the ability to download and burn CDs or flash drives, there are also sources to order the system on CD for minimal cost, or you can look into transferring the image to a USB thumb drive.
+If you don't have the ability to download and burn media images to a portable device, try ordering the system on media that's ready to go. 
 
 Once you have your copy of Ubuntu, boot your computer with it and Ubuntu should load into a "Live" instance.  This is a fully functional Linux system.  Cooool.  With enough memory, the only noticable performance hit comes when the system needs to access a program from the source media.  
 
