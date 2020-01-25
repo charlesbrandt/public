@@ -1,9 +1,8 @@
 # Browsers
 
-Keep browser configurations as simple as possible.
+The add-ons and extension that make a web browser even better. 
 
 ## Firefox
-
 
 ### Tab Links
 
@@ -35,11 +34,9 @@ this one didn't work so well for me.. major memory usage
 https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/
 Tab Suspender – Get this Extension for 🦊 Firefox (en-US)
 
-
 ### Vue Dev Tools
 
 https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
-
 
 ### Ad Blockers
 
@@ -105,7 +102,7 @@ https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/
 *2015.11.03 11:50:23
 There are a few items that are great additions (Add-ons) (plugins):
 
-#custom new tab screen
+custom new tab screen
 https://addons.mozilla.org/en-us/firefox/addon/moment/
 
 Restart browser, close extra tabs
@@ -238,141 +235,3 @@ google-talkplugin
 
 
 
-FIREFOX (old):
-========================
-
-*2016.01.03 19:25:42
-Now that Firefox requires signing, this is too much of a hassle...
-there are other options available now:
-
-CopyAllUrls (sometimes here instead: http://www.plasser.net/)
-http://www.plasser.net/copyallurls/
-https://addons.mozilla.org/en-US/firefox/addon/copyallurls/
-(copy kept on /media/charles/CHARLES/ for quicker install)
-
-*2013.07.07 05:27:33
-Ubiquity. Highlight something, then press Ctrl+Space and issue a command
-http://gizmodo.com/what-are-your-hottest-tips-for-browsing-the-web-like-a-687427483
-also [2015.11.03 11:44:03]
-had difficulty getting this to work, but it looks good in theory
-
-#Not as critical:
-
-*2012.05.31 13:21:43 shopping
-look at invisible hand firefox plug in
-
-Disconnect
-
-*2014.03.11 23:27:08
-if shopping, consider:
-Honey (automatically apply cupon codes)
-Invisible Hand
-http://lifehacker.com/lifehacker-pack-for-firefox-2013-our-list-of-the-best-896766794
-
-
-
-
-
-Firebug (Firefox now comes complete with a built in developer console!)
-
-Forecastfox Weather (no link to 5 day, no link to hourly, no separators, move to left of firebug)
-Down them all!
-
-Javascript Debugger:
-https://addons.mozilla.org/en-US/firefox/addon/216/
-
-#If installing flash (a machine with adequate power),
-#this addon is also a good one:
-Video DownloadHelper
-
-Flash
-
-Flash Firebug (debug Flash items)
-
-*2010.11.01 13:42:49
-define (plugin to define words)
-
-error installing toolbar:[Exception... "Node was not found"  code: "8" nsresult: "0x80530008 (NS_ERROR_DOM_NOT_FOUND_ERR)"  location: "chrome://global/content/bindings/toolbar.xml Line: 301"]
-
-
-
-Trying:
-FireFTP
-AniWeather  (if not, try weather bug)
-Feedly
-
-Venkman (javascript debugger)
-Rainbow (color picker)
-
-*2010.07.17 10:13:25
-http://lifehacker.com/5360263/maximize-firefox-35s-viewing-area-for-your-netbook
-great article on maximizing space available.
-
-essentially customize toolbar to liking manually (drag and drop items)
-then edit a new file as follows:
-
-~/.mozilla/firefox/xxxxxxxx.default/chrome/userChrome.css
-
-/* remove new tab button next to last tab */
-.tabs-newtab-button {display: none !important}
-
-/* remove magnifying glass from search box */
-.search-go-button { display: none !important}
-
-/* combine stop and reload buttons */
-#stop-button[disabled] { display: none }
-#stop-button:not([disabled]) + #reload-button { display: none }
-
-/* don't show back or forward buttons if there's nothing to go back or forward to */
-#back-button[disabled="true"] { display: none }
-#forward-button[disabled="true"] { display: none }
-
-
-
-see also
-http://superuser.com/questions/44031/recommended-firefox-theme-for-a-netbook
-
-add a link to a local copy of python documentation
-
-*2008.04.12 12:43 firefox adobe flash install
-could optionally install flash
-cd $DLPATH/ubuntu/install_flash_player_9_linux/
-./flashplayer-installer
-
-
-*2010.07.17 09:29:03
-https://addons.mozilla.org/en-US/firefox/
-Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/collections/popular?show=7&page=2
-Collections :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/934/
-CopyAllURLs :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/1843/?collection_uuid=da0ecd99-2289-7ab0-7d57-e7c489c845c3
-Firebug :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/201/?collection_uuid=772c5082-2a86-cb22-38b9-259fb9edaf04
-DownThemAll! :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/271/?collection_uuid=da0ecd99-2289-7ab0-7d57-e7c489c845c3
-ColorZilla :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/1865/?collection_uuid=772c5082-2a86-cb22-38b9-259fb9edaf04
-Adblock Plus :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/684/?collection_uuid=da0ecd99-2289-7ab0-7d57-e7c489c845c3
-FireFTP :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/8538/
-Feedly :: Add-ons for Firefox
-https://addons.mozilla.org/en-US/firefox/addon/398/
-Forecastfox :: Add-ons for Firefox
-
-
-https://addons.mozilla.org/en-US/firefox/addon/12331/?collection_uuid=c867f4e3-1031-72c6-d68a-6d8593691b6b
-AniWeather :: Add-ons for Firefox
-
-
-
-
-
-SAFARI:
-========================
-
-http://brettterpstra.com/tablinks-safari-extension/
-to configure the format to be equivalent to copy all urls:
-%u%b%t

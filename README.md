@@ -41,6 +41,3 @@ ln -s ~/public/system/linux/.bashrc .bashrc
   - [Web](web/)
 
 
-~/public/system/system.md
-
-

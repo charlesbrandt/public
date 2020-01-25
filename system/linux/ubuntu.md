@@ -1,5 +1,9 @@
 # Ubuntu / Xubuntu / Ubuntu Studio
 
+When running from an Ubuntu live session, I add some configurations with:
+system/startup.sh
+Be sure to update $NAME to be your name/username and $USBPATH to point to where this instance is.
+
 For notes on downloading and creating an image, see:
 
     linux-distributions.txt
