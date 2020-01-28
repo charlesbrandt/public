@@ -77,7 +77,7 @@ linux git server - Google Search
 It is best to have a local master repo that different machines can clone from. You can create a copy of the master repository by running:
 
     cd /path/to/current/checked/out/repository
-    git clone --bare /path/to/master/repository
+    git clone --bare . /path/to/master/repository
 
 then checkout to any device with:
 
