@@ -1,5 +1,6 @@
 # Atom Editor
 
+
 ## Download
 
 https://atom.io/
@@ -19,15 +20,17 @@ sudo apt-get install atom
 via:
 https://flight-manual.atom.io/getting-started/sections/installing-atom/
 
+
 ## Init
 
 <img src="screenshots/default-startup.png">
 
 On first run, it shows a Welcome Guide. I disable this and allow for Telemetry Consent.
 
+
 ## Settings
 
-Once the welcome screen doesn't show by default, it's important to know how to get back to edit settings.  It's easiest to use Ctrl-comma or the menu:
+Once the welcome screen doesn't show by default, it's important to know how to get back to edit settings. It's easiest to use Ctrl-comma or the menu:
 
 Open
 ![atom-settings_view-open-ctrl_comma.png](screenshots/atom-settings_view-open-ctrl_comma.png)
@@ -41,7 +44,6 @@ On macs, it's difficult to locate ~/.atom directory in the file browser if hidde
 
 Open Atom settings (press Ctrl-, or choose Edit -> Preferences)   
 Switch to the Keybindings section.  
-
 
 Type spell into the filter field to view all spell-checking commands and their keybindings, and click the Copy to Clipboard icon next to the spell-check:correct-misspelling item.
 

@@ -7,8 +7,195 @@ add to favorites
 
 launch
 
-Disable telemetry
+## Keybindings
+
+There are a few keyboard shortcuts that I find useful. Some have carried over from emacs, but I don't need to remap the whole configuration to be just like emacs. More like ergo-emacs. 
+
+https://code.visualstudio.com/docs/getstarted/keybindings
+
+File > Preferences > Keyboard Shortcuts. 
+
+All keyboard shortcuts in VS Code can be customized via the keybindings.json file.
+
+To configure keyboard shortcuts through the JSON file, open the keybindings.json file from the Command Palette (Ctrl+Shift+P) with the Preferences: Open Keyboard Shortcuts (JSON) command.
+
+You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcuts (JSON) button on the right of the editor title bar. [couldn't find this path]
+
+### Block navigation
+
+Space Block Jumper allows jumping to the next blank line. 
+
+https://marketplace.visualstudio.com/items?itemName=jmfirth.vsc-space-block-jumper
+
+Block travel looks like another viable option:
+
+https://marketplace.visualstudio.com/items?itemName=sashaweiss.block-travel
+
+https://stackoverflow.com/questions/45788119/is-there-a-vs-code-shortcut-to-move-select-up-down-to-the-next-empty-line
+
+Still requires adding custom bindings (included below).
+
+Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up. 
+
+### Custom bindings
+
+```
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "cursorLineEnd"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.webvieweditor.selectAll",
+        "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "cursorLineStart"
+    },
+    {
+        "key": "shift+alt+,",
+        "command": "cursorTop",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+home",
+        "command": "-cursorTop",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+.",
+        "command": "-editor.action.autoFix",
+        "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
+    },
+    {
+        "key": "shift+alt+.",
+        "command": "cursorBottom",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+end",
+        "command": "-cursorBottom",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "spaceBlockJumper.moveDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-scrollLineDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "spaceBlockJumper.moveUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-scrollLineUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "spaceBlockJumper.selectDown"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "spaceBlockJumper.selectUp"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "editor.cancelOperation",
+        "when": "cancellableOperation"
+    },
+    {
+        "key": "escape",
+        "command": "-editor.cancelOperation",
+        "when": "cancellableOperation"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    }
+]
+```
+
+TODO:
+
+  'ctrl-tab': 'editor:auto-indent'
+
+  'ctrl-j': 'moments-atom:journal'
+
+  'ctrl-d': 'editor:delete'
+
+
+## Extensions
+
+https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
+
+https://vuejs.github.io/vetur/
+
+### Eslint
+
+https://github.com/Microsoft/vscode-eslint
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+### Auto Fix
+
+To improve the formatting of your HTML source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
+
+https://code.visualstudio.com/docs/languages/html
+
+
 ## How to disable telemetry reporting
+
+Disable telemetry
 
 https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
 
