@@ -1,6 +1,6 @@
 # Browsers
 
-The add-ons and extension that make a web browser even better. 
+Configurations to make a web browser even better. Most of these are in the form of add-ons and extensions. 
 
 ## Firefox
 
