@@ -19,7 +19,9 @@ export PATH
 
 #this needs to come after previous line, otherwise scp will have trouble
 #http://unix.stackexchange.com/questions/18231/scp-fails-without-error
+#MOTD (Message of the day)
 #echo "Deep Breath... Inhale.... Exhale.... :)"
+
 export EDITOR=vi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -69,11 +71,11 @@ fi
 #https://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$'
-    PS1='\n\[\033[38;5;129m\]# \D{%Y.%m.%d} \t ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n'
+    PS1='\n\[\033[38;5;129m\]### \D{%Y.%m.%d} \t ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n'
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     #PS1="\n#\D{%Y.%m.%d} \t \u@\h:\w \n"
-    PS1="\n# \D{%Y.%m.%d} \t \h:\w \n"
+    PS1="\n### \D{%Y.%m.%d} \t \h:\w \n"
 
 fi
 unset color_prompt force_color_prompt

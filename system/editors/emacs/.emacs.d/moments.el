@@ -173,10 +173,10 @@
 )
 
 ;; (defun list-print ()
-;; (defun jp ()
 (defun pf ()
   (interactive)
   (setq list (mapcar (function buffer-file-name) (buffer-list)))
+  (reverse list)
   (while list
     (if (car list)
 	(progn (insert (car list))
@@ -190,9 +190,14 @@
   (while (search-forward (getenv "HOME") nil t)
     (replace-match "~"))
   )
-
 ;;  (insert (print-list ))
 )
+
+(defun jp ()
+  ;; old way of calling print files
+  (pf)  
+)
+
 
 (defun jc ()
   (interactive)

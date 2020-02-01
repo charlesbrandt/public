@@ -37,6 +37,29 @@ how to unpack a locate database and print all files from it
 
 ### Notes
 
+update db:
+
+https://duckduckgo.com/?q=updatedb+specify+output+file&t=canonical&ia=web
+updatedb specify output file at DuckDuckGo
+https://www.lifewire.com/updatedb-linux-command-4095883
+updatedb - Linux Command
+https://unix.stackexchange.com/questions/379725/what-kind-of-database-do-updatedb-and-locate-use#379729
+find - What kind of database do `updatedb` and `locate` use? - Unix & Linux Stack Exchange
+https://www.tutorialspoint.com/unix_commands/updatedb.htm
+updatedb - Unix, Linux Command - Tutorialspoint
+
+
+https://duckduckgo.com/?q=linux+create+list+of+all+files+on+a+drive&t=canonical&ia=web
+linux create list of all files on a drive at DuckDuckGo
+https://stackoverflow.com/questions/105212/recursively-list-all-files-in-a-directory-including-files-in-symlink-directories
+linux - Recursively list all files in a directory including files in symlink directories - Stack Overflow
+https://duckduckgo.com/?q=linux+locate+database&t=canonical&ia=web
+linux locate database at DuckDuckGo
+http://www.linfo.org/locate.html
+How to use the locate command, by The Linux Information Project
+
+
+
 Windows specific:
 
 https://duckduckgo.com/?q=index+of+drive&t=canonical&ia=web
@@ -49,11 +72,3 @@ https://alternativeto.net/software/directory-printer/
 Karen's Directory Printer Alternatives and Similar Software - AlternativeTo.net
 
 
-https://duckduckgo.com/?q=linux+create+list+of+all+files+on+a+drive&t=canonical&ia=web
-linux create list of all files on a drive at DuckDuckGo
-https://stackoverflow.com/questions/105212/recursively-list-all-files-in-a-directory-including-files-in-symlink-directories
-linux - Recursively list all files in a directory including files in symlink directories - Stack Overflow
-https://duckduckgo.com/?q=linux+locate+database&t=canonical&ia=web
-linux locate database at DuckDuckGo
-http://www.linfo.org/locate.html
-How to use the locate command, by The Linux Information Project

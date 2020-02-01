@@ -2,7 +2,7 @@
 
 rsync is the simplest way to synchronize two drives. 
 
-i often leave notes in sync.txt with the commands used. 
+I often leave notes in sync.txt with the specific commands used. 
 
 I forget... do I keep a slash at the end? or does that cause it to be in a subdirectory. 
 

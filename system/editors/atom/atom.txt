@@ -1,3 +1,10 @@
+*2017.05.10 atom
+ctrl-shift-c
+maps to editor:copy-path
+copies the the current file's path
+via:
+https://discuss.atom.io/t/how-do-you-get-file-path/8693/11
+
 # 2019.07.11 08:34:48
 https://atom.io/docs/api/v1.4.1/AtomEnvironment
 Atom
