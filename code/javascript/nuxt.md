@@ -40,6 +40,7 @@ DotEnv
 More info on these options:
  
  - [PWA (Progressive Web applications)](https://developers.google.com/web/progressive-web-apps/)
+ 
  - [DotEnv](https://github.com/motdotla/dotenv#readme)
    [Store config in the environment](https://12factor.net/config)
 
@@ -74,12 +75,25 @@ SPA == Single Page Application
 
 https://nuxtjs.org/guide#server-rendered-universal-ssr-
 
+https://developer.okta.com/blog/2019/04/26/tutorial-build-universal-apps-with-nuxt
+
+### Static Builds
+
+Both deployment options can be built for a static hosting situation. SPA will be one big .js file. Universal will have many. 
+
+    npx nuxt generate
+
+https://nuxtjs.org/api/configuration-generate/
+
+https://medium.com/a-man-with-no-server/static-site-generators-nuxt-js-2fa9782d27c8
+
 
 ## Running
 
 ```
 npm run dev
 ```
+
 
 ## Templates
 
