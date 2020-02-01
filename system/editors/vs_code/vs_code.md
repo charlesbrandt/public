@@ -162,6 +162,14 @@ Adding multiple cursors is still available by default with alt-shift-down and al
         "key": "ctrl+l",
         "command": "-expandLineSelection",
         "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+5",
+        "command": "editor.action.startFindReplaceAction"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "-editor.action.startFindReplaceAction"
     }
 ]
 ```

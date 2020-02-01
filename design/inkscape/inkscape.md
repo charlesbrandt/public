@@ -2,7 +2,7 @@
 
 Add Inskape to favorites in application launcher
 
-Launch inkscape
+Launch Inkscape
 
 <img src="screenshots/0001-default-start.png" alt="When Inkscape first starts...">
 
@@ -31,31 +31,33 @@ Configure best default settings
 
 Exit inkscape so defaults take effect.
 
+
 ## Default application for SVG in file system browser
 
 Set inkscape to be the default opener for svg files
 Filemanager -> browse to svg -> right click -> open with -> choose another application -> inkscape -> make default
 
+
 ## Default template
 
-Decide on a default template when Inkscape opens...
-
-It's also possible to make a link to the template:
+Decide on a default template when Inkscape opens...  
+Make a link to the template:
 
     cd ~/.config/inkscape/templates/
     rm default.svg
     ln -s ~/templates/template.svg default.svg
 
-Or you can manually copy in a static version. There may be newer versions available, so be sure to update frequently.
+Alternatively, manually copy in a static version. There may be newer versions available, so be sure to update frequently.
 
     cp ~/templates/template.svg ~/.config/inkscape/templates/default.svg
 
-Just start with a blank document, change the canvas size to whatever you want, and then save the document as templates/default.svg in your Inkscape config directory (~/.config/inkscape on Linux). Then restart Inkscape, and it should open with whatever document you just saved as the default template.
+No template available? Start with a blank document, change the canvas size to whatever you want, and then save the document as templates/default.svg in your Inkscape config directory (~/.config/inkscape on Linux). Then restart Inkscape, and it should open with whatever document you just saved as the default template.
 
 via:  
 https://graphicdesign.stackexchange.com/questions/5830/inkscape-changing-default-canvas-size
 
 https://duckduckgo.com/?q=inkscape+default+template&t=canonical&ia=qa
+
 
 ## Default fonts
 
@@ -70,15 +72,18 @@ Set better default font size
 
 Also choose where you want to start with template
 
+
 ## Importing SVGs
 
 When importing a layer or two from one SVG to another, be sure to remove any non-visible layers from the SVG file being imported. Even if they are not visible, they will still get added to the file. This can quickly cause bloat in the destination SVG file.
+
 
 ## Versioning
 
 With graphics, it can be useful to keep old iterations around for easy snapshots. Sometimes files can change dramatically based on what layers are visible at the time.
 
 Nevertheless, SVGs lend themselves quite well to using a typical version control system like git. They're based on XML, so they're all text!
+
 
 ## Pen input
 
@@ -95,6 +100,7 @@ Fixation set to 0 also makes sure the brush is always perpendicular to the direc
 
 Just play with settings to get the effect you're after.
 
+
 ## Printing
 
 If your printer supports the document size of the svg, Inkscape has no problem printing it.
@@ -103,41 +109,12 @@ You can also scale the image to fit on a single page. This can be useful for dra
 
 
 
-## TODO - default zoom level
+## Tools
 
-Setting the level in the file and then assigning it as the default doesn't seem to fix the issue.
-still getting levels at 300%+
-hit '1' key to jump to 100%
-
-https://duckduckgo.com/?q=inkscape+default+zoom+level&t=canonical&ia=web
-inkscape default zoom level at DuckDuckGo
-https://kattekrab.net/inkscape-change-default-document-properties
-Inkscape: Change default document properties | kattekrab
-http://www.inkscapeforum.com/viewtopic.php?t=7189
-Is it possible to set the default zoom for startup? - InkscapeForum.com
-
-## TODO - misc
-
-research default dpi conversion:
-https://inkscape.org/en/learn/faq/#dpi_change
-
-<img src="screenshots/" alt="">
-
-
-## Links
-
-*2016.02.01 18:06:47 raster vector potrace  
-https://duckduckgo.com/?q=convert+raster+to+svg&t=canonical  
-convert raster to svg at DuckDuckGo  
-https://en.wikipedia.org/wiki/Image_tracing  
-Image tracing - Wikipedia, the free encyclopedia  
-https://en.wikipedia.org/wiki/Potrace  
-Potrace - Wikipedia, the free encyclopedia  
-
-
-*2014.05.07 18:49:09  
+### Tweak
 was curious what the tweak tool does...  
 interesting...  
 like a smudge tool for vector  
 
 http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Tweak.html  
+
