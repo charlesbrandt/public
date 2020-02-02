@@ -94,17 +94,20 @@ https://medium.com/a-man-with-no-server/static-site-generators-nuxt-js-2fa9782d2
 npm run dev
 ```
 
+## External Modules
+
+https://nuxtjs.org/guide/plugins/
+
+https://nuxtjs.org/guide/modules
+
+https://nuxtjs.org/api/configuration-modules
+
 
 ## Templates
 
 The general syntax for templates is handled by Vue:
 
 https://vuejs.org/v2/guide/syntax.html
-
-Common patterns:
-
-List rendering
-https://vuejs.org/v2/guide/list.html#key
 
 ### Page Titles
 
@@ -115,16 +118,6 @@ https://vuejs.org/v2/guide/list.html#key
   },
 
 https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-name-in-the-page-title#48286279
-
-### Scripts
-
-The script block is where you put logic related to your component. 
-
-data is made up of properties
-computed is made up of getters.
-
-via:
-https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
 
 ## Vuex (Persistence)
