@@ -94,6 +94,36 @@ https://medium.com/a-man-with-no-server/static-site-generators-nuxt-js-2fa9782d2
 npm run dev
 ```
 
+### Configure host and port
+
+via: https://nuxtjs.org/faq/host-port/
+
+As direct arguments
+
+    nuxt --hostname myhost --port 3333
+
+Or in package.json
+
+```
+"scripts": {
+  "dev": "nuxt --hostname myhost --port 3333"
+}
+```
+
+Inside your nuxt.config.js:
+
+```
+export default {
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  }
+  // other configs
+}
+```
+
+.env options available too
+
 ## External Modules
 
 https://nuxtjs.org/guide/plugins/
