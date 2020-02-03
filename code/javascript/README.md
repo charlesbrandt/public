@@ -11,7 +11,7 @@ And a more detailed reference here:
 https://developer.mozilla.org/en/JavaScript/Reference
 
 
-## Interpreters:
+## Interpreters
 
 The most common interpreter is the one that runs in every web browser. NodeJS is a good interpreter to interact with directly
 
