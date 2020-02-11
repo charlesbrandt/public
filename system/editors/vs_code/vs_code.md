@@ -207,6 +207,26 @@ To improve the formatting of your HTML source code, you can use the Format Docum
 https://code.visualstudio.com/docs/languages/html
 
 
+## Default window size
+
+Open Settings (Ctrl-Shift-P -> "Settings")
+
+Choose either:
+
+    "Preferences:Open Settings (UI)"
+
+or
+
+    "Preferences: Open Settings (JSON)"
+
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "window.newWindowDimensions": "inherit"
+}
+
+https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
+
+
 ## How to disable telemetry reporting
 
 Disable telemetry
