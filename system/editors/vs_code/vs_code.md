@@ -185,9 +185,15 @@ TODO:
 
 ## Extensions
 
+https://www.google.com/search?q=vs+code+extensions+vue
+vs code extensions vue - Google Search
+
 https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
+Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
 
 https://vuejs.github.io/vetur/
+
+
 
 ### Eslint
 

@@ -17,3 +17,7 @@ It's usually best to configure public key authentication (and even disable passw
 
 via:
 https://www.ssh.com/ssh/public-key-authentication
+
+Use ssh-copy-id to transfer the public key to the machine you want to be able to log in to:
+
+    ssh-copy-id user@hostname.example.com
