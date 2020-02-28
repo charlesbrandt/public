@@ -62,9 +62,12 @@ To stop your cluster, run:
 
     minikube stop
 
+
 ## Interfaces
 
-Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code will work.
+### kubectl
+
+kubectl is the default CLI for managing kubernetes
 
 ### K9s - Command line 
 
@@ -76,8 +79,39 @@ Binary releases
 
 https://github.com/derailed/k9s/releases
 
+### VS Code 
+
+Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code works.
+
+https://code.visualstudio.com/docs/azure/kubernetes
 
 
+
+## Helm
+
+From their site: 
+
+```
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+```
+
+https://helm.sh/
+
+https://github.com/helm/helm
+
+Download an appropriate release:
+
+https://github.com/helm/helm/releases/tag/v3.0.3
+
+Unpack it.
+
+    cd ~/Downloads
+    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
+    cd [directory]
+    
+    helm create [chart-name]
 
 ## Deploy a service
 
