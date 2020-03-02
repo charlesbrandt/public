@@ -7,6 +7,7 @@ add to favorites
 
 launch
 
+
 ## Keybindings
 
 There are a few keyboard shortcuts that I find useful. Some have carried over from emacs, but I don't need to remap the whole configuration to be just like emacs. More like ergo-emacs. 
@@ -37,7 +38,7 @@ Still requires adding custom bindings (included below).
 
 Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up. 
 
-### Custom bindings
+### Custom keyboard shortcut bindings
 
 ```
 // Place your key bindings in this file to override the defaultsauto[]
@@ -177,6 +178,7 @@ Adding multiple cursors is still available by default with alt-shift-down and al
 TODO:
 
   'ctrl-tab': 'editor:auto-indent'
+  using 'shift-ctrl-I' will format the whole document according to linter configurations
 
   'ctrl-j': 'moments-atom:journal'
 
@@ -185,7 +187,11 @@ TODO:
 
 ## Extensions
 
+https://www.google.com/search?q=vs+code+extensions+vue
+vs code extensions vue - Google Search
+
 https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
+Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
 
 https://vuejs.github.io/vetur/
 
@@ -199,6 +205,38 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 To improve the formatting of your HTML source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
 
 https://code.visualstudio.com/docs/languages/html
+
+### Remote Development
+
+The remote development extension allows editing code on a remote server over SSH. 
+
+https://code.visualstudio.com/docs/remote/remote-overview
+
+https://code.visualstudio.com/remote-tutorials/ssh/getting-started
+
+https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
+
+However, I had difficulty getting syntax highlighting to work. 
+
+
+## Default window size
+
+Open Settings (Ctrl-Shift-P -> "Settings")
+
+Choose either:
+
+    "Preferences:Open Settings (UI)"
+
+or
+
+    "Preferences: Open Settings (JSON)"
+
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "window.newWindowDimensions": "inherit"
+}
+
+https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
 
 
 ## How to disable telemetry reporting

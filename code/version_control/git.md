@@ -118,6 +118,26 @@ hint:
 hint: See "git help submodule" for more information.
 
 
+## Branches
+
+When working on a branch, `git pull` will pull changes from the branch, but `git push` has some surprising behavior that tries to push changes to all matching branches:
+
+```
+error: failed to push some refs to 'https://github.com/remote/repo'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you did not intend to push that branch, you may want to
+hint: specify branches to push or set the 'push.default' configuration variable
+hint: to 'simple', 'current' or 'upstream' to push only the current branch.
+```
+
+```
+git config push.default simple # just for the current repository
+git config --global push.default simple # globally for your account
+```
+
+https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
+
+
 ## Remove directory from history
 
 ```

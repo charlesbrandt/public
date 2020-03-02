@@ -31,7 +31,8 @@ Make sure you have kubectl installed. You can install kubectl according to the i
     sudo mv ./kubectl /usr/local/bin/kubectl
     
     kubectl version
-    
+
+
 ### Install Minikube
 
 ```
@@ -44,9 +45,16 @@ sudo install minikube /usr/local/bin/
 
 ### Confirm Installation 
 
+Depending on what virtualization layer you're using, you'll need to specify the correct driver type. [More information is available here](https://kubernetes.io/docs/setup/learning-environment/minikube/). 
+
+https://minikube.sigs.k8s.io/docs/reference/drivers/
+
+
     minikube start --vm-driver=<driver_name>
     
     minikube start --vm-driver=virtualbox
+
+    minikube start --vm-driver=kvm2
 
     minikube status
     
@@ -54,6 +62,59 @@ To stop your cluster, run:
 
     minikube stop
 
+
+## Interfaces
+
+### kubectl
+
+kubectl is the default CLI for managing kubernetes
+
+### K9s - Command line 
+
+K9s - Kubernetes CLI To Manage Your Clusters In Style!
+
+https://github.com/derailed/k9s
+
+Binary releases
+
+https://github.com/derailed/k9s/releases
+
+### VS Code 
+
+Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code works.
+
+https://code.visualstudio.com/docs/azure/kubernetes
+
+
+
+## Helm
+
+From their site: 
+
+```
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+```
+
+https://helm.sh/
+
+https://github.com/helm/helm
+
+Download an appropriate release:
+
+https://github.com/helm/helm/releases/tag/v3.0.3
+
+Unpack it.
+
+    cd ~/Downloads
+    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
+    cd [directory]
+    
+    helm create [chart-name]
+
 ## Deploy a service
 
 Start with something simple. Nginx serving static files seems like a good place to begin. 
+
+

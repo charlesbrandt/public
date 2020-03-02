@@ -76,3 +76,10 @@ then, with apt-get:
 
 via https://yarnpkg.com/lang/en/docs/install/
 
+Once you have `yarn` available, you can add packages as a requirement with:
+
+    yarn add
+    
+or
+
+    yarn add --dev

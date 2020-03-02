@@ -16,13 +16,13 @@ https://nuxtjs.org/guide/installation
 Make sure you have npx installed (npx is shipped by default since NPM 5.2.0)
 
 ```
-$ npx create-nuxt-app <project-name>
+npx create-nuxt-app <project-name>
 ```
 
 Or with yarn:
 
 ```
-$ yarn create nuxt-app <my-project>
+yarn create nuxt-app <my-project>
 ```
 
 And answer questions accordingly.

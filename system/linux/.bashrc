@@ -14,7 +14,7 @@ esac
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH="/c/public/sortable/sortable:/opt/local/bin:~/.yarn/bin:/c/downloads/android/tools:/c/downloads/android/platform-tools:${PATH}"
+PATH=":/opt/local/bin:~/.yarn/bin:~/.local/bin:${PATH}"
 export PATH
 
 #this needs to come after previous line, otherwise scp will have trouble
