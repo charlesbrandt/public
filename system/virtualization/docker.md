@@ -1,3 +1,5 @@
+# Docker
+
 Docker is a lighter weight alternative to a full virtual machine.
 Virtual machines are handy tools as well, but require more resources and duplicate many of the operating system files.
 
@@ -16,13 +18,13 @@ This cheat sheet is a great overview, and closely resembles what these notes cov
 https://github.com/wsargent/docker-cheat-sheet
 
 
-*2017.09.26 11:24:24
+## Running a Container
+
 When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
 
     docker run mhart/alpine-node node --version
 
-*2016.05.13 11:16:54
-see a list of *currently running* docker containers:
+To see a list of *currently running* docker containers:
 
     docker ps
     
@@ -62,9 +64,6 @@ https://docs.docker.com/engine/admin/volumes/bind-mounts/#mounting-into-a-non-em
 For deployments, a volume is a better choice. For development, a bind mount may work well. (I think!)
 
 
-
-*2016.06.07 14:04:56
-
 ## Images
 
 see a list of available docker images (see what is currently available):
@@ -92,8 +91,6 @@ clear everything out (!!! dangerous !!!)
 it is possible to build images, but if an image does not exist before running, then it will be built at that time
 
 
-
-*2016.06.09 09:15:48
 when it comes time to build a docker image (so you can ultimately deploy a running docker container), there are a few different ways to create the image:
 
  - start a container, make some changes, and then commit that to a new image
@@ -120,8 +117,6 @@ Different dependencies will result in different sized containers. Smaller is gen
 
 https://www.brianchristner.io/docker-image-base-os-size-comparison/
 
-*2017.09.26 11:12:50
-
 ## Networking
 
 see a list of all IP addresses for all containers:
@@ -136,13 +131,11 @@ they've documented that well:
 
 https://docs.docker.com/engine/userguide/containers/networkingcontainers/
 
-*2016.05.11 09:15:14
 (on macs) set up a terminal to know how to interact with docker by running:
 
     eval "$(docker-machine env default)"
 
 
-*2017.10.26 14:07:28
 troubleshooting connections docker
 
 A successful approach was to launch the server, connect to the container using another shell
@@ -160,70 +153,4 @@ apk add lynx
 lynx 127.0.0.1:8080
 
 
-
-
-*2016.06.09 15:15:15 security
-you don't want to include sensitive information in an image, especially if that is going to get shared on an image repository. This rules out using a Dockerfile. It's also not ideal to pass these parameters in over the command line interface, since then that gets set in the history file.
-
-This is a nice article on the topic that recommends using docker-compose and reference an .env file for sensitive data:
-https://www.ctl.io/developers/blog/post/tutorial-protecting-sensitive-info-docker
-
-Docker-compose is very similar in function to ansible. And then I'm back to that topic:
-https://www.ansible.com/blog/six-ways-ansible-makes-docker-compose-better
-
-*2016.06.07 11:50:48 
-via [*2016.04.29 15:50:28]
-docker + ansible:
-
-this a good introduction for using ansible within a Docker instance:
-https://www.ansible.com/2014/02/12/installing-and-building-docker-with-ansible
-
-looks like ansible can also control docker directly, if desired:
-http://docs.ansible.com/ansible/docker_module.html
-
-that may be a good alternative to docker-compose
-
-more development is actively happening in this space, but it is not to a stable / usable state yet
-
-https://www.ansible.com/docker
-
-be sure not to use:
-http://docs.ansible.com/ansible/docker_module.html
-it has been deprecated
-
-many others are available as part of the cloud modules in ansible core:
-http://docs.ansible.com/ansible/list_of_cloud_modules.html
-
-These are the main ones:
-http://docs.ansible.com/ansible/docker_image_module.html
-http://docs.ansible.com/ansible/docker_container_module.html
-http://docs.ansible.com/ansible/docker_service_module.html
-
-e.g.
-https://www.reddit.com/r/docker/comments/4421ow/docker_compose_vs_ansible_docker_for_machine/?
-
-
-
-
-
-
-*2017.10.26 09:03:47 docker ubuntu
-Good references for installing docker on Ubuntu: (Digital Ocean guide uses apt-get... start there)
-
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
-
-https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
-
-
-https://www.google.com/search?q=docker+ubuntu&oq=docker+ubuntu&aqs=chrome..69i57j0l5.3936j0j1&sourceid=chrome&ie=UTF-8
-
-
-
-
-
-*2016.05.11 09:29:01
-docker on mac uses boot2docker to configure the main docker machine
-this assigns a different IP address than localhost (which is often mentioned in many of the guides.) Kitematic can help with determining the ip of the machine.
-
-http://192.168.99.100:8069/web/database/create
-
+curl is another good option!
