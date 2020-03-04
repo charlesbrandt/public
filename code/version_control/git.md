@@ -20,6 +20,10 @@ To see what the remote server is set to, use:
     
 ## Credentials
 
+To see the configured id for a given local repo:
+
+    git config --list --show-origin
+
 *** Please tell me who you are.
 
 Run
@@ -43,7 +47,9 @@ $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after one hour (setting is in seconds)
 ```
 
-To store passwords:
+If you think you want to store your password, consider setting up an ssh key with your git server instead. 
+
+(Don't do this) to store passwords:
 
     git config --global credential.helper store
     
@@ -78,6 +84,15 @@ It is best to have a local master repo that different machines can clone from. Y
 
     cd /path/to/current/checked/out/repository
     git clone --bare . /path/to/master/repository
+
+When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
+
+    - Log into the server machine.
+    - Create a bare repo using git init --bare
+    - On the client machine you can push your repo to the server. git remote add origin ssh://user@server:/GitRepos/myproject.git followed by git push origin master
+
+via:
+https://stackoverflow.com/questions/6167905/git-clone-through-ssh
 
 then checkout to any device with:
 
