@@ -219,7 +219,7 @@ https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 However, I had difficulty getting syntax highlighting to work. 
 
 
-## Default window size
+## Preferences
 
 Open Settings (Ctrl-Shift-P -> "Settings")
 
@@ -231,6 +231,25 @@ or
 
     "Preferences: Open Settings (JSON)"
 
+### Current settings
+
+See below for details
+
+{
+    "window.newWindowDimensions": "inherit"
+    "workbench.startupEditor": "newUntitledFile",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "breadcrumbs.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+}
+
+### Default window size
+
 {
     "workbench.startupEditor": "newUntitledFile",
     "window.newWindowDimensions": "inherit"
@@ -238,8 +257,7 @@ or
 
 https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
 
-
-## How to disable telemetry reporting
+### Telemetry reporting
 
 Disable telemetry
 
@@ -258,7 +276,7 @@ You can inspect telemetry events in the Output panel by setting the log level to
 
 Important Notice: VS Code gives you the option to install Microsoft and third party extensions. These extensions may be collecting their own usage data and are not controlled by the telemetry.enableTelemetry setting. Consult the specific extension's documentation to learn about its telemetry reporting.
 
-### How to disable crash reporting
+### Crash reporting
 VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services. Read our privacy statement to learn more.
 
 If you don't wish to send crash data to Microsoft, you can set the telemetry.enableCrashReporter setting to false.
@@ -270,7 +288,8 @@ If you use the JSON editor for your settings, add the following line:
     "telemetry.enableCrashReporter": false
 Important Notice: This option requires a restart of VS Code to take effect.
 
-### Links
+
+## Links
 https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
 
 https://www.google.com/search?q=vs+code&oq=vs+code
@@ -283,3 +302,21 @@ https://code.visualstudio.com/docs?start=true
 Documentation for Visual Studio Code
 https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
 Visual Studio Code Frequently Asked Questions
+
+
+### Emacs Modes
+
+Still looking for a good way to yank to the end of the line. (Ctrl-K)
+
+https://duckduckgo.com/?q=visual+studio+code+yank+to+end+of+line+command&t=canonical&ia=web
+visual studio code yank to end of line command at DuckDuckGo
+https://marketplace.visualstudio.com/items?itemName=reignofwebber.emacsx
+Emacs<>Vscode - Visual Studio Marketplace
+https://code.visualstudio.com/docs/getstarted/tips-and-tricks
+Visual Studio Code Tips and Tricks
+https://marketplace.visualstudio.com/items?itemName=NotKyon.vscode-emacs-neon
+Emacs Friendly Keybindings - Visual Studio Marketplace
+https://github.com/NotKyon/vscode-emacs-neon
+GitHub - NotKyon/vscode-emacs-neon: Visual Studio Code plugin emulating Emacs functionality
+https://github.com/SebastianZaha/vscode-emacs-friendly
+GitHub - SebastianZaha/vscode-emacs-friendly: Visual Studio Code plugin emulating Emacs functionality
