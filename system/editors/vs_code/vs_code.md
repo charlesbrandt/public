@@ -22,7 +22,12 @@ To configure keyboard shortcuts through the JSON file, open the keybindings.json
 
 You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcuts (JSON) button on the right of the editor title bar. [couldn't find this path]
 
-### Block navigation
+### Switch Buffers
+
+Ctrl-Tab allows switching to previous buffer
+may want to bind this to Ctrl-B instead
+
+### Block Navigation
 
 Space Block Jumper allows jumping to the next blank line. 
 
@@ -169,8 +174,17 @@ Adding multiple cursors is still available by default with alt-shift-down and al
         "command": "editor.action.startFindReplaceAction"
     },
     {
-        "key": "ctrl+h",
-        "command": "-editor.action.startFindReplaceAction"
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "deleteRight"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "deleteAllRight"
     }
 ]
 ```

@@ -70,6 +70,18 @@ see also:
     git log --follow -p -- file
 
 
+### Resoving a conflict
+
+If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. You can check in your changes, but then that results in a branch merge. Maybe that's ideal. 
+
+You can also use stash to hide your changes. 
+
+    git stash
+    
+Then to unstash:
+
+    git stash pop
+
 ## Running a server
 
 It's pretty much as simple as having an SSH server running and being able to connect over that.
@@ -195,6 +207,8 @@ Note the caret symbol (^), which gets the checkout prior to the one identified, 
 
 via:
 https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history/34681842
+
+## Changing a commit message
 
 
 ## Merging two git repositories
