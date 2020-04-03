@@ -82,6 +82,9 @@ Then to unstash:
 
     git stash pop
 
+https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
+
 ## Running a server
 
 It's pretty much as simple as having an SSH server running and being able to connect over that.

@@ -1,7 +1,6 @@
 # Docker
 
-Docker is a lighter weight alternative to a full virtual machine.
-Virtual machines are handy tools as well, but require more resources and duplicate many of the operating system files.
+Docker implements a container solution. Containers are a lighter weight alternative to a full virtual machine.
 
 Docker has great documentation. I started here:
 https://docs.docker.com/
@@ -16,6 +15,59 @@ https://docs.docker.com/engine/userguide/
 
 This cheat sheet is a great overview, and closely resembles what these notes cover:
 https://github.com/wsargent/docker-cheat-sheet
+
+## Installation
+
+This guide also has a nice introduction to what containers are:
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+
+```
+
+sudo apt update
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+```
+
+Choose the right version (18.04 = bionic), (19.10 = eoan)
+
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan stable"
+
+
+update again
+
+```
+sudo apt update
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+```
+
+At this point Docker should be installed and you can verify with:
+
+    sudo systemctl status docker
+    
+### Add user to docker group
+
+This allows you to execute docker without using sudo
+that's a good thing!
+
+```
+sudo usermod -aG docker ${USER}
+```
+
+Log out and log back in, or:
+
+    su - ${USER}
+
+
+## Status
+
+    docker ps
 
 
 ## Running a Container

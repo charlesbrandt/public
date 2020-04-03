@@ -141,7 +141,7 @@ sudo apt-get install firefox-trunk
 
 
 
-## CHROME / CHROMIUM:
+## Chrome / Chromium:
 
 For non-linux machines, go with Chrome:
 https://www.google.com/intl/en/chrome/
@@ -150,6 +150,16 @@ Otherwise:
 http://www.chromium.org
 
    sudo apt-get install chromium-browser
+
+### Settings
+
+Change "On startup" to: 
+
+"Continue where you left off"
+
+to restore previous session.
+
+### Extensions
 
 
 *2019.02.09 07:04:35

@@ -1,3 +1,5 @@
+# Virtual Box
+
 *2017.01.11
 If you're installing a new OS on a virtual machine, be sure Virtual Box is up to date... versions change frequently and it's good to use the latest one before setting up new systems.
 
@@ -161,30 +163,6 @@ File->Preferences...->Extensions
 It worked to boot directly from external drive (may be slower than host)...
 If you use an image often, it would be good to keep it local
 
-
-
-
-
-*2013.05.24 10:54:04
-Setting up a virtual machine is a nice way to run a guest operating system without needing to reboot into that system separately.  Rebooting can often be a hassle if the guest system is not needed as often.
-
-So far, I'm trying VirtualBox for this task... it's cross platform and open source and free... a tough combination to beat.
-https://www.virtualbox.org/wiki/Downloads
-
-https://www.virtualbox.org/manual/ch01.html
-
-
-VMWare and Parallels (for Mac) get good reviews and apparently perform better, but are pricier.  I'll wait and see if I notice any performance issues with VirtualBox and then go from there.
-
-Here are some comparisons and links:
-
-http://www.civicactions.com/node/1271
-http://pcnss.co.uk/mac-os-x-virtual-machine-comparison/
-http://www.parallels.com/products/desktop/
-https://buy.parallels.com/329/purl-us-pd8f
-https://www.google.com/search?q=virtualbox+vs+xen&aq=f&oq=virtualbox+vs+xen&aqs=chrome.0.57j0l3.14708j0&sourceid=chrome&ie=UTF-8#q=virtualbox+vs+xen&source=lnt&tbs=qdr:y&sa=X&ei=-M-GUZuQIIX6yQGqmoH4BQ&ved=0CBsQpwUoBQ&bav=on.2,or.r_cp.r_qf.&bvm=bv.45960087,d.aWc&fp=183b1c80946cbd51&biw=1089&bih=760
-http://virtualization.findthebest.com/saved_compare/Xen-vs-KVM-vs-VirtualBox-Comparison-of-Open-Source-Virtualization-Software
-https://www.google.com/search?q=virtual+machine+on+mac+os+x&aq=1&oq=virtual+machine+on+mac&aqs=chrome.1.57j0l3j62l2.13083j0&sourceid=chrome&ie=UTF-8#q=virtual+machine+on+mac+os+x&tbs=qdr:y&ei=j82GUe_iDaKkyQHl9oDwAg&start=10&sa=N&bav=on.2,or.r_cp.r_qf.&bvm=bv.45960087,d.aWc&fp=183b1c80946cbd51&biw=1089&bih=760
 
 
 

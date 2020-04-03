@@ -1,5 +1,4 @@
-#VirtualBox 
-----------------------------------------------
+# VirtualBox 
 
 I have found the version from Oracle to be easier to use. They are also more up to date. Although some aspects are not open, I feel comfortable enough having the open version available. 
 
@@ -35,7 +34,7 @@ Add any machines.
 
 
 
-# Move installs for archive (or get rid of them... usually want a fresh install)
+Move installs for archive (or get rid of them... usually want a fresh install)
 
 
 mkdir -p /c/virtual_box/installs
