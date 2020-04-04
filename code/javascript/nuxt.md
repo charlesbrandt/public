@@ -56,7 +56,7 @@ I like linting too:
 
 ### Testing
 
-No preference yet on testing framework, other than choose and use one. 
+Go with Jest for testing. 
 
   Jest 
   AVA 
@@ -76,6 +76,10 @@ SPA == Single Page Application
 https://nuxtjs.org/guide#server-rendered-universal-ssr-
 
 https://developer.okta.com/blog/2019/04/26/tutorial-build-universal-apps-with-nuxt
+
+### Default Port
+
+If you're running more than one node project, be sure to pick something other than the default '3000' port. 
 
 ### Static Builds
 

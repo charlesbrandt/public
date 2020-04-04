@@ -70,6 +70,19 @@ Log out and log back in, or:
     docker ps
 
 
+## Setup
+
+Make sure docker is installed:
+
+
+    docker ps
+    
+Command 'docker' not found, but can be installed with:
+
+sudo snap install docker     # version 18.09.9, or
+sudo apt  install docker.io
+
+
 ## Running a Container
 
 When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
