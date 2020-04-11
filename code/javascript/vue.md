@@ -28,9 +28,11 @@ Nuxt simplifies the configuration and structure of a Vue project for a community
 See: [Nuxt](nuxt.md)
 
 
-
-
 ## Slots & Props
+
+Use Props when you want to pass in an object to a child component.
+
+Use Slots when you want to pass in template code to a child component. 
 
 https://vuejs.org/v2/guide/components-props.html
 Props — Vue.js
@@ -44,6 +46,48 @@ https://medium.com/@nicomeyer/vue-js-slots-vs-props-af87078a8bd
 Vue.js: slots vs. props - Nico Meyer - Medium
 
 
+## Forms
+
+
+## Custom Events
+
+If you need to signal a parent component of something that has happened in a child component, it helps to use $emit. 
+
+Child component triggers clicked event:
+
+```
+export default {
+  methods: {
+    onClickButton (event) {
+      this.$emit('clicked', 'someValue')
+    }
+  }
+}
+```
+
+Parent component receive clicked event:
+
+```
+<div>
+  <child @clicked="onClickChild"></child>
+</div>
+
+```
+
+```
+export default {
+  methods: {
+    onClickChild (value) {
+      console.log(value) // someValue
+    }
+  }
+}
+```
+
+via:
+https://forum.vuejs.org/t/passing-data-back-to-parent/1201
+
+
 ## Templates
 
 https://vuejs.org/v2/guide/syntax.html
@@ -53,10 +97,12 @@ Common patterns:
 List rendering
 https://vuejs.org/v2/guide/list.html#key
 
+
 ## Components
 
 https://vuejs.org/v2/guide/components.html#Dynamic-Components
 Components Basics — Vue.js
+
 
 ## Dynamic Styles
 
