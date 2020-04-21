@@ -1,8 +1,8 @@
 # Docker
 
-Docker implements a container solution. Containers are a lighter weight alternative to a full virtual machine.
+Docker implements a container solution. Containers are a lighter weight alternative to a full virtual machine. They are run on the host operating system, but they are encapsulated to provide isolation, security, and compartmentalization. 
 
-Docker has great documentation. I started here:
+Docker has great documentation:
 https://docs.docker.com/
 
 Engine is the core of it all:
@@ -67,13 +67,14 @@ Log out and log back in, or:
 
 ## Status
 
+To see a list of *currently running* docker containers:
+
     docker ps
 
 
 ## Setup
 
 Make sure docker is installed:
-
 
     docker ps
     
@@ -83,59 +84,13 @@ sudo snap install docker     # version 18.09.9, or
 sudo apt  install docker.io
 
 
-## Running a Container
-
-When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
-
-    docker run mhart/alpine-node node --version
-
-To see a list of *currently running* docker containers:
-
-    docker ps
-    
-start and connect to a docker container:
-
-    docker run -i -t --entrypoint /bin/bash <imageID>
-    docker run -i -t --entrypoint /bin/bash docker_web_run_1
-
-start a new shell in an already running container:
-
-    docker exec -it 393b12a61839 /bin/sh
-    docker exec -it <containerIdOrName> bash
-    docker exec -it docker_web_run_1 bash
-
-
-connect to a (already running) docker container (Note: this will share the same shell if another instance is already connected interactively)
-
-    docker attach loving_heisenberg 
-
-
-via:
-http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode
-
-
-## Shares & Storage
-
-It is possible to share storage between the host and containers. 
-
-Volumes are encapsulated in the container engine itself (separate from the host):
-
-https://docs.docker.com/engine/admin/volumes/volumes/#start-a-container-which-creates-a-volume-using-a-volume-driver
-
-Bind Mounts are shares between the container and the host:
-
-https://docs.docker.com/engine/admin/volumes/bind-mounts/#mounting-into-a-non-empty-directory-on-the-container
-
-For deployments, a volume is a better choice. For development, a bind mount may work well. (I think!)
-
-
 ## Images
 
-see a list of available docker images (see what is currently available):
+See a list of available docker images (see what is currently available):
 
     docker image ls -a
 
-is equivalent to:
+Is equivalent to:
 
     docker images
 
@@ -147,26 +102,53 @@ docker images are stored in:
 via:
 http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
 
-
-clear everything out (!!! dangerous !!!)
+Clear everything out (!!! dangerous !!!)
 
     docker image rm $(docker image ls -a -q)
     docker image rm -f $(docker image ls -a -q)
 
-it is possible to build images, but if an image does not exist before running, then it will be built at that time
+### Official Images
 
+https://hub.docker.com/search?q=&type=image&image_filter=official
 
-when it comes time to build a docker image (so you can ultimately deploy a running docker container), there are a few different ways to create the image:
+Different dependencies will result in different sized containers. Smaller is generally better, everything else being the same:
 
- - start a container, make some changes, and then commit that to a new image
- - use a dockerfile to create a new image (recommended process)
- - use ansible to build the image
-    - could install ansible using the docker file and then run the ansible playbook via the docker file
-    - could use docker to connect to a running container (either using docker connection, or by instantiating a ssh connection to the container) and then commit those changes
+https://www.brianchristner.io/docker-image-base-os-size-comparison/
 
-Using (one of the) ansible concept seems like the ideal approach, but so far I've hit some walls making this work.
+https://docs.docker.com/docker-hub/official_images/
 
-start off configuring with just docker to make sure everything works that way first. after that it should be easier to just focus on the ansible integration. 
+### Dockerfile
+
+A Dockerfile determines how your image is configured (and ultimately what is run in your container). These can be tracked as part of the project's source code. 
+
+https://docs.docker.com/get-started/part2/
+
+```
+# Use the official image as a parent image.
+FROM node:current-slim
+
+# Set the working directory.
+WORKDIR /usr/src/app
+
+# Copy the file from your host to your current location.
+COPY package.json .
+
+# Run the command inside your image filesystem.
+RUN npm install
+
+# Inform Docker that the container is listening on the specified port at runtime.
+EXPOSE 8080
+
+# Run the specified command within the container.
+CMD [ "npm", "start" ]
+
+# Copy the rest of your app's source code from your host to your image filesystem.
+COPY . .
+```
+
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+
+### Building
 
     docker build -t simple-node .
     docker run -p 3000:3000 simple-node
@@ -175,12 +157,83 @@ Now you should be able to connect to localhost without specifying a VM host. Wit
 
     http://localhost:3000/
     
+To specify a Dockerfile, use -f:
+
+    docker build -t simple-node -f Dockerfile.debug .
+    
+https://docs.docker.com/engine/reference/commandline/build/
+
+When it comes time to build a docker image (so you can ultimately deploy a running docker container), there are a few different ways to create the image:
+
+ - use a dockerfile to create a new image (recommended process)
+ - start a container, make some changes, and then commit that to a new image
+ - use ansible to build the image
+    - could install ansible using the docker file and then run the ansible playbook via the docker file
+    - could use docker to connect to a running container (either using docker connection, or by instantiating a ssh connection to the container) and then commit those changes
+
+Using (one of the) ansible concept seems like the ideal approach, but so far I've hit some walls making this work.
+
+start off configuring with just docker to make sure everything works that way first. after that it should be easier to just focus on the ansible integration. 
+
 (does not appear that docker on mac still utilizes a separate docker-machine running on VirtualBox 2017.09.27 16:15:17)
 
 
-Different dependencies will result in different sized containers. Smaller is generally better, everything else being the same:
+## Running a Container
 
-https://www.brianchristner.io/docker-image-base-os-size-comparison/
+When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
+
+    docker run mhart/alpine-node node --version
+    
+### Connecting to a Container 
+
+start and connect to a docker container:
+
+    docker run -i -t --entrypoint /bin/bash <imageID>
+    docker run -i -t --entrypoint /bin/bash docker_web_run_1
+
+start a new shell in an already running container:
+
+    docker exec -it 393b12a61839 /bin/sh
+    docker exec -it <containerIdOrName> bash
+    docker exec -it docker_web_run_1 bash
+
+connect to a (already running) docker container (Note: this will share the same shell if another instance is already connected interactively)
+
+    docker attach loving_heisenberg 
+
+via:
+http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode
+
+### Stopping a Container
+
+    docker container stop devtest
+
+
+## Shares & Storage
+
+It is possible to share storage between the host and containers. For a general overview:
+
+https://docs.docker.com/storage/
+
+Bind Mounts are shares data between the container and the host:
+
+https://docs.docker.com/storage/bind-mounts/
+
+Volumes are encapsulated in the container engine itself (managed separately from the host):
+
+https://docs.docker.com/storage/volumes/
+
+For development, a bind mount may work well. For deployments, a volume is a better choice. 
+
+These are specified when running a container. 
+
+```
+docker run -d \
+  -it \
+  --name devtest \
+  --mount type=bind,src="$(pwd)"/target,dst=/app \
+  nginx:latest
+```
 
 ## Networking
 
@@ -201,21 +254,71 @@ https://docs.docker.com/engine/userguide/containers/networkingcontainers/
     eval "$(docker-machine env default)"
 
 
-troubleshooting connections docker
+### Troubleshooting connections docker
 
 A successful approach was to launch the server, connect to the container using another shell
 
-# apk update
-# this provides the "ss" command for "socket statistics"
-# RUN apk add --no-cache iproute2
-# e.g. to see if a server is running on expected port:
-#    ss -lntp
+    apk update
+    
+this provides the "ss" command for "socket statistics"
+RUN apk add --no-cache iproute2
+e.g. to see if a server is running on expected port:
+
+    ss -lntp
 
 verify server was on correct ports using above command
 
-apk add lynx
+    apk add lynx
 
 lynx 127.0.0.1:8080
 
-
 curl is another good option!
+
+
+## Context Specific Applications
+
+### Node
+
+Great article for using Docker for a local development environment:
+
+https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
+
+    docker-compose -f docker-compose.builder.yml run --rm install
+
+https://docs.docker.com/compose/
+
+
+If you're using a container that does not have Node installed (e.g. Centos, installing from nodesource.com seems like the best option
+
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash # for node version 10.x
+RUN yum -y install nodejs
+RUN node --version # optional to check that it worked
+RUN npm --version # optional to check that it worked
+
+
+tricky to use NVM in a container:
+
+```
+# nvm environment variables
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 12.16.2
+
+# Install NVM for installing node
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+```
+
+### NPM Packages
+
+May be possible to minimize the number of npm packages pulled down during an image build:
+
+https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
+
+Looks like Seth has another tactic for this here:
+
+https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile

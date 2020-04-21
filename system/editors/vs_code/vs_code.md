@@ -198,6 +198,14 @@ TODO:
 
   'ctrl-d': 'editor:delete'
 
+### Bracket Matching
+
+Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
+
+    Tip: You can jump to the matching bracket with Ctrl+Shift+\
+
+https://code.visualstudio.com/docs/editor/editingevolved
+
 
 ## Extensions
 
