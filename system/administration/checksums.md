@@ -4,6 +4,8 @@ A checksum is a unique hash that succinctly represents the content of a file. If
 
 If checksums are provided, take a moment to verify the content of the file you received. Verification is especially important for key software like operating systems. 
 
+https://ubuntu.com/tutorials/tutorial-how-to-verify-ubuntu#1-overview
+
 ## Algorithms
 
 ### MD5 
