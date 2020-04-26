@@ -72,9 +72,9 @@ see also:
 
 ### Resoving a conflict
 
-If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. You can check in your changes, but then that results in a branch merge. Maybe that's ideal. 
+If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. You can check in your changes, but then that results in a branch merge. 
 
-You can also use stash to hide your changes. 
+You can also use stash to move your local changes to the side while you pull in changes from remote. 
 
     git stash
     
