@@ -1,20 +1,83 @@
 # Visual Studio Code
 
-download and install from site:
+Download and install from site:  
 https://code.visualstudio.com/download
 
-add to favorites
+Add to favorites (optionally)
 
-launch
+Launch!
+
+
+## Preferences
+
+Open Settings (Ctrl-Shift-P -> "Settings")
+
+Choose either:
+
+    "Preferences:Open Settings (UI)"
+
+or
+
+    "Preferences: Open Settings (JSON)"
+
+### Current settings
+
+See below for details
+
+{
+    "window.newWindowDimensions": "inherit"
+    "workbench.startupEditor": "newUntitledFile",
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+}
+
+### Default window size
+
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "window.newWindowDimensions": "inherit"
+}
+
+https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
+
+### Minimap
+
+The miniature over view of the current file to the right.
+
+    "editor.minimap.enabled": false
+
+
+## Useful Features
+
+### Bracket Matching
+
+Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
+
+    Tip: You can jump to the matching bracket with Ctrl+Shift+\
+
+https://code.visualstudio.com/docs/editor/editingevolved
+
+### Auto Fix
+
+To improve the formatting of your HTML source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
+
+https://code.visualstudio.com/docs/languages/html
 
 
 ## Keybindings
 
-There are a few keyboard shortcuts that I find useful. Some have carried over from emacs, but I don't need to remap the whole configuration to be just like emacs. More like ergo-emacs. 
+There are a few keyboard shortcuts that I find useful. Some have carried over from emacs, but I don't need to remap the whole configuration to be just like emacs. More like ergo-emacs.
 
 https://code.visualstudio.com/docs/getstarted/keybindings
 
-File > Preferences > Keyboard Shortcuts. 
+File > Preferences > Keyboard Shortcuts
 
 All keyboard shortcuts in VS Code can be customized via the keybindings.json file.
 
@@ -22,14 +85,9 @@ To configure keyboard shortcuts through the JSON file, open the keybindings.json
 
 You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcuts (JSON) button on the right of the editor title bar. [couldn't find this path]
 
-### Switch Buffers
-
-Ctrl-Tab allows switching to previous buffer
-may want to bind this to Ctrl-B instead
-
 ### Block Navigation
 
-Space Block Jumper allows jumping to the next blank line. 
+Space Block Jumper allows jumping to the next blank line.
 
 https://marketplace.visualstudio.com/items?itemName=jmfirth.vsc-space-block-jumper
 
@@ -41,11 +99,11 @@ https://stackoverflow.com/questions/45788119/is-there-a-vs-code-shortcut-to-move
 
 Still requires adding custom bindings (included below).
 
-Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up. 
+Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
 ### Custom keyboard shortcut bindings
 
-```
+``` json
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
@@ -189,28 +247,20 @@ Adding multiple cursors is still available by default with alt-shift-down and al
 ]
 ```
 
-TODO:
-
-  'ctrl-tab': 'editor:auto-indent'
-  using 'shift-ctrl-I' will format the whole document according to linter configurations
-
-  'ctrl-j': 'moments-atom:journal'
-
-  'ctrl-d': 'editor:delete'
-
-### Bracket Matching
-
-Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
-
-    Tip: You can jump to the matching bracket with Ctrl+Shift+\
-
-https://code.visualstudio.com/docs/editor/editingevolved
-
 
 ## Extensions
 
 https://www.google.com/search?q=vs+code+extensions+vue
 vs code extensions vue - Google Search
+
+TODO:
+How to remove all the extension shortcut icons?
+end up with tons of these...
+can't see the tabs any more!
+
+Right click on extension->Extension Settings
+
+### Vue
 
 https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
 Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
@@ -222,15 +272,71 @@ https://vuejs.github.io/vetur/
 https://github.com/Microsoft/vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
-### Auto Fix
+### Prettier - Code formatter
 
-To improve the formatting of your HTML source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
+### GitLens
 
-https://code.visualstudio.com/docs/languages/html
+### Docker
+### Kubernetes
+
+### YAML
+
+### Python
+
+### Auto Close Tag
+
+### Markdown
+
+markdownlint
+
+#### Useful Shortcuts
+
+https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
+
+https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts
+
+#### Highlighting
+
+TODO:
+
+Looking for better syntax highlighting in .md files (editor view, not preview).
+
+This one set the theme for the whole editor, not just markdown files:
+https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit
+
+Could try some custom definitions for missing ones
+https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
+
+#### Preview
+
+https://code.visualstudio.com/Docs/languages/markdown
+
+To switch between views, press Ctrl+Shift+V in the editor. You can view the preview side-by-side (Ctrl+K V) with the file you are editing and see changes reflected in real-time as you edit.
+
+Outline view can act as an automatic Table Of Contents. Below File Explorer view.
+
+VS Code can even compile markdown to HTML!
+
+### TODO
+
+Previously installed... not sure if they are actively being used:
+
+JavaScript (ES6) code snippets
+HTML Snippets
+HTML CSS Support
+
+Live Server
+
+Bracket Pair Colorizer
+
+Evaluate:
+
+npm
+npm intellisense
 
 ### Remote Development
 
-The remote development extension allows editing code on a remote server over SSH. 
+The remote development extension allows editing code on a remote server over SSH.
 
 https://code.visualstudio.com/docs/remote/remote-overview
 
@@ -238,46 +344,18 @@ https://code.visualstudio.com/remote-tutorials/ssh/getting-started
 
 https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 
-However, I had difficulty getting syntax highlighting to work. 
+However, I had difficulty getting syntax highlighting to work.
+
+### Journal
+
+It's a pretty heavy application memory-wise to keep lots of open files. There are better editors for keeping notes.
+
+  'ctrl-j': 'moments-atom:journal'
 
 
-## Preferences
+## Reporting
 
-Open Settings (Ctrl-Shift-P -> "Settings")
-
-Choose either:
-
-    "Preferences:Open Settings (UI)"
-
-or
-
-    "Preferences: Open Settings (JSON)"
-
-### Current settings
-
-See below for details
-
-{
-    "window.newWindowDimensions": "inherit"
-    "workbench.startupEditor": "newUntitledFile",
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "breadcrumbs.enabled": false,
-    "explorer.confirmDragAndDrop": false,
-    "window.zoomLevel": 0
-    "[vue]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-}
-
-### Default window size
-
-{
-    "workbench.startupEditor": "newUntitledFile",
-    "window.newWindowDimensions": "inherit"
-}
-
-https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
+Up to you if you want to leave this enabled or not. Both ways make sense!
 
 ### Telemetry reporting
 
@@ -299,6 +377,7 @@ You can inspect telemetry events in the Output panel by setting the log level to
 Important Notice: VS Code gives you the option to install Microsoft and third party extensions. These extensions may be collecting their own usage data and are not controlled by the telemetry.enableTelemetry setting. Consult the specific extension's documentation to learn about its telemetry reporting.
 
 ### Crash reporting
+
 VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services. Read our privacy statement to learn more.
 
 If you don't wish to send crash data to Microsoft, you can set the telemetry.enableCrashReporter setting to false.
@@ -312,6 +391,7 @@ Important Notice: This option requires a restart of VS Code to take effect.
 
 
 ## Links
+
 https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
 
 https://www.google.com/search?q=vs+code&oq=vs+code
@@ -326,7 +406,9 @@ https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-repo
 Visual Studio Code Frequently Asked Questions
 
 
-### Emacs Modes
+## Emacs Modes
+
+Usually the keybindings I use are tailored enough. Plus the use of Ergo Emacs makes emacs more compatible with standard shortcuts.
 
 Still looking for a good way to yank to the end of the line. (Ctrl-K)
 

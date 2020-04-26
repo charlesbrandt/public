@@ -1,5 +1,9 @@
-Setting up VNC 
-======================
+# Remote Desktops
+
+There are different protocols that are used to connect to a desktop interface remotely. VNC is free and open source, but not very secure by default. 
+
+
+## Setting up VNC 
 
 Generally, it's a good idea to establish an SSH tunnel to encrypt the connection (even on a local network):
 
@@ -10,8 +14,7 @@ If connecting from OS X, use the built in VNC viewer / client: Screen Sharing.
 Two different ways to go about server configuration...
 
 
-Main Desktop (Shared)
---------------------------
+### Main Desktop (Shared)
 
 To attach to the existing (main, console) desktop, you'll want to use "x11vnc":
 
@@ -38,8 +41,7 @@ via:
 http://www.olij.co.uk/whitenoise/set-up-vnc-with-a-ubuntu-server-and-mac-client-simple-ssh-tunnel/
 
 
-Separate Desktop
------------------------
+### Separate Desktop
 
 An alternative approach is to launch a new virtual desktop that is not available on the console. For this you'll want to use something like "tightvncserver".
 
@@ -104,9 +106,6 @@ esac
 
 exit 0
 ```
-
-
-
 
 
 

@@ -4,7 +4,7 @@
 
   - [Operating Systems](.)
 
-    - [Linux](linux/)
+    - [Linux](linux/distributions.md)
   
     - [Android](android/)
   

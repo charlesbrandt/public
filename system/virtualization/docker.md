@@ -83,7 +83,6 @@ Command 'docker' not found, but can be installed with:
 sudo snap install docker     # version 18.09.9, or
 sudo apt  install docker.io
 
-
 ## Images
 
 See a list of available docker images (see what is currently available):
@@ -208,6 +207,10 @@ http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-cont
 
     docker container stop devtest
 
+To stop everything:
+
+    docker stop $(docker ps -q)
+
 
 ## Shares & Storage
 
@@ -235,44 +238,29 @@ docker run -d \
   nginx:latest
 ```
 
-## Networking
+## Docker Compose
 
-see a list of all IP addresses for all containers:
-sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
+If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
 
-via:
-http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host
-
-
-wasn't sure about how to get one container to talk to another...
-they've documented that well:
-
-https://docs.docker.com/engine/userguide/containers/networkingcontainers/
-
-(on macs) set up a terminal to know how to interact with docker by running:
-
-    eval "$(docker-machine env default)"
-
-
-### Troubleshooting connections docker
-
-A successful approach was to launch the server, connect to the container using another shell
-
-    apk update
+    apt-get install docker-compose -y
     
-this provides the "ss" command for "socket statistics"
-RUN apk add --no-cache iproute2
-e.g. to see if a server is running on expected port:
+After editing the docker-compose.yml file for the services, launch them with:
 
-    ss -lntp
+    docker-compose up -d
+    
+    
+ERROR: for seafile-mysql no such image:
+https://stackoverflow.com/questions/37454548/docker-compose-no-such-image
 
-verify server was on correct ports using above command
+Check for existing images: 
 
-    apk add lynx
+    docker-compose ps
+    
+Remove all old images
 
-lynx 127.0.0.1:8080
-
-curl is another good option!
+    docker-compose rm
+    
+then rebuild again.
 
 
 ## Context Specific Applications
@@ -322,3 +310,44 @@ https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
 Looks like Seth has another tactic for this here:
 
 https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
+
+
+## Networking
+
+see a list of all IP addresses for all containers:
+sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
+
+via:
+http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host
+
+
+wasn't sure about how to get one container to talk to another...
+they've documented that well:
+
+https://docs.docker.com/engine/userguide/containers/networkingcontainers/
+
+(on macs) set up a terminal to know how to interact with docker by running:
+
+    eval "$(docker-machine env default)"
+
+
+### Troubleshooting connections docker
+
+A successful approach was to launch the server, connect to the container using another shell
+
+    apk update
+    
+this provides the "ss" command for "socket statistics"
+RUN apk add --no-cache iproute2
+e.g. to see if a server is running on expected port:
+
+    ss -lntp
+
+verify server was on correct ports using above command
+
+    apk add lynx
+
+lynx 127.0.0.1:8080
+
+curl is another good option!
+

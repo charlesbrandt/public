@@ -14,6 +14,7 @@ Be sure you have [node installed](node.md) and up-to-date. Verify with:
     nvm install node
     node -v
 
+
 ### Browser Dev Tools
 
 https://github.com/vuejs/vue-devtools#vue-devtools

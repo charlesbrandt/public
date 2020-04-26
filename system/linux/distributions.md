@@ -1,10 +1,16 @@
 # Distributions
 
+[for notes about what happens before an OS is running, see overview.md](overview.md)
+
 There are many linux distributions available.
 
 When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
 
 To transfer image for use, see [creating a bootable usb](../drives/bootable_usb.txt).
+
+## Create Bootable Media
+
+This process is the same for all systems.
 
 
 ## Desktop
@@ -66,6 +72,7 @@ Arch Linux - Downloads
 ## Security
 
 ### Qubes OS
+
 https://www.google.com/search?q=qube+os
 qube os - Google Search
 https://www.qubes-os.org/intro/
@@ -75,20 +82,19 @@ Documentation | Qubes OS
 https://www.qubes-os.org/downloads/
 Download Qubes OS | Qubes OS
 
-
 ### Kali Linux
 
- https://www.kali.org/downloads/
- Official Kali Linux Downloads | Kali Linux
- https://docs.kali.org/category/introduction
- 01. Getting Started | Kali Linux
- https://docs.kali.org/introduction/should-i-use-kali-linux
- Should I Use Kali Linux? | Kali Linux
+https://www.kali.org/downloads/
+Official Kali Linux Downloads | Kali Linux
+https://docs.kali.org/category/introduction
+01. Getting Started | Kali Linux
+https://docs.kali.org/introduction/should-i-use-kali-linux
+Should I Use Kali Linux? | Kali Linux
 
- https://www.google.com/search?q=secure+linux&ie=utf-8&oe=utf-8&client=firefox-b-1-ab
- secure linux - Google Search
- https://fossbytes.com/secure-linux-distros-privacy-anonymity/
- 10 Most Secure Linux Distros For Complete Privacy & Anonymity | 2017 Edition
+https://www.google.com/search?q=secure+linux&ie=utf-8&oe=utf-8&client=firefox-b-1-ab
+secure linux - Google Search
+https://fossbytes.com/secure-linux-distros-privacy-anonymity/
+10 Most Secure Linux Distros For Complete Privacy & Anonymity | 2017 Edition
 
 
 ## Privacy
@@ -125,7 +131,7 @@ Finally, needed to do the following to boot:
 
 In order overcome the above error and proceed with booting TAILS from an older SanDisk Cruzer stick, hit the <TAB> key at the boot prompt. You’ll see, at the foot of the screen, a series of default switches passed to the boot loader. Arrow key back to the media=removable option and delete it. Ensure you keep the space between successive parameters. Hit <RETURN> and TAILS should continue booting per usual. It can be a little slow to boot, particularly from older USB sticks, so be patient.
 
-via: 
+via:  
 http://www.outofworkpoet.com/initramfs-unable-find-live-medium-containing-live-file-system-booting-tails
 
 
