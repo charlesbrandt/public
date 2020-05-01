@@ -42,7 +42,7 @@ For the action to perform when the backup is completed, select what you prefer
 At this point, the options are set and the command-line should be listed which is being executed to perform the backup. Press “enter”
 You are prompted if you want to continue and perform the backup, so press “y” and then “enter”
 The backup should begin
-Exit Clonezilla when the backup is completed  
+Exit Clonezilla when the backup is completed
 
 
 # 2020.04.23 17:04:20 

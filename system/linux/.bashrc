@@ -14,7 +14,7 @@ esac
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH=":/opt/local/bin:~/.yarn/bin:~/.local/bin:${PATH}"
+PATH=":/opt/local/bin:/usr/local/go/bin:~/go/bin:~/.yarn/bin:~/.local/bin:${PATH}"
 export PATH
 
 #this needs to come after previous line, otherwise scp will have trouble
