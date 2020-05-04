@@ -1,14 +1,22 @@
 # Frameworks
 
-Typically, in javascript, frameworks refer to front-end frameworks. 
+A framework can mean different things in different contexts. Even within the context of javascript, there are application frameworks like Vue, React, or Angular. 
+
+This document focuses on front-end frameworks. Front-end javascript frameworks quickly blur into CSS only frameworks. It's a rapidly evolving landscape, but here are some top picks:
 
 Bulma
 Vuetify
+Tailwinds
 
-Trying to decide between those two.
+## Bulma
 
-If you're already using Vue, then vuetify is nicely integrated. 
+https://bulma.io/
 
-However, Bulma seems like the way things are heading. 
+Bulma seems like a well thought out structure. Buefy adds integration with Vue. 
 
-A standardization for the terms to use. Moving forward. 
+
+## Vuetify
+
+Vuetify is also integrated with Vue and provides tree-shaking. 
+
+

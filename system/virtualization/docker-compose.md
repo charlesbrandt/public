@@ -26,7 +26,6 @@ To rebuild, use:
 ERROR: for seafile-mysql no such image:
 https://stackoverflow.com/questions/37454548/docker-compose-no-such-image
 
-
 If the container is not running, it may not show up in just `docker ps`. You can see the status in `docker-compose ps`
 
 Check for existing images: 
@@ -64,7 +63,6 @@ Great article for using Docker for a local development environment:
 https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 
     docker-compose -f docker-compose.builder.yml run --rm install
-    
 
 ## See Also
 
