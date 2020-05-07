@@ -1,5 +1,11 @@
 # Kubernetes
 
+Abbreviated as 'K8s'.
+
+https://en.wikipedia.org/wiki/Kubernetes
+
+Container orchestration.
+
 Currently following along and summarizing these resources:
 
 https://blog.codeship.com/getting-started-with-kubernetes/
@@ -9,6 +15,54 @@ Choose where you want to run your Kubernetes cluster
 https://kubernetes.io/docs/setup/
    
 https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
+
+## Local Development
+
+https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
+
+Microk8s and k3s also come up as options. 
+Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store. 
+
+## Kind
+
+https://github.com/kubernetes-sigs/kind/
+
+Docker in Docker now references Kind:
+https://github.com/kubernetes-retired/kubeadm-dind-cluster
+
+Seems to be the way to go. Most compliant with what you would find in a production environment. 
+
+https://kind.sigs.k8s.io/
+
+Requires go language:
+https://golang.org/doc/install
+
+Then `GO111MODULE="on" go get sigs.k8s.io/kind@v0.7.0 && kind create cluster`
+
+for me, kind was downloaded to home
+
+~/go/bin/kind
+
+sudo ~/go/bin/kind create cluster
+[sudo] password for charles: 
+Creating cluster "kind" ...
+ ✓ Ensuring node image (kindest/node:v1.17.0) 
+ ✓ Preparing nodes 
+ ✓ Writing configuration 
+ ✓ Starting control-plane 
+ ✓ Installing CNI
+ ✓ Installing StorageClass
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Thanks for using kind!
+
+
+## K3s
+
+https://github.com/rancher/k3s
 
 ## Minikube
 
@@ -118,3 +172,4 @@ Unpack it.
 Start with something simple. Nginx serving static files seems like a good place to begin. 
 
 
+ packages. 

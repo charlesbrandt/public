@@ -40,6 +40,8 @@ DotEnv
 More info on these options:
  
  - [PWA (Progressive Web applications)](https://developers.google.com/web/progressive-web-apps/)
+    - https://web.dev/what-are-pwas/
+    - https://pwa.nuxtjs.org/
  
  - [DotEnv](https://github.com/motdotla/dotenv#readme)
    [Store config in the environment](https://12factor.net/config)
@@ -52,7 +54,7 @@ I like linting too:
 ❯◉ ESLint
  ◉ Prettier
  ◉ Lint staged files
- ◉ StyleLint
+ ◉ StyleLint  <- Not sure about this yet... 
 
 ### Testing
 
@@ -63,7 +65,7 @@ Go with Jest for testing.
 
 ### Deployment
 
-You will need to consider how it will be deployed. 
+You will need to consider how it will be deployed. Server Rendering is my first choice. 
 
 Server Rendering (Universal SSR)
 Universal == Server Side Rendering
@@ -76,10 +78,6 @@ SPA == Single Page Application
 https://nuxtjs.org/guide#server-rendered-universal-ssr-
 
 https://developer.okta.com/blog/2019/04/26/tutorial-build-universal-apps-with-nuxt
-
-### Default Port
-
-If you're running more than one node project, be sure to pick something other than the default '3000' port. 
 
 ### Static Builds
 
@@ -97,6 +95,10 @@ https://medium.com/a-man-with-no-server/static-site-generators-nuxt-js-2fa9782d2
 ```
 npm run dev
 ```
+
+### Default Port
+
+If you're running more than one node project, be sure to pick something other than the default '3000' port. 
 
 ### Configure host and port
 
@@ -128,15 +130,6 @@ export default {
 
 .env options available too
 
-## External Modules
-
-https://nuxtjs.org/guide/plugins/
-
-https://nuxtjs.org/guide/modules
-
-https://nuxtjs.org/api/configuration-modules
-
-
 ## Templates
 
 The general syntax for templates is handled by Vue:
@@ -152,6 +145,15 @@ https://vuejs.org/v2/guide/syntax.html
   },
 
 https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-name-in-the-page-title#48286279
+
+
+## External Modules
+
+https://nuxtjs.org/guide/plugins/
+
+https://nuxtjs.org/guide/modules
+
+https://nuxtjs.org/api/configuration-modules
 
 
 ## Vuex (Persistence)

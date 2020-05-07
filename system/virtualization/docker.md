@@ -50,7 +50,21 @@ sudo apt install docker-ce
 At this point Docker should be installed and you can verify with:
 
     sudo systemctl status docker
-    
+
+
+Make sure docker is installed:
+
+    docker ps
+
+
+Command 'docker' not found, but can be installed with:
+
+sudo snap install docker     # version 18.09.9, or
+sudo apt  install docker.io
+
+(those tend to be pretty old!)
+
+
 ### Add user to docker group
 
 This allows you to execute docker without using sudo
@@ -71,17 +85,6 @@ To see a list of *currently running* docker containers:
 
     docker ps
 
-
-## Setup
-
-Make sure docker is installed:
-
-    docker ps
-    
-Command 'docker' not found, but can be installed with:
-
-sudo snap install docker     # version 18.09.9, or
-sudo apt  install docker.io
 
 ## Images
 
@@ -238,43 +241,72 @@ docker run -d \
   nginx:latest
 ```
 
-## Docker Compose
+## Networking
 
-If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
+see a list of all IP addresses for all containers:
+sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
 
-    apt-get install docker-compose -y
+via:
+http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host
+
+
+wasn't sure about how to get one container to talk to another...
+they've documented that well:
+
+https://docs.docker.com/engine/userguide/containers/networkingcontainers/
+
+(on macs) set up a terminal to know how to interact with docker by running:
+
+    eval "$(docker-machine env default)"
+
+
+### Troubleshooting connections docker
+
+https://www.docker.com/blog/why-you-dont-need-to-run-sshd-in-docker
+
+A successful approach was to launch the server, connect to the container using another shell
+
+    apk update
     
-After editing the docker-compose.yml file for the services, launch them with:
+this provides the "ss" command for "socket statistics"
+RUN apk add --no-cache iproute2
+e.g. to see if a server is running on expected port:
 
-    docker-compose up -d
-    
-    
-ERROR: for seafile-mysql no such image:
-https://stackoverflow.com/questions/37454548/docker-compose-no-such-image
+    ss -lntp
 
-Check for existing images: 
+verify server was on correct ports using above command
 
-    docker-compose ps
-    
-Remove all old images
+    apk add lynx
 
-    docker-compose rm
-    
-then rebuild again.
+lynx 127.0.0.1:8080
+
+curl is another good option!
+
+
+### Troubleshooting nginx
+
+If you go inside the container `docker exec -it <container-id> /bin/bash` and check the log location `ls -la /var/log/nginx/` you will see the following output:
+
+```
+lrwxrwxrwx 1 root root   11 Apr 30 23:05 access.log -> /dev/stdout
+lrwxrwxrwx 1 root root   11 Apr 30 23:05 error.log -> /dev/stderr
+```
+
+Clearly, the logs are written in stdout. You can also try doing cat access.log inside the container and it still doesn't show anything.
+
+The right way to get your logs is going outside the container and doing `docker logs <container-id>` Then, you would see your logs. 
+
+https://stackoverflow.com/questions/30269672/unable-to-use-lt-when-running-nginx-docker-or-cat-logs
+
+
+## See Also
+
+docker-compose.md
 
 
 ## Context Specific Applications
 
 ### Node
-
-Great article for using Docker for a local development environment:
-
-https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
-
-    docker-compose -f docker-compose.builder.yml run --rm install
-
-https://docs.docker.com/compose/
-
 
 If you're using a container that does not have Node installed (e.g. Centos, installing from nodesource.com seems like the best option
 
@@ -311,43 +343,4 @@ Looks like Seth has another tactic for this here:
 
 https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
 
-
-## Networking
-
-see a list of all IP addresses for all containers:
-sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
-
-via:
-http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host
-
-
-wasn't sure about how to get one container to talk to another...
-they've documented that well:
-
-https://docs.docker.com/engine/userguide/containers/networkingcontainers/
-
-(on macs) set up a terminal to know how to interact with docker by running:
-
-    eval "$(docker-machine env default)"
-
-
-### Troubleshooting connections docker
-
-A successful approach was to launch the server, connect to the container using another shell
-
-    apk update
-    
-this provides the "ss" command for "socket statistics"
-RUN apk add --no-cache iproute2
-e.g. to see if a server is running on expected port:
-
-    ss -lntp
-
-verify server was on correct ports using above command
-
-    apk add lynx
-
-lynx 127.0.0.1:8080
-
-curl is another good option!
 
