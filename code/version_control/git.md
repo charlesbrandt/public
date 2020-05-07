@@ -28,14 +28,16 @@ To see the configured id for a given local repo:
 
 Run
 
+  git config user.email "you@example.com"
+  git config user.name "Your Name"
+
+to set the identity to use when making changes to the current repository. Different repositories may have different accounts associated with them. 
+
+If that's not something your work requires, you can also set a single account globally:
+
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 
-to set your account's default identity.
-Omit --global to set the identity only in this repository.
-
-  git config user.email "you@example.com"
-  git config user.name "Your Name"
 
 https://git-scm.com/docs/gitcredentials
 

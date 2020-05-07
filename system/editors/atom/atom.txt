@@ -39,3 +39,25 @@ https://www.google.com/search?q=lighttable+vs+atom&oq=lighttable+vs+atom&aqs=chr
 http://spin.atomicobject.com/2014/03/13/light-table-github-atom-ide/
 https://groups.google.com/forum/#!msg/light-table-discussion/YTuCHoOym1E/PNSnlYsM1i8J
 http://www.chris-granger.com/2014/01/07/light-table-is-open-source/
+
+TODO:
+try out atom editor?
+sudo apt-cache search atom | grep edit
+#no package found... available via apt-get?
+sudo apt-get install atom
+
+Trying atom (alway emacs if that doesn't work, mousepad doesn't cut it):
+sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
+Ctrl+, to open Settings pane to add packages (online)
+
+install:
+atomic-emacs
+atom-keyboard-macros
+
+via:
+http://askubuntu.com/questions/468359/installing-atom-text-editor-on-32-bit-ubuntu
+
+
+s

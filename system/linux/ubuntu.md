@@ -61,21 +61,7 @@ then on control machine run:
 
 ## Choose a Windows Manager
 
-https://i3wm.org/
-i3 - improved tiling wm
-
-via:
-https://i3wm.org/docs/repositories.html
-
-```
-/usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2019.02.01_all.deb keyring.deb SHA256:176af52de1a976f103f9809920d80d02411ac5e763f695327de9fa6aff23f416
-
-sudo dpkg -i ./keyring.deb
-# this throws an error as sudo
-sudo echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" >> /etc/apt/sources.list.d/sur5r-i3.list
-sudo apt update
-sudo apt install i3
-```
+[Window Manager](window_managers/window_manager.md)
 
 # Configs
 
@@ -102,81 +88,6 @@ cp /c/charles/.gitconfig ~/.gitconfig
 git config --global credential.helper store
 # these are stored in plaintext, so it could be unsecure
 # https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github
-
-## Manually:
-
-Set clock, including time format. Enable Date and Month in menu bar.
-%a *%Y.%m.%d %H:%M
-
-For multiple monitors, configure them in Settings -> Display
-
-Change Desktop background / wallpaper.
-Open Settings from menu -> Desktop
-Start->Settings Manager->Desktop
-
-    Style: None
-    #7C7C7C ! (or lighter: #C7C7C7)
-
-if you choose a picture here, it will show up on the login screen!
-
-*2013.05.14 20:14:59
-All Settings -> Window Manager
-move window actions ("minimize", "close", etc) to a different position:
-Settings Manager->Windows Manager
-under the Style tab, change "Button layout"
-X + _ Title v
-
-Stay in Window Manager settings
-Under the "Keyboard" tab, clear the window operations menu setting
-
-Then, under All Settings -> Keyboard settings -> Application Shortcuts find:
-xfce4-popup-whiskermenu
-(xfce4-appfinder also works, but requires tab to select)
-and set that to Alt+Space
-
-Create a new shortcut ("+Add") with the command 'xflock4', and the shortcut "Shift+Ctrl+Delete"
-This is to be more in line with the way lock screen works on Macs. Not my first choice in combinations, but unfortunately Macs are not as configurable
-
-*2015.11.03 09:57:37
-Settings -> Workspaces
-Add workspaces (start with 4 - 10)
-
-Optionally, add workspace switcher to Panel
-Settings -> Panel -> Items -> Add (right icon) -> Workspace Switcher (bottom of list)
-
-*2015.11.07 15:18:05
-be sure a Terminal is already open, then:
-Settings -> Session and Startup -> Session -> Save Session
-
-*2016.05.18 21:17:13
-to start Task Manager automatically requires a different tactic...
-save session will not pick it up.
-
-Settings -> Session and Startup -> Application Autostart
-Add a new one:
-Task Manager
-xfce4-taskmanager
-
-
-Clean up favorite applications in the launcher (xfce4-popup-whiskermenu):
-  - remove old favorites
-  - add new:
-
-Can also consider adding favorites to the desktop
-
-
-Add "Places" to panel so that recent items can be cleaned up / removed:
-
-"I fiured this out.
-Add "places" to your panel. It has the function to clear out all recent documents."
-
-via:
-https://duckduckgo.com/?q=xfce+clear+recent+files&t=canonical&ia=web
-xfce clear recent files at DuckDuckGo
-https://forum.xfce.org/viewtopic.php?id=7163
-[Solved] How to delete recent documents in xfce? / General discussion / Xfce Forums
-https://www.linuxquestions.org/questions/slackware-14/recent-files-in-xfce-711915/
-Recent files in XFCE
 
 
 
@@ -455,91 +366,11 @@ ansible-playbook system-3.yml -i hosts.txt --ask-become-pass
 
 
 
-TODO:
-try out atom editor?
-sudo apt-cache search atom | grep edit
-#no package found... available via apt-get?
-sudo apt-get install atom
-
-Trying atom (alway emacs if that doesn't work, mousepad doesn't cut it):
-sudo add-apt-repository ppa:webupd8team/atom
-sudo apt-get update
-sudo apt-get install atom
-Ctrl+, to open Settings pane to add packages (online)
-
-install:
-atomic-emacs
-atom-keyboard-macros
-
-via:
-http://askubuntu.com/questions/468359/installing-atom-text-editor-on-32-bit-ubuntu
-
-
-
-
-# Open VLC
-# Tools -> Preferences
-# Uncheck:
-#   - Integrate video in interface
-#   - Use only one instance when started from file manager
-
-# View -> Playlist
-# Close browser tree in playlist view.
-# Uncheck "Docked Playlist
 
 
 
 
 
-
-
-Ansible requires Python installed on the host machine, as well:
-
-    bash
-    sudo apt-get install python
-
-
-#sshd
-#just get this one... will help with remote / automated installations
-sudo apt-get update
-sudo apt-get -y install openssh-server
-
-ifconfig
-#to find out ip on guest
-#ssh from host to guest first to test (sometimes old keys left around)
-ssh 192.168.56.103
-
-if you haven't already, generate local keys:
-    ssh-keygen -t rsa
-
-#on host, use ssh-copy-id to log in automatically, e.g.:
-ssh-copy-id 192.168.56.103
-
-ssh 127.0.0.1
-ssh-copy-id 127.0.0.1
-
-
-
-#for a host OS instance, a few steps need to be done manually:
-sudo apt-get install -y python-pip python2.7-dev libffi-dev
-#ansible
-sudo pip install ansible markupsafe
-
-#if you have an ansible host somewhere else, these steps were formalized via:
-ansible-playbook ansible.yml -i hosts.txt --ask-become-pass
-
-
-#(optionally, on guests) shutdown, one more snapshot:
-SSH Config
-
-
-#should be able to use ansible from here
-cd /c/public/system/ansible
-add new machine ip to hosts.txt
-ansible-playbook system.yml -i hosts.txt --ask-become-pass
-
-#might need a restart before running this one:
-ansible-playbook system-2.yml -i hosts.txt --ask-become-pass
 
 
 

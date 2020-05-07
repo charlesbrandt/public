@@ -110,7 +110,7 @@ The new table will be used at the next reboot.
 The operation has completed successfully.
 Finally, format our new partition with the exFAT filesystem.
 
-% sudo mkfs.exfat /dev/sdX1
+% sudo mkfs.exfat -n HOME /dev/sdX1
 mkexfatfs 1.0.1
 Creating... done.
 Flushing... done.

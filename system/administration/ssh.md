@@ -21,3 +21,21 @@ https://www.ssh.com/ssh/public-key-authentication
 Use ssh-copy-id to transfer the public key to the machine you want to be able to log in to:
 
     ssh-copy-id user@hostname.example.com
+
+
+## SSHD 
+
+If the machine doesn't have an ssh server running, you can install one:
+
+    sudo apt-get update
+    sudo apt-get -y install openssh-server
+
+
+To find out ip
+
+    ip address
+    
+On older systems it was:
+
+    ifconfig
+

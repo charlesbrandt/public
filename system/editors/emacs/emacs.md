@@ -4,6 +4,25 @@ What? No documentation for emacs?
 
 Well, it's kind of old school. But it's still a great text editor. 
 
+## Installation
+
+Some systems come with emacs already installed. This is rare. Usually you'll need to install the editor. On linux systems, it's available through your package manager. For example:
+
+    sudo apt-get install emacs emacs-goodies-el
+    
+(emacs-goodies-el is optional!)
+
+
+Sometimes emacs will create a configuration directory if it is run and one doesn't already exist. (dangerous! make sure you don't have any old configurations here!)
+
+    rm -rf .emacs.d/
+    
+Link to your configurations:
+ 
+    git clone https://github.com/charlesbrandt/public
+    
+## Configuration
+
 Settings and configurations accumulate over time. My current ones are available under this repository. 
 
 Feel free to revise and revisit these. Especially with any insight from other editors. 
