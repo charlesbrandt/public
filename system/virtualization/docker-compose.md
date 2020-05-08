@@ -39,6 +39,23 @@ Remove all old images
     
 then rebuild again.
 
+## docker-compose.yml
+
+This defines all containers to be used for the application. Ideally, there are existing images that meet the requirements. 
+
+In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
+
+```
+command: bash -c "
+    python manage.py migrate
+    && python manage.py runserver 0.0.0.0:8000
+  "
+```
+
+https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
+
+Beyond that, and you may want to consider building a custom image with a dedicated [Dockerfile](docker.md). 
+
 
 ## Troubleshooting 
 
@@ -53,6 +70,13 @@ then connect with:
 via:  
 https://vsupalov.com/debug-docker-compose-service/
 
+Logging is available via docker directly:
+
+    docker logs repo_nginx_1
+    
+see also: [docker.md](docker.md)
+
+    docker network ls
 
 ## Guides
 

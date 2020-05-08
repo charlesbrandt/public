@@ -243,6 +243,17 @@ docker run -d \
 
 ## Networking
 
+Docker containers can be referenced from other containers using the container name. 
+
+`ping` is not always available. On debian based containers, install it with:
+
+    apt-get update
+    apt-get install iputils-ping
+
+From there, can testing pinging containers by name:
+
+    ping nginx
+
 see a list of all IP addresses for all containers:
 sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
 
@@ -260,7 +271,7 @@ https://docs.docker.com/engine/userguide/containers/networkingcontainers/
     eval "$(docker-machine env default)"
 
 
-### Troubleshooting connections docker
+### Troubleshooting connections in docker
 
 https://www.docker.com/blog/why-you-dont-need-to-run-sshd-in-docker
 
