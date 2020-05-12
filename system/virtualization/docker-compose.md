@@ -4,7 +4,7 @@ https://docs.docker.com/compose/
 
 If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
 
-    apt-get install docker-compose -y
+    sudo apt-get install docker-compose -y
     
 After editing the docker-compose.yml file for the services, launch them with:
 

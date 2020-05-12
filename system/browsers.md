@@ -34,16 +34,12 @@ this one didn't work so well for me.. major memory usage
 https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/
 Tab Suspender – Get this Extension for 🦊 Firefox (en-US)
 
-### Vue Dev Tools
-
-https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
-
 ### Ad Blockers
 
 Instead of adblock, I have been exploring a more general filter / tracking blocker:
-https://github.com/gorhill/uBlock/
-
 https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+
+https://github.com/gorhill/uBlock/
 
 Beware of false immitations:
 Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.
@@ -58,6 +54,10 @@ http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472
 Similar in goal to Disconnect Me
 AdBlock Plus?
 https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
+
+### Vue Dev Tools
+
+https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
 
 ### General Settings

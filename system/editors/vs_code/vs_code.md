@@ -1,7 +1,14 @@
 # Visual Studio Code
 
+## Install
+
 Download and install from site:  
 https://code.visualstudio.com/download
+
+```
+cd ~/Downloads
+sudo dpkg -i code...
+```
 
 Add to favorites (optionally)
 
@@ -272,28 +279,41 @@ https://vuejs.github.io/vetur/
 https://github.com/Microsoft/vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
-### Prettier - Code formatter
+### Python
 
-### GitLens
+### Bracket Pair Colorizer
+
+
 
 ### Docker
-### Kubernetes
-
 ### YAML
-
-### Python
 
 ### Auto Close Tag
 
-### Markdown
+### Docker
 
-markdownlint
+### Live Server
+Launch a development local Server with live reload feature
+
+### Prettier - Code formatter
+
+### Git History
+### GitLens
+
+### Kubernetes
+
+
+### Markdown
 
 #### Useful Shortcuts
 
 https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
 
 https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts
+
+#### Linting 
+
+markdownlint -- checks for formatting issues. 
 
 #### Highlighting
 

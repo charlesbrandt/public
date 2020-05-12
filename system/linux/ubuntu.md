@@ -109,51 +109,6 @@ https://github.com/ddccontrol/ddccontrol
 ddccontrol/ddccontrol: DDC Control
 
 
-## Password Managers
-https://www.google.com/search?q=open+source+password+manager&oq=open+source+passw&aqs=chrome.0.0j69i57j0l4.6551j1j7&client=ubuntu&sourceid=chrome&ie=UTF-8
-open source password manager - Google Search
-https://hackernoon.com/the-best-password-manager-for-you-747b92c43d18
-The Best Password Manager for You – Hacker Noon
-https://www.passwordstore.org/
-Pass: The Standard Unix Password Manager
-https://keepass.info/
-KeePass Password Safe
-
-
-# Steam Controller
-
-working instructions available:
-/c/charles/hardware/controllers/steam.md
-
-sudo pip3 install libusb1
-sudo pip3 install --upgrade pip
-cd /c/
-mkdir downloads
-cd downloads/
-which git
-git clone https://github.com/ynsta/steamcontroller.git
-cd steamcontroller
-sudo python3 setup.py install
-sudo vi /etc/udev/rules.d/99-steam-controller.rules
-ls /etc/udev/rules.d/
-sudo vi /etc/udev/rules.d/99-steam-controller.rules
-sudo udevadm control --reload
-python3 sc-xbox.py start
-sc-xbox.py start
-sc-xbox.py stop
-sc-desktop.py start
-sc-desktop.py start
-sc-desktop.py stop
-sc-dump.py
-sudo sc-dump.py
-sudo sc-desktop.py start
-
-also remember to:
-  - replace batteries
-  - turn the controller on (hold down steam button for 3+ seconds)
-  - make sure the usb dongle is plugged in and on
-
-  - using sudo is important
 
 
 ### Application configurations:
@@ -172,22 +127,6 @@ Change terminal profile settings"
 Under "Colors" tab,
 For "Background color", use color picker to match emacs setting (#1D1F21)
 
-
-[Inkscape Notes](inkscape/inkscape.md)
-
-
-## FreeCAD
-sudo apt-get install freecad
-
-results in error on 18.04
-
-via:
-https://techoverflow.net/2018/06/03/how-to-fix-freecad-no-module-named-webgui-on-ubuntu-18-04/
-
-    sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
-    sudo apt-get update
-
-sudo apt install freecad
 
 
 #apply browser configurations sooner rather than later
@@ -230,27 +169,6 @@ sudo apt-get update && sudo apt-get install obs-studio
 
 /c/charles/technical/javascript/vue/start-here.txt
 
-
-TODO:
-ansible script for spotify
-prefer to keep this one on a VM related to music / vinyl / shopping if possible
-not a standard / core system component
-
-via:
-
-https://www.spotify.com/us/download/linux/
-
-# 1. Add the Spotify repository signing keys to be able to verify downloaded packages
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-
-# 2. Add the Spotify repository
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
-# 3. Update list of available packages
-sudo apt-get update
-
-# 4. Install Spotify
-sudo apt-get install spotify-client
 
 
 # configure printer
@@ -330,20 +248,6 @@ https://duckduckgo.com/?q=xdotool&t=canonical
 xdotool at DuckDuckGo
 https://www.semicomplete.com/projects/xdotool/
 xdotool - fake keyboard/mouse input, window management, and more - semicomplete
-
-
-#Ardour
-
-sudo apt-get install ardour
-
-http://ardour.org/
-
-
-consider starting with:
-http://ubuntustudio.org/tour/audio/
-
-todo
-separate music system notes
 
 
 

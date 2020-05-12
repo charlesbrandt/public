@@ -43,15 +43,19 @@
 ;; your ‘.emacs.d’ directory: ~/.emacs.d/
 ;; This is likely to cause problems...
 ;; Consider using a subdirectory instead, e.g.: /data/data/com.termux/files/home/.emacs.d/lisp
-
 ;; but not having it set causes many other issues
 ;; set load-path .emacs.d/ first
-(setq load-path (cons "~/.emacs.d/" load-path))
+;; (setq load-path (cons "~/.emacs.d/" load-path))
 ;; now that "~/.emacs.d/" is in the load path,
 ;; it's not necessary to include the full path to load-file
 ;; but it helps for readability
 ;; this is also what enables e.g. (require 'markdown-mode)
 ;; TODO: is require equivalent to load-file in elisp?
+
+(setq load-path (cons "~/.emacs.d/ergoemacs-mode" load-path))
+(setq load-path (cons "~/.emacs.d/ergoemacs-extras" load-path))
+(setq load-path (cons "~/.emacs.d/themes" load-path))
+
 
 (load-file "~/.emacs.d/keymaps.el")
 

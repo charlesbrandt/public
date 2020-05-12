@@ -16,7 +16,7 @@ Clean up old version(s):
 Node Version Manager - Simple bash script to manage multiple active node.js versions
 https://github.com/creationix/nvm
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
     
 Open a new shell and verify with:
 

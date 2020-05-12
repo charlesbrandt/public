@@ -18,33 +18,34 @@ https://github.com/wsargent/docker-cheat-sheet
 
 ## Installation
 
-This guide also has a nice introduction to what containers are:
-
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 ```
+sudo apt-get update
 
-sudo apt update
-
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+sudo apt-key fingerprint 0EBFCD88
 ```
 
-Choose the right version (18.04 = bionic), (19.10 = eoan)
+This command will look up the version of your os:
 
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan stable"
+```
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
 
+```
 
 update again
 
 ```
-sudo apt update
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-apt-cache policy docker-ce
-
-sudo apt install docker-ce
 ```
 
 At this point Docker should be installed and you can verify with:
@@ -57,6 +58,29 @@ Make sure docker is installed:
     docker ps
 
 
+This guide also has a nice introduction to what containers are:
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+
+### Add user to docker group
+
+This allows you to execute docker without using sudo
+that's a good thing!
+
+
+
+```
+sudo groupadd docker
+
+sudo usermod -aG docker ${USER}
+```
+
+Log out and log back in, or:
+
+    su - ${USER}
+
+### Snap / Distro (not recommended)
+
 Command 'docker' not found, but can be installed with:
 
 sudo snap install docker     # version 18.09.9, or
@@ -64,19 +88,6 @@ sudo apt  install docker.io
 
 (those tend to be pretty old!)
 
-
-### Add user to docker group
-
-This allows you to execute docker without using sudo
-that's a good thing!
-
-```
-sudo usermod -aG docker ${USER}
-```
-
-Log out and log back in, or:
-
-    su - ${USER}
 
 
 ## Status
