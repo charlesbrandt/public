@@ -52,8 +52,7 @@
 ;; this is also what enables e.g. (require 'markdown-mode)
 ;; TODO: is require equivalent to load-file in elisp?
 
-(setq load-path (cons "~/.emacs.d/ergoemacs-mode" load-path))
-(setq load-path (cons "~/.emacs.d/ergoemacs-extras" load-path))
+
 (setq load-path (cons "~/.emacs.d/themes" load-path))
 
 

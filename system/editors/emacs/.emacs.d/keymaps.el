@@ -40,11 +40,13 @@
 
 
 ;; Ergoemacs is a good place to start. It defines many of the more common bindings used elsewhere so that you don't have to do that manually.
-;; http://ergoemacs.github.io/
+;; https://ergoemacs.github.io/
 ;; https://www.emacswiki.org/emacs/ErgoemacsKeybindings
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 ;; http://ergoemacs.org/emacs/ergonomic_emacs_keybinding.html
 
+(setq load-path (cons "~/.emacs.d/ergoemacs-mode" load-path))
+(setq load-path (cons "~/.emacs.d/ergoemacs-extras" load-path))
 (add-to-list 'load-path "~/.emacs.d/ergoemacs-mode")
 (require 'ergoemacs-mode) 
 
