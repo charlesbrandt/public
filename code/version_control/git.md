@@ -126,6 +126,8 @@ https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-maste
 
 ## Submodules
 
+Submodles allow for external dependencies to be noted and included. 
+
 To get submodules on clone: 
 
     git clone --recurse-submodules -j8 git://github.com/foo/bar.git
@@ -149,6 +151,21 @@ hint: 	git rm --cached path/to/mod
 hint:
 hint: See "git help submodule" for more information.
 
+#### Remove a submodule
+
+
+To remove a submodule you need to:
+
+    Delete the relevant section from the .gitmodules file.
+    Stage the .gitmodules changes git add .gitmodules
+    Delete the relevant section from .git/config.
+    Run git rm --cached path_to_submodule (no trailing slash).
+    Run rm -rf .git/modules/path_to_submodule (no trailing slash).
+    Commit git commit -m "Removed submodule "
+    Delete the now untracked submodule files rm -rf path_to_submodule
+
+
+https://gist.github.com/myusuf3/7f645819ded92bda6677
 
 ## Branches
 

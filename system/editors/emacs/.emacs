@@ -52,6 +52,24 @@
 ;; this is also what enables e.g. (require 'markdown-mode)
 ;; TODO: is require equivalent to load-file in elisp?
 
+;; https://melpa.org/#/
+;; Note that you'll need to run M-x package-refresh-contents or M-x package-list-packages to ensure that Emacs has fetched the MELPA package list before you can install packages with M-x package-install or similar. 
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+  ;; and `package-pinned-packages`. Most users will not need or want to do this.
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  )
+(package-initialize)
 
 (setq load-path (cons "~/.emacs.d/themes" load-path))
 
@@ -87,7 +105,7 @@
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-    (undo-tree yaml-mode web-mode vue-mode scss-mode sass-mode markdown-mode)))
+    (ergoemacs-mode undo-tree yaml-mode web-mode vue-mode scss-mode sass-mode markdown-mode)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

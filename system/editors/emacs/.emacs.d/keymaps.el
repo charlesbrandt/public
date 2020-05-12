@@ -45,9 +45,9 @@
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 ;; http://ergoemacs.org/emacs/ergonomic_emacs_keybinding.html
 
-(setq load-path (cons "~/.emacs.d/ergoemacs-mode" load-path))
-(setq load-path (cons "~/.emacs.d/ergoemacs-extras" load-path))
-(add-to-list 'load-path "~/.emacs.d/ergoemacs-mode")
+;; (setq load-path (cons "~/.emacs.d/ergoemacs-mode" load-path))
+;; (setq load-path (cons "~/.emacs.d/ergoemacs-extras" load-path))
+;; (add-to-list 'load-path "~/.emacs.d/ergoemacs-mode")
 (require 'ergoemacs-mode) 
 
 (setq ergoemacs-theme nil)
