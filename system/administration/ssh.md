@@ -39,3 +39,8 @@ On older systems it was:
 
     ifconfig
 
+## Known Hosts
+
+    ssh-keygen -R hostname
+    
+via https://askubuntu.com/questions/20865/is-it-possible-to-remove-a-particular-host-key-from-sshs-known-hosts-file
