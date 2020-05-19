@@ -67,7 +67,7 @@ There are two things you can do about this warning:
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   )
 (package-initialize)
 
@@ -105,7 +105,7 @@ There are two things you can do about this warning:
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-    (ergoemacs-mode undo-tree yaml-mode web-mode vue-mode scss-mode sass-mode markdown-mode)))
+    (undo-tree yaml-mode web-mode vue-mode scss-mode sass-mode markdown-mode)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

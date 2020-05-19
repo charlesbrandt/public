@@ -83,3 +83,20 @@ Once you have `yarn` available, you can add packages as a requirement with:
 or
 
     yarn add --dev
+
+
+## Process Monitoring
+
+If you have a service running live using a node based (e.g. [express](express.md)) server, a monitoring tool can make sure it stays up.
+
+I've used PM2. 
+
+https://www.google.com/search?client=ubuntu&channel=fs&q=pm2&ie=utf-8&oe=utf-8
+pm2 - Google Search
+https://pm2.keymetrics.io/
+PM2 - Home
+
+https://github.com/remy/nodemon
+GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development
+https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8&oe=utf-8
+nodemon vs pm2 - Google Search

@@ -58,7 +58,6 @@ If you think you want to store your password, consider setting up an ssh key wit
 These are stored in plaintext, so it is insecure.
 via: https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github
 
-
 ### History
 
 To see who has made commits to a repository.
@@ -72,9 +71,9 @@ see also:
     git log --follow -p -- file
 
 
-### Resoving a conflict
+## Resoving a conflict
 
-If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. You can check in your changes, but then that results in a branch merge. 
+If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. You can check in your changes, but that results in a branch merge. 
 
 You can also use stash to move your local changes to the side while you pull in changes from remote. 
 
@@ -86,6 +85,40 @@ Then to unstash:
 
 https://www.atlassian.com/git/tutorials/saving-changes/git-stash
 https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
+
+
+## Finding a deleted file in history
+
+Sometimes it's easier to use an interface like gitlab (run it locally) or github to browse the history of the commits to the project. 
+
+If you do not know the exact path you may use
+  
+    git log --all --full-history -- **/thefile.*
+
+If you know the path the file was at, you can do this:
+
+    git log --all --full-history -- <path-to-file>
+    
+An alternative:
+
+    git rev-list -n 1 HEAD -- <file_path>
+
+
+This should show a list of commits in all branches which touched that file. Then, you can find the version of the file you want, and display it with...
+
+    git show <SHA> -- <path-to-file>
+    
+Or restore it into your working copy with:
+
+    git checkout <SHA>^ -- <path-to-file>
+
+Note the caret symbol (^), which gets the checkout prior to the one identified, because at the moment of <SHA> commit the file is deleted, we need to look at the previous commit to get the deleted file's contents
+
+via:
+https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history/34681842
+
+https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
+
 
 ## Running a server
 
@@ -153,7 +186,6 @@ hint: See "git help submodule" for more information.
 
 #### Remove a submodule
 
-
 To remove a submodule you need to:
 
     Delete the relevant section from the .gitmodules file.
@@ -166,6 +198,7 @@ To remove a submodule you need to:
 
 
 https://gist.github.com/myusuf3/7f645819ded92bda6677
+
 
 ## Branches
 
@@ -189,6 +222,8 @@ https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
 
 ## Remove directory from history
 
+If someone adds a directory with large binary files, it may be useful to remove that directory from the history to avoid having to download the large binary data with every `clone` of the repo. 
+
 ```
 git filter-branch --tree-filter "rm -rf node_modules" --prune-empty HEAD
 git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
@@ -206,29 +241,6 @@ via:
 https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history
 
 
-## Finding a deleted file in history
-
-If you do not know the exact path you may use
-
-  
-    git log --all --full-history -- **/thefile.*
-
-If you know the path the file was at, you can do this:
-
-    git log --all --full-history -- <path-to-file>
-    
-This should show a list of commits in all branches which touched that file. Then, you can find the version of the file you want, and display it with...
-
-    git show <SHA> -- <path-to-file>
-    
-Or restore it into your working copy with:
-
-    git checkout <SHA>^ -- <path-to-file>
-
-Note the caret symbol (^), which gets the checkout prior to the one identified, because at the moment of <SHA> commit the file is deleted, we need to look at the previous commit to get the deleted file's contents
-
-via:
-https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history/34681842
 
 ## Changing a commit message
 

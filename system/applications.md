@@ -150,6 +150,19 @@ Don't like this one as much.
 
     sudo apt-get install shotcut
 
+
+## K4DirStat
+
+visual disk usage utility:
+http://kdirstat.sourceforge.net/
+
+    sudo apt-get install k4dirstat
+
+## Python
+
+    sudo apt install python-is-python3
+
+
 ## 3d 
 
 ### FreeCAD

@@ -130,10 +130,6 @@ sudo mount -t vboxsf -o uid=1000,gid=1000 DATA /media/charles/DATA/
 
 
 
-#visual disk usage utility:
-http://kdirstat.sourceforge.net/
-sudo apt-get install k4dirstat
-
 
 
 #vnc

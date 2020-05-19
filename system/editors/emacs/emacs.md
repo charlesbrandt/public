@@ -1,8 +1,6 @@
 # Emacs
 
-What? No documentation for emacs? 
-
-Well, it's kind of old school. But it's still a great text editor. 
+It's kind of old school. But it's still a great text editor. 
 
 ## Installation
 
@@ -23,13 +21,31 @@ Link to your configurations:
     
 ## Configuration
 
-Settings and configurations accumulate over time. My current ones are available under this repository. 
+Settings are stored in `.emacs` and `.emacs.d` directories. 
 
-Feel free to revise and revisit these. Especially with any insight from other editors. 
+Settings and configurations accumulate over time. The ones I use are available in this directory. I'm aiming for something that works reasonably well with other editors.
 
-One of the first things to do is to set up some sane key bindings. Yes, I know the default ones in emacs are optimized for hand efficient hand movement. I've had them burned into my muscle memory. But they're really non-standard, and they get in the way when switching to just about any other typical computing platform. 
+### Melpa
 
-In my configuration, I've moved all custom keymaps definitions to:
+Milkypostman’s Emacs Lisp Package Archive
+
+https://melpa.org/#/
+MELPA
+https://melpa.org/#/getting-started
+Getting Started - MELPA
+
+Interact with:
+
+    m-X package-list-packages
+    
+" If you run into a problem installing or upgrading, you may need to go into your ~/.emacs.d/elpa/ directory and delete packages that are installed multiple times. This can happen when the install times out."
+
+
+### Keymaps
+
+One of the first things to do is to set up some sane key bindings. Yes, I know the default ones in emacs are optimized for efficient hand movement. I've had them burned into my muscle memory. But they're really non-standard, and they get in the way when switching to just about any other typical computing platform. 
+
+In my configuration, custom keymaps definitions are in:
 .emacs.d/keymaps.el
 
 It looks like many of these may be configured as part of the ergoemacs package:
@@ -39,6 +55,7 @@ Make sure you have at least emacs version 24.1:
 M-x emacs-version
 via: https://stackoverflow.com/questions/19393538/get-emacs-version-from-within-emacs
 
+
 Trying it out first:
 
     cd .emacs.d/
@@ -46,7 +63,7 @@ Trying it out first:
 
 If it works, be sure to include the module as a submodule in this repository:
 
-    git submodule add https://github.com/ergoemacs/ergoemacs-mode.git editors/emacs/.emacs.d/ergoemacs-mode
+    git submodule add https://github.com/ergoemacs/ergoemacs-mode.git editors/emacs/.emacs.d/modules/ergoemacs-mode
     
 via: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
