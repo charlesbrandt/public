@@ -38,9 +38,6 @@ GitHub - icebob/vue-express-mongo-boilerplate: MEVN Full stack JS web app boiler
 https://github.com/icebob/vue-express-mongo-boilerplate/tree/master/server
 vue-express-mongo-boilerplate/server at master · icebob/vue-express-mongo-boilerplate · GitHub
 
-
-
-
 https://www.google.com/search?q=express+backend+boilerplate&client=ubuntu&hs=RfG&channel=fs&source=lnt&tbs=qdr:y&sa=X&ved=2ahUKEwjJ--b-4a7pAhVZHc0KHfkqA_gQpwV6BAgPEB0&biw=960&bih=942
 express backend boilerplate - Google Search
 https://www.google.com/search?client=ubuntu&channel=fs&biw=960&bih=942&tbs=qdr:y&q=express+passport+boilerplate&sa=X&ved=2ahUKEwjI4L6h667pAhXXZc0KHTEQCkwQ1QIoB3oECA0QCA
@@ -76,3 +73,14 @@ How to Manage Session using Node.js and Express - Codeforgeek
 See also:
 ~/alpha/public/code/architecture/users.md
 ~/alpha/public/code/architecture/social_networks.md
+
+
+## Debugging
+
+To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
+
+    DEBUG=express:* node index.js
+
+https://expressjs.com/en/guide/debugging.html
+
+You can also use `curl` or `wget` to test specific routes that are available. 

@@ -37,6 +37,12 @@ Generally these are configured in separate files in
     /etc/nginx/conf.d/*.conf
 
 
+## Alias vs Root
+
+https://stackoverflow.com/questions/10631933/nginx-static-file-serving-confusion-with-root-alias
+
+be sure to include trailing slash with `alias` directives!
+
 ## HTTPS / SSL
 
 ### Self-signed
@@ -78,3 +84,9 @@ https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
 See also:
 
 ~/public/code/new_project.md
+
+## Troubleshooting
+
+Log files are typically stored in 
+
+    /var/log/nginx

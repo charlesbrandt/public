@@ -254,7 +254,15 @@ docker run -d \
 
 ## Networking
 
-Docker containers can be referenced from other containers using the container name. 
+See all networks currently configured:
+
+    docker network ls
+    
+See details for a specific network:
+
+    docker network inspect bridge
+
+Docker containers can be referenced from other containers using the container name. Be sure to use the full container name, not the abbreviated service name that is used in docker-compose files. 
 
 `ping` is not always available. On debian based containers, install it with:
 
@@ -280,6 +288,12 @@ https://docs.docker.com/engine/userguide/containers/networkingcontainers/
 (on macs) set up a terminal to know how to interact with docker by running:
 
     eval "$(docker-machine env default)"
+
+
+way to generalize reference to containers in configuration files?
+what if the IP for the api server changes?
+would require manually updating nginx.conf file
+just use docker name
 
 
 ### Troubleshooting connections in docker
