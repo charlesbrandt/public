@@ -18,6 +18,7 @@ system/editors/emacs/.emacs.d/elpa/archives/
 *editors/emacs/.emacs.d/elpa/undo-tree-0.6.5.signed
 *editors/emacs/.emacs.d/elpa/undo-tree-0.6.5/
 *editors/emacs/.emacs.d/session*
+system/editors/emacs/.emacs.d/modules/ergoemacs-mode
 session.*
 repos/
 system/editors/emacs/.emacs.d/url/
