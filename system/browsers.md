@@ -55,10 +55,6 @@ Similar in goal to Disconnect Me
 AdBlock Plus?
 https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
 
-### Vue Dev Tools
-
-https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
-
 
 ### General Settings
 
@@ -75,6 +71,10 @@ Advanced -> Data Choices -> disable "Enable Firefox Health Report" and "Enable C
 
 Clear History
 
+
+### Vue Dev Tools
+
+https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
 ### Less Common Add-ons
 

@@ -62,7 +62,7 @@ vi is everywhere. It's good to understand the different modes so that you can ac
 
 VS Code is a great environment for editing code. 
 
-My only complaint is it's very memory intensive. If you like to keep a lot of editors open at the same time, some of the lighter weight editors really shine.
+My only complaint is it's very memory intensive. If you like to keep a lot of editors open at the same time, some of the lighter weight editors may be better options.
 
 
 ## Browsers
@@ -102,10 +102,6 @@ Uncheck:
 
 View -> Playlist
 Close browser tree in playlist view. (drag panel closed via middle)
-Uncheck "Docked Playlist
-
-May need
-Tools-->Preferences-->Video-->Output-->X11 Video Output (XCB)
 
 (Doesn't seem to have any effect, messages still appear:)
 Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
@@ -161,6 +157,10 @@ http://kdirstat.sourceforge.net/
 ## Python
 
     sudo apt install python-is-python3
+
+## Utilities
+
+    sudo apt-get install curl
 
 
 ## 3d 

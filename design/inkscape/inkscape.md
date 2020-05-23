@@ -17,11 +17,11 @@ Configure best default settings
     - Ctrl - Shift - M
     - Ctrl - Shift - A
     - Ctrl - Shift - F
+    - Ctrl - Shift - L
 
 
   - View -> Show/Hide -> Uncheck following:  
     - Commands Bar  
-    - Snap Controls Bar  
     - Palette  
 
 <img src="screenshots/0050-inkscape-view-show_hide.png" alt="Chaning view settings to hide command bar, etc">

@@ -10,7 +10,7 @@ For everything else, there is dconf-editor.
 
 ## Gnome Tweaks
 
-sudo apt-get install gnome-tweaks
+    sudo apt-get install gnome-tweaks
 
 ## Dock Settings
 
@@ -35,6 +35,33 @@ Use Tweaks application to move close, minimize, and maximize to the left of the 
 Do you want to see icons on the desktop? 
 
 Tweaks -> Extensions -> Desktop Icons -> Settings Icon -> Show icons
+
+Click on the settings icon next to the toggle to see additional settings for e.g. show Trash on desktop
+
+## Automatic Brightness
+
+disable this under Settings -> Power ->
+it's annoying to have the screen dim if you get in front of the camera
+
+
+## Disable Middle Click
+
+For laptops with a touch pad, I prefer the following settings: 
+
+Open gnome-tweak-tool and go to the "Keyboard and Mouse" tab and disable "Middle-click-Paste".
+
+Also set the "Mouse Click Emulation" to be "Fingers"
+
+https://www.google.com/search?client=ubuntu&channel=fs&q=gnome3+disable+mouse+buttons&ie=utf-8&oe=utf-8
+gnome3 disable mouse buttons - Google Search
+https://unix.stackexchange.com/questions/24330/how-can-i-turn-off-middle-mouse-button-paste-functionality-in-all-programs
+xorg - How can I turn off "middle mouse button paste" functionality in all programs? - Unix & Linux Stack Exchange
+
+
+
+
+
+
 
 
 
@@ -76,11 +103,6 @@ gnome 3 svg desktop background at DuckDuckGo
 https://unix.stackexchange.com/questions/101613/cant-set-background-wallpaper-in-gnome-3
 gnome3 - Can't set background wallpaper in Gnome 3 - Unix & Linux Stack Exchange
 
-
-## Automatic Brightness
-
-disable this under Settings->Power->
-it's annoying to have the screen dim if you get in front of the camera?
 
 
 ## Keyboard Backlight

@@ -88,7 +88,9 @@ File > Preferences > Keyboard Shortcuts
 
 All keyboard shortcuts in VS Code can be customized via the keybindings.json file.
 
-To configure keyboard shortcuts through the JSON file, open the keybindings.json file from the Command Palette (Ctrl+Shift+P) with the Preferences: Open Keyboard Shortcuts (JSON) command.
+To configure keyboard shortcuts through the JSON file, open the keybindings.json file from the Command Palette (Ctrl+Shift+P) with the 
+
+    Preferences: Open Keyboard Shortcuts (JSON) command.
 
 You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcuts (JSON) button on the right of the editor title bar. [couldn't find this path]
 
@@ -281,16 +283,22 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 ### Python
 
-### Bracket Pair Colorizer
-
-
-
 ### Docker
+
 ### YAML
+
+### Bracket Pair Colorizer
 
 ### Auto Close Tag
 
-### Docker
+### Markdown All in One (other options listed below)
+
+### Import Cost
+
+
+## Other Extensions
+
+### Color Picker
 
 ### Live Server
 Launch a development local Server with live reload feature
@@ -301,7 +309,6 @@ Launch a development local Server with live reload feature
 ### GitLens
 
 ### Kubernetes
-
 
 ### Markdown
 
