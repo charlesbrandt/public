@@ -63,6 +63,7 @@ Trying it out first:
 
 If it works, be sure to include the module as a submodule in this repository:
 
+    cd ~/public
     git submodule add https://github.com/ergoemacs/ergoemacs-mode.git editors/emacs/.emacs.d/modules/ergoemacs-mode
     
 via: https://git-scm.com/book/en/v2/Git-Tools-Submodules

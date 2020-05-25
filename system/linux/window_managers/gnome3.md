@@ -57,27 +57,10 @@ gnome3 disable mouse buttons - Google Search
 https://unix.stackexchange.com/questions/24330/how-can-i-turn-off-middle-mouse-button-paste-functionality-in-all-programs
 xorg - How can I turn off "middle mouse button paste" functionality in all programs? - Unix & Linux Stack Exchange
 
-
-
-
-
-
-
-
-
-## Login Screen
-
-A bit tricky to find login screen customizations. 
-
-    dconf-editor 
-
-Navigate to: 
-
-    /org/gnome/login-screen/
-    
 ## Desktop Background
 
-This is also available as a setting in the Tweaks application
+    gsettings set org.gnome.desktop.background picture-uri file:///home/account/public/template.svg
+
 
 To change the background color, it may be necessary to use:
 
@@ -105,6 +88,24 @@ gnome3 - Can't set background wallpaper in Gnome 3 - Unix & Linux Stack Exchange
 
 
 
+
+
+
+
+
+
+
+
+## Login Screen
+
+A bit tricky to find login screen customizations. 
+
+    dconf-editor 
+
+Navigate to: 
+
+    /org/gnome/login-screen/
+    
 ## Keyboard Backlight
 
 By default, the keyboard backlight will time out after 10s on Ubuntu. Typically, if I turn on the backlight, I would prefer for it to stay on until I choose otherwise. This can be configured in Ubuntu:
