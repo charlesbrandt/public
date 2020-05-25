@@ -144,6 +144,7 @@ Don't like this one as much.
 ## Utilities
 
     sudo apt-get install curl
+    sudo apt-get install ffmpeg
 
 ## Shotcut
 
