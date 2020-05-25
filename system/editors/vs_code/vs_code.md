@@ -281,6 +281,10 @@ https://vuejs.github.io/vetur/
 https://github.com/Microsoft/vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
+### Prettier
+
+helps with code formatting
+
 ### Python
 
 ### Docker

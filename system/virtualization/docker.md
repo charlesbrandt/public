@@ -16,6 +16,12 @@ https://docs.docker.com/engine/userguide/
 This cheat sheet is a great overview, and closely resembles what these notes cover:
 https://github.com/wsargent/docker-cheat-sheet
 
+
+## See Also
+
+[Docker Compose](docker-compose.md)
+
+
 ## Installation
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
@@ -87,7 +93,6 @@ sudo snap install docker     # version 18.09.9, or
 sudo apt  install docker.io
 
 (those tend to be pretty old!)
-
 
 
 ## Status
@@ -206,8 +211,8 @@ start and connect to a docker container:
 
 start a new shell in an already running container:
 
-    docker exec -it 393b12a61839 /bin/sh
     docker exec -it <containerIdOrName> bash
+    docker exec -it 393b12a61839 /bin/sh
     docker exec -it docker_web_run_1 bash
 
 connect to a (already running) docker container (Note: this will share the same shell if another instance is already connected interactively)
@@ -242,7 +247,7 @@ https://docs.docker.com/storage/volumes/
 
 For development, a bind mount may work well. For deployments, a volume is a better choice. 
 
-These are specified when running a container. 
+These can be specified when running a container, or as part of a compose setup:
 
 ```
 docker run -d \
@@ -295,7 +300,6 @@ what if the IP for the api server changes?
 would require manually updating nginx.conf file
 just use docker name
 
-
 ### Troubleshooting connections in docker
 
 https://www.docker.com/blog/why-you-dont-need-to-run-sshd-in-docker
@@ -318,7 +322,6 @@ lynx 127.0.0.1:8080
 
 curl is another good option!
 
-
 ### Troubleshooting nginx
 
 If you go inside the container `docker exec -it <container-id> /bin/bash` and check the log location `ls -la /var/log/nginx/` you will see the following output:
@@ -334,10 +337,6 @@ The right way to get your logs is going outside the container and doing `docker 
 
 https://stackoverflow.com/questions/30269672/unable-to-use-lt-when-running-nginx-docker-or-cat-logs
 
-
-## See Also
-
-docker-compose.md
 
 
 ## Context Specific Applications
@@ -378,5 +377,4 @@ https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
 Looks like Seth has another tactic for this here:
 
 https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
-
 

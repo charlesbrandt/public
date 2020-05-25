@@ -87,7 +87,6 @@ Audio Editor
     sudo apt-get install audacity
 
 
-
 ## Media
 
 ### VLC 
@@ -107,21 +106,17 @@ Close browser tree in playlist view. (drag panel closed via middle)
 Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
 can just go 'do not distrub'
 
+
 ## Inkscape
 
     sudo apt-get install inkscape
 
 [Inkscape Notes](../../design/inkscape.md)
 
+
 ## Image Editing
 
     sudo apt-get install krita
-
-
-## Docker
-
-~/public/system/virtualization/docker-compose.md
-~/public/system/virtualization/docker.md
 
 
 ## Password Managers
@@ -142,6 +137,14 @@ Don't like this one as much.
     sudo apt-get install keepass2
 
 
+## Python
+
+    sudo apt install python-is-python3
+
+## Utilities
+
+    sudo apt-get install curl
+
 ## Shotcut
 
     sudo apt-get install shotcut
@@ -154,32 +157,10 @@ http://kdirstat.sourceforge.net/
 
     sudo apt-get install k4dirstat
 
-## Python
+## Docker
 
-    sudo apt install python-is-python3
-
-## Utilities
-
-    sudo apt-get install curl
+~/public/system/virtualization/docker-compose.md
+~/public/system/virtualization/docker.md
 
 
-## 3d 
 
-### FreeCAD
-
-sudo apt-get install freecad
-
-results in error on 18.04
-
-via:
-https://techoverflow.net/2018/06/03/how-to-fix-freecad-no-module-named-webgui-on-ubuntu-18-04/
-
-    sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
-    sudo apt-get update
-
-    sudo apt-get install freecad
-
-
-### Blender
-
-    sudo apt-get install blender
