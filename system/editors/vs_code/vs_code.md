@@ -32,7 +32,7 @@ or
 See below for details
 
 {
-    "window.newWindowDimensions": "inherit"
+    "window.newWindowDimensions": "inherit",
     "workbench.startupEditor": "newUntitledFile",
     "breadcrumbs.enabled": false,
     "editor.minimap.enabled": false,
@@ -284,6 +284,15 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 ### Prettier
 
 helps with code formatting
+
+https://glebbahmutov.com/blog/configure-prettier-in-vscode/
+	
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
+
+may require the project to install prettier as a dev dependency so that vscode has it available to use. 
 
 ### Python
 

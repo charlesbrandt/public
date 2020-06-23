@@ -164,4 +164,10 @@ http://kdirstat.sourceforge.net/
 ~/public/system/virtualization/docker.md
 
 
+## Chromium
 
+sudo add-apt-repository ppa:canonical-chromium-builds/stage
+sudo apt update
+sudo apt install chromium-browser
+
+this installs the snap version
