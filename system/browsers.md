@@ -55,6 +55,22 @@ Similar in goal to Disconnect Me
 AdBlock Plus?
 https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
 
+### Site Analysis
+
+See what libraries are in use with a site you are visiting:
+
+# 2020.06.22 11:08:17 
+browser extension
+wappalyzer
+find out the technology stack used by any website
+
+W3C CSS Validator is a simple
+
+via
+webdesignerdepot.com: 10 Tools I Can’t Design Without.
+https://www.webdesignerdepot.com/2020/06/10-tools-i-cant-design-without/
+
+
 
 ### General Settings
 

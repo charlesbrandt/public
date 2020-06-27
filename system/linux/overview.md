@@ -4,6 +4,11 @@
 
 Processes vary in the way systems start. 
 
+This article provides a well written overview:
+
+How-To Geek: Why Linux’s systemd Is Still Divisive After All These Years.
+https://www.howtogeek.com/675569/why-linuxs-systemd-is-still-divisive-after-all-these-years/
+
 ### Older
 
    BIOS -> Bootloader -> 
