@@ -2,7 +2,14 @@
 
 Configurations to make a web browser even better. Most of these are in the form of add-ons and extensions. 
 
+
 ## Firefox
+
+If you need a browser context for a specific task / job
+
+`firefox -p` does the trick! 
+
+If no relevant profile is available, just create one.
 
 ### Tab Links
 
@@ -59,8 +66,6 @@ https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
 
 See what libraries are in use with a site you are visiting:
 
-# 2020.06.22 11:08:17 
-browser extension
 wappalyzer
 find out the technology stack used by any website
 

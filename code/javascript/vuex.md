@@ -25,6 +25,13 @@ https://itnext.io/efficiently-understanding-and-using-nuxt-vuex-7905eb8858d6
 
 https://vuex.vuejs.org/guide/modules.html
 
+There are two ways to structure your vuex code: Modules and Single Store. Separate modules seems like the way to go. 
+
+Each module will have three aspects: State, Mutations, and Actions
+
+"It’s very important to keep your state as flat as possible. Deeply nested objects in a state lose reactivity."
+
+
 
 ## Mapstate
 
@@ -39,6 +46,23 @@ When a component needs to make use of multiple store state properties or getters
 ## Import from JSON
 
 If you have data stored in JSON files, you can load that in when Nuxt initializes. 
+
+
+## Getters 
+
+If you want to do the equivalent of a computed value with a Vuex store, you want getters:
+
+https://vuex.vuejs.org/guide/getters.html
+
+To use another getter from within a getter:
+
+https://stackoverflow.com/questions/46210109/how-do-i-call-a-getter-from-another-getter-in-vuex
+
+Having trouble pulling these back into a component:
+
+https://tenmilesquare.com/understanding-mapgetters-in-vuex/
+
+
 
  
 ## ORM
