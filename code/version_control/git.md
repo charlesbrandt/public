@@ -5,6 +5,8 @@ Git is a distributed version control system.
 
 ## CLI Cheat sheet
 
+    git pull 
+
     git status
     
     git add .
@@ -85,6 +87,14 @@ Then to unstash:
 
 https://www.atlassian.com/git/tutorials/saving-changes/git-stash
 https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
+
+
+## Undo add files
+
+    git reset
+
+https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
+
 
 
 ## Finding a deleted file in history
@@ -202,6 +212,29 @@ https://gist.github.com/myusuf3/7f645819ded92bda6677
 
 ## Branches
 
+### Creating a branch
+
+Assumes you have already checked out the repository locally. Then:
+
+     git checkout -b iss53
+
+Which is shorthand for:
+
+    git branch iss53
+    git checkout iss53
+    
+There are different ways to use branches. 
+
+https://guides.github.com/introduction/flow/
+
+https://nvie.com/posts/a-successful-git-branching-model/
+
+https://stackoverflow.com/questions/15072243/git-with-development-staging-and-production-branches
+
+https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
+
+### Pushing Changes
+
 https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 
 When working on a branch, `git pull` will pull changes from the branch, but `git push` has some surprising behavior that tries to push changes to all matching branches:
@@ -220,27 +253,6 @@ git config --global push.default simple # globally for your account
 ```
 
 https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
-
-### Creating a branch
-
-Assumes you have already checked out the repository locally. Then:
-
-    git branch iss53
-    git checkout iss53
-    
-or combined together as
-
-    git checkout -b iss53
-
-There are different ways to use branches. 
-
-https://guides.github.com/introduction/flow/
-
-https://nvie.com/posts/a-successful-git-branching-model/
-
-https://stackoverflow.com/questions/15072243/git-with-development-staging-and-production-branches
-
-https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
 
 
 
