@@ -120,6 +120,20 @@ Apply data to the models
 
 That's the basic idea. 
 
+Be sure to pass in the data in the form specified by the documentation, even if that means reformatting the source of the data to fit. 
+
+Also, remember that when it comes time to retrieve the data, many-to-many related object will not be added to the object unless you use the 'with' syntax to load nested relations. 
+
+https://vuex-orm.org/guide/prologue/getting-started.html#define-models
+Getting Started | Vuex ORM
+https://vuex-orm.org/guide/model/defining-models.html#uid-type
+Defining Models | Vuex ORM
+https://vuex-orm.org/guide/data/retrieving.html#where-clauses
+Retrieving | Vuex ORM
+https://vuex-orm.org/guide/data/inserting-and-updating.html#inserts
+Inserting & Updating | Vuex ORM
+https://vuex-orm.org/guide/model/retrieving-models.html#fetch-from-database
+Retrieve Models | Vuex ORM
 
 
 Nice video tutorials:

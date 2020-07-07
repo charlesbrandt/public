@@ -3,19 +3,94 @@
 https://expressjs.com/en/starter/installing.html
 Installing Express
 
+For debugging system configurations, it helps to spin up a known working server. "Hello world" is always a good place to start:
+
+```
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+```
+
 https://expressjs.com/en/starter/hello-world.html
 Express "Hello World" example
 
+
 ## Routing
+
+Once a project grows beyond "Hello World", collect routes in various .js files. 
+
+In the app, these can be included with:
+
+```
+var birds = require('./birds')
+
+// ...
+
+app.use('/birds', birds)
+```
+
+and may look something like:
+
+```
+var express = require('express')
+var router = express.Router()
+
+// middleware that is specific to this router
+router.use(function timeLog (req, res, next) {
+  console.log('Time: ', Date.now())
+  next()
+})
+// define the home page route
+router.get('/', function (req, res) {
+  res.send('Birds home page')
+})
+// define the about route
+router.get('/about', function (req, res) {
+  res.send('About birds')
+})
+
+module.exports = router
+
+```
+
+https://expressjs.com/en/guide/routing.html
+Express routing
 
 https://expressjs.com/en/starter/basic-routing.html
 Express basic routing
-https://expressjs.com/en/guide/routing.html
-Express routing
 
 ### Nested Routes
 
 http://katieleonard.ca/blog/2016/nested-routes-with-expressjs/
+
+
+## Sessions
+
+http://www.passportjs.org/
+Passport.js
+https://www.google.com/search?client=ubuntu&channel=fs&q=node+express+session+management&ie=utf-8&oe=utf-8
+node express session management - Google Search
+https://codeforgeek.com/manage-session-using-node-js-express-4/
+How to Manage Session using Node.js and Express - Codeforgeek
+
+See also:
+~/alpha/public/code/architecture/users.md
+~/alpha/public/code/architecture/social_networks.md
+
+
+## Debugging
+
+To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
+
+    DEBUG=express:* node index.js
+
+https://expressjs.com/en/guide/debugging.html
+
+You can also use `curl` or `wget` to test specific routes that are available. 
 
 
 ## Boilerplates
@@ -60,27 +135,3 @@ Four Layer Architecture
 https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 Clean Coder Blog
 
-
-## Sessions
-
-http://www.passportjs.org/
-Passport.js
-https://www.google.com/search?client=ubuntu&channel=fs&q=node+express+session+management&ie=utf-8&oe=utf-8
-node express session management - Google Search
-https://codeforgeek.com/manage-session-using-node-js-express-4/
-How to Manage Session using Node.js and Express - Codeforgeek
-
-See also:
-~/alpha/public/code/architecture/users.md
-~/alpha/public/code/architecture/social_networks.md
-
-
-## Debugging
-
-To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
-
-    DEBUG=express:* node index.js
-
-https://expressjs.com/en/guide/debugging.html
-
-You can also use `curl` or `wget` to test specific routes that are available. 

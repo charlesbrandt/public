@@ -96,6 +96,10 @@ https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
 https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
 
+## Revert local changes
+
+`git checkout path/to/file` will revert the local changes to `path/to/file`
+
 
 ## Finding a deleted file in history
 

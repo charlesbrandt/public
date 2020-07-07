@@ -11,6 +11,9 @@ If you need a browser context for a specific task / job
 
 If no relevant profile is available, just create one.
 
+Be sure to set Menu -> Preferences -> Restore previous session
+
+
 ### Tab Links
 
 https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/

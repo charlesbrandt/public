@@ -302,7 +302,10 @@ may require the project to install prettier as a dev dependency so that vscode h
 
 ### Bracket Pair Colorizer
 
-### Auto Close Tag
+### Github
+https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github
+### Git History
+### GitLens
 
 ### Markdown All in One (other options listed below)
 
@@ -317,9 +320,6 @@ may require the project to install prettier as a dev dependency so that vscode h
 Launch a development local Server with live reload feature
 
 ### Prettier - Code formatter
-
-### Git History
-### GitLens
 
 ### Kubernetes
 
@@ -356,6 +356,10 @@ To switch between views, press Ctrl+Shift+V in the editor. You can view the prev
 Outline view can act as an automatic Table Of Contents. Below File Explorer view.
 
 VS Code can even compile markdown to HTML!
+
+### Auto Close Tag
+
+I find this gets in the way more than it helps. YMMV. 
 
 ### TODO
 

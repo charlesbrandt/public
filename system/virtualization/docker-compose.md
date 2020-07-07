@@ -57,6 +57,21 @@ https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute
 Beyond that, and you may want to consider building a custom image with a dedicated [Dockerfile](docker.md). 
 
 
+## DNS
+
+I ran into an issue where a container was not able to resolve DNS lookups. (to confirm this, connect to the container via bash and run `ping google.com`)
+
+This turned out to be an issue with the way lookups are configured on my host machine (20.04). 
+
+Docker uses the host's name resolution. Running this on the host fixes the resolution within containers: 
+
+    sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
+The link that helped:
+
+https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
+
+
 ## Troubleshooting 
 
 For troubleshooting, you can add a command that is sure to run in the docker-compose.yml, e.g.:
