@@ -1,5 +1,7 @@
 # Docker Compose
 
+Docker Compose relies on [docker.](docker.md) Be sure to install that first.
+
 https://docs.docker.com/compose/
 
 If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:

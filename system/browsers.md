@@ -1,6 +1,6 @@
 # Browsers
 
-Configurations to make a web browser even better. Most of these are in the form of add-ons and extensions. 
+Configurations to make a web browser even better. 
 
 
 ## Firefox
@@ -12,7 +12,6 @@ If you need a browser context for a specific task / job
 If no relevant profile is available, just create one.
 
 Be sure to set Menu -> Preferences -> Restore previous session
-
 
 ### Tab Links
 
