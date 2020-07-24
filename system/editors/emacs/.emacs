@@ -81,6 +81,7 @@ There are two things you can do about this warning:
 
 (load-file "~/.emacs.d/indentation.el")
 
+(setq load-path (cons "~/.emacs.d/programming" load-path))
 ;; programming. see also indentation.el for indentation specific settings
 (load-file "~/.emacs.d/programming.el")
 

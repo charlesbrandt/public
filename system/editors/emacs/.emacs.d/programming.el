@@ -19,7 +19,6 @@
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
 
-
 ;; *2018.01.10 18:12:55 
 ;; seems that the python mode has changed a lot over time
 ;; I still like the older one:
