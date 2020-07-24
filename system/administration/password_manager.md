@@ -24,6 +24,37 @@ https://opencollective.com/keeweb
 KeePass DX is good and open source.
 
 
+## Bitwarden
+
+Open Source password manager
+
+https://bitwarden.com/
+
+TODO: needs evaluation
+
+
+## Lockwise
+
+Lockwise is a newer open source solution from Mozilla that is built in to Firefox:
+
+https://www.mozilla.org/en-US/firefox/lockwise/
+Firefox Lockwise — password manager — take your passwords everywhere
+
+It looks like there may be some issues with prompting for the password to unlock the database.
+
+https://medium.com/@JoeKreydt/how-secure-is-firefox-lockwise-password-manager-51d44dcf4dbc
+How secure is Firefox Lockwise password manager? | by Joe Kreydt | Medium
+
+Here is the open issue to track the fix:
+
+https://github.com/mozilla-lockwise/lockwise-ios/issues/1105
+
+
+https://duckduckgo.com/?q=Lockwise&t=canonical&ia=web
+Lockwise at DuckDuckGo
+https://duckduckgo.com/?q=lockwise+vs+lastpass&t=canonical&ia=web
+lockwise vs lastpass at DuckDuckGo
+
 
 ## Password Store
 

@@ -31,6 +31,17 @@ Each module will have three aspects: State, Mutations, and Actions
 
 "It’s very important to keep your state as flat as possible. Deeply nested objects in a state lose reactivity."
 
+## Process
+
+https://vuex.vuejs.org/guide/
+
+Define a state value in the 'state' attribute of the Vuex.Store.
+
+Define a mutation to create the desired change to the state.
+
+Trigger the mutation with a call to `store.commit('name_of_mutation')`
+
+
 
 
 ## Mapstate
@@ -63,8 +74,6 @@ Having trouble pulling these back into a component:
 https://tenmilesquare.com/understanding-mapgetters-in-vuex/
 
 
-
- 
 ## ORM
 
 ORM based data modeling with a powerful query API on the front-end.
@@ -197,7 +206,7 @@ via
 https://alligator.io/vuejs/vuex-persist-state/
     
 
-## Alternatives
+## Vuex Alternatives
 
 For smaller applications, a simple state management approach may be sufficient
 https://vuejs.org/v2/guide/state-management.html#Simple-State-Management-from-Scratch

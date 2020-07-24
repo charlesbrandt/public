@@ -124,7 +124,7 @@ export default {
   server: {
     port: 8000, // default: 3000
     host: '0.0.0.0' // default: localhost
-  }
+  },
   // other configs
 }
 ```
@@ -254,6 +254,19 @@ https://nuxtjs.org/api/configuration-modules
 See also:
 
 https://vuejs.org/v2/guide/plugins.html
+
+
+If the plugin depends on being rendered on the client, be sure to set 'ssr: false' when including it in the nuxt.config.js:
+
+```
+export default {
+  plugins: [
+    { src: '~/plugins/vuex-persist', ssr: false }
+  ]
+}
+```
+
+https://medium.com/@codebeast_/why-your-third-party-plugin-dont-work-in-nuxt-and-how-to-fix-it-d1a8caadf422
 
 
 ## Vuex (Persistence)

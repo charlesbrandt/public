@@ -47,12 +47,56 @@ https://medium.com/@nicomeyer/vue-js-slots-vs-props-af87078a8bd
 Vue.js: slots vs. props - Nico Meyer - Medium
 
 
+## Components
+
+https://vuejs.org/v2/guide/components.html#Dynamic-Components
+Components Basics — Vue.js
+
+### Templates
+
+https://vuejs.org/v2/guide/syntax.html
+
+Common patterns:
+
+List rendering
+https://vuejs.org/v2/guide/list.html#key
+
+### Scripts
+
+The script block is where you put logic related to your component. 
+
+data is made up of properties
+computed is made up of getters.
+
+via:
+https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
+
+### Dynamic Styles
+
+https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
+
+
 ## Forms
+
+
+## Routing
+
+In your script section, use:
+
+    router.push({name: "yourroutename")
+
+router.push("yourroutename") is NOT the same as router.push({name: "yourroutename"). First one defines the route directly. The second one takes the route with the specified name. 
+
+via:
+https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
 
 
 ## Custom Events
 
-If you need to signal a parent component of something that has happened in a child component, it helps to use $emit. 
+If you need to signal a parent component of something that has happened in a child component, use $emit. 
+
+Note:
+If you've hit a situation where this pattern comes up, it may be a good time to consider using [vuex](vuex.md).
 
 Child component triggers clicked event:
 
@@ -75,6 +119,8 @@ Parent component receive clicked event:
 
 ```
 
+Then, in the parent script block, handle the emitted event as needed:
+
 ```
 export default {
   methods: {
@@ -87,36 +133,4 @@ export default {
 
 via:
 https://forum.vuejs.org/t/passing-data-back-to-parent/1201
-
-
-## Templates
-
-https://vuejs.org/v2/guide/syntax.html
-
-Common patterns:
-
-List rendering
-https://vuejs.org/v2/guide/list.html#key
-
-
-## Components
-
-https://vuejs.org/v2/guide/components.html#Dynamic-Components
-Components Basics — Vue.js
-
-
-## Dynamic Styles
-
-https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
-
-
-### Scripts
-
-The script block is where you put logic related to your component. 
-
-data is made up of properties
-computed is made up of getters.
-
-via:
-https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 

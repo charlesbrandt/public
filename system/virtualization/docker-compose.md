@@ -58,8 +58,18 @@ https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute
 
 Beyond that, and you may want to consider building a custom image with a dedicated [Dockerfile](docker.md). 
 
+## Networking
 
-## DNS
+https://stackoverflow.com/questions/35429837/docker-compose-port-mapping
+
+To only expose ports on localhost on the host machine, in docker-compose.yml:
+
+    ports:
+      - "127.0.0.1:8001:80"
+
+https://docs.docker.com/compose/compose-file/#ports
+
+### DNS
 
 I ran into an issue where a container was not able to resolve DNS lookups. (to confirm this, connect to the container via bash and run `ping google.com`)
 
@@ -94,6 +104,9 @@ Logging is available via docker directly:
 see also: [docker.md](docker.md)
 
     docker network ls
+    
+    
+
 
 ## Guides
 
