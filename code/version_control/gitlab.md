@@ -24,8 +24,9 @@ Have to decide on push or pull.
 For initial pulls / importing repositories, do that during "Create a new project" steps. (https://gitlab.com/projects/new#import_project)
 
 
-
 https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html
+
+    Log in to Gitlab
 
     Navigate to your project’s Settings > Repository and expand the Mirroring repositories section.
     Enter a repository URL.

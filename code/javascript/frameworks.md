@@ -12,7 +12,9 @@ Tailwinds
 
 https://bulma.io/
 
-Bulma seems like a well thought out structure. Buefy adds integration with Vue. 
+Bulma seems like a well thought out structure. 
+
+Buefy adds integration with Vue, but so for I'm planning to run with just Bulma. 
 
 
 ## Vuetify

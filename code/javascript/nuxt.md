@@ -2,7 +2,7 @@
 
 [Vue](vue.md) is a good place to start, but Nuxt is even better.
 
-Nuxt provides informed default options as a foundation for your project. Here are a few more reasons to use Nuxt:
+Nuxt provides informed default options as a foundation for your project. A few more reasons to use Nuxt:
 
 https://zendev.com/2018/09/17/frontend-architecture-lessons-from-nuxt-js.html
 
@@ -28,13 +28,25 @@ And answer questions accordingly.
 
 When you set up a nuxt project, you will be able to include a number of different tools. This is an easy time to configure those. 
 
+### Package manager: Npm
+
+`npm` is available in the default docker container for node. 
+
+Also not a big deal to go with `yarn` if it has features you prefer.
+
+### UI framework: Bulma
+
+Lots of good options. Use what your team is using for team projects. 
+
 ### Nuxt.js modules
 
 Be sure to say "Yes!" to Nuxt.js modules: 
 
-Axios
-PWA Support
-DotEnv
+Axios  
+PWA Support  
+Content   (new support for referencing markdown content directly?)  
+
+DotEnv   (haven't seen this lately... moved to core and part of default?)
 
 More info on these options:
  
@@ -45,42 +57,47 @@ More info on these options:
  - [DotEnv](https://github.com/motdotla/dotenv#readme)
    [Store config in the environment](https://12factor.net/config)
 
-
 ### Linting
 
 I like linting too:
 
-❯◉ ESLint
- ◉ Prettier
- ◉ Lint staged files
- ◉ StyleLint  <- Not sure about this yet... 
+❯◉ ESLint  
+ ◉ Prettier  
+ 
+(skip these)
+  Lint staged files  
+  StyleLint  
 
 ### Testing
 
-Go with Jest for testing. 
+Jest is a good place to start for testing.  
+Feel free to explore other options as desired.
 
-  Jest 
-  AVA 
+### Rendering mode
 
-### Deployment
+Universal (SSR / SSG)
 
-You will need to consider how it will be deployed. Server Rendering is my first choice. 
+You will need to consider how it will be rendered. Server Rendering is my first choice. 
 
-Server Rendering (Universal SSR)
-Universal == Server Side Rendering
+Server Rendering (Universal SSR)  
+Universal == Server Side Rendering  
 
-SPA (Single Page Application)
-SPA == Single Page Application
+SPA (Single Page Application)  
+SPA == Single Page Application  
 
-(Do *not* confuse SPA with PWA - they are different things)
+(Do not confuse SPA with PWA -- they are different things)
 
 https://nuxtjs.org/guide#server-rendered-universal-ssr-
 
 https://developer.okta.com/blog/2019/04/26/tutorial-build-universal-apps-with-nuxt
 
-### Static Builds
+### Deployment target
 
-Both deployment options can be built for a static hosting situation. SPA will be one big .js file. Universal will have many. 
+Static (Static/JAMStack hosting)
+
+Static Builds
+
+Both rendering options can be built for a static hosting situation. SPA will be one big .js file. Universal will have many. 
 
     npx nuxt generate
 
@@ -88,13 +105,28 @@ https://nuxtjs.org/api/configuration-generate/
 
 https://medium.com/a-man-with-no-server/static-site-generators-nuxt-js-2fa9782d27c8
 
+### Development tools 
+
+jsconfig.json (Recommended for VS Code)
+
 
 
 
 ## Running
 
+It's best to run the application in a container where the node_modules are on a shared volume as in [web-ui-api-db](https://gitlab.com/charlesbrandt/web-ui-api-db). This keeps the node_modules out of the source tree, making it easier to grep and find the files you're looking for without getting snagged in the mountain of libraries and dependencies. 
+
+It is possible to run directly on the dev host, but see above about cluttering the path. 
+
+```
+docker-compose up -d
+```
+
+In the container
+
 ```
 npm run dev
+
 ```
 
 ### Default Port
