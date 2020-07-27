@@ -120,6 +120,7 @@ It is possible to run directly on the dev host, but see above about cluttering t
 
 ```
 docker-compose up -d
+docker-compose exec ui bash
 ```
 
 In the container
@@ -139,13 +140,13 @@ via: https://nuxtjs.org/faq/host-port/
 
 As direct arguments
 
-    nuxt --hostname myhost --port 3333
+    nuxt --hostname 0.0.0.0 --port 3333
 
 Or in package.json
 
 ```
 "scripts": {
-  "dev": "nuxt --hostname myhost --port 3333"
+  "dev": "nuxt --hostname 0.0.0.0 --port 3333"
 }
 ```
 

@@ -8,13 +8,55 @@ Bulma
 Vuetify
 Tailwinds
 
+## See also
+
+[Icons](~/public/design/icons.md)
+[Fonts](~/public/design/fonts.md)
+
+
 ## Bulma
 
 https://bulma.io/
 
 Bulma seems like a well thought out structure. 
 
-Buefy adds integration with Vue, but so for I'm planning to run with just Bulma. 
+https://bulma.io/documentation/
+Documentation | Bulma: Free, open source, and modern CSS framework based on Flexbox
+https://bulma.io/documentation/layout/
+Layout | Bulma: Free, open source, and modern CSS framework based on Flexbox
+https://bulma.io/documentation/layout/media-object/
+Media Object | Bulma: Free, open source, and modern CSS framework based on Flexbox
+https://bulma.io/documentation/elements/
+Elements | Bulma: Free, open source, and modern CSS framework based on Flexbox
+https://bulma.io/documentation/components/
+Components | Bulma: Free, open source, and modern CSS framework based on Flexbox
+
+
+https://bulma.io/documentation/elements/icon/
+Icon | Bulma: Free, open source, and modern CSS framework based on Flexbox
+
+
+Buefy adds Bulma integration with Vue. 
+
+Start with vanilla Bulma, and then see if you need Buefy. 
+
+
+https://buefy.org/documentation/start
+Start | Buefy
+https://buefy.org/documentation/layout
+Layout & elements | Buefy
+https://bulma.io/documentation/layout/level/
+Level | Bulma: Free, open source, and modern CSS framework based on Flexbox
+https://buefy.org/documentation/
+Buefy: lightweight UI components for Vue.js based on Bulma
+https://github.com/buefy/buefy/tree/dev/src/components
+buefy/src/components at dev · buefy/buefy · GitHub
+https://codepen.io/anon/pen/RBWMXE?editors=1011
+Table - Buefy example
+
+
+
+
 
 
 ## Vuetify

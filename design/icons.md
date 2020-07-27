@@ -26,3 +26,11 @@ Icons — Vuetify.js
 https://materialdesignicons.com/
 Material Design Icons
 
+
+## <i>
+
+https://stackoverflow.com/questions/11135261/should-i-use-i-tag-for-icons-instead-of-span
+html - Should I use <i> tag for icons instead of <span>? - Stack Overflow
+
+https://www.google.com/search?q=html5+i+tag
+html5 i tag - Google Search
