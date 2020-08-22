@@ -54,6 +54,11 @@ or
 
 will update the package.json to list your dependencies.
 
+To remove a dependency:
+
+     npm uninstall <name> --save
+
+https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
 
 ### Yarn
 
