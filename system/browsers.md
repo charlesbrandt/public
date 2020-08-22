@@ -1,9 +1,11 @@
 # Browsers
 
-Configurations to make a web browser even better. 
-
+The window to the internet.  
+Settings for an optimal session. 
 
 ## Firefox
+
+Running multiple browsers with different profiles helps keeps active references in the right place. When the work is finished, just close that browser. Good for keeping memory free. 
 
 If you need a browser context for a specific task / job
 
@@ -11,17 +13,18 @@ If you need a browser context for a specific task / job
 
 If no relevant profile is available, just create one.
 
-Be sure to set Menu -> Preferences -> Restore previous session
+Be sure to set Menu -> Preferences -> Restore previous session.  
+Pick your preferred search engine while you're at it!
 
 ### Tab Links
 
-https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/
+https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/  
 Copy All Tabs :: Add-ons for Firefox
 
-have used this in the past as well:
-https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search
-and this may have similar functionality
-https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
+have used this in the past as well:  
+https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search  
+and this may have similar functionality  
+https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus  
 
 OneTab?
 
@@ -29,40 +32,35 @@ OneTab?
 
 'Auto Tab Discard' does what I'm after. Closest working alternative to 'The Great Suspender'
 
-https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/
+https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/  
 https://www.google.com/search?q=firefox+tab+suspender
 
-https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web
-great suspender firefox at DuckDuckGo
-https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/
-Chrome's 'The Great Suspender' for firefox? : firefox
-https://addons.mozilla.org/en-US/firefox/addon/unload-tabs/
-UnloadTabs – Get this Extension for 🦊 Firefox (en-US)
+https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web  
+great suspender firefox at DuckDuckGo  
+https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/  
+Chrome's 'The Great Suspender' for firefox? : firefox  
+https://addons.mozilla.org/en-US/firefox/addon/unload-tabs/  
+UnloadTabs – Get this Extension for 🦊 Firefox (en-US)  
 
-this one didn't work so well for me.. major memory usage
-https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/
-Tab Suspender – Get this Extension for 🦊 Firefox (en-US)
+this one didn't work so well for me.. major memory usage  
+https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/  
+Tab Suspender – Get this Extension for 🦊 Firefox (en-US)  
 
 ### Ad Blockers
 
-Instead of adblock, I have been exploring a more general filter / tracking blocker:
+Instead of adblock, I have been exploring a more general filter / tracking blocker:  
 https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
 
 https://github.com/gorhill/uBlock/
 
-Beware of false immitations:
-Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.
+Beware of false immitations:  
+Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.  
 https://www.tomshardware.com/news/adblock-ublock-fake-google-chrome-browser-extensions,40422.html
 
-https://disconnect.me/
-https://addons.mozilla.org/en-us/firefox/addon/disconnect/
+https://disconnect.me/  
+https://addons.mozilla.org/en-us/firefox/addon/disconnect/  
 
-via:
-http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968
-
-Similar in goal to Disconnect Me
-AdBlock Plus?
-https://addons.mozilla.org/en-us/firefox/addon/adblock-plus/
+[via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
 
 ### Site Analysis
 
@@ -76,6 +74,7 @@ W3C CSS Validator is a simple
 via
 webdesignerdepot.com: 10 Tools I Can’t Design Without.
 https://www.webdesignerdepot.com/2020/06/10-tools-i-cant-design-without/
+
 
 
 
