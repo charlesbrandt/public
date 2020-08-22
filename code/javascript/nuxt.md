@@ -12,6 +12,9 @@ Create a fresh project according to:
 
 https://nuxtjs.org/guide/installation
 
+
+Ideally run in a container to prevent node_modules from cluttering the source tree. (currently (2020.07.28) having trouble with this)
+
 Make sure you have npx installed (npx is shipped by default since NPM 5.2.0)
 
 ```
@@ -25,6 +28,34 @@ yarn create nuxt-app <my-project>
 ```
 
 And answer questions accordingly.
+
+
+Or just run it outside of the container, but then remember:
+
+```
+rm -rf node_modules
+```
+
+### Default Configurations
+
+This is what I'm using at the moment. Details about the choices below. Your mileage may vary. 
+
+```
+create-nuxt-app v3.2.0
+✨  Generating Nuxt.js project in project
+? Project name: project
+? Programming language: JavaScript
+? Package manager: Npm
+? UI framework: Bulma
+? Nuxt.js modules: Axios, Progressive Web App (PWA), Content
+? Linting tools: ESLint, Prettier
+? Testing framework: Jest
+? Rendering mode: Universal (SSR / SSG)
+? Deployment target: Static (Static/JAMStack hosting)
+? Development tools: jsconfig.json (Recommended for VS Code if you're not using 
+typescript)
+```
+
 
 When you set up a nuxt project, you will be able to include a number of different tools. This is an easy time to configure those. 
 
@@ -61,12 +92,11 @@ More info on these options:
 
 I like linting too:
 
-❯◉ ESLint  
- ◉ Prettier  
- 
-(skip these)
-  Lint staged files  
-  StyleLint  
+ ◉ ESLint  
+❯◉ Prettier  
+(skip these)  
+ ◯ Lint staged files  
+ ◯ StyleLint  
 
 ### Testing
 
@@ -130,95 +160,6 @@ npm run dev
 
 ```
 
-### Default Port
-
-If you're running more than one node project, be sure to pick something other than the default '3000' port. 
-
-### Configure host and port
-
-via: https://nuxtjs.org/faq/host-port/
-
-As direct arguments
-
-    nuxt --hostname 0.0.0.0 --port 3333
-
-Or in package.json
-
-```
-"scripts": {
-  "dev": "nuxt --hostname 0.0.0.0 --port 3333"
-}
-```
-
-Inside your nuxt.config.js:
-
-```
-export default {
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0' // default: localhost
-  },
-  // other configs
-}
-```
-
-.env options available too
-
-
-## Configuration Variable
-
-https://nuxtjs.org/api/configuration-env
-
-Variables in a .env file should be picked up if you configured your Nuxt project to use dotenv. 
-
-https://github.com/nuxt-community/dotenv-module
-
-They should be available in process.env.whatever (or context.env?)
-
-```
-  mounted() {
-    // works
-    console.log('Process:', process.env.BASE_URL)
-
-    // does not work
-    //console.log('Context:', context.env.BASE_URL)
-    //console.log('Context:', this.env.BASE_URL)
-  }
-```
-
-If you want to use them in a template in your component, you should define a local variable in `data {}` that references the corresponding process.env
-
-``` component.vue
-  data() {
-    return {
-      baseURL: process.env.BASE_URL
-    }
-  },
- ```
-
-If you want to access those variables in a component's template without defining them locally every time, you could add them to the Vuex store
-
-
-
-https://stackoverflow.com/questions/53535362/how-to-make-nuxt-global-object
-
-
-https://nuxtjs.org/api/configuration-env/
-
-"""
-Note that Nuxt uses webpack's definePlugin to define the environmental variable. This means that the actual process or process.env from Node.js is neither available nor defined. Each of the env properties defined in nuxt.config.js is individually mapped to process.env.xxxx and converted during compilation.
-
-Meaning, console.log(process.env) will output {} but console.log(process.env.your_var) will still output your value. When webpack compiles your code, it replaces all instances of process.env.your_var to the value you've set it to. ie: env.test = 'testing123'. If you use process.env.test in your code somewhere, it is actually translated to 'testing123'.
-"""
-
-Alternatively, you can manually configure variables in nuxt.config.js:
-
-``` nuxt.config.js
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
-  },
-```
-
 
 ## Templates
 
@@ -226,7 +167,21 @@ The general syntax for templates is handled by Vue:
 
 https://vuejs.org/v2/guide/syntax.html
 
-### Page Titles
+## Routing
+
+TODO:
+How to specify parameters via the route? 
+
+in ./pages/ directory:
+
+
+## Vuex (Persistence)
+
+In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of Vuex
+
+See: [Vuex](vuex.md)
+
+## Page Titles
 
   head() {
     return {
@@ -235,16 +190,6 @@ https://vuejs.org/v2/guide/syntax.html
   },
 
 https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-name-in-the-page-title#48286279
-
-
-### Themes
-
-For Vuetify, themes are defined in `nuxt.config.js`
-
-and custom variables can be placed:
-
-    assets/variables.scss
-
 
 ## External Modules
 
@@ -302,11 +247,103 @@ export default {
 https://medium.com/@codebeast_/why-your-third-party-plugin-dont-work-in-nuxt-and-how-to-fix-it-d1a8caadf422
 
 
-## Vuex (Persistence)
 
-In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of Vuex
+## Configuration
 
-See: [Vuex](vuex.md)
+### Configure host and port
+
+via: https://nuxtjs.org/faq/host-port/
+
+As direct arguments
+
+    nuxt --hostname 0.0.0.0 --port 3333
+
+Or in package.json
+
+```
+"scripts": {
+  "dev": "nuxt --hostname 0.0.0.0 --port 3333"
+}
+```
+
+Inside your nuxt.config.js:
+
+```
+export default {
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
+  // other configs
+}
+```
+
+.env options available too
+
+
+### Configuration Variables (.env)
+
+https://nuxtjs.org/api/configuration-env
+
+Variables in a .env file should be picked up if you configured your Nuxt project to use dotenv. 
+
+https://github.com/nuxt-community/dotenv-module
+
+They should be available in process.env.whatever (or context.env?)
+
+```
+  mounted() {
+    // works
+    console.log('Process:', process.env.BASE_URL)
+
+    // does not work
+    //console.log('Context:', context.env.BASE_URL)
+    //console.log('Context:', this.env.BASE_URL)
+  }
+```
+
+If you want to use them in a template in your component, you should define a local variable in `data {}` that references the corresponding process.env
+
+``` component.vue
+  data() {
+    return {
+      baseURL: process.env.BASE_URL
+    }
+  },
+ ```
+
+If you want to access those variables in a component's template without defining them locally every time, you could add them to the Vuex store
+
+
+
+https://stackoverflow.com/questions/53535362/how-to-make-nuxt-global-object
+
+
+https://nuxtjs.org/api/configuration-env/
+
+"""
+Note that Nuxt uses webpack's definePlugin to define the environmental variable. This means that the actual process or process.env from Node.js is neither available nor defined. Each of the env properties defined in nuxt.config.js is individually mapped to process.env.xxxx and converted during compilation.
+
+Meaning, console.log(process.env) will output {} but console.log(process.env.your_var) will still output your value. When webpack compiles your code, it replaces all instances of process.env.your_var to the value you've set it to. ie: env.test = 'testing123'. If you use process.env.test in your code somewhere, it is actually translated to 'testing123'.
+"""
+
+Alternatively, you can manually configure variables in nuxt.config.js:
+
+``` nuxt.config.js
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+```
+
+### Themes
+
+For Vuetify, themes are defined in `nuxt.config.js`
+
+and custom variables can be placed:
+
+    assets/variables.scss
+
+
 
 
 ## Version

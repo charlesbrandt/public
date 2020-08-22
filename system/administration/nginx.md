@@ -85,6 +85,10 @@ See also:
 
 ~/public/code/new_project.md
 
+## Websockets
+
+https://www.serverlab.ca/tutorials/linux/web-servers-linux/how-to-proxy-wss-websockets-with-nginx/
+
 ## Troubleshooting
 
 Log files are typically stored in 

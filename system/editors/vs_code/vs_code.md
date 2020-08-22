@@ -319,7 +319,6 @@ https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-g
 ### Live Server
 Launch a development local Server with live reload feature
 
-### Prettier - Code formatter
 
 ### Kubernetes
 
