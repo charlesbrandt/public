@@ -100,6 +100,12 @@ sudo apt  install docker.io
 To see a list of *currently running* docker containers:
 
     docker ps
+    
+To see the name of the container (and the size of disk in use):
+
+    docker ps -s 
+    
+https://docs.docker.com/engine/reference/commandline/ps/
 
 
 ## Images

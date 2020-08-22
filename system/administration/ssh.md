@@ -54,3 +54,16 @@ If you migrate keys from one machine to another, be sure to update the ~/.ssh di
     chmod 600 ~/.ssh/*
 
 https://stackoverflow.com/questions/44250002/how-to-solve-sign-and-send-pubkey-signing-failed-agent-refused-operation
+
+
+## SSH Agent Forwarding
+
+It's possible to use your local keys on machines that you connect to with
+
+    ssh -A
+    
+Make sure you're running sshagent
+
+    ps -aux | grep sshagent
+
+https://developer.github.com/v3/guides/using-ssh-agent-forwarding/
