@@ -5,9 +5,6 @@ Docker implements a container solution. Containers are a lighter weight alternat
 Docker has great documentation:
 https://docs.docker.com/
 
-Engine is the core of it all:
-https://docs.docker.com/engine/
-
 and this is a great overview:
 https://docs.docker.com/engine/understanding-docker/
 
@@ -15,6 +12,10 @@ https://docs.docker.com/engine/userguide/
 
 This cheat sheet is a great overview, and closely resembles what these notes cover:
 https://github.com/wsargent/docker-cheat-sheet
+
+This guide also has a nice introduction to what containers are:
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
 
 ## See Also
@@ -58,22 +59,15 @@ At this point Docker should be installed and you can verify with:
 
     sudo systemctl status docker
 
+Go ahead and grab docker-compose
 
-Make sure docker is installed:
+    sudo apt-get install docker-compose -y
 
-    docker ps
-
-
-This guide also has a nice introduction to what containers are:
-
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
 ### Add user to docker group
 
 This allows you to execute docker without using sudo
 that's a good thing!
-
-
 
 ```
 sudo groupadd docker
@@ -84,6 +78,10 @@ sudo usermod -aG docker ${USER}
 Log out and log back in, or:
 
     su - ${USER}
+    
+Test that you have permissions to run docker commands without sudo:
+
+    docker ps
 
 ### Snap / Distro (not recommended)
 

@@ -6,22 +6,27 @@ Encrypting a local file that stores passwords is necessary if you're going to st
 
 KeePass is the gold standard as far as open password managers go. There are clients available for most platforms.
 
+https://www.keepassx.org/
+ 
+    sudo apt-get install keepassx
+
 https://keepass.info/
 KeePass Password Safe
 
 Is it ok to store encrypted text (e.g. keepass database) in version control? I think so. It seems better than Google Docs. It's easy to clobber changes in Google Docs. 
+
+https://keepass.info/help/v2_dev/customize.html
+0x8	8 	Disable controls to specify after how many days the master key should/must be changed.
+
+### Android
+
+KeePass DX is good and open source.
 
 ### Web
 
 KeeWeb may be a good option to try. Found it via the Open Collective site. 
 
 https://opencollective.com/keeweb
-
-
-
-### Android
-
-KeePass DX is good and open source.
 
 
 ## Bitwarden
