@@ -21,8 +21,12 @@ To see what the remote server is set to, use:
     
     
 ## Credentials
+    
+If you want to see
+    - what repo something pushes back to
+    - the configured id for a given local repo
 
-To see the configured id for a given local repo:
+Use
 
     git config --list --show-origin
 

@@ -2,7 +2,7 @@
 
 Be sure to get the submodules:
 
-    git clone --recurse-submodules https://github.com/charlesbrandt/system public
+    git clone --recurse-submodules https://github.com/charlesbrandt/public
 
 or 
 

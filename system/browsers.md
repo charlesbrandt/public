@@ -3,6 +3,7 @@
 The window to the internet.  
 Settings for an optimal session. 
 
+
 ## Firefox
 
 Running multiple browsers with different profiles helps keeps active references in the right place. When the work is finished, just close that browser. Good for keeping memory free. 
@@ -16,17 +17,6 @@ If no relevant profile is available, just create one.
 Be sure to set Menu -> Preferences -> Restore previous session.  
 Pick your preferred search engine while you're at it!
 
-### Tab Links
-
-https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/  
-Copy All Tabs :: Add-ons for Firefox
-
-have used this in the past as well:  
-https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search  
-and this may have similar functionality  
-https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus  
-
-OneTab?
 
 ### Tab Suspender
 
@@ -46,6 +36,7 @@ this one didn't work so well for me.. major memory usage
 https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/  
 Tab Suspender – Get this Extension for 🦊 Firefox (en-US)  
 
+
 ### Ad Blockers
 
 Instead of adblock, I have been exploring a more general filter / tracking blocker:  
@@ -61,6 +52,41 @@ https://disconnect.me/
 https://addons.mozilla.org/en-us/firefox/addon/disconnect/  
 
 [via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
+
+
+### New Tab
+
+I love pocket. I find seeing it on every new tab distracting. Tabliss helps minimize those distractions. 
+
+https://addons.mozilla.org/en-US/firefox/addon/tabliss/
+
+https://tabliss.io/
+
+https://github.com/joelshepherd/tabliss
+
+An open source, pluggable New Tab web extension written in TypeScript, React and Redux.
+
+No special permissions required!
+
+
+### Tab Links
+
+When creating documentation, it is useful to be able to copy all open tabs in a window. 
+
+
+https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/  
+Copy All Tabs :: Add-ons for Firefox
+
+have used this in the past as well:  
+https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search  
+and this may have similar functionality  
+https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus  
+
+OneTab?
+
+
+
+
 
 
 

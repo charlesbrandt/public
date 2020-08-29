@@ -15,24 +15,17 @@ Git is installed by default on some systems. Others may need it. Be sure to grab
 
 Then you can clone this repository:
 
-    git clone https://github.com/charlesbrandt/public
+    git clone --recurse-submodules https://github.com/charlesbrandt/public
     
+[Notes on using git](../code/version_control/git.md)
+
+If you forgot to get submodules:
+
+    cd public
     git submodule update --init --recursive
 
-[Notes on using git](~/public/code/version_control/git.md)
 
-If you need to see what repo something goes to:
-
-    git config --list --show-origin
-
-
-## Text Editor
-
-If I could only choose one application, it would be a text editor. The power of the written word. The power of an idea. 
-
-There are many good ones out there. 
-
-### Emacs
+## Emacs
 
     which emacs
     
@@ -49,20 +42,11 @@ ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
 emacs &
 ```
 
-G2G!
-
 see also 
-~/public/system/editors/emacs/emacs.md
+[editors/emacs/emacs.md](editors/emacs/emacs.md)
 
-### vi
-
-vi is everywhere. It's good to understand the different modes so that you can accomplish basic editing. Many systems also include nano, which also works when you need an editor over a console. 
-
-### VS Code
-
-VS Code is a great environment for editing code. 
-
-My only complaint is it's very memory intensive. If you like to keep a lot of editors open at the same time, some of the lighter weight editors may be better options.
+Or more generally
+[text editors](editors/editors.md)
 
 
 ## Browsers
@@ -70,56 +54,9 @@ My only complaint is it's very memory intensive. If you like to keep a lot of ed
 [browsers](browsers.md)
 
 
-## Recorder
-
-### OBS
-
-Audio / Video / Broadcast / Stream
-
-All in one. 
-
-    sudo apt-get install obs-studio
-
-### Audacity
-
-Audio Editor
-
-    sudo apt-get install audacity
-
-
-## Media
-
-### VLC 
-
-    sudo apt-get install vlc
-
-Open VLC
-Tools -> Preferences
-Uncheck:
-   - Integrate video in interface
-   - Use only one instance when started from file manager
-
-View -> Playlist
-Close browser tree in playlist view. (drag panel closed via middle)
-
-(Doesn't seem to have any effect, messages still appear:)
-Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
-can just go 'do not distrub'
-
-
-## Inkscape
-
-    sudo apt-get install inkscape
-
-[Inkscape Notes](../../design/inkscape.md)
-
-
-## Image Editing
-
-    sudo apt-get install krita
-
-
 ## Password Managers
+
+see also administration/password_managers.md
 
     sudo apt-get install keepassx
 
@@ -146,9 +83,35 @@ Don't like this one as much.
     sudo apt-get install curl
     sudo apt-get install ffmpeg
 
-## Shotcut
 
-    sudo apt-get install shotcut
+## Recorder
+
+### OBS
+
+Audio / Video / Broadcast / Stream
+
+All in one. 
+
+    sudo apt-get install obs-studio
+
+
+### VLC 
+
+    sudo apt-get install vlc
+
+Open VLC
+Tools -> Preferences
+Uncheck:
+   - Integrate video in interface
+   - Use only one instance when started from file manager
+
+View -> Playlist
+Close browser tree in playlist view. (drag panel closed via middle)
+
+(Doesn't seem to have any effect, messages still appear:)
+Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
+can just go 'do not distrub'
+
 
 
 ## K4DirStat

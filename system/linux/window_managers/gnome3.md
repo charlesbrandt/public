@@ -22,9 +22,27 @@ Disable alert sounds like screenshot photo sound:
 
     dconf write /org/gnome/desktop/sound/event-sounds "false"
 
-via:
+[via](https://unix.stackexchange.com/questions/444681/how-to-turn-off-alert-sounds-sound-effects-on-gnome-from-terminal)
 
-https://unix.stackexchange.com/questions/444681/how-to-turn-off-alert-sounds-sound-effects-on-gnome-from-terminal
+Not working on 20.04 desktop. Getting the following
+
+```
+dconf write /org/gnome/desktop/sound/event-sounds "false"
+error: Cannot autolaunch D-Bus without X11 $DISPLAY
+```
+
+Trying the move approach.
+
+```
+cd /usr/share/sounds/Yaru/stereo
+sudo mkdir originals
+
+sudo mv * originals/
+```
+
+I needed to restart for this change to take effect
+
+[via](https://askubuntu.com/questions/557389/how-can-i-disable-all-ubuntu-sounds)
 
 ## Titlebar Buttons
 

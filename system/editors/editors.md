@@ -29,3 +29,16 @@ jhallen/joes-sandbox
 https://joe-editor.sourceforge.io/
 Home - Joe's Own Editor
 
+
+### Emacs
+
+
+### vi
+
+vi is everywhere. It's good to understand the different modes so that you can accomplish basic editing. Many systems also include nano, which also works when you need an editor over a console. 
+
+### VS Code
+
+VS Code is a great environment for editing code. 
+
+My only complaint is it's very memory intensive. If you like to keep a lot of editors open at the same time, some of the lighter weight editors may be better options.
