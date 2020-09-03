@@ -304,6 +304,20 @@ what if the IP for the api server changes?
 would require manually updating nginx.conf file
 just use docker name
 
+### DNS
+
+I ran into an issue where a container was not able to resolve DNS lookups. (to confirm this, connect to the container via bash and run `ping google.com`)
+
+This turned out to be an issue with the way lookups are configured on my host machine (20.04). 
+
+Docker uses the host's name resolution. Running this on the host fixes the resolution within containers: 
+
+    sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
+The link that helped:
+
+https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
+
 ### Troubleshooting connections in docker
 
 https://www.docker.com/blog/why-you-dont-need-to-run-sshd-in-docker
@@ -347,15 +361,16 @@ https://stackoverflow.com/questions/30269672/unable-to-use-lt-when-running-nginx
 
 ### Node
 
-If you're using a container that does not have Node installed (e.g. Centos, installing from nodesource.com seems like the best option
+If you're using a container that does not have Node installed (e.g. Centos), installing from nodesource.com seems like the best option
 
+```
 RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash # for node version 10.x
 RUN yum -y install nodejs
 RUN node --version # optional to check that it worked
 RUN npm --version # optional to check that it worked
+```
 
-
-tricky to use NVM in a container:
+NVM is an alternative, but it's tricky to use NVM in a container:
 
 ```
 # nvm environment variables

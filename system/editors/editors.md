@@ -37,7 +37,7 @@ Home - Joe's Own Editor
 
 vi is everywhere. It's good to understand the different modes so that you can accomplish basic editing. Many systems also include nano, which also works when you need an editor over a console. 
 
-### VS Code
+### [VS Code](vs_code/vs_code.md)
 
 VS Code is a great environment for editing code. 
 

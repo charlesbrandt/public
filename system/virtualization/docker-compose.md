@@ -69,20 +69,6 @@ To only expose ports on localhost on the host machine, in docker-compose.yml:
 
 https://docs.docker.com/compose/compose-file/#ports
 
-### DNS
-
-I ran into an issue where a container was not able to resolve DNS lookups. (to confirm this, connect to the container via bash and run `ping google.com`)
-
-This turned out to be an issue with the way lookups are configured on my host machine (20.04). 
-
-Docker uses the host's name resolution. Running this on the host fixes the resolution within containers: 
-
-    sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
-The link that helped:
-
-https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
-
 
 ## Troubleshooting 
 
