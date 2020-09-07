@@ -1,4 +1,6 @@
-# Version Control
+# Version Control System
+
+Keep your work in sync. 
 
 Version control systems track changes to a set of files across different systems. When many people work on the same set of files, for example a software development team modifying code, a version control keeps those changes in sync. Version control is not limited to programming related tasks. If you use more than one computer and have a set of files that you edit on all of those computers, version control can help. 
 

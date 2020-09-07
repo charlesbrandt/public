@@ -2,15 +2,6 @@
 
 Super L or Super R (often a 'windows' key) will usually bring up launcher for launching tasks
 
-Many configurations are not exposed via the Settting. 
-
-There is also the Tweaks application (why 2?). This is where you can find the Themes setting
-
-For everything else, there is dconf-editor.
-
-## Gnome Tweaks
-
-    sudo apt-get install gnome-tweaks
 
 ## Dock Settings
 
@@ -43,6 +34,16 @@ sudo mv * originals/
 I needed to restart for this change to take effect
 
 [via](https://askubuntu.com/questions/557389/how-can-i-disable-all-ubuntu-sounds)
+
+## Gnome Tweaks
+
+Many configurations are not exposed via Settings. 
+
+There is also the Tweaks application (why 2?). This is where you can find the Themes setting
+
+For everything else, there is dconf-editor.
+
+    sudo apt-get install gnome-tweaks
 
 ## Titlebar Buttons
 

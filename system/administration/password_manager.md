@@ -1,10 +1,19 @@
 # Password Managers
 
-Encrypting a local file that stores passwords is necessary if you're going to store them digitally.
+It's a good idea to use a different password for different services. That way, if one of those services is compromised, it only affects that service. 
+
+If you use the same password everywhere, then you should change it everywhere after a security breach. Probably not going to happen. 
+
+If you use different passwords for different services, it becomes impossible to memorize all of them. Enter password managers. 
+
+Encrypting a collection of passwords is necessary if you're going to store them digitally. Good solutions exist for helping you meet this goal. 
+
 
 ## KeePass
 
-KeePass is the gold standard as far as open password managers go. There are clients available for most platforms.
+KeePass is one of the older open-source solutions for tracking passwords. There are clients available for most platforms. 
+
+KeePass stores the encrypted password database locally. The tricky part is keeping your key database in sync across multiple devices. Keepass doesn't have that functionality built in. I prefer to keep the database file stored locally rather than in a cloud based service. I use git to synchronize it across devices. 
 
 https://www.keepassx.org/
  
@@ -13,14 +22,15 @@ https://www.keepassx.org/
 https://keepass.info/
 KeePass Password Safe
 
-Is it ok to store encrypted text (e.g. keepass database) in version control? I think so. It seems better than Google Docs. It's easy to clobber changes in Google Docs. 
-
 https://keepass.info/help/v2_dev/customize.html
 0x8	8 	Disable controls to specify after how many days the master key should/must be changed.
 
 ### Android
 
 KeePass DX is good and open source.
+
+KeePassXC looks like another good client
+https://keepassxc.org/
 
 ### Web
 
@@ -35,7 +45,15 @@ Open Source password manager
 
 https://bitwarden.com/
 
-TODO: needs evaluation
+https://github.com/bitwarden
+
+Uses a dedicated server that you can run locally to synchronize the password database. 
+
+Written in C#
+Docker images are provided for the server, and there are also lighter weight clones in Ruby that are available
+https://sgoel.org/posts/switching-from-keepassxc-to-bitwarden/
+
+Seems like a great solution that may be easier to get started with for most people compared to KeePass. 
 
 
 ## Lockwise
@@ -54,22 +72,16 @@ Here is the open issue to track the fix:
 
 https://github.com/mozilla-lockwise/lockwise-ios/issues/1105
 
-
 https://duckduckgo.com/?q=Lockwise&t=canonical&ia=web
 Lockwise at DuckDuckGo
 https://duckduckgo.com/?q=lockwise+vs+lastpass&t=canonical&ia=web
 lockwise vs lastpass at DuckDuckGo
 
 
-## Password Store
-
-I'm interested to try this out... if a CLI is always available on any device, this could work!
-
-https://www.passwordstore.org/
-Pass: The Standard Unix Password Manager
-
-
 ## Others
+
+LastPass is a popular, well regarded closed / commercial / free option.
+https://thenextweb.com/basics/2019/08/25/dont-be-an-idiot-heres-how-to-store-and-remember-all-your-passwords/
 
 https://padlock.io/
 Padlock - A Minimalist Password Manager
@@ -78,16 +90,8 @@ padlock/padlock: A minimalist open source password manager.
 https://www.passbolt.com/
 Passbolt | Open source password manager for teams
 
-https://www.google.com/search?q=open+source+password+manager&oq=open+source+passw&aqs=chrome.0.0j69i57j0l4.6551j1j7&client=ubuntu&sourceid=chrome&ie=UTF-8
+https://www.google.com/search?q=open+source+password+manager
 open source password manager - Google Search
 https://hackernoon.com/the-best-password-manager-for-you-747b92c43d18
 The Best Password Manager for You - HackerNoon.com
-https://opensource.com/article/16/12/password-managers
-Open source alternatives to LastPass | Opensource.com
 
-*2019.09.03 09:31:29* 
-this article recommends
-LastPass
-It's third party, but it's free
-
-https://thenextweb.com/basics/2019/08/25/dont-be-an-idiot-heres-how-to-store-and-remember-all-your-passwords/

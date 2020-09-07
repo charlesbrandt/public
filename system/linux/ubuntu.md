@@ -15,7 +15,7 @@ Change the Terminal background.
 
 Launch and configure your [browser](../browsers.md)
 
-Launch the System Monitor
+Launch the System Monitor. Select to see all processes. 
 
 [Apply Gnome 3 settings](window_managers/gnome3.md)
 

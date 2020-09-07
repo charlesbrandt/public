@@ -21,11 +21,11 @@ Open Settings (Ctrl-Shift-P -> "Settings")
 
 Choose either:
 
-    "Preferences:Open Settings (UI)"
+    "Preferences: Open Settings (JSON)"
 
 or
 
-    "Preferences: Open Settings (JSON)"
+    "Preferences:Open Settings (UI)"
 
 ### Current settings
 
@@ -73,7 +73,7 @@ https://code.visualstudio.com/docs/editor/editingevolved
 
 ### Auto Fix
 
-To improve the formatting of your HTML source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
+To improve the formatting of your source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
 
 https://code.visualstudio.com/docs/languages/html
 
@@ -93,22 +93,6 @@ To configure keyboard shortcuts through the JSON file, open the keybindings.json
     Preferences: Open Keyboard Shortcuts (JSON) command.
 
 You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcuts (JSON) button on the right of the editor title bar. [couldn't find this path]
-
-### Block Navigation
-
-Space Block Jumper allows jumping to the next blank line.
-
-https://marketplace.visualstudio.com/items?itemName=jmfirth.vsc-space-block-jumper
-
-Block travel looks like another viable option:
-
-https://marketplace.visualstudio.com/items?itemName=sashaweiss.block-travel
-
-https://stackoverflow.com/questions/45788119/is-there-a-vs-code-shortcut-to-move-select-up-down-to-the-next-empty-line
-
-Still requires adding custom bindings (included below).
-
-Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
 ### Custom keyboard shortcut bindings
 
@@ -269,6 +253,22 @@ can't see the tabs any more!
 
 Right click on extension->Extension Settings
 
+### Block Navigation
+
+Space Block Jumper allows jumping to the next blank line.
+
+https://marketplace.visualstudio.com/items?itemName=jmfirth.vsc-space-block-jumper
+
+Block travel looks like another viable option:
+
+https://marketplace.visualstudio.com/items?itemName=sashaweiss.block-travel
+
+https://stackoverflow.com/questions/45788119/is-there-a-vs-code-shortcut-to-move-select-up-down-to-the-next-empty-line
+
+Still requires adding custom bindings (included below).
+
+Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
+
 ### Vue
 
 https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
@@ -302,25 +302,37 @@ may require the project to install prettier as a dev dependency so that vscode h
 
 ### Bracket Pair Colorizer
 
+### Import Cost
+
+
+### HTML Preview
+
+A few different options for this task. None of them receive high marks. 
+
+https://marketplace.visualstudio.com/items?itemName=tht13.html-preview-vscode&ssr=false#review-details 
+
+https://marketplace.visualstudio.com/items?itemName=SimonSiefke.html-preview&ssr=false#review-details
+
+https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer&ssr=false#review-details
+
+### Markdown All in One (other options listed below)
+
+ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
+
+
+## Other Extensions
+
+### Live Server
+Launch a development local Server with live reload feature
+
 ### Github
 https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github
 ### Git History
 ### GitLens
 
-### Markdown All in One (other options listed below)
-
-### Import Cost
-
-
-## Other Extensions
+### Kubernetes
 
 ### Color Picker
-
-### Live Server
-Launch a development local Server with live reload feature
-
-
-### Kubernetes
 
 ### Markdown
 
@@ -367,10 +379,6 @@ Previously installed... not sure if they are actively being used:
 JavaScript (ES6) code snippets
 HTML Snippets
 HTML CSS Support
-
-Live Server
-
-Bracket Pair Colorizer
 
 Evaluate:
 

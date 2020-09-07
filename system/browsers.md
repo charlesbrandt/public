@@ -54,21 +54,6 @@ https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 [via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
 
 
-### New Tab
-
-I love pocket. I find seeing it on every new tab distracting. Tabliss helps minimize those distractions. 
-
-https://addons.mozilla.org/en-US/firefox/addon/tabliss/
-
-https://tabliss.io/
-
-https://github.com/joelshepherd/tabliss
-
-An open source, pluggable New Tab web extension written in TypeScript, React and Redux.
-
-No special permissions required!
-
-
 ### Tab Links
 
 When creating documentation, it is useful to be able to copy all open tabs in a window. 
@@ -84,6 +69,24 @@ https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
 
 OneTab?
 
+
+### New Tab
+
+This is optional. 
+
+I love pocket. 
+
+Tabliss is a clean minimal alternative. 
+
+https://addons.mozilla.org/en-US/firefox/addon/tabliss/
+
+https://tabliss.io/
+
+https://github.com/joelshepherd/tabliss
+
+An open source, pluggable New Tab web extension written in TypeScript, React and Redux.
+
+No special permissions required!
 
 
 

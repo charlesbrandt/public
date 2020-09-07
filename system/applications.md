@@ -3,11 +3,7 @@
 These can get personal. Use the tools that work for you!
 
 
-## Version Control System
-
-Keep your work in sync. 
-
-### Git
+## Git
 
 Git is installed by default on some systems. Others may need it. Be sure to grab it:
 
@@ -23,6 +19,8 @@ If you forgot to get submodules:
 
     cd public
     git submodule update --init --recursive
+
+[Version Control](../code/version_control/README.md)
 
 
 ## Emacs
@@ -73,15 +71,35 @@ Don't like this one as much.
 
     sudo apt-get install keepass2
 
-
 ## Python
 
     sudo apt install python-is-python3
 
-## Utilities
 
-    sudo apt-get install curl
-    sudo apt-get install ffmpeg
+## K4DirStat
+
+visual disk usage utility:
+http://kdirstat.sourceforge.net/
+
+    sudo apt-get install k4dirstat
+
+## Docker
+
+~/public/system/virtualization/docker.md  
+~/public/system/virtualization/docker-compose.md  
+
+## Chromium
+
+This method installs the snap version.
+
+    sudo apt install chromium-browser
+
+If you want to pull from the canonical repository, do this first. (No longer required with Ubuntu 20.04)
+
+```
+sudo add-apt-repository ppa:canonical-chromium-builds/stage
+sudo apt update
+```
 
 
 ## Recorder
@@ -94,8 +112,9 @@ All in one.
 
     sudo apt-get install obs-studio
 
-
 ### VLC 
+
+VLC is usually installed with OBS
 
     sudo apt-get install vlc
 
@@ -112,25 +131,11 @@ Close browser tree in playlist view. (drag panel closed via middle)
 Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
 can just go 'do not distrub'
 
+Change "Continue where left off" from Ask to Never
+
+### Utilities
+
+    sudo apt-get install ffmpeg
 
 
-## K4DirStat
 
-visual disk usage utility:
-http://kdirstat.sourceforge.net/
-
-    sudo apt-get install k4dirstat
-
-## Docker
-
-~/public/system/virtualization/docker-compose.md
-~/public/system/virtualization/docker.md
-
-
-## Chromium
-
-sudo add-apt-repository ppa:canonical-chromium-builds/stage
-sudo apt update
-sudo apt install chromium-browser
-
-this installs the snap version
