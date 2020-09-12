@@ -86,9 +86,9 @@ Then if you register your local machine's public ssh key with a service like Git
 
 ## Resoving a conflict
 
-If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. You can check in your changes, but that results in a branch merge. 
+If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. 
 
-You can also use stash to move your local changes to the side while you pull in changes from remote. 
+I like using stash to move local changes to the side while pulling in changes from remote. 
 
     git stash
     
@@ -99,6 +99,7 @@ Then to unstash:
 https://www.atlassian.com/git/tutorials/saving-changes/git-stash
 https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
 
+You can also check in your changes, but that results in a branch merge. 
 
 ## Undo add files
 
@@ -113,6 +114,10 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
 
 ## Branches
+
+### Switch to existing branch
+
+    git checkout name_of_branch
 
 ### Creating a branch
 

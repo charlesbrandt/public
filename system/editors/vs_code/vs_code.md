@@ -32,7 +32,7 @@ or
 See below for details
 
 {
-    "window.newWindowDimensions": "inherit",
+   "window.newWindowDimensions": "inherit",
     "workbench.startupEditor": "newUntitledFile",
     "breadcrumbs.enabled": false,
     "editor.minimap.enabled": false,
@@ -43,7 +43,27 @@ See below for details
     },
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "eslint.format.enable": true,
+    "editor.formatOnSave": true,
+    "prettier.prettierPath": "./bin/prettier",
 }
+
+### Prettier
+
+    "prettier.prettierPath": "./bin/prettier",
+
+Hoping that this will prevent needing to install node_modules outside of the container. VS Code looks for the local version of prettier, but if one is not installed (hidden by container), then it doesn't do anything. 
+
+```
+prettier.prettierPath
+
+Supply a custom path to the prettier module. This path should be to the module folder, not the bin/script path. i.e. ./node_modules/prettier, not ./bin/prettier.
+```
+
+See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
 ### Default window size
 

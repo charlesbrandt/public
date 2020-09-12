@@ -191,6 +191,56 @@ See: [Vuex](vuex.md)
 
 https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-name-in-the-page-title#48286279
 
+
+## Style / Sass
+
+Nuxt includes Vue Loader out of the box. To get Sass working, 
+
+    npm install --save-dev node-sass sass-loader
+    
+https://nuxtjs.org/faq/pre-processors/
+
+To get, for example, bulma utilities available in every component
+
+This guide seems better... may allow skipping style-resources?
+https://www.gavsblog.com/blog/adding-bulma-to-nuxt-js-with-changeable-variables
+
+
+npm install --save @nuxtjs/style-resources
+
+Then in components, this allows
+
+<style scoped lang="scss">
+.responsive-logo {
+  border: 1px dashed #990000;
+  @include until($desktop) {
+    border-bottom: 1px solid green;
+    width: '112';
+    height: '28';
+  }
+
+  @include from($tablet) {
+    border-left: 2px solid yellow;
+  }
+
+  @include tablet {
+    border-top: 2px solid orange;
+  }
+  @include widescreen-only {
+    border-right: 2px solid blue;
+  }
+}
+</style>
+
+
+another guide
+https://www.freecodecamp.org/news/up-goind-with-nuxt-js-bulma-and-sass/
+
+
+
+https://nuxtjs.org/api/configuration-css/
+
+
 ## External Modules
 
 If you have an external module that you would like to use within your project, a plugin makes the most sense. You can also check if a pre-existing module already exists that handles the integration for you. 

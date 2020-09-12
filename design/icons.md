@@ -88,6 +88,14 @@ Icon component — Vuetify.js
 https://vuetifyjs.com/en/customization/icons
 Icons — Vuetify.js
 
+Material Design Icons are configured by default in Vuetify.
+
+Shouldn't need to do anything else to use them. 
+
+when do they require the 'mdi-' prefix? (don't see it in the demo)
+
+    <v-icon>mdi-folder-open</v-icon>
+
 
 ## Libraries / Fonts / Collections
 
