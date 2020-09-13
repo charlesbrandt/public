@@ -66,6 +66,8 @@ via: https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password
 
 ### History
 
+    git log --follow -p -- file
+
 To see who has made commits to a repository.
 
     git blame filename
@@ -74,8 +76,6 @@ see also:
 
     git bisect
     
-    git log --follow -p -- file
-
 
 ## SSH
 
@@ -246,10 +246,6 @@ https://gist.github.com/myusuf3/7f645819ded92bda6677
 
 
 
-
-
-
-
 ## Finding a deleted file in history
 
 Sometimes it's easier to use an interface like gitlab (run it locally) or github to browse the history of the commits to the project. 
@@ -302,9 +298,7 @@ git commit -m 'Removing node_modules from git history'
 git push origin master --force
 ```
 
-via:
-
-https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history
+[via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
 
 
 

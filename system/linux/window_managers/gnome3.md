@@ -31,9 +31,39 @@ sudo mkdir originals
 sudo mv * originals/
 ```
 
-I needed to restart for this change to take effect
+
+Trying creating silent versions of them all:
+
+Open Audacity. Generate 1 second silent audio. 
+
+```
+cd /usr/share/sounds/Yaru/stereo
+sudo cp /path/to/silence-1sec.ogg .
+sudo chmod 644 silence-1sec.ogg
+
+sudo cp silence-1sec.ogg audio-volume-change.oga
+sudo cp silence-1sec.ogg battery-low.oga
+sudo cp silence-1sec.ogg bell.oga
+sudo cp silence-1sec.ogg complete.oga
+sudo cp silence-1sec.ogg desktop-login.oga
+sudo cp silence-1sec.ogg device-added.oga
+sudo cp silence-1sec.ogg device-removed.oga
+sudo cp silence-1sec.ogg dialog-error.oga
+sudo cp silence-1sec.ogg dialog-question.oga
+sudo cp silence-1sec.ogg dialog-warning.oga
+sudo cp silence-1sec.ogg message-new-email.oga
+sudo cp silence-1sec.ogg message-new-instant.oga
+sudo cp silence-1sec.ogg message.oga
+sudo cp silence-1sec.ogg power-plug.oga
+sudo cp silence-1sec.ogg power-unplug.oga
+sudo cp silence-1sec.ogg system-ready.oga
+sudo cp silence-1sec.ogg trash-empty.oga
+```
+
+I needed to restart for this change to take effect. Eventually they were replaced / reinstalled automatically. 
 
 [via](https://askubuntu.com/questions/557389/how-can-i-disable-all-ubuntu-sounds)
+
 
 ## Gnome Tweaks
 
