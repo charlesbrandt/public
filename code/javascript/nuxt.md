@@ -265,16 +265,50 @@ Nuxt includes Vue Loader out of the box. To get Sass working,
     
 https://nuxtjs.org/faq/pre-processors/
 
+
+
 To get, for example, bulma utilities available in every component
+(don't need nuxtjs/bulma in this case)
+
+    npm install --save bulma
 
 This guide seems better... may allow skipping style-resources?
 https://www.gavsblog.com/blog/adding-bulma-to-nuxt-js-with-changeable-variables
 
+create `ui/assets/main.scss`
 
-npm install --save @nuxtjs/style-resources
+```
+/* Import Bulma Utilities */
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
 
-Then in components, this allows
+/* Variable changes go here */
 
+// Colours
+$primary: #d0eeed;
+$secondary: #d0e0ee;
+
+// Breakpoints
+$tablet: 724px;
+$desktop: 960px + (2 * $gap);
+$widescreen: 1152px + (2 * $gap);
+$fullhd: 1344px + (2 * $gap);
+
+/* Import the rest of Bulma */
+@import '~bulma';
+```
+
+in nuxt.config.js
+
+```
+css: [{ src: '~/assets/main.scss', lang: 'scss' }],
+```
+
+
+
+Then in components, bulma variables should be accessible
+
+```
 <style scoped lang="scss">
 .responsive-logo {
   border: 1px dashed #990000;
@@ -296,7 +330,10 @@ Then in components, this allows
   }
 }
 </style>
+```
 
+
+npm install --save @nuxtjs/style-resources
 
 another guide
 https://www.freecodecamp.org/news/up-goind-with-nuxt-js-bulma-and-sass/
@@ -306,7 +343,7 @@ https://www.freecodecamp.org/news/up-goind-with-nuxt-js-bulma-and-sass/
 https://nuxtjs.org/api/configuration-css/
 
 
-## External Modules
+## External Modules / Plugins
 
 If you have an external module that you would like to use within your project, a plugin makes the most sense. You can also check if a pre-existing module already exists that handles the integration for you. 
 

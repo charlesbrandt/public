@@ -118,6 +118,10 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 ### Switch to existing branch
 
     git checkout name_of_branch
+    
+### Show current branch
+
+    git branch --show-current
 
 ### Creating a branch
 
@@ -160,6 +164,32 @@ git config --global push.default simple # globally for your account
 ```
 
 https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
+
+### Rebasing
+
+Allows you to pull in changes from master / different branch. Similar to merge, but re-writes the history. 
+
+Never rebase a public branch / master -- makes a mess for others who have it checked out already
+
+    git checkout name_of_branch
+    git rebase master
+
+https://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git
+version control - Get changes from master into branch in Git - Stack Overflow
+
+https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+Merging vs. Rebasing | Atlassian Git Tutorial
+
+Use rebase if your branch is local and hasn't been pushed to origin. Use merge if your branch is already pushed. rebase will rewrite history. 
+
+Otherwise, just merge changes
+
+    git merge origin/master
+
+
+https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
+git import changes on master to branch at DuckDuckGo
+
 
 
 ## Running a server
