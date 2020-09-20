@@ -272,8 +272,6 @@ To get, for example, bulma utilities available in every component
 
     npm install --save bulma
 
-This guide seems better... may allow skipping style-resources?
-https://www.gavsblog.com/blog/adding-bulma-to-nuxt-js-with-changeable-variables
 
 create `ui/assets/main.scss`
 
@@ -338,12 +336,42 @@ npm install --save @nuxtjs/style-resources
 another guide
 https://www.freecodecamp.org/news/up-goind-with-nuxt-js-bulma-and-sass/
 
+This guide seems better... may allow skipping style-resources?
+https://www.gavsblog.com/blog/adding-bulma-to-nuxt-js-with-changeable-variables
+
+seems like style-resources is necessary for this functionality
 
 
 https://nuxtjs.org/api/configuration-css/
 
 
-## External Modules / Plugins
+
+## Axios
+
+https://axios.nuxtjs.org/usage/
+
+Nuxt comes with a special function for handling axios requests when called from a server side rendering context:
+
+asyncData
+
+https://nuxtjs.org/guide/async-data/
+
+
+If you get an error like:
+
+    ECONNREFUSED 127.0.0.1:8888at TCPConnectWrap.afterConnect 
+
+The nuxt server may be initiating the axios call for server side rendering. If you're using a containerized setup with nginx acting as a proxy, the source address may be different relative to the server. Haven't figured out how to specify a different source based on context (server vs client). However, you can also use a method that gets called on mounted so it only runs on the client. (skip server rendering)
+
+More configuration options
+
+https://axios.nuxtjs.org/options/
+
+[See also fetching_data.mc](fetching_data.md)
+
+
+
+## External Modules
 
 If you have an external module that you would like to use within your project, a plugin makes the most sense. You can also check if a pre-existing module already exists that handles the integration for you. 
 
@@ -496,6 +524,16 @@ and custom variables can be placed:
     assets/variables.scss
 
 
+## Error Pages / Layouts
+
+Nuxt does not ship with a layout for error pages by default. This will be called for any un-handled error conditions.
+
+https://duckduckgo.com/?t=canonical&q=ReferenceError%3A+NuxtError+is+not+defined&ia=web
+ReferenceError: NuxtError is not defined at DuckDuckGo
+https://stackoverflow.com/questions/63846716/nuxtjs-referenceerror-nuxterror-is-not-defined
+javascript - NuxtJs: ReferenceError: NuxtError is not defined - Stack Overflow
+https://nuxtjs.org/guides/directory-structure/layouts#error-page
+layouts - NuxtJS
 
 
 ## Version

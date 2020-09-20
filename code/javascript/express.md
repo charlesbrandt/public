@@ -19,6 +19,16 @@ https://expressjs.com/en/starter/hello-world.html
 Express "Hello World" example
 
 
+## Debugging
+
+To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
+
+    DEBUG=express:* node index.js
+
+https://expressjs.com/en/guide/debugging.html
+
+You can also use `curl` or `wget` to test specific routes that are available. 
+
 ## Routing
 
 Once a project grows beyond "Hello World", collect routes in various .js files. 
@@ -81,16 +91,6 @@ See also:
 ~/alpha/public/code/architecture/users.md
 ~/alpha/public/code/architecture/social_networks.md
 
-
-## Debugging
-
-To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
-
-    DEBUG=express:* node index.js
-
-https://expressjs.com/en/guide/debugging.html
-
-You can also use `curl` or `wget` to test specific routes that are available. 
 
 
 ## Boilerplates
