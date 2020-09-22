@@ -186,48 +186,10 @@ Otherwise, just merge changes
 
     git merge origin/master
 
-
 https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
 git import changes on master to branch at DuckDuckGo
 
-
-
-## Running a server
-
-It's pretty much as simple as having an SSH server running and being able to connect over that.
-
-https://www.linux.com/learn/how-run-your-own-git-server
-How to Run Your Own Git Server | Linux.com | The source for Linux information
-
-https://www.google.com/search?q=linux+git+server
-linux git server - Google Search
-
-It is best to have a local master repo that different machines can clone from. You can create a copy of the master repository by running:
-
-    cd /path/to/current/checked/out/repository
-    git clone --bare . /path/to/master/repository
-
-When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
-
-    - Log into the server machine.
-    - Create a bare repo using git init --bare
-    - On the client machine you can push your repo to the server. git remote add origin ssh://user@server:/GitRepos/myproject.git followed by git push origin master
-
-via:
-https://stackoverflow.com/questions/6167905/git-clone-through-ssh
-
-then checkout to any device with:
-
-    git clone username@192.168.1.100:/srv/git/repo
-
-If the repo on the server has local files checked out (not bare), when it's time to push changes up to the server, they'll be rejected.
-
-Being able to push is the important option in this scenario. 
-
-An alternative solution could use different branches on either the remote device and/or the server. This seems more cumbersome. 
-
-https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
-
+See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository. 
 
 
 ## Submodules
@@ -273,68 +235,6 @@ To remove a submodule you need to:
 https://gist.github.com/myusuf3/7f645819ded92bda6677
 
 
-
-
-
-## Finding a deleted file in history
-
-Sometimes it's easier to use an interface like gitlab (run it locally) or github to browse the history of the commits to the project. 
-
-If you do not know the exact path you may use
-  
-    git log --all --full-history -- **/thefile.*
-
-If you know the path the file was at, you can do this:
-
-    git log --all --full-history -- <path-to-file>
-    
-An alternative:
-
-    git rev-list -n 1 HEAD -- <file_path>
-
-
-This should show a list of commits in all branches which touched that file. Then, you can find the version of the file you want, and display it with...
-
-    git show <SHA> -- <path-to-file>
-    
-Or restore it into your working copy with:
-
-    git checkout <SHA>^ -- <path-to-file>
-
-Note the caret symbol (^), which gets the checkout prior to the one identified, because at the moment of <SHA> commit the file is deleted, we need to look at the previous commit to get the deleted file's contents
-
-via:
-https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history/34681842
-
-https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
-
-
-
-
-
-## Remove directory from history
-
-If someone adds a directory with large binary files, it may be useful to remove that directory from the history to avoid having to download the large binary data with every `clone` of the repo. 
-
-```
-git filter-branch --tree-filter "rm -rf node_modules" --prune-empty HEAD
-git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
-git gc
-
-echo node_modules/ >> .gitignore
-git add .gitignore
-git commit -m 'Removing node_modules from git history'
-
-git push origin master --force
-```
-
-[via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
-
-
-
-## Changing a commit message
-
-
 ## Merging two git repositories
 
 If you want to merge project-a into project-b:
@@ -377,6 +277,104 @@ git merge --allow-unrelated-histories technical/master # or whichever branch you
 Might have a merge message here, then:
 
    git remote remove technical
+
+
+## Finding a deleted file in history
+
+Sometimes it's easier to use an interface like gitlab (run it locally) or github to browse the history of the commits to the project. 
+
+If you do not know the exact path you may use
+  
+    git log --all --full-history -- **/thefile.*
+
+If you know the path the file was at, you can do this:
+
+    git log --all --full-history -- <path-to-file>
+    
+An alternative:
+
+    git rev-list -n 1 HEAD -- <file_path>
+
+
+This should show a list of commits in all branches which touched that file. Then, you can find the version of the file you want, and display it with...
+
+    git show <SHA> -- <path-to-file>
+    
+Or restore it into your working copy with:
+
+    git checkout <SHA>^ -- <path-to-file>
+
+Note the caret symbol (^), which gets the checkout prior to the one identified, because at the moment of <SHA> commit the file is deleted, we need to look at the previous commit to get the deleted file's contents
+
+via:
+https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history/34681842
+
+https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
+
+
+## Remove directory from history
+
+If someone adds a directory with large binary files, it may be useful to remove that directory from the history to avoid having to download the large binary data with every `clone` of the repo. 
+
+```
+git filter-branch --tree-filter "rm -rf node_modules" --prune-empty HEAD
+git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
+git gc
+
+echo node_modules/ >> .gitignore
+git add .gitignore
+git commit -m 'Removing node_modules from git history'
+
+git push origin master --force
+```
+
+[via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
+
+
+## Changing a commit message
+
+
+## Running a server
+
+It's pretty much as simple as having an SSH server running and being able to connect over that.
+
+https://www.linux.com/learn/how-run-your-own-git-server
+How to Run Your Own Git Server | Linux.com | The source for Linux information
+
+https://www.google.com/search?q=linux+git+server
+linux git server - Google Search
+
+It is best to have a local master repo that different machines can clone from. You can create a copy of the master repository by running:
+
+    cd /path/to/current/checked/out/repository
+    git clone --bare . /path/to/master/repository
+
+When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
+
+    - Log into the server machine.
+    - Create a bare repo using git init --bare
+    - On the client machine you can push your repo to the server. 
+    
+    git remote add origin ssh://user@server:/GitRepos/myproject.git 
+    
+    followed by 
+    
+    git push origin master
+
+via:
+https://stackoverflow.com/questions/6167905/git-clone-through-ssh
+
+then checkout to any device with:
+
+    git clone user@server:/srv/git/repo
+
+If the repo on the server has local files checked out (not bare), when it's time to push changes up to the server, they'll be rejected.
+
+Being able to push is the important option in this scenario. 
+
+An alternative solution could use different branches on either the remote device and/or the server. This seems more cumbersome. 
+
+https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
 
 
 ## GUI Clients
