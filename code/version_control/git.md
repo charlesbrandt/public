@@ -144,6 +144,18 @@ https://stackoverflow.com/questions/15072243/git-with-development-staging-and-pr
 
 https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
 
+### Branch from previous commit
+
+You can create the branch via a hash:
+
+    git branch branchname <sha1-of-commit>
+
+Or by using a symbolic reference:
+
+    git branch branchname HEAD~3
+
+https://stackoverflow.com/questions/2816715/branch-from-a-previous-commit-using-git
+
 ### Pushing Changes
 
 https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
