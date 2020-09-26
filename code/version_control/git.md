@@ -13,14 +13,8 @@ Git is a distributed version control system.
     
     git commit -m "commit message"
 
-Can be helpful to combine ```git add``` and ```git commit -m```
-
-To see what the remote server is set to, use:
-
-    git remote -v
     
-    
-## Credentials
+## Configurations
     
 If you want to see
     - what repo something pushes back to
@@ -29,6 +23,13 @@ If you want to see
 Use
 
     git config --list --show-origin
+
+To see what the remote server is set to, use:
+
+    git remote -v
+    
+    
+## Credentials
 
 *** Please tell me who you are.
 
@@ -55,6 +56,14 @@ $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after one hour (setting is in seconds)
 ```
 
+### SSH 
+
+use `ssh -A` to share credentials with the machine you connect to.
+
+Then if you register your local machine's public ssh key with a service like Gitlab or [Github](https://github.com/settings/keys), you won't have to type your username and password every time you push or pull. 
+
+### Passwords
+
 If you think you want to store your password, consider setting up an ssh key with your git server instead. 
 
 (Don't do this) to store passwords:
@@ -63,6 +72,24 @@ If you think you want to store your password, consider setting up an ssh key wit
     
 These are stored in plaintext, so it is insecure.
 via: https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github
+
+
+## Resoving a conflict
+
+If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. 
+
+Use stash to move local changes to the side while pulling in changes from remote. 
+
+    git stash
+    
+Then to unstash:
+
+    git stash pop
+
+https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
+
+You can also check in your changes, but that results in a branch merge. 
 
 ### History
 
@@ -76,30 +103,6 @@ see also:
 
     git bisect
     
-
-## SSH
-
-use `ssh -A` to share credentials with the machine you connect to.
-
-Then if you register your local machine's public ssh key with a service like Gitlab or [Github](https://github.com/settings/keys), you won't have to type your username and password every time you push or pull. 
-
-
-## Resoving a conflict
-
-If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. 
-
-I like using stash to move local changes to the side while pulling in changes from remote. 
-
-    git stash
-    
-Then to unstash:
-
-    git stash pop
-
-https://www.atlassian.com/git/tutorials/saving-changes/git-stash
-https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
-
-You can also check in your changes, but that results in a branch merge. 
 
 ## Undo add files
 
@@ -122,17 +125,21 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 ### Show current branch
 
     git branch --show-current
+    
+### Show a list of all branches available
+
+    git branch --all 
 
 ### Creating a branch
 
 Assumes you have already checked out the repository locally. Then:
 
-     git checkout -b iss53
+     git checkout -b upstream
 
 Which is shorthand for:
 
-    git branch iss53
-    git checkout iss53
+    git branch upstream
+    git checkout upstream
     
 There are different ways to use branches. 
 
@@ -155,6 +162,38 @@ Or by using a symbolic reference:
     git branch branchname HEAD~3
 
 https://stackoverflow.com/questions/2816715/branch-from-a-previous-commit-using-git
+### Renaming a branch
+
+    git branch -m <oldname> <newname>
+
+If you want to rename the current branch
+
+    git branch -m <newname>
+    
+If the current branch is available publicly, you'll need to rename it on the remote repo as well. 
+
+```
+# Rename the local branch to the new name
+git branch -m <old_name> <new_name>
+
+# Delete the old branch on remote - where <remote> is, for example, origin
+git push <remote> --delete <old_name>
+
+# Or shorter way to delete remote branch [:]
+git push <remote> :<old_name>
+
+# Push the new branch to remote
+git push <remote> <new_name>
+
+# Reset the upstream branch for the new_name local branch
+git push <remote> -u <new_name>
+```
+
+https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name/30590238#30590238
+
+via:
+https://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch
+
 
 ### Pushing Changes
 
@@ -177,9 +216,24 @@ git config --global push.default simple # globally for your account
 
 https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
 
+### Merging
+
+Allows you to pull in changes from master / different branch. 
+
+Use merge if your branch is already pushed. 
+
+To merge changes
+
+    git merge origin/master
+
+https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
+git import changes on master to branch at DuckDuckGo
+
+See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository. 
+
 ### Rebasing
 
-Allows you to pull in changes from master / different branch. Similar to merge, but re-writes the history. 
+Similar to merge, but re-writes the history. Use rebase if your branch is local and hasn't been pushed to origin. rebase will rewrite history. 
 
 Never rebase a public branch / master -- makes a mess for others who have it checked out already
 
@@ -191,17 +245,6 @@ version control - Get changes from master into branch in Git - Stack Overflow
 
 https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 Merging vs. Rebasing | Atlassian Git Tutorial
-
-Use rebase if your branch is local and hasn't been pushed to origin. Use merge if your branch is already pushed. rebase will rewrite history. 
-
-Otherwise, just merge changes
-
-    git merge origin/master
-
-https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
-git import changes on master to branch at DuckDuckGo
-
-See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository. 
 
 
 ## Submodules

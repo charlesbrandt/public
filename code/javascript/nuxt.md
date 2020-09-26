@@ -348,6 +348,10 @@ https://nuxtjs.org/api/configuration-css/
 
 ## Axios
 
+In a method can make remote calls with something like
+
+    const ip = await this.$axios.$get('http://icanhazip.com')
+
 https://axios.nuxtjs.org/usage/
 
 Nuxt comes with a special function for handling axios requests when called from a server side rendering context:
@@ -391,8 +395,9 @@ import Vue from 'vue'
 import _ from 'lodash'
 
 Object.defineProperty(Vue.prototype, '$_', { value: _ })
-// may also work...
-// Vue.prototype.$_.orderBy = orderBy
+// may be possible to get something like this to work...
+// doesn't work as is
+// Vue.prototype.$_.orderBy = _.orderBy
 
 ```
 
@@ -461,7 +466,7 @@ export default {
 .env options available too
 
 
-### Configuration Variables (.env)
+### Configuration Variables (.env) dotenv 
 
 https://nuxtjs.org/api/configuration-env
 

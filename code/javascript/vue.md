@@ -59,10 +59,15 @@ export default {
   // https://vuejs.org/v2/guide/components-props.html#Type-Checks
   // String, Number, Boolean, Array, Object, Date, Function, Symbol
   props: {
-    parameter: {
-      default: 'Greetings',
-      type: String,
+    person: {
+      type: Object,
+      default: () => {},
     },
+    parameter: {
+      type: String,
+      default: 'Greetings',
+    },
+    something: Boolean,
   },
   // https://nuxtjs.org/guide/async-data/
   /* async asyncData({ params }) {
@@ -119,6 +124,10 @@ https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
 https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
 
+
+## Environment Variables (dotenv)
+
+see [Nuxt](nuxt.md)
 
 
 ## Slots & Props

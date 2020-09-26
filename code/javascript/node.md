@@ -105,3 +105,10 @@ https://github.com/remy/nodemon
 GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development
 https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8&oe=utf-8
 nodemon vs pm2 - Google Search
+
+
+## package-lock.json
+
+TODO:
+is it really a good idea to track this under version control?
+seems like it adds a lot of noise to the process
