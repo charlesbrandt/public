@@ -340,6 +340,15 @@ lynx 127.0.0.1:8080
 
 curl is another good option!
 
+To see what ports are open, install `netstat`. This approach will not persist across restarts. 
+
+
+    apt update
+    apt install net-tools
+
+    netstat -pan | egrep " LISTEN "
+    
+
 ### Troubleshooting nginx
 
 If you go inside the container `docker exec -it <container-id> /bin/bash` and check the log location `ls -la /var/log/nginx/` you will see the following output:
@@ -349,9 +358,11 @@ lrwxrwxrwx 1 root root   11 Apr 30 23:05 access.log -> /dev/stdout
 lrwxrwxrwx 1 root root   11 Apr 30 23:05 error.log -> /dev/stderr
 ```
 
-Clearly, the logs are written in stdout. You can also try doing cat access.log inside the container and it still doesn't show anything.
+Logs are written to stdout or stderr. Execute `cat access.log` inside the container and it doesn't show anything.
 
-The right way to get your logs is going outside the container and doing `docker logs <container-id>` Then, you would see your logs. 
+The way to get your logs is going outside the container and running
+
+    docker logs <container-id>
 
 https://stackoverflow.com/questions/30269672/unable-to-use-lt-when-running-nginx-docker-or-cat-logs
 

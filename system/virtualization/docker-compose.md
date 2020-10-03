@@ -90,8 +90,7 @@ Logging is available via docker directly:
 see also: [docker.md](docker.md)
 
     docker network ls
-    
-    
+
 
 
 ## Guides

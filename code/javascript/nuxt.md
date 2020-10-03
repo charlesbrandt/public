@@ -468,13 +468,78 @@ export default {
 
 ### Configuration Variables (.env) dotenv 
 
+Node.js automatically loads environment variables into process.env
+
+The way to use them has changed over time. 
+
+Try out a ui/.env file. Is the value available via process.env.whatever?
+
+
+Best Practices:
+
+x Don’t commit sensitive values or secret keys to git
+
+x Don't store secret keys or sensitive values in your nuxt.config or .env unless is gitignored
+
+✅ Use default values for runtimeConfig such as process.env.baseURL || 'https://nuxt.js.org'
+
+✅ Store secret keys correctly using your hosting platform such as on Heroku or Netlify etc
+✅ Follow JS naming convention (secretKey rather than SECRET_KEY) for runtimeConfig
+✅ Prefer using runtimeConfig rather than env option
+
+[via](https://nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config)
+
+#### Defining Environment Variables
+
+in nuxt.config.js
+
+```
+export default {
+
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'https://nuxtjs.org'
+  },
+  privateRuntimeConfig: {
+    apiSecret: process.env.API_SECRET
+  },
+
+}
+```
+
+This approach specifies which variables get sent to the public / client / browser when that gets built (publicRuntimeConfig) versus those that are only meant for the server side (privateRuntimeConfig).
+
+#### Using Environment Variables
+
+In async data, you can pass in the configs you want to use:
+
+    async asyncData ({ $config: { baseURL } }) {
+    
+and use it with
+
+    const posts = await fetch(`${baseURL}/posts`)
+
+
+In other (client-side) methods in a component, it is available via
+
+    this.$config.baseURL
+
+If you have code that is using the env variables you can migrate to using the \$config option. For example if in your code you had
+
+    <p>{{process.env.baseURL}}</p>
+
+You can change this by using \$config instead
+
+    <p>{{$config.baseURL}}</p>
+
+
+
+#### Old approches
+
 https://nuxtjs.org/api/configuration-env
 
-Variables in a .env file should be picked up if you configured your Nuxt project to use dotenv. 
+Doesn't look like nuxt requires a separate dotenv module any more (as of 2020). 
 
-https://github.com/nuxt-community/dotenv-module
-
-They should be available in process.env.whatever (or context.env?)
+Variables will be available in your nuxt application via process.env.whatever.
 
 ```
   mounted() {
