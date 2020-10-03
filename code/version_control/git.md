@@ -151,6 +151,12 @@ https://stackoverflow.com/questions/15072243/git-with-development-staging-and-pr
 
 https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
 
+### Setting tracking source
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=<remote>/<branch> main
+
 ### Branch from previous commit
 
 You can create the branch via a hash:
@@ -193,7 +199,6 @@ https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-an
 
 via:
 https://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch
-
 
 ### Pushing Changes
 
@@ -288,6 +293,50 @@ To remove a submodule you need to:
 
 
 https://gist.github.com/myusuf3/7f645819ded92bda6677
+
+
+## Running a server
+
+It's pretty much as simple as having an SSH server running and being able to connect over that.
+
+https://www.linux.com/learn/how-run-your-own-git-server
+How to Run Your Own Git Server | Linux.com | The source for Linux information
+
+https://www.google.com/search?q=linux+git+server
+linux git server - Google Search
+
+It is best to have a local master repo that different machines can clone from. You can create a copy of the master repository by running:
+
+    cd /path/to/current/checked/out/repository
+    git clone --bare . /path/to/master/repository
+
+When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
+
+    - Log into the server machine.
+    - Create a bare repo using git init --bare
+    - On the client machine you can push your repo to the server. 
+    
+    git remote add origin ssh://user@server:/GitRepos/myproject.git 
+    
+    followed by 
+    
+    git push origin master
+
+via:
+https://stackoverflow.com/questions/6167905/git-clone-through-ssh
+
+then checkout to any device with:
+
+    git clone user@server:/srv/git/repo
+
+If the repo on the server has local files checked out (not bare), when it's time to push changes up to the server, they'll be rejected.
+
+Being able to push is the important option in this scenario. 
+
+An alternative solution could use different branches on either the remote device and/or the server. This seems more cumbersome. 
+
+https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
+
 
 
 ## Merging two git repositories
@@ -388,48 +437,6 @@ git push origin master --force
 
 ## Changing a commit message
 
-
-## Running a server
-
-It's pretty much as simple as having an SSH server running and being able to connect over that.
-
-https://www.linux.com/learn/how-run-your-own-git-server
-How to Run Your Own Git Server | Linux.com | The source for Linux information
-
-https://www.google.com/search?q=linux+git+server
-linux git server - Google Search
-
-It is best to have a local master repo that different machines can clone from. You can create a copy of the master repository by running:
-
-    cd /path/to/current/checked/out/repository
-    git clone --bare . /path/to/master/repository
-
-When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
-
-    - Log into the server machine.
-    - Create a bare repo using git init --bare
-    - On the client machine you can push your repo to the server. 
-    
-    git remote add origin ssh://user@server:/GitRepos/myproject.git 
-    
-    followed by 
-    
-    git push origin master
-
-via:
-https://stackoverflow.com/questions/6167905/git-clone-through-ssh
-
-then checkout to any device with:
-
-    git clone user@server:/srv/git/repo
-
-If the repo on the server has local files checked out (not bare), when it's time to push changes up to the server, they'll be rejected.
-
-Being able to push is the important option in this scenario. 
-
-An alternative solution could use different branches on either the remote device and/or the server. This seems more cumbersome. 
-
-https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
 
 
 ## GUI Clients
