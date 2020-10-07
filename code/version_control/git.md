@@ -313,7 +313,7 @@ It is best to have a local master repo that different machines can clone from. Y
 When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
 
     - Log into the server machine.
-    - Create a bare repo using git init --bare
+    - Create a bare repo using `git init --bare`
     - On the client machine you can push your repo to the server. 
     
     git remote add origin ssh://user@server:/GitRepos/myproject.git 
@@ -322,8 +322,13 @@ When you're not on the server (e.g. created the repo somewhere else), you need t
     
     git push origin master
 
-via:
-https://stackoverflow.com/questions/6167905/git-clone-through-ssh
+[via](https://stackoverflow.com/questions/6167905/git-clone-through-ssh)
+
+Try git show-ref to see what refs you have. Is there a refs/heads/master?
+
+You can try git push origin HEAD:master as a more local-reference-independent solution. This explicitly states that you want to push the local ref HEAD to the remote ref master (see the git-push refspec documentation).
+
+[via](https://stackoverflow.com/questions/4181861/message-src-refspec-master-does-not-match-any-when-pushing-commits-in-git)
 
 then checkout to any device with:
 
@@ -336,7 +341,6 @@ Being able to push is the important option in this scenario.
 An alternative solution could use different branches on either the remote device and/or the server. This seems more cumbersome. 
 
 https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
-
 
 
 ## Merging two git repositories
@@ -436,7 +440,6 @@ git push origin master --force
 
 
 ## Changing a commit message
-
 
 
 ## GUI Clients
