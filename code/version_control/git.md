@@ -115,6 +115,21 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
 `git checkout path/to/file` will revert the local changes to `path/to/file`
 
+## Ignore trivial changes
+
+Ignore changes to a file
+
+    git update-index --assume-unchanged path/to/file
+
+Resume tracking again:
+
+    git update-index --no-assume-unchanged path/to/file
+
+
+https://stackoverflow.com/questions/13442130/git-temporarily-ignore-trivial-changes-to-files
+Git - Temporarily ignore trivial changes to files - Stack Overflow
+
+
 
 ## Branches
 

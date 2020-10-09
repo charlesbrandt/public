@@ -375,7 +375,9 @@ https://axios.nuxtjs.org/options/
 
 
 
-## External Modules
+## External Modules / Plugins
+
+https://nuxtjs.org/guide/plugins/
 
 If you have an external module that you would like to use within your project, a plugin makes the most sense. You can also check if a pre-existing module already exists that handles the integration for you. 
 
@@ -414,7 +416,7 @@ https://nuxtjs.org/guide/modules
 
 https://nuxtjs.org/api/configuration-modules
 
-See also:
+See also:https://getpocket.com/explore/item/a-world-without-clouds?utm_source=pocket-newtab
 
 https://vuejs.org/v2/guide/plugins.html
 
