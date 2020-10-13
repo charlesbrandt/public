@@ -36,6 +36,13 @@ A concise way to combine the markup (<template>), logic (<script>) and styling (
 https://vuejs.org/v2/guide/components.html#Dynamic-Components
 Components Basics — Vue.js
 
+For an example template, see
+https://gitlab.com/charlesbrandt/web-ui-api-db/-/blob/master/ui/pages/blank.vue
+
+Soon:
+https://gitlab.com/charlesbrandt/web-ui-api-db/-/blob/main/ui/pages/blank.vue
+
+
 ```
 <template>
   <div class="component">
@@ -109,6 +116,7 @@ Common patterns:
 
 List rendering
 https://vuejs.org/v2/guide/list.html#key
+
 
 ### Scripts
 

@@ -56,6 +56,7 @@ $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after one hour (setting is in seconds)
 ```
 
+
 ### SSH 
 
 use `ssh -A` to share credentials with the machine you connect to.

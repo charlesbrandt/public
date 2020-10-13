@@ -23,3 +23,4 @@ system/editors/emacs/.emacs.d/var/
 session.*
 repos/
 system/editors/emacs/.emacs.d/url/
+system/editors/emacs/.emacs.d/.#recentf
