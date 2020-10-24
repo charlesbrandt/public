@@ -45,6 +45,12 @@ then rebuild again.
 
 This defines all containers to be used for the application. Ideally, there are existing images that meet the requirements. 
 
+One parameter that is helpful is
+
+    container_name: mycontainername
+    
+Typically the parent directory name is used to create a container name. The `container_name` parameter helps keep container names consistent regardless of where they are deployed. This, in turn, makes it easier to create other configuration files that work as expected within the docker network. 
+
 In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
 
 ```

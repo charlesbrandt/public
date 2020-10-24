@@ -38,6 +38,22 @@ npm run dev
 
 ```
 
+## Generating
+
+To generate a static version of a nuxt project, make sure you have `target: 'static'` in the `nuxt.config.js`, then:
+
+    npm run generate
+
+or
+
+    nuxt generate
+
+https://nuxtjs.org/blog/going-full-static
+
+Apps must be written to utilize server side rendering features. 
+
+If API calls only happen once the page has loaded, you won't see much improvement in SEO or load times. See `asyncData` for more details. 
+
 
 ## Routing
 
@@ -45,6 +61,8 @@ TODO:
 How to specify parameters via the route? 
 
 in ./pages/ directory:
+
+index.vue must be lowercase here! (Will not work with Index.vue)
 
 
 ## Vuex (Persistence)
@@ -58,15 +76,25 @@ Consider adding in Vuex-ORM
 https://gitlab.com/charlesbrandt/public/-/blob/master/code/javascript/vuex.md
 
 
-## Page Titles
+## Page Titles / Meta Tags
 
   head() {
     return {
-      title: this.$route.name 
+      title: this.$route.name,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "Articles focused on the beautiful art of landscape painting.",
+        }
+      ]
     }
   },
 
 https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-name-in-the-page-title#48286279
+
+https://redfern.dev/articles/adding-social-media-seo-meta-data-using-nuxt-content/
 
 
 ## Style / Sass / CSS
@@ -173,10 +201,9 @@ https://axios.nuxtjs.org/usage/
 
 Nuxt comes with a special function for handling axios requests when called from a server side rendering context:
 
-asyncData
+### asyncData
 
 https://nuxtjs.org/guide/async-data/
-
 
 If you get an error like:
 
@@ -184,11 +211,32 @@ If you get an error like:
 
 The nuxt server may be initiating the axios call for server side rendering. If you're using a containerized setup with nginx acting as a proxy, the source address may be different relative to the server. Haven't figured out how to specify a different source based on context (server vs client). However, you can also use a method that gets called on mounted so it only runs on the client. (skip server rendering)
 
+Going to try wrapping request in if(process.server) within the asyncData method of the page
+
+```
+    let urlPrefix
+    if (process.server) {
+      urlPrefix = context.$config.api_url_ssr
+    } else {
+      urlPrefix = context.$config.api_url
+    }
+
+    const personData = await context.$axios.get(
+      urlPrefix + 'user/details/' + context.params.id
+    )
+    return {
+      person: personData.data,
+    }
+
+```
+
+https://stackoverflow.com/questions/61354470/nuxt-fetching-data-only-on-server-side
+
 More configuration options
 
 https://axios.nuxtjs.org/options/
 
-[See also fetching_data.mc](fetching_data.md)
+[See also fetching_data.md](fetching_data.md)
 
 
 

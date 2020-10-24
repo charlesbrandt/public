@@ -234,6 +234,10 @@ To stop everything:
 
     docker stop $(docker ps -q)
 
+### Removing a Container
+
+    docker rm [container]
+
 
 ## Shares & Storage
 

@@ -184,6 +184,7 @@ Or by using a symbolic reference:
     git branch branchname HEAD~3
 
 https://stackoverflow.com/questions/2816715/branch-from-a-previous-commit-using-git
+
 ### Renaming a branch
 
     git branch -m <oldname> <newname>
