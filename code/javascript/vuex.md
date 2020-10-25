@@ -10,14 +10,51 @@ Vuex provides a reactive global shared object space.
 
 ... like a storage system for your front-end application. Where to keep data that is shared between components. 
 
+## 2 way computed property
+
+<input v-model="message">
+
+// ...
+computed: {
+  message: {
+    get () {
+      return this.$store.state.obj.message
+    },
+    set (value) {
+      this.$store.commit('updateMessage', value)
+    }
+  }
+}
+
+https://vuex.vuejs.org/guide/forms.html#two-way-computed-property
+
+So, does `this.$store.commit('updateMessage', value)` trigger an action or a mutation? 
+
+the `.commit` indicates it is triggering the mutation directly. For form bindings that may be sufficient. 
+
+an action would use `.dispatch()`
+
+https://vuex.vuejs.org/guide/actions.html#dispatching-actions
+
+But why bother with an action then? 
+
+> action can dispatch more than 1 mutation at a time, it just implements the business logic, it doesn't care about data changing (which is managed by mutation)
+
+https://stackoverflow.com/questions/39299042/vuex-action-vs-mutations
+
+The two concepts may seem redundant for simple use cases, but can keep code easier to maintain as code grows. 
+
+
+## Modules
+
 https://nuxtjs.org/guide/vuex-store/
+
+is store/index.js required? 
 
 https://vuex.vuejs.org/guide/state.html
 
 https://nuxtjs.org/examples/vuex-store/
 
-
-## Modules
 
 When using Vuex in a Nuxt project, you can use modules to structure the different data objects
 
@@ -54,11 +91,6 @@ When a component needs to make use of multiple store state properties or getters
 ```
 
 
-## Import from JSON
-
-If you have data stored in JSON files, you can load that in when Nuxt initializes. 
-
-
 ## Getters 
 
 If you want to do the equivalent of a computed value with a Vuex store, you want getters:
@@ -72,6 +104,11 @@ https://stackoverflow.com/questions/46210109/how-do-i-call-a-getter-from-another
 Having trouble pulling these back into a component:
 
 https://tenmilesquare.com/understanding-mapgetters-in-vuex/
+
+
+## Import from JSON
+
+If you have data stored in JSON files, you can load that in when Nuxt initializes. 
 
 
 ## ORM
