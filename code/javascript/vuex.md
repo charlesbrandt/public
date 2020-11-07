@@ -241,6 +241,8 @@ https://github.com/championswimmer/vuex-persist
 
 via
 https://alligator.io/vuejs/vuex-persist-state/
+
+https://www.npmjs.com/package/nuxt-vuex-localstorage
     
 
 ## Vuex Alternatives

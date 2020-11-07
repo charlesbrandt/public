@@ -92,6 +92,10 @@ https://gitlab.com/charlesbrandt/public/-/blob/master/code/javascript/vuex.md
     }
   },
 
+https://nuxtjs.org/docs/2.x/features/meta-tags-seo/
+
+If these are set in child components, those settings may over-ride settings in the main page being rendered. It is best to set these only at a page level, and avoid including pages in other pages. 
+
 https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-name-in-the-page-title#48286279
 
 https://redfern.dev/articles/adding-social-media-seo-meta-data-using-nuxt-content/

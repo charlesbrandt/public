@@ -215,3 +215,9 @@ export default {
 via:
 https://forum.vuejs.org/t/passing-data-back-to-parent/1201
 
+
+## Desktop application
+
+For creating a desktop application with Vue, see `vue-nodegui`
+
+
