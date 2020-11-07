@@ -28,6 +28,25 @@ Nuxt simplifies the configuration and structure of a Vue project for a community
 
 See: [Nuxt](nuxt.md)
 
+`vue-cli` is another option. 
+
+
+## Style Guide / Naming Conventions
+
+> Filenames of single-file components should either be always PascalCase or always kebab-case.
+
+[via](https://vuejs.org/v2/style-guide/#Single-file-component-filename-casing-strongly-recommended)
+
+In Javascript, camelCase is typically used for most variable and method names in code. 
+
+Components are typically named in PascalCase. 
+
+However, `kebab-case.vue` is the way to go for filenames for single file components. 
+
+It is tempting to use PascalCase for component filenames. Tried it out. Now leaning against that idea. 
+
+`index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames. 
+
 
 ## Components
 
@@ -104,10 +123,6 @@ export default {
 </style>
 ```
 
-### Renderless Components
-
-https://dev.to/codinglukas/vue-js-pattern-for-async-requests-using-renderless-components-3gd
-
 ### Templates
 
 https://vuejs.org/v2/guide/syntax.html
@@ -116,7 +131,6 @@ Common patterns:
 
 List rendering
 https://vuejs.org/v2/guide/list.html#key
-
 
 ### Scripts
 
@@ -132,10 +146,9 @@ https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
 https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
 
+### Renderless Components
 
-## Environment Variables (dotenv)
-
-see [Nuxt](nuxt.md)
+https://dev.to/codinglukas/vue-js-pattern-for-async-requests-using-renderless-components-3gd
 
 
 ## Slots & Props
@@ -156,10 +169,6 @@ https://medium.com/@nicomeyer/vue-js-slots-vs-props-af87078a8bd
 Vue.js: slots vs. props - Nico Meyer - Medium
 
 
-
-## Forms
-
-
 ## Routing
 
 In your script section, use:
@@ -171,12 +180,14 @@ router.push("yourroutename") is NOT the same as router.push({name: "yourroutenam
 via:
 https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
 
+see also: router-link and nuxt-link
+
 
 ## Custom Events
 
 If you need to signal a parent component of something that has happened in a child component, use $emit. 
 
-Note:
+Note:  
 If you've hit a situation where this pattern comes up, it may be a good time to consider using [vuex](vuex.md).
 
 Child component triggers clicked event:
@@ -219,5 +230,12 @@ https://forum.vuejs.org/t/passing-data-back-to-parent/1201
 ## Desktop application
 
 For creating a desktop application with Vue, see `vue-nodegui`
+
+## Forms
+
+
+## Environment Variables (dotenv)
+
+see [Nuxt](nuxt.md)
 
 

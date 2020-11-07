@@ -76,6 +76,12 @@ To only expose ports on localhost on the host machine, in docker-compose.yml:
 https://docs.docker.com/compose/compose-file/#ports
 
 
+## Environment Variables
+
+It's possible to put variables in a `.env` file and then reference those variables in the `docker-compose.yml` file
+
+https://medium.com/@cybourgeoisie/docker-env-methods-for-passing-variables-through-docker-compose-801e6fdb4a75
+
 ## Troubleshooting 
 
 For troubleshooting, you can add a command that is sure to run in the docker-compose.yml, e.g.:

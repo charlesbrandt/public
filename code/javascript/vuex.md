@@ -10,6 +10,7 @@ Vuex provides a reactive global shared object space.
 
 ... like a storage system for your front-end application. Where to keep data that is shared between components. 
 
+
 ## 2 way computed property
 
 <input v-model="message">
@@ -21,7 +22,7 @@ computed: {
       return this.$store.state.obj.message
     },
     set (value) {
-      this.$store.commit('updateMessage', value)
+      this.$store.commit('obj/updateMessage', value)
     }
   }
 }
@@ -32,29 +33,52 @@ So, does `this.$store.commit('updateMessage', value)` trigger an action or a mut
 
 the `.commit` indicates it is triggering the mutation directly. For form bindings that may be sufficient. 
 
-an action would use `.dispatch()`
+An action would use `.dispatch()`
 
 https://vuex.vuejs.org/guide/actions.html#dispatching-actions
 
 But why bother with an action then? 
 
-> action can dispatch more than 1 mutation at a time, it just implements the business logic, it doesn't care about data changing (which is managed by mutation)
+> An action can dispatch more than 1 mutation at a time. An action implements the business logic, it doesn't care about data changing (which is managed by mutation)
 
 https://stackoverflow.com/questions/39299042/vuex-action-vs-mutations
 
-The two concepts may seem redundant for simple use cases, but can keep code easier to maintain as code grows. 
+The two concepts may seem redundant for simple use cases. When used together, they can keep code easier to maintain as code grows. 
+
+
+### Module Template
+
+in store/obj.js (replacing obj with the name of your module)
+
+```
+export const state = () => ({
+  list: []
+})
+
+export const mutations = {
+  add(state, text) {
+    state.list.push({
+      text,
+      done: false
+    })
+  },
+  remove(state, { todo }) {
+    state.list.splice(state.list.indexOf(todo), 1)
+  },
+  updateMessage(state, message) {
+    todo.done = !todo.done
+  }
+}
+```
+
+https://nuxtjs.org/guide/vuex-store/
 
 
 ## Modules
 
-https://nuxtjs.org/guide/vuex-store/
-
-is store/index.js required? 
-
 https://vuex.vuejs.org/guide/state.html
 
 https://nuxtjs.org/examples/vuex-store/
-
 
 When using Vuex in a Nuxt project, you can use modules to structure the different data objects
 
@@ -68,6 +92,9 @@ Each module will have three aspects: State, Mutations, and Actions
 
 "It’s very important to keep your state as flat as possible. Deeply nested objects in a state lose reactivity."
 
+is store/index.js required when using modules?
+
+
 ## Process
 
 https://vuex.vuejs.org/guide/
@@ -80,7 +107,6 @@ Trigger the mutation with a call to `store.commit('name_of_mutation')`
 
 
 
-
 ## Mapstate
 
 https://github.com/tc39/proposal-object-rest-spread
@@ -90,10 +116,13 @@ tc39/proposal-object-rest-spread: Rest/Spread Properties for ECMAScript
 When a component needs to make use of multiple store state properties or getters, declaring all these computed properties can get repetitive and verbose. To deal with this we can make use of the mapState helper which generates computed getter functions for us, saving us some keystrokes
 ```
 
+It looks like mapState will only map a getter for the vuex value. If you want to set up a getter and a setter as in the 2-way computed propertery example above, mapstate won't help. 
+
+https://forum.vuejs.org/t/dont-understand-how-to-use-mapstate-from-the-docs/14454/26
 
 ## Getters 
 
-If you want to do the equivalent of a computed value with a Vuex store, you want getters:
+If you want to do the equivalent of a computed value within a Vuex store, you want getters:
 
 https://vuex.vuejs.org/guide/getters.html
 

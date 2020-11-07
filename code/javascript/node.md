@@ -112,3 +112,16 @@ nodemon vs pm2 - Google Search
 TODO:
 is it really a good idea to track this under version control?
 seems like it adds a lot of noise to the process
+
+Yes, it can add noise if you manage it manually. However, without it you may run into situations where deployments to a different environment may not work due to different versions of modules being installed. It's better to test with a set of locked versions. In that case, package-lock.json is necessary. 
+
+### Resolving lockfile conflicts
+
+Occasionally, two separate calls to `npm install` will create package locks that cause merge conflicts in source control systems. As of npm@5.7.0, these conflicts can be resolved by manually fixing any package.json conflicts, and then running npm install [--package-lock-only] again. npm will automatically resolve any conflicts for you and write a merged package lock that includes all the dependencies from both branches in a reasonable tree. If --package-lock-only is provided, it will do this without also modifying your local node_modules/.
+
+To make this process seamless on git, consider installing npm-merge-driver, which will teach git how to do this itself without any user interaction. In short: $ npx npm-merge-driver install -g will let you do this, and even works with pre-npm@5.7.0 versions of npm 5, albeit a bit more noisily. Note that if package.json itself conflicts, you will have to resolve that by hand and run npm install manually, even with the merge driver.
+
+[via](https://docs.npmjs.com/cli/v6/configuring-npm/package-locks)
+
+See also
+https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
