@@ -100,7 +100,7 @@ To change the background color, it may be necessary to use:
 
     dconf-editor 
 
-    gsettings set org.gnome.desktop.background primary-color '#000000'
+    gsettings set org.gnome.desktop.background primary-color '#DDDDDD'
 
 It is possible to set by right clicking on the desktop
 but so far I have had difficulty setting it to an image other than those provided by default. 

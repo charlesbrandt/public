@@ -4,7 +4,7 @@ It's a good idea to use a different password for different services. That way, i
 
 If you use the same password everywhere, then you should change it everywhere after a security breach. Probably not going to happen. 
 
-If you use different passwords for different services, it becomes impossible to memorize all of them. Enter password managers. 
+If you use different passwords for different services, it becomes impossible to memorize all of them. Password managers help track all of the different passwords in a secure fashion. 
 
 Encrypting a collection of passwords is necessary if you're going to store them digitally. Good solutions exist for helping you meet this goal. 
 
@@ -15,15 +15,33 @@ KeePass is one of the older open-source solutions for tracking passwords. There 
 
 KeePass stores the encrypted password database locally. The tricky part is keeping your key database in sync across multiple devices. Keepass doesn't have that functionality built in. I prefer to keep the database file stored locally rather than in a cloud based service. I use git to synchronize it across devices. 
 
+https://github.com/lgg/awesome-keepass
+
+
+### Desktop
+
+KeepassXC is an updated fork of KeepassX. KeepassX is a good cross platform option. 
+
+https://keepassxc.org/
+
+    sudo apt install keepassxc
+
+To copy a password to the system clipboard, do not open the entry details. Ctrl-C is enabled on the find / filter list. It's not available in the details. 
+
+Older version
+
 https://www.keepassx.org/
  
     sudo apt-get install keepassx
+
+KeePass.info seems to be the official desktop client
 
 https://keepass.info/
 KeePass Password Safe
 
 https://keepass.info/help/v2_dev/customize.html
 0x8	8 	Disable controls to specify after how many days the master key should/must be changed.
+
 
 ### Android
 

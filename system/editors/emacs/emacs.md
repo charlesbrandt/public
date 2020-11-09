@@ -9,16 +9,23 @@ Some systems come with emacs already installed. This is rare. Usually you'll nee
     sudo apt-get install emacs emacs-goodies-el
     
 (emacs-goodies-el is optional!)
-
+    
+Link to your configurations:
+ 
+```
+git clone --recurse-submodules git@github.com:charlesbrandt/public.git
+cd
+rm .emacs
+rm .emacs.d
+ln -s ~/public/system/editors/emacs/.emacs .emacs
+ln -s ~/public/system/editors/emacs/.emacs.d .emacs.d
+```
 
 Sometimes emacs will create a configuration directory if it is run and one doesn't already exist. (dangerous! make sure you don't have any old configurations here!)
 
     rm -rf .emacs.d/
-    
-Link to your configurations:
- 
-    git clone https://github.com/charlesbrandt/public
-    
+
+
 ## Configuration
 
 Settings are stored in `.emacs` and `.emacs.d` directories. 

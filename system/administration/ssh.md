@@ -1,10 +1,9 @@
 # SSH
 
-SSH allows accessing a remote computer via a "secure shell". This provides a command line interface to another system that is accessible via your network. 
+SSH allows accessing a remote computer via a "secure shell". This provides a command line interface to a remote system that is accessible via your network. 
 
     ssh username@machine_address
     
-
 It's usually best to configure public key authentication (and even disable password authentication).
 
 
@@ -22,8 +21,12 @@ Use ssh-copy-id to transfer the public key to the machine you want to be able to
 
     ssh-copy-id user@hostname.example.com
 
+Or, if you're adding the id to a remote service like [Github](https://github.com/settings/keys), show the public key:
 
-## SSHD 
+    cat .ssh/id_rsa.pub 
+
+
+## SSH Server (SSHD)
 
 If the machine doesn't have an ssh server running, you can install one:
 
@@ -38,6 +41,7 @@ To find out ip
 On older systems it was:
 
     ifconfig
+
 
 ## Known Hosts
 

@@ -2,19 +2,18 @@
 
 Docker implements a container solution. Containers are a lighter weight alternative to a full virtual machine. They are run on the host operating system, but they are encapsulated to provide isolation, security, and compartmentalization. 
 
-Docker has great documentation:
+Docker has great documentation:  
 https://docs.docker.com/
 
-and this is a great overview:
+This is a great overview:  
 https://docs.docker.com/engine/understanding-docker/
 
 https://docs.docker.com/engine/userguide/
 
-This cheat sheet is a great overview, and closely resembles what these notes cover:
+This cheat sheet is another great overview, and closely resembles what these notes cover:  
 https://github.com/wsargent/docker-cheat-sheet
 
-This guide also has a nice introduction to what containers are:
-
+This guide also has a nice introduction to what containers are:  
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
 
@@ -27,10 +26,11 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
+
 ```
 sudo apt-get update
 
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
@@ -38,6 +38,7 @@ sudo apt-key fingerprint 0EBFCD88
 ```
 
 This command will look up the version of your os:
+
 
 ```
 sudo add-apt-repository \

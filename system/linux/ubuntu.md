@@ -1,9 +1,14 @@
 # Ubuntu
 
-Install your preferred [editor](../editors/).
+````
+which git
+sudo apt-get install git
+```
 
 [Generate ssh-keys](../administration/ssh.md)
 Install an ssh server if you plan to connect to the machine remotely
+
+Install your preferred [editor](../editors/).
 
 Auto-hide the Dock (Settings->Appearance->Dock)
 
@@ -23,5 +28,5 @@ Install [Docker / Docker-compose](../virtualization/docker.md)
 
 Install a [password manager](../administration/password_manager.md)
 
-Install other applications, as needed. 
+[Install other applications, as needed.](../applications.md)
 

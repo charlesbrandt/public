@@ -123,9 +123,13 @@ Tools -> Preferences
 Uncheck:
    - Integrate video in interface
    - Use only one instance when started from file manager
+   - Show Systray Icon
+   
 
 View -> Playlist
 Close browser tree in playlist view. (drag panel closed via middle)
+
+View -> Advanced Controls (check / enable)
 
 (Doesn't seem to have any effect, messages still appear:)
 Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
@@ -138,4 +142,6 @@ Change "Continue where left off" from Ask to Never
     sudo apt-get install ffmpeg
 
 
+## VS Code
 
+[VS Code](editors/vs_code/vs_code.md)

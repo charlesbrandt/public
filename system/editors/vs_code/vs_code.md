@@ -97,6 +97,11 @@ To improve the formatting of your source code, you can use the Format Document c
 
 https://code.visualstudio.com/docs/languages/html
 
+### Multiple Cursors
+
+I disable the Ctrl-Up and Ctrl-Down feature for creating cursors (see Keybindings below), but it is still possible to create multiple cursors with the mouse using Alt-Click. 
+
+https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
 
 ## Keybindings
 
@@ -117,7 +122,7 @@ You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcu
 ### Custom keyboard shortcut bindings
 
 ``` json
-// Place your key bindings in this file to override the defaultsauto[]
+// Place your key bindings in this file to override the defaults
 [
     {
         "key": "ctrl+b",
@@ -303,6 +308,8 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 ### Prettier
 
+Prettier - Code formatter
+
 helps with code formatting
 
 https://glebbahmutov.com/blog/configure-prettier-in-vscode/
@@ -316,14 +323,14 @@ may require the project to install prettier as a dev dependency so that vscode h
 
 ### Python
 
-### Docker
-
 ### YAML
 
 ### Bracket Pair Colorizer
 
 ### Import Cost
 
+
+### Docker
 
 ### HTML Preview
 
