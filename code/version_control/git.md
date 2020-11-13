@@ -271,6 +271,8 @@ Merging vs. Rebasing | Atlassian Git Tutorial
 
 ## Submodules
 
+Submodules are remote repositories that are tracked separately, but needed for the local project to work. 
+
 Submodles allow for external dependencies to be noted and included. 
 
 To get submodules on clone: 
@@ -296,7 +298,13 @@ hint: 	git rm --cached path/to/mod
 hint:
 hint: See "git help submodule" for more information.
 
-#### Remove a submodule
+### Add a submodule
+
+    git submodule add https://github.com/chaconinc/DbConnector
+
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+### Remove a submodule
 
 To remove a submodule you need to:
 

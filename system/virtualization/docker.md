@@ -413,3 +413,18 @@ Looks like Seth has another tactic for this here:
 
 https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
 
+
+### Python
+
+Example Dockerfile
+
+```
+FROM python:3
+COPY requirements.txt /srv/app/requirements.txt
+WORKDIR /srv/app
+RUN pip install -r requirements.txt
+```
+
+https://hub.docker.com/_/python/
+
+https://stackoverflow.com/questions/34398632/docker-how-to-run-pip-requirements-txt-only-if-there-was-a-change

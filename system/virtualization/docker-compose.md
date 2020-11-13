@@ -62,7 +62,21 @@ command: bash -c "
 
 https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
 
-Beyond that, and you may want to consider building a custom image with a dedicated [Dockerfile](docker.md). 
+Beyond that, and you may want to consider building a custom image with a dedicated Dockerfile. 
+
+The dockerfile can be specified in the docker-compose.yml file with:
+
+
+```
+container-name:
+   build:
+      context: .
+      dockerfile: <Below_Directory>/Dockerfile
+
+```
+
+Reminder
+Image for service was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
 
 ## Networking
 

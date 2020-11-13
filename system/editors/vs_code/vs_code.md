@@ -347,6 +347,34 @@ https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer&ssr=
 ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
 
 
+### Remote Development
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh
+
+https://github.com/Microsoft/vscode-remote-release
+
+I just had better luck configuring the 'Remote - SSH' extension
+https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication
+
+When configuring the connection, only specify 'username@host'. 
+
+do **not** include 'ssh -A ' in front of the username@host. 
+
+You'll need to install any additional required extensions (e.g. Vetur) to the ssh server separately. Syntax highlighting works when I do that. 
+
+#### Previously
+
+The remote development extension allows editing code on a remote server over SSH.
+
+https://code.visualstudio.com/docs/remote/remote-overview
+
+https://code.visualstudio.com/remote-tutorials/ssh/getting-started
+
+https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
+
+
+
+
 ## Other Extensions
 
 ### Live Server
@@ -412,21 +440,10 @@ Evaluate:
 npm
 npm intellisense
 
-### Remote Development
-
-The remote development extension allows editing code on a remote server over SSH.
-
-https://code.visualstudio.com/docs/remote/remote-overview
-
-https://code.visualstudio.com/remote-tutorials/ssh/getting-started
-
-https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
-
-However, I had difficulty getting syntax highlighting to work.
 
 ### Journal
 
-It's a pretty heavy application memory-wise to keep lots of open files. There are better editors for keeping notes.
+It's a pretty heavy application memory-wise to keep lots of open files / instances. There are better editors for keeping notes.
 
   'ctrl-j': 'moments-atom:journal'
 
