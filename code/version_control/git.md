@@ -150,7 +150,7 @@ Git - Temporarily ignore trivial changes to files - Stack Overflow
 
 Assumes you have already checked out the repository locally. Then:
 
-     git checkout -b upstream
+    git checkout -b upstream
 
 Which is shorthand for:
 
@@ -205,6 +205,7 @@ git push <remote> --delete <old_name>
 # Or shorter way to delete remote branch [:]
 git push <remote> :<old_name>
 
+git remote -v
 # Push the new branch to remote
 git push <remote> <new_name>
 

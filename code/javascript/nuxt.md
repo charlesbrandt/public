@@ -2,9 +2,7 @@
 
 [Vue](vue.md) is a good place to start, but Nuxt is even better.
 
-Nuxt provides informed default options as a foundation for your project. A few more reasons to use Nuxt:
-
-https://zendev.com/2018/09/17/frontend-architecture-lessons-from-nuxt-js.html
+Nuxt provides informed default options as a foundation for your project. [A few more reasons to use Nuxt](https://zendev.com/2018/09/17/frontend-architecture-lessons-from-nuxt-js.html)
 
 Nuxt is improving rapidly. Always check the official docs for the most up-to-date API. 
 
@@ -60,9 +58,25 @@ If API calls only happen once the page has loaded, you won't see much improvemen
 TODO:
 How to specify parameters via the route? 
 
+see web-ui-api-db/ui/pages/docs/* as an example pattern
+
+https://nuxtjs.org/docs/2.x/directory-structure/pages#dynamic-pages
+
+
 in ./pages/ directory:
 
 index.vue must be lowercase here! (Will not work with Index.vue)
+
+
+## Conventions
+
+### Sub-directories
+
+It's okay to put items in the `components/` directory in sub-directories. e.g.
+
+    components/common/*
+    
+Nuxt will still find them all! :)
 
 
 ## Vuex (Persistence)
@@ -101,113 +115,38 @@ https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-n
 https://redfern.dev/articles/adding-social-media-seo-meta-data-using-nuxt-content/
 
 
-## Style / Sass / CSS
+## Styles
 
-Nuxt includes Vue Loader out of the box. To get Sass working, 
+Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc. 
 
-    npm install --save-dev node-sass sass-loader
-    
-https://nuxtjs.org/faq/pre-processors/
-
-To get, for example, bulma utilities available in every component
-(don't need nuxtjs/bulma in this case)
-
-    npm install --save bulma
+[Bulma / Sass](web-ui-api-db/docs/nuxt/style.md)
 
 
-create `ui/assets/main.scss`
+## Remote calls
 
-```
-/* Import Bulma Utilities */
-@import '~bulma/sass/utilities/initial-variables';
-@import '~bulma/sass/utilities/functions';
-
-/* Variable changes go here */
-
-// Colours
-$primary: #d0eeed;
-$secondary: #d0e0ee;
-
-// Breakpoints
-$tablet: 724px;
-$desktop: 960px + (2 * $gap);
-$widescreen: 1152px + (2 * $gap);
-$fullhd: 1344px + (2 * $gap);
-
-/* Import the rest of Bulma */
-@import '~bulma';
-```
-
-in nuxt.config.js
-
-```
-css: [{ src: '~/assets/main.scss', lang: 'scss' }],
-```
-
-Then in components, bulma variables should be accessible
-
-```
-<style scoped lang="scss">
-.responsive-logo {
-  border: 1px dashed #990000;
-  @include until($desktop) {
-    border-bottom: 1px solid green;
-    width: '112';
-    height: '28';
-  }
-
-  @include from($tablet) {
-    border-left: 2px solid yellow;
-  }
-
-  @include tablet {
-    border-top: 2px solid orange;
-  }
-  @include widescreen-only {
-    border-right: 2px solid blue;
-  }
-}
-</style>
-```
-
-
-npm install --save @nuxtjs/style-resources
-
-another guide
-https://www.freecodecamp.org/news/up-goind-with-nuxt-js-bulma-and-sass/
-
-This guide seems better... may allow skipping style-resources?
-https://www.gavsblog.com/blog/adding-bulma-to-nuxt-js-with-changeable-variables
-
-seems like style-resources is necessary for this functionality
-
-
-https://nuxtjs.org/api/configuration-css/
-
-### Themes
-
-For Vuetify, themes are defined in `nuxt.config.js`
-
-and custom variables can be placed:
-
-    assets/variables.scss
-
-
-
-
-## Axios
-
-In a method can make remote calls with something like
+In a method, you can make remote calls with something like
 
     const ip = await this.$axios.$get('http://icanhazip.com')
 
 https://axios.nuxtjs.org/usage/
 
-Nuxt comes with a special function for handling axios requests when called from a server side rendering context:
+Nuxt comes with special functions for handling axios requests when called from a server side rendering context.
+
+### fetch
+
+https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12
+
+Fetch seems like an improved method for retrieving data. 
+
+The component context is available. Assignments to the data can be made directly with this.[local data variable name]
 
 ### asyncData
 
+The component context is not available directly in asyncData, so a context must be passed in. The return value will eventually get merged in with the component's data. 
+
 https://nuxtjs.org/guide/async-data/
+
+### Gotchas
 
 If you get an error like:
 
@@ -215,14 +154,14 @@ If you get an error like:
 
 The nuxt server may be initiating the axios call for server side rendering. If you're using a containerized setup with nginx acting as a proxy, the source address may be different relative to the server. Haven't figured out how to specify a different source based on context (server vs client). However, you can also use a method that gets called on mounted so it only runs on the client. (skip server rendering)
 
-Going to try wrapping request in if(process.server) within the asyncData method of the page
+Going to try wrapping request in `if (process.server)` within the retrieval methods of the page
 
 ```
     let urlPrefix
     if (process.server) {
-      urlPrefix = context.$config.api_url_ssr
+      urlPrefix = context.$config.apiUrlSSR
     } else {
-      urlPrefix = context.$config.api_url
+      urlPrefix = context.$config.apiUrl
     }
 
     const personData = await context.$axios.get(
@@ -231,7 +170,6 @@ Going to try wrapping request in if(process.server) within the asyncData method 
     return {
       person: personData.data,
     }
-
 ```
 
 https://stackoverflow.com/questions/61354470/nuxt-fetching-data-only-on-server-side
@@ -240,8 +178,8 @@ More configuration options
 
 https://axios.nuxtjs.org/options/
 
+More details about Axios are here:
 [See also fetching_data.md](fetching_data.md)
-
 
 
 ## External Modules / Plugins
@@ -303,7 +241,6 @@ export default {
 https://medium.com/@codebeast_/why-your-third-party-plugin-dont-work-in-nuxt-and-how-to-fix-it-d1a8caadf422
 
 
-
 ## Configuration
 
 ### Configure host and port
@@ -314,7 +251,7 @@ As direct arguments
 
     nuxt --hostname 0.0.0.0 --port 3333
 
-Or in package.json
+In package.json
 
 ```
 "scripts": {
@@ -335,7 +272,6 @@ export default {
 ```
 
 .env options available too
-
 
 ### Configuration Variables (.env) dotenv 
 
@@ -403,61 +339,27 @@ You can change this by using \$config instead
     <p>{{$config.baseURL}}</p>
 
 
+## Layouts
 
-#### Old approches
-
-https://nuxtjs.org/api/configuration-env
-
-Doesn't look like nuxt requires a separate dotenv module any more (as of 2020). 
-
-Variables will be available in your nuxt application via process.env.whatever.
+A page component can specify the layout to use in script section with 
 
 ```
-  mounted() {
-    // works
-    console.log('Process:', process.env.BASE_URL)
-
-    // does not work
-    //console.log('Context:', context.env.BASE_URL)
-    //console.log('Context:', this.env.BASE_URL)
-  }
+<script>
+export default {
+   ...
+ 
+   layout: 'default', 
+}
+</script>
 ```
 
-If you want to use them in a template in your component, you should define a local variable in `data {}` that references the corresponding process.env
+As of version 2.14, there is a bug when multiple layouts are available. 
 
-``` component.vue
-  data() {
-    return {
-      baseURL: process.env.BASE_URL
-    }
-  },
- ```
+https://github.com/nuxt/nuxt.js/issues/3877
 
-If you want to access those variables in a component's template without defining them locally every time, you could add them to the Vuex store
+### Error Pages
 
-
-
-https://stackoverflow.com/questions/53535362/how-to-make-nuxt-global-object
-
-
-https://nuxtjs.org/api/configuration-env/
-
-"""
-Note that Nuxt uses webpack's definePlugin to define the environmental variable. This means that the actual process or process.env from Node.js is neither available nor defined. Each of the env properties defined in nuxt.config.js is individually mapped to process.env.xxxx and converted during compilation.
-
-Meaning, console.log(process.env) will output {} but console.log(process.env.your_var) will still output your value. When webpack compiles your code, it replaces all instances of process.env.your_var to the value you've set it to. ie: env.test = 'testing123'. If you use process.env.test in your code somewhere, it is actually translated to 'testing123'.
-"""
-
-Alternatively, you can manually configure variables in nuxt.config.js:
-
-``` nuxt.config.js
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
-  },
-```
-
-
-## Error Pages / Layouts
+Error pages are a special type of Layout. 
 
 Nuxt does not ship with a layout for error pages by default. This will be called for any un-handled error conditions.
 

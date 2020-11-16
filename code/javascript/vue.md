@@ -62,67 +62,6 @@ Soon:
 https://gitlab.com/charlesbrandt/web-ui-api-db/-/blob/main/ui/pages/blank.vue
 
 
-```
-<template>
-  <div class="component">
-    <draggable :list="list">
-      <div v-for="element in list" :key="element.name" class="dragArea">
-        {{ element.name }}
-      </div>
-    </draggable>
-    <slot />
-  </div>
-</template>
-
-<script>
-import draggable from 'vuedraggable'
-// import axios from 'axios'
-
-export default {
-  components: {
-    draggable,
-  },
-  // https://vuejs.org/v2/guide/components-props.html#Type-Checks
-  // String, Number, Boolean, Array, Object, Date, Function, Symbol
-  props: {
-    person: {
-      type: Object,
-      default: () => {},
-    },
-    parameter: {
-      type: String,
-      default: 'Greetings',
-    },
-    something: Boolean,
-  },
-  // https://nuxtjs.org/guide/async-data/
-  /* async asyncData({ params }) {
-    const { data } = await axios.get(`http://localhost:8888/json-path/data`)
-    return { items: data }
-  },
-  */
-  data() {
-    return {
-      list: [{ name: 'One' }, { name: 'Two' }, { name: 'Three' }],
-    }
-  },
-  computed: {},
-}
-</script>
-
-<style>
-.dragArea {
-  position: relative;
-  text-align: left;
-  display: inline-block;
-  margin: 0;
-  width: 150px;
-  height: 150px;
-  vertical-align: top;
-}
-</style>
-```
-
 ### Templates
 
 https://vuejs.org/v2/guide/syntax.html
@@ -144,11 +83,9 @@ https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
 ### Dynamic Styles
 
+Using variable in vue component to affect CSS styles
+
 https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
-
-### Renderless Components
-
-https://dev.to/codinglukas/vue-js-pattern-for-async-requests-using-renderless-components-3gd
 
 
 ## Slots & Props
@@ -157,16 +94,43 @@ Use Props when you want to pass in a js object to a child component.
 
 Use Slots when you want to pass in template markup to a child component. 
 
+https://medium.com/@nicomeyer/vue-js-slots-vs-props-af87078a8bd
+Vue.js: slots vs. props - Nico Meyer - Medium
+
+### Props
+
+Example props. Linters may encourage the full form
+```
+  // https://vuejs.org/v2/guide/components-props.html#Type-Checks
+  // String, Number, Boolean, Array, Object, Date, Function, Symbol
+  props: {
+    person: {
+      type: Object,
+      default: () => {},
+    },
+    list: {
+      type: Array,
+      default: () => [],
+    },
+    parameter: {
+      type: String,
+      default: 'Greetings',
+    },
+    something: Boolean,
+  },
+```
+
 https://vuejs.org/v2/guide/components-props.html
 Props — Vue.js
+
+### Slots
+
 https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots
 Slots — Vue.js
 https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md
 rfcs/0001-new-slot-syntax.md at master · vuejs/rfcs
 https://www.google.com/search?client=ubuntu&channel=fs&q=vue+props+vs+slots&ie=utf-8&oe=utf-8
 vue props vs slots - Google Search
-https://medium.com/@nicomeyer/vue-js-slots-vs-props-af87078a8bd
-Vue.js: slots vs. props - Nico Meyer - Medium
 
 
 ## Routing
@@ -227,9 +191,15 @@ via:
 https://forum.vuejs.org/t/passing-data-back-to-parent/1201
 
 
+## Renderless Components
+
+https://dev.to/codinglukas/vue-js-pattern-for-async-requests-using-renderless-components-3gd
+
+
 ## Desktop application
 
 For creating a desktop application with Vue, see `vue-nodegui`
+
 
 ## Forms
 
