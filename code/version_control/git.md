@@ -331,22 +331,33 @@ How to Run Your Own Git Server | Linux.com | The source for Linux information
 https://www.google.com/search?q=linux+git+server
 linux git server - Google Search
 
-It is best to have a local master repo that different machines can clone from. You can create a copy of the master repository by running:
-
-    cd /path/to/current/checked/out/repository
-    git clone --bare . /path/to/master/repository
-
 When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
 
-    - Log into the server machine.
-    - Create a bare repo using `git init --bare`
-    - On the client machine you can push your repo to the server. 
+  - Log into the server machine.
+  - Create a bare repo using 
     
-    git remote add origin ssh://user@server:/GitRepos/myproject.git 
+        git init --bare
+    
+  - On the client machine check for existing origins
+  
+        git remote -v
+  
+    (if you need to delete an existing origin): 
+    
+        git remote remove origin
+
+  - push your repo to the server
+    
+        git remote add origin ssh://user@server:/GitRepos/myproject.git         
     
     followed by 
     
-    git push origin master
+        git push origin main
+
+On the server, it is best to have a local master 'bare' repo that different machines can clone from. You can create a copy of the master repository by running:
+
+    cd /path/to/current/checked/out/repository
+    git clone --bare . /path/to/master/repository
 
 [via](https://stackoverflow.com/questions/6167905/git-clone-through-ssh)
 
