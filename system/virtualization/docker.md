@@ -428,3 +428,14 @@ RUN pip install -r requirements.txt
 https://hub.docker.com/_/python/
 
 https://stackoverflow.com/questions/34398632/docker-how-to-run-pip-requirements-txt-only-if-there-was-a-change
+
+
+## Users
+
+https://medium.com/@mccode/processes-in-containers-should-not-run-as-root-2feae3f0df3b
+
+```
+RUN groupadd --gid 9876 projectgroup
+RUN useradd -ms /bin/bash --uid 1234567 --gid 9876 projectdev
+USER projectdev
+```
