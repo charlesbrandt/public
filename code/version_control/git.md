@@ -74,6 +74,15 @@ If you think you want to store your password, consider setting up an ssh key wit
 These are stored in plaintext, so it is insecure.
 via: https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github
 
+### Collaborative Commits 
+
+git commit -m "Commit title
+Commit body
+
+Co-authored-by: Charles Brandt <code@charlesbrandt.com>
+Co-authored-by: 
+"
+
 
 ## Resoving a conflict
 
