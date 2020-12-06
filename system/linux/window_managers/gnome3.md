@@ -3,6 +3,16 @@
 Super L or Super R (often a 'windows' key) will usually bring up launcher for launching tasks
 
 
+## Restarting
+
+Restart GNOME by pressing Alt+F2 and running the command r (X.org) or log out and back in (Wayland). Do this whenever you want to apply and test a change of the code.
+
+This restores functionality without a full system restart! 
+This fixes when gnome-shell starts running full resources
+
+https://github.com/mzur/gnome-shell-wsmatrix
+
+
 ## Dock Settings
 
 Settings -> Appearance -> Auto-hide the Dock
