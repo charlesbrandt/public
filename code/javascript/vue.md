@@ -77,6 +77,45 @@ https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 Using variable in vue component to affect CSS styles
 
 https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
+css - Vue.js dynamic <style> with variables - Stack Overflow
+
+https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css/52280182#52280182
+In vue.js component, how to use props in css? - Stack Overflow
+
+```
+<template>
+  <div id="a" :style="style" @mouseover="mouseOver()">
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'SquareButton',
+    props: ['color'],
+    computed: {
+      style () {
+        return 'background-color: ' + this.hovering ? this.color: 'red';
+      }
+    },
+    data () {
+      return {
+        hovering: false
+      }
+    },
+    methods: {
+      mouseOver () {
+       this.hovering = !this.hovering
+      }
+    }
+  }
+</script>
+
+<style scoped>
+<style>
+```
+
+See also ~/design_system/ui/pages/windows.vue
+
 
 ## Slots & Props
 
@@ -122,6 +161,14 @@ https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md
 rfcs/0001-new-slot-syntax.md at master · vuejs/rfcs
 https://www.google.com/search?client=ubuntu&channel=fs&q=vue+props+vs+slots&ie=utf-8&oe=utf-8
 vue props vs slots - Google Search
+
+## For Loops
+
+https://stackoverflow.com/questions/44617484/vue-js-loop-via-v-for-x-times-in-a-range
+javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow
+
+    <li v-for="n in 10">{{ n }} </li>
+
 
 ## Routing
 

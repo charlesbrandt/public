@@ -40,17 +40,21 @@ See also: [Package Manager](../package_management.md)
 
 NPM is the default package manager for Node. 
 
+Install everything as configured in package.json file
+
+    npm install
+
 Calls to 
 
-    npm install --save 
+    npm install --save [package name]
 
 or 
   
-    npm install --save-dev 
+    npm install --save-dev [package name]
     
 or 
 
-    npm install --save-optional 
+    npm install --save-optional [package name]
 
 will update the package.json to list your dependencies.
 

@@ -140,6 +140,21 @@ https://stackoverflow.com/questions/13442130/git-temporarily-ignore-trivial-chan
 Git - Temporarily ignore trivial changes to files - Stack Overflow
 
 
+## Fork
+
+A fork is essentially just a clone. 
+
+https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github
+
+### `origin` vs `upstream`
+
+
+    git remote add upstream git@example.com:project/boilerplate.git
+
+    git remote -v
+
+https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
+
 
 ## Branches
 
@@ -175,12 +190,6 @@ https://nvie.com/posts/a-successful-git-branching-model/
 https://stackoverflow.com/questions/15072243/git-with-development-staging-and-production-branches
 
 https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
-
-### Setting tracking source
-
-If you wish to set tracking information for this branch you can do so with:
-
-    git branch --set-upstream-to=<remote>/<branch> main
 
 ### Branch from previous commit
 
@@ -227,6 +236,67 @@ https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-an
 via:
 https://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch
 
+### `master` to `main`
+
+```
+git branch -m master main
+git push -u origin main
+```
+
+https://dev.to/afrodevgirl/replacing-master-with-main-in-github-2fjf
+
+Be sure to update defaults in your host:
+
+https://stackoverflow.com/questions/30987216/change-default-branch-in-gitlab
+
+### Delete local branch
+
+    git branch -d <local-branch>
+
+### Setting tracking source
+
+If you wish to set tracking information for this branch:
+
+    git branch --set-upstream-to=<remote>/<branch> main
+
+### Pick up branches from a remote repository
+
+TODO: confirm
+
+    git pull
+    
+should do the trick
+
+### Merging
+
+Allows you to pull in changes from master / different branch. 
+
+Use merge if your branch is already pushed. 
+
+To merge changes
+
+    git merge origin/main
+
+https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
+git import changes on master to branch at DuckDuckGo
+
+See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository. 
+
+### Rebasing
+
+Similar to merge, but re-writes the history. Use rebase if your branch is local and hasn't been pushed to origin. 
+
+Never rebase a public branch / master -- makes a mess for others who have it checked out already
+
+    git checkout name_of_branch
+    git rebase master
+
+https://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git
+version control - Get changes from master into branch in Git - Stack Overflow
+
+https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+Merging vs. Rebasing | Atlassian Git Tutorial
+
 ### Pushing Changes
 
 https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
@@ -247,36 +317,6 @@ git config --global push.default simple # globally for your account
 ```
 
 https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
-
-### Merging
-
-Allows you to pull in changes from master / different branch. 
-
-Use merge if your branch is already pushed. 
-
-To merge changes
-
-    git merge origin/master
-
-https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
-git import changes on master to branch at DuckDuckGo
-
-See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository. 
-
-### Rebasing
-
-Similar to merge, but re-writes the history. Use rebase if your branch is local and hasn't been pushed to origin. rebase will rewrite history. 
-
-Never rebase a public branch / master -- makes a mess for others who have it checked out already
-
-    git checkout name_of_branch
-    git rebase master
-
-https://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git
-version control - Get changes from master into branch in Git - Stack Overflow
-
-https://www.atlassian.com/git/tutorials/merging-vs-rebasing
-Merging vs. Rebasing | Atlassian Git Tutorial
 
 
 ## Submodules
@@ -390,6 +430,8 @@ https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-maste
 
 
 ## Merging two git repositories
+
+This is also the same scenario as working with an upstream or boilerplate. 
 
 If you want to merge project-a into project-b:
 

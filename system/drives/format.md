@@ -80,6 +80,11 @@ Permissions will work on linux with this format, so go ahead and grant some sane
 
     sudo chown -R account: .
 
+More info is kept up-to-date in format.md.
+However, can also see:
+~/public/system/drives/file_systems.md
+
+
 ## Partitions
 
 If the drive is not arranged the way you want it to be, for example, a new drive, you may need to create the partition table on your own. Many operating system installers will do this step for you, but there are cases where you may want to customize it manually. 

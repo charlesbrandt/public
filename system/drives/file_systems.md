@@ -5,4 +5,4 @@ POSIX - Wikipedia
 
 See also:
 
-~/public/storage/storage.md
+~/public/system/drives/exfat.md
