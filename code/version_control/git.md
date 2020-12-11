@@ -56,6 +56,10 @@ $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after one hour (setting is in seconds)
 ```
 
+TODO: It may be possible to automatically set these up on a repository by repository basis. Could be helpful when checking out new repos:
+
+https://orrsella.com/2013/08/10/git-using-different-user-emails-for-different-repositories/
+
 
 ### SSH 
 
@@ -236,7 +240,26 @@ https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-an
 via:
 https://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch
 
-### `master` to `main`
+### Rename master to main
+
+Check out the repository, then
+
+    git branch -m master main
+    git checkout main
+    git push -u origin main
+    
+    git push origin --delete master
+    
+This may require updating the HEAD reference on Github directly. For a locally hosted git repository, edit the `HEAD` file on the server. Then, running the following should work:
+
+    git push origin --delete master
+
+
+### Pushing Changes
+
+https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+When working on a branch, `git pull` will pull changes from the branch, but `git push` has some surprising behavior that tries to push changes to all matching branches:
 
 ```
 git branch -m master main
@@ -386,6 +409,11 @@ When you're not on the server (e.g. created the repo somewhere else), you need t
   - Create a bare repo using 
     
         git init --bare
+    
+  - `main` as default HEAD
+  
+        git branch -m main
+        git push origin HEAD
     
   - On the client machine check for existing origins
   

@@ -129,6 +129,23 @@ https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 
     docker-compose -f docker-compose.builder.yml run --rm install
 
+## Parameters
+
+### -p
+
+If no `container_name` parameter is set in docker-compose.yml, by default, the docker project name is the parent directory name. This is usually the case for local development setups.
+
+There are times, however, when it is useful to make directory names that are different than the project name. For example, working on a different branch, it may be easier to use the branch name instead of the project name for the parent directory.
+
+If the parent directory is **not** equal to the project name, you'll want to pass the project name in to all of the above docker-compose commands.
+
+Using `-p boilerplate` allows the project name (and consequently the container name) to be consistent from one deployment to the next. That way containers are named with `boilerplate_[service]_1`.
+
+This allows configuration files to be written ahead of time to work.
+
+If you've checked out the repository to a directory named `boilerplate`, the project name `boilerplate` will be assumed by docker and the `-p` option may be omitted.
+
+
 ## See Also
 
 orchestration.md

@@ -356,6 +356,8 @@ https://github.com/Microsoft/vscode-remote-release
 I just had better luck configuring the 'Remote - SSH' extension
 https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication
 
+Ctrl-Shift-P -> Remote SSH: connection
+
 When configuring the connection, only specify 'username@host'. 
 
 do **not** include 'ssh -A ' in front of the username@host. 

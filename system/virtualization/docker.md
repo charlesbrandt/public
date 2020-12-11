@@ -194,11 +194,22 @@ When it comes time to build a docker image (so you can ultimately deploy a runni
     - could install ansible using the docker file and then run the ansible playbook via the docker file
     - could use docker to connect to a running container (either using docker connection, or by instantiating a ssh connection to the container) and then commit those changes
 
-Using (one of the) ansible concept seems like the ideal approach, but so far I've hit some walls making this work.
+### Cleaning up old images
 
-start off configuring with just docker to make sure everything works that way first. after that it should be easier to just focus on the ansible integration. 
+Sometimes when testing builds, docker will complain about running out of space:
 
-(does not appear that docker on mac still utilizes a separate docker-machine running on VirtualBox 2017.09.27 16:15:17)
+```
+Thin Pool has 2738 free data blocks which is less than minimum required 2915 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
+```
+
+You can get rid of all images with:
+
+    docker image prune -a --force 
+
+https://stackoverflow.com/questions/41531962/docker-run-error-thin-pool-has-free-data-blocks-which-is-less-than-minimum-req
+
+See also:
+https://docs.docker.com/engine/reference/commandline/image_prune/
 
 
 ## Running a Container
@@ -265,6 +276,7 @@ docker run -d \
   --mount type=bind,src="$(pwd)"/target,dst=/app \
   nginx:latest
 ```
+
 
 ## Networking
 
