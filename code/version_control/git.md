@@ -393,7 +393,19 @@ To remove a submodule you need to:
 https://gist.github.com/myusuf3/7f645819ded92bda6677
 
 
-## Running a server
+## Remotes
+
+Sources that a repository is set up to track or follow. 
+
+The `origin` is the one that the repo will push to / pull from by default. 
+
+It is possible to have more than one remote ! 
+
+Remotes can be called whatever you want. 
+
+`upstream` can be useful for tracking something like a boilerplate for a project. 
+
+### Running a server
 
 It's pretty much as simple as having an SSH server running and being able to connect over that.
 
@@ -456,8 +468,7 @@ An alternative solution could use different branches on either the remote device
 
 https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
 
-
-## Merging two git repositories
+### Merging two git repositories
 
 This is also the same scenario as working with an upstream or boilerplate. 
 
@@ -503,7 +514,9 @@ Might have a merge message here, then:
    git remote remove technical
 
 
-## Finding a deleted file in history
+## Removed Content
+
+### Finding a deleted file in history
 
 Sometimes it's easier to use an interface like gitlab (run it locally) or github to browse the history of the commits to the project. 
 
@@ -536,7 +549,7 @@ https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-th
 https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
 
 
-## Remove directory from history
+### Remove directory from history
 
 If someone adds a directory with large binary files, it may be useful to remove that directory from the history to avoid having to download the large binary data with every `clone` of the repo. 
 
@@ -555,7 +568,7 @@ git push origin master --force
 [via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
 
 
-## Changing a commit message
+### Changing a commit message
 
 
 ## GUI Clients
