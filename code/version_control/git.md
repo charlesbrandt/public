@@ -144,6 +144,17 @@ https://stackoverflow.com/questions/13442130/git-temporarily-ignore-trivial-chan
 Git - Temporarily ignore trivial changes to files - Stack Overflow
 
 
+## Moving files / directories
+
+Tracking a move with git with:
+
+    git mv [src] [destination]
+    
+However, currently (2020.12), GitHub is not able to associate the history of a moved file with it's previous location's history:
+
+https://github.community/t/renaming-folder-within-a-repo-loses-file-history/1752
+
+
 ## Fork
 
 A fork is essentially just a clone. 

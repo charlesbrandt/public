@@ -353,7 +353,7 @@ https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh
 
 https://github.com/Microsoft/vscode-remote-release
 
-I just had better luck configuring the 'Remote - SSH' extension
+I've had better luck configuring the 'Remote - SSH' extension
 https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication
 
 Ctrl-Shift-P -> Remote SSH: connection

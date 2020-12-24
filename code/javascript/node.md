@@ -31,6 +31,13 @@ Install Node via NVM:
 via:
 http://stackoverflow.com/a/24404451/1480391
 
+### Nodesource
+
+Nodesource is another popular way to install node
+
+https://github.com/nodesource/distributions/blob/master/README.md
+
+
 
 ## Package Managers
 
