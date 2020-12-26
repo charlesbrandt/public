@@ -62,6 +62,16 @@ Common patterns:
 List rendering
 https://vuejs.org/v2/guide/list.html#key
 
+#### Attributes
+
+:disabled="foo"
+
+<textfield label="Name" value.sync="el.name" :disabled="myVar">
+
+Then in Vue you can just set this.myVar = true and it will disable the input.
+
+https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
+
 ### Scripts
 
 The script block is where you put logic related to your component.
