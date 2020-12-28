@@ -25,24 +25,9 @@ Disable alert sounds like screenshot photo sound:
 
 [via](https://unix.stackexchange.com/questions/444681/how-to-turn-off-alert-sounds-sound-effects-on-gnome-from-terminal)
 
-Not working on 20.04 desktop. Getting the following
+If the `dconf` method does not work, a manual work around is to make all of the sound files silent. 
 
-```
-dconf write /org/gnome/desktop/sound/event-sounds "false"
-error: Cannot autolaunch D-Bus without X11 $DISPLAY
-```
-
-Trying the move approach.
-
-```
-cd /usr/share/sounds/Yaru/stereo
-sudo mkdir originals
-
-sudo mv * originals/
-```
-
-
-Trying creating silent versions of them all:
+AKA create silent versions of them all.
 
 Open Audacity. Generate 1 second silent audio. 
 
@@ -74,6 +59,14 @@ I needed to restart for this change to take effect. Eventually they were replace
 
 [via](https://askubuntu.com/questions/557389/how-can-i-disable-all-ubuntu-sounds)
 
+The move approach for the sound files were ultimately re-added by the system. 
+
+```
+cd /usr/share/sounds/Yaru/stereo
+sudo mkdir originals
+
+sudo mv * originals/
+```
 
 ## Gnome Tweaks
 
@@ -104,7 +97,6 @@ Click on the settings icon next to the toggle to see additional settings for e.g
 ## Desktop Background
 
     gsettings set org.gnome.desktop.background picture-uri file:///home/account/public/template.svg
-
 
 To change the background color, it may be necessary to use:
 

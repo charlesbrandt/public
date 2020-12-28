@@ -5,7 +5,7 @@ Docker implements a container solution. Containers are a lighter weight alternat
 Docker has great documentation:  
 https://docs.docker.com/
 
-This is a great overview:  
+A great overview:  
 https://docs.docker.com/engine/understanding-docker/
 
 https://docs.docker.com/engine/userguide/

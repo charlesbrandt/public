@@ -296,17 +296,16 @@ Adding multiple cursors is still available by default with alt-shift-down and al
 
 ### Vue
 
+By: Pine Wu
+
 https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
 Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
 
 https://vuejs.github.io/vetur/
 
-### Eslint
-
-https://github.com/Microsoft/vscode-eslint
-https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-
 ### Prettier
+
+By: Prettier
 
 Prettier - Code formatter
 
@@ -325,12 +324,20 @@ may require the project to install prettier as a dev dependency so that vscode h
 
 ### YAML
 
+By: Red Hat
+
 ### Bracket Pair Colorizer
 
-### Import Cost
-
+By: CoenraadS
 
 ### Docker
+
+By: Microsoft
+
+### GitLens
+
+By: Eric Amodio
+
 
 ### HTML Preview
 
@@ -345,6 +352,7 @@ https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer&ssr=
 ### Markdown All in One (other options listed below)
 
 ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
+
 
 
 ### Remote Development
@@ -364,7 +372,7 @@ do **not** include 'ssh -A ' in front of the username@host.
 
 You'll need to install any additional required extensions (e.g. Vetur) to the ssh server separately. Syntax highlighting works when I do that. 
 
-#### Previously
+See also / Previously
 
 The remote development extension allows editing code on a remote server over SSH.
 
@@ -373,6 +381,16 @@ https://code.visualstudio.com/docs/remote/remote-overview
 https://code.visualstudio.com/remote-tutorials/ssh/getting-started
 
 https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
+
+
+### Eslint
+
+https://github.com/Microsoft/vscode-eslint
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+
+### Import Cost
+
 
 
 
@@ -385,7 +403,6 @@ Launch a development local Server with live reload feature
 ### Github
 https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github
 ### Git History
-### GitLens
 
 ### Kubernetes
 
