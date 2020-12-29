@@ -21,8 +21,7 @@ Use `+` sign on nav bar.
 
 Have to decide on push or pull. 
 
-For initial pulls / importing repositories, do that during "Create a new project" steps. (https://gitlab.com/projects/new#import_project)
-
+### Push
 
 https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html
 
@@ -36,12 +35,24 @@ https://docs.gitlab.com/ee/user/project/repository/repository_mirroring.html
     Check the Keep divergent refs box, if desired.
     Click the Mirror repository button to save the configuration. 
 
+e.g.
+https://git@github.com:charlesbrandt/public.git
+didn't like
+ssh://git@github.com:charlesbrandt/public.git
+
+### Pull
+
+For initial pulls / importing repositories, do that during "Create a new project" steps. (https://gitlab.com/projects/new#import_project)
 
 To pull in changes from github, generate a token, then add it to gitlab for import from github. 
 
 https://github.com/settings/tokens
 
 https://gitlab.com/import/github/status
+
+
+
+
 
 
 ## Identity
