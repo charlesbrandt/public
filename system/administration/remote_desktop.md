@@ -1,20 +1,61 @@
 # Remote Desktops
 
-There are different protocols that are used to connect to a desktop interface remotely. VNC is free and open source, but not very secure by default. 
+When [SSH](ssh.md) is not enough, there are different protocols that are used to connect to a desktop interface remotely. 
 
 
-## Setting up VNC 
+## Clients
 
-Generally, it's a good idea to establish an SSH tunnel to encrypt the connection (even on a local network):
+### Remmina / Ubuntu 
 
-    ssh <user>@<destination_ip> -L 5900:<destination_ip>:5900 -L 5901:<destination_ip>:5901
+A client that connects to most. Then choose the protocol that works best for your use case:
+
+https://remmina.org/
+
+sudo apt-get install remmina
+[sudo] password for account: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+remmina is already the newest version (1.4.2+dfsg-1ubuntu1).
+
+Installed by default on Ubuntu
+
+### OS X
 
 If connecting from OS X, use the built in VNC viewer / client: Screen Sharing.
 
+### SSH Tunnels
+
+If the remote desktop protocol is not encrypted by default (e.g. VNC), it's a good idea to establish an SSH tunnel to encrypt the connection (even on a local network):
+
+    ssh <user>@<destination_ip> -L 5900:<destination_ip>:5900 -L 5901:<destination_ip>:5901
+    
+
+## Servers / Protocols
+
+### VNC
+
+VNC is free and open source and available by default on Ubuntu.
+
+#### Quick Share (Ubuntu)
+
+Go to settings –  click on sharing on the left panel – enable sharing using the slide switch
+
+Click on Screen sharing (off by-default) – enable “Allow connections to control the screen“.
+
+Select “Require a password” if you don’t want to manually approve connection on the remote computer. Set password as per your preference, you need to give it during remote authentication.
+
+[via](https://cloudlinuxtech.com/enable-remote-desktop-ubuntu/)
+
+!! NOTE !! 
+This will only be enabled after the host has logged in to the desktop
+Not a good option if you don't have a local keyboard / monitor to log in with
+
 Two different ways to go about server configuration...
 
+#### Main Desktop (Login Server)
 
-### Main Desktop (Shared)
+TODO: This looks like the same scenario as the native Ubuntu screen sharing option (above) where remote connections are only available after local login. 
 
 To attach to the existing (main, console) desktop, you'll want to use "x11vnc":
 
@@ -40,16 +81,14 @@ Be sure to specify the full path to the script:
 via:
 http://www.olij.co.uk/whitenoise/set-up-vnc-with-a-ubuntu-server-and-mac-client-simple-ssh-tunnel/
 
-
-### Separate Desktop
+#### Separate Desktop
 
 An alternative approach is to launch a new virtual desktop that is not available on the console. For this you'll want to use something like "tightvncserver".
 
     tightvncserver
     sudo ufw allow 5901
 
-Consider if you need a full blown GUI in this case... it may be easier to just work at the command line.
-
+Consider if you need a full blown GUI in this case... it may be easier to just work at the command line over [SSH](ssh.md).
 
 To start tightvncserver at boot, you'll need an init script
 
@@ -107,9 +146,12 @@ esac
 exit 0
 ```
 
-
-
 It is possible to launch the VNC server when logging in to the desktop (see below), but this gets confusing if you decide to run multiple desktop instances. 
 
-To start this automatically, see below for init scripts to start on boot.
+## RDP
+
+Remote Desktop Protocol is another option. Originally from Windows, there is a server version that can be installed on Ubuntu
+
+
+https://websiteforstudents.com/how-to-connect-via-remote-desktop-rdp-to-ubuntu-20-04-18-04/
 
