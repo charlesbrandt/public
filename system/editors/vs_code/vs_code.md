@@ -338,6 +338,12 @@ By: Microsoft
 
 By: Eric Amodio
 
+### XML
+
+By: Red Hat
+
+Helpful for SVG formatting? 
+Requires Java?
 
 ### HTML Preview
 
