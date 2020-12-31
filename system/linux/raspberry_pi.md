@@ -1,5 +1,7 @@
 # Raspberry Pi
 
+Need a computer?
+This is a great place to start. 
 
 ## Parts
 
@@ -62,6 +64,13 @@ https://www.raspberrypi.org/documentation/installation/installing-images/linux.m
 ## Install SD to Pi
 
 After the flash is complete, insert the SD card into the Pi and connect all the peripherals. Power on the Pi. 
+
+## Change the default password
+
+On Ubuntu the default username / password is: 
+
+U: ubuntu
+P: 
 
 
 ## Rasbian Configuration

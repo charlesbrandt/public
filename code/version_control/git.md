@@ -426,18 +426,39 @@ How to Run Your Own Git Server | Linux.com | The source for Linux information
 https://www.google.com/search?q=linux+git+server
 linux git server - Google Search
 
+#### New repo on server
+
 When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
 
   - Log into the server machine.
   - Create a bare repo using 
     
+    git --version 2.28 and up:
+    
+        git init --initial-branch=main --bare
+
+    git --version older than 2.28
+
         git init --bare
+        git symbolic-ref HEAD refs/heads/main
+
+[via](https://stackoverflow.com/questions/42871542/how-can-i-create-a-git-repository-with-the-default-branch-name-other-than-maste)
+
+Check out the new bare repo on the client:
+
+    git clone account@server:/srv/git/project
     
-  - `main` as default HEAD
+May get `warning: You appear to have cloned an empty repository.` 
+Add some content. At that point, check to see what branch you're on. If it's still set to `master` move it to `main` and push
   
-        git branch -m main
-        git push origin HEAD
-    
+    git branch -a
+    git branch -m main
+    git push origin HEAD
+
+#### Add server to existing repo
+
+If you have an existing repo and want to add a server later
+
   - On the client machine check for existing origins
   
         git remote -v
@@ -453,13 +474,6 @@ When you're not on the server (e.g. created the repo somewhere else), you need t
     followed by 
     
         git push origin main
-
-On the server, it is best to have a local master 'bare' repo that different machines can clone from. You can create a copy of the master repository by running:
-
-    cd /path/to/current/checked/out/repository
-    git clone --bare . /path/to/master/repository
-
-[via](https://stackoverflow.com/questions/6167905/git-clone-through-ssh)
 
 Try git show-ref to see what refs you have. Is there a refs/heads/master?
 

@@ -125,11 +125,6 @@ docker images are stored in:
 via:
 http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
 
-Clear everything out (!!! dangerous !!!)
-
-    docker image rm $(docker image ls -a -q)
-    docker image rm -f $(docker image ls -a -q)
-
 ### Official Images
 
 https://hub.docker.com/search?q=&type=image&image_filter=official
@@ -212,14 +207,6 @@ To specify a Dockerfile, use -f:
     
 https://docs.docker.com/engine/reference/commandline/build/
 
-When it comes time to build a docker image (so you can ultimately deploy a running docker container), there are a few different ways to create the image:
-
- - use a dockerfile to create a new image (recommended process)
- - start a container, make some changes, and then commit that to a new image
- - use ansible to build the image
-    - could install ansible using the docker file and then run the ansible playbook via the docker file
-    - could use docker to connect to a running container (either using docker connection, or by instantiating a ssh connection to the container) and then commit those changes
-
 ### Cleaning up old images
 
 Sometimes when testing builds, docker will complain about running out of space:
@@ -234,6 +221,11 @@ You can get rid of all images with:
 
 https://stackoverflow.com/questions/41531962/docker-run-error-thin-pool-has-free-data-blocks-which-is-less-than-minimum-req
 
+Clear everything out (!!! dangerous !!!)
+
+    docker image rm $(docker image ls -a -q)
+    docker image rm -f $(docker image ls -a -q)
+
 See also:
 https://docs.docker.com/engine/reference/commandline/image_prune/
 
@@ -243,6 +235,8 @@ https://docs.docker.com/engine/reference/commandline/image_prune/
 When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
 
     docker run mhart/alpine-node node --version
+    
+Even with single container setups, it may make sense to use docker-compose to specify what the container is named and any volumes that should be mounted. That also makes it easier to integrate with other docker-compose setups. 
     
 ### Connecting to a Container 
 
