@@ -62,7 +62,6 @@ Common patterns:
 List rendering
 https://vuejs.org/v2/guide/list.html#key
 
-
 See all keys / values in a given object:
 
 ```
