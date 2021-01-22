@@ -229,6 +229,10 @@ Clear everything out (!!! dangerous !!!)
 See also:
 https://docs.docker.com/engine/reference/commandline/image_prune/
 
+Still not enough space?
+There are some nuclear options outlined here -- they will clear everything out, including volumes that may have data on them!
+
+https://stackoverflow.com/questions/36918387/space-issue-on-docker-devmapper-and-centos7
 
 ## Running a Container
 

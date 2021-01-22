@@ -62,6 +62,17 @@ Common patterns:
 List rendering
 https://vuejs.org/v2/guide/list.html#key
 
+
+See all keys / values in a given object:
+
+```
+    <ul>
+      <li v-for="key in Object.keys(item)" :key="key">
+        {{ key }}: {{ item[key] }}
+      </li>
+    </ul>
+```
+
 #### Attributes
 
 :disabled="foo"
@@ -71,6 +82,7 @@ https://vuejs.org/v2/guide/list.html#key
 Then in Vue you can just set this.myVar = true and it will disable the input.
 
 https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
+
 
 ### Scripts
 
