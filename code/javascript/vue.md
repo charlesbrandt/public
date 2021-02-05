@@ -72,6 +72,13 @@ See all keys / values in a given object:
     </ul>
 ```
 
+#### For Loops
+
+https://stackoverflow.com/questions/44617484/vue-js-loop-via-v-for-x-times-in-a-range
+javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow
+
+    <li v-for="n in 10" :key="n">{{ n }} </li>
+
 #### Attributes
 
 :disabled="foo"
@@ -81,7 +88,6 @@ See all keys / values in a given object:
 Then in Vue you can just set this.myVar = true and it will disable the input.
 
 https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
-
 
 ### Scripts
 
@@ -137,7 +143,6 @@ In vue.js component, how to use props in css? - Stack Overflow
 
 See also ~/design_system/ui/pages/windows.vue
 
-
 ## Slots & Props
 
 Use Props when you want to pass in a js object to a child component.
@@ -182,14 +187,6 @@ https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md
 rfcs/0001-new-slot-syntax.md at master · vuejs/rfcs
 https://www.google.com/search?client=ubuntu&channel=fs&q=vue+props+vs+slots&ie=utf-8&oe=utf-8
 vue props vs slots - Google Search
-
-## For Loops
-
-https://stackoverflow.com/questions/44617484/vue-js-loop-via-v-for-x-times-in-a-range
-javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow
-
-    <li v-for="n in 10">{{ n }} </li>
-
 
 ## Routing
 

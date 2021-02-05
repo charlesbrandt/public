@@ -118,15 +118,18 @@ https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8
 nodemon vs pm2 - Google Search
 
 
-## package-lock.json
+## Lock files
 
-TODO:
-is it really a good idea to track this under version control?
-seems like it adds a lot of noise to the process
+Is it really a good idea to track lock files under version control?
+Seems like it adds a lot of noise to the process
 
-Yes, it can add noise if you manage it manually. However, without it you may run into situations where deployments to a different environment may not work due to different versions of modules being installed. It's better to test with a set of locked versions. In that case, package-lock.json is necessary. 
+Yes, it can add noise if you manage it manually. However, without it you may run into situations where deployments to a different environment may not work due to different versions of modules being installed. It's better to test with a set of locked versions. In that case, lock files are necessary. 
 
-### Resolving lockfile conflicts
+### Resolve yarn.lock conflicts
+
+It's as easy as running `yarn` or `yarn install` to automatically resolve version control conflicts in a yarn.lock file. Sweet!
+
+### Resolving package-lock.json conflicts
 
 Occasionally, two separate calls to `npm install` will create package locks that cause merge conflicts in source control systems. As of npm@5.7.0, these conflicts can be resolved by manually fixing any package.json conflicts, and then running npm install [--package-lock-only] again. npm will automatically resolve any conflicts for you and write a merged package lock that includes all the dependencies from both branches in a reasonable tree. If --package-lock-only is provided, it will do this without also modifying your local node_modules/.
 

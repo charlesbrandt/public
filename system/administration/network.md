@@ -108,3 +108,45 @@ https://www.ntop.org/
 ntop – High Performance Network Monitoring Solutions based on Open Source and Commodity Hardware.
 
 
+## Interface Configuration
+
+Often it's pretty straightforward to use a GUI. If you want to configure an interface via a CLI, it's necessary to know where the OS stores the configuration settings. This varies from OS to OS. 
+
+### Ubuntu
+
+Find the interface in use
+
+    ip address
+
+enp0s25
+
+The netplan configuration is located in /etc/netplan
+
+    cd /etc/netplan
+    
+    sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml.bak
+    
+Modify the netplan configuration. 
+
+    sudo vi 01-network-manager-all.yaml
+
+add a section like: 
+
+```
+  ethernets:
+    eno2:
+      dhcp4: no
+      addresses: [192.168.1.200/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8,4.2.2.2]
+```
+
+Then
+
+    sudo netplan apply 
+
+to apply the configuration and changes to affect.
+
+[adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
+
