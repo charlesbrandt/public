@@ -83,9 +83,23 @@ via: https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password
 git commit -m "Commit title
 Commit body
 
-Co-authored-by: Charles Brandt <code@charlesbrandt.com>
+Co-authored-by: First Person <example@example.com>
 Co-authored-by: 
 "
+
+### What makes a good commit message
+
+    Separate subject from body with a blank line
+    Limit the subject line to 50 characters
+    Capitalize the subject line
+    Do not end the subject line with a period
+    Use the imperative mood in the subject line
+    Wrap the body at 72 characters
+    Use the body to explain what and why vs. how
+
+Source: http://chris.beams.io/posts/git-commit/#seven-rules
+
+https://gist.github.com/julienbourdeau/e605e4b8b47da97c249a0f72598529c8
 
 
 ## Resoving a conflict
