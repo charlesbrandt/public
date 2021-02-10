@@ -90,6 +90,21 @@ Consider adding in Vuex-ORM
 https://gitlab.com/charlesbrandt/public/-/blob/master/code/javascript/vuex.md
 
 
+## Favicon
+
+SVG works as a Favicon in most cases
+don't worry about generating all of the different sized .ico files. The SVG is it!
+
+Place the svg in the `ui/static/` directory and then update nuxt.config.js:
+
+    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+
+There are a few other cases that should be included. Worry about that in production:
+
+https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df
+
+
 ## Page Titles / Meta Tags
 
   head() {
@@ -115,11 +130,22 @@ https://stackoverflow.com/questions/48285476/using-nuxt-how-do-i-put-the-route-n
 https://redfern.dev/articles/adding-social-media-seo-meta-data-using-nuxt-content/
 
 
+## Content
+
+The nuxt content module is a nice way to include static content with a project without needing to rely on a database. 
+
+One gotcha, if you intend to nest content in many sub-directories, be sure to have at least one file in the first directory of content, otherwise Nuxt Content won't find the deeper items. 
+
+
+See also:
+https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/common/nuxt/content.md
+
+
+
 ## Styles
 
 Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc. 
 
-[Bulma / Sass](web-ui-api-db/docs/nuxt/style.md)
 
 
 ## Remote calls
@@ -136,9 +162,9 @@ Nuxt comes with special functions for handling axios requests when called from a
 
 https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12
 
-Fetch seems like an improved method for retrieving data. 
+Fetch is an improved method for retrieving data. 
 
-The component context is available. Assignments to the data can be made directly with this.[local data variable name]
+The component context is available. Assignments to data in the local context can be made directly with this approach (via `this`).
 
 ### asyncData
 
@@ -152,7 +178,7 @@ If you get an error like:
 
     ECONNREFUSED 127.0.0.1:8888at TCPConnectWrap.afterConnect 
 
-The nuxt server may be initiating the axios call for server side rendering. If you're using a containerized setup with nginx acting as a proxy, the source address may be different relative to the server. Haven't figured out how to specify a different source based on context (server vs client). However, you can also use a method that gets called on mounted so it only runs on the client. (skip server rendering)
+The nuxt server may be initiating the axios call for server side rendering. If you're using a containerized setup with nginx acting as a proxy, the source address may be different relative to the server. To get around this, specify a different source based on context (server vs client). You can also use a method that gets called on mounted so it only runs on the client. (skip server rendering)
 
 Going to try wrapping request in `if (process.server)` within the retrieval methods of the page
 
