@@ -49,6 +49,12 @@ See below for details
     "eslint.format.enable": true,
     "editor.formatOnSave": true,
     "prettier.prettierPath": "./bin/prettier",
+    "python.showStartPage": false,
+    "gitlens.advanced.messages": {
+        "suppressGitVersionWarning": true
+    },
+    "gitlens.menus": null,
+    "workbench.editor.wrapTabs": true,
 }
 
 ### Prettier
@@ -337,6 +343,10 @@ By: Microsoft
 ### GitLens
 
 By: Eric Amodio
+
+I find the menu actions take away precious space for other file tabs:
+
+    "gitlens.menus": null,
 
 ### XML
 
