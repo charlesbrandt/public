@@ -241,6 +241,8 @@ git push <remote> :<old_name>
 git remote -v
 # Push the new branch to remote
 git push <remote> <new_name>
+# e.g.
+git push origin <new_name>
 
 # Reset the upstream branch for the new_name local branch
 git push <remote> -u <new_name>
