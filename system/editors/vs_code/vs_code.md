@@ -328,6 +328,13 @@ may require the project to install prettier as a dev dependency so that vscode h
 
 ### Python
 
+I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available. 
+
+Formatting can be disabled with: 
+
+   "python.formatting.provider": "none",
+ 
+
 ### YAML
 
 By: Red Hat
@@ -339,6 +346,9 @@ By: CoenraadS
 ### Docker
 
 By: Microsoft
+
+Also:
+ms-vscode-remote.remote-containers
 
 ### GitLens
 
