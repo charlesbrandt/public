@@ -2,7 +2,6 @@
 
 Git is a distributed version control system. 
 
-
 ## CLI Cheat sheet
 
     git pull 
@@ -12,6 +11,8 @@ Git is a distributed version control system.
     git add .
     
     git commit -m "commit message"
+    
+    git push
 
     
 ## Configurations
@@ -28,8 +29,27 @@ To see what the remote server is set to, use:
 
     git remote -v
     
-    
-## Credentials
+### Remotes
+
+Sources that a repository is set up to track or follow. 
+
+The `origin` is the one that the repo will push to / pull from by default. 
+
+It is possible to have more than one remote ! 
+
+Remotes can be called whatever you want. 
+
+`upstream` can be useful for tracking something like a boilerplate for a project. 
+
+#### `origin` vs `upstream`
+
+    git remote add upstream git@example.com:project/boilerplate.git
+
+    git remote -v
+
+https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
+
+### User Details
 
 *** Please tell me who you are.
 
@@ -45,21 +65,9 @@ If that's not something your work requires, you can also set a single account gl
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 
-
-https://git-scm.com/docs/gitcredentials
-
-```
-$ git config --global credential.helper cache
-# Set git to use the credential memory cache
-
-$ git config --global credential.helper 'cache --timeout=3600'
-# Set the cache to timeout after one hour (setting is in seconds)
-```
-
 TODO: It may be possible to automatically set these up on a repository by repository basis. Could be helpful when checking out new repos:
 
 https://orrsella.com/2013/08/10/git-using-different-user-emails-for-different-repositories/
-
 
 ### SSH 
 
@@ -75,20 +83,23 @@ If you think you want to store your password, consider setting up an ssh key wit
 
     git config --global credential.helper store
     
-These are stored in plaintext, so it is insecure.
-via: https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github
+These credentials are stored in plaintext. Plaintext is insecure.
+[via](https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github)
 
-### Collaborative Commits 
+https://git-scm.com/docs/gitcredentials
 
-git commit -m "Commit title
-Commit body
+```
+$ git config --global credential.helper cache
+# Set git to use the credential memory cache
 
-Co-authored-by: Charles Brandt <code@charlesbrandt.com>
-Co-authored-by: 
-"
+$ git config --global credential.helper 'cache --timeout=3600'
+# Set the cache to timeout after one hour (setting is in seconds)
+```
 
 
-## Resoving a conflict
+## Common Workflows
+
+### Resoving a conflict
 
 If you try to pull in changes to a file you've modified locally, Git does not try to do the merge. 
 
@@ -117,19 +128,17 @@ see also:
 
     git bisect
     
-
-## Undo add files
+### Undo add files
 
     git reset
 
 https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
-
-## Revert local changes
+### Revert local changes
 
 `git checkout path/to/file` will revert the local changes to `path/to/file`
 
-## Ignore trivial changes
+### Ignore trivial changes
 
 Ignore changes to a file
 
@@ -139,12 +148,10 @@ Resume tracking again:
 
     git update-index --no-assume-unchanged path/to/file
 
-
 https://stackoverflow.com/questions/13442130/git-temporarily-ignore-trivial-changes-to-files
 Git - Temporarily ignore trivial changes to files - Stack Overflow
 
-
-## Moving files / directories
+### Moving files / directories
 
 Tracking a move with git with:
 
@@ -154,21 +161,14 @@ However, currently (2020.12), GitHub is not able to associate the history of a m
 
 https://github.community/t/renaming-folder-within-a-repo-loses-file-history/1752
 
+### Collaborative Commits 
 
-## Fork
+git commit -m "Commit title
+Commit body
 
-A fork is essentially just a clone. 
-
-https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github
-
-### `origin` vs `upstream`
-
-
-    git remote add upstream git@example.com:project/boilerplate.git
-
-    git remote -v
-
-https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
+Co-authored-by: Example User <example@example.com>
+Co-authored-by: 
+"
 
 
 ## Branches
@@ -265,13 +265,6 @@ This may require updating the HEAD reference on Github directly. For a locally h
 
     git push origin --delete master
 
-
-### Pushing Changes
-
-https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
-
-When working on a branch, `git pull` will pull changes from the branch, but `git push` has some surprising behavior that tries to push changes to all matching branches:
-
 ```
 git branch -m master main
 git push -u origin main
@@ -352,6 +345,12 @@ git config --global push.default simple # globally for your account
 
 https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
 
+### Fork
+
+A fork is another term for a cloned copy of the repository. 
+
+https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github
+
 
 ## Submodules
 
@@ -404,19 +403,7 @@ To remove a submodule you need to:
 https://gist.github.com/myusuf3/7f645819ded92bda6677
 
 
-## Remotes
-
-Sources that a repository is set up to track or follow. 
-
-The `origin` is the one that the repo will push to / pull from by default. 
-
-It is possible to have more than one remote ! 
-
-Remotes can be called whatever you want. 
-
-`upstream` can be useful for tracking something like a boilerplate for a project. 
-
-### Running a server
+## Running a server
 
 It's pretty much as simple as having an SSH server running and being able to connect over that.
 
@@ -592,7 +579,6 @@ git push origin master --force
 
 [via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
 
-
 ### Changing a commit message
 
 
@@ -601,6 +587,8 @@ git push origin master --force
 Knowing the command line interface is useful when you only have a terminal to work with (ssh, termux, etc).
 
 However, there are plenty of cases where a full desktop environment is availabe. In that case, no need to limit yourself to the CLI. 
+
+VS Code has a lot of useful git utilities built in. 
 
 Github Desktop is a nice GUI client. Github Desktop is only available on Mac and Windows. 
 
