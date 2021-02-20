@@ -13,8 +13,13 @@ bash print formatted date in command at DuckDuckGo
 https://stackoverflow.com/questions/1401482/yyyy-mm-dd-format-date-in-shell-script
 bash - YYYY-MM-DD format date in shell script - Stack Overflow
 
+## List contents of a directory sorted by modified timestamp
+
+    ls -lt
+
 ## TMUX
 
 ### Why do I have to press return twice?
 
 ### How do I keep my editor (emacs) from launching a gui based session? Is there a different command?
+

@@ -73,6 +73,9 @@ https://sgoel.org/posts/switching-from-keepassxc-to-bitwarden/
 
 Seems like a great solution that may be easier to get started with for most people compared to KeePass. 
 
+TechRadar: Popular password manager could have a critical vulnerability.
+https://www.techradar.com/news/popular-password-manager-could-have-a-critical-vulnerability
+
 
 ## Lockwise
 
