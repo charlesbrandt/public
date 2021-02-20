@@ -58,6 +58,7 @@ See below for details
         "suppressGitVersionWarning": true
     },
     "gitlens.menus": null,
+    "vetur.ignoreProjectWarning": true,
 }
 
 ### Prettier
@@ -312,6 +313,13 @@ Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
 
 https://vuejs.github.io/vetur/
 
+Frequently don't have the configs where the project is being loaded:
+
+"vetur.ignoreProjectWarning": true,
+
+May cause some issues with linting... 
+https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx
+
 ### Prettier
 
 By: Prettier
@@ -346,6 +354,22 @@ By: Red Hat
 
 By: CoenraadS
 
+### Spell Checker
+
+By Street Side Software
+
+Seems to be the top pick these days
+
+https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+Code Spell Checker - Visual Studio Marketplace
+https://github.com/streetsidesoftware/vscode-spell-checker
+streetsidesoftware/vscode-spell-checker: A simple source code spell checker for code
+https://duckduckgo.com/?t=canonical&q=vs+code+spell+checker+md&ia=web
+vs code spell checker md at DuckDuckGo
+
+The Microsoft version has been deprecated:
+https://github.com/Microsoft/vscode-spell-check/blob/master/README.md
+
 ### Docker
 
 By: Microsoft
@@ -353,44 +377,15 @@ By: Microsoft
 Also:
 ms-vscode-remote.remote-containers
 
-### GitLens
-
-By: Eric Amodio
-
-I find the menu actions take away precious space for other file tabs:
-
-    "gitlens.menus": null,
-
-### XML
-
-By: Red Hat
-
-Helpful for SVG formatting? 
-Requires Java?
-
-### HTML Preview
-
-A few different options for this task. None of them receive high marks. 
-
-https://marketplace.visualstudio.com/items?itemName=tht13.html-preview-vscode&ssr=false#review-details 
-
-https://marketplace.visualstudio.com/items?itemName=SimonSiefke.html-preview&ssr=false#review-details
-
-https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer&ssr=false#review-details
-
-### Markdown All in One (other options listed below)
-
-ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
-
+### Kubernetes
 
 
 ### Remote Development
 
+I've had success configuring the 'Remote - SSH' extension
+
 https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh
 
-https://github.com/Microsoft/vscode-remote-release
-
-I've had better luck configuring the 'Remote - SSH' extension
 https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication
 
 Ctrl-Shift-P -> Remote SSH: connection
@@ -411,33 +406,63 @@ https://code.visualstudio.com/remote-tutorials/ssh/getting-started
 
 https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 
+https://github.com/Microsoft/vscode-remote-release
+
+### Import Cost
+
+
+
+## Other Extensions
+
+### GitLens
+
+By: Eric Amodio
+
+I find the menu actions take away precious space for other file tabs:
+
+    "gitlens.menus": null,
+
+I want to like this extension, but I feel like the information it offers gets in the way more often than it helps me understand the code. 
+
+### XML
+
+By: Red Hat
+
+Helpful for SVG formatting? 
+Requires Java?
+
+### HTML Preview
+
+A few different options for this task. None of them receive high marks. 
+
+https://marketplace.visualstudio.com/items?itemName=tht13.html-preview-vscode&ssr=false#review-details 
+
+https://marketplace.visualstudio.com/items?itemName=SimonSiefke.html-preview&ssr=false#review-details
+
+https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer&ssr=false#review-details
 
 ### Eslint
 
 https://github.com/Microsoft/vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
-
-### Import Cost
-
-
-
-
-
-## Other Extensions
-
 ### Live Server
-Launch a development local Server with live reload feature
+Launch a development local Server with live reload feature. 
+I prefer using Docker containers for this. 
 
 ### Github
 https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github
 ### Git History
 
-### Kubernetes
-
 ### Color Picker
 
 ### Markdown
+
+Do these really add anything? If you want to work with converting Markdown, see Nuxt/Content module (in the context of Node JS)
+
+#### Markdown All in One 
+
+ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
 
 #### Useful Shortcuts
 

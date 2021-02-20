@@ -39,9 +39,12 @@ Components are typically named in PascalCase.
 
 However, `kebab-case.vue` is the way to go for filenames for single file components.
 
-It is tempting to use PascalCase for component filenames. Tried it out. Now leaning against that idea.
+It is tempting to use PascalCase for component filenames. Tried it out. Now leaning against that idea. 
 
 `index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames.
+
+Also, less important, but it's difficult to navigate on the command line when cases are mixed. Have to remember to type upper-cased characters.
+
 
 ## Components
 

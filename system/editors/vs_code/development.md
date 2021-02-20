@@ -2,7 +2,7 @@
 
 Generate a boilerplate for a new extension. 
 
-Currently this requires yeoman. If you don't have that package installed, it can take up to 10 minutes to install. 
+Currently this requires yeoman. If you don't have that package installed, it can take some time to install. 
 
 TOOD:
 Any way to do this with `npx`?
