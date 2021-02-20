@@ -32,18 +32,22 @@ or
 See below for details
 
 {
-   "window.newWindowDimensions": "inherit",
+    "window.newWindowDimensions": "inherit",
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.editor.wrapTabs": true,
     "breadcrumbs.enabled": false,
     "editor.minimap.enabled": false,
     "explorer.confirmDragAndDrop": false,
     "window.zoomLevel": 0,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
     "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "eslint.format.enable": true,
@@ -54,7 +58,6 @@ See below for details
         "suppressGitVersionWarning": true
     },
     "gitlens.menus": null,
-    "workbench.editor.wrapTabs": true,
 }
 
 ### Prettier
