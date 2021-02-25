@@ -15,7 +15,7 @@ I like running node projects in docker containers to prevent node_modules from c
 
 [web-ui-api-db](https://gitlab.com/charlesbrandt/web-ui-api-db)
 
-[New project from scratch](web-ui-api-db/docs/nuxt-new_project.md)
+[New project from scratch](./nuxt-new-project.md)
 
 
 ## Running

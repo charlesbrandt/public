@@ -4,10 +4,9 @@ Be sure to get the submodules:
 
     git clone --recurse-submodules https://github.com/charlesbrandt/public
 
-or 
+or
 
     git submodule update --init --recursive
-
 
 ## Editor
 
@@ -19,7 +18,6 @@ ln -s ~/public/system/editors/emacs/.emacs .emacs
 ln -s ~/public/system/editors/emacs/.emacs.d .emacs.d
 ```
 
-
 ## Terminal
 
 ```
@@ -30,14 +28,10 @@ ln -s ~/public/system/linux/.bashrc .bashrc
 
 ## TOC / Topics / Categories:
 
-  - [System](system/)
+- [System](system/)
 
-    - [Administration](system/administration/)
-  
-  - [Documentation](documentation/)
-  
-  - [Code](code/)
-  
-  - [Web](web/)
+  - [Administration](system/administration/)
 
+- [Code](code/)
 
+- [Web](web/)
