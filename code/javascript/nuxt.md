@@ -34,30 +34,21 @@ docker-compose exec ui bash
 
 It's also possible to run directly on the dev host.
 
-## Routing
+## Components
 
-TODO:
-How to specify parameters via the route?
-
-see web-ui-api-db/ui/pages/docs/\* as an example pattern
-
-https://nuxtjs.org/docs/2.x/directory-structure/pages#dynamic-pages
-
-in ./pages/ directory:
-
-index.vue must be lowercase here! (Will not work with Index.vue)
-
-## Conventions
+Nuxt leverages all of Vue to take advantage of the Single File Component model.
 
 ### Sub-directories
 
-It's okay to put items in the `components/` directory in sub-directories. e.g.
+It's okay to put components in the `components/` directory in sub-directories. e.g.
 
     components/common/*
 
 Nuxt will still find them all! :)
 
-## CSS
+## CSS / Styles
+
+Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc.
 
 Reminder: Anything one-off or customizable should go in the corresponding web-compenent file. A CSS utility framework like Tailwind makes this even more streamlined!
 
@@ -70,9 +61,21 @@ For the truly global stuff, make a `main.css` file in
 
 No need for tailwind here? TBD
 
-## Styles
+## Static directory
 
-Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc.
+Lines up with the goal of having everything ready to go for a static site deployment.
+
+`ui/static/*`
+
+**This directory is not required, you can delete it if you don't want to use it.**
+
+This directory contains your static files.
+Each file inside this directory is mapped to `/`.
+Thus you'd want to delete this README.md before deploying to production.
+
+Example: `/static/robots.txt` is mapped as `/robots.txt`.
+
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#static).
 
 ## Favicon
 
@@ -144,6 +147,19 @@ https://stackoverflow.com/questions/63846716/nuxtjs-referenceerror-nuxterror-is-
 javascript - NuxtJs: ReferenceError: NuxtError is not defined - Stack Overflow
 https://nuxtjs.org/guides/directory-structure/layouts#error-page
 layouts - NuxtJS
+
+## Routing
+
+TODO:
+How to specify parameters via the route?
+
+see web-ui-api-db/ui/pages/docs/\* as an example pattern
+
+https://nuxtjs.org/docs/2.x/directory-structure/pages#dynamic-pages
+
+in ./pages/ directory:
+
+index.vue must be lowercase here! (Will not work with Index.vue)
 
 ## Content
 
@@ -347,19 +363,3 @@ You can change this by using \$config instead
 The current version is displayed when running the nuxt server interactively. Alternatively, to see the version of Nuxt currently installed for your project:
 
     head node_modules/nuxt/dist/nuxt.js
-
-## Static directory
-
-Lines up with the goal of having everything ready to go for a static site deployment.
-
-`ui/static/*`
-
-**This directory is not required, you can delete it if you don't want to use it.**
-
-This directory contains your static files.
-Each file inside this directory is mapped to `/`.
-Thus you'd want to delete this README.md before deploying to production.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#static).
