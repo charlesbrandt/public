@@ -9,6 +9,31 @@ Empower your NuxtJS application with `@nuxtjs/content` module: write in a `conte
 
 Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
 
+.sortBy('createdAt', 'asc')
+
+```
+    const [prev, next] = await $content('articles')
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .surround(params.slug)
+      .fetch()
+```
+
+Default Injected variables
+
+The nuxt content module gives us access to injected variables that we can access and show in our template. Let's take a look at the default variables that are injected into our document:
+
+    body: body text
+    dir: directory
+    extension: file extension (.md in this example)
+    path: the file path
+    slug: the file slug
+    toc: an array containing our table of contents
+    createdAt: the file creation date
+    updatedAt: the date of the last file update
+
+https://nuxtjs.org/blog/creating-blog-with-nuxt-content
+
 ## Writing content
 
 Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: https://content.nuxtjs.org/writing.
