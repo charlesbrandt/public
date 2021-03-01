@@ -39,12 +39,11 @@ Components are typically named in PascalCase.
 
 However, `kebab-case.vue` is the way to go for filenames for single file components.
 
-It is tempting to use PascalCase for component filenames. Tried it out. Now leaning against that idea. 
+It is tempting to use PascalCase for component filenames. Tried it out. Now leaning against that idea.
 
 `index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames.
 
 Also, less important, but it's difficult to navigate on the command line when cases are mixed. Have to remember to type upper-cased characters.
-
 
 ## Components
 
@@ -102,6 +101,12 @@ computed is made up of getters.
 via:
 https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
+### Styles (CSS)
+
+Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc.
+
+Reminder: Anything one-off or customizable should go in the corresponding web-compenent file. A CSS utility framework like Tailwind makes this even more streamlined!
+
 ### Dynamic Styles
 
 Using variable in vue component to affect CSS styles
@@ -111,7 +116,6 @@ css - Vue.js dynamic <style> with variables - Stack Overflow
 
 https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css/52280182#52280182
 In vue.js component, how to use props in css? - Stack Overflow
-
 
 ```
 <template>
@@ -144,6 +148,19 @@ In vue.js component, how to use props in css? - Stack Overflow
 <style scoped>
 <style>
 ```
+
+```
+      :style="{
+          top: marginTop,
+          left: marginLeft,
+          width: maxSquare,
+          height: maxSquare,
+
+      }"
+```
+
+generating the whole style dictionary in a computed didn't work:
+:style="margins"
 
 See also ~/design_system/ui/pages/windows.vue
 

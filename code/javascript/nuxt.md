@@ -46,20 +46,19 @@ It's okay to put components in the `components/` directory in sub-directories. e
 
 Nuxt will still find them all! :)
 
-## CSS / Styles
-
-Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc.
-
-Reminder: Anything one-off or customizable should go in the corresponding web-compenent file. A CSS utility framework like Tailwind makes this even more streamlined!
-
-### Global / Default / Main
+### CSS / Style / Global / Default / Main
 
 Most projects need a default CSS setup.
 
 For the truly global stuff, make a `main.css` file in
 `@/assets/css/main.css` and configure in nuxt.config.js
 
-No need for tailwind here? TBD
+A similar approach can be taken for tailwind by creating `@/assets/css/tailwind.css`
+
+See:
+https://gitlab.com/charlesbrandt/web-ui-api-db/-/commit/94f4eec168e5b14ced457aefafc069a44679aa78
+
+Be surt to also add the css in the `nuxt.config.js`
 
 ## Static directory
 

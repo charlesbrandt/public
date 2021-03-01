@@ -40,6 +40,33 @@ http://www.dreamhost.com/r.cgi?266169
 
 If you wouldn't mind saying that I referred you, just use that link, or when asked for an email, use admin [at] charlesbrandt [dot] com (formatted as a real email address).
 
+### Registration
+
+To find an available domain name, go to:
+http://www.dreamhost.com/domains.html
+
+Under "Check domain availability" enter the domain name of choice. Press the "Check Availability" button.
+If the name is available, you will see a page that says:
+Congratulations! <domain> is available for registration!
+
+Once you've decided on a name, press the button that says:
+"Register <domain>..."
+
+On the next page "Start Your Free Trial!" enter email and password to create an account. You'll use this to make changes in the future, so remember it.
+
+On the next page "Pick a domain..." The default of "Register a new .com/net/org/info domain for me." is correct. Re-enter the domain in the "Domain:" box.
+
+On the next page "Pick a plan..." under "Just register <domain> with DreamHost for:"
+choose how many years to register the domain.
+
+Make sure that you do _not_ select an option under "Full web hosting:", unless you plan to host your website at Dreamhost. They are a great host, but this will cost ~$9/month. If you're not certain you'll actually use your website, this can be more expensive.
+
+The rest of the steps should be pretty self explanatory.
+
+Once you're registered, you'll need to set up your name to the location you have your free site hosted.
+
+This varies from service to service. Generally you'll want to add an entry to the DNS records at Dreamhost that forward traffic from your new domain name to the address currently hosting your website. You may also need to configure the service hosting your website so they know to accept traffic for your domain name.
+
 ## Static Sites
 
 The next easiest thing to do for more control over the content is create your website with static content. You will need a way to create the [static content] and a way to host it on a publicly available web server (web host).
