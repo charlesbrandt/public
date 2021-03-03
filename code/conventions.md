@@ -2,8 +2,6 @@
 
 Conventions get defined in linting config files these days.
 
-Discussion
-
 ## Case
 
 camelCase is used heavily in Javascript
