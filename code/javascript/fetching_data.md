@@ -2,6 +2,8 @@
 
 Most front-end applications need a way to get data from the back end services they leverage.
 
+## Axios
+
 [Axios seems to be the way to go](https://github.com/axios/axios)
 
     npm add axios
@@ -22,8 +24,6 @@ then use it:
 Be sure to enable requests on the back-end server:  
 https://stackoverflow.com/questions/17262170/bottle-py-enabling-cors-for-jquery-ajax-requests
 
-[See also nuxt notes](nuxt.md)
-
 https://axios.nuxtjs.org/usage/
 Usage - Axios Module
 https://github.com/axios/axios
@@ -42,7 +42,7 @@ javascript - How do I catch thrown errors with async / await? - Stack Overflow
 
 ## Nuxt
 
-## Remote calls
+### Remote calls
 
 In a method, you can make remote calls with something like
 
@@ -74,7 +74,7 @@ If you get an error like:
 
 The nuxt server may be initiating the axios call for server side rendering. If you're using a containerized setup with nginx acting as a proxy, the source address may be different relative to the server. To get around this, specify a different source based on context (server vs client). You can also use a method that gets called on mounted so it only runs on the client. (skip server rendering)
 
-Going to try wrapping request in `if (process.server)` within the retrieval methods of the page
+Wrap request in `if (process.server)` within the retrieval methods of the page
 
 ```
     let urlPrefix
