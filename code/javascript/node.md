@@ -66,6 +66,12 @@ To remove a dependency, I usually just delete it from `package.json`, but can al
 
      yarn remove <name>
 
+#### Types of dependencies
+
+https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
+
+> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
+
 #### Install / update yarn:
 
     npm install -g yarn
