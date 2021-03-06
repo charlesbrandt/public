@@ -72,6 +72,14 @@ https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
 
 > Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
 
+#### Reinstall Modules
+
+Reinstalling a package after just deleting the node module works with:
+
+    yarn install --check-files
+
+[via](https://stackoverflow.com/questions/41864099/how-do-i-force-yarn-to-reinstall-a-package)
+
 #### Install / update yarn:
 
     npm install -g yarn

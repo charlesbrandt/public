@@ -46,7 +46,72 @@ It's okay to put components in the `components/` directory in sub-directories. e
 
 Nuxt will still find them all! :)
 
-### CSS / Style / Global / Default / Main
+## Where things go
+
+### Assets vs Static
+
+https://nuxtjs.org/guide/assets#static
+
+https://raw.githubusercontent.com/nuxt/nuxtjs.org/master/content/en/guides/directory-structure/assets.md
+
+The `assets` directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+
+### Images
+
+Inside your `vue` templates, if you need to link to your `assets` directory use `~/assets/your_image.png` with a slash before assets.
+
+```html
+<template>
+  <img src="~/assets/your_image.png" />
+</template>
+```
+
+Inside your `css` files, if you need to reference your `assets` directory, use `~assets/your_image.png`(without a slash)
+
+```css
+background: url("~assets/banner.svg");
+```
+
+When working with dynamic images you will need to use require
+
+```html
+<img :src="require(`~/assets/img/${image}.jpg`)" />
+```
+
+<base-alert type="next">
+
+Learn more about [webpack Assets](/docs/2.x/directory-structure/assets#webpack-assets)
+
+### Fonts
+
+You can use local fonts by adding them to your assets folder. Once they have been added you can then access them through your css using the @font-face.
+
+```
+-| assets
+----| fonts
+------| DMSans-Regular.ttf
+------| DMSans-Bold.ttf
+```
+
+```css{}[assets/main.css]
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/DMSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('~assets/fonts/DMSans-Bold.ttf') format('truetype');
+}
+```
+
+## CSS / Style / Global / Default / Main
 
 Most projects need a default CSS setup.
 
@@ -61,6 +126,10 @@ https://gitlab.com/charlesbrandt/web-ui-api-db/-/commit/94f4eec168e5b14ced457aef
 Be surt to also add the css in the `nuxt.config.js`
 
 ## Static directory
+
+Good to reserve this for larger binary files like .jpg and media files.
+
+Smaller files that
 
 Lines up with the goal of having everything ready to go for a static site deployment.
 
