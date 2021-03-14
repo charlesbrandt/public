@@ -2,20 +2,35 @@
 
 Application Programming Interfaces
 
-Document them. 
+The place where you persist data (See Also: persistence, storage)
 
-Try Swagger. 
+For mostly static binaries, use IPFS (fixed paths on the filesystem is ideal. Need a place to safely track metadata)
 
-Or just text. 
+For documents that change, use git and .md
 
+For relationships and metadata, use a real database. Postgres seems hard to beat in this.
 
+## IDs
+
+Unique identification numbers. Identifiers.
+
+In IPFS these are checksums generated on the contents of the file. This works well for binary files that don't change often.
+
+https://www.mongodb.com/blog/post/generating-globally-unique-identifiers-for-use-with-mongodb
+
+## Documenting
+
+Document them.
+
+Try Swagger.
+
+Or just text.
 
 The best way to ensure that your API documentation is current and accurate is to embed it within your API implementation and then generate the documentation using literate programming techniques, or a framework such as http://apidocjs.com/, http://swagger.io/, or http://raml.org/index.html.
 
 via:
 https://apiguide.readthedocs.io/en/latest/build_and_publish/documentation.html
 Document your API — API Design Guide 0.1 documentation
-
 
 https://www.google.com/search?client=ubuntu&channel=fs&q=how+to+document+an+api&ie=utf-8&oe=utf-8
 how to document an api - Google Search
@@ -34,8 +49,6 @@ Welcome | RAML
 
 This looks like a very powerful solution!
 
-https://duckduckgo.com/?t=canonical&q=hasura&ia=web
-hasura at DuckDuckGo
 https://hasura.io/
 Hasura | Instant GraphQL APIs for your data | Join data across databases, GraphQL & REST services to build powerful modern applications
 https://github.com/hasura/graphql-engine/
@@ -61,6 +74,8 @@ Hasura Authentication Explained - DEV
 https://hasura.io/blog/add-authentication-and-authorization-to-next-js-8-serverless-apps-using-jwt-and-graphql/
 Add Authentication and Authorization to Next.js 8 Serverless Apps using JWT and GraphQL
 
+https://duckduckgo.com/?t=canonical&q=hasura&ia=web
+hasura at DuckDuckGo
 
 ## Feathers JS
 
