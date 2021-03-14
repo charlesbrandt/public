@@ -1,6 +1,6 @@
 # Git
 
-Git is a distributed version control system.
+Git is a distributed [version control system](README.md).
 
 ## CLI Cheat sheet
 
@@ -13,6 +13,20 @@ Git is a distributed version control system.
     git commit -m "commit message"
 
     git push
+
+## What makes a good commit message
+
+    Separate subject from body with a blank line
+    Limit the subject line to 50 characters
+    Capitalize the subject line
+    Do not end the subject line with a period
+    Use the imperative mood in the subject line
+    Wrap the body at 72 characters
+    Use the body to explain what and why vs. how
+
+Source: http://chris.beams.io/posts/git-commit/#seven-rules
+
+https://gist.github.com/julienbourdeau/e605e4b8b47da97c249a0f72598529c8
 
 ## Configurations
 
@@ -36,9 +50,9 @@ It is possible to have more than one remote !
 
 Remotes can be called whatever you want.
 
-`upstream` can be useful for tracking something like a boilerplate for a project.
-
 #### `origin` vs `upstream`
+
+`upstream` can be useful for tracking a boilerplate source for a project.
 
     git remote add upstream git@example.com:project/boilerplate.git
 
@@ -46,7 +60,7 @@ Remotes can be called whatever you want.
 
 https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
 
-### User Details
+## User Details
 
 \*\*\* Please tell me who you are.
 
@@ -80,7 +94,7 @@ If you think you want to store your password, consider setting up an ssh key wit
 
     git config --global credential.helper store
 
-These credentials are stored in plaintext. Plaintext is insecure.
+These credentials are stored in plaintext. Plaintext is insecure, especially on shared systems.
 [via](https://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-on-github)
 
 https://git-scm.com/docs/gitcredentials
@@ -93,21 +107,17 @@ $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after one hour (setting is in seconds)
 ```
 
-### What makes a good commit message
-
-    Separate subject from body with a blank line
-    Limit the subject line to 50 characters
-    Capitalize the subject line
-    Do not end the subject line with a period
-    Use the imperative mood in the subject line
-    Wrap the body at 72 characters
-    Use the body to explain what and why vs. how
-
-Source: http://chris.beams.io/posts/git-commit/#seven-rules
-
-https://gist.github.com/julienbourdeau/e605e4b8b47da97c249a0f72598529c8
-
 ## Common Workflows
+
+### Moving files / directories
+
+Tracking a move with git with:
+
+    git mv [src] [destination]
+
+However, currently (2020.12), GitHub is not able to associate the history of a moved file with it's previous location's history:
+
+https://github.community/t/renaming-folder-within-a-repo-loses-file-history/1752
 
 ### Resoving a conflict
 
@@ -148,29 +158,6 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
 `git checkout path/to/file` will revert the local changes to `path/to/file`
 
-### Ignore trivial changes
-
-Ignore changes to a file
-
-    git update-index --assume-unchanged path/to/file
-
-Resume tracking again:
-
-    git update-index --no-assume-unchanged path/to/file
-
-https://stackoverflow.com/questions/13442130/git-temporarily-ignore-trivial-changes-to-files
-Git - Temporarily ignore trivial changes to files - Stack Overflow
-
-### Moving files / directories
-
-Tracking a move with git with:
-
-    git mv [src] [destination]
-
-However, currently (2020.12), GitHub is not able to associate the history of a moved file with it's previous location's history:
-
-https://github.community/t/renaming-folder-within-a-repo-loses-file-history/1752
-
 ### Collaborative Commits
 
 git commit -m "Commit title
@@ -182,10 +169,6 @@ Co-authored-by:
 
 ## Branches
 
-### Switch to existing branch
-
-    git checkout name_of_branch
-
 ### Show current branch
 
     git branch --show-current
@@ -193,6 +176,10 @@ Co-authored-by:
 ### Show a list of all branches available
 
     git branch --all
+
+### Switch to existing branch
+
+    git checkout name_of_branch
 
 ### Creating a branch
 
@@ -205,16 +192,6 @@ Which is shorthand for:
     git branch upstream
     git checkout upstream
 
-There are different ways to use branches.
-
-https://guides.github.com/introduction/flow/
-
-https://nvie.com/posts/a-successful-git-branching-model/
-
-https://stackoverflow.com/questions/15072243/git-with-development-staging-and-production-branches
-
-https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
-
 ### Delete local branch
 
     git branch -d <local-branch>
@@ -226,6 +203,21 @@ If the branch has been shared publicly, read on...
 If you wish to set tracking information for this branch:
 
     git branch --set-upstream-to=<remote>/<branch> main
+
+### Merging
+
+Allows you to pull in changes from master / different branch.
+
+Use merge if your branch is already pushed.
+
+To merge changes
+
+    git merge origin/main
+
+https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
+git import changes on master to branch at DuckDuckGo
+
+See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository.
 
 ### Renaming a branch
 
@@ -287,6 +279,18 @@ Be sure to update defaults in your host:
 
 https://stackoverflow.com/questions/30987216/change-default-branch-in-gitlab
 
+### Branch workflows
+
+There are different ways to use branches.
+
+https://guides.github.com/introduction/flow/
+
+https://nvie.com/posts/a-successful-git-branching-model/
+
+https://stackoverflow.com/questions/15072243/git-with-development-staging-and-production-branches
+
+https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
+
 ### Branch from previous commit
 
 You can create the branch via a hash:
@@ -306,21 +310,6 @@ TODO: confirm
     git pull
 
 should do the trick
-
-### Merging
-
-Allows you to pull in changes from master / different branch.
-
-Use merge if your branch is already pushed.
-
-To merge changes
-
-    git merge origin/main
-
-https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
-git import changes on master to branch at DuckDuckGo
-
-See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository.
 
 ### Rebasing
 
@@ -550,6 +539,19 @@ Might have a merge message here, then:
 git remote remove technical
 
 ## Removed Content
+
+### Ignore trivial changes
+
+Ignore changes to a file
+
+    git update-index --assume-unchanged path/to/file
+
+Resume tracking again:
+
+    git update-index --no-assume-unchanged path/to/file
+
+https://stackoverflow.com/questions/13442130/git-temporarily-ignore-trivial-changes-to-files
+Git - Temporarily ignore trivial changes to files - Stack Overflow
 
 ### Finding a deleted file in history
 
