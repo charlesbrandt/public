@@ -313,7 +313,7 @@ should do the trick
 
 ### Rebasing
 
-Similar to merge, but re-writes the history. Use rebase if your branch is local and hasn't been pushed to origin.
+Similar to merge, but re-writes the history. Use rebase if your branch is local and hasn't been pushed to origin. However, generally, a merge is just fine!
 
 Never rebase a public branch / master -- makes a mess for others who have it checked out already
 
@@ -539,6 +539,26 @@ Might have a merge message here, then:
 git remote remove technical
 
 ## Removed Content
+
+### Revert vs Reset
+
+If you need to undo a change from a previous commit, a `revert` is generally preferred over a `reset`. Resets can cause problems with other shared instances of the repository. 
+
+Reminder: It is possible to `revert` a previous `revert` to bring the code back in at a later date. 
+
+https://stackoverflow.com/questions/1616957/how-do-you-roll-back-reset-a-git-repository-to-a-particular-commit
+How do you roll back (reset) a Git repository to a particular commit? - Stack Overflow
+https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit
+git checkout - How do I revert a Git repository to a previous commit? - Stack Overflow
+https://duckduckgo.com/?q=vuetify+autocomplete+rules&t=canonical&ia=web
+git undo pull request merge at DuckDuckGo
+https://stackoverflow.com/questions/6481575/undo-a-merge-by-pull-request
+git - Undo a merge by pull request? - Stack Overflow
+https://stackoverflow.com/questions/34638188/how-to-undo-merge-of-master-branch
+git - How to undo merge of master branch? - Stack Overflow
+https://www.datree.io/resources/git-undo-merge
+"Git undo merge" - How to undo merge in git [Tutorial]
+
 
 ### Ignore trivial changes
 
