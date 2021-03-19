@@ -14,7 +14,6 @@ Add to favorites (optionally)
 
 Launch!
 
-
 ## Preferences
 
 Open Settings (Ctrl-Shift-P -> "Settings")
@@ -31,41 +30,49 @@ or
 
 See below for details
 
+```json
 {
-    "window.newWindowDimensions": "inherit",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.editor.wrapTabs": true,
-    "breadcrumbs.enabled": false,
-    "editor.minimap.enabled": false,
-    "explorer.confirmDragAndDrop": false,
-    "window.zoomLevel": 0,
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "[vue]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "eslint.format.enable": true,
-    "editor.formatOnSave": true,
-    "prettier.prettierPath": "./bin/prettier",
-    "python.showStartPage": false,
-    "gitlens.advanced.messages": {
-        "suppressGitVersionWarning": true
-    },
-    "gitlens.menus": null,
-    "vetur.ignoreProjectWarning": true,
+  "window.newWindowDimensions": "inherit",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.wrapTabs": true,
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": false,
+  "explorer.confirmDragAndDrop": false,
+  "window.zoomLevel": 0,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "vetur.ignoreProjectWarning": true,
+  "eslint.format.enable": true,
+  "prettier.prettierPath": "./bin/prettier",
+  "python.showStartPage": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "gitlens.advanced.messages": {
+    "suppressGitVersionWarning": true
+  },
+  "gitlens.menus": null
 }
+```
 
 ### Prettier
 
     "prettier.prettierPath": "./bin/prettier",
 
-Hoping that this will prevent needing to install node_modules outside of the container. VS Code looks for the local version of prettier, but if one is not installed (hidden by container), then it doesn't do anything. 
+Hoping that this will prevent needing to install node_modules outside of the container. VS Code looks for the local version of prettier, but if one is not installed (hidden by container), then it doesn't do anything.
 
 ```
 prettier.prettierPath
@@ -78,8 +85,8 @@ See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 ### Default window size
 
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "window.newWindowDimensions": "inherit"
+"workbench.startupEditor": "newUntitledFile",
+"window.newWindowDimensions": "inherit"
 }
 
 https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
@@ -89,7 +96,6 @@ https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position
 The miniature over view of the current file to the right.
 
     "editor.minimap.enabled": false
-
 
 ## Useful Features
 
@@ -109,7 +115,7 @@ https://code.visualstudio.com/docs/languages/html
 
 ### Multiple Cursors
 
-I disable the Ctrl-Up and Ctrl-Down feature for creating cursors (see Keybindings below), but it is still possible to create multiple cursors with the mouse using Alt-Click. 
+I disable the Ctrl-Up and Ctrl-Down feature for creating cursors (see Keybindings below), but it is still possible to create multiple cursors with the mouse using Alt-Click.
 
 https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
 
@@ -123,7 +129,7 @@ File > Preferences > Keyboard Shortcuts
 
 All keyboard shortcuts in VS Code can be customized via the keybindings.json file.
 
-To configure keyboard shortcuts through the JSON file, open the keybindings.json file from the Command Palette (Ctrl+Shift+P) with the 
+To configure keyboard shortcuts through the JSON file, open the keybindings.json file from the Command Palette (Ctrl+Shift+P) with the
 
     Preferences: Open Keyboard Shortcuts (JSON) command.
 
@@ -131,150 +137,149 @@ You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcu
 
 ### Custom keyboard shortcut bindings
 
-``` json
+```json
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "cursorLineEnd"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
-        "when": "inFilesPicker && inQuickOpen"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-editor.action.webvieweditor.selectAll",
-        "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-editor.action.selectAll",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "cursorLineStart"
-    },
-    {
-        "key": "shift+alt+,",
-        "command": "cursorTop",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+home",
-        "command": "-cursorTop",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+.",
-        "command": "-editor.action.autoFix",
-        "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
-    },
-    {
-        "key": "shift+alt+.",
-        "command": "cursorBottom",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+end",
-        "command": "-cursorBottom",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+down",
-        "command": "spaceBlockJumper.moveDown",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+down",
-        "command": "-scrollLineDown",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+up",
-        "command": "spaceBlockJumper.moveUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+up",
-        "command": "-scrollLineUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+down",
-        "command": "spaceBlockJumper.selectDown"
-    },
-    {
-        "key": "ctrl+shift+down",
-        "command": "-editor.action.insertCursorBelow",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+up",
-        "command": "spaceBlockJumper.selectUp"
-    },
-    {
-        "key": "ctrl+shift+up",
-        "command": "-editor.action.insertCursorAbove",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+g",
-        "command": "editor.cancelOperation",
-        "when": "cancellableOperation"
-    },
-    {
-        "key": "escape",
-        "command": "-editor.cancelOperation",
-        "when": "cancellableOperation"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.gotoLine"
-    },
-    {
-        "key": "ctrl+g",
-        "command": "-workbench.action.gotoLine"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "-expandLineSelection",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+5",
-        "command": "editor.action.startFindReplaceAction"
-    },
-    {
-        "key": "ctrl+d",
-        "command": "-editor.action.addSelectionToNextFindMatch",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+d",
-        "command": "deleteRight"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "deleteAllRight"
-    }
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "cursorLineEnd"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-editor.action.webvieweditor.selectAll",
+    "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-editor.action.selectAll",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "cursorLineStart"
+  },
+  {
+    "key": "shift+alt+,",
+    "command": "cursorTop",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+home",
+    "command": "-cursorTop",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "-editor.action.autoFix",
+    "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/"
+  },
+  {
+    "key": "shift+alt+.",
+    "command": "cursorBottom",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+end",
+    "command": "-cursorBottom",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "spaceBlockJumper.moveDown",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "-scrollLineDown",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "spaceBlockJumper.moveUp",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "-scrollLineUp",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+shift+down",
+    "command": "spaceBlockJumper.selectDown"
+  },
+  {
+    "key": "ctrl+shift+down",
+    "command": "-editor.action.insertCursorBelow",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+up",
+    "command": "spaceBlockJumper.selectUp"
+  },
+  {
+    "key": "ctrl+shift+up",
+    "command": "-editor.action.insertCursorAbove",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "editor.cancelOperation",
+    "when": "cancellableOperation"
+  },
+  {
+    "key": "escape",
+    "command": "-editor.cancelOperation",
+    "when": "cancellableOperation"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.gotoLine"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.gotoLine"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+alt+5",
+    "command": "editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "deleteRight"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "deleteAllRight"
+  }
 ]
 ```
-
 
 ## Extensions
 
@@ -317,7 +322,7 @@ Frequently don't have the configs where the project is being loaded:
 
 "vetur.ignoreProjectWarning": true,
 
-May cause some issues with linting... 
+May cause some issues with linting...
 https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx
 
 ### Prettier
@@ -329,22 +334,20 @@ Prettier - Code formatter
 helps with code formatting
 
 https://glebbahmutov.com/blog/configure-prettier-in-vscode/
-	
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"editor.formatOnSave": true
 }
 
-may require the project to install prettier as a dev dependency so that vscode has it available to use. 
+may require the project to install prettier as a dev dependency so that vscode has it available to use.
 
 ### Python
 
-I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available. 
+I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available.
 
-Formatting can be disabled with: 
+Formatting can be disabled with:
 
-   "python.formatting.provider": "none",
- 
+"python.formatting.provider": "none",
 
 ### YAML
 
@@ -379,7 +382,6 @@ ms-vscode-remote.remote-containers
 
 ### Kubernetes
 
-
 ### Remote Development
 
 I've had success configuring the 'Remote - SSH' extension
@@ -390,11 +392,11 @@ https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based
 
 Ctrl-Shift-P -> Remote SSH: connection
 
-When configuring the connection, only specify 'username@host'. 
+When configuring the connection, only specify 'username@host'.
 
-do **not** include 'ssh -A ' in front of the username@host. 
+do **not** include 'ssh -A ' in front of the username@host.
 
-You'll need to install any additional required extensions (e.g. Vetur) to the ssh server separately. Syntax highlighting works when I do that. 
+You'll need to install any additional required extensions (e.g. Vetur) to the ssh server separately. Syntax highlighting works when I do that.
 
 See also / Previously
 
@@ -410,8 +412,6 @@ https://github.com/Microsoft/vscode-remote-release
 
 ### Import Cost
 
-
-
 ## Other Extensions
 
 ### GitLens
@@ -422,20 +422,20 @@ I find the menu actions take away precious space for other file tabs:
 
     "gitlens.menus": null,
 
-I want to like this extension, but I feel like the information it offers gets in the way more often than it helps me understand the code. 
+I want to like this extension, but I feel like the information it offers gets in the way more often than it helps me understand the code.
 
 ### XML
 
 By: Red Hat
 
-Helpful for SVG formatting? 
+Helpful for SVG formatting?
 Requires Java?
 
 ### HTML Preview
 
-A few different options for this task. None of them receive high marks. 
+A few different options for this task. None of them receive high marks.
 
-https://marketplace.visualstudio.com/items?itemName=tht13.html-preview-vscode&ssr=false#review-details 
+https://marketplace.visualstudio.com/items?itemName=tht13.html-preview-vscode&ssr=false#review-details
 
 https://marketplace.visualstudio.com/items?itemName=SimonSiefke.html-preview&ssr=false#review-details
 
@@ -447,11 +447,14 @@ https://github.com/Microsoft/vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 ### Live Server
-Launch a development local Server with live reload feature. 
-I prefer using Docker containers for this. 
+
+Launch a development local Server with live reload feature.
+I prefer using Docker containers for this.
 
 ### Github
+
 https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github
+
 ### Git History
 
 ### Color Picker
@@ -460,7 +463,7 @@ https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-g
 
 Do these really add anything? If you want to work with converting Markdown, see Nuxt/Content module (in the context of Node JS)
 
-#### Markdown All in One 
+#### Markdown All in One
 
 ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
 
@@ -470,9 +473,9 @@ https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
 
 https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts
 
-#### Linting 
+#### Linting
 
-markdownlint -- checks for formatting issues. 
+markdownlint -- checks for formatting issues.
 
 #### Highlighting
 
@@ -498,7 +501,7 @@ VS Code can even compile markdown to HTML!
 
 ### Auto Close Tag
 
-I find this gets in the way more than it helps. YMMV. 
+I find this gets in the way more than it helps. YMMV.
 
 ### TODO
 
@@ -513,13 +516,11 @@ Evaluate:
 npm
 npm intellisense
 
-
 ### Journal
 
 It's a pretty heavy application memory-wise to keep lots of open files / instances. There are better editors for keeping notes.
 
-  'ctrl-j': 'moments-atom:journal'
-
+'ctrl-j': 'moments-atom:journal'
 
 ## Reporting
 
@@ -540,6 +541,7 @@ From File > Preferences > Settings (macOS: Code > Preferences > Settings), searc
 If you use the JSON editor for your settings, add the following line:
 
     "telemetry.enableTelemetry": false
+
 You can inspect telemetry events in the Output panel by setting the log level to Trace using Developer: Set Log Level from the Command Palette.
 
 Important Notice: VS Code gives you the option to install Microsoft and third party extensions. These extensions may be collecting their own usage data and are not controlled by the telemetry.enableTelemetry setting. Consult the specific extension's documentation to learn about its telemetry reporting.
@@ -555,8 +557,8 @@ From File > Preferences > Settings (macOS: Code > Preferences > Settings), searc
 If you use the JSON editor for your settings, add the following line:
 
     "telemetry.enableCrashReporter": false
-Important Notice: This option requires a restart of VS Code to take effect.
 
+Important Notice: This option requires a restart of VS Code to take effect.
 
 ## Links
 
@@ -572,7 +574,6 @@ https://code.visualstudio.com/docs?start=true
 Documentation for Visual Studio Code
 https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
 Visual Studio Code Frequently Asked Questions
-
 
 ## Emacs Modes
 
