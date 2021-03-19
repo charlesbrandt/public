@@ -61,6 +61,15 @@ https://github.com/ipfs-shipyard/ipfs-desktop
 GitHub - ipfs-shipyard/ipfs-desktop: An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux.
 
 AppImage
+https://appimage.org/
+
+Download an application, make it executable, and run! No need to install. No system libraries or system preferences are altered. Can also run in a sandbox like Firejail
+
+```
+cd ~/Downloads
+chmod +x ipfs-desktop-0.14.0-linux-x86_64.AppImage
+./ipfs-desktop-0.14.0-linux-x86_64.AppImage
+```
 
 ### Docker
 
