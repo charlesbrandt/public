@@ -38,6 +38,11 @@ data formats - How to represent date and/or time information in JSON? - Stack Ov
 https://en.wikipedia.org/wiki/ISO_8601
 ISO 8601 - Wikipedia
 
+### Video Overview
+
+https://docs.ipld.io/docs/media/#foundations-for-decentralization-data-with-ipld-gpn19
+IPLD Documentation
+
 ### Deployment
 
 https://specs.ipld.io/data-structures/hashmap.html#introduction
@@ -45,22 +50,27 @@ Specification: HashMap | IPLD Specifications
 https://specs.ipld.io/block-layer/graphsync/graphsync.html
 Graphsync | IPLD Specifications
 
-### Video Overview
-
-https://docs.ipld.io/docs/media/#foundations-for-decentralization-data-with-ipld-gpn19
-IPLD Documentation
-
-## Clients / Servers
+## Installation: Clients / Servers
 
 https://ipfs.io/#install
 IPFS Powers the Distributed Web
+
+### Docker
+
+https://duckduckgo.com/?t=canonical&q=ipfs+docker&ia=web
+ipfs docker at DuckDuckGo
+https://hub.docker.com/u/ipfs/
+ipfs's Profile
+https://blog.ipfs.io/1-run-ipfs-on-docker/
+Run IPFS in a Docker container
 
 ### Desktop GUI Client
 
 https://github.com/ipfs-shipyard/ipfs-desktop
 GitHub - ipfs-shipyard/ipfs-desktop: An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux.
 
-AppImage
+#### AppImage
+
 https://appimage.org/
 
 Download an application, make it executable, and run! No need to install. No system libraries or system preferences are altered. Can also run in a sandbox like Firejail
@@ -71,11 +81,17 @@ chmod +x ipfs-desktop-0.14.0-linux-x86_64.AppImage
 ./ipfs-desktop-0.14.0-linux-x86_64.AppImage
 ```
 
-### Docker
+#### Snap
 
-https://duckduckgo.com/?t=canonical&q=ipfs+docker&ia=web
-ipfs docker at DuckDuckGo
-https://hub.docker.com/u/ipfs/
-ipfs's Profile
-https://blog.ipfs.io/1-run-ipfs-on-docker/
-Run IPFS in a Docker container
+https://docs.ipfs.io/install/command-line/#package-managers
+
+    snap install ipfs
+
+## Private / Local Only
+
+For a private network, all nodes must use the same key.
+
+https://duckduckgo.com/?t=canonical&q=ipfs+local+only&ia=web
+ipfs local only at DuckDuckGo
+https://medium.com/@s_van_laar/deploy-a-private-ipfs-network-on-ubuntu-in-5-steps-5aad95f7261b
+Deploy a private IPFS network in 5 steps | by Sander van Laar | Medium

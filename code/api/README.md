@@ -10,19 +10,13 @@ For documents that change, use git and .md
 
 For relationships and metadata, use a real database. Postgres seems hard to beat in this.
 
-## DBs & IDs
+## DBs 
 
 DBs are Databases.
 
 Databases often tie in closely to the API side.
 
 [databases](databases.md)
-
-IDs are Identifiers. Unique identification numbers.
-
-In IPFS these are checksums generated on the contents of the file. This works well for binary files that don't change often.
-
-https://www.mongodb.com/blog/post/generating-globally-unique-identifiers-for-use-with-mongodb
 
 ## Documenting
 

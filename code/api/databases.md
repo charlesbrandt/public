@@ -10,6 +10,6 @@
 
 ## Deployment
 
-When it comes time to deploy them, separate containers are ideal. See also system-architecture notes on web-ui-api-db:
+When it comes time to deploy databases, separate containers are ideal. See also system-architecture notes on web-ui-api-db:
 
 https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
