@@ -1,5 +1,16 @@
 # Docker Compose
 
+Configuration file for current project is in `docker-compose.yml`.
+
+To restrict to local machine only, edit the docker-compose.yml file and change to:
+
+```
+        ports:
+            - "127.0.0.1:3000:3000"
+```
+
+## About
+
 Docker Compose relies on [docker.](docker.md) Be sure to install that first.
 
 https://docs.docker.com/compose/

@@ -8,6 +8,9 @@ There's on in your web browser.
 
 Or there's [node](node.md) that you can install locally and run interactively. 
 
+## Date Handling
+
+See [dates](dates.md)
 
 ## Range
 

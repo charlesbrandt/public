@@ -17,6 +17,8 @@ If no relevant profile is available, just create one.
 Be sure to set Menu -> Preferences -> Restore previous session.  
 Pick your preferred search engine while you're at it!
 
+Un-check "Ctrl+Tab cycles through tabs in recently used order" option
+
 
 ### Tab Suspender
 
@@ -89,7 +91,19 @@ An open source, pluggable New Tab web extension written in TypeScript, React and
 No special permissions required!
 
 
+## Keyboard Shortcuts
 
+Tab Navigation
+
+Ctrl+Tab
+
+Default is to "Cycle through Tabs in Recently Used Order". I prefer sequential orders. ("Go one Tab to the Left" or "Go one Tab to the Right" with Ctrl+Tab+Shift)
+
+https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly#w_windows-tabs
+Keyboard shortcuts - Perform common Firefox tasks quickly | Firefox Help
+
+https://duckduckgo.com/?t=canonical&q=firefox+tab+navigation+keyboard+shortcuts&ia=web
+firefox tab navigation keyboard shortcuts at DuckDuckGo
 
 
 
