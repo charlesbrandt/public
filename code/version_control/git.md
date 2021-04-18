@@ -412,7 +412,7 @@ How to Run Your Own Git Server | Linux.com | The source for Linux information
 https://www.google.com/search?q=linux+git+server
 linux git server - Google Search
 
-### New repo on server
+### New repository on server
 
 Create your project's repo on your git host and check that out locally
 
@@ -426,7 +426,7 @@ git clone /srv/git/home_system path/to/local/project/home_system
 cd path/to/local/project/home_system
 ```
 
-#### New repo on server (version 2)
+#### New repository on server (version 2)
 
 When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
 

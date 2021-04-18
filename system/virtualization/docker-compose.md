@@ -111,6 +111,8 @@ https://medium.com/@cybourgeoisie/docker-env-methods-for-passing-variables-throu
 
 For troubleshooting, you can add a command that is sure to run in the docker-compose.yml, e.g.:
 
+    entrypoint: ["tail", "-f", "/dev/null"]
+
     entrypoint: ["sh", "-c", "sleep 2073600"]
 
 then connect with:
