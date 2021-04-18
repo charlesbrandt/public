@@ -1,11 +1,24 @@
-*2016.02.06 08:21:52 updates update boot
-sometimes /boot runs out of room
+# Upgrades
+
+Upgrade can mean different things in different contexts. 
+
+If you just want to apply the latest versions of packages to your system, `apt` will call this `upgrade`
+
+    sudo apt-get update
+    sudo apt-get upgrade
+
+## /boot 
+
+When `sudo apt-get upgrade` includes a kernel update, sometimes `/boot` runs out of room
+
+```
 sudo dpkg --list 'linux-image*' | grep ^ii
 sudo apt-get remove linux-image-VERSION
 sudo apt-get autoremove
 
 #may not be necessary, but harmless
 #sudo update-grub
+```
 
 via:
 http://askubuntu.com/questions/345588/what-is-the-safest-way-to-clean-up-boot-partition
@@ -13,7 +26,22 @@ http://askubuntu.com/questions/345588/what-is-the-safest-way-to-clean-up-boot-pa
 e.g.:
 sudo apt-get remove linux-image-4.2.0-16-generic
 
+## Stale repository
 
+Sometimes a source repository for apt changes location. This situation can cause "Software Updater" to report scary messages like "Could not retrieve updates at this time..."
+
+To remove the offending repository, run `sudo apt-get update` from the command line to see which one fails:
+
+```
+Err:9 http://ppa.launchpad.net/canonical-chromium-builds/stage/ubuntu focal Release
+  404  Not Found [IP: 91.189.95.85 80]
+```
+
+Then, to remove it:
+
+    sudo add-apt-repository -r http://ppa.launchpad.net/canonical-chromium-builds/stage/ubuntu
+
+[via](https://askubuntu.com/questions/717144/remove-source-from-software-updater)
 
 
 *2018.05.05 

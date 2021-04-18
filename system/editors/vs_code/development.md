@@ -16,6 +16,15 @@ Once you've created a new extension, add a new function.
   - in file directly
   - others?
 
+# Installation
+
+After checking out the extension, for development you'll need to install dependencies
+
+```
+yarn
+yarn install
+```
+
 ## Reloading
 
 TODO: document
