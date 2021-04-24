@@ -222,12 +222,9 @@ https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
 
 see also: router-link and nuxt-link
 
-## Custom Events
+## Custom Events / Event Bus
 
 If you need to signal a parent component of something that has happened in a child component, use $emit.
-
-Note:  
-If you've hit a situation where this pattern comes up, it may be a good time to consider using [vuex](vuex.md).
 
 Child component triggers clicked event:
 
@@ -264,6 +261,16 @@ export default {
 
 via:
 https://forum.vuejs.org/t/passing-data-back-to-parent/1201
+
+For multiple levels of children components, there is vm.$listeners
+
+https://vuejs.org/v2/api/#vm-listeners
+
+https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
+
+Note:  
+If you've hit a situation where an event bus pattern comes up, it may be a good time to consider using [vuex](vuex.md).
+
 
 ## Renderless Components
 

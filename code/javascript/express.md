@@ -18,6 +18,19 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 https://expressjs.com/en/starter/hello-world.html
 Express "Hello World" example
 
+## Requests 
+
+When express receives a request, it parses the request and makes attributes available in the `req` value. 
+
+req.params contains route parameters (in the path portion of the URL)
+
+req.query contains the URL query parameters (after the ? in the URL).
+
+req.body contains anything in the request body. Typically this is used on PUT and POST requests.
+
+http://expressjs.com/en/4x/api.html#req.body
+
+http://expressjs.com/en/4x/api.html#req.query
 
 ## Debugging
 

@@ -37,6 +37,7 @@ See below for details
   "workbench.editor.wrapTabs": true,
   "breadcrumbs.enabled": false,
   "editor.minimap.enabled": false,
+  "update.mode": "none",
   "explorer.confirmDragAndDrop": false,
   "window.zoomLevel": 0,
   "telemetry.enableTelemetry": false,
@@ -96,6 +97,13 @@ https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position
 The miniature over view of the current file to the right.
 
     "editor.minimap.enabled": false
+    
+### Updates
+
+I prefer to handle updates when updating the OS.
+https://code.visualstudio.com/docs/setup/linux
+https://stackoverflow.com/questions/42496935/disabling-visual-studio-code-update-notification
+
 
 ## Useful Features
 
