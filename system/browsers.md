@@ -27,6 +27,17 @@ Un-check "Ctrl+Tab cycles through tabs in recently used order" option
 https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/  
 https://www.google.com/search?q=firefox+tab+suspender
 
+This feature goes by many names, including: 
+
+Tab Sleep, Tab Snooze, Tab Freeze, Tab Suspend, Tab Discard or Tab Hibernation.
+
+https://www.askvg.com/tip-disable-or-enable-tab-sleep-or-tab-snooze-feature-in-web-browsers/
+
+May be a similar feature built in to Firefox
+
+in about:config
+browser.tabs.unloadOnLowMemory
+
 https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web  
 great suspender firefox at DuckDuckGo  
 https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/  

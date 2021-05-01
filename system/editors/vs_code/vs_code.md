@@ -317,7 +317,19 @@ Still requires adding custom bindings (included below).
 
 Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
-### Vue
+### Quick Open
+
+By Zongmin Lei
+
+Similar to Emacs method for opening files via keyboard only
+
+Keybindings
+CTRL+⌘+O - Quick Open File
+CTRL+⌘+P - Quick Open Input Path
+
+Does not appear to work with opening a new file? 
+
+### Vue (Vetur)
 
 By: Pine Wu
 
