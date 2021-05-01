@@ -30,7 +30,7 @@ Once you've created a new extension, add a new function.
   - in file directly
   - others?
 
-# Extension Installation
+## Extension Installation
 
 After checking out the extension, for development you'll need to install dependencies
 
@@ -46,22 +46,3 @@ F5
 Ctrl-R ? 
 
 
-## Yeoman in Docker
-
-Exploring using Yeoman under docker
-not as straightforward as I'd hoped
-
-https://www.freecodecamp.org/news/making-vscode-extension/
-How to Make Your Own VS Code Extension
-https://duckduckgo.com/?q=docker+node+npm+install+-g&t=canonical&ia=web
-docker node npm install -g at DuckDuckGo
-https://stackoverflow.com/questions/46111738/how-to-install-global-module-in-docker
-npm - How to install global module in docker? - Stack Overflow
-https://hub.docker.com/_/node/
-node
-https://github.com/nodejs/docker-node/blob/main/README.md#how-to-use-this-image
-docker-node/README.md at main · nodejs/docker-node
-https://duckduckgo.com/?t=canonical&q=run+yeoman+as+root+in+docker&ia=web
-run yeoman as root in docker at DuckDuckGo
-https://www.octobot.io/blog/2016-02-25-running-yeoman-in-a-development-instance-in-docker/
-octobot.io/blog/2016-02-25-running-yeoman-in-a-development-instance-in-docker/

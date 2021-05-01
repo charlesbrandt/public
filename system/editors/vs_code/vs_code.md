@@ -65,7 +65,8 @@ See below for details
   "gitlens.advanced.messages": {
     "suppressGitVersionWarning": true
   },
-  "gitlens.menus": null
+  "gitlens.menus": null,
+  "redhat.telemetry.enabled": false,
 }
 ```
 
@@ -361,6 +362,10 @@ https://glebbahmutov.com/blog/configure-prettier-in-vscode/
 
 may require the project to install prettier as a dev dependency so that vscode has it available to use.
 
+### Bracket Pair Colorizer
+
+By: CoenraadS
+
 ### Python
 
 I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available.
@@ -372,10 +377,6 @@ Formatting can be disabled with:
 ### YAML
 
 By: Red Hat
-
-### Bracket Pair Colorizer
-
-By: CoenraadS
 
 ### Spell Checker
 

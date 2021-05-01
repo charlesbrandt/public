@@ -426,31 +426,25 @@ linux git server - Google Search
 
 Create your project's repo on your git host and check that out locally
 
-```
-mkdir -p /srv/git/home_system
-cd /srv/git/home_system
-git init --bare
-
-cd
-git clone /srv/git/home_system path/to/local/project/home_system
-cd path/to/local/project/home_system
-```
-
-#### New repository on server (version 2)
-
 When you're not on the server (e.g. created the repo somewhere else), you need to create a blank repo on the server first:
 
 - Log into the server machine.
 - Create a bare repo using
 
-  git --version 2.28 and up:
+```
+ssh [user@host-server]
+mkdir -p /srv/git/home-system
+cd /srv/git/home-system
+```
 
-      git init --initial-branch=main --bare
+git --version 2.28 and up:
 
-  git --version older than 2.28
+    git init --initial-branch=main --bare
 
-      git init --bare
-      git symbolic-ref HEAD refs/heads/main
+git --version older than 2.28
+
+    git init --bare
+    git symbolic-ref HEAD refs/heads/main
 
 [via](https://stackoverflow.com/questions/42871542/how-can-i-create-a-git-repository-with-the-default-branch-name-other-than-maste)
 
@@ -466,6 +460,8 @@ Add some content. At that point, check to see what branch you're on. If it's sti
     git push origin HEAD
 
 #### Add server to existing repo
+
+Note: this requires the remote repository to exist on the server first. 
 
 If you have an existing repo and want to add a server later
 
@@ -484,6 +480,10 @@ If you have an existing repo and want to add a server later
   followed by
 
       git push origin main
+
+May also need
+
+     git branch --set-upstream-to origin/main
 
 Try git show-ref to see what refs you have. Is there a refs/heads/master?
 
