@@ -7,7 +7,18 @@ Empower your NuxtJS application with `@nuxtjs/content` module: write in a `conte
 
 ## Fetching content
 
-Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetching.
+The content module is injected globally via `this.$content`. (For plugins, asyncData, nuxtServerInit and Middleware, it's available via `context.$content`.)
+
+The main `$content` method accepts two parameters: `(path, options?)`
+
+`path` is the string path to match in your content directory. 
+
+`options = { deep: true }` ensures that subdirectories are checked for content
+
+`options = { text: true }` returns the original markdown content in a `text` attribute. 
+
+A number of other modifier methods can be chained on to the main one to filter and shape the data. 
+
 
 .sortBy('createdAt', 'asc')
 
@@ -34,6 +45,21 @@ The nuxt content module gives us access to injected variables that we can access
 
 https://nuxtjs.org/blog/creating-blog-with-nuxt-content
 
+https://content.nuxtjs.org/fetching.
+
+### TODO Errors
+
+The `error` in the snippet below does not exist. Not sure how to call or where example came from. Maybe Nuxt handles on its own? 
+
+      .catch((err) => {
+        console.log(err) // eslint-disable-line
+        error({ statusCode: 404, message: 'Page not found' })
+      })
+    // console.log('Available Content: ', this.everything)
+
+
+
+
 ## Writing content
 
 Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: https://content.nuxtjs.org/writing.
@@ -41,6 +67,8 @@ Learn how to write your `content/`, supporting Markdown, YAML, CSV and JSON: htt
 ## Displaying content
 
 Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
+
+
 
 ## Other links
 

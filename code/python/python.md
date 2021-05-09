@@ -106,3 +106,10 @@ https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial
 The group() function returns the string matched by the re
 
 
+## Development
+
+how to install a module for development with pip?
+
+https://pip.pypa.io/en/stable/reference/pip_install/
+
+    sudo pip install -e sortable/
