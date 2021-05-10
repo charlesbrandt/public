@@ -1,15 +1,40 @@
 # Testing
 
-After getting installed, go to a project you want to test. 
+Download the stand alone version. 
 
+https://download.cypress.io/desktop
+
+Extract, 
+
+open a terminal, 
+
+cd snap/Cypress/
+and run `./Cypress
+
+I know, it's not the recommended approach. 
+But I think it's actually easier when working in a dockerized environment to start here. Just get the test runner running in a browser. Then navigate to the web application however/where ever it is running. 
+
+https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
+
+After getting installed, 
+and once the cypress application is running,
+
+go to a project you want to test. 
 
 What service are you working on locally? 
+
+If running in a container, do this step in the container: 
+
+docker-compose exec ui bash
 
 ```
 yarn add cypress
 yarn run cypress open
 ```
 
+TODO:
+should cypress be a dev dependency or a core dependency? 
+how does it get integrated in a nuxt application? 
 
 
 
@@ -24,7 +49,6 @@ So is cypress kind of like a streamlined selenium solution? Yes.
 There is still a binary needed to run...
 Seems to be an electron app that launches browsers to handle running the tests.
 
-https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements
 
 ### Locally
 
