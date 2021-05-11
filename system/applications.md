@@ -1,6 +1,6 @@
 # Setup System
 
-These can get personal. Use the tools that work for you!
+Use the tools that work for you!
 
 
 ## Git
@@ -71,28 +71,11 @@ Don't like this one as much.
 
     sudo apt-get install keepass2
 
+
 ## Python
 
     sudo apt install python-is-python3
 
-
-## Docker
-
-~/public/system/virtualization/docker.md  
-~/public/system/virtualization/docker-compose.md  
-
-## Chromium
-
-This method installs the snap version.
-
-    sudo apt install chromium-browser
-
-If you want to pull from the canonical repository, do this first. (No longer required with Ubuntu 20.04)
-
-```
-sudo add-apt-repository ppa:canonical-chromium-builds/stage
-sudo apt update
-```
 
 ## Recorder
 
@@ -129,6 +112,10 @@ can just go 'do not distrub'
 
 Change "Continue where left off" from Ask to Never
 
+### Utilities
+
+    sudo apt-get install ffmpeg
+
 
 ## VS Code
 
@@ -137,20 +124,47 @@ Change "Continue where left off" from Ask to Never
 
 ## Screenshots
 
+apt install flameshot
+
 https://github.com/flameshot-org/flameshot
 GitHub - flameshot-org/flameshot: Powerful yet simple to use screenshot software
 https://flameshot.org/
 Flameshot
 
 
+## Chromium
+
+This method installs the snap version.
+
+    sudo apt install chromium-browser
+
+If you want to pull from the canonical repository, do this first. (No longer required with Ubuntu 20.04)
+
+```
+sudo add-apt-repository ppa:canonical-chromium-builds/stage
+sudo apt update
+```
+
 ## Cypress
 
 see [cypress](../code/testing/cypress.md)
 
 
-### Utilities
+## KVM
 
-    sudo apt-get install ffmpeg
+[KVM](virtualization/kvm.md)
+
+
+## Docker
+
+[Docker](virtualization/docker.md)  
+[Docker Compose](virtualization/docker-compose.md)  
+
+
+## IPFS
+
+[IPFS](../code/api/ipfs.md)
+
 
 
 ## K4DirStat
