@@ -76,13 +76,6 @@ Don't like this one as much.
     sudo apt install python-is-python3
 
 
-## K4DirStat
-
-visual disk usage utility:
-http://kdirstat.sourceforge.net/
-
-    sudo apt-get install k4dirstat
-
 ## Docker
 
 ~/public/system/virtualization/docker.md  
@@ -100,7 +93,6 @@ If you want to pull from the canonical repository, do this first. (No longer req
 sudo add-apt-repository ppa:canonical-chromium-builds/stage
 sudo apt update
 ```
-
 
 ## Recorder
 
@@ -137,11 +129,36 @@ can just go 'do not distrub'
 
 Change "Continue where left off" from Ask to Never
 
+
+## VS Code
+
+[VS Code](editors/vs_code/vs_code.md)
+
+
+## Screenshots
+
+https://github.com/flameshot-org/flameshot
+GitHub - flameshot-org/flameshot: Powerful yet simple to use screenshot software
+https://flameshot.org/
+Flameshot
+
+
+## Cypress
+
+see [cypress](../code/testing/cypress.md)
+
+
 ### Utilities
 
     sudo apt-get install ffmpeg
 
 
-## VS Code
+## K4DirStat
 
-[VS Code](editors/vs_code/vs_code.md)
+With `Disk Usage Analyzer` included by default, this is less critical. However, I do think that Kdirstat's ability to scan files is more efficient than `Disk Usage Analyzer`
+
+visual disk usage utility:
+http://kdirstat.sourceforge.net/
+
+    sudo apt-get install k4dirstat
+
