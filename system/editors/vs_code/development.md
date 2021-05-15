@@ -46,3 +46,19 @@ F5
 Ctrl-R ? 
 
 
+## Samples / Templates / Demos
+
+https://duckduckgo.com/?t=ffab&q=vscode+extension+template&ia=software
+💤 vscode extension template at DuckDuckGo
+https://github.com/fabiospampinato/template-vscode-extension
+💤 fabiospampinato/template-vscode-extension: A template for starting a new vscode extension quickly.
+https://github.com/Microsoft/vscode-extension-samples
+💤 microsoft/vscode-extension-samples: Sample code illustrating the VS Code extension API.
+https://github.com/microsoft/vscode-extension-samples/blob/main/fsconsumer-sample/src/extension.ts
+vscode-extension-samples/extension.ts at main · microsoft/vscode-extension-samples
+https://code.visualstudio.com/api/references/vscode-api
+💤 VS Code API | Visual Studio Code Extension API
+https://code.visualstudio.com/api/references/vscode-api#window
+💤 VS Code API | Visual Studio Code Extension API
+https://code.visualstudio.com/docs/editor/workspaces
+Workspaces in Visual Studio Code

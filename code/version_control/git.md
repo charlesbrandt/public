@@ -192,9 +192,11 @@ Which is shorthand for:
 
 ### Delete local branch
 
+Once you merge a feature branch back in to `main`, feel free to remove it. It's a good idea to keep your branch names somewhat clean. 
+
     git branch -d <local-branch>
 
-If the branch has been shared publicly, and deleted on the remote repository, but still shows up locally, it can be removed with
+If the branch has been shared publicly, and deleted on the remote repository, but still shows up locally (in the list of remote branches), it can be removed with
 
     git remote prune origin
     
@@ -203,6 +205,10 @@ To preview this action, use
     git remote prune origin --dry-run
 
 ### Setting tracking source
+
+If a new local branch has not been pushed up to the origin, use
+
+    git push origin [branch-name]
 
 If you wish to set tracking information for this branch:
 
@@ -223,11 +229,6 @@ git import changes on master to branch at DuckDuckGo
 
 See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository.
 
-### Deleting a branch
-
-Once you merge a feature branch back in to `main`, feel free to remove it. It's a good idea to keep your branch names somewhat clean. 
-
-    git branch -d <local-branch>
 
 ### Renaming a branch
 

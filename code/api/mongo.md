@@ -47,7 +47,7 @@ https://stackoverflow.com/questions/8866041/how-can-i-list-all-collections-in-th
 
 ## Queries
 
-Queries are used in most operations. 
+Queries are the first step in most operations that specify the content to work with. 
 
 https://docs.mongodb.com/manual/tutorial/query-documents/
 
@@ -68,12 +68,19 @@ https://mongoosejs.com/docs/tutorials/dates.html
 
 ### Null Fields
 
-match records that do not have a matching key:
+Match records that do not have a matching key:
 
     db.collection.find( { key_name : { $exists: false } } )
 
 https://docs.mongodb.com/manual/tutorial/query-for-null-fields/
 
+### Nested Fields
+
+Place the full path to the field in quotes to use it in a query
+
+    "paths.staged": "",
+
+https://stackoverflow.com/questions/19889313/mongodb-query-in-on-a-hash-field
 
 
 ## Find
@@ -246,7 +253,7 @@ or
     cd /path/to/mongodump/
     mongorestore --host localhost
     
-if there is existing data in the database, it may be necessary to use `--drop`
+if there is existing data in the database, `restore` will add/append the data. If you only want the new data, it is necessary to use `--drop` first. 
 
     mongorestore --drop
     

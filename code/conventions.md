@@ -23,3 +23,9 @@ And for a laugh:
 https://github.com/microsoft/lisa/pull/1166
 Yaml: change Camel case to snake_case in yaml by squirrelsc · Pull Request #1166 · microsoft/lisa · GitHub
 
+## Falsehoods
+
+Looks like some good reading here
+
+https://github.com/kdeldycke/awesome-falsehood
+kdeldycke/awesome-falsehood: 😱 Falsehoods Programmers Believe in
