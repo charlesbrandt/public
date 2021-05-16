@@ -33,3 +33,15 @@ If you don't already have a preferred operating system, consider one that is ope
 Linux is the most common on desktop machines in the open source world. There are many flavors:
 
 [Linux distributions](linux/distributions.md)
+
+Good links to have open:
+
+## Ubuntu on a Raspberry Pi
+
+https://ubuntu.com/download/raspberry-pi
+
+If you're not installing a pre-made image configured for a specific application (e.g. Plex, Home Assistant, Motion Eye, etc...), this is a good foundation to start with. Can add a gui later if you're not sure if it's for desktop or server use. 
+
+## VS Code
+
+https://code.visualstudio.com/Download

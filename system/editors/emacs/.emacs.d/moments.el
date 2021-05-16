@@ -1,24 +1,15 @@
 ;; Journal Related Functions
 
-;; 2019.07.03 09:00:53 
 ;; This may have some interesting techniques for printing a timestamp:
 ;; http://ergoemacs.org/emacs/elisp_insert-date-time.html
-
-(defun today ()
-  (interactive)
-  (insert (format-time-string "%Y%m%d"))
-)
-
-(defun open-today ()
-  (interactive)
-  (setq todayPath (concat "/c/outgoing/" (format-time-string "%Y%m%d") ".txt"))
-  (find-file todayPath)
-)
-(global-set-key "\C-xt" 'open-today)
 
 (defun date ()
   (interactive)
   (insert (format-time-string "%Y.%m.%d %T"))
+)
+(defun now ()
+  (interactive)
+  (date)
 )
 (defun tstamp ()
   (interactive)
@@ -26,26 +17,53 @@
   (date)
   (insert " ")
 )
-(defun now ()
-  (interactive)
-  (tstamp)
-)
+(global-set-key "\C-n" 'tstamp)
 
 (defun ttag ()
   (interactive)
   (insert "[")
   (date)
   (insert "]")
+  )
+
+(defun today ()
+  (interactive)
+  (insert (format-time-string "%Y%m%d"))
 )
+
+
+
+(defun clearmind ()
+  (interactive)
+  (beginning-of-buffer)
+  ;; could consider a 'clear screen' here (some # of newlines)
+  (insert "\n\n\n\n")
+  (beginning-of-buffer)
+  )
+
+
 (defun journal ()
   (interactive)
   (beginning-of-buffer)
-  (insert "\n\n")
+  ;; could consider a 'clear screen' here (some # of newlines)
+  (insert "\n\n\n\n")
   (beginning-of-buffer)
   (tstamp)
+  )
+;; if you use transpose, this will me
+(global-set-key "\C-t" 'journal)
+
+;; these should be used to open a terminal
+;; similar to vscode
+;; ideally it should toggle open and close a split frame in emacs
+;;(global-set-key "\C-xj" 'journal)
+;;(global-set-key "\C-j" 'journal)
+
+(defun top ()
+  ;; creating an alias
+  (journal)  
 )
-(global-set-key "\C-xj" 'journal)
-(global-set-key "\C-j" 'journal)
+
 
 (defun also ()
   (interactive)
@@ -56,7 +74,7 @@
   (insert "] ")
 )
 
-;this is not currently working with seconds
+;; this is not currently working with seconds
 (defun s2t ()
   (interactive)
   (delete-char 1)
@@ -101,43 +119,6 @@
   (insert "\n")
   (start)
 )
-
-(defun paste-beginning ()
-  ;; modified yank to delete first two lines from buffer
-  ;; useful for copy all urls... ignores first tab
-  (interactive)
-  (beginning-of-buffer)
-  (yank)
-  (insert "\n")
-  (beginning-of-buffer)
-
-  ;see note below
-  (kill-line 2)
-  (journal)
-  (forward-char 1)
-  ;this will kill only the text, or a blankline
-  ;but if a number is after it, it will kill both text and blankline for that
-  ;many lines
-  (kill-line)
-  ;get the cursor ready for adding a tag
-  (backward-char)
-  ;this is handy, but saving is a good habit... don't want to get lazy
-  ;(save-buffer)
-)
-(global-set-key "\C-xy" 'paste-beginning)
-
-(defun paste-end ()
-  ;; modified yank to delete first two lines from buffer
-  ;; useful for copy all urls... ignores first tab
-  (interactive)
-  (end-of-buffer)
-  (tstamp)
-  (insert "\n")
-  (yank)
-  (beginning-of-buffer)
-)
-(global-set-key "\C-xn" 'paste-end)
-
 
 
 ;should remember to put a start stamp when editing lisp code
@@ -190,6 +171,7 @@
   (while (search-forward (getenv "HOME") nil t)
     (replace-match "~"))
   )
+  (next-line)
 ;;  (insert (print-list ))
 )
 
@@ -207,3 +189,54 @@
     (setq list (cdr list)))
 )
 ;*2008.12.02 14:46:34 
+
+
+(defun paste-beginning ()
+  ;; modified yank to delete first two lines from buffer
+  ;; useful for copy all urls... ignores first tab
+  (interactive)
+  (beginning-of-buffer)
+  (yank)
+  (insert "\n")
+  (beginning-of-buffer)
+
+  ;see note below
+  (kill-line 2)
+  (journal)
+  (forward-char 1)
+  ;this will kill only the text, or a blankline
+  ;but if a number is after it, it will kill both text and blankline for that
+  ;many lines
+  (kill-line)
+  ;get the cursor ready for adding a tag
+  (backward-char)
+  ;this is handy, but saving is a good habit... don't want to get lazy
+  ;(save-buffer)
+)
+(global-set-key "\C-xy" 'paste-beginning)
+
+(defun paste-end ()
+  ;; modified yank to delete first two lines from buffer
+  ;; useful for copy all urls... ignores first tab
+  (interactive)
+  (end-of-buffer)
+  (tstamp)
+  (insert "\n")
+  (yank)
+  (beginning-of-buffer)
+)
+(global-set-key "\C-xn" 'paste-end)
+
+
+
+
+(defun open-today ()
+  (interactive)
+  (setq todayPath (concat "/c/outgoing/" (format-time-string "%Y%m%d") ".txt"))
+  (find-file todayPath)
+)
+;(global-set-key "\C-xt" 'open-today)
+
+
+
+
