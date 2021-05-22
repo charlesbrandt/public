@@ -74,6 +74,9 @@ There are two things you can do about this warning:
 (setq load-path (cons "~/.emacs.d/themes" load-path))
 
 
+(setq confirm-kill-emacs 'y-or-n-p)
+
+
 (load-file "~/.emacs.d/keymaps.el")
 
 ;; Journal Related functions:

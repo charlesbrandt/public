@@ -46,7 +46,7 @@
   (interactive)
   (beginning-of-buffer)
   ;; could consider a 'clear screen' here (some # of newlines)
-  (insert "\n\n\n\n")
+  (insert "\n\n\n")
   (beginning-of-buffer)
   (tstamp)
   )

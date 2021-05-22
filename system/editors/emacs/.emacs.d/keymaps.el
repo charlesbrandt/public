@@ -1,17 +1,10 @@
 ;; Keymaps
 
-;; this is useful in termux:
-(global-set-key "\C-h" 'backward-kill-word)
-;; via: https://www.reddit.com/r/termux/comments/cnnkao/is_it_possible_to_change_what_ctrlbackspace_does/
-
-
+;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 
 ;; To see what key syntax to use when defining a new keymap:
 ;; Alt+x describe-key 【Ctrl+h k】, then press the key you want. Emacs will then display its syntax.
 ;; This also lets you see what a key is currently bound to
-
-;; The terminal may not pass all characters to emacs, which can make it seem like bindings are not taking effect:
-;; https://stackoverflow.com/questions/11110801/why-does-ctrl-not-work-when-i-bind-it-to-a-command-in-emacs
 
 (global-set-key "\C-b" 'switch-to-buffer)
 
@@ -23,6 +16,10 @@
 ;; (global-set-key "\C-c#" 'comment-region)
 ;; comment 'do what i mean' is a bit more versatile -- toggles comments
 (global-set-key "\C-c#" 'comment-dwim)
+;; Ctrl-C cords are difficult to get to now with ergo emacs
+;; switching to what is used in VS Code
+(global-unset-key (kbd "C-/"))
+(global-set-key  (kbd "C-/") 'comment-dwim)  
 
 ;; these appear to break things pretty badly
 (global-unset-key (kbd "C-;"))
@@ -84,14 +81,20 @@
 (global-set-key (kbd "M-<") 'beginning-of-buffer)
 
 
-(setq confirm-kill-emacs 'y-or-n-p)
-
 (global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
 
 ;; I'm not sure why ctrl-space is considered sub-optimal by ergo-emacs.
 ;; I like it though
 (global-set-key (kbd "C-SPC") 'set-mark-command)
 
+
+;; The terminal may not pass all characters to emacs, which can make it seem like bindings are not taking effect:
+;; https://stackoverflow.com/questions/11110801/why-does-ctrl-not-work-when-i-bind-it-to-a-command-in-emacs
+
+;; this is useful in termux:
+;; don't use this much in practice
+;; (global-set-key "\C-h" 'backward-kill-word)
+;; via: https://www.reddit.com/r/termux/comments/cnnkao/is_it_possible_to_change_what_ctrlbackspace_does/
 
 
 ;; A bit of history of how ergo emacs came up with the keybindings they chose:
@@ -117,7 +120,6 @@
 ;; remap ctrl-x and ctrl-c to be something else
 ;; the default emacs way makes it difficult to switch to another editor. 
 ;; then map ctrl-c, ctrl-x, ctrl-v to copy, cut, paste
-
 
 
 
