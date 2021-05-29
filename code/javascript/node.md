@@ -39,7 +39,7 @@ https://github.com/nodesource/distributions/blob/master/README.md
 
 ## Package Managers
 
-### NPM vs Yarn
+### NPM vs Yarn vs PNPM
 
 The answer? Use what your team is using. Be consistent there. Working on an open project? Use what the project is using.
 

@@ -318,17 +318,11 @@ Still requires adding custom bindings (included below).
 
 Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
-### Quick Open
+### Tailwind
 
-By Zongmin Lei
+Tailwind CSS IntelliSense
 
-Similar to Emacs method for opening files via keyboard only
-
-Keybindings
-CTRL+⌘+O - Quick Open File
-CTRL+⌘+P - Quick Open Input Path
-
-Does not appear to work with opening a new file? 
+https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
 
 ### Vue (Vetur)
 
@@ -365,6 +359,11 @@ may require the project to install prettier as a dev dependency so that vscode h
 ### Bracket Pair Colorizer
 
 By: CoenraadS
+
+### ES6 Mocha Snippets
+By: spoonscen.es6-mocha-snippets
+
+Better syntax support for Mocha style tests
 
 ### Python
 
@@ -433,7 +432,20 @@ https://github.com/Microsoft/vscode-remote-release
 
 ### Import Cost
 
+
 ## Other Extensions
+
+### Quick Open
+
+By Zongmin Lei
+
+Similar to Emacs method for opening files via keyboard only
+
+Keybindings
+CTRL+⌘+O - Quick Open File
+CTRL+⌘+P - Quick Open Input Path
+
+Does not appear to work with opening a new file? 
 
 ### GitLens
 
