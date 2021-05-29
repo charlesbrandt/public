@@ -229,6 +229,12 @@ git import changes on master to branch at DuckDuckGo
 
 See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository.
 
+#### Compare branches
+
+Frequently this step is done on a web service like Github. Better integration with issue tracker that way. Notification emails are automatically sent. 
+
+    git diff branch1..branch2
+
 
 ### Renaming a branch
 
