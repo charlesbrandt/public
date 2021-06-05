@@ -50,9 +50,16 @@
   (beginning-of-buffer)
   (tstamp)
   )
-;; if you use transpose, this will me
-(global-set-key "\C-t" 'journal)
+;; if you use transpose, this will interfere
+;; didn't like having a 'move-to-top-timestamp' all controlled with one hand
+;; that was a nice feature about ctrl-j
+;; (global-set-key "\C-t" 'journal)
 
+(global-unset-key (kbd "C-u"))
+(global-set-key  (kbd "C-u") 'journal) 
+
+;; can learn new habit as needed -- nothing else pressing here in emacs:
+(global-set-key  (kbd "C-j") 'journal) 
 ;; these should be used to open a terminal
 ;; similar to vscode
 ;; ideally it should toggle open and close a split frame in emacs
@@ -131,15 +138,22 @@
     (setq list (cdr list)))
 )
 
-;(defun open-files ()
-;(defun list-open ()
+;; (defun open-files ()
+;; (defun list-open ()
 (defun jo ()
   (interactive)
-  (setq list (split-string (car kill-ring-yank-pointer) "\n"))
-  (while list
+  (setq flist (split-string (car kill-ring-yank-pointer) "\n"))
+  ;; 'reverse does not alter the original structure of the list (returns a new list)
+  ;; 'nreverse operates in place
+  ;; https://ftp.gnu.org/old-gnu/Manuals/elisp-manual-20-2.5/html_chapter/elisp_6.html
+  ;(nreverse flist)
+
+  (setq flipped (reverse flist))
+  
+  (while flipped
     ;open a buffer:
-    (find-file (car list))
-    (setq list (cdr list)))
+    (find-file (car flipped))
+    (setq flipped (cdr flipped)))
 )
 
 ; could make a new frame:
@@ -156,14 +170,23 @@
 ;; (defun list-print ()
 (defun pf ()
   (interactive)
-  (setq list (mapcar (function buffer-file-name) (buffer-list)))
-  (reverse list)
-  (while list
-    (if (car list)
-	(progn (insert (car list))
+  (setq flist (mapcar (function buffer-file-name) (buffer-list)))
+  ;; I don't think this works, and was an old attempt to make opening work
+  ;; but would have placed most important items at the bottom instead of top
+  ;; (reverse list)
+  ;; however, it would be nice to move the first item ('instance.md')
+  ;; to the end of the list
+  (setq instance (car flist))
+  (setq flist (cdr flist))
+  ;; attempts at appending to the end of a list in lisp
+  (push instance (cdr (last flist)))
+  ;; (nconc flist (list instance))
+  (while flist
+    (if (car flist)
+	(progn (insert (car flist))
 	 (insert "\n") )
     )
-    (setq list (cdr list))
+    (setq flist (cdr flist))
     )
   
   (let ((case-fold-search t)) ; or nil
