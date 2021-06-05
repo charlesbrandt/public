@@ -28,6 +28,34 @@ Is a native vanilla range operation.
 
 But `range(1,12)` is super easy to remember. Just have to remember if that upper limit is inclusive, or do you need to bump it up by one to get the range you want. Try it. See. 
 
+``` js
+    range(start = 0, end = undefined, step = 1) {
+      console.log('range called with', start, end, step)
+      start = parseInt(start)
+      end = parseInt(end)
+      step = parseInt(step)
+
+      let result = []
+      while (start < end) {
+        start += step
+        if (start <= end) {
+          result.push(start)
+        }
+      }
+      return result
+    },
+
+```
+
+    console.log([...range(2, 5, 2)])
+
+May not be memory efficient for large ranges!! 
+
+Adapted from:
+
+https://dev.to/ycmjason/how-to-create-range-in-javascript-539i
+
+
 
 https://duckduckgo.com/?t=canonical&q=javascript+range&ia=web
 javascript range at DuckDuckGo
