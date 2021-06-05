@@ -264,16 +264,6 @@ Apps must be written to utilize server side rendering features.
 
 If API calls only happen once the page has loaded, you won't see much improvement in SEO or load times. See `asyncData` for more details.
 
-## Vuex (Persistence)
-
-In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of Vuex
-
-See: [Vuex](vuex.md)
-
-Consider adding in Vuex-ORM
-
-https://gitlab.com/charlesbrandt/public/-/blob/master/code/javascript/vuex.md
-
 ## External Modules / Plugins
 
 https://nuxtjs.org/guide/plugins/
@@ -330,6 +320,17 @@ export default {
 ```
 
 https://medium.com/@codebeast_/why-your-third-party-plugin-dont-work-in-nuxt-and-how-to-fix-it-d1a8caadf422
+
+Vue level, what's happening:
+
+https://blog.logrocket.com/accessing-properties-globally-in-vue-js-with-prototypes/
+
+
+## Version
+
+The current version is displayed when running the nuxt server interactively. Alternatively, to see the version of Nuxt currently installed for your project:
+
+    head node_modules/nuxt/dist/nuxt.js
 
 ## Configuration
 
@@ -426,8 +427,13 @@ You can change this by using \$config instead
 
     <p>{{$config.baseURL}}</p>
 
-## Version
+## Vuex (Persistence)
 
-The current version is displayed when running the nuxt server interactively. Alternatively, to see the version of Nuxt currently installed for your project:
+In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of Vuex
 
-    head node_modules/nuxt/dist/nuxt.js
+See: [Vuex](vuex.md)
+
+Consider adding in Vuex-ORM
+
+https://gitlab.com/charlesbrandt/public/-/blob/master/code/javascript/vuex.md
+

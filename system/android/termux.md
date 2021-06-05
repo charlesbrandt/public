@@ -1,4 +1,12 @@
-# Steps for getting a termux install going
+# Termux
+
+Termux is like a minimal linux container running on your phone that you have full access to. 
+
+It used to be as simple as downloading from the Google Play store. That was sweet. Then Google changed some terms and locked that path. 
+
+Seems like now you need to install F-Droid first. It's a good resource to have anyway. Allows you to install things that you want to install. 
+
+## Steps for getting a termux install going
 
 A physcial keyboard makes things a lot easier!
 

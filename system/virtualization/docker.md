@@ -16,6 +16,12 @@ https://github.com/wsargent/docker-cheat-sheet
 This guide also has a nice introduction to what containers are:  
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
+## Dockerfiles
+
+How you set up the image that gets run in a container
+
+https://docs.docker.com/engine/reference/builder/
+
 
 ## See Also
 
