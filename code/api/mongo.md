@@ -57,6 +57,20 @@ Not sure what fields are in use in a given collection?
     
 [via](https://stackoverflow.com/questions/5900792/how-to-view-document-fields-in-mongo-shell)
 
+### Logical Operators
+
+pass checks in as part of a list
+
+	$and: [{ dataset: req.params.dataset }, { visible: false }],
+
+https://docs.mongodb.com/manual/reference/operator/query-logical/
+
+#### Existence
+
+Sometime new fields may not exist in old records. Can check for a value or existence with:
+
+	$or: [{ visible: true }, { visible: { $exists: false } }],
+
 ### Date range
 
 return Episode.
