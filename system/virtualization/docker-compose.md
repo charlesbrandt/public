@@ -2,13 +2,6 @@
 
 Configuration file for current project is in `docker-compose.yml`.
 
-To restrict to local machine only, edit the docker-compose.yml file and change to:
-
-```
-        ports:
-            - "127.0.0.1:3000:3000"
-```
-
 ## About
 
 Docker Compose relies on [docker.](docker.md) Be sure to install that first.
@@ -91,14 +84,48 @@ Image for service was built because it did not already exist. To rebuild this im
 
 ## Networking
 
+To restrict to local machine only, edit the docker-compose.yml file and change to:
+
+```
+        ports:
+            - "127.0.0.1:3000:3000"
+```
+
+To restrict a service so it's only available within the container network (not available on the host directly), then use `expose` instead:
+
+```
+    expose:
+      - 3306
+```
+
 https://stackoverflow.com/questions/35429837/docker-compose-port-mapping
 
-To only expose ports on localhost on the host machine, in docker-compose.yml:
-
-    ports:
-      - "127.0.0.1:8001:80"
-
 https://docs.docker.com/compose/compose-file/#ports
+
+https://stackoverflow.com/questions/40801772/what-is-the-difference-between-docker-compose-ports-vs-expose
+
+
+## Custom images (Dockerfile)
+
+It's a good idea to start with an existing docker image for the type of service you want to use as a foundation for your container. For example, if you're running a node application, you could start with:
+
+```docker-compose.yml
+  api:
+    image: node:14
+```
+
+Eventually you may want some other utilities to be available within the container context. (e.g. when you run `docker-compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so they persist across restarts. 
+
+```docker-compose.yml
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+```
+
+Note that the dockerfile path is relative to the value for `context`
+
+Then, in the Dockerfile, `image: node:14` becomes `FROM node:14` and you can add the rest of the configurations as needed. See also [docker.md](docker.md)
 
 
 ## Environment Variables
