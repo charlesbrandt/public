@@ -114,8 +114,8 @@ Change "Continue where left off" from Ask to Never
 
 ### Utilities
 
-    sudo apt-get install ffmpeg
-
+    sudo apt-get install ffmpeg 
+    sudo apt-get install curl
 
 ## VS Code
 

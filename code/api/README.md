@@ -8,7 +8,7 @@ For mostly static binaries, use IPFS (fixed paths on the filesystem is ideal. Ne
 
 For documents that change, use git and .md
 
-For relationships and metadata, use a real database. Postgres seems hard to beat in this.
+For relationships and metadata, use a real database. Postgres seems hard to beat for this.
 
 ## DBs 
 
@@ -18,11 +18,22 @@ Databases often tie in closely to the API side.
 
 [databases](databases.md)
 
+
+## Frameworks
+
+
+
+### File Browser
+~/alpha/file_system/file-browser.md
+~/alpha/public/system/editor/emacs-journal.md
+~/public/code/api/README.md
+
+
 ## Documenting
 
 Document them.
 
-Try Swagger.
+Try Open API (previously known as Swagger). 
 
 Or just text.
 

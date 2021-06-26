@@ -16,6 +16,37 @@ https://kubernetes.io/docs/setup/
    
 https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
 
+## Distributions
+
+https://k3s.io/
+💤 K3s: Lightweight Kubernetes
+https://rancher.com/docs/k3s/latest/en/
+💤 Rancher Docs: K3s - Lightweight Kubernetes
+
+https://k8slens.dev/
+💤 Lens | The Kubernetes IDE
+https://github.com/lensapp/lens
+💤 GitHub - lensapp/lens: Lens - The Kubernetes IDE
+https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web
+
+💤 running a developer setup with kubernetes at DuckDuckGo
+https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/
+💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer
+https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/
+💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog
+
+## Similar Tools
+
+Kubernetes is compared to Docker Swarm.
+
+Docker-compose is it's own thing (what to run on a local instance)
+
+https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web
+💤 docker-compose vs kubernetes at DuckDuckGo
+https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes
+What's the difference between Docker Compose and Kubernetes? - Stack Overflow
+
+
 ## Local Development
 
 https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
