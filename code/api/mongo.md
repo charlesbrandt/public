@@ -151,7 +151,7 @@ All update operators are documented here:
 
 https://docs.mongodb.com/manual/reference/operator/update/#id1
             
-## Sorting
+## Sorting / Order
 
     db.collection.find().sort( { age: -1 } )
 
