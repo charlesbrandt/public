@@ -96,6 +96,17 @@ Place the full path to the field in quotes to use it in a query
 
 https://stackoverflow.com/questions/19889313/mongodb-query-in-on-a-hash-field
 
+### Regular Expressions
+
+https://docs.mongodb.com/manual/reference/operator/query/regex/#mongodb-query-op.-regex
+
+Not working:
+{createdAt: { $regex: /2021-06-30*/ } }
+
+Seems like searching by a date range is a cumbersome process? 
+
+https://stackoverflow.com/questions/43996930/regex-in-mongodb-for-iso-date-field
+
 
 ## Find
         
@@ -215,6 +226,30 @@ https://mongoosejs.com/
 Mongoose ODM v5.9.4
 https://mongoosejs.com/docs/guide.html
 Mongoose v5.9.3: Schemas
+
+### Populate
+
+Mongoose can help populate arrays with references to other documents. 
+
+    .populate("users")
+
+It is even possible to run populate on nested objects to get what you need all in one go. 
+
+```
+	.populate({
+			path: "groups",
+			populate: {
+				path: "members",
+				select: { fullname: 1 },
+			},
+		})
+		.populate("users")
+```
+
+To go the other direction, there is Reverse Populate
+
+"mongoose-reverse-populate-v2": "^1.2.4",
+
 
 ### Specify collection
 
