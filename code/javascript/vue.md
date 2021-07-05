@@ -271,6 +271,24 @@ https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-chi
 Note:  
 If you've hit a situation where an event bus pattern comes up, it may be a good time to consider using [vuex](vuex.md).
 
+## Binding values
+
+Typically, just use a v-model to handle coordinating values between the template and the script. 
+
+https://dilshankelsen.com/v-model-with-vuex/
+How To Use V-Model With Vuex | Dilshan Kelsen
+
+Some cases where it's easier to separate the value from what action you want to take when events occur
+
+```
+      <textarea
+        class="resize min-h-screen w-3/4 m-auto"
+        :value="articleString"
+        @input="updateObject"
+      />
+```
+
+
 
 ## Renderless Components
 

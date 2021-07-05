@@ -22,5 +22,3 @@ https://docs.cypress.io/examples/examples/docker
 https://github.com/bahmutov/cypress-open-from-docker-compose
 
 
-
-

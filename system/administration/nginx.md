@@ -94,3 +94,13 @@ https://www.serverlab.ca/tutorials/linux/web-servers-linux/how-to-proxy-wss-webs
 Log files are typically stored in 
 
     /var/log/nginx
+
+With containers
+
+    docker-compose exec web bash
+
+then
+
+    nginx -t 
+
+is super helpful for debugging nginx configurations

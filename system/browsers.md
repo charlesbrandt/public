@@ -14,10 +14,11 @@ If you need a browser context for a specific task / job
 
 If no relevant profile is available, just create one.
 
-Be sure to set Menu -> Preferences -> Restore previous session.  
-Pick your preferred search engine while you're at it!
+Be sure to set Menu -> Settings -> Restore previous session.  
 
-Un-check "Ctrl+Tab cycles through tabs in recently used order" option
+Ensure "Ctrl+Tab cycles through tabs in recently used order" option is unchecked.
+
+Pick your preferred search engine while you're at it!
 
 
 ### Tab Suspender
@@ -25,11 +26,12 @@ Un-check "Ctrl+Tab cycles through tabs in recently used order" option
 'Auto Tab Discard' does what I'm after. Closest working alternative to 'The Great Suspender'
 
 https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/  
-https://www.google.com/search?q=firefox+tab+suspender
 
 This feature goes by many names, including: 
 
 Tab Sleep, Tab Snooze, Tab Freeze, Tab Suspend, Tab Discard or Tab Hibernation.
+
+/search?q=firefox+tab+suspender
 
 https://www.askvg.com/tip-disable-or-enable-tab-sleep-or-tab-snooze-feature-in-web-browsers/
 

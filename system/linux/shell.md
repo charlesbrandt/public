@@ -1,25 +1,50 @@
 # Shell
 
-AKA Prompt Command_Line Command_line_interface cli bash terminal console
+AKA prompt command-line command-line-interface cli bash terminal console linux-shell zsh 
 
-## How to print a formatted date in a command?
+## Bash
+
+https://www.gnu.org/software/bash/manual/bash.html
+Bash Reference Manual
+
+### Variables
+
+How to assign a variable? 
+
+```
+export item="something"
+
+echo $item
+```
+
+### Dates
+
+How to print a formatted date in a command?
+
+now="$(date +'%Y%m%d')"
 
 $(date +%F)
 
-via:
-
-https://duckduckgo.com/?q=bash+print+formatted+date+in+command&t=canonical&ia=web
-bash print formatted date in command at DuckDuckGo
-https://stackoverflow.com/questions/1401482/yyyy-mm-dd-format-date-in-shell-script
-bash - YYYY-MM-DD format date in shell script - Stack Overflow
-
-## List contents of a directory sorted by modified timestamp
+### List contents of a directory sorted by modified timestamp
 
     ls -lt
 
-## TMUX
+### Sequential Commands
 
-### Why do I have to press return twice?
+aka a list of commands. 
+Separate each command by `&&`
 
-### How do I keep my editor (emacs) from launching a gui based session? Is there a different command?
+https://www.gnu.org/software/bash/manual/bash.html#Lists
+
+### Current Directory
+
+search terms used: "bash name of current directory"
+
+    printf '%s\n' "${PWD##*/}"
+
+[via](https://stackoverflow.com/questions/1371261/get-current-directory-name-without-full-path-in-a-bash-script)
+
+
+
+
 

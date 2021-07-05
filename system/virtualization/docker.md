@@ -223,6 +223,16 @@ to keep a container running, choose a process that won't exit:
 
     CMD [ "tail", "-f", "/dev/null" ]
 
+See also [dockerfiles](dockerfiles.md)
+
+```
+FROM node:lts
+
+# Set the working directory.
+WORKDIR /srv
+```
+
+
 
 ### Building
 
@@ -301,6 +311,10 @@ http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-cont
 To stop everything:
 
     docker stop $(docker ps -q)
+    
+or 
+
+    docker container stop $(docker container list -q)
 
 ### Removing a Container
 

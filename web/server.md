@@ -2,9 +2,9 @@
 
 Closely related to [storage](../storage/storage.md)
 
-Web Servers are the foundation for just about any application that is shared across many machines.
+Web Servers are the foundation for applications sshared across many machines.
 
-It does imply that the server serves as a central point of contact for the whole application. If that is not the case, explore concepts behind the decentralized web. [decentralized](decentralized.md)
+This role implies that the server acts as a central point of contact for the whole application. If that is not the case, explore concepts behind the decentralized web. [decentralized](decentralized.md)
 
 ## Nginx
 
@@ -39,9 +39,6 @@ This makes it easier to deploy to external services.
 
 ## Apache
 
-## 2019.11.23 16:03:54
-
-\*2016.09.29 10:46:12
 Go with whatever you can get running quickly
 
 https://duckduckgo.com/?q=best+webserver+for+static+files&t=ffab&ia=qa

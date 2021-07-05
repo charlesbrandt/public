@@ -2,11 +2,21 @@
 
 Looking at open source alternatives to Google Analytics.
 
-Matomo (previously Piwik) and Open Web Analytics are two open source options that come up.
+This is a good topic
+
+https://github.com/topics/web-analytics
+web-analytics · GitHub Topics · GitHub
+
+and Open Web Analytics are two open source options that come up.
 
 ## Matomo
 
+Matomo (previously Piwik) 
+
 https://matomo.org/
+
+https://github.com/matomo-org/matomo
+GitHub - matomo-org/matomo: Liberating Web Analytics. Star us on Github? +1. Matomo is the leading open alternative to Google Analytics that gives you full control over your data. Matomo lets you easily collect data from websites & apps and visualise this data and extract insights. Privacy is built-in. We love Pull Requests!
 
 https://duckduckgo.com/?q=open+source+hotjar&t=canonical&ia=web
 open source hotjar at DuckDuckGo
@@ -17,6 +27,23 @@ Compare Pricing Plans - Matomo Ethical Web Analytics
 
 https://duckduckgo.com/?t=canonical&q=matomo+heatmaps&ia=web
 
+## Umami
+
+https://github.com/mikecao/umami
+GitHub - mikecao/umami: Umami is a simple, fast, website analytics alternative to Google Analytics.
+
+## Plausible
+
+https://github.com/plausible/analytics
+GitHub - plausible/analytics: Simple, open-source, lightweight (< 1 KB) and privacy-friendly web analytics alternative to Google Analytics.
+
+## Countly
+
+https://github.com/Countly/countly-server
+GitHub - Countly/countly-server: Countly helps you get insights from your application. Available self-hosted or on private cloud.
+
+
+
 ## Google Analytics
 
 Looks like it might be possible to export Google Analytics data by:
@@ -26,9 +53,12 @@ Looks like it might be possible to export Google Analytics data by:
 
 https://matomo.org/docs/google-analytics-importer/
 
+
 ## Open Web Analytics
 
-Leaning toward Open Web Analytics. Their Heatmap feature is not a premium paid add-on.
+I previously had some difficulty getting the client to work in a vue context. Maybe it didn't need to be integrated with vue?
+
+Their Heatmap feature is not a premium paid add-on.
 
 However, I had difficulty getting their agent to work within a vue-based application.
 
