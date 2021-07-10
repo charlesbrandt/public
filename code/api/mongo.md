@@ -260,6 +260,16 @@ Mongoose by default produces a collection name by passing the model name to the 
 https://stackoverflow.com/questions/5794834/how-to-access-a-preexisting-collection-with-mongoose
 
 
+## Saving Data
+
+// if results is what is returned by mongoose findById (or equivalent)
+body = { 'something': 'plain old object here' }
+// this overrides the mongo attributes -- save() not available
+results = body;
+results.save(); <--- save not available!
+// rather than try to update all changed parameters, just subsequently call findByIdAndUpdate later
+
+
 ## Import / Export Data
 
 ### Export / Backups / Dumps

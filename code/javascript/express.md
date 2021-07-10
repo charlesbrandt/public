@@ -80,6 +80,10 @@ module.exports = router
 
 ```
 
+It is acceptable to provide multiple functions in the route. There are different ways to format these, including as an array of functions to call:
+
+See "Route handlers" on 
+
 https://expressjs.com/en/guide/routing.html
 Express routing
 
