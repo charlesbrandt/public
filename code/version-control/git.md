@@ -107,6 +107,28 @@ $ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after one hour (setting is in seconds)
 ```
 
+## Create New Repository
+
+    git init
+
+The default branch on `git init` is currently set to master.
+If you want to change it to `main`, this is a good point to do so.
+
+```
+git checkout -b main
+git branch -d master
+git branch -a
+```
+
+Confirm the remote server is set to your own repo:
+
+    git remote -v
+
+From here you can add different remotes (origins and upstreams) as needed. 
+
+(See also server section)
+
+
 ## Common Workflows
 
 ### Moving files / directories
