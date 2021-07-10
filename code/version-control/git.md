@@ -66,23 +66,23 @@ https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
 
 Run
 
+```
 git config user.email "you@example.com"
 git config user.name "Your Name"
+```
 
 to set the identity to use when making changes to the current repository. Different repositories may have different accounts associated with them.
 
 If that's not something your work requires, you can also set a single account globally:
 
+```
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
-
-TODO: It may be possible to automatically set these up on a repository by repository basis. Could be helpful when checking out new repos:
-
-https://orrsella.com/2013/08/10/git-using-different-user-emails-for-different-repositories/
+```
 
 ### SSH
 
-use `ssh -A` to share credentials with the machine you connect to.
+use `ssh -A` to share your local credentials with the machine you connect to.
 
 Then if you register your local machine's public ssh key with a service like Gitlab or [Github](https://github.com/settings/keys), you won't have to type your username and password every time you push or pull.
 
@@ -147,6 +147,8 @@ see also:
     git bisect
 
 ### Undo add files
+
+Newer versions of git show reminders about these commands when running `git status`
 
     git reset
 
@@ -229,12 +231,9 @@ git import changes on master to branch at DuckDuckGo
 
 See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository.
 
-#### Compare branches
-
-Frequently this step is done on a web service like Github. Better integration with issue tracker that way. Notification emails are automatically sent. 
+### Compare branches
 
     git diff branch1..branch2
-
 
 ### Renaming a branch
 
@@ -292,7 +291,7 @@ git push -u origin main
 
 https://dev.to/afrodevgirl/replacing-master-with-main-in-github-2fjf
 
-Be sure to update defaults in your host:
+Be sure to update defaults in your git server host:
 
 https://stackoverflow.com/questions/30987216/change-default-branch-in-gitlab
 
@@ -307,6 +306,10 @@ https://nvie.com/posts/a-successful-git-branching-model/
 https://stackoverflow.com/questions/15072243/git-with-development-staging-and-production-branches
 
 https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git
+
+#### Preparing a release
+
+When it's time to merge a feature branch to the main branch, a few steps are necessary. Examples include diffing the branches, merging the branches, and creating a pull request in your issue tracker to document the change.  Frequently these step are done directly in a web service like Github. Better integration with issue tracker that way. Notification emails are automatically sent to collaborators. However, if you need to do it locally for some reason:
 
 ### Branch from previous commit
 
@@ -640,6 +643,29 @@ git push origin master --force
 [via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
 
 ### Changing a commit message
+
+
+### Clearing a public repo's history
+
+```
+-- Remove the history from 
+rm -rf .git
+
+-- recreate the repos from the current content only
+git init
+git add .
+git commit -m "Initial commit"
+
+-- push to the github remote repos ensuring you overwrite history
+git remote add origin git@github.com:<YOUR ACCOUNT>/<YOUR REPOS>.git
+git push -u --force origin main
+```
+
+via
+https://gist.github.com/stephenhardy/5470814
+
+In Gitlab, you'll need to explicitly allow "Force push" in the project settings. Once this action is complete, it's a good idea to set this back to disabled. 
+
 
 ## GUI Clients
 
