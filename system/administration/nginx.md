@@ -104,3 +104,24 @@ then
     nginx -t 
 
 is super helpful for debugging nginx configurations
+
+To see if the nginx process is running: 
+
+    service nginx status
+    
+(On the nginx docker container, ps is not available)
+
+To reload nginx without reloading all of the containers:
+
+    docker-compose -p boilerplate exec web nginx -s reload
+
+For netstat:
+
+    apt-get update
+    apt-get install net-tools
+
+    netstat -pan | grep LISTEN
+
+See also dedicated section for nginx
+
+https://gitlab.com/charlesbrandt/public/-/blob/main/system/virtualization/docker.md#troubleshooting-nginx

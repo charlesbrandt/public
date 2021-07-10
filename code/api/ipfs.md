@@ -1,61 +1,52 @@
 # InterPlanetary File System (IPFS)
 
-https://duckduckgo.com/?t=canonical&q=IPFS&ia=web
-IPFS at DuckDuckGo
-https://en.wikipedia.org/wiki/InterPlanetary_File_System
-InterPlanetary File System - Wikipedia
+Think of IPFS as a place to store your data. The binaries. The things that don't change often. Track the CIDs that are important to you and your purpose. 
+
+Use an IPFS client (js-client if browser based) to retrieve the information your application needs
+
+
 https://ipfs.io/
 IPFS Powers the Distributed Web
+
 https://ipfs.io/#how
 IPFS Powers the Distributed Web
+
 https://js.ipfs.io/
 JS IPFS
 
-## Installation: Clients / Servers
+https://en.wikipedia.org/wiki/InterPlanetary_File_System
+InterPlanetary File System - Wikipedia
 
-https://ipfs.io/#install
-IPFS Powers the Distributed Web
+### Video Overview
 
-### Docker
+https://docs.ipld.io/docs/media/#foundations-for-decentralization-data-with-ipld-gpn19
+IPLD Documentation
 
-https://hub.docker.com/u/ipfs/
-ipfs's Profile
-https://blog.ipfs.io/1-run-ipfs-on-docker/
-Run IPFS in a Docker container
-https://duckduckgo.com/?t=canonical&q=ipfs+docker&ia=web
-ipfs docker at DuckDuckGo
 
-### Desktop GUI Client
+## Topics of interest
 
-https://github.com/ipfs-shipyard/ipfs-desktop
-GitHub - ipfs-shipyard/ipfs-desktop: An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux.
+https://duckduckgo.com/?q=ipfs+video+streaming&t=canonical&ia=web
+ipfs video streaming at DuckDuckGo
+https://blog.fission.codes/experimenting-with-hls-video-streaming-and-ipfs/
+Experimenting with HLS Video Streaming and IPFS
 
-#### AppImage
+https://duckduckgo.com/?t=canonical&q=ipfs+pinning&ia=web
+ipfs pinning at DuckDuckGo
+https://docs.ipfs.io/how-to/pin-files/
+Pin files | IPFS Docs
 
-https://appimage.org/
 
-Download an application, make it executable, and run! No need to install. No system libraries or system preferences are altered. Can also run in a sandbox like Firejail
+## Data sets
 
-```
-cd ~/Downloads
-chmod +x ipfs-desktop-0.14.0-linux-x86_64.AppImage
-./ipfs-desktop-0.14.0-linux-x86_64.AppImage
-```
+https://awesome.ipfs.io/datasets/
+Datasets
 
-#### Snap
+https://ipfs.io/ipfs/QmXyNMhV8bQFp6wzoVpkz3NqDi7Fj72Deg7KphAuew3RYU/
+Wistful Books
 
-https://docs.ipfs.io/install/command-line/#package-managers
 
-    snap install ipfs
 
-## Private / Local Only
 
-For a private network, all nodes must use the same key.
-
-https://duckduckgo.com/?t=canonical&q=ipfs+local+only&ia=web
-ipfs local only at DuckDuckGo
-https://medium.com/@s_van_laar/deploy-a-private-ipfs-network-on-ubuntu-in-5-steps-5aad95f7261b
-Deploy a private IPFS network in 5 steps | by Sander van Laar | Medium
 
 ## InterPlanetary Linked Data (IPLD)
 
@@ -118,11 +109,79 @@ why don't we need access control ? · Issue #376 · ipfs/notes · GitHub
 https://blog.textile.io/the-5-steps-to-end-to-end-encrypted-photo-storage-and-sharing/
 The 5 steps to end-to-end encrypted photo storage and sharing
 
+### Database 
 
-### Video Overview
+https://duckduckgo.com/?t=canonical&q=ipfs+database&ia=web
+ipfs database at DuckDuckGo
 
-https://docs.ipld.io/docs/media/#foundations-for-decentralization-data-with-ipld-gpn19
-IPLD Documentation
+https://rossbulat.medium.com/orbitdb-deploying-the-distributed-ipfs-database-with-react-79afa1a7fabb
+OrbitDB: Deploying the Distributed IPFS Database in the Browser | by Ross Bulat | Medium
+
+
+
+
+
+## Installation: Clients / Servers
+
+https://github.com/ipfs/js-ipfs/tree/master/examples/browser-vue
+js-ipfs/examples/browser-vue at master · ipfs/js-ipfs · GitHub
+
+https://ipfs.io/#install
+IPFS Powers the Distributed Web
+
+https://ipfs.io/#install
+IPFS Powers the Distributed Web
+https://js.ipfs.io/
+JS IPFS
+
+https://github.com/ipfs/js-ipfs/tree/master/examples#js-ipfs-examples-and-tutorials
+js-ipfs/examples at master · ipfs/js-ipfs · GitHub
+https://github.com/ipfs/js-ipfs/tree/master/examples/browser-webpack
+js-ipfs/examples/browser-webpack at master · ipfs/js-ipfs · GitHub
+
+
+### Docker
+
+https://hub.docker.com/u/ipfs/
+ipfs's Profile
+https://blog.ipfs.io/1-run-ipfs-on-docker/
+Run IPFS in a Docker container
+https://duckduckgo.com/?t=canonical&q=ipfs+docker&ia=web
+ipfs docker at DuckDuckGo
+
+
+### Desktop GUI Client
+
+https://github.com/ipfs-shipyard/ipfs-desktop
+GitHub - ipfs-shipyard/ipfs-desktop: An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux.
+
+#### AppImage
+
+https://appimage.org/
+
+Download an application, make it executable, and run! No need to install. No system libraries or system preferences are altered. Can also run in a sandbox like Firejail
+
+```
+cd ~/Downloads
+chmod +x ipfs-desktop-0.14.0-linux-x86_64.AppImage
+./ipfs-desktop-0.14.0-linux-x86_64.AppImage
+```
+
+#### Snap
+
+https://docs.ipfs.io/install/command-line/#package-managers
+
+    snap install ipfs
+
+## Private / Local Only
+
+For a private network, all nodes must use the same key.
+
+https://duckduckgo.com/?t=canonical&q=ipfs+local+only&ia=web
+ipfs local only at DuckDuckGo
+https://medium.com/@s_van_laar/deploy-a-private-ipfs-network-on-ubuntu-in-5-steps-5aad95f7261b
+Deploy a private IPFS network in 5 steps | by Sander van Laar | Medium
+
 
 ### Deployment
 
@@ -130,4 +189,7 @@ https://specs.ipld.io/data-structures/hashmap.html#introduction
 Specification: HashMap | IPLD Specifications
 https://specs.ipld.io/block-layer/graphsync/graphsync.html
 Graphsync | IPLD Specifications
+
+
+
 
