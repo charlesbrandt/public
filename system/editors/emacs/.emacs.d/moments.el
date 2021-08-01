@@ -26,22 +26,6 @@
   (insert "]")
   )
 
-(defun today ()
-  (interactive)
-  (insert (format-time-string "%Y%m%d"))
-)
-
-
-
-(defun clearmind ()
-  (interactive)
-  (beginning-of-buffer)
-  ;; could consider a 'clear screen' here (some # of newlines)
-  (insert "\n\n\n\n")
-  (beginning-of-buffer)
-  )
-
-
 (defun journal ()
   (interactive)
   (beginning-of-buffer)
@@ -55,9 +39,6 @@
 ;; that was a nice feature about ctrl-j
 ;; (global-set-key "\C-t" 'journal)
 
-(global-unset-key (kbd "C-u"))
-(global-set-key  (kbd "C-u") 'journal) 
-
 ;; can learn new habit as needed -- nothing else pressing here in emacs:
 (global-set-key  (kbd "C-j") 'journal) 
 ;; these should be used to open a terminal
@@ -70,6 +51,29 @@
   ;; creating an alias
   (journal)  
 )
+
+
+
+(defun today ()
+  (interactive)
+  (insert (format-time-string "%Y.%m.%d"))
+)
+
+(defun journal-day-only ()
+  (interactive)
+  (beginning-of-buffer)
+  ;; could consider a 'clear screen' here (some # of newlines)
+  (insert "\n\n\n")
+  (beginning-of-buffer)
+  (insert "# ")
+  (today)
+  (insert " ")
+  )
+
+(global-unset-key (kbd "C-u"))
+(global-set-key  (kbd "C-u") 'journal-day-only) 
+
+
 
 
 (defun also ()
@@ -126,6 +130,21 @@
   (insert "\n")
   (start)
 )
+
+(defun clearmind ()
+  (interactive)
+  (beginning-of-buffer)
+  ;; could consider a 'clear screen' here (some # of newlines)
+  (insert "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+  (beginning-of-buffer)
+  )
+
+
+
+
+
+
+
 
 
 ;should remember to put a start stamp when editing lisp code
@@ -202,6 +221,9 @@
   ;; old way of calling print files
   (pf)  
 )
+
+(global-unset-key (kbd "C-m"))
+(global-set-key  (kbd "C-m") 'pf) 
 
 
 (defun jc ()
