@@ -22,7 +22,7 @@ Change the Terminal background.
   - Preferences -> Profiles -> Unnamed -> Colors"
   - Uncheck "Use colors from system theme"
 
-Change the desktop background.
+Change the desktop background. (right-click on the desired image in a file explorer and choose "Set as Desktop Background.")
 
 [Apply Gnome 3 settings](window_managers/gnome3.md)
 
