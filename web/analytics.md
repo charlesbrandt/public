@@ -77,7 +77,7 @@ Technical Requirements · Open-Web-Analytics/Open-Web-Analytics Wiki · GitHub
 
 ### OWA + Docker
 
-Would be nice to deploy it with Docker
+Would be nice to deploy OWA with Docker
 
 https://duckduckgo.com/?q=open+web+analytics+docker+&t=canonical&ia=software
 open web analytics docker at DuckDuckGo
@@ -86,9 +86,3 @@ GitHub - vladk1m0/docker-owa: Open Web Analytics docker image based on Alpine Li
 https://github.com/vladk1m0/docker-owa/issues/3
 docker-compose related suggestions · Issue #3 · vladk1m0/docker-owa · GitHub
 
-## Research
-
-https://duckduckgo.com/?t=canonical&q=open+source+google+analytics+alternative&ia=web
-open source google analytics alternative at DuckDuckGo
-https://opensource.com/article/18/1/top-4-open-source-analytics-tools
-Top 4 open source alternatives to Google Analytics | Opensource.com

@@ -89,6 +89,18 @@ An alternative solution could use different branches on either the remote device
 
 https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked
 
+## Template repositories
+
+Some hosts make it easy to designate a repository as a template. 
+
+https://duckduckgo.com/?t=ffab&q=gitlab+mark+repostory+as+a+template&ia=web
+💤 gitlab mark repostory as a template at DuckDuckGo
+https://betterprogramming.pub/forget-boilerplate-use-repository-templates-74efebbee8eb
+Forget Boilerplate, Use Repository Templates! | by Liliana Nuño Silva | Better Programming
+https://docs.gitlab.com/ee/user/admin_area/settings/instance_template_repository.html#help-and-feedback
+Instance template repository | GitLab
+
+
 
 ## Gitlab
 

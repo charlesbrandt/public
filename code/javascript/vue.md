@@ -289,6 +289,13 @@ Some cases where it's easier to separate the value from what action you want to 
 ```
 
 
+```
+  methods: {
+    updateObject(event) {
+      console.log('updateObject', event.target.value)
+    }
+  }
+```
 
 ## Renderless Components
 

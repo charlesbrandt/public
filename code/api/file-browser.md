@@ -1,17 +1,91 @@
 # File Browser
 
-A good solution to quickly and easily make files available locally available via the network that the local server has access to. 
+A good solution to quickly and easily share locally available files via the network that the local server has access to. 
 
 Includes local user accounts. 
 
 ## Installation
+
+https://filebrowser.org/installation
+
+### Docker
+
+In project directory:
+
+```
+mkdir filebrowser
+touch filebrowser/filebrowser.db
+touch filebrowser/.filebrowser.json
+```
+
+Make sure `.filebrowser.json` is valid (configure as needed): 
+
+```
+{
+  "port": 80,
+  "baseURL": "",
+  "address": "",
+  "log": "stdout",
+  "database": "/database.db",
+  "root": "/srv"
+}
+```
+
+Ignore the database in your `.gitignore` file (don't want credentials in version control):
+
+```
+filebrowser/filebrowser.db
+```
+
+
+Then add the following block to your project's `docker-compose.yml` file:
+
+```
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: boilerplate_filebrowser_1
+    # restart: always
+    volumes:
+      - /media/account:/srv
+      - ./filebrowser/filebrowser.db:/database.db
+      - ./filebrowser/.filebrowser.json:/.filebrowser.json
+    #--user $(id -u):$(id -g)
+    ports:
+      - 8890:80
+
+```
+
+### Local
+
+This approach requires a way to start automatically at boot:
 
 ```
 curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 filebrowser -r /path/to/your/files
 ```
 
-https://filebrowser.org/installation
+### Local Service
+
+To run a local instance outside of Docker, create a custom service:
+
+cat /etc/systemd/system/filebrowser.service
+
+```
+[Unit]
+Description=Filebrowser
+After=network-online.target
+
+[Service]
+User=account
+Group=account
+
+ExecStart=/usr/local/bin/filebrowser -r /media/account/ -a 192.168.0.100 -p 9999 -d /home/account/filebrowser.db
+
+[Install]
+WantedBy=multi-user.target
+```
+
+
 
 ## Running
 
@@ -29,7 +103,7 @@ filebrowser -r /path/to/your/files -a 192.168.0.100 -p 9999
 
 ## Credentials
 
-Tracking credentials in keepass -> Filebrowser entry
+Track credentials in keepass -> Filebrowser entry
 
 By default the service starts with the following.
 
@@ -44,6 +118,16 @@ https://filebrowser.org/cli/filebrowser-users
 
 `filebrowser users`
 
+Create new admin account per your requirements. 
+
+Good commands:
+
+```
+git unzip
+```
+
+Update password for admin (or disable / delete account)
+
 https://filebrowser.org/configuration/authentication-method
 
 It is also possible to disable authentication with
@@ -51,84 +135,24 @@ It is also possible to disable authentication with
     filebrowser config set --auth.method=noauth
 
 
-## TODO 
 
-set to start up at boot? 
+## Links
 
-## Customizing / Development
+https://filebrowser.org/installation
+Installation - File Browser
+https://filebrowser.org/configuration/authentication-method
+Authentication Method - File Browser
+https://filebrowser.org/cli/filebrowser-config-set
+filebrowser config set - File Browser
+https://github.com/filebrowser/filebrowser/blob/master/frontend/src/views/Files.vue
+filebrowser/Files.vue at master · filebrowser/filebrowser · GitHub
+https://github.com/filebrowser/filebrowser
+GitHub - filebrowser/filebrowser: 📂 Web File Browser
 
-How do I integrate content in File Browser with my own site / application? 
+https://filebrowser.org/
+Welcome - File Browser
 
-The current UI client should be considered as documentation for using the server's API in your own application. 
-
-If you're using vue, you may be able to re-use large chunks of the existing UI. No need to set up a special server if you've already got your own UI dev environment going. 
-
-Don't have one of those? Try web-ui-api-db
-
-Probably only need the UI to get going! 
-
-https://github.com/filebrowser/filebrowser/tree/master/frontend
-
-### Dev Setup
-
-Making changes requires both a go server and node environment to be configured. I had difficulty getting the frontend code to talk to another running instance of filebrowser. It may be possible, but it seems easier to run both pieces together. 
-
-This is the main guide on setting up a development instance
-
-https://filebrowser.org/contributing
-Contributing - File Browser
-
-It's a bit out of date
-TODO: contribute an update / pull request. 
-
-I had difficulty getting the go server to build with golang 1.14, which is what is available via ubuntu apt-get (20.10). When running `go build`, I received the following
-
-```
-go build
-frontend/assets.go:5:8: package embed is not in GOROOT (/usr/lib/go-1.14/src/embed)
-```
-
-Downloading and installing directly from the golang site fixed that issue:
-
-https://golang.org/dl/
-Downloads - The Go Programming Language
-
-```
-wget https://golang.org/dl/go1.16.5.linux-arm64.tar.gz
-sudo tar -C /usr/local -xzf go1.16.5.linux-arm64.tar.gz
-```
-
-Then add the path to the go binary to your shell path
-
-```
-vi ~/.bashrc
-
-
-
-source ~/.bashrc
-```
-
-Be sure to generate the frontend bundle with either `yarn run build` or `yarn run watch` (for development).
-
-```
-cd frontend
-yarn run build
-```
-
-
-Go rice is no longer required:
-
-https://github.com/filebrowser/filebrowser/issues/1394
-Rice.Go error when trying to setup local environment for development · Issue #1394 · filebrowser/filebrowser · GitHub
-
-Run filebrowser in development mode
-
-```
-go run -tags dev main.go
-```
-
-You can pass all of the same command line interface parameters as you would with the prebuilt version. 
-
-
+https://github.com/filebrowser
+File Browser · GitHub
 
 

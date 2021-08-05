@@ -27,9 +27,7 @@ The output should contains kvm_intel for intel-based hosts or kvm_amd for amd-ba
 
 ### Step 1: KVM Installation and Deployment
 
-
-Another guide
-https://help.ubuntu.com/community/KVM/Installation
+Guide: https://help.ubuntu.com/community/KVM/Installation
 
     sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
