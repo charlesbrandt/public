@@ -380,6 +380,10 @@ The link that helped:
 
 https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
 
+Note:
+If you're using hosts defined in `/etc/hosts`, the updated symlink won't resolve those correctly. See also: ~/alpha/web_ui_api_db/local-development.md
+
+
 ### Troubleshooting connections in docker
 
 https://www.docker.com/blog/why-you-dont-need-to-run-sshd-in-docker

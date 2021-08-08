@@ -40,9 +40,40 @@ use cy.request instead of cy.visit
 
 https://www.mariedrake.com/post/api-testing-with-cypress
 
-TODO: How to show the json result of a cy.request() in the test runner?
+To show the json result of a cy.request() in the test runner, use console.log() to show it in the console, or `cy.api`
 
-You can either use console.log() to show it in the console, or `cy.api`
+```
+
+context('Network Requests', () => {
+    beforeEach(() => {
+      cy.visit('http://boilerplate_api_1:3030')
+    })
+  
+  it('cy.request() with query parameters', () => {
+    // will execute request
+    // https://jsonplaceholder.cypress.io/comments?postId=1&id=3
+    cy.request({
+      url: 'http://boilerplate_api_1:3030/projects/',
+    //   qs: {
+    //     postId: 1,
+    //     id: 3,
+    //   },
+    })
+    .its('body')
+    .should('be.an', 'array')
+    .and('have.length', 16) // currently 16 items -- this will change over time
+    .its('0') // yields first element of the array
+    .then((element) => {
+      console.log("The matching element is: ", element);
+      return element;
+    })
+    .should('contain', {
+      postId: 1,
+      id: 3,
+    })
+  })
+})
+```
 
 #### cy.api
 
@@ -50,7 +81,7 @@ Only try this if you have a local instance of Cypress running
 
 https://github.com/bahmutov/cy-api
 
-Installing this in the cypress included container is proving to be a challenge
+Installing this in the cypress included container is a challenge. May be better if you are running cypress directly on a local host machine. 
 
 ```
 FROM cypress/included:7.7.0
