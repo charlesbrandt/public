@@ -4,6 +4,9 @@ A good solution to quickly and easily share locally available files via the netw
 
 Includes local user accounts. 
 
+https://filebrowser.org/
+Welcome - File Browser
+
 ## Installation
 
 https://filebrowser.org/installation
@@ -138,6 +141,9 @@ It is also possible to disable authentication with
 
 ## Links
 
+https://github.com/filebrowser/filebrowser
+💤 GitHub - filebrowser/filebrowser: 📂 Web File Browser
+
 https://filebrowser.org/installation
 Installation - File Browser
 https://filebrowser.org/configuration/authentication-method
@@ -154,5 +160,17 @@ Welcome - File Browser
 
 https://github.com/filebrowser
 File Browser · GitHub
+
+
+https://github.com/filebrowser/filebrowser/blob/master/.docker.json
+💤 filebrowser/.docker.json at master · filebrowser/filebrowser · GitHub
+https://hub.docker.com/r/filebrowser/filebrowser
+💤 filebrowser/filebrowser - Docker Image | Docker Hub
+
+https://github.com/filebrowser
+💤 File Browser · GitHub
+https://filebrowser.org/cli/filebrowser-users
+filebrowser users - File Browser
+
 
 
