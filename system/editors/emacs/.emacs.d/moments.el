@@ -221,9 +221,9 @@
   ;; old way of calling print files
   (pf)  
 )
-
-(global-unset-key (kbd "C-m"))
-(global-set-key  (kbd "C-m") 'pf) 
+;; causes all open buffers to be print after every 'enter' key
+;; (global-unset-key (kbd "C-m"))
+;; (global-set-key  (kbd "C-m") 'pf) 
 
 
 (defun jc ()
