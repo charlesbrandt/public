@@ -200,6 +200,25 @@ Example props. Linters may encourage the full form
 https://vuejs.org/v2/guide/components-props.html
 Props — Vue.js
 
+#### Watching Props
+
+Sometimes props arrive to the child component after the component's .mounted() call happens. In these cases, it's necessary to `watch` for the arrival of the prop from the parent:
+
+```
+  watch: {
+    // Sometimes you want to act on the values that changed
+    // propertyName: function (newVal, oldVal) {
+    propertyName: function () {
+      // console.log('property value changed', newVal)
+      this.methodToHandleUpdate()
+    },
+  },
+
+```
+
+[via](https://stackoverflow.com/questions/44584292/how-to-listen-for-props-changes)
+
+
 ### Slots
 
 https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots

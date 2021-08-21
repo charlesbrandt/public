@@ -124,6 +124,18 @@ To remove a dependency:
 
 https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
 
+## Modules
+
+Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
+
+
+https://nodejs.org/api/modules.html#modules_all_together
+
+https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
+
+https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
+
+
 ## Process Monitoring
 
 If you have a service running live using a node based (e.g. [express](express.md)) server, a monitoring tool can make sure it stays up.

@@ -1,10 +1,10 @@
 # Cypress
 
-Tests are a form of documentation. Like configuration management, tests are runnable documentation. 
+Tests are a form of documentation. Describe what your application does and have a way to confirm that it still does what you think it does. Like configuration management, tests are runnable documentation. 
 
 Using containers works. Decide if you want to run it headless (CI) or with a GUI (dev). web-ui-api-db has been configured to handle either scenario. Uncomment the one you want and start it up. 
 
-https://gitlab.com/fern-seed/web-ui-api-db
+https://gitlab.com/fern-seed/web-ui-api-data
 
 See also [docker with development](../../system/virtualization/docker-compose.md)
 
@@ -30,20 +30,18 @@ The first step is usually to visit the site that you're testing. Do that with a 
     // good to know
 ```
 
+From here use `cy.get` or `cy.find` to locate elements on the page, and check for content using the `.should()` function. 
 
-TODO: next steps?
 
+### cy.request 
 
-### API testing
-
-use cy.request instead of cy.visit
+For API testing use cy.request instead of cy.visit
 
 https://www.mariedrake.com/post/api-testing-with-cypress
 
-To show the json result of a cy.request() in the test runner, use console.log() to show it in the console, or `cy.api`
+To show the json result of a cy.request() in the test runner, use console.log() and find the result in the test browser's console, or use `cy.api`
 
 ```
-
 context('Network Requests', () => {
     beforeEach(() => {
       cy.visit('http://boilerplate_api_1:3030')
@@ -75,69 +73,89 @@ context('Network Requests', () => {
 })
 ```
 
+The associated objects should be returned as part of a GET request (as seen in API tests), so be sure to check for their existence too. 
+
 #### cy.api
 
-Only try this if you have a local instance of Cypress running
+`cy.api` can help by displaying json results in the cypress test browser (instead of using `console.log()` calls. Only try this if you have a local instance of Cypress running; my last attempt at installing in the cypress included docker container was a challenge. 
 
 https://github.com/bahmutov/cy-api
 
-Installing this in the cypress included container is a challenge. May be better if you are running cypress directly on a local host machine. 
+
+## Authentication
+
+Handling authentication is one of the trickier parts of testing. 
+
+Ideally, you can run through the authentication process once using the UI and then keep the results (Cookies, LocalStorage, etc) for future requests that need to be authenticated. 
 
 ```
-FROM cypress/included:7.7.0
+context("Network Requests", () => {
+  beforeEach(() => {
+    cy.request("POST", "/authentication", {
+      strategy: "local",
+      email: "test@test.com",
+      password: "password",
+    }).then((response) => {
+      cy.wrap(response).as("jwtresponse");
+      // window.localStorage.setItem("jwt", response.body.accessToken);
+      console.log("The POST response was: ", response);
+      // return response;
+    });
+  });
 
-WORKDIR /root/.cache/Cypress/7.7.0/Cypress/resources/app/packages/server/
-
-RUN rm -rf /root/.cache/Cypress/7.7.0/Cypress/resources/app/packages/server/node_modules/trash
-
-# https://www.mariedrake.com/post/api-testing-with-cypress
-# https://github.com/bahmutov/cy-api
-RUN npm i --D --force @bahmutov/cy-api
-
-WORKDIR /e2e/
+  it("cy.request() with query parameters", () => {
+    // will execute request
+    // https://jsonplaceholder.cypress.io/comments?postId=1&id=3
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      const jwt = "Bearer " + jwtresponse.body.accessToken;
+      console.log("Still have jwt?", jwt);
+      cy.request({
+        url: "/posts/1",
+        headers: { Authorization: jwt },
+        //   qs: {
+        //     postId: 1,
+        //     id: 3,
+        //   },
+      })
+        .then((response) => {
+          console.log("The response was: ", response);
+          return response;
+        })
+        .its("body")
+        .should("be.have", "comments")
+        .and("have.length", 16) 
+        .its("0") // yields first element of the array
+        .should("contain", {
+          postId: 1,
+          id: 3,
+        });
+    });
+  });
+});
 ```
 
-/root/.cache/Cypress/7.7.0/Cypress/resources/app/packages/server/
+~/public/code/api/feathers.md
 
-/root/.cache/Cypress/7.7.0/Cypress/resources/app/packages/server/node_modules/trash/node_modules/.bin/uuid
+### Existing sessions
 
-## Login
+Cypress uses stored cookie / localstorage value for running tests
 
-Sometimes it's possible to test the login process. If possible, this is a good idea! 
-
-However, I have also hit some walls with some of the more advanced login systems (especially 2-factor-authentication). In these cases, transfer cookies from an existing logged in session to circumvent and test features that require an active session. 
+Though not a recommended approach, this works if a valid login is initiated elsewhere: 
 
 ```
-// start-here.spec.js created with Cypress
-//
-// Start writing your Cypress tests below!
-// If you're unfamiliar with how Cypress works,
-// check out the link below and learn how to write your first test:
-// https://on.cypress.io/writing-first-test
-
 beforeEach(() => {
   localStorage.setItem("uid", Cypress.env("username"));
+  localStorage.setItem("roles", Cypress.env("roles"));
+  localStorage.setItem("role", Cypress.env("role"));
   // these need to be updated when sessions expire
   localStorage.setItem("jwt", Cypress.env("jwt"));
   localStorage.setItem("jwt_exp", Cypress.env("jwt_exp"));
 });
 ```
 
-as configured in a local `cypress.env.json` file
+For some challenging systems with lots of iframes and 2FA, this may be as good as it gets if you need a real authenticated session. 
 
-https://docs.cypress.io/guides/guides/environment-variables#Option-2-cypress-env-json
-
-~/path-to/cypress.env.json
-
-```
-{
-  "username": "account",
-  "password": "",
-  "jwt": "jwt-goes-here",
-  "jwt_exp": "1623705332.542"
-}
-
-```
+The alternative is to bypass a global Single Sign On (SSO) identity provider for your organization and just use the local hooks in your application to provide an authenticated session for testing. (However, be sure these mechanisms are not available in production!)
 
 
 ## Setup / Installation
@@ -157,15 +175,6 @@ On the host run `xhost local:root` so the container is allowed to connect to the
 via: https://github.com/cypress-io/cypress-docker-images/issues/29
 
 > if you get this error No protocol specified you just run this in your host machine xhost local:root 
-
-
-## About
-
-That's where something like Cypress is appealing, especially if it works out of the box once it is configured.
-
-So is cypress kind of like a streamlined selenium solution? Yes.
-There is still a binary needed to run...
-Seems to be an electron app that launches browsers to handle running the tests.
 
 
 ## Links

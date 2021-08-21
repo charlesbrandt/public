@@ -1,21 +1,14 @@
 # Feathers JS
 
 [Feathers](http://feathersjs.com)
-An open source web framework for building modern real-time applications.
+An open source web framework for building modern real-time applications and REST APIs.
 
 https://docs.feathersjs.com/guides/basics/starting.html
-
-https://docs.feathersjs.com/
-Feathers | A framework for real-time applications and REST APIs | FeathersJS
-
-Connect to the API container to run these commands
-
-    docker-compose exec api bash
 
 
 ## Container customizations
 
-I prefer to install requirements in the container. In this case, it's helpful to have access to the cli helper:
+I prefer to install requirements in the container instead of globally. In this case, it's helpful to have access to the cli helper:
 
 
 ``` api/Dockerfile
@@ -26,6 +19,10 @@ WORKDIR /srv
 
 RUN yarn install @feathersjs/cli -g
 ```
+
+Connect to the API container to run these commands
+
+    docker-compose exec api bash
 
 
 ## New Application
@@ -42,7 +39,7 @@ https://docs.feathersjs.com/api/databases/adapters.html
 
 ## Scaffolding
 
-Feathers has a powerful command line interface. Here are a few things it can do:
+Feathers has a command line interface for generating scaffolding. Here are a few things it can do:
 
 ```
 $ feathers generate service               # Generate a new Service
@@ -53,9 +50,10 @@ $ feathers help                           # Show all commands
 https://docs.feathersjs.com/guides/basics/generator.html
 Generating an app | FeathersJS
 
+
 ## API (aka Services)
 
-Accessing the API follows a standard pattern (which is one of the benefits of using an API framework). 
+Feathers makes it a snap to set up CRUD (Create, Read, Update, Delete) style APIs. Accessing the API follows a standard pattern (which is one of the benefits of using an API framework). 
 
 https://docs.feathersjs.com/api/services.html
 
@@ -97,22 +95,48 @@ Service methods must use [async/await](https://developer.mozilla.org/en-US/docs/
 
 https://github.com/feathersjs/docs/blob/crow/api/databases/common.md
 
-### Calling Methods
 
-REST vs Realtime
+## Hooks
 
-With Feathers you have the option to use a ui client that they've built for easy access to the API. This is certainly an interesting feature to explore in the future. 
+Important for triggering necessary actions for a given Service. 
 
-However, for many projects that I work on it's important to leverage the REST API, especially for getting started. 
+I needed to use hooks to look up associated elements when returning results from a FIND or a GET. 
 
-Here is how those service methods get mapped to REST:
+
+## Calling Methods
+
+Once you have an API configured and running, it helps to be able to call it from the clients you use. Clients vary wildly -- from web browsers to CLI scripts.
+
+### REST
+
+For many projects that I work on it's important to leverage the REST API.
 
 https://docs.feathersjs.com/api/express.html#express-rest
 
-Service methods include
+Calls get mapped map as follows
+
+.get()  	GET 	/messages/1
+.create() 	POST 	/messages
+.update() 	PUT 	/messages/1
+.patch() 	PATCH 	/messages/1
+.remove() 	DELETE 	/messages/1
+
+### Feathers Client
+
+https://docs.feathersjs.com/api/client.html
+
+With Feathers you have the option to use a client that they've built for easy access to the API. 
+
+Set this up to be available in the api container? or just install as part of API application? 
 
 
+npm install @feathersjs/feathers @feathersjs/socketio-client socket.io-client --save
 
+yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client
+
+Note, as of 2021.08, @feathersjs/socketio-client requires socket.io-client "^2.3.1"
+
+yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client@2.3.1
 
 ## Authentication
 
@@ -125,6 +149,54 @@ Authentication | FeathersJS
 https://docs.feathersjs.com/guides/migrating.html#authentication
 Migrating | FeathersJS
 
+
+https://docs.feathersjs.com/guides/basics/authentication.html#get-a-token
+
+```
+context("Network Requests", () => {
+  beforeEach(() => {
+    cy.request("POST", "/authentication", {
+      strategy: "local",
+      email: "test@test.com",
+      password: "password",
+    }).then((response) => {
+      cy.wrap(response).as("jwtresponse");
+      // window.localStorage.setItem("jwt", response.body.accessToken);
+      console.log("The POST response was: ", response);
+      // return response;
+    });
+  });
+
+  it("cy.request() with query parameters", () => {
+    // will execute request
+    // https://jsonplaceholder.cypress.io/comments?postId=1&id=3
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      const jwt = "Bearer " + jwtresponse.body.accessToken;
+      console.log("Still have jwt?", jwt);
+      cy.request({
+        url: "/posts/1",
+        headers: { Authorization: jwt },
+        //   qs: {
+        //     postId: 1,
+        //     id: 3,
+        //   },
+      })
+        .then((response) => {
+          console.log("The response was: ", response);
+          return response;
+        })
+        .its("body")
+        .should("be.have", "comments")
+        .and("have.length", 16) 
+        .its("0") // yields first element of the array
+        .should("contain", {
+          postId: 1,
+          id: 3,
+        });
+    });
+  });
+});
+```
 
 ## Resources / Links
 
