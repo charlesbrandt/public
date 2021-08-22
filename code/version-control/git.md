@@ -595,7 +595,7 @@ git push -u --force origin main
 via
 https://gist.github.com/stephenhardy/5470814
 
-In Gitlab, you'll need to explicitly allow "Force push" in the project settings. Once this action is complete, it's a good idea to set this back to disabled. 
+In Gitlab, you'll need to explicitly allow "Force push" in the project -> settings -> Repository -> Protected Branches. Set "Allowed to force push" to enabled. Once this action is complete, it's a good idea to set this back to disabled. 
 
 
 ## GUI Clients

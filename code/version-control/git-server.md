@@ -1,3 +1,7 @@
+# Git Servers
+
+Many are familiar with Github. Gitlab is a good open-sourced alternative. It's also pretty easy to host your own git repositories -- all you really need is a linux server that you have ssh access too!
+
 ## Running a server
 
 It's pretty much as simple as having an SSH server running and being able to connect over that.
@@ -203,3 +207,14 @@ Acquired / owned by Microsoft.
 This is a new feature:
 
 https://help.github.com/en/github/managing-packages-with-github-packages/about-github-packages#supported-clients-and-formats
+
+### Organizations
+
+These are equivalent to Teams in Gitlab
+
+https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch
+Creating a new organization from scratch - GitHub Docs
+
+https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
+About organizations - GitHub Docs
+

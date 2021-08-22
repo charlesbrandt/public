@@ -70,6 +70,10 @@ See below for details
 }
 ```
 
+## Formatting Files
+
+Automatically 
+
 ### Prettier
 
     "prettier.prettierPath": "./bin/prettier",
@@ -84,49 +88,31 @@ Supply a custom path to the prettier module. This path should be to the module f
 
 See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
-### Default window size
-
-{
-"workbench.startupEditor": "newUntitledFile",
-"window.newWindowDimensions": "inherit"
-}
-
-https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
-
-### Minimap
-
-The miniature over view of the current file to the right.
-
-    "editor.minimap.enabled": false
-    
-### Updates
-
-I prefer to handle updates when updating the OS.
-https://code.visualstudio.com/docs/setup/linux
-https://stackoverflow.com/questions/42496935/disabling-visual-studio-code-update-notification
-
-
-## Useful Features
-
-### Bracket Matching
-
-Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
-
-    Tip: You can jump to the matching bracket with Ctrl+Shift+\
-
-https://code.visualstudio.com/docs/editor/editingevolved
-
 ### Auto Fix
 
 To improve the formatting of your source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
 
 https://code.visualstudio.com/docs/languages/html
 
-### Multiple Cursors
 
-I disable the Ctrl-Up and Ctrl-Down feature for creating cursors (see Keybindings below), but it is still possible to create multiple cursors with the mouse using Alt-Click.
+### Prettier Extension
 
-https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
+By: Prettier
+
+Prettier - Code formatter
+
+helps with code formatting
+
+https://glebbahmutov.com/blog/configure-prettier-in-vscode/
+{
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"editor.formatOnSave": true
+}
+
+may require the project to install prettier as a dev dependency so that vscode has it available to use.
+
+
+
 
 ## Keybindings
 
@@ -290,6 +276,48 @@ You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcu
 ]
 ```
 
+
+## Preference Details
+
+### Default window size
+
+{
+"workbench.startupEditor": "newUntitledFile",
+"window.newWindowDimensions": "inherit"
+}
+
+https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
+
+### Minimap
+
+The miniature over view of the current file to the right.
+
+    "editor.minimap.enabled": false
+    
+### Updates
+
+I prefer to handle updates when updating the OS.
+https://code.visualstudio.com/docs/setup/linux
+https://stackoverflow.com/questions/42496935/disabling-visual-studio-code-update-notification
+
+
+## Useful Features
+
+### Bracket Matching
+
+Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
+
+    Tip: You can jump to the matching bracket with Ctrl+Shift+\
+
+https://code.visualstudio.com/docs/editor/editingevolved
+
+### Multiple Cursors
+
+I disable the Ctrl-Up and Ctrl-Down feature for creating cursors (see Keybindings below), but it is still possible to create multiple cursors with the mouse using Alt-Click.
+
+https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
+
+
 ## Extensions
 
 https://www.google.com/search?q=vs+code+extensions+vue
@@ -339,22 +367,6 @@ Frequently don't have the configs where the project is being loaded:
 
 May cause some issues with linting...
 https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx
-
-### Prettier
-
-By: Prettier
-
-Prettier - Code formatter
-
-helps with code formatting
-
-https://glebbahmutov.com/blog/configure-prettier-in-vscode/
-{
-"editor.defaultFormatter": "esbenp.prettier-vscode",
-"editor.formatOnSave": true
-}
-
-may require the project to install prettier as a dev dependency so that vscode has it available to use.
 
 ### Bracket Pair Colorizer
 

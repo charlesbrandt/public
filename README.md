@@ -1,8 +1,20 @@
 # Technical Notes
 
+## TOC / Topics / Categories:
+
+- [Code](code/)
+
+- [Web](web/)
+
+- [System](system/)
+
+  - [Administration](system/administration/)
+
+
+
 Be sure to get the submodules:
 
-    git clone --recurse-submodules https://github.com/charlesbrandt/public
+    git clone --recurse-submodules https://gitlab.com/charlesbrandt/public
 
 or
 
@@ -26,12 +38,3 @@ rm .bashrc
 ln -s ~/public/system/linux/.bashrc .bashrc
 ```
 
-## TOC / Topics / Categories:
-
-- [System](system/)
-
-  - [Administration](system/administration/)
-
-- [Code](code/)
-
-- [Web](web/)

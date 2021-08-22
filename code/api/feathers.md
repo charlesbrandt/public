@@ -17,7 +17,7 @@ FROM node:lts
 # Set the working directory.
 WORKDIR /srv
 
-RUN yarn install @feathersjs/cli -g
+RUN yarn global add @feathersjs/cli
 ```
 
 Connect to the API container to run these commands

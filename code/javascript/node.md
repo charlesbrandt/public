@@ -62,15 +62,15 @@ or
 https://classic.yarnpkg.com/en/docs/cli/add/
 https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-dev-d
 
-To remove a dependency, I usually just delete it from `package.json`, but can also use the package manager to remove the files from node_modules
+To install a package globally (the order is important here):
+
+    yarn global <add/bin/list/remove/upgrade> [--prefix]
+    
+To remove a dependency
 
      yarn remove <name>
-
-#### Types of dependencies
-
-https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
-
-> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
+     
+Note: manually deleting from `package.json` removes the dependency from the project, but will not remove the files from node_modules of the local instance.
 
 #### Reinstall Modules
 
@@ -95,6 +95,12 @@ then, with apt-get:
     sudo apt-get install --no-install-recommends yarn
 
 via https://yarnpkg.com/lang/en/docs/install/
+
+#### Types of dependencies
+
+https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
+
+> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
 
 ### Npm
 
