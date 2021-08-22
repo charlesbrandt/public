@@ -221,9 +221,14 @@
   ;; old way of calling print files
   (pf)  
 )
+
 ;; causes all open buffers to be print after every 'enter' key
+
+;; this seems to cause the file list to be inserted
+;; everytime `return` is pressed -- that's no good!
 ;; (global-unset-key (kbd "C-m"))
 ;; (global-set-key  (kbd "C-m") 'pf) 
+
 
 
 (defun jc ()

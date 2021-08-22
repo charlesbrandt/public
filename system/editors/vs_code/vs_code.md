@@ -42,6 +42,9 @@ See below for details
   "window.zoomLevel": 0,
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "prettier.prettierPath": "./bin/prettier",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -51,10 +54,7 @@ See below for details
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true,
   "vetur.ignoreProjectWarning": true,
-  "eslint.format.enable": true,
-  "prettier.prettierPath": "./bin/prettier",
   "python.showStartPage": false,
   "workbench.editorAssociations": [
     {
