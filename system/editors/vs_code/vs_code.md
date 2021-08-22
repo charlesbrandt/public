@@ -354,6 +354,8 @@ https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcs
 
 ### Vue (Vetur)
 
+Volar is coming up as a preferred alternative. s
+
 By: Pine Wu
 
 https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
@@ -405,15 +407,6 @@ vs code spell checker md at DuckDuckGo
 The Microsoft version has been deprecated:
 https://github.com/Microsoft/vscode-spell-check/blob/master/README.md
 
-### Docker
-
-By: Microsoft
-
-Also:
-ms-vscode-remote.remote-containers
-
-### Kubernetes
-
 ### Remote Development
 
 I've had success configuring the 'Remote - SSH' extension
@@ -445,7 +438,20 @@ https://github.com/Microsoft/vscode-remote-release
 ### Import Cost
 
 
+### Docker
+helps with formatting docker-compose.yml
+or is that just the redhat yml parser?
+
+By: Microsoft
+
+Also:
+ms-vscode-remote.remote-containers
+
+
+
 ## Other Extensions
+
+### Kubernetes
 
 ### Quick Open
 

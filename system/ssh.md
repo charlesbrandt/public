@@ -71,3 +71,16 @@ Make sure you're running sshagent
     ps -aux | grep sshagent
 
 https://developer.github.com/v3/guides/using-ssh-agent-forwarding/
+
+
+## SSH Port Forwarding
+
+aka simple VPN.
+
+Encrypts only the ports that you request to forward. 
+
+local port : remote address : remote port (??? TODO: confirm)
+
+ssh account@address -L 5900:192.168.2.81:5900
+
+For example, VNC often uses 5900
