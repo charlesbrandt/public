@@ -81,6 +81,60 @@ The associated objects should be returned as part of a GET request (as seen in A
 
 https://github.com/bahmutov/cy-api
 
+## Base Urls
+
+If you're not testing your UI and API with a proxy web server that normalizes the base URL (Testing UI directly may eliminate a noticeable refresh from HMR...), then it may be necessary to handle
+
+cypress how to handle two baseUrls for different types of tests
+
+
+define CYPRESS_API_URL in the environment
+
+```
+    environment:
+      - CYPRESS_API_URL=http://phi_mdd_api_1:3030
+```
+
+Then utilize it explicitly in API tests
+
+```
+    cy.request({
+      url: Cypress.env("API_URL") + "/datafile",
+    })
+```
+
+
+
+
+
+## Assertions
+
+Visiting a page or requesting an object is a good test in and of itself. From there it may make sense to confirm that certain attributes or elements exist on the response. 
+
+Rather than check for existence with something like:
+
+```
+      .should("contain", "data")
+      .and("have.key", "data") // not sure that 'have.key' is even a real thing!
+```
+
+Just use `.its()` to yield the item
+
+```
+.its("data") // yields the object with key 'data'
+```
+
+`.should("contain", ...` is better when you want to check for specific values
+
+```
+      .should("contain", {
+        project_name: "Super Cool",
+        name: "Awesome Sauce",
+      })
+```
+
+https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#List-of-Assertions
+
 
 ## Authentication
 
@@ -176,12 +230,9 @@ via: https://github.com/cypress-io/cypress-docker-images/issues/29
 
 > if you get this error No protocol specified you just run this in your host machine xhost local:root 
 
-
-## Links
+#### Docker Setup Resources
 
 https://github.com/cypress-io/cypress-docker-images
-
-https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
 
 https://mtlynch.io/painless-web-app-testing/
 
@@ -189,3 +240,7 @@ https://docs.cypress.io/examples/examples/docker
 
 https://github.com/bahmutov/cypress-open-from-docker-compose
 
+
+## See Also
+
+https://docs.cypress.io/guides/getting-started/testing-your-app#Stubbing-the-server

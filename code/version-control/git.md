@@ -189,6 +189,16 @@ Co-authored-by: First Person <example@example.com>
 Co-authored-by:
 "
 
+### Changing a commit message
+
+Ideally, do this before pushing up to a public repo, otherwise it results in a branch merge. This will change the most recent commit:
+
+    git commit --amend
+
+https://docs.github.com/en/github/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message
+Changing a commit message - GitHub Docs
+
+
 ## Branches
 
 ### Show current branch

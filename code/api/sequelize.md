@@ -28,13 +28,13 @@ Any similarities / differences to note?
 
 ## Relations / Associations
 
-Getting Sequelize to populate associated fields (relations) can be tricky at first, especially within the context of Feathers. With sequelize the behavior of populating a related object is called `include`.
+Getting Sequelize to populate associated fields (relations) can be tricky, especially within the context of Feathers. With sequelize the behavior of populating a related object is called `include`.
 
 http://docs.sequelizejs.com/en/latest/docs/associations/
 
-In Feathers, associations will need to be defined on the Models. These will then be initialized by sequelize via `api/src/sequelize.js`. 
+In Feathers, associations are defined on the Models. These will then be initialized by sequelize via `api/src/sequelize.js`. 
 
-Also make use of "references" parameter to indicate the parent relationship, e.g.
+Make use of "references" parameter to indicate the parent relationship, e.g.
 
 ```
     project_id: {
@@ -47,6 +47,23 @@ Also make use of "references" parameter to indicate the parent relationship, e.g
     },
 
 ```
+
+On the parent model define the associations:
+
+```
+  project.associate = function (models) {
+    // Define associations here
+    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    project.hasMany(models.datafile, {
+      as: "files",
+      foreignKey: "project_id",
+    });
+
+```
+
+TODO: on the parent, what does the foreignKey property refer to? 
+
+
 
 Then, when `find` or `get` is used to return results from the database, in Feathers it is important to create a hook that will `include` associated results. 
 

@@ -3,6 +3,8 @@
 [Feathers](http://feathersjs.com)
 An open source web framework for building modern real-time applications and REST APIs.
 
+[docs.feathersjs.com](http://docs.feathersjs.com).
+
 https://docs.feathersjs.com/guides/basics/starting.html
 
 
@@ -59,9 +61,6 @@ https://docs.feathersjs.com/api/services.html
 
 ### Services
 
-Adapting the following from:
-https://raw.githubusercontent.com/feathersjs/docs/crow/api/services.md
-
 "Services" are the heart of every Feathers application. Services are JavaScript objects (or instances of [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)) that implement [certain methods](#service-methods). Feathers itself will also add some [additional methods and functionality](#feathers-functionality) to its services.
 
 
@@ -94,6 +93,21 @@ Service methods must use [async/await](https://developer.mozilla.org/en-US/docs/
 > **Important:** This section describes the general usage of service methods and how to implement them. They are already implemented by the official Feathers database adapters. For specifics on how to use the database adapters, see the [database adapters common API](./databases/common.md).
 
 https://github.com/feathersjs/docs/blob/crow/api/databases/common.md
+
+[Section adapted from](https://raw.githubusercontent.com/feathersjs/docs/crow/api/services.md)
+
+## Database / Models / Persistence
+
+Decide how you want to store your data and then set up models accordingly. 
+
+would it help to use the API tests to test these? 
+TODO: is there a way to use Cypress at that level? e.g. instantiate ORM instance and make calls directly to it. (or is that what the binding provides?)
+
+Sequelize
+
+Mongo
+
+If you need to work with the underlying system directly, you can always define your own CRUD actions in a service. 
 
 
 ## Hooks
@@ -137,6 +151,7 @@ yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client
 Note, as of 2021.08, @feathersjs/socketio-client requires socket.io-client "^2.3.1"
 
 yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client@2.3.1
+
 
 ## Authentication
 
@@ -198,15 +213,6 @@ context("Network Requests", () => {
 });
 ```
 
-## Resources / Links
-
-https://duckduckgo.com/?t=ffab&q=feathers+filesystem+api&ia=web
-feathers filesystem api at DuckDuckGo
-https://docs.feathersjs.com/guides/basics/services.html#registering-services
-Services | FeathersJS
-
-
-
 ## Getting Started
 
 Getting up and running is as easy as 1, 2, 3.
@@ -238,7 +244,16 @@ after `yarn install` and `node index.js` in the container, should be able to go:
 https://localhost:8888/api/people
 
 
+
+## Resources / Links
+
+https://duckduckgo.com/?t=ffab&q=feathers+filesystem+api&ia=web
+feathers filesystem api at DuckDuckGo
+https://docs.feathersjs.com/guides/basics/services.html#registering-services
+Services | FeathersJS
+
+
+
 ## Help
 
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
 

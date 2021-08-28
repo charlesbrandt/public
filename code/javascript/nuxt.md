@@ -364,6 +364,33 @@ export default {
 
 .env options available too
 
+### Linting
+
+At first I liked having linting enabled by default. Fixing issues as they come up is a nice way to work. 
+
+However, when using docker it's not always possible to use the same version of eslint in my IDE as the application. This can lead to situations when the editor auto-formats it one way and the application linter blocks saying there is an error. So far I haven't had success with hunting for the configuration parameters to make everything agree. 
+
+In this situation, it's easier to just disable linting.
+
+``` nuxt.config.js
+  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
+  buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    // '@nuxtjs/eslint-module',
+  ],
+```
+
+Maybe there is a better way?
+
+https://github.com/nuxt/nuxt.js/issues/2097
+How can I remove ESLint from an existing Nuxt app? · Issue #2097 · nuxt/nuxt.js
+
+https://duckduckgo.com/?t=ffab&q=nuxt+disable+lint+checker&ia=web
+nuxt disable lint checker at DuckDuckGo
+https://nuxtjs.org/docs/2.x/features/configuration#pre-processors
+Configuration - NuxtJS
+
+
 ### Configuration Variables (.env) dotenv
 
 Node.js automatically loads environment variables into process.env

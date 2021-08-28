@@ -123,3 +123,12 @@ https://www.npmjs.com/package/vue-moment
 vue-moment - npm
 https://github.com/brockpetrie/vue-moment/blob/master/vue-moment.js
 vue-moment/vue-moment.js at master · brockpetrie/vue-moment
+
+## YAML
+
+https://duckduckgo.com/?t=canonical&q=YAML+date-time&ia=web
+YAML date-time at DuckDuckGo
+https://stackoverflow.com/questions/2656196/ruby-how-do-i-define-a-datetime-field-in-yaml
+Ruby: How do I define a datetime field in YAML? - Stack Overflow
+https://yaml.org/type/timestamp.html
+Timestamp Language-Independent Type for YAML™ Version 1.1
