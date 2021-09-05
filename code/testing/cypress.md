@@ -103,6 +103,31 @@ Then utilize it explicitly in API tests
     })
 ```
 
+## Checking for JS console errors on the client
+
+check for js console error
+
+[via](https://stackoverflow.com/questions/53898085/check-if-an-error-has-been-written-to-the-console)
+
+Because the window is re-created with each cy.visit, Cypress recommends stubbing as a part of the cy.visit command.
+
+```
+cy.visit('/', {
+  onBeforeLoad(win) {
+    cy.stub(win.console, 'log').as('consoleLog')
+    cy.stub(win.console, 'error').as('consoleError')
+  }
+})
+
+//...
+cy.get('@consoleLog').should('be.calledWith', 'Hello World!')
+cy.get('@consoleError').should('be.calledOnce')
+
+```
+
+For more details see the official FAQ for stubbing out the console: https://docs.cypress.io/faq/questions/using-cypress-faq.html#How-do-I-spy-on-console-log
+
+And the recipe repository: https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/stubbing-spying__console
 
 
 
@@ -135,6 +160,16 @@ Just use `.its()` to yield the item
 
 https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#List-of-Assertions
 
+
+## Variables and Aliases
+
+https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Aliases
+
+Define in a `beforeEach` hook with `.as('item')` and then use with `this.item`. However `this.*` won't work in arrow functions. `cy.get('@item')` is preferred:
+
+```
+cy.get('@users').then((users) => {
+```
 
 ## Authentication
 
