@@ -13,14 +13,21 @@ https://docs.feathersjs.com/guides/basics/starting.html
 I prefer to install requirements in the container instead of globally. In this case, it's helpful to have access to the cli helper:
 
 
+TODO: does the following `yarn add`  have any effect in `Dockerfile` if we mount a volume over `node_modules`? (Think it's no)
+
+
+
 ``` api/Dockerfile
 FROM node:lts
 
 # Set the working directory.
 WORKDIR /srv
 
-RUN yarn global add @feathersjs/cli
+RUN yarn global add --dev @feathersjs/cli
+RUN yarn global add --dev sequelize-cli
+RUN yarn add --dev @feathersjs/feathers @feathersjs/socketio-client socket.io-client@2.3.1
 ```
+
 
 Connect to the API container to run these commands
 
@@ -32,6 +39,7 @@ Connect to the API container to run these commands
 ```
 feathers generate app
 ```
+
 
 What kind of service is it? 
 For an overview of the database services available, see here
@@ -48,6 +56,7 @@ $ feathers generate service               # Generate a new Service
 $ feathers generate hook                  # Generate a new Hook
 $ feathers help                           # Show all commands
 ```
+
 
 https://docs.feathersjs.com/guides/basics/generator.html
 Generating an app | FeathersJS
@@ -151,6 +160,10 @@ yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client
 Note, as of 2021.08, @feathersjs/socketio-client requires socket.io-client "^2.3.1"
 
 yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client@2.3.1
+
+#### Querying
+
+https://docs.feathersjs.com/api/databases/querying.html
 
 
 ## Authentication

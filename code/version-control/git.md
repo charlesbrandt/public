@@ -158,6 +158,12 @@ https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
 
 ### History
 
+To see the changes to the repository in reverse chronological order:
+
+    git log
+    
+To see history for a specific file:
+
     git log --follow -p -- file
 
 To see who has made commits to a repository.
@@ -167,6 +173,8 @@ To see who has made commits to a repository.
 see also:
 
     git bisect
+    
+https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
 ### Undo add files
 
