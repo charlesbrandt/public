@@ -195,6 +195,16 @@ TODO:
 way to have a private email address associated with gitlab?
 Sure! 
 
+### Default Templates
+
+Looks like this is only possible in a self-hosted instance
+
+https://duckduckgo.com/?t=ffab&q=gitlab+mark+repostory+as+a+template&ia=web
+gitlab mark repostory as a template at DuckDuckGo
+https://docs.gitlab.com/ee/user/admin_area/settings/instance_template_repository.html#help-and-feedback
+Instance template repository | GitLab
+
+
 
 ## Github
 
@@ -218,3 +228,6 @@ Creating a new organization from scratch - GitHub Docs
 https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/about-organizations
 About organizations - GitHub Docs
 
+### Template Repositories
+
+https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-template-repository
