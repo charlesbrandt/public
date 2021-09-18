@@ -104,19 +104,38 @@ An open source, pluggable New Tab web extension written in TypeScript, React and
 No special permissions required!
 
 
-## Keyboard Shortcuts
+### Copy Selection as Markdown
 
-Tab Navigation
+https://addons.mozilla.org/en-US/firefox/addon/copy-selection-as-markdown/
+Copy Selection as Markdown – Get this Extension for 🦊 Firefox (en-US)
 
-Ctrl+Tab
+https://duckduckgo.com/?t=ffab&q=firefox+extension+copy+html+as+markdown&ia=web
+firefox extension copy html as markdown at DuckDuckGo
 
-Default is to "Cycle through Tabs in Recently Used Order". I prefer sequential orders. ("Go one Tab to the Left" or "Go one Tab to the Right" with Ctrl+Tab+Shift)
 
-https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly#w_windows-tabs
-Keyboard shortcuts - Perform common Firefox tasks quickly | Firefox Help
+### Profile Management
 
-https://duckduckgo.com/?t=canonical&q=firefox+tab+navigation+keyboard+shortcuts&ia=web
-firefox tab navigation keyboard shortcuts at DuckDuckGo
+If you make frequent use of profiles, it can help to create a default profile.
+
+Locate where your profiles are stored:
+https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-data
+
+Available on `about:support` using the "Open Directory" button in the "Profile Directory" section. 
+
+```
+~/.mozilla/firefox
+```
+
+Read up on how to backup and restore profiles:
+
+https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles
+
+Recommendation is to use built in Firefox Profile manager to create a new profile first, then copy the contents of your default profile in to the newly created directory. That way all of the configurations in the browser are set up correctly. 
+
+If you need to update the order, can try manually editing:
+~/.mozilla/firefox/profiles.ini
+
+(make a backup first!)
 
 
 
