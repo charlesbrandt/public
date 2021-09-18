@@ -419,6 +419,8 @@ Submodules are remote repositories that are tracked separately, but needed for t
 
 Submodles allow for external dependencies to be noted and included.
 
+### Fetching
+
 To get submodules on clone:
 
     git clone --recurse-submodules -j8 git://github.com/foo/bar.git
@@ -444,7 +446,7 @@ hint: See "git help submodule" for more information.
 
 ### Add a submodule
 
-    git submodule add https://github.com/chaconinc/DbConnector
+    git submodule add https://gitlab.com/charlesbrandt/public docs
 
 https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
