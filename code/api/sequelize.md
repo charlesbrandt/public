@@ -48,7 +48,7 @@ Make use of "references" parameter to indicate the parent relationship, e.g.
 
 ```
 
-On the parent model define the associations:
+On both related models define the associations:
 
 ```
   project.associate = function (models) {
@@ -61,7 +61,11 @@ On the parent model define the associations:
 
 ```
 
-TODO: on the parent, what does the foreignKey property refer to? 
+Depending on the association type, the foreignKey property may refer to the local object or the child object. 
+
+`hasMany` will refer to a foreignKey on the child object
+`belongsTo` will refer to a foreignKey on the local object
+
 
 
 
@@ -107,7 +111,29 @@ https://dreamdevourer.com/example-of-sequelize-associations-in-feathersjs/
 
 https://sequelize.org/master/manual/advanced-many-to-many.html
 
+The trick was in initializing the through model
+
+without creating a dedicated service for the through model
+(although maybe that is desirable? ... can always add it in later)
+
+I initialized manually with:
+
+``` api/src/sequelize.js
+const createThroughModel = require("./models/through.model.js");
+
+module.exports = function (app) {
+
+...
+
+  app.setup = function (...args) {
+    const result = oldSetup.apply(this, args);
+
+    createThroughModel(app);
+```
+
 https://stackoverflow.com/questions/48602085/using-feathers-client-and-sequelize-many-to-many-relation
+
+https://stackoverflow.com/questions/51827290/how-to-define-many-to-many-with-feathers-and-sequelize-with-additional-fields-in
 
 
 ## Error Handling (TODO)

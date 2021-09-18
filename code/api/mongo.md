@@ -65,6 +65,10 @@ pass checks in as part of a list
 
 https://docs.mongodb.com/manual/reference/operator/query-logical/
 
+`not` works a little different
+
+  { status: {$not: {$eq: "completed"}}  }  
+
 #### Existence
 
 Sometime new fields may not exist in old records. Can check for a value or existence with:
@@ -250,6 +254,11 @@ To go the other direction, there is Reverse Populate
 
 "mongoose-reverse-populate-v2": "^1.2.4",
 
+### findOneAndUpdate
+
+https://mongoosejs.com/docs/tutorials/findoneandupdate.html
+
+Reminder: the value that is passed on is the value that was 'found' before the update is applied. If you make updates to that original value and re-save, you may lose your updated values. 
 
 ### Specify collection
 

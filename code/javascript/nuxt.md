@@ -82,49 +82,6 @@ When working with dynamic images you will need to use require
 
 Learn more about [webpack Assets](/docs/2.x/directory-structure/assets#webpack-assets)
 
-### Fonts
-
-You can use local fonts by adding them to your assets folder. Once they have been added you can then access them through your css using the @font-face.
-
-```
--| assets
-----| fonts
-------| DMSans-Regular.ttf
-------| DMSans-Bold.ttf
-```
-
-```css{}[assets/main.css]
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('~assets/fonts/DMSans-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('~assets/fonts/DMSans-Bold.ttf') format('truetype');
-}
-```
-
-## CSS / Style / Global / Default / Main
-
-Most projects need a default CSS setup.
-
-For the truly global stuff, make a `main.css` file in
-`@/assets/css/main.css` and configure in nuxt.config.js
-
-A similar approach can be taken for tailwind by creating `@/assets/css/tailwind.css`
-
-See:
-https://gitlab.com/charlesbrandt/web-ui-api-db/-/commit/94f4eec168e5b14ced457aefafc069a44679aa78
-
-Be surt to also add the css in the `nuxt.config.js`
-
 ## Static directory
 
 Good to reserve this for larger binary files like .jpg and media files.
@@ -144,6 +101,7 @@ Thus you'd want to delete this README.md before deploying to production.
 Example: `/static/robots.txt` is mapped as `/robots.txt`.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#static).
+
 
 ## Favicon
 

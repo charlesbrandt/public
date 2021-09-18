@@ -8,9 +8,253 @@ There's on in your web browser.
 
 Or there's [node](node.md) that you can install locally and run interactively. 
 
-## Date Handling
+## Dates
 
-See [dates](dates.md)
+    Date.now()
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+See also: [dates.md](dates.md)
+
+
+## Type Casting
+
+String to a Number:
+
+    var x = Number("1000")
+    
+parseInt is another option
+
+    var x = parseInt("1000", 10); 
+
+
+## Strings 
+
+### Remove whitespace
+
+myString = myString.trim();
+
+https://stackoverflow.com/questions/10032024/how-to-remove-leading-and-trailing-white-spaces-from-a-given-html-string
+
+In python, this is equivalent to `.strip()`
+
+### Replace string
+
+    p.replace('original', 'new')
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+
+### Split String
+
+    const parts = original.split('/')
+
+Suppose you just want the YYYY-MM-DD part of a string...
+
+```
+var fulldate = "2021-04-30T18:06:15.625Z";
+var day = fulldate.substring(0, 10);
+```
+
+Looks like an alternative is `fulldate.substr(2, 2)` -- is there a difference? 
+
+`substring` doesn't accept negative indexes like python:
+
+            cwd = line.substring(0, -1)  // won't work!
+
+Instead, use
+
+            cwd = line.substring(0, line.length - 1)
+
+### Join Array into String
+
+    console.log(elements.join('-'));
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+
+### Backticks / Template Literals
+
+Template literals can be used to represent multi-line strings and may use "interpolation" to insert variables:
+
+```
+var a = 123, str = `---
+   a is: ${a}
+---`;
+console.log(str);
+```
+
+https://stackoverflow.com/questions/27678052/usage-of-the-backtick-character-in-javascript
+Usage of the backtick character (`) in JavaScript - Stack Overflow
+
+### Formatting Numbers
+
+    const str1 = '5';
+    console.log(str1.padStart(2, '0'));
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+
+https://www.google.com/search?&q=javascript+format+number+leading+zeros
+
+
+## `for` Loops
+
+Can always use the basic format of
+
+```
+   for (let i=0, i<10, i++) {
+      console.log(i);
+   }
+```
+
+That's a bit verbose in most cases. Usually want to iterate over _something_, just be sure to use the right version:
+
+https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+
+`for - of` works for iterating items in a list
+
+    for (const x of xs) { console.log(x); }
+
+`for - in` is used to enumerate object properties 
+NOT GOOD FOR LISTS!
+
+There is also
+
+    xs.forEach((x, i) => console.log(x));
+
+
+
+## Arrays & Objects
+
+### Show attributes of object
+
+    console.log(Object.keys(app));
+
+very similar to python dir() command
+
+
+### Check for item in object or array
+
+If you want to frequently test if an item exists, using an Object / Hash / Dictionary / Map should perform better.
+
+    myObj.hasOwnProperty('myKey');
+    
+Note: when doing this in a Vue application with eslint enabled, you may get an error like:
+
+    error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+
+To get around that, you can use the following pattern:
+
+    Object.prototype.hasOwnProperty.call(myObj, 'myKey')
+
+If an array is necessary / easier, `indexOf` is the most widely compatible method:
+
+    [1, 2, 3].indexOf(1) => 0
+
+Then, to remove the element from the array:
+
+    var index = array.indexOf(item);
+    if (index !== -1) array.splice(index, 1);
+
+https://stackoverflow.com/questions/3954438/how-to-remove-item-from-array-by-value
+
+Sometimes, for arrays of complex objects, `indexOf` doesn't work. In that case, a raw iteration over the elements is the next best option. 
+
+```
+array.forEach((item, index) => {
+  console.log(item)
+}
+```
+
+```
+        this.otherProjects = []
+        this.projects.forEach((item, index) => {
+          if (item._id !== this.project._id) {
+            this.otherProjects.push(item)
+          } else {
+            // console.log('skipping current project', item)
+          }
+        })
+```
+
+There is also `array.some()`
+
+The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value. 
+
+```
+const array = [1, 2, 3, 4, 5];
+
+// checks whether an element is even
+const even = (element) => element % 2 === 0;
+
+console.log(array.some(even));
+// expected output: true
+```
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+
+### Modify Arrays
+
+To append a value to the end of an array:
+
+    array.push(item);
+
+To insert a value at the beginning of an array:
+
+    array.unshift(item);
+
+https://stackoverflow.com/questions/8073673/how-can-i-add-new-array-elements-at-the-beginning-of-an-array-in-javascript
+
+splice() changes the original array 
+slice() preserves the original array
+both return the modified array
+
+```
+//splice
+var array=[1,2,3,4,5];
+console.log(array.splice(2));
+
+//slice
+var array2=[1,2,3,4,5]
+console.log(array2.slice(2));
+
+
+console.log("----after-----");
+console.log(array);
+console.log(array2);
+```
+
+https://stackoverflow.com/questions/37601282/javascript-array-splice-vs-slice
+
+### Copy Objects
+
+For a quick deep copy: `JSON.parse(JSON.stringify(jsonObject))`
+
+For a shallow copy, the spread syntax may be enough:
+
+    var A3 = {...A1};  // Spread Syntax
+
+https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
+
+https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
+
+The slice() array method can be used to copy arrays by not passing any arguments arr1 = arr0.slice()
+
+
+## Regular Expressions
+
+`let re = /ab+c/;`
+
+`match()` 	Returns an array containing all of the matches, including capturing groups, or null if no match is found.
+`matchAll()`	Returns an iterator containing all of the matches, including capturing groups.
+`search()` 	Tests for a match in a string. It returns the index of the match, or -1 if the search fails.
+`replace()` 	Executes a search for a match in a string, and replaces the matched substring with a replacement substring.
+`replaceAll()` 	Executes a search for all matches in a string, and replaces the matched substrings with a replacement substring.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+Remember, if using `search()` be sure to check if the position === -1.
+Just using `if-search` will always be true (because -1 is not false in javascript). 
+
+
 
 ## Range
 

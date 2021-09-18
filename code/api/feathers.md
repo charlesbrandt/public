@@ -161,9 +161,50 @@ Note, as of 2021.08, @feathersjs/socketio-client requires socket.io-client "^2.3
 
 yarn add -D @feathersjs/feathers @feathersjs/socketio-client socket.io-client@2.3.1
 
+following along and creating a script works in this context
+
+
 #### Querying
 
 https://docs.feathersjs.com/api/databases/querying.html
+
+```
+      this.$axios
+        // https://docs.feathersjs.com/api/databases/querying.html#limit
+        // when pagination is enabled, data will be empty
+        // .get(this.$config.apiUrl + 'project?$limit=0')
+        // if you want everything, disable pagination on the api
+        .get(this.$config.apiUrl + 'items')
+        .then((res) => {
+          console.log('Response from server:', res.data)
+          // if pagination enabled, data will be in a parameter of response
+          // this.items = res.data.data
+          this.items = res.data
+        
+```
+
+## Error Handling
+
+It's important to catch errors. 
+
+Ideally these are caught with every promise call. 
+
+It is also possible to configure the server to catch unhandled exceptions:
+
+https://docs.feathersjs.com/api/errors.html#error-handling
+
+If you don't see the output you expect in your server logs, be sure these hooks are configured correctly. 
+
+https://docs.feathersjs.com/api/errors.html#server-side-errors
+Errors | FeathersJS
+
+
+
+https://duckduckgo.com/?t=ffab&q=UnhandledPromiseRejectionWarning%3A+GeneralError%3A+Unknown+column&ia=web
+💤 UnhandledPromiseRejectionWarning: GeneralError: Unknown column at DuckDuckGo
+https://stackoverflow.com/questions/65570523/unhandledpromiserejectionwarning-sequelizedatabaseerror-unknown-column-model
+💤 node.js - UnhandledPromiseRejectionWarning: SequelizeDatabaseError: Unknown column 'model.coulmn_name' in 'where clause' - Stack Overflow
+
 
 
 ## Authentication

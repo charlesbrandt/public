@@ -45,7 +45,7 @@ It is tempting to use PascalCase for component filenames. Tried it out. Now lean
 
 Also, less important, but it's difficult to navigate on the command line when cases are mixed. Have to remember to type upper-cased characters.
 
-## Components
+## Single File Components
 
 A concise way to combine the markup (<template>), logic (<script>) and styling (<style>) in a single .vue file.
 
@@ -81,15 +81,36 @@ javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow
 
     <li v-for="n in 10" :key="n">{{ n }} </li>
 
-#### Attributes
 
-:disabled="foo"
+### Binding values
 
-<textfield label="Name" value.sync="el.name" :disabled="myVar">
+Typically, just use a v-model to handle coordinating values between the template and the script. 
 
-Then in Vue you can just set this.myVar = true and it will disable the input.
+```
+<input v-model="search">
+```
 
-https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
+Some cases where it's easier to separate the value from what action you want to take when events occur
+
+```
+      <textarea
+        class="resize min-h-screen w-3/4 m-auto"
+        :value="articleString"
+        @input="updateObject"
+      />
+```
+
+
+```
+  methods: {
+    updateObject(event) {
+      console.log('updateObject', event.target.value)
+    }
+  }
+```
+
+https://dilshankelsen.com/v-model-with-vuex/
+How To Use V-Model With Vuex | Dilshan Kelsen
 
 ### Scripts
 
@@ -101,11 +122,27 @@ computed is made up of getters.
 via:
 https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
+#### Computed 
+
+A computed method will respond to changes made to data properties of the component. Similar to watch. Like a method that is called automatically. 
+
+
+
 ### Styles (CSS)
 
 Styling will depend a lot on how you configure your application, which front-end CSS framework you choose, etc.
 
 Reminder: Anything one-off or customizable should go in the corresponding web-compenent file. A CSS utility framework like Tailwind makes this even more streamlined!
+
+#### Attributes
+
+:disabled="foo"
+
+<textfield label="Name" value.sync="el.name" :disabled="myVar">
+
+Then in Vue you can just set this.myVar = true and it will disable the input.
+
+https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
 
 ### Dynamic Styles
 
@@ -289,40 +326,6 @@ https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-chi
 
 Note:  
 If you've hit a situation where an event bus pattern comes up, it may be a good time to consider using [vuex](vuex.md).
-
-## Binding values
-
-Typically, just use a v-model to handle coordinating values between the template and the script. 
-
-https://dilshankelsen.com/v-model-with-vuex/
-How To Use V-Model With Vuex | Dilshan Kelsen
-
-Some cases where it's easier to separate the value from what action you want to take when events occur
-
-```
-      <textarea
-        class="resize min-h-screen w-3/4 m-auto"
-        :value="articleString"
-        @input="updateObject"
-      />
-```
-
-
-```
-  methods: {
-    updateObject(event) {
-      console.log('updateObject', event.target.value)
-    }
-  }
-```
-
-## Renderless Components
-
-https://dev.to/codinglukas/vue-js-pattern-for-async-requests-using-renderless-components-3gd
-
-## Desktop application
-
-For creating a desktop application with Vue, see `vue-nodegui`
 
 ## Forms
 
