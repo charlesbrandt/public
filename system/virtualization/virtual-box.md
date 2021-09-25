@@ -6,10 +6,11 @@ Download both platform package and Extension Pack. (2 separate pages for this):
 
     https://www.virtualbox.org/wiki/Downloads
 
-
-    cd ~/Downloads
-    sudo dpkg -i virtualbox-5.
-    sudo dpkg -i virtualbox-5.1_5.1.12-112440~Ubuntu~xenial_amd64.deb
+```
+cd ~/Downloads
+sudo dpkg -i virtualbox-5.
+sudo dpkg -i virtualbox-5.1_5.1.12-112440~Ubuntu~xenial_amd64.deb
+```
 
 Lauch VirtualBox
 Next manually install Extension Pack from within the application
@@ -23,32 +24,15 @@ Use the main UI toolbar for the "Global Tools" button on the right.
 Add Host Only Networks
 
 
-# if common build utilities have not been added already, add them now
+if common build utilities have not been added already, add them now
+
+```
 sudo apt-get install -y gcc make perl
 sudo /sbin/vboxconfig
-
+```
 
 Add any machines.
 
 
 
 
-
-Move installs for archive (or get rid of them... usually want a fresh install)
-
-
-mkdir -p /c/virtual_box/installs
-cd /c/virtual_box/installs
-
-
-#cd /c/virtual_box/installs/5.0.10/
-
-#2017.01.11
-mkdir -p /c/virtual_box/installs/5.1.12/
-cd /c/virtual_box/installs/5.1.12
-mv ~/Downloads/* .
-sudo dpkg -i virtualbox-5.
-sudo dpkg -i virtualbox-5.1_5.1.12-112440~Ubuntu~xenial_amd64.deb
-sudo apt-get -f install
-
-Start Virtual Box

@@ -18,15 +18,26 @@ Databases often tie in closely to the API side.
 
 [databases](databases.md)
 
+[mongo](mongo.md)
+
+[sequelize](sequelize.md)
+
 
 ## Frameworks
+
+[feathers](feathers.md)
+
+[image gallery](image-gallery.md)
+
+[ipfs](ipfs.md)
+
+[search](search.md)
 
 
 
 ### File Browser
-~/alpha/file_system/file-browser.md
-~/alpha/public/system/editor/emacs-journal.md
-~/public/code/api/README.md
+
+[File Browser](file-browser.md)
 
 
 ## Documenting
@@ -43,15 +54,13 @@ via:
 https://apiguide.readthedocs.io/en/latest/build_and_publish/documentation.html
 Document your API — API Design Guide 0.1 documentation
 
-https://www.google.com/search?client=ubuntu&channel=fs&q=how+to+document+an+api&ie=utf-8&oe=utf-8
-how to document an api - Google Search
-https://swagger.io/
-The Best APIs are Built with Swagger Tools | Swagger
-https://swagger.io/resources/open-api/
-API Resources | Swagger
-https://swagger.io/docs/specification/about/
-About Swagger Specification | Documentation | Swagger | Swagger
-http://editor.swagger.io/?_ga=2.216992021.268614673.1581966607-50034279.1581346793
-Swagger Editor
-https://raml.org/index.html
-Welcome | RAML
+https://swagger.io/  
+The Best APIs are Built with Swagger Tools | Swagger  
+https://swagger.io/resources/open-api/  
+API Resources | Swagger  
+https://swagger.io/docs/specification/about/  
+About Swagger Specification | Documentation | Swagger | Swagger  
+http://editor.swagger.io/?_ga=2.216992021.268614673.1581966607-50034279.1581346793  
+Swagger Editor  
+https://raml.org/index.html  
+Welcome | RAML  

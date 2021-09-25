@@ -1,7 +1,7 @@
 # Node
 
-https://nodejs.org/en/
-https://github.com/nodejs/node
+https://nodejs.org/en/  
+https://github.com/nodejs/node  
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
@@ -45,7 +45,7 @@ The answer? Use what your team is using. Be consistent there. Working on an open
 
 DIY? Flip a coin.
 
-Both are good. No need to get hung up here.
+All are good. No need to get hung up here.
 
 ### Yarn
 
@@ -70,7 +70,7 @@ To remove a dependency
 
      yarn remove <name>
      
-Note: manually deleting from `package.json` removes the dependency from the project, but will not remove the files from node_modules of the local instance.
+Note: manually deleting from `package.json` removes the dependency from the project, but will not remove the files from `node_modules` of the local instance.
 
 #### Reinstall Modules
 
@@ -130,34 +130,6 @@ To remove a dependency:
 
 https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
 
-## Modules
-
-Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
-
-
-https://nodejs.org/api/modules.html#modules_all_together
-
-https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
-
-https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
-
-
-## Process Monitoring
-
-If you have a service running live using a node based (e.g. [express](express.md)) server, a monitoring tool can make sure it stays up.
-
-I've used PM2.
-
-https://www.google.com/search?client=ubuntu&channel=fs&q=pm2&ie=utf-8&oe=utf-8
-pm2 - Google Search
-https://pm2.keymetrics.io/
-PM2 - Home
-
-https://github.com/remy/nodemon
-GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development
-https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8&oe=utf-8
-nodemon vs pm2 - Google Search
-
 ## Lock files
 
 Is it really a good idea to track lock files under version control?
@@ -183,3 +155,33 @@ will let you do this, and even works with pre-npm@5.7.0 versions of npm 5, albei
 
 See also
 https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
+
+## Modules
+
+Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
+
+
+https://nodejs.org/api/modules.html#modules_all_together
+
+https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
+
+https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
+
+
+## Process Monitoring
+
+If you have a service running live using a node based (e.g. [express](express.md)) server, a monitoring tool can make sure it stays up.
+
+I've used PM2.
+
+https://www.google.com/search?client=ubuntu&channel=fs&q=pm2&ie=utf-8&oe=utf-8  
+pm2 - Google Search  
+https://pm2.keymetrics.io/  
+PM2 - Home  
+
+https://github.com/remy/nodemon  
+GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development  
+https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8&oe=utf-8  
+nodemon vs pm2 - Google Search  
+
+

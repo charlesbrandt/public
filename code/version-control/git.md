@@ -1,6 +1,8 @@
 # Git
 
-Git is a distributed [version control system](README.md).
+Git is a distributed [version control system](index.md), popular for keeping [code](../) repositories in sync. 
+
+[git servers](git-server.md)
 
 ## CLI Cheat sheet
 
@@ -16,13 +18,13 @@ Git is a distributed [version control system](README.md).
 
 ## What makes a good commit message
 
-    Separate subject from body with a blank line
-    Limit the subject line to 50 characters
-    Capitalize the subject line
-    Do not end the subject line with a period
-    Use the imperative mood in the subject line
-    Wrap the body at 72 characters
-    Use the body to explain what and why vs. how
+  - Separate subject from body with a blank line
+  - Limit the subject line to 50 characters
+  - Do not end the subject line with a period
+  - Use the imperative mood in the subject line
+  - Wrap the body at 72 characters
+  - Use the body to explain what and why vs. how
+  - Capitalize the subject line
 
 Source: http://chris.beams.io/posts/git-commit/#seven-rules
 
@@ -54,9 +56,10 @@ Remotes can be called whatever you want.
 
 `upstream` can be useful for tracking a boilerplate source for a project.
 
-    git remote add upstream git@example.com:project/boilerplate.git
-
-    git remote -v
+```
+git remote add upstream git@example.com:project/boilerplate.git
+git remote -v
+```
 
 https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
 
@@ -172,15 +175,19 @@ To see who has made commits to a repository.
 
 see also:
 
-    git bisect
-    
+```
+git bisect
+```
+
 https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
 ### Undo add files
 
 Newer versions of git show reminders about these commands when running `git status`
 
-    git reset
+```
+git reset
+```
 
 https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
@@ -190,12 +197,14 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 
 ### Collaborative Commits
 
+```
 git commit -m "Commit title
 Commit body
 
 Co-authored-by: First Person <example@example.com>
 Co-authored-by:
 "
+```
 
 ### Changing a commit message
 
@@ -219,29 +228,39 @@ Changing a commit message - GitHub Docs
 
 ### Switch to existing branch
 
-    git checkout name_of_branch
+```
+git checkout name_of_branch
+```
 
 ### Creating a branch
 
 Assumes you have already checked out the repository locally. Then:
 
-    git checkout -b upstream
+```
+git checkout -b upstream
+```
 
 Which is shorthand for:
 
-    git branch upstream
-    git checkout upstream
+```
+git branch upstream
+git checkout upstream
+```
 
 ### Delete local branch
 
 Once you merge a feature branch back in to `main`, feel free to remove it. It's a good idea to keep your branch names somewhat clean. 
 
-    git branch -d <local-branch>
+```
+git branch -d <local-branch>
+```
 
 If the branch has been shared publicly, and deleted on the remote repository, but still shows up locally (in the list of remote branches), it can be removed with
 
-    git remote prune origin
-    
+```
+git remote prune origin
+```
+
 To preview this action, use
 
     git remote prune origin --dry-run
@@ -254,7 +273,9 @@ If a new local branch has not been pushed up to the origin, use
 
 If you wish to set tracking information for this branch:
 
-    git branch --set-upstream-to=<remote>/<branch> main
+```
+git branch --set-upstream-to=<remote>/<branch> main
+```
 
 ### Merging
 
@@ -277,11 +298,15 @@ See also web-ui-api-db/README.md for a branching strategy on handling changes to
 
 ### Renaming a branch
 
-    git branch -m <oldname> <newname>
+```
+git branch -m <oldname> <new_name>
+```
 
 If you want to rename the current branch
 
-    git branch -m <newname>
+```
+git branch -m <new_name>
+```
 
 If the current branch is available publicly, you'll need to rename it on the remote repo as well.
 
@@ -292,7 +317,7 @@ git branch -m <old_name> <new_name>
 # Delete the old branch on remote - where <remote> is, for example, origin
 git push <remote> --delete <old_name>
 
-# Or shorter way to delete remote branch [:]
+# Or shorter way to delete remote branch
 git push <remote> :<old_name>
 
 git remote -v
@@ -355,11 +380,15 @@ When it's time to merge a feature branch to the main branch, a few steps are nec
 
 You can create the branch via a hash:
 
-    git branch branchname <sha1-of-commit>
+```
+git branch branchname <sha1-of-commit>
+```
 
 Or by using a symbolic reference:
 
-    git branch branchname HEAD~3
+```
+git branch branchname HEAD~3
+```
 
 https://stackoverflow.com/questions/2816715/branch-from-a-previous-commit-using-git
 
@@ -430,6 +459,7 @@ To pull in submodules for an already checked out repository:
 
     git submodule update --init --recursive
 
+```
 hint: You've added another git repository inside your current repository.
 hint: Clones of the outer repository will not contain the contents of
 hint: the embedded repository and will not know how to obtain it.
@@ -443,6 +473,7 @@ hint:
 hint: git rm --cached path/to/mod
 hint:
 hint: See "git help submodule" for more information.
+```
 
 ### Add a submodule
 
@@ -554,21 +585,29 @@ If you do not know the exact path you may use
 
 If you know the path the file was at, you can do this:
 
-    git log --all --full-history -- <path-to-file>
+```
+git log --all --full-history -- <path-to-file>
+```
 
 An alternative:
 
-    git rev-list -n 1 HEAD -- <file_path>
+```
+git rev-list -n 1 HEAD -- <file_path>
+```
 
 This should show a list of commits in all branches which touched that file. Then, you can find the version of the file you want, and display it with...
 
-    git show <SHA> -- <path-to-file>
+```
+git show <SHA> -- <path-to-file>
+```
 
 Or restore it into your working copy with:
 
-    git checkout <SHA>^ -- <path-to-file>
+```
+git checkout <SHA>^ -- <path-to-file>
+```
 
-Note the caret symbol (^), which gets the checkout prior to the one identified, because at the moment of <SHA> commit the file is deleted, we need to look at the previous commit to get the deleted file's contents
+Note the caret symbol (^), which gets the checkout prior to the one identified, because at the moment of `<SHA>` commit the file is deleted, we need to look at the previous commit to get the deleted file's contents
 
 via:
 https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history/34681842

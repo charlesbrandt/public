@@ -1,5 +1,7 @@
 # Searching
 
+See also: [../drives/locate.md](../drives/locate.md)
+
 
 ## Command Line
 

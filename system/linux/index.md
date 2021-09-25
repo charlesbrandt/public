@@ -1,10 +1,19 @@
-# Distributions
+# Linux
 
-There are many linux distributions available. Which one you run is a matter of personal preference. 
+There are many linux distributions available. Which one you run is a matter of personal preference. Communities create a distribution as a standard collection of linux applications and configurations. 
 
-[Notes about what happens before the Operating System (OS) is running](overview.md)
+[Notes about what happens before the Operating System (OS) is running](../startup.md)
 
 When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
+
+[Search](search.md)  
+
+[Upgrade](upgrade.md)  
+[Window Manager](window-managers/)  
+
+[Workspaces](workspaces.md)  
+
+[Backups](backup-system.md)  
 
 ## Create Bootable Media
 
@@ -14,8 +23,13 @@ Whatever you choose, start by downloading and burning an image of the operating 
 
 To transfer image for use, see [creating a bootable usb](../drives/bootable_usb.txt).
 
+## Distributions
 
 ## Ubuntu
+
+[Ubuntu](ubuntu.md)  
+[Ubuntu Server](ubuntu-server.md)  
+[Ubuntu Version](ubuntu-version.md)  
 
 Ubuntu is an open source linux operating system.
 
@@ -27,9 +41,9 @@ At this point you are also able to install Ubuntu to a local drive. Whether you 
 
 [more details on installing a new Ubuntu system](ubuntu.md)
 
-### [Desktops / Window Managers](window_managers/window_managers.md)
+### [Desktops / Window Managers](window-managers/window-managers.md)
 
-As if it wasn't enough to choose a distribution, you may also want to choose the [window manager](window_managers/window_managers.md). Typically this choice is made by the specific distribution you run, but some (e.g. arch) allow you to choose as part of the installation process. 
+As if it wasn't enough to choose a distribution, you may also want to choose the [window manager](window-managers/window-managers.md). Typically this choice is made by the specific distribution you run, but some (e.g. arch) allow you to choose as part of the installation process. 
 
 Gnome3 in newer versions of Ubuntu is a solid choice. I enjoy the 'overview' feature where you can see all windows for a given workspace. 
 
@@ -50,6 +64,10 @@ CentOS is another popular distribution that tracks Red Hat Enterprise Linux
 
 
 ## Raspberry Pi
+
+[Raspberry Pi](raspberry-pi.md)  
+
+[See also]((/pi/)  
 
 Hard to beat raspbian. Helps make sure you're starting from common ground when documenting your projects: 
 
@@ -127,7 +145,7 @@ To create a disk image from an img file:
 
 Finally, needed to do the following to boot:
 
-In order overcome the above error and proceed with booting TAILS from an older SanDisk Cruzer stick, hit the <TAB> key at the boot prompt. You’ll see, at the foot of the screen, a series of default switches passed to the boot loader. Arrow key back to the media=removable option and delete it. Ensure you keep the space between successive parameters. Hit <RETURN> and TAILS should continue booting per usual. It can be a little slow to boot, particularly from older USB sticks, so be patient.
+In order overcome the above error and proceed with booting TAILS from an older SanDisk Cruzer stick, hit the `<TAB>` key at the boot prompt. You’ll see, at the foot of the screen, a series of default switches passed to the boot loader. Arrow key back to the media=removable option and delete it. Ensure you keep the space between successive parameters. Hit `<RETURN>` and TAILS should continue booting per usual. It can be a little slow to boot, particularly from older USB sticks, so be patient.
 
 [via](http://www.outofworkpoet.com/initramfs-unable-find-live-medium-containing-live-file-system-booting-tails)
 

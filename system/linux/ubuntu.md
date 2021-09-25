@@ -1,11 +1,11 @@
 # Ubuntu
 
-````
+```
 which git
 sudo apt-get install git
 ```
 
-[Generate ssh-keys](../administration/ssh.md)
+[Generate ssh-keys](../ssh.md)
 Install an ssh server if you plan to connect to the machine remotely
 
 Install your preferred [editor](../editors/).
@@ -24,11 +24,11 @@ Change the Terminal background.
 
 Change the desktop background. (right-click on the desired image in a file explorer and choose "Set as Desktop Background.")
 
-[Apply Gnome 3 settings](window_managers/gnome3.md)
+[Apply Gnome 3 settings](window-managers/gnome3.md)
 
 Install [Docker / Docker-compose](../virtualization/docker.md)
 
-Install a [password manager](../administration/password_manager.md)
+Install a [password manager](../password-manager.md)
 
     sudo apt install keepassxc
 

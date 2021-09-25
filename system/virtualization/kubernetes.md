@@ -18,22 +18,22 @@ https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-in
 
 ## Distributions
 
-https://k3s.io/
-💤 K3s: Lightweight Kubernetes
-https://rancher.com/docs/k3s/latest/en/
-💤 Rancher Docs: K3s - Lightweight Kubernetes
-
-https://k8slens.dev/
-💤 Lens | The Kubernetes IDE
-https://github.com/lensapp/lens
-💤 GitHub - lensapp/lens: Lens - The Kubernetes IDE
-https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web
-
-💤 running a developer setup with kubernetes at DuckDuckGo
-https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/
-💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer
-https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/
-💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog
+https://k3s.io/  
+💤 K3s: Lightweight Kubernetes  
+https://rancher.com/docs/k3s/latest/en/  
+💤 Rancher Docs: K3s - Lightweight Kubernetes  
+  
+https://k8slens.dev/  
+💤 Lens | The Kubernetes IDE  
+https://github.com/lensapp/lens  
+💤 GitHub - lensapp/lens: Lens - The Kubernetes IDE  
+https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
+  
+💤 running a developer setup with kubernetes at DuckDuckGo  
+https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
+💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
+https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
+💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
 
 ## Similar Tools
 
@@ -41,10 +41,10 @@ Kubernetes is compared to Docker Swarm.
 
 Docker-compose is it's own thing (what to run on a local instance)
 
-https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web
-💤 docker-compose vs kubernetes at DuckDuckGo
-https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes
-What's the difference between Docker Compose and Kubernetes? - Stack Overflow
+https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web  
+💤 docker-compose vs kubernetes at DuckDuckGo  
+https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes  
+What's the difference between Docker Compose and Kubernetes? - Stack Overflow  
 
 
 ## Local Development
@@ -59,6 +59,7 @@ Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store.
 https://github.com/kubernetes-sigs/kind/
 
 Docker in Docker now references Kind:
+
 https://github.com/kubernetes-retired/kubeadm-dind-cluster
 
 Seems to be the way to go. Most compliant with what you would find in a production environment. 
@@ -72,6 +73,7 @@ Then `GO111MODULE="on" go get sigs.k8s.io/kind@v0.7.0 && kind create cluster`
 
 for me, kind was downloaded to home
 
+```
 ~/go/bin/kind
 
 sudo ~/go/bin/kind create cluster
@@ -89,7 +91,7 @@ You can now use your cluster with:
 kubectl cluster-info --context kind-kind
 
 Thanks for using kind!
-
+```
 
 ## K3s
 

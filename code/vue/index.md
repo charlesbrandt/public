@@ -1,7 +1,6 @@
 # Vue
 
-Guides:
-https://vuehero.com/
+Looking forward to getting [vue3](vue3.md) in the mix. 
 
 ## Install
 
@@ -9,9 +8,11 @@ https://vuejs.org/v2/guide/installation.html
 
 Be sure you have [node installed](node.md) and up-to-date. Verify with:
 
-    node -v
-    nvm install node
-    node -v
+```
+node -v
+nvm install node
+node -v
+```
 
 ### Browser Dev Tools
 
@@ -19,13 +20,12 @@ https://github.com/vuejs/vue-devtools#vue-devtools
 
 https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
-## New projects / Nuxt
-
-Nuxt simplifies the configuration and structure of a Vue project for a community standard.
-
-See: [Nuxt](nuxt.md)
+## New projects 
 
 `vue-cli` is another option.
+
+many templates to explore and learn from
+check awesome-vue
 
 ## Style Guide / Naming Conventions
 
@@ -47,7 +47,7 @@ Also, less important, but it's difficult to navigate on the command line when ca
 
 ## Single File Components
 
-A concise way to combine the markup (<template>), logic (<script>) and styling (<style>) in a single .vue file.
+A concise way to combine the markup (`<template>`), logic (`<script>`) and styling (`<style>`) in a single .vue file.
 
 https://vuejs.org/v2/guide/components.html#Dynamic-Components
 Components Basics — Vue.js
@@ -79,8 +79,9 @@ See all keys / values in a given object:
 https://stackoverflow.com/questions/44617484/vue-js-loop-via-v-for-x-times-in-a-range
 javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow
 
+```
     <li v-for="n in 10" :key="n">{{ n }} </li>
-
+```
 
 ### Binding values
 
@@ -136,9 +137,15 @@ Reminder: Anything one-off or customizable should go in the corresponding web-co
 
 #### Attributes
 
-:disabled="foo"
+Trigger if an attribute is added to a DOM element using a boolean value in the script. For example
 
+```
+:disabled="foo"
+```
+
+```
 <textfield label="Name" value.sync="el.name" :disabled="myVar">
+```
 
 Then in Vue you can just set this.myVar = true and it will disable the input.
 
@@ -149,7 +156,7 @@ https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in
 Using variable in vue component to affect CSS styles
 
 https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
-css - Vue.js dynamic <style> with variables - Stack Overflow
+css - Vue.js dynamic style with variables - Stack Overflow
 
 https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css/52280182#52280182
 In vue.js component, how to use props in css? - Stack Overflow
@@ -267,6 +274,8 @@ vue props vs slots - Google Search
 
 ## Routing
 
+[Router](router.md)
+
 In your script section, use:
 
     router.push({name: "yourroutename")
@@ -332,3 +341,12 @@ If you've hit a situation where an event bus pattern comes up, it may be a good 
 ## Environment Variables (dotenv)
 
 see [Nuxt](nuxt.md)
+
+## See also
+/ Nuxt
+
+Nuxt simplifies the configuration and structure of a Vue project for a community standard.
+
+See: [Nuxt](nuxt.md)
+
+[vuex](vuex.md)

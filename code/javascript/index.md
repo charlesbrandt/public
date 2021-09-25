@@ -37,9 +37,27 @@ Seems like camelCase is preferred over names_with_underscores. names-with-hyphen
 
 https://www.w3schools.com/js/js_conventions.asp
 
-### Spread Operator
+## Vue
 
-'...' Three dots in front of an array expands it out. Can be used to copy. 
+Many good topics related to Vue.
 
-https://tenmilesquare.com/5-uses-for-the-spread-operator/
+[Vue](/code/vue/)
 
+## See Also
+
+[basics](basics.md)
+
+[dates](dates.md)
+
+[express](express.md)
+
+[fetching-data](fetching-data.md)
+
+[search](search.md)
+
+### TODO
+move to design
+
+[frameworks](frameworks.md)
+
+[tree shaking](treeshaking.md)

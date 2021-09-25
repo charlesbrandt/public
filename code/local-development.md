@@ -66,8 +66,10 @@ Name aliases are resolved in a number of different ways.
 
 Browsers generally use DNS directly
 
-    cat /etc/resolv.conf 
-    
+```
+cat /etc/resolv.conf 
+```
+
 In Ubuntu, this is controlled by a link. By default it points to:
 
 ```
@@ -86,7 +88,6 @@ If `/etc/resolv.conf` references the default local DNS cache, browsers should re
 ```
 nameserver 127.0.0.53
 options edns0 trust-ad
-
 ```
 
 `/etc/nsswitch.conf` specifies the order of sources that applications should use to resolve a given hostname. The default order should work as expected. 
@@ -112,7 +113,7 @@ decide what ports to use for which services
 
 ## See also
 
-docker
-docker-compose
+[docker](/system/virtualization/docker.md)  
+[docker-compose](/system/virtualization/docker-compose.md)  
 
 

@@ -238,6 +238,13 @@ https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript
 
 The slice() array method can be used to copy arrays by not passing any arguments arr1 = arr0.slice()
 
+#### Spread Operator
+
+'...' Three dots in front of an array expands it out. Can be used to copy. 
+
+https://tenmilesquare.com/5-uses-for-the-spread-operator/
+
+
 
 ## Regular Expressions
 

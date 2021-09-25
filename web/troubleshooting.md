@@ -2,12 +2,6 @@
 
 `curl` and `wget` are both useful tools. 
 
-## See Also
-
-`wget` is better suited for web scraping applications. 
-
-~/alpha/public/web/scrape.md
-
 ## Curl
 
 1.3 What is cURL not?
@@ -54,24 +48,12 @@ https://curl.haxx.se/docs/sslcerts.html
 
 With the curl command line tool, you disable this with -k/--insecure.
 
-## Postman
 
-Postman is another popular tool for troubleshooting API connections. 
-This approach does require having a direct connection available to the source API, which may not always be possible if the API is on a remote network behind a firewall. 
 
-https://www.postman.com/downloads/
-Download Postman | Try Postman for Free
-https://www.postman.com/
-Postman | The Collaboration Platform for API Development
-https://www.postman.com/pricing/
-Plans & Pricing | Postman
-https://duckduckgo.com/?t=canonical&q=postman&ia=web
-postman at DuckDuckGo
-https://duckduckgo.com/?t=canonical&q=open+source+postman&ia=web
-open source postman at DuckDuckGo
-https://alternativeto.net/software/postman/?license=opensource&p=2
-Best Postman Alternatives: 18 Open Source API / REST Development tools | Page 2 | AlternativeTo
-https://www.apiman.io/latest/
-Apiman | Open Source API Management
-https://github.com/wisdom-projects/rest-client
-wisdom-projects/rest-client: A tool for automated testing REST API, generating exquisite testing report and REST API documentation.
+## See Also
+
+`wget` is better suited for web scraping applications. 
+
+[wget](wget.md)
+
+[Cypress](/code/testing/cypress.md)

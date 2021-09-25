@@ -8,32 +8,6 @@ An open source web framework for building modern real-time applications and REST
 https://docs.feathersjs.com/guides/basics/starting.html
 
 
-## Container customizations
-
-I prefer to install requirements in the container instead of globally. In this case, it's helpful to have access to the cli helper:
-
-
-TODO: does the following `yarn add`  have any effect in `Dockerfile` if we mount a volume over `node_modules`? (Think it's no)
-
-
-
-``` api/Dockerfile
-FROM node:lts
-
-# Set the working directory.
-WORKDIR /srv
-
-RUN yarn global add --dev @feathersjs/cli
-RUN yarn global add --dev sequelize-cli
-RUN yarn add --dev @feathersjs/feathers @feathersjs/socketio-client socket.io-client@2.3.1
-```
-
-
-Connect to the API container to run these commands
-
-    docker-compose exec api bash
-
-
 ## New Application
 
 ```
@@ -138,11 +112,12 @@ https://docs.feathersjs.com/api/express.html#express-rest
 
 Calls get mapped map as follows
 
-.get()  	GET 	/messages/1
-.create() 	POST 	/messages
-.update() 	PUT 	/messages/1
-.patch() 	PATCH 	/messages/1
-.remove() 	DELETE 	/messages/1
+.find()  	GET 	/item
+.create() 	POST 	/item
+.get()  	GET 	/item/1
+.update() 	PUT 	/item/1
+.patch() 	PATCH 	/item/1
+.remove() 	DELETE 	/item/1
 
 ### Feathers Client
 

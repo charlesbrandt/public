@@ -1,5 +1,8 @@
 # Visual Studio Code
 
+https://code.visualstudio.com/docs/?dv=linux64_deb  
+Documentation for Visual Studio Code  
+
 ## Install
 
 Download and install from site:  
@@ -12,7 +15,11 @@ sudo dpkg -i code...
 
 Add to favorites (optionally)
 
-Launch!
+In a terminal, when you navigate to a directory you want to work on in vs-code, just type
+
+```
+code .
+```
 
 ## Preferences
 
@@ -40,8 +47,6 @@ See below for details
   "update.mode": "none",
   "explorer.confirmDragAndDrop": false,
   "window.zoomLevel": 0,
-  "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false,
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "prettier.prettierPath": "./bin/prettier",
@@ -54,7 +59,6 @@ See below for details
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vetur.ignoreProjectWarning": true,
   "python.showStartPage": false,
   "workbench.editorAssociations": [
     {
@@ -62,19 +66,37 @@ See below for details
       "filenamePattern": "*.ipynb"
     }
   ],
-  "gitlens.advanced.messages": {
-    "suppressGitVersionWarning": true
-  },
-  "gitlens.menus": null,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
   "redhat.telemetry.enabled": false,
 }
 ```
 
 ## Formatting Files
 
-Automatically 
+Configure automatic formatting of a document when it's saved. This also helps indicate if you have a syntax problem -- the formatting won't be applied if the file isn't being parsed due to a syntax error. 
 
-### Prettier
+```
+"editor.formatOnSave": true
+```
+
+### Prettier Extension
+
+By: Prettier
+
+Helps with code formatting
+
+https://glebbahmutov.com/blog/configure-prettier-in-vscode/
+
+```
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+```
+
+may require the project to install prettier as a dev dependency so that vscode has it available to use.
+
+#### Prettier Path
+
+Ideally VS Code will use the same prettier version that is being applied to your project. However, if that is tucked away in a container, on a remote machine, or not being applied at the project level, it may be necessary to use a different prettier instance:
 
     "prettier.prettierPath": "./bin/prettier",
 
@@ -90,33 +112,41 @@ See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
 ### Auto Fix
 
-To improve the formatting of your source code, you can use the Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
+It's possible to apply the formatting manually, on demand. Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
 
 https://code.visualstudio.com/docs/languages/html
 
 
-### Prettier Extension
+## Preference Details
 
-By: Prettier
+### Default window size
 
-Prettier - Code formatter
-
-helps with code formatting
-
-https://glebbahmutov.com/blog/configure-prettier-in-vscode/
 {
-"editor.defaultFormatter": "esbenp.prettier-vscode",
-"editor.formatOnSave": true
+"workbench.startupEditor": "newUntitledFile",
+"window.newWindowDimensions": "inherit"
 }
 
-may require the project to install prettier as a dev dependency so that vscode has it available to use.
+https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
+
+### Minimap
+
+The miniature over view of the current file to the right.
+
+    "editor.minimap.enabled": false
+    
+### Updates
+
+I prefer to handle updates when updating the OS.
+https://code.visualstudio.com/docs/setup/linux
+https://stackoverflow.com/questions/42496935/disabling-visual-studio-code-update-notification
+
 
 
 
 
 ## Keybindings
 
-There are a few keyboard shortcuts that I find useful. Some have carried over from emacs, but I don't need to remap the whole configuration to be just like emacs. More like ergo-emacs.
+Keybindings are a personal preference. There are a few keyboard shortcuts that I find useful. Some have carried over from [emacs](../emacs/emacs.md), but I don't need to remap the whole configuration to be just like emacs. More like ergo-emacs.
 
 https://code.visualstudio.com/docs/getstarted/keybindings
 
@@ -276,51 +306,18 @@ You can also open Keyboard Shortcuts editor and select the Open Keyboard Shortcu
 ]
 ```
 
-
-## Preference Details
-
-### Default window size
-
-{
-"workbench.startupEditor": "newUntitledFile",
-"window.newWindowDimensions": "inherit"
-}
-
-https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position-in-visual-studio-code
-
-### Minimap
-
-The miniature over view of the current file to the right.
-
-    "editor.minimap.enabled": false
-    
-### Updates
-
-I prefer to handle updates when updating the OS.
-https://code.visualstudio.com/docs/setup/linux
-https://stackoverflow.com/questions/42496935/disabling-visual-studio-code-update-notification
-
-
-## Useful Features
-
-### Bracket Matching
-
-Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
-
-    Tip: You can jump to the matching bracket with Ctrl+Shift+\
-
-https://code.visualstudio.com/docs/editor/editingevolved
-
 ### Multiple Cursors
 
-I disable the Ctrl-Up and Ctrl-Down feature for creating cursors (see Keybindings below), but it is still possible to create multiple cursors with the mouse using Alt-Click.
+I disable the Ctrl-Up and Ctrl-Down feature for creating cursors. I prefer to use these key combos to [navigate the document](#space-block-jumper). It is still possible to create multiple cursors with the mouse using Alt-Click.
 
 https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
 
 
-## Extensions
 
-https://www.google.com/search?q=vs+code+extensions+vue
+
+## Useful Extensions
+
+https://www.duckduckgo.com/search?q=vs+code+extensions+vue
 vs code extensions vue - Google Search
 
 TODO:
@@ -330,9 +327,20 @@ can't see the tabs any more!
 
 Right click on extension->Extension Settings
 
-### Block Navigation
 
-Space Block Jumper allows jumping to the next blank line.
+### Bracket Matching
+
+TODO: [2021.09.25] check if this is built in now. I think I've seen mention about the feature in recent release notes. 
+
+Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
+
+    Tip: You can jump to the matching bracket with Ctrl+Shift+\
+
+https://code.visualstudio.com/docs/editor/editingevolved
+
+### Space Block Jumper
+
+Space Block Jumper allows jumping to the next blank line. (Block Navigation)
 
 https://marketplace.visualstudio.com/items?itemName=jmfirth.vsc-space-block-jumper
 
@@ -352,23 +360,20 @@ Tailwind CSS IntelliSense
 
 https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
 
-### Vue (Vetur)
+### Vue Language Features (Volar)
 
-Volar is coming up as a preferred alternative. s
+By: Johnson Chu
 
-By: Pine Wu
+Volar is coming up as a preferred alternative.
 
-https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
-Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
+Seems to work. If you disable Vetur and install Volar, be sure to restart VS Code for changes to take effect. 
 
-https://vuejs.github.io/vetur/
+https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar
+Vue Language Features (Volar) - Visual Studio Marketplace
+https://github.com/johnsoncodehk/volar
+GitHub - johnsoncodehk/volar: ⚡ Fast Vue Language Support Extension
 
-Frequently don't have the configs where the project is being loaded:
 
-"vetur.ignoreProjectWarning": true,
-
-May cause some issues with linting...
-https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx
 
 ### Bracket Pair Colorizer
 
@@ -465,6 +470,27 @@ CTRL+⌘+P - Quick Open Input Path
 
 Does not appear to work with opening a new file? 
 
+### Vue (Vetur)
+
+By: Pine Wu
+
+https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
+Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
+
+https://vuejs.github.io/vetur/
+
+Frequently don't have the configs where the project is being loaded:
+
+"vetur.ignoreProjectWarning": true,
+
+May cause some issues with linting...
+https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx
+
+In VS Code settings, I use:
+```
+  "vetur.ignoreProjectWarning": true,
+```
+
 ### GitLens
 
 By: Eric Amodio
@@ -474,6 +500,13 @@ I find the menu actions take away precious space for other file tabs:
     "gitlens.menus": null,
 
 I want to like this extension, but I feel like the information it offers gets in the way more often than it helps me understand the code.
+
+```
+  "gitlens.advanced.messages": {
+    "suppressGitVersionWarning": true
+  },
+  "gitlens.menus": null,
+```
 
 ### XML
 
@@ -530,8 +563,6 @@ markdownlint -- checks for formatting issues.
 
 #### Highlighting
 
-TODO:
-
 Looking for better syntax highlighting in .md files (editor view, not preview).
 
 This one set the theme for the whole editor, not just markdown files:
@@ -554,7 +585,7 @@ VS Code can even compile markdown to HTML!
 
 I find this gets in the way more than it helps. YMMV.
 
-### TODO
+### Snippets
 
 Previously installed... not sure if they are actively being used:
 
@@ -566,12 +597,6 @@ Evaluate:
 
 npm
 npm intellisense
-
-### Journal
-
-It's a pretty heavy application memory-wise to keep lots of open files / instances. There are better editors for keeping notes.
-
-'ctrl-j': 'moments-atom:journal'
 
 ## Reporting
 
@@ -611,36 +636,7 @@ If you use the JSON editor for your settings, add the following line:
 
 Important Notice: This option requires a restart of VS Code to take effect.
 
-## Links
-
-https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
-
-https://www.google.com/search?q=vs+code&oq=vs+code
-vs code - Google Search
-https://code.visualstudio.com/download
-Download Visual Studio Code - Mac, Linux, Windows
-https://code.visualstudio.com/docs/?dv=linux64_deb
-Documentation for Visual Studio Code
-https://code.visualstudio.com/docs?start=true
-Documentation for Visual Studio Code
 https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
 Visual Studio Code Frequently Asked Questions
 
-## Emacs Modes
 
-Usually the keybindings I use are tailored enough. Plus the use of Ergo Emacs makes emacs more compatible with standard shortcuts.
-
-Still looking for a good way to yank to the end of the line. (Ctrl-K)
-
-https://duckduckgo.com/?q=visual+studio+code+yank+to+end+of+line+command&t=canonical&ia=web
-visual studio code yank to end of line command at DuckDuckGo
-https://marketplace.visualstudio.com/items?itemName=reignofwebber.emacsx
-Emacs<>Vscode - Visual Studio Marketplace
-https://code.visualstudio.com/docs/getstarted/tips-and-tricks
-Visual Studio Code Tips and Tricks
-https://marketplace.visualstudio.com/items?itemName=NotKyon.vscode-emacs-neon
-Emacs Friendly Keybindings - Visual Studio Marketplace
-https://github.com/NotKyon/vscode-emacs-neon
-GitHub - NotKyon/vscode-emacs-neon: Visual Studio Code plugin emulating Emacs functionality
-https://github.com/SebastianZaha/vscode-emacs-friendly
-GitHub - SebastianZaha/vscode-emacs-friendly: Visual Studio Code plugin emulating Emacs functionality
