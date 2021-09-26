@@ -137,7 +137,19 @@ If you need to update the order, can try manually editing:
 
 (make a backup first!)
 
+A template Firefox profile that tracks these notes is available here:
 
+https://gitlab.com/charlesbrandt/firefox-profile
+
+```
+mkdir repos
+cd repos/
+git clone git@gitlab.com:charlesbrandt/firefox-profile.git
+cd .mozilla/firefox/
+# Create the new profile via Firefox
+rm -r hn95wtr8.example/*
+cp -r ~/repos/firefox-profile/* hn95wtr8.example/
+```
 
 ## Chrome / Chromium:
 
@@ -159,9 +171,8 @@ to restore previous session.
 
 ### Extensions
 
+#### The Great Suspender!
 
-*2019.02.09 07:04:35
-The Great Suspender!
 Suspend Tabs after a certain period of inactivity
 This is great!
 Saves so much memory and resources!
@@ -171,8 +182,8 @@ https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiok
 
 https://github.com/deanoemcke/thegreatsuspender
 
-*2011.09.05 09:46:51
-copy
+#### Copy Tabs
+
 https://chrome.google.com/webstore/detail/djdmadneanknadilpjiknlnanaolmbfk?hc=search&hcp=main
 
 need to configure the format to be equivalent to copy all urls

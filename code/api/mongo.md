@@ -268,8 +268,7 @@ Mongoose by default produces a collection name by passing the model name to the 
 
 https://stackoverflow.com/questions/5794834/how-to-access-a-preexisting-collection-with-mongoose
 
-
-## Saving Data
+### Saving Data
 
 // if results is what is returned by mongoose findById (or equivalent)
 body = { 'something': 'plain old object here' }
@@ -277,6 +276,93 @@ body = { 'something': 'plain old object here' }
 results = body;
 results.save(); <--- save not available!
 // rather than try to update all changed parameters, just subsequently call findByIdAndUpdate later
+
+### Pagination
+
+https://github.com/edwardhotchkiss/mongoose-paginate
+
+Looks like there is a maintained version available here (haven't tried yet):
+https://www.npmjs.com/package/mongoose-paginate-v2
+
+
+
+In the api, install mongoose-paginate
+
+```
+yarn add mongoose-paginate
+```
+
+The mongoose models will need to use the 'mongoose-paginate' plugin
+
+```
+var mongoosePaginate = require('mongoose-paginate');
+
+const sampleSchema = new Schema(
+	{ // field definitions
+    },
+	{ timestamps: true }
+);
+    
+...
+
+sampleSchema.plugin(mongoosePaginate);
+
+module.exports = mongoose.model("sample", sampleSchema);
+```
+
+Then on the API side
+
+TODO: compare this to feathers API
+possible to standardize? 
+
+```
+const Sample = mongoose.model("sample");
+
+router.get("/all/:page/:limit/:filter?", function (req, res, next) {
+	let query = {};
+	if (req.params.filter) {
+		query = {
+			name: { $regex: req.params.filter.toLowerCase(), $options: "i" },
+		};
+	}
+	let page = !isNaN(req.params.page) ? parseInt(req.params.page) : 1;
+	let limit = !isNaN(req.params.limit) ? parseInt(req.params.limit) : 20;
+	let options = {
+		page: page,
+		limit: limit,
+		populate: [{ path: "subSample", select: "-bigObjectToSkip" }, "sampleFriend", "user"],
+	};
+	console.log("Getting samples", options, query);
+	Sample.paginate(query, options, function (err, result) {
+		if (err) return next(err);
+
+		// console.log("Result has the following keys", Object.keys(result));
+        
+		const options = {
+			modelArray: result.docs,
+			storeWhere: "subSample",
+			arrayPop: true,
+			mongooseModel: SubSample,
+			idField: "sample",
+		};
+
+		reversePopulate(options, function (err, popCons) {
+			popCons.forEach((pc) => {
+				pc._doc["subSample"] = pc.subSample;
+			});
+
+			if (!result) return res.status(200).json([]);
+			res.status(200).send(result);
+		});
+	});
+});
+```
+
+Result has the following keys [ 'docs', 'total', 'limit', 'page', 'pages' ]
+
+
+
+
 
 
 ## Import / Export Data
