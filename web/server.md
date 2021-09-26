@@ -1,10 +1,6 @@
 # Web Servers
 
-Closely related to [storage](../storage/storage.md)
-
-Web Servers are the foundation for applications sshared across many machines.
-
-This role implies that the server acts as a central point of contact for the whole application. If that is not the case, explore concepts behind the decentralized web. [decentralized](decentralized.md)
+Put your content on the web!
 
 ## Nginx
 

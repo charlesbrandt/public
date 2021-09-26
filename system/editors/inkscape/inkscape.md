@@ -4,11 +4,11 @@ Add Inskape to favorites in application launcher
 
 Launch Inkscape
 
-<img src="screenshots/0001-default-start.png" alt="When Inkscape first starts...">
+<img src="./screenshots/0001-default-start.png" alt="When Inkscape first starts...">
 
 Exit fullscreen and resize as needed:
 
-<img src="screenshots/0010-exit_fullscreen.png" alt="">
+<img src="./screenshots/0010-exit_fullscreen.png" alt="">
 
 Configure best default settings
 
@@ -24,7 +24,7 @@ Configure best default settings
     - Commands Bar  
     - Palette  
 
-<img src="screenshots/0050-inkscape-view-show_hide.png" alt="Chaning view settings to hide command bar, etc">
+<img src="./screenshots/0050-inkscape-view-show_hide.png" alt="Chaning view settings to hide command bar, etc">
 
 - Consider showing arrange settings.  
   Object -> Arrange...
@@ -43,13 +43,17 @@ Filemanager -> browse to svg -> right click -> open with -> choose another appli
 Decide on a default template when Inkscape opens...  
 Make a link to the template:
 
-    cd ~/.config/inkscape/templates/
-    rm default.svg
-    ln -s ~/templates/template.svg default.svg
+```
+cd ~/.config/inkscape/templates/
+rm default.svg
+ln -s ~/templates/template.svg default.svg
+```
 
 Alternatively, manually copy in a static version. There may be newer versions available, so be sure to update frequently.
 
-    cp ~/templates/template.svg ~/.config/inkscape/templates/default.svg
+```
+cp ~/templates/template.svg ~/.config/inkscape/templates/default.svg
+```
 
 No template available? Start with a blank document, change the canvas size to whatever you want, and then save the document as templates/default.svg in your Inkscape config directory (~/.config/inkscape on Linux). Then restart Inkscape, and it should open with whatever document you just saved as the default template.
 
@@ -65,9 +69,6 @@ Set better default font size
 
     Text -> Text and Font...  
     (ctrl-alt-t)  
-
-
-<img src="screenshots/.png" alt="">
 
 
 Also choose where you want to start with template
@@ -94,7 +95,7 @@ https://inkscape.org/doc/tutorials/calligraphy/tutorial-calligraphy.html
 Use the Caligraphy / Brush tool (Ctrl-F6)
 
 Be sure to enable the option to "use the pressure of the input device"
-<img src="screenshots/caligraphy-001-Screenshot_2018-11-22_08-31-26.png" alt="">
+<img src="./screenshots/caligraphy-001-Screenshot_2018-11-22_08-31-26.png" alt="">
 
 Fixation set to 0 also makes sure the brush is always perpendicular to the direction of the stroke.
 

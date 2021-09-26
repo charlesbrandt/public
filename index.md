@@ -23,8 +23,6 @@ A clean, minimal set up is helpful when creating a new profile context for focus
 
 - [System](system/)
 
-  - [Administration](system/administration/)
-
 
 ## Git Repo
 

@@ -8,7 +8,7 @@ One gotcha that comes up is what address to use to serve the applications. `loca
 
 **However**, these are not as easy as they first seem. 
 
-The first complication is with self-signed certificates. You can [generate them](~/public/web/certificates.md), but some browsers won't accept them as valid (e.g. Chrome). 
+The first complication is with self-signed certificates. You can [generate them](/web/certificates.md), but some browsers won't accept them as valid (e.g. Chrome). 
 
 The second (an potentially bigger) complication is when testing is added. If the testing process is run in its own container, it will need to know how to access the service. If `localhost` is the name in use, then the testing container will refer to the local testing container, which won't actually be running the service. 
 

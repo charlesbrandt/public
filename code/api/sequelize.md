@@ -71,7 +71,9 @@ Depending on the association type, the foreignKey property may refer to the loca
 
 Then, when `find` or `get` is used to return results from the database, in Feathers it is important to create a hook that will `include` associated results. 
 
-``` api/src/hooks/get-samples.js
+in `api/src/hooks/get-samples.js`
+
+``` 
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
   return async (context) => {
@@ -116,9 +118,9 @@ The trick was in initializing the through model
 without creating a dedicated service for the through model
 (although maybe that is desirable? ... can always add it in later)
 
-I initialized manually with:
+I initialized manually in `api/src/sequelize.js` with:
 
-``` api/src/sequelize.js
+``` 
 const createThroughModel = require("./models/through.model.js");
 
 module.exports = function (app) {

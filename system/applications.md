@@ -13,14 +13,14 @@ Then you can clone this repository:
 
     git clone --recurse-submodules https://github.com/charlesbrandt/public
     
-[Notes on using git](../code/version_control/git.md)
+[Notes on using git](../code/version-control/git.md)
 
 If you forgot to get submodules:
 
     cd public
     git submodule update --init --recursive
 
-[Version Control](../code/version_control/README.md)
+[Version Control](../code/version-control/)
 
 
 ## Emacs
@@ -44,7 +44,7 @@ see also
 [editors/emacs/emacs.md](editors/emacs/emacs.md)
 
 Or more generally
-[text editors](editors/editors.md)
+[text editors](editors/)
 
 
 ## Browsers
@@ -119,7 +119,7 @@ Change "Continue where left off" from Ask to Never
 
 ## VS Code
 
-[VS Code](editors/vs_code/vs_code.md)
+[VS Code](editors/vs-code/vs-code.md)
 
 
 ## Screenshots

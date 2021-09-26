@@ -6,7 +6,7 @@ It's easy to lose settings from one computer to another, so it's important to ta
 
 Computers need hardware to run on. These are the systems that power the devices and applications we've come to rely on. 
 
-If you're just getting familiar with this space, the [Raspberry Pi](/pi/) ecosystem is a great place to start. Heavy overlap with this space. 
+If you're just getting familiar with this space, the [Raspberry Pi - /pi/) ecosystem is a great place to start. Heavy overlap with this space. 
 
 [Hard Drives / Storage](drives/)   
 
@@ -46,8 +46,8 @@ In the mobile phone space, Android is a good open source solution.
 [SSH](ssh.md)  
 [Terminal](terminal.md)  
 [Bash](linux/bash.md)  
-[Bash Colors](linux/bash-colors.sh)  
 [Shell](linux/shell.md)  
+Bash Colors example available in `linux/bash-colors.sh`
 
 [Checksums](checksums.md)  
 [Firewall](firewall.md)  
@@ -56,10 +56,4 @@ In the mobile phone space, Android is a good open source solution.
 [Remote Desktop](remote-desktop.md)  
 [Startup Services](startup-services.md)  
 
-
-## Proprietary Operating Systems
-
-[Mac](mac/)
-
-[Windows](windows/)
 

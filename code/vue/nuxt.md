@@ -76,9 +76,9 @@ When working with dynamic images you will need to use require
 
 ```html
 <img :src="require(`~/assets/img/${image}.jpg`)" />
-```
 
 <base-alert type="next">
+```
 
 Learn more about [webpack Assets](/docs/2.x/directory-structure/assets#webpack-assets)
 
@@ -394,23 +394,33 @@ This approach specifies which variables get sent to the public / client / browse
 
 In async data, you can pass in the configs you want to use:
 
-    async asyncData ({ $config: { baseURL } }) {
+```
+async asyncData ({ $config: { baseURL } }) {
+```
 
 and use it with
 
-    const posts = await fetch(`${baseURL}/posts`)
+```
+const posts = await fetch(`${baseURL}/posts`)
+```
 
 In other (client-side) methods in a component, it is available via
 
-    this.$config.baseURL
+```
+this.$config.baseURL
+```
 
 If you have code that is using the env variables you can migrate to using the \$config option. For example if in your code you had
 
-    <p>{{process.env.baseURL}}</p>
+```
+<p>{{process.env.baseURL}}</p>
+```
 
 You can change this by using \$config instead
 
-    <p>{{$config.baseURL}}</p>
+```
+<p>{{$config.baseURL}}</p>
+```
 
 ## Vuex (Persistence)
 

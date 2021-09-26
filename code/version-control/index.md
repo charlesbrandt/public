@@ -19,4 +19,10 @@ These days modern version control systems are all distributed. This allows chang
 
 distributed version control systems (DVCS)
 
+## Best Practices
 
+Do not keep large binary files in your main code source repo unless absolutely necessary. 
+
+I generally advocate for mono-repos, but this is one case where it's worth the effort to keep large binaries somewhere else. It can be a separate 'large binary' repo. 
+
+This avoids needing to download some old and long since unused binary every time you clone the repository. 

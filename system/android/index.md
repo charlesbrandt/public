@@ -1,7 +1,31 @@
-Many different topics about Android...
-focusing on installation, backups and core applications here
+# Android
 
-# 2019.08.02 system android virtual_keyboard
+An open source operating system for mobile devices.
+
+[topics of interest](topic-of-interest.md)  
+[usb storage](usb-storage-android.md)  
+
+
+## Setup
+
+Documenting android setup processes happens mostly in the form of screenshots when a new device is set up. 
+
+Download and configure core applications:
+
+[f-droid](fdroid.md)  
+
+Termux
+[termux](termux.md)  
+[userland](userland.md)  
+
+
+Firefox
+Sound Recorder
+
+
+
+
+### Haptic Feedback for Keyboard 
 disabled haptic feedback for keyboard input
 
 found setting in settings -> system -> languages & input -> virtual keyboard -> gboard -> preferences
@@ -17,6 +41,7 @@ todo: way to customize the characters available on a virtual keyboard? an arrow 
 
 
 
+## Launcher
 
 The main desktop in android is called a launcher or homescreen.
 
@@ -28,8 +53,8 @@ https://en.wikipedia.org/wiki/List_of_Android_launchers
 
 KISS, Trebuchet, and Turbo are the open source launchers on that list. KISS is super minimal and clean... so far I really like it! 
 
-http://kisslauncher.com/#why
-https://github.com/Neamar/KISS
+http://kisslauncher.com/#why  
+https://github.com/Neamar/KISS  
 
 To get rid of the green bar at the top, I choose:
 KISS Settings -> User Interface -> Theme interface -> Transparent theme or Dark transparent theme
