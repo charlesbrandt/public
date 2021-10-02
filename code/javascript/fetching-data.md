@@ -29,6 +29,32 @@ Usage - Axios Module
 https://github.com/axios/axios
 axios/axios: Promise based HTTP client for the browser and node.js
 
+## GET vs POST
+
+GET requests expect a 'params' option
+
+
+```
+        axios
+          .get(`${apiUrl}/verify`, {
+          params: {
+            ticket: ticket,
+            service: this.$store.state.globals.Return,
+            }
+          })
+```
+
+POST requests pass the second attribute to the API
+
+```
+        axios
+          .post(`${apiUrl}/authentication`, {
+            ticket: ticket,
+            service: this.$store.state.globals.Return,
+          })
+```
+
+
 ## Errors
 
 You can still catch errors with await calls by chaining the calls to `catch`, similar to the way you would with promises.

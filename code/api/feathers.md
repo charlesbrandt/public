@@ -240,6 +240,12 @@ context("Network Requests", () => {
 });
 ```
 
+### Custom Strategy
+
+If adding a custom authentication strategy, be sure to enable it in `api/config/default.json`
+
+
+
 ## Getting Started
 
 Getting up and running is as easy as 1, 2, 3.
