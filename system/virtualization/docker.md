@@ -425,7 +425,7 @@ Or to use docker directly:
 
 `docker exec -it <container-id> /bin/bash` 
 
-[Troubleshooting](web/troubleshooting.md)
+[Troubleshooting](../../web/troubleshooting.md)
 
 ```
 curl http://boilerplate_ui_1:3000

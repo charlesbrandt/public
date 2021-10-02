@@ -27,6 +27,7 @@ Databases often tie in closely to the API side.
 
 [auth](auth.md)
 
+
 ## Frameworks
 
 [feathers](feathers.md)
@@ -36,7 +37,6 @@ Databases often tie in closely to the API side.
 [ipfs](ipfs.md)
 
 [search](search.md)
-
 
 
 ### File Browser
