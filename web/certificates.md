@@ -32,9 +32,9 @@ Testing with Cypress opens up a few additional challenges.
 So far I have not been able to test a local service with a self-signed certificate using Chrome browsers. Firefox works. 
 
 
-I mounted the generated certificates so they are available within the Cypress container:
+I mounted the generated certificates so they are available within the Cypress container (in `docker-compose.yml`)
 
-``` docker-compose.yml
+``` yaml
     volumes:
       - ./web/ssl:/etc/nginx/ssl
 

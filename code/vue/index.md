@@ -6,7 +6,7 @@ Looking forward to getting [vue3](vue3.md) in the mix.
 
 https://vuejs.org/v2/guide/installation.html
 
-Be sure you have [node installed](node.md) and up-to-date. Verify with:
+Be sure you have [node installed](../javascript/node.md) and up-to-date. Verify with:
 
 ```
 node -v

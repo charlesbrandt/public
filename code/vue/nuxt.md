@@ -1,38 +1,10 @@
 # Nuxt
 
-[Vue](vue.md) is a good place to start, but Nuxt is even better.
+Builds on [Vue](index.md). 
 
 Nuxt provides informed default options as a foundation for your project. [A few more reasons to use Nuxt](https://zendev.com/2018/09/17/frontend-architecture-lessons-from-nuxt-js.html)
 
-Nuxt is improving rapidly. Always check the official docs for the most up-to-date API.
-
 https://nuxtjs.org/api/context
-
-## New Projects
-
-Here's a starter boilerplate
-
-[web-ui-api-db](https://gitlab.com/charlesbrandt/web-ui-api-db)
-
-Or, some notes about setting up from scratch and what the options mean
-
-[New project from scratch](./nuxt-new-project.md)
-
-## Running
-
-I prefer to run the application in a container where the node_modules are on a shared volume as in [web-ui-api-db](https://gitlab.com/charlesbrandt/web-ui-api-db). This keeps the node_modules out of the source tree, making it easier to grep and find the files you're looking for without getting snagged in the mountain of libraries and dependencies.
-
-```
-docker-compose up -d
-```
-
-If you need to do any maintenance / debugging in the container itself, you can always connect to it by a shell
-
-```
-docker-compose exec ui bash
-```
-
-It's also possible to run directly on the dev host.
 
 ## Components
 
@@ -79,8 +51,6 @@ When working with dynamic images you will need to use require
 
 <base-alert type="next">
 ```
-
-Learn more about [webpack Assets](/docs/2.x/directory-structure/assets#webpack-assets)
 
 ## Static directory
 
@@ -191,8 +161,6 @@ index.vue must be lowercase here! (Will not work with Index.vue)
 
 see web-ui-ap-db/ui/content
 
-## Content
-
 The nuxt content module is a nice way to include static content with a project without needing to rely on a database.
 
 One gotcha, if you intend to nest content in many sub-directories, be sure to have at least one file in the first directory of content, otherwise Nuxt Content won't find the deeper items.
@@ -204,7 +172,7 @@ https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/common/nuxt/content.md
 
 This is a big important topic.
 
-[See fetching_data.md](fetching_data.md)
+[See fetching data](/code/javascript/fetching-data.md)
 
 ## Generating
 
@@ -328,9 +296,9 @@ At first I liked having linting enabled by default. Fixing issues as they come u
 
 However, when using docker it's not always possible to use the same version of eslint in my IDE as the application. This can lead to situations when the editor auto-formats it one way and the application linter blocks saying there is an error. So far I haven't had success with hunting for the configuration parameters to make everything agree. 
 
-In this situation, it's easier to just disable linting.
+In this situation, it's easier to just disable linting. In `nuxt.config.js`:
 
-``` nuxt.config.js
+``` 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint

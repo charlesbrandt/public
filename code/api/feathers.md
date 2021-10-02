@@ -73,9 +73,7 @@ Service methods must use [async/await](https://developer.mozilla.org/en-US/docs/
 - `data` — The resource data.
 - `params` - Additional parameters for the method call (see [params](#params))
 
-> **Important:** This section describes the general usage of service methods and how to implement them. They are already implemented by the official Feathers database adapters. For specifics on how to use the database adapters, see the [database adapters common API](./databases/common.md).
-
-https://github.com/feathersjs/docs/blob/crow/api/databases/common.md
+> **Important:** This section describes the general usage of service methods and how to implement them. They are already implemented by the official Feathers database adapters. For specifics on how to use the database adapters, see the [database adapters common API](https://github.com/feathersjs/docs/blob/crow/api/databases/common.md)
 
 [Section adapted from](https://raw.githubusercontent.com/feathersjs/docs/crow/api/services.md)
 
@@ -281,8 +279,5 @@ feathers filesystem api at DuckDuckGo
 https://docs.feathersjs.com/guides/basics/services.html#registering-services
 Services | FeathersJS
 
-
-
-## Help
 
 

@@ -11,7 +11,9 @@ You can use local fonts by adding them to your assets folder. Once they have bee
 ------| DMSans-Bold.ttf
 ```
 
-```css{}[assets/main.css]
+In `css{}[assets/main.css]`
+
+``` css
 @font-face {
   font-family: 'DM Sans';
   font-style: normal;

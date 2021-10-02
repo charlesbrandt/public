@@ -5,7 +5,7 @@ For a while, when doing system administration work on remote servers, `vi` was o
 
 vi is everywhere. It's good to understand the different modes so that you can accomplish basic editing. 
 
-See [.exrc](.exrc) for a simple startup script that will map `ctrl-j` to print a timestamp. 
+See `.exrc` for a simple startup script that will map `ctrl-j` to print a timestamp. 
 
 ## nano
 

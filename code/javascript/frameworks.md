@@ -4,17 +4,21 @@ A framework can mean different things in different contexts. Even within the con
 
 This document focuses on front-end frameworks. Front-end javascript frameworks quickly blur into CSS only frameworks. It's a rapidly evolving landscape, but here are some top picks:
 
-Bulma
-Vuetify
-Tailwinds
+Tailwind  
+Bulma  
+Vuetify  
 
-## See also
+## Tailwind
 
-[Icons](~/public/design/icons.md)
-[Fonts](~/public/design/fonts.md)
+Utility CSS framework
 
+TODO - link to documentation
+
+[tailwind](/design/)
 
 ## Bulma
+
+CSS only Semantic framework. Leverage core html elements and apply common style patterns to achieve a consistent look and feel. 
 
 https://bulma.io/
 

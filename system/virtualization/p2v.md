@@ -1,14 +1,14 @@
 # Physical To Virtual (P2V)
 
-Take a physical computer and back up the operating system so that you can run it in a [virtual machine](virtual_machine.md).
+Take a physical computer and back up the operating system so that you can run it in a [virtual machine](virtual-machine.md).
 
 ## Clonezilla
 
 Download Clonezilla Live from http://clonezilla.org/downloads.php 
 
-Verify the [checksums](../administration/checksums.md).
+Verify the [checksums](../checksums.md).
 
-[Create bootable media with the image.](../drives/bootable_usb.md)
+[Create bootable media with the image.](../drives/bootable-usb.md)
 
 https://clonezilla.org/clonezilla-live.php
 
@@ -18,31 +18,31 @@ Once booted, perform a backup as follows:
 
 https://clonezilla.org/clonezilla-usage/clonezilla-live-usage.php
 
-At the menu, select “Clonezilla Live”
-Choose your language when prompted
-Select your desired keymap as needed
-At the menu, select “Start_Clonezilla”
-Specify “device-image”
-Select “local_dev” to save the image to a local device (NOTE: if you need to save it somewhere else, make the proper selection)
-When asked to connect USB devices, do so and then press “Enter”
-Choose the desired drive or partition to save the image
-A directory structure will be shown for the selected drive or partition. Select the appropriate folder in which to place the backup image
-A listing of disk space usage for the selected location will be displayed. Press “Enter”
-Choose “Expert” for the backup mode
-Select savedisk (when backing up a whole disk), or savepart (when backing up a single partition) - for my example, I am using savepart so some prompts may be a little different
-A prompt for the name of the backup is required. Remove the existing information and give it a simple name like “LinuxBack”. The name given is the folder name in which the backup files are placed. Remember the name so you know the location of the backup files
-A listing of existing drives and/or partitions will be listed. Highlight the one to backup, press “spacebar” and then “enter”
-At the next menu, select -q1 for a dd backup
-The next menu shows various parameter options to select. By default, the -c and -j2 are checked. The defaults are fine unless you require others
-When prompted for the compression type, select -z0
-At the next menu when prompted about splitting the file, make sure the size is larger than the drive or partition being backed up
-Select the option to “Skip checking/repairing source file system”, unless you believe it is necessary
-At the next menu select to skip checking the saved image file
-For the action to perform when the backup is completed, select what you prefer
-At this point, the options are set and the command-line should be listed which is being executed to perform the backup. Press “enter”
-You are prompted if you want to continue and perform the backup, so press “y” and then “enter”
-The backup should begin
-Exit Clonezilla when the backup is completed
+At the menu, select “Clonezilla Live”  
+Choose your language when prompted  
+Select your desired keymap as needed  
+At the menu, select “Start_Clonezilla”  
+Specify “device-image”  
+Select “local_dev” to save the image to a local device (NOTE: if you need to save it somewhere else, make the proper selection)  
+When asked to connect USB devices, do so and then press “Enter”  
+Choose the desired drive or partition to save the image  
+A directory structure will be shown for the selected drive or partition. Select the appropriate folder in which to place the backup image  
+A listing of disk space usage for the selected location will be displayed. Press “Enter”  
+Choose “Expert” for the backup mode  
+Select savedisk (when backing up a whole disk), or savepart (when backing up a single partition) - for my example, I am using savepart so some prompts may be a little different  
+A prompt for the name of the backup is required. Remove the existing information and give it a simple name like “LinuxBack”. The name given is the folder name in which the backup files are placed. Remember the name so you know the location of the backup files  
+A listing of existing drives and/or partitions will be listed. Highlight the one to backup, press “spacebar” and then “enter”  
+At the next menu, select -q1 for a dd backup  
+The next menu shows various parameter options to select. By default, the -c and -j2 are checked. The defaults are fine unless you require others  
+When prompted for the compression type, select -z0  
+At the next menu when prompted about splitting the file, make sure the size is larger than the drive or partition being backed up  
+Select the option to “Skip checking/repairing source file system”, unless you believe it is necessary  
+At the next menu select to skip checking the saved image file  
+For the action to perform when the backup is completed, select what you prefer  
+At this point, the options are set and the command-line should be listed which is being executed to perform the backup. Press “enter”  
+You are prompted if you want to continue and perform the backup, so press “y” and then “enter”  
+The backup should begin  
+Exit Clonezilla when the backup is completed  
 
 
 # 2020.04.23 17:04:20 
@@ -109,39 +109,39 @@ you can then use the resulting ubuntu.vdi as a Virtualbox drive. Just make sure 
 
 ## Links
 
-some research in to p2v
-not a real need to actually running the old system
-so in this case a backup will suffice
+some research in to p2v  
+not a real need to actually running the old system  
+so in this case a backup will suffice  
 
 but wanted to jot down resources that looked promising
 
-https://www.sysprobs.com/physical-virtual-virtualbox-virtualbox-p2v
-Physical to Virtual in VirtualBox - VirtualBox P2V
-https://duckduckgo.com/?q=linux+p2v+virtualbox&t=canonical&ia=qa
-linux p2v virtualbox at DuckDuckGo
-https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk
-virtualization - Convert my physical Operating System to a VirtualBox Disk - Ask Ubuntu
-
-https://www.google.com/search?client=ubuntu&hs=6VY&ei=LnR4XLLtF8retQW5wof4Cw&q=p2v+linux+virtualbox&oq=p2v+linux+virtualbox&gs_l=psy-ab.3..0j0i22i30.128052.132329..132757...0.0..0.99.997.11......0....1..gws-wiz.......0i71j0i67j0i22i10i30.tCZ9-5wcBB8
-p2v linux virtualbox - Google Search
-https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk
-virtualization - Convert my physical Operating System to a VirtualBox Disk - Ask Ubuntu
-https://blogs.technet.microsoft.com/enterprise_admin/2010/05/13/linux-p2v-with-dd-and-vhdtool-easy-and-cheap/
-Linux P2V With DD and VHDTool – EASY and CHEAP! – John Kelbley's real life enterprise interop and administration
-https://www.linux.org/threads/physical-to-virtual-p2v-using-virtualbox.10928/
-Physical To Virtual (P2V) using VirtualBox | Linux.org
-https://askubuntu.com/questions/308897/convert-ubuntu-physical-machine-to-virtual-machine
-virtualbox - Convert Ubuntu Physical machine to Virtual machine - Ask Ubuntu
-
-http://www.localizingjapan.com/blog/2011/03/05/virtualizing-a-linux-system-creating-a-linux-vm-p2v/
-
-https://www.google.com/search?client=ubuntu&hs=CRM&channel=fs&ei=P6NSWrvlB8r8jwT34ZSYCg&q=linux+p2v+virtualbox&oq=linux+p2v+virtualbox&gs_l=psy-ab.3..0.177980043.177981315.0.177981563.6.6.0.0.0.0.173.436.0j3.3.0....0...1c.1.64.psy-ab..3.3.431...0i7i30k1.0.5iBFlSVVGOQ
-linux p2v virtualbox - Google Search
-https://www.virtualbox.org/wiki/User_HOWTOS
-User_HOWTOS – Oracle VM VirtualBox
-https://www.virtualbox.org/wiki/Migrate_Windows
-Migrate_Windows – Oracle VM VirtualBox
-http://www.sysprobs.com/physical-virtual-virtualbox-virtualbox-p2v
-Physical to Virtual in VirtualBox - VirtualBox P2V
-https://www.vmware.com/products/converter.html
-VMware vCenter Converter: P2V Virtual Machine Converter
+https://www.sysprobs.com/physical-virtual-virtualbox-virtualbox-p2v  
+Physical to Virtual in VirtualBox - VirtualBox P2V  
+https://duckduckgo.com/?q=linux+p2v+virtualbox&t=canonical&ia=qa  
+linux p2v virtualbox at DuckDuckGo  
+https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk  
+virtualization - Convert my physical Operating System to a VirtualBox Disk - Ask Ubuntu  
+  
+https://www.google.com/search?client=ubuntu&hs=6VY&ei=LnR4XLLtF8retQW5wof4Cw&q=p2v+linux+virtualbox&oq=p2v+linux+virtualbox&gs_l=psy-ab.3..0j0i22i30.128052.132329..132757...0.0..0.99.997.11......0....1..gws-wiz.......0i71j0i67j0i22i10i30.tCZ9-5wcBB8  
+p2v linux virtualbox - Google Search  
+https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk  
+virtualization - Convert my physical Operating System to a VirtualBox Disk - Ask Ubuntu  
+https://blogs.technet.microsoft.com/enterprise_admin/2010/05/13/linux-p2v-with-dd-and-vhdtool-easy-and-cheap/  
+Linux P2V With DD and VHDTool – EASY and CHEAP! – John Kelbley's real life enterprise interop and administration  
+https://www.linux.org/threads/physical-to-virtual-p2v-using-virtualbox.10928/  
+Physical To Virtual (P2V) using VirtualBox | Linux.org  
+https://askubuntu.com/questions/308897/convert-ubuntu-physical-machine-to-virtual-machine  
+virtualbox - Convert Ubuntu Physical machine to Virtual machine - Ask Ubuntu  
+  
+http://www.localizingjapan.com/blog/2011/03/05/virtualizing-a-linux-system-creating-a-linux-vm-p2v/  
+  
+https://www.google.com/search?client=ubuntu&hs=CRM&channel=fs&ei=P6NSWrvlB8r8jwT34ZSYCg&q=linux+p2v+virtualbox&oq=linux+p2v+virtualbox&gs_l=psy-ab.3..0.177980043.177981315.0.177981563.6.6.0.0.0.0.173.436.0j3.3.0....0...1c.1.64.psy-ab..3.3.431...0i7i30k1.0.5iBFlSVVGOQ  
+linux p2v virtualbox - Google Search  
+https://www.virtualbox.org/wiki/User_HOWTOS  
+User_HOWTOS – Oracle VM VirtualBox  
+https://www.virtualbox.org/wiki/Migrate_Windows  
+Migrate_Windows – Oracle VM VirtualBox  
+http://www.sysprobs.com/physical-virtual-virtualbox-virtualbox-p2v  
+Physical to Virtual in VirtualBox - VirtualBox P2V  
+https://www.vmware.com/products/converter.html  
+VMware vCenter Converter: P2V Virtual Machine Converter  

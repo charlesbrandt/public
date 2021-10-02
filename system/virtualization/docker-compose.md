@@ -107,16 +107,16 @@ https://stackoverflow.com/questions/40801772/what-is-the-difference-between-dock
 
 ## Custom images (Dockerfile)
 
-It's a good idea to start with an existing docker image for the type of service you want to use as a foundation for your container. For example, if you're running a node application, you could start with:
+It's a good idea to start with an existing docker image for the type of service you want to use as a foundation for your container. For example, if you're running a node application, in `docker-compose.yml` start with:
 
-```docker-compose.yml
+``` yaml
   api:
     image: node:14
 ```
 
 Eventually you may want some other utilities to be available within the container context. (e.g. when you run `docker-compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so they persist across restarts. 
 
-```docker-compose.yml
+``` yaml
   api:
     build:
       context: ./api

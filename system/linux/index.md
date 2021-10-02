@@ -21,7 +21,7 @@ This process is the same for all systems.
 
 Whatever you choose, start by downloading and burning an image of the operating system (OS) of your choice from their site.
 
-To transfer image for use, see [creating a bootable usb](../drives/bootable_usb.txt).
+To transfer image for use, see [creating a bootable usb](../drives/bootable-usb.md).
 
 ## Distributions
 
@@ -41,9 +41,9 @@ At this point you are also able to install Ubuntu to a local drive. Whether you 
 
 [more details on installing a new Ubuntu system](ubuntu.md)
 
-### [Desktops / Window Managers](window-managers/window-managers.md)
+### [Desktops / Window Managers](window-managers/)
 
-As if it wasn't enough to choose a distribution, you may also want to choose the [window manager](window-managers/window-managers.md). Typically this choice is made by the specific distribution you run, but some (e.g. arch) allow you to choose as part of the installation process. 
+As if it wasn't enough to choose a distribution, you may also want to choose the [window manager](window-managers/). Typically this choice is made by the specific distribution you run, but some (e.g. arch) allow you to choose as part of the installation process. 
 
 Gnome3 in newer versions of Ubuntu is a solid choice. I enjoy the 'overview' feature where you can see all windows for a given workspace. 
 

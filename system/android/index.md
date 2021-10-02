@@ -2,10 +2,6 @@
 
 An open source operating system for mobile devices.
 
-[topics of interest](topic-of-interest.md)  
-[usb storage](usb-storage-android.md)  
-
-
 ## Setup
 
 Documenting android setup processes happens mostly in the form of screenshots when a new device is set up. 

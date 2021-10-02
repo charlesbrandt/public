@@ -19,7 +19,7 @@ Early on, before you have a text editor available, it can be handy to use the sc
 
     script -a test.txt
 
-see also [topics of interest](topics_of_interest.txt)
+see also [topic of interest](./topic-of-interest.md) for an example
 
 
 ## Termux extras

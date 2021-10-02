@@ -592,9 +592,9 @@ Compass | MongoDB
 https://www.google.com/search?q=mongo+compass
 mongo compass - Google Search
 
-If you expose the mongo db port from the container to the host:
+If you expose the mongo db port from the container to the host (in `docker-compose.yml1`):
 
-``` docker-compose.yml
+``` yaml
   db:
     image: mongo:4.0-xenial
     restart: always

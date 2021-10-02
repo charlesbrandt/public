@@ -1,4 +1,4 @@
-# Steps for getting linux going in Userland
+# Userland
 
 This process is very similar to getting going with termux, but there are some differences. 
 
@@ -7,8 +7,6 @@ A physcial keyboard makes things a lot easier!
 Early on, before you have a text editor available, it can be handy to use the script command to log what you're doing:
 
     script -a test.txt
-
-see also [topics of interest](topics_of_interest.txt)
 
 
 ## Extras
