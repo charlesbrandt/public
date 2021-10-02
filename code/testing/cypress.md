@@ -275,6 +275,40 @@ https://docs.cypress.io/examples/examples/docker
 
 https://github.com/bahmutov/cypress-open-from-docker-compose
 
+### Local
+
+There is already a `package.json` and `node_modules` in ui
+
+```
+cd ui
+yarn add cypress --dev
+```
+
+will need a cypress.json file that points to the right test source locations
+
+```
+{
+  "chromeWebSecurity": false,
+  "supportFile": "../tests/support/index.js",
+  "pluginsFile": "../tests/plugins/index.js",
+  "fixturesFolder": "../tests/fixtures",
+  "integrationFolder": "../tests/integration",
+  "screenshotsFolder": "../tests/screenshots",
+  "videosFolder": "../tests/videos",
+  "downloadsFolder": "../tests/downloads"
+}
+```
+
+Be sure to set the BASE_URL in the shell
+
+export CYPRESS_BASE_URL=https://localhost
+export CYPRESS_API_URL=https://localhost/api
+
+
+```
+yarn run cypress open
+```
+
 
 ## See Also
 

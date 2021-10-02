@@ -170,14 +170,22 @@ https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-
 
 ## Process Monitoring
 
-If you have a service running live using a node based (e.g. [express](express.md)) server, a monitoring tool can make sure it stays up.
+If you have a service running live using a node based (e.g. [express](express.md)) server, a monitoring tool can make sure it stays up. Options include...
 
-I've used PM2.
+
+### Docker
+
+[Docker](/system/virtualization/docker.md) is a great option.
+
+
+### PM2
 
 https://www.google.com/search?client=ubuntu&channel=fs&q=pm2&ie=utf-8&oe=utf-8  
 pm2 - Google Search  
 https://pm2.keymetrics.io/  
 PM2 - Home  
+
+### Nodemon
 
 https://github.com/remy/nodemon  
 GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development  

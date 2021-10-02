@@ -32,6 +32,12 @@ https://gist.github.com/julienbourdeau/e605e4b8b47da97c249a0f72598529c8
 
 ## Configurations
 
+```
+git config --list
+```
+
+## Remotes
+
 If you want to see - what repo something pushes back to - the configured id for a given local repo
 
 Use
@@ -42,7 +48,6 @@ To see what the remote server is set to, use:
 
     git remote -v
 
-### Remotes
 
 Sources that a repository is set up to track or follow.
 
@@ -52,7 +57,7 @@ It is possible to have more than one remote !
 
 Remotes can be called whatever you want.
 
-#### `origin` vs `upstream`
+### `origin` vs `upstream`
 
 `upstream` can be useful for tracking a boilerplate source for a project.
 
@@ -62,6 +67,17 @@ git remote -v
 ```
 
 https://unfoxnews.com/keep-track-of-multiple-git-remote-repositories/
+
+### Update origin
+
+Sometimes projects get checked out using the public url, but then changes are made. 
+
+```
+git remote remove origin
+git remote add origin git@gitlab.com:charlesbrandt/public.git
+git branch --set-upstream-to=origin/main main
+git pull
+```
 
 ## User Details
 
@@ -134,31 +150,6 @@ From here you can add different remotes (origins and upstreams) as needed.
 
 ## Common Workflows
 
-### Moving files / directories
-
-Tracking a move with git with:
-
-    git mv [src] [destination]
-
-However, currently (2020.12), GitHub is not able to associate the history of a moved file with it's previous location's history:
-
-https://github.community/t/renaming-folder-within-a-repo-loses-file-history/1752
-
-### Resoving a conflict
-
-If you try to pull in changes to a file you've modified locally, Git does not try to do the merge.
-
-Use stash to move local changes to the side while pulling in changes from remote.
-
-    git stash
-
-Then to unstash:
-
-    git stash pop
-
-https://www.atlassian.com/git/tutorials/saving-changes/git-stash
-https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
-
 ### History
 
 To see the changes to the repository in reverse chronological order:
@@ -180,6 +171,35 @@ git bisect
 ```
 
 https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+
+### Moving files / directories
+
+Tracking a move with git with:
+
+    git mv [src] [destination]
+
+** Important Note **
+
+This may affect the ability to see history of files via `log`.
+
+currently (2020.12), GitHub is not able to associate the history of a moved file with it's previous location's history:
+
+https://github.community/t/renaming-folder-within-a-repo-loses-file-history/1752
+
+### Resoving a conflict
+
+If you try to pull in changes to a file you've modified locally, Git does not try to do the merge.
+
+Use stash to move local changes to the side while pulling in changes from remote.
+
+    git stash
+
+Then to unstash:
+
+    git stash pop
+
+https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
 
 ### Undo add files
 
@@ -214,6 +234,14 @@ Ideally, do this before pushing up to a public repo, otherwise it results in a b
 
 https://docs.github.com/en/github/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message
 Changing a commit message - GitHub Docs
+
+### Tag current position
+
+A tag is a bit like a branch, but you don't need to check it out. 
+
+```
+git tag -a v1.4 -m 'version 1.4'
+```
 
 
 ## Branches

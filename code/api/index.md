@@ -23,6 +23,10 @@ Databases often tie in closely to the API side.
 [sequelize](sequelize.md)
 
 
+## Auth
+
+[auth](auth.md)
+
 ## Frameworks
 
 [feathers](feathers.md)

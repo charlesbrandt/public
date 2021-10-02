@@ -182,14 +182,14 @@ https://stackoverflow.com/questions/65570523/unhandledpromiserejectionwarning-se
 
 ## Authentication
 
-https://docs.feathersjs.com/api/authentication/
-Overview | FeathersJS
-https://docs.feathersjs.com/cookbook/authentication/anonymous.html
-Anonymous authentication | FeathersJS
-https://docs.feathersjs.com/guides/basics/authentication.html
-Authentication | FeathersJS
-https://docs.feathersjs.com/guides/migrating.html#authentication
-Migrating | FeathersJS
+https://docs.feathersjs.com/api/authentication/  
+Overview | FeathersJS  
+https://docs.feathersjs.com/cookbook/authentication/anonymous.html  
+Anonymous authentication | FeathersJS  
+https://docs.feathersjs.com/guides/basics/authentication.html  
+Authentication | FeathersJS  
+https://docs.feathersjs.com/guides/migrating.html#authentication  
+Migrating | FeathersJS  
 
 
 https://docs.feathersjs.com/guides/basics/authentication.html#get-a-token
