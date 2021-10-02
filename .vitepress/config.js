@@ -16,5 +16,6 @@ module.exports = {
     //  { text: 'Sidebar Test ', link: '/' },
     //  { text: '', link: '/' },
     //]
-  }
+  },
+  dest: "public"
 }
