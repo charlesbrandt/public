@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Notes',
   description: 'Still learning. Topics of interest. Writing, Code Development, Computer Systems, The Web, Design',
+  base: '/charles-brandt/',
   themeConfig: {
     nav: [
       { text: 'Code', link: '/code/' },
@@ -17,5 +18,6 @@ module.exports = {
     //  { text: '', link: '/' },
     //]
   },
-  dest: "public"
+  // no effect in vitepress currently
+  //dest: "./public"
 }
