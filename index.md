@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /charles.svg
+heroImage: ./charles.svg
 heroAlt: Charles
 tagline: Keep learning
 footer: Copyright © 2008-present Charles Brandt
