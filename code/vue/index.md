@@ -20,49 +20,44 @@ https://github.com/vuejs/vue-devtools#vue-devtools
 
 https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
-## New projects 
+### New projects 
 
 `vue-cli` is another option.
 
 many templates to explore and learn from
 check awesome-vue
 
-## Style Guide / Naming Conventions
-
-> Filenames of single-file components should either be always PascalCase or always kebab-case.
-
-[via](https://vuejs.org/v2/style-guide/#Single-file-component-filename-casing-strongly-recommended)
-
-In Javascript, camelCase is typically used for most variable and method names in code.
-
-Components are typically named in PascalCase.
-
-However, `kebab-case.vue` is the way to go for filenames for single file components.
-
-It is tempting to use PascalCase for component filenames. Tried it out. Now leaning against that idea.
-
-`index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames.
-
-Also, less important, but it's difficult to navigate on the command line when cases are mixed. Have to remember to type upper-cased characters.
 
 ## Single File Components
 
 A concise way to combine the markup (`<template>`), logic (`<script>`) and styling (`<style>`) in a single .vue file.
 
+Often makes use of the "Options API" (vs. the "Composition API" in vue3), but not exclusively. 
+
+Web components done right!
+
+https://v3.vuejs.org/guide/component-basics.html
+
 https://vuejs.org/v2/guide/components.html#Dynamic-Components
 Components Basics — Vue.js
-
-For an example template, see
-https://gitlab.com/charlesbrandt/web-ui-api-db/-/blob/main/ui/pages/blank.vue
 
 ### Templates
 
 https://vuejs.org/v2/guide/syntax.html
 
-Common patterns:
+#### For Loops
 
-List rendering
-https://vuejs.org/v2/guide/list.html#key
+List rendering  
+https://vuejs.org/v2/guide/list.html#key  
+
+https://stackoverflow.com/questions/44617484/vue-js-loop-via-v-for-x-times-in-a-range  
+javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow  
+
+```
+    <li v-for="n in 10" :key="n">{{ n }} </li>
+```
+
+
 
 See all keys / values in a given object:
 
@@ -74,18 +69,26 @@ See all keys / values in a given object:
     </ul>
 ```
 
-#### For Loops
+### Scripts
 
-https://stackoverflow.com/questions/44617484/vue-js-loop-via-v-for-x-times-in-a-range
-javascript - Vue Js - Loop via v-for X times (in a range) - Stack Overflow
+The script block is where you put logic related to your component.
 
-```
-    <li v-for="n in 10" :key="n">{{ n }} </li>
-```
+data is made up of properties  
+computed is made up of getters.  
+
+via:  
+https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
+
+#### Computed 
+
+A computed method will respond to changes made to data properties of the component. Similar to watch. Like a method that is called automatically. 
+
 
 ### Binding values
 
-Typically, just use a v-model to handle coordinating values between the template and the script. 
+How to share data between the `<template>` and `<script>`?
+
+Typically, just use a v-model to handle coordinating values.
 
 ```
 <input v-model="search">
@@ -110,22 +113,8 @@ Some cases where it's easier to separate the value from what action you want to 
   }
 ```
 
-https://dilshankelsen.com/v-model-with-vuex/
-How To Use V-Model With Vuex | Dilshan Kelsen
-
-### Scripts
-
-The script block is where you put logic related to your component.
-
-data is made up of properties
-computed is made up of getters.
-
-via:
-https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
-
-#### Computed 
-
-A computed method will respond to changes made to data properties of the component. Similar to watch. Like a method that is called automatically. 
+https://dilshankelsen.com/v-model-with-vuex/  
+How To Use V-Model With Vuex | Dilshan Kelsen  
 
 
 
@@ -151,7 +140,7 @@ Then in Vue you can just set this.myVar = true and it will disable the input.
 
 https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
 
-### Dynamic Styles
+#### Dynamic Styles
 
 Using variable in vue component to affect CSS styles
 
@@ -207,6 +196,70 @@ generating the whole style dictionary in a computed didn't work:
 :style="margins"
 
 See also ~/design_system/ui/pages/windows.vue
+
+
+## Custom Events / Event Bus
+
+If you need to signal a parent component of something that has happened in a child component, use $emit.
+
+Child component triggers clicked event:
+
+```
+export default {
+  methods: {
+    onClickButton (event) {
+      this.$emit('clicked', 'someValue')
+    }
+  }
+}
+```
+
+Parent component receive clicked event:
+
+```
+<div>
+  <child @clicked="onClickChild"></child>
+</div>
+
+```
+
+Then, in the parent script block, handle the emitted event as needed:
+
+```
+export default {
+  methods: {
+    onClickChild (value) {
+      console.log(value) // someValue
+    }
+  }
+}
+```
+
+via:
+https://forum.vuejs.org/t/passing-data-back-to-parent/1201
+
+For multiple levels of children components, there is vm.$listeners
+
+https://vuejs.org/v2/api/#vm-listeners
+
+https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
+
+Note:  
+If you've hit a situation where an event bus pattern comes up, it may be a good time to consider [State Management](#state-management) patterns.
+
+## Forms
+
+Heavy overlap with Web Components & UI Frameworks.
+
+It helps to study the underlying mechanisms of syncing form content with the local script and parent components. 
+
+TODO: v-model binding in vue2? or is that a new feature with vue3?
+
+https://duckduckgo.com/?t=ffab&q=creating+form+components+vue3&ia=web  
+💤 creating form components vue3 at DuckDuckGo  
+https://javascript.plainenglish.io/how-to-build-flexible-form-factory-by-vue-3-form-builder-pattern-b88edaf94776  
+Building a dynamic and scalable Form Factory by Vue 3 | JavaScript in Plain English  
+
 
 ## Slots & Props
 
@@ -272,6 +325,16 @@ rfcs/0001-new-slot-syntax.md at master · vuejs/rfcs
 https://www.google.com/search?client=ubuntu&channel=fs&q=vue+props+vs+slots&ie=utf-8&oe=utf-8
 vue props vs slots - Google Search
 
+## Layouts
+
+Slots get us most of the way there for a layout pattern. 
+
+https://markus.oberlehner.net/blog/dynamic-vue-layout-components/
+
+Some vue-based framework pre-configure a layout pattern for us, however it can help to understand the pattern at work in cases where those frameworks are not a good fit. 
+
+https://awesome-vue.js.org/components-and-libraries/ui-layout.html
+
 ## Routing
 
 [Router](router.md)
@@ -287,66 +350,44 @@ https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
 
 see also: router-link and nuxt-link
 
-## Custom Events / Event Bus
+## Style Guide / Naming Conventions
 
-If you need to signal a parent component of something that has happened in a child component, use $emit.
+[General conventions](../conventions.md)
 
-Child component triggers clicked event:
+Components should use more than one word in the name. 
 
-```
-export default {
-  methods: {
-    onClickButton (event) {
-      this.$emit('clicked', 'someValue')
-    }
-  }
-}
-```
+> Filenames of single-file components should either be always PascalCase or always kebab-case.
 
-Parent component receive clicked event:
+[via](https://vuejs.org/v2/style-guide/#Single-file-component-filename-casing-strongly-recommended)  
+[same in vue3](https://v3.vuejs.org/style-guide/#single-file-component-filename-casing-strongly-recommended)  
 
-```
-<div>
-  <child @clicked="onClickChild"></child>
-</div>
+In Javascript, camelCase is typically used for most variable and method names in code.
 
-```
+Components are typically named in PascalCase.
 
-Then, in the parent script block, handle the emitted event as needed:
+`kebab-case` is recommended when using components in template markup. I also prefer kebab-case for filenames too.
 
-```
-export default {
-  methods: {
-    onClickChild (value) {
-      console.log(value) // someValue
-    }
-  }
-}
-```
+I find it's more difficult to navigate on the command line when cases are mixed. Have to remember to type upper-cased characters. There are some filesystems that don't support case-sensitivity, but that should be moot in most cases. 
 
-via:
-https://forum.vuejs.org/t/passing-data-back-to-parent/1201
-
-For multiple levels of children components, there is vm.$listeners
-
-https://vuejs.org/v2/api/#vm-listeners
-
-https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
-
-Note:  
-If you've hit a situation where an event bus pattern comes up, it may be a good time to consider using [vuex](vuex.md).
-
-## Forms
+`index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames.
 
 ## Environment Variables (dotenv)
 
-see [Nuxt](nuxt.md)
 
-## See also
-/ Nuxt
+## State Management
 
-Nuxt simplifies the configuration and structure of a Vue project for a community standard.
+### Vuex (Persistence)
+
+In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of something like Vuex
+
+See: [Vuex](vuex.md)
+
+See also Vuex-ORM
+
+## Nuxt
+
+Nuxt simplifies the configuration and structure of a Vue project to get up and running quickly.
 
 See: [Nuxt](nuxt.md)
 
-[vuex](vuex.md)
+

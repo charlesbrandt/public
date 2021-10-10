@@ -193,3 +193,12 @@ https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8
 nodemon vs pm2 - Google Search  
 
 
+## Environment Variables (.env) dotenv
+
+Variables set in a `.env` file are automatically loaded by node and made available via `process.env.*` variables. 
+
+Try out a ui/.env file. Is the value available via process.env.whatever?
+
+Many frameworks leverage these variables for configuration. 
+
+See also: [nuxt configuration variables](../vue/nuxt.html#configuration-variables-env-dotenv)

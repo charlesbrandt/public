@@ -4,22 +4,21 @@ Development, Programming
 
 [ git ](version-control/git.md)
 
-
 [api](api/) 
 
 [testing](testing/) / [cypress](testing/cypress.md)  
 
 [vue](vue/)  
 
-
+[Data visualization](data-visualization.md)
 
 ## Languages
 
 [ Javascript (JS) ](javascript/)
 
-
 [ Python ](python/)
 
+[ Go Language ](golang/)
 
 ## Articles
 

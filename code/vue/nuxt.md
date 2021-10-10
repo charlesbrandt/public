@@ -73,20 +73,6 @@ Example: `/static/robots.txt` is mapped as `/robots.txt`.
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#static).
 
 
-## Favicon
-
-SVG works as a Favicon in most cases
-don't worry about generating all of the different sized .ico files. The SVG is it!
-
-Place the svg in the `ui/static/` directory and then update nuxt.config.js:
-
-    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-
-There are a few other cases that should be included. Worry about that in production:
-
-https://medium.com/swlh/are-you-using-svg-favicons-yet-a-guide-for-modern-browsers-836a6aace3df
-
 ## Page Titles / Meta Tags
 
 ```
@@ -317,13 +303,9 @@ https://nuxtjs.org/docs/2.x/features/configuration#pre-processors
 Configuration - NuxtJS
 
 
-### Configuration Variables (.env) dotenv
+### Configuration Variables 
 
-Node.js automatically loads environment variables into process.env
-
-The way to use them has changed over time.
-
-Try out a ui/.env file. Is the value available via process.env.whatever?
+It's possible to leverage [Node's built in environment variable loading](../javascript/node.html#environment-variables)
 
 Best Practices:
 
@@ -389,14 +371,4 @@ You can change this by using \$config instead
 ```
 <p>{{$config.baseURL}}</p>
 ```
-
-## Vuex (Persistence)
-
-In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of Vuex
-
-See: [Vuex](vuex.md)
-
-Consider adding in Vuex-ORM
-
-https://gitlab.com/charlesbrandt/public/-/blob/master/code/javascript/vuex.md
 

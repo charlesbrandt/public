@@ -2,31 +2,31 @@
 
 A Javascript based Object Relational Mapper (ORM) for tracking the relationship between a database schema and data objects used in software. (e.g. JSON representation)
 
-https://sequelize.org/
-Sequelize ORM
-https://sequelize.org/master/
-Manual | Sequelize
-https://github.com/sequelize/sequelize/
-sequelize/sequelize: An easy-to-use multi SQL dialect ORM tool for Node.js
-https://sequelize.org/master/manual/model-basics.html#numbers
-Manual | Sequelize
-https://sequelize.org/master/manual/migrations.html
-Manual | Sequelize
-
-https://github.com/feathersjs-ecosystem/feathers-sequelize
+https://sequelize.org/  
+Sequelize ORM  
+https://sequelize.org/master/  
+Manual | Sequelize  
+https://github.com/sequelize/sequelize/  
+sequelize/sequelize: An easy-to-use multi SQL dialect ORM tool for Node.js  
+https://sequelize.org/master/manual/model-basics.html#numbers  
+Manual | Sequelize  
+https://sequelize.org/master/manual/migrations.html  
+Manual | Sequelize  
+  
+https://github.com/feathersjs-ecosystem/feathers-sequelize  
 
 ## Schema Generation
 
 Sequelize Auto can help generate schemas from an existing database
 
-https://github.com/sequelize/sequelize-auto
-sequelize/sequelize-auto: Automatically generate bare sequelize models from your database.
+https://github.com/sequelize/sequelize-auto  
+sequelize/sequelize-auto: Automatically generate bare sequelize models from your database.  
+  
+TODO - document how to incorporate these in with an API  
+fully automated vs grouping associations in with the model file  
 
-TODO - document how to incorporate these in with an API
-fully automated vs grouping associations in with the model file
-
-TODO - Output should be closer to the Feather's model definition approach
-Include the associations in with the model
+TODO - Output should be closer to the Feather's model definition approach  
+Include the associations in with the model  
 
 
 ## Migrations
@@ -50,14 +50,14 @@ Having trouble locating the repo.
 
 The following assumes you have a `migrations` folder in the root of your app.
 
+
 ### Initial Setup: one-time tasks
  
- -   Install the [sequelize CLI](https://github.com/sequelize/cli):
+  -   Install the [sequelize CLI](https://github.com/sequelize/cli):
  
-     npm install sequelize-cli --save
-
+      npm install sequelize-cli --save
  
- -   Create a `.sequelizerc` file in your project root with the following content:
+  -   Create a `.sequelizerc` file in your project root with the following content:
  
 ```
 const path = require('path');
@@ -70,7 +70,7 @@ module.exports = {
 };
 ```
  
- -   Create the migrations config in `migrations/config/config.js`:
+  -   Create the migrations config in `migrations/config/config.js`:
  
 ```
 const app = require('../../src/app');
@@ -85,7 +85,7 @@ module.exports = {
 };
 ```
 
- -   Register your models. The following assumes you have defined your models using the method [described here](https://github.com/feathersjs/generator-feathers/issues/94#issuecomment-204165134).
+  -   Register your models. The following assumes you have defined your models using the method [described here](https://github.com/feathersjs/generator-feathers/issues/94#issuecomment-204165134).
 
 ```
 const Sequelize = require('sequelize');
@@ -107,9 +107,10 @@ module.exports = Object.assign({
  
 The migration commands will load your application and it is therefore required that you define the same environment variables as when running you application. For example, many applications will define the database connection string in the startup command:
  
-     DATABASE_URL=postgres://user:pass@host:port/dbname npm start
-     
- 
+```
+DATABASE_URL=postgres://user:pass@host:port/dbname npm start
+```
+
 All of the following commands assume that you have defined the same environment variables used by your application.
  
 > **ProTip:** To save typing, you can export environment variables for your current bash/terminal session:
@@ -223,7 +224,6 @@ In the unfortunate case where you must revert your app to a previous state, it i
 4.  Undo your migrations one at a time until the db is in the correct state
 5.  Revert your code back to the previous state
 6.  Start your app
-
 
 
 
