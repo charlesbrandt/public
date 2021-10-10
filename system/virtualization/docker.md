@@ -462,42 +462,7 @@ https://stackoverflow.com/questions/30269672/unable-to-use-lt-when-running-nginx
 
 ### Node
 
-If you're using a container that does not have Node installed (e.g. Centos), installing from nodesource.com seems like the best option
-
-```
-RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash # for node version 10.x
-RUN yum -y install nodejs
-RUN node --version # optional to check that it worked
-RUN npm --version # optional to check that it worked
-```
-
-NVM is an alternative, but it's tricky to use NVM in a container:
-
-```
-# nvm environment variables
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 12.16.2
-
-# Install NVM for installing node
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-RUN source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
-
-```
-
-### NPM Packages
-
-May be possible to minimize the number of npm packages pulled down during an image build:
-
-https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
-
-Looks like Seth has another tactic for this here:
-
-https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
-
+See [Node Notes](../../code/javascript/node.md)
 
 ### Python
 

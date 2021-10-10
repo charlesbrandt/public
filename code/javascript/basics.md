@@ -131,7 +131,7 @@ There is also
 very similar to python dir() command
 
 
-### Check for item in object or array
+### Check for item in object 
 
 If you want to frequently test if an item exists, using an Object / Hash / Dictionary / Map should perform better.
 
@@ -145,24 +145,38 @@ To get around that, you can use the following pattern:
 
     Object.prototype.hasOwnProperty.call(myObj, 'myKey')
 
-If an array is necessary / easier, `indexOf` is the most widely compatible method:
+### Check for item in array
+
+If an array is necessary / easier, `includes()` is a good option:
+
+
+    [1, 2, 3].includes(1) => true
+
+
+https://stackoverflow.com/questions/7378228/check-if-an-element-is-present-in-an-array
+
+
+`indexOf` is the most widely compatible method:
 
     [1, 2, 3].indexOf(1) => 0
 
-Then, to remove the element from the array:
+Important: to test for existence in an array, check if the result == -1:
 
-    var index = array.indexOf(item);
-    if (index !== -1) array.splice(index, 1);
+```
+    if ([1, 2, 3].indexOf(4) === -1) {
+       console.log("does not exist")
+    }
+```
 
-https://stackoverflow.com/questions/3954438/how-to-remove-item-from-array-by-value
-
-Sometimes, for arrays of complex objects, `indexOf` doesn't work. In that case, a raw iteration over the elements is the next best option. 
+Sometimes, with arrays of complex objects, `indexOf()` or `includes()` doesn't work. In that case, a raw iteration over the array of elements is the next best option. 
 
 ```
 array.forEach((item, index) => {
   console.log(item)
 }
 ```
+
+Once you know what you want to compare, update the check:
 
 ```
         this.otherProjects = []
@@ -175,9 +189,7 @@ array.forEach((item, index) => {
         })
 ```
 
-There is also `array.some()`
-
-The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value. 
+There is also `array.some()`. The `some()` method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value. 
 
 ```
 const array = [1, 2, 3, 4, 5];
@@ -223,6 +235,18 @@ console.log(array2);
 ```
 
 https://stackoverflow.com/questions/37601282/javascript-array-splice-vs-slice
+
+#### Remove item from array
+
+To remove an element from an array:
+
+```
+    var index = array.indexOf(item);
+    if (index !== -1) array.splice(index, 1);
+```
+
+https://stackoverflow.com/questions/3954438/how-to-remove-item-from-array-by-value
+
 
 ### Copy Objects
 

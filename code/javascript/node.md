@@ -7,9 +7,57 @@ Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
 ## Install
 
-Clean up old version(s):
+### Docker
 
-    npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | sudo xargs npm -g rm
+[Docker containers](../../system/virtualization/docker.md) are a great way to ensure you're running the node environment that you think you're running. 
+
+Containers for Node applications are maintained here
+
+https://hub.docker.com/_/node/
+
+In `docker-compose.yml`, this is a good place to start
+
+```
+image: node:lts
+```
+
+If you're using a container that does not have Node installed (e.g. Centos), installing from nodesource.com seems like the best option
+
+```
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash # for node version 10.x
+RUN yum -y install nodejs
+RUN node --version # optional to check that it worked
+RUN npm --version # optional to check that it worked
+```
+
+NVM is an alternative, but it's tricky to use NVM in a container:
+
+```
+# nvm environment variables
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 12.16.2
+
+# Install NVM for installing node
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+```
+
+
+#### NPM Packages & Docker
+
+May be possible to minimize the number of npm packages pulled down during an image build:
+
+https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
+
+Looks like Seth has another tactic for this here:
+
+https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
+
 
 ### NVM
 
@@ -22,7 +70,9 @@ Open a new shell and verify with:
 
     command -v nvm
 
-### Node
+Clean up old (non-nvm) node version(s):
+
+    npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | sudo xargs npm -g rm
 
 Install Node via NVM:
 
@@ -37,9 +87,31 @@ Nodesource is another popular way to install node
 
 https://github.com/nodesource/distributions/blob/master/README.md
 
+## Modules
+
+Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
+
+https://nodejs.org/api/modules.html#modules_all_together
+
+https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
+
+https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
+
+
 ## Package Managers
 
-### NPM vs Yarn vs PNPM
+Package managers ensure that all of the modules that your application depends on are compatible and available to the local code base.
+
+### Types of dependencies
+
+https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
+
+> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
+
+
+### Choosing a package manager
+
+NPM vs Yarn vs PNPM
 
 The answer? Use what your team is using. Be consistent there. Working on an open project? Use what the project is using.
 
@@ -49,20 +121,20 @@ All are good. No need to get hung up here.
 
 ### Yarn
 
-It should be available in most Node containers for you.
+It should be available in most Node containers.
 
 Once you have `yarn` available, you can add packages as a requirement with:
 
     yarn add <name>
 
-or
+or as a dev dependency with:
 
     yarn add <package...> [--dev/-D]
 
-https://classic.yarnpkg.com/en/docs/cli/add/
-https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-dev-d
+https://classic.yarnpkg.com/en/docs/cli/add/  
+https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-dev-d  
 
-To install a package globally (the order is important here):
+To install a package globally, the order of the parameters is important:
 
     yarn global <add/bin/list/remove/upgrade> [--prefix]
     
@@ -95,12 +167,6 @@ then, with apt-get:
     sudo apt-get install --no-install-recommends yarn
 
 via https://yarnpkg.com/lang/en/docs/install/
-
-#### Types of dependencies
-
-https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
-
-> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
 
 ### Npm
 
@@ -155,17 +221,6 @@ will let you do this, and even works with pre-npm@5.7.0 versions of npm 5, albei
 
 See also
 https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
-
-## Modules
-
-Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
-
-
-https://nodejs.org/api/modules.html#modules_all_together
-
-https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
-
-https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
 
 
 ## Process Monitoring

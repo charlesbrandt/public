@@ -56,7 +56,20 @@ work with vue?
 
 ### Plotly / D3 / VisX
 
-Plotly is built on top of D3 and appears to have a high level API for common charts. 
+Plotly is built on top of D3 and has a high level API for common charts. 
+
+https://plotly.com/javascript/getting-started/#start-plotting
+
+```
+npm install plotly.js-dist 
+yarn add plotly.js-dist
+```
+
+
+```
+import Plotly from 'plotly.js-dist'
+```
+
 
 https://github.com/plotly/plotly.js  
 💤 GitHub - plotly/plotly.js: Open-source JavaScript charting library behind Plotly and Dash  
