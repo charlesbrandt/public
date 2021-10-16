@@ -151,14 +151,12 @@ console.log("Jane's auto-generated ID:", jane.id);
 
 ## API Integration
 
-TODO - expand to include all actions that a feathers server provides by default
-TODO - 'update' via 'PATCH'
+Roughly follows actions that a feathers server provides by default
 
 ```
 var express = require("express");
 var router = express.Router();
 var db = require("../db");
-const { Op } = require("sequelize");
 
 /* GET the associated records of a project */
 router.get("/:id", function (req, res, next) {
@@ -180,6 +178,34 @@ router.get("/:id", function (req, res, next) {
 		.then((match) => {
 			res.json(match);
 		});
+});
+
+router.patch("/:id", function (req, res, next) {
+	db.project
+		.findOne({
+			where: { project_id: req.params.id },
+		})
+		.then((match) => {
+			console.log("Found a match", match);
+			match.update(req.body);
+			console.log("match updated", match);
+			res.json(match);
+		})
+		.catch((err) => {
+			next(err);
+		});
+
+	// this approach is not working for me
+	// maybe it requires all fields to be passed in for the update to work?
+	// https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
+	// db.project
+	// 	.update(req.body, { returning: true, where: { project_id: req.params.id } })
+	// 	.then(([rowsUpdated, [updatedItem]]) => {
+	// 		res.json(updatedItem);
+	// 	})
+	// 	.catch((err) => {
+	// 		next(err);
+	// 	});
 });
 
 router.delete("/:id", function (req, res, next) {

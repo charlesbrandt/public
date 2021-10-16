@@ -12,7 +12,17 @@ To include the current view within a template, use the special slot:
 <router-view></router-view>
 ```
 
+## Nested Routes
 
+
+https://router.vuejs.org/guide/essentials/nested-routes.html
+
+## Data Fetching
+
+https://router.vuejs.org/guide/advanced/data-fetching.html#fetching-after-navigation
+
+
+## Resources
 
 A really good talk at vueconf (2021) about some of the magic being done by vue-router. 
 

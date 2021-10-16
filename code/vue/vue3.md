@@ -1,5 +1,58 @@
 # Vue 3
 
+Items specific to vue 3
+most of the concepts from [vue 2](index.md) still transfer. 
+
+## Migrating
+
+Gotchas
+
+
+### Global libraries
+
+registering at global app level now discouraged?
+
+was looking at where to put axios
+ended up importing in each component that needs it (pages)
+is that desirable? help with build sites
+
+https://duckduckgo.com/?q=vite+axios&t=ffab&ia=web  
+vite axios at DuckDuckGo  
+https://github.com/Sensanaty/vue3-vite-template  
+GitHub - Sensanaty/vue3-vite-template  
+https://developpaper.com/use-vite-to-quickly-build-vue3-elementplus-project/  
+Use vite to quickly build vue3 + elementplus project | Develop Paper  
+https://philipdevblog.hashnode.dev/real-world-vue-3-api-calls-with-axios  
+Real World Vue 3: API Calls with Axios  
+https://stackoverflow.com/questions/66769162/how-do-i-handle-the-keydown-esc-event-in-vue3  
+vue.js - How do I handle the "keydown.esc" event in Vue3? - Stack Overflow  
+https://duckduckgo.com/?q=vue3+plugins&t=ffab&ia=web  
+vue3 plugins at DuckDuckGo  
+https://v3.vuejs.org/guide/plugins.html#using-a-plugin  
+Plugins | Vue.js  
+https://stackoverflow.com/questions/50370939/import-axios-method-globally-in-vuejs  
+vue.js - Import Axios Method Globally in Vuejs - Stack Overflow  
+https://duckduckgo.com/?t=ffab&q=vue3+vue.prototype&ia=web  
+vue3 vue.prototype at DuckDuckGo  
+https://stackoverflow.com/questions/65184107/how-to-use-vue-prototype-or-global-variable-in-vue-3  
+javascript - How to use Vue.prototype or global variable in Vue 3? - Stack Overflow  
+https://v3.vuejs.org/guide/migration/global-api.html#provide-inject  
+Global API | Vue.js  
+https://v3.vuejs.org/guide/migration/global-api-treeshaking.html#usage-in-plugins  
+Global API Treeshaking | Vue.js  
+https://duckduckgo.com/?t=ffab&q=vue3+provide+axios&ia=web  
+vue3 provide axios at DuckDuckGo  
+https://stackoverflow.com/questions/64269587/how-to-correctly-import-axios-in-vue-3-after-creating-new-project-with-cli  
+javascript - How to correctly import Axios in vue 3 after creating new project with CLI? - Stack Overflow  
+
+https://duckduckgo.com/?t=ffab&q=vueuse&ia=web  
+vueuse at DuckDuckGo  
+https://vueuse.org/integrations/useaxios/  
+useAxios | VueUse  
+https://vueuse.org/guide/config.html  
+Configurations | VueUse  
+
+
 ## Composition API
 
 Reading up on Vue3's new "Composition API"

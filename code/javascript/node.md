@@ -97,6 +97,28 @@ https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
 
 https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
 
+### Import vs Require
+
+ES6 modules use the import syntax. Seems like the way to go moving forward.
+
+https://stackoverflow.com/questions/46677752/the-difference-between-requirex-and-import-x  
+node.js - The difference between "require(x)" and "import x" - Stack Overflow  
+
+https://stackoverflow.com/questions/31354559/using-node-js-require-vs-es6-import-export  
+javascript - Using Node.js require vs. ES6 import/export - Stack Overflow  
+
+https://duckduckgo.com/?t=ffab&q=javascript+require+vs+import&ia=web  
+javascript require vs import at DuckDuckGo  
+
+## Local Development
+
+https://duckduckgo.com/?t=ffab&q=work+on+npm+module+in+development&ia=web  
+work on npm module in development at DuckDuckGo  
+https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/  
+An Absolute Beginner's Guide to Using npm - NodeSource  
+https://www.deadcoderising.com/how-to-smoothly-develop-node-modules-locally-using-npm-link/  
+How to smoothly develop node modules locally using npm link  
+
 
 ## Package Managers
 

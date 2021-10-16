@@ -52,7 +52,7 @@ Compare and contrast Plotly vs. Echarts vs Apex Charts vs Vega-Lite
 weight of library + dependencies (download size)  
 ease of configuration options  
 work with vue?  
-
+API similarities and differences and pros and cons
 
 ### Plotly / D3 / VisX
 
