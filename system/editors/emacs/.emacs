@@ -82,7 +82,7 @@ There are two things you can do about this warning:
 ;; Journal Related functions:
 (load-file "~/.emacs.d/moments.el")
 
-(load-file "~/.emacs.d/indentation.el")
+;; (load-file "~/.emacs.d/indentation.el")
 
 (setq load-path (cons "~/.emacs.d/programming" load-path))
 ;; programming. see also indentation.el for indentation specific settings

@@ -1,5 +1,7 @@
 # Express
 
+A minimalist foundation for starting a web API in [Javascript](../javascript). 
+
 https://expressjs.com/en/starter/installing.html
 Installing Express
 
@@ -97,17 +99,23 @@ http://katieleonard.ca/blog/2016/nested-routes-with-expressjs/
 
 ## Sessions
 
-http://www.passportjs.org/
-Passport.js
-https://www.google.com/search?client=ubuntu&channel=fs&q=node+express+session+management&ie=utf-8&oe=utf-8
-node express session management - Google Search
-https://codeforgeek.com/manage-session-using-node-js-express-4/
-How to Manage Session using Node.js and Express - Codeforgeek
+For more details see [Auth](auth.md)
 
-See also:
-~/alpha/public/code/architecture/users.md
-~/alpha/public/code/architecture/social_networks.md
+Session management in Express
 
+http://www.passportjs.org/  
+Passport.js  
+
+https://www.duckduckgo.com/?q=node+express+session+management  
+node express session management - Google Search  
+https://codeforgeek.com/manage-session-using-node-js-express-4/  
+How to Manage Session using Node.js and Express - Codeforgeek  
+
+
+## Links
+
+https://www.robinwieruch.de/node-express-server-rest-api
+How to create a REST API with Express.js in Node.js - RWieruch
 
 
 ## Boilerplates

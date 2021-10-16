@@ -139,8 +139,19 @@
   (beginning-of-buffer)
   )
 
+;; this is useful for markdown
+;; make sure there is a line break between two lines
+;; by adding two spaces to the end of the line and moving on to the next line
+(defun tail-spaces ()
+  (interactive)
+  (end-of-line)
+  (insert "  ")
+  (forward-char)
+  )
 
-
+;; rarely use emac's translate two character function that is bound to ctrl-t
+(global-unset-key (kbd "C-t"))
+(global-set-key  (kbd "C-t") 'tail-spaces) 
 
 
 

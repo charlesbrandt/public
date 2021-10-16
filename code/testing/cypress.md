@@ -173,11 +173,13 @@ cy.get('@users').then((users) => {
 
 ## Authentication
 
+For more details, see [Auth Guide](/code/api/auth.md#testing)
+
 Handling authentication is one of the trickier parts of testing. 
 
 Ideally, you can run through the authentication process once using the UI and then keep the results (Cookies, LocalStorage, etc) for future requests that need to be authenticated. 
 
-```
+``` js
 context("Network Requests", () => {
   beforeEach(() => {
     cy.request("POST", "/authentication", {
@@ -223,7 +225,8 @@ context("Network Requests", () => {
 });
 ```
 
-~/public/code/api/feathers.md
+
+The above example works with a [Feathers API](/code/api/feathers.md)
 
 ### Existing sessions
 

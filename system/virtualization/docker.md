@@ -254,6 +254,18 @@ https://docs.docker.com/engine/reference/commandline/build/
 
 ### Cleaning up old images
 
+```
+docker system prune 
+```
+
+This seems like a well maintained answer with up-to-date options & descriptions:
+
+https://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images
+
+[via](https://duckduckgo.com/?t=ffab&q=docker-compose+remove+old+images&ia=web)
+
+Some of the following options may be more aggressive in what they delete. Be careful if you have important data stored!
+
 Sometimes when testing builds, docker will complain about running out of space:
 
 ```

@@ -53,6 +53,13 @@ Naming Things: CamelCase vs snake_case - blog.lmorchard.com
 http://xahlee.info/comp/camelCase_vs_snake_case.html
 camelCase vs snake_case
 
+
+Seems like camelCase is preferred over names_with_underscores. Variable names-with-hyphens are not allowed in python or javascript. 
+
+https://www.w3schools.com/js/js_conventions.asp
+
+
+
 And for a laugh:
 
 https://www.youtube.com/watch?v=LH5dOVqqCc8
@@ -80,3 +87,10 @@ https://api.gov.au/standards/national_api_standards/naming-conventions.html
 ## See Also
 
 [Vue Style Guide](./vue/index.md#style-guide-naming-conventions)
+
+## Best Practices and Conventions
+
+https://www.thinkful.com/learn/javascript-best-practices-1/
+
+https://blog.risingstack.com/javascript-clean-coding-best-practices-node-js-at-scale/
+

@@ -16,7 +16,95 @@ https://kubernetes.io/docs/setup/
    
 https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
 
+## Community
+
+The Cloud Native group manages general community under the broader umbrella rather than one specific project / tool. 
+
+https://radar.cncf.io/
+Home | CNCF Radars
+
+https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
+
+https://landscape.cncf.io/
+CNCF Cloud Native Interactive Landscape
+
+
+## Access and Administration
+
+https://k8slens.dev 
+for accessing the cluster
+
+## TODO
+
+How do these relate?  
+cri-o  
+containerd  
+
+
+## Interfaces
+
+### kubectl
+
+kubectl is the default CLI for managing kubernetes
+
+### K9s - Command line 
+
+K9s - Kubernetes CLI To Manage Your Clusters In Style!
+
+https://github.com/derailed/k9s
+
+Binary releases
+
+https://github.com/derailed/k9s/releases
+
+### VS Code 
+
+Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code works.
+
+https://code.visualstudio.com/docs/azure/kubernetes
+
+
+
+## Helm
+
+From their site: 
+
+```
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+```
+
+https://helm.sh/
+
+https://github.com/helm/helm
+
+Download an appropriate release:
+
+https://github.com/helm/helm/releases/tag/v3.0.3
+
+Unpack it.
+
+    cd ~/Downloads
+    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
+    cd [directory]
+    
+    helm create [chart-name]
+
+## Deploy a service
+
+Start with something simple. Nginx serving static files seems like a good place to begin. 
+
+
+ packages. 
+
+
+
+
+
 ## Distributions
+
+Running your own cluster
 
 https://k3s.io/  
 💤 K3s: Lightweight Kubernetes  
@@ -34,18 +122,6 @@ https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kuberne
 💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
 https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
 💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
-
-## Similar Tools
-
-Kubernetes is compared to Docker Swarm.
-
-Docker-compose is it's own thing (what to run on a local instance)
-
-https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web  
-💤 docker-compose vs kubernetes at DuckDuckGo  
-https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes  
-What's the difference between Docker Compose and Kubernetes? - Stack Overflow  
-
 
 ## Local Development
 
@@ -150,59 +226,15 @@ To stop your cluster, run:
     minikube stop
 
 
-## Interfaces
 
-### kubectl
+## Similar Tools
 
-kubectl is the default CLI for managing kubernetes
+Kubernetes is compared to Docker Swarm.
 
-### K9s - Command line 
+Docker-compose is it's own thing (what to run on a local instance)
 
-K9s - Kubernetes CLI To Manage Your Clusters In Style!
+https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web  
+💤 docker-compose vs kubernetes at DuckDuckGo  
+https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes  
+What's the difference between Docker Compose and Kubernetes? - Stack Overflow  
 
-https://github.com/derailed/k9s
-
-Binary releases
-
-https://github.com/derailed/k9s/releases
-
-### VS Code 
-
-Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code works.
-
-https://code.visualstudio.com/docs/azure/kubernetes
-
-
-
-## Helm
-
-From their site: 
-
-```
-Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
-
-Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
-```
-
-https://helm.sh/
-
-https://github.com/helm/helm
-
-Download an appropriate release:
-
-https://github.com/helm/helm/releases/tag/v3.0.3
-
-Unpack it.
-
-    cd ~/Downloads
-    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
-    cd [directory]
-    
-    helm create [chart-name]
-
-## Deploy a service
-
-Start with something simple. Nginx serving static files seems like a good place to begin. 
-
-
- packages. 

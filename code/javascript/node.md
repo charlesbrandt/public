@@ -50,6 +50,10 @@ RUN source $NVM_DIR/nvm.sh \
 
 #### NPM Packages & Docker
 
+Official documentation for dockerizing node applications:
+
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
 May be possible to minimize the number of npm packages pulled down during an image build:
 
 https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12

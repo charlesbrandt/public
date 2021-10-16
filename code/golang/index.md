@@ -34,3 +34,10 @@ https://github.com/etcd-io/etcd
 etcd-io/etcd: Distributed reliable key-value store for the most critical data of a distributed system  
 https://github.com/caddyserver/caddy  
 caddyserver/caddy: Fast, multi-platform web server with automatic HTTPS  
+
+## Auth
+
+https://github.com/golang/oauth2  
+golang/oauth2: Go OAuth2  
+
+[Auth](/code/api/auth.md)

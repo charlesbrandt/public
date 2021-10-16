@@ -3,10 +3,28 @@
 Items specific to vue 3
 most of the concepts from [vue 2](index.md) still transfer. 
 
-## Migrating
+## Vite
 
-Gotchas
+[vite](vite.md)
 
+## UI Frameworks / Component Libraries
+
+[ui frameworks](ui-frameworks.md)
+
+## General links
+
+https://github.com/vuesomedev/awesome-vue-3  
+vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3  
+
+https://vueschool.io/articles/vuejs-tutorials/suspense-new-feature-in-vue-3/  
+💤 Suspense - new feature in Vue 3 - Vue.js Tutorials  
+  
+https://github.com/topics/vue3  
+💤 vue3 · GitHub Topics  
+
+## Migration
+
+https://v3.vuejs.org/guide/migration/migration-build.html#upgrade-workflow
 
 ### Global libraries
 
@@ -52,6 +70,26 @@ useAxios | VueUse
 https://vueuse.org/guide/config.html  
 Configurations | VueUse  
 
+
+## Starter Template
+
+I've been very happy with:
+
+https://github.com/web2033/vite-vue3-tailwind-starter  
+💤 web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
+
+All the necessities, nothing too wild
+
+Don't forget to disable automatic vscode launching if running under docker though
+
+ui/vite.config.js
+
+```
+  server: {
+    // open: true,
+  },
+  
+```
 
 ## Composition API
 

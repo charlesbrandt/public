@@ -6,9 +6,9 @@ Development, Programming
 
 [api](api/) 
 
-[testing](testing/) / [cypress](testing/cypress.md)  
+[cypress](testing/cypress.md) ([testing](testing/))
 
-[vue](vue/)  
+[vue](vue/)
 
 [Data visualization](data-visualization.md)
 
@@ -22,7 +22,7 @@ Development, Programming
 
 ## Articles
 
-[code basics](basics.md)  
+[code basics](basics.md)
 
 [convention](conventions.md)  
 [linting](linting.md)  

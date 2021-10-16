@@ -32,6 +32,19 @@ Settings are stored in `.emacs` and `.emacs.d` directories.
 
 Settings and configurations accumulate over time. The ones I use are available in this directory. I'm aiming for something that works reasonably well with other editors.
 
+I've moved over to Ergo Emacs to keep cut-copy-paste operations in line with other editors. 
+
+I've mapped the action key to alt-a 
+Overlaps with Select-all on many applications, but for the rare times that I use select all, I don't mind calling it manually. 
+
+## Lisp
+
+Emacs is built on a language called lisp. 
+
+Custom commands can be written in lisp.
+
+One of the ones I like is [moments.el](.emacs.d/moments.el)
+
 ### Melpa
 
 Milkypostman’s Emacs Lisp Package Archive
