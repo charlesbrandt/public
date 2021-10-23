@@ -372,3 +372,15 @@ You can change this by using \$config instead
 <p>{{$config.baseURL}}</p>
 ```
 
+## Nuxt 3
+
+Nuxt 3 is now available as a public beta option:
+
+https://v3.nuxtjs.org/  
+Nuxt 3 - The Hybrid Vue Framework  
+https://nuxtjs.org/announcements/nuxt3-beta/  
+Nuxt - Introducing Nuxt 3 Beta  
+https://v3.nuxtjs.org/getting-started/introduction  
+Nuxt 3 - Introduction  
+https://github.com/unjs  
+unjs · GitHub  

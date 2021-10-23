@@ -373,6 +373,20 @@ I find it's more difficult to navigate on the command line when cases are mixed.
 
 ## Environment Variables (dotenv)
 
+## Automatic importing / Bundle Size / Tree-shaking
+
+In an effort to minimize bundle size, it helps to only import the code being used. 
+
+https://github.com/antfu/unplugin-vue-components#readme
+
+`unplugin-vue-components` helps import components automatically, which in turn helps with tree-shaking.
+
+This is the approach recommended by some ui-frameworks, like Element+:
+
+https://element-plus.org/en-US/guide/quickstart.html#on-demand-import
+
+https://rollupjs.org/guide/en/#tree-shaking
+
 
 ## State Management
 

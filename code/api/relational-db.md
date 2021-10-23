@@ -36,6 +36,11 @@ The fix was:
 GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
 ```
 
+if the error shows a different user, change it in the command above.
+
+[via](https://stackoverflow.com/questions/10169960/mysql-error-1449-the-user-specified-as-a-definer-does-not-exist)
+
+
 ### Alterations
 
 https://duckduckgo.com/?q=mysql+add+column&t=ffab&ia=web  

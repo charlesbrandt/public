@@ -2,6 +2,8 @@
 
 Coming from another language, sometimes it can be difficult to get up to speed in a new ecosystem. 
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+
 ## Interpreters
 
 There's on in your web browser. 
