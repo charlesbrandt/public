@@ -10,6 +10,8 @@ https://nuxtjs.org/api/context
 
 Nuxt leverages all of Vue to take advantage of the Single File Component model.
 
+`index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames.
+
 ### Sub-directories
 
 It's okay to put components in the `components/` directory in sub-directories. e.g.

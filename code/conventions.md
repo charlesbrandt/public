@@ -58,19 +58,17 @@ Seems like camelCase is preferred over names_with_underscores. Variable names-wi
 
 https://www.w3schools.com/js/js_conventions.asp
 
-
-
 And for a laugh:
 
 https://www.youtube.com/watch?v=LH5dOVqqCc8
 Coding Style: CamelCase vs. snake_case - YouTube
 
-## Falsehoods
+### Vue
 
-Looks like some good reading here
+Some well thought out conventions show up in the Vue Style Guide
 
-https://github.com/kdeldycke/awesome-falsehood
-kdeldycke/awesome-falsehood: 😱 Falsehoods Programmers Believe in
+[Vue Style Guide and Naming Conventions](./vue/index.md#style-guide-naming-conventions)
+
 
 ## Linting
 
@@ -83,10 +81,6 @@ Style guides often cover more than just naming conventions, but they're a relate
 Australia has a great developer's style guide on naming conventions:
 
 https://api.gov.au/standards/national_api_standards/naming-conventions.html
-
-## See Also
-
-[Vue Style Guide](./vue/index.md#style-guide-naming-conventions)
 
 ## Best Practices and Conventions
 

@@ -75,6 +75,9 @@ Sometimes projects get checked out using the public url, but then changes are ma
 ```
 git remote remove origin
 git remote add origin git@gitlab.com:charlesbrandt/public.git
+
+git push --set-upstream origin main
+
 git branch --set-upstream-to=origin/main main
 git pull
 ```

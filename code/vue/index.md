@@ -369,7 +369,11 @@ Components are typically named in PascalCase.
 
 I find it's more difficult to navigate on the command line when cases are mixed. Have to remember to type upper-cased characters. There are some filesystems that don't support case-sensitivity, but that should be moot in most cases. 
 
-`index.vue` is required in nuxt under dynamic (e.g. `_id`) paths. Capital `Index.vue` will not work. Maybe this is a bug, but for now it seems safest to stick with kebab-cased filenames.
+This is a good discussion on the topic
+
+https://github.com/vuejs/vuejs.org/issues/1162  
+Naming in PascalCase or kebab-case · Issue #1162 · vuejs/vuejs.org  
+
 
 ## Environment Variables (dotenv)
 

@@ -6,10 +6,10 @@ module.exports = {
     nav: [
       { text: 'Code', link: '/code/' },
       { text: 'System', link: '/system/' },
-      { text: 'Design', link: '/design/' },
-      { text: 'Documentation', link: '/documentation/' },
-      { text: 'Pi', link: '/pi/' },
       { text: 'Web', link: '/web/' },
+      { text: 'Documentation', link: '/documentation/' },
+      { text: 'Design', link: '/design/' },
+      { text: 'Pi', link: '/pi/' },
     //  { text: '', link: '/' },
 
     ],

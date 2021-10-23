@@ -26,6 +26,15 @@ https://github.com/topics/vue3
 
 https://v3.vuejs.org/guide/migration/migration-build.html#upgrade-workflow
 
+https://dev.to/alvarosaburido/how-to-migrate-your-library-from-vue2-to-vue3-1h81  
+
+https://johnpapa.net/vue2-to-vue3/  
+Migrating Vue 2 to Vue 3  
+
+https://duckduckgo.com/?t=ffab&q=convert+vue2+to+vue3+components&ia=web  
+convert vue2 to vue3 components at DuckDuckGo  
+
+
 ### Global libraries
 
 registering at global app level now discouraged?

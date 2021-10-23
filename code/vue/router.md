@@ -1,5 +1,9 @@
 # Routing
 
+https://router.vuejs.org/guide/#html  
+Getting Started | Vue Router  
+
+
 Internal links within an application use `router-link`
 
 ```
@@ -11,6 +15,7 @@ To include the current view within a template, use the special slot:
 ```
 <router-view></router-view>
 ```
+
 
 ## Nested Routes
 
