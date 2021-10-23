@@ -1,5 +1,7 @@
 # Fonts Setup 
 
+Using fonts in a vue application
+
 ### Fonts
 
 You can use local fonts by adding them to your assets folder. Once they have been added you can then access them through your css using the @font-face.
