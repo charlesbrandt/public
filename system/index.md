@@ -71,6 +71,4 @@ find * -iname "*search-term*"
 to find files that match a pattern. 
 
 
-[Search](search/)
-
-[Locate](search/locate.md)  
+[More about Search](search.md)
