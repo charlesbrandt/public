@@ -27,6 +27,9 @@ maybe that makes them more weather proof?
 
 also need some 1/4" nut attachments (epoxy plus wood?)
 
+## OS native features
+
+https://www.raspberrypi.com/documentation/computers/os.html#using-a-usb-webcam
 
 ## Web cam setup
 

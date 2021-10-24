@@ -1,5 +1,7 @@
 # GPIO
 
+https://www.raspberrypi.com/documentation/computers/os.html#gpio-and-the-40-pin-header
+
 https://www.raspberrypi.org/documentation/usage/gpio/
 GPIO - Raspberry Pi Documentation  
 

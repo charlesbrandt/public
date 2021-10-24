@@ -1,24 +1,37 @@
 # Raspberry Pi
 
-[<img src="logos/RPi-Logo-Reg-SCREEN.svg" alt="raspberry pi logo">](logos/logos-raspberry-pi.md)
+[<img src="logos/RPi-Logo-Reg-SCREEN.svg" alt="raspberry pi logo" width="200px">](logos/logos-raspberry-pi.md)
 
 
 ## Getting started
 
-### Types of Pis
+- Choose your hardware
+- Choose your operating system
+- Choose any services
+
+## Hardware
 
 TODO: hardware lists and references
 
+### Power
 
 [power supplies](power-supply.md)  
 
 In addition to a good power supply
 it's important to make sure you have a good powered usb hub before attempting to connect peripherals. Even a wired usb keyboard and mouse can be too much for a pi zero, I've found. 
 
+### Storage 
 
-### Operating System
+A server should have more memory available.  
 
-[OS Selection & Installation](os/index.md)  
+32GB is good for a server installation.  
+
+64GB is good to use for a camera installation. (TODO: confirm pi zero can create a file system that big. Should work).  
+
+
+## Operating System
+
+[OS Selection & Installation](./os/index.md)  
 
 
 Once you've got your system install, it's time to configure what the system runs: [Ubuntu](../system/linux/ubuntu.md)
@@ -42,6 +55,8 @@ https://github.com/City-of-Bloomington/timetrack
 City-of-Bloomington/timetrack: Digital time keeping system with both a web-based calendar entry and a kiosk based badge entry interface  
 
 ### Media server
+
+Run docker to allow multiple services on the same server.  
 
 Docker image for plex somewhere? 
 

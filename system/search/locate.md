@@ -2,7 +2,7 @@
 
 ## See Also
 
-[../linux/search.md](../linux/search.md)
+[search](index.md)
 
 use updatedb to create indexes of different drives
 then use a locate command to quickly query different drive catalogs
@@ -19,6 +19,7 @@ Locate databases can be used to create an index of what exists on a filesystem. 
 
 Then, to use a previously generated database file to look for files, use locate:
 
+```
     man locate
 
       -d, --database DBPATH
@@ -26,22 +27,16 @@ Then, to use a previously generated database file to look for files, use locate:
               rated list of database file names.  If more than one  --database
               option  is  specified,  the resulting path is a concatenation of
               the separate paths.
+```
 
-
-## print contents (TODO)
+## Print contents (TODO)
 
 how to unpack a locate database and print all files from it
 (printing to screen is sufficient)
     
+## Links
 
-
-## 2019.08.10 15:44:52 search
-
-
-
-### Notes
-
-update db:
+### update db
 
 https://duckduckgo.com/?q=updatedb+specify+output+file&t=canonical&ia=web  
 updatedb specify output file at DuckDuckGo  
@@ -64,7 +59,7 @@ How to use the locate command, by The Linux Information Project
 
 
 
-Windows specific:
+### Windows utilities
 
 https://duckduckgo.com/?q=index+of+drive&t=canonical&ia=web  
 index of drive at DuckDuckGo  

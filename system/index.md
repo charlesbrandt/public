@@ -10,6 +10,8 @@ If you're just getting familiar with this space, the [Raspberry Pi - /pi/) ecosy
 
 [Hard Drives / Storage](drives/)   
 
+
+
 [Virtualization](virtualization/)  
 
 [Startup](startup.md)  
@@ -57,3 +59,18 @@ Bash Colors example available in `linux/bash-colors.sh`
 [Startup Services](startup-services.md)  
 
 
+## Search
+
+From the command line
+
+
+```
+find * -iname "*search-term*"
+```
+
+to find files that match a pattern. 
+
+
+[Search](search/)
+
+[Locate](search/locate.md)  

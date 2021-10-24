@@ -24,12 +24,3 @@
 [dd](dd-commands.md)  
 [Synchronize](synchronize.md)  
 
-## Search
-
-I typically just use
-
-`find * -iname "*search-term*"` 
-
-to find files that match a pattern. 
-
-[Locate](locate.md)  

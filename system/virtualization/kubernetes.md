@@ -1,10 +1,28 @@
 # Kubernetes
 
+https://kubernetes.io/  
+Kubernetes  
+
 Abbreviated as 'K8s'.
 
 https://en.wikipedia.org/wiki/Kubernetes
 
 Container orchestration.
+
+## General Info
+
+https://kubernetes.io/docs/home/  
+Kubernetes Documentation | Kubernetes  
+https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/  
+What is Kubernetes? | Kubernetes  
+https://kubernetes.io/docs/concepts/overview/components/  
+Kubernetes Components | Kubernetes  
+https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/  
+Understanding Kubernetes Objects | Kubernetes  
+https://kubernetes.io/docs/concepts/workloads/pods/  
+Pods | Kubernetes  
+
+## Installation
 
 Currently following along and summarizing these resources:
 
@@ -27,7 +45,6 @@ https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
 
 https://landscape.cncf.io/
 CNCF Cloud Native Interactive Landscape
-
 
 ## Access and Administration
 
