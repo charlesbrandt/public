@@ -6,7 +6,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
 ## Interpreters
 
-There's on in your web browser. 
+There's one in your web browser. 
 
 Or there's [node](node.md) that you can install locally and run interactively. 
 
@@ -87,6 +87,17 @@ console.log(str);
 https://stackoverflow.com/questions/27678052/usage-of-the-backtick-character-in-javascript
 Usage of the backtick character (`) in JavaScript - Stack Overflow
 
+### Does one string contain another string
+
+```
+const string = "foo";
+const substring = "oo";
+
+console.log(string.includes(substring)); // true
+```
+
+https://stackoverflow.com/questions/1789945/how-to-check-whether-a-string-contains-a-substring-in-javascript
+
 ### Formatting Numbers
 
     const str1 = '5';
@@ -122,6 +133,14 @@ There is also
 
     xs.forEach((x, i) => console.log(x));
 
+Loop over an object's keys in ES6
+
+```
+      Object.keys(items).forEach((x, i) => {
+        console.log(x);
+        console.log(items[x]);
+      });
+```
 
 
 ## Arrays & Objects

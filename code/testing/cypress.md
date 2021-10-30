@@ -1,6 +1,8 @@
 # Cypress
 
-Tests are a form of documentation. Describe what your application does and have a way to confirm that it still does what you think it does. Like configuration management, tests are runnable documentation. 
+Tests are a form of documentation. Describe what your application should do and have a way to confirm that it still does what you think it does. Like configuration management, tests are runnable documentation. 
+
+Run Cypress wherever you run your UI. You can still test the API by accessing the API in the same way that the UI does. 
 
 Using containers works. Decide if you want to run it headless (CI) or with a GUI (dev). web-ui-api-db has been configured to handle either scenario. Uncomment the one you want and start it up. 
 
@@ -9,15 +11,9 @@ https://gitlab.com/fern-seed/web-ui-api-data
 See also [docker with development](../../system/virtualization/docker-compose.md)
 
 
-## Introduction
-
-Component Testing with Vite, Vue, and Cypress:
-https://www.youtube.com/watch?v=Abwi_X107GY&t=0
-
-
 ## Writing Tests
 
-Once you have Cypress running (see below), it's time to write some tests. If none exist, Cypress will scaffold out some examples for you. It can be instructive to read through those and follow along how the tests were implemented. 
+Once you have Cypress running, it's time to write some tests. If none exist, Cypress will scaffold out some examples for you. It can be instructive to read through those and follow along how the tests were implemented. 
 
 ### cy.visit
 
@@ -80,6 +76,7 @@ The associated objects should be returned as part of a GET request (as seen in A
 `cy.api` can help by displaying json results in the cypress test browser (instead of using `console.log()` calls. Only try this if you have a local instance of Cypress running; my last attempt at installing in the cypress included docker container was a challenge. 
 
 https://github.com/bahmutov/cy-api
+
 
 ## Base Urls
 
@@ -225,8 +222,19 @@ context("Network Requests", () => {
 });
 ```
 
-
 The above example works with a [Feathers API](/code/api/feathers.md)
+
+### Create a special route
+
+WIP: Use a development only route on the API that grants valid tokens to the test client. 
+
+This way all subsequent requests to the API act the same way any other session would. Less fiddly than using a manually created session. 
+
+The danger here is that this route gets exposed in a production environment and becomes a security vulnerability. 
+
+Consider placing it in a file that is set to be ignored by git. Then, can be manually place in a development environment without concern for accidentally adding it.
+
+TODO: set up checks to ensure it is not being called? Via application monitoring. 
 
 ### Existing sessions
 
@@ -249,6 +257,153 @@ For some challenging systems with lots of iframes and 2FA, this may be as good a
 
 The alternative is to bypass a global Single Sign On (SSO) identity provider for your organization and just use the local hooks in your application to provide an authenticated session for testing. (However, be sure these mechanisms are not available in production!)
 
+## File Uploads
+
+I like the approach outlined in:
+https://stackoverflow.com/questions/54889492/how-to-test-file-upload-functionality-in-cypress
+
+Define an `uploadFile()` command:
+
+``` js
+Cypress.Commands.add(
+  "uploadFile",
+  (fileNamePath, fileName, fileType = " ", selector) => {
+    cy.get(selector).then((subject) => {
+      cy.fixture(fileNamePath, "base64")
+        .then(Cypress.Blob.base64StringToBlob)
+        .then((blob) => {
+          const el = subject[0];
+          const testFile = new File([blob], fileName, {
+            type: fileType,
+          });
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(testFile);
+          el.files = dataTransfer.files;
+        });
+    });
+  }
+);
+```
+
+Then use it with
+
+``` js
+    cy.uploadFile(
+      "example.csv",
+      "example.csv",
+      "text/csv",
+      ".custom-file-input"
+    );
+    // seems like the uploadFile would trigger this, but it didn't
+    cy.get(".custom-file-input").trigger("change");
+```
+
+References
+
+https://docs.cypress.io/api/commands/fixture#Syntax  
+fixture | Cypress Documentation  
+https://docs.cypress.io/api/utilities/blob#Syntax  
+Cypress.Blob | Cypress Documentation  
+https://docs.cypress.io/api/commands/trigger#Syntax  
+trigger | Cypress Documentation  
+
+
+I prefer the local function approach over the often cited: https://www.npmjs.com/package/cypress-file-upload -- it should be more portable
+
+
+## Testing Single File Components (WIP)
+
+Component Testing with Vite, Vue, and Cypress:  
+https://www.youtube.com/watch?v=Abwi_X107GY&t=0
+
+28:15 
+
+TODO: functional example template? Any existing?
+
+https://docs.cypress.io/guides/component-testing/framework-configuration#Vite-Based-Projects-Vue-React
+
+Vue 3 & Vite
+
+```
+yarn add cypress @cypress/vue@next @cypress/vite-dev-server --dev
+```
+
+Should be run where ever you run your development server. 
+
+Component testing is configured as a Cypress plugin. This means you need to create a plugins file. e.g. `tests/plugins/index.js`. 
+
+The plugin file needs to be in the same path as the `ui/node_modules` directory, otherwise it won't be able to find the dependencies. e.g.
+
+```
+ Error: Cannot find module '@cypress/vite-dev-server'
+```
+
+In the plugins file, register the `dev-server:start` event
+
+``` js
+const path = require('path')
+const { startDevServer } = require('@cypress/vite-dev-server')
+
+module.exports = (on, config) => {
+  on('dev-server:start', (options) => {
+    return startDevServer({
+      options,
+      viteConfig: {
+        configFile: path.resolve(__dirname, '..', '..', 'vite.config.js'),
+      },
+    })
+  })
+}
+```
+
+Finally, tell Cypress where and how to find our tests via cypress.json. 
+
+``` json
+{
+  "component": {
+    "componentFolder": "src",
+    "testFiles": "**/*.spec.js"
+  }
+}
+```
+
+What is it relative to? cypress.json?
+
+Create a test file next to the component:
+
+``` js
+import { mount } from '@cypress/vue'
+import HelloWorld from './hello-world.vue'
+
+describe('HelloWorld', () => {
+  it('renders a message', () => {
+    const msg = 'Hello Cypress Component Testing!'
+    mount(HelloWorld, {
+      propsData: {
+        msg
+      }
+    })
+
+    cy.get('h1').should('have.text', msg)
+  })
+})
+```
+
+Run the Component Test Runner (different than the Test Runner)
+
+```
+yarn cypress open-ct
+```
+
+Original draft for documentation?
+
+https://www.cypress.io/blog/2021/04/06/getting-start-with-cypress-component-testing-vue-2-3/
+
+
+
+
+
+
 
 ## Setup / Installation
 
@@ -258,7 +413,7 @@ The alternative is to bypass a global Single Sign On (SSO) identity provider for
 
 It is possible to launch Cypress from within your docker setup.
 
-This is the guide that ultimately got me where I wanted to go:
+This is the guide that ultimately enabled me to get this working:
 
 https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
 

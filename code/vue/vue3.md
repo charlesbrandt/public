@@ -34,6 +34,23 @@ Migrating Vue 2 to Vue 3
 https://duckduckgo.com/?t=ffab&q=convert+vue2+to+vue3+components&ia=web  
 convert vue2 to vue3 components at DuckDuckGo  
 
+https://crisp.chat/blog/vuejs-migration/  
+Vue.js: How to Migrate a large project from Vue 2 to Vue 3 | Crisp  
+https://v3.vuejs.org/guide/migration/migration-build.html#expectations  
+Migration Build | Vue.js  
+https://duckduckgo.com/?t=ffab&q=vue+%24attrs+%24listeners&ia=web  
+vue $attrs $listeners at DuckDuckGo  
+https://v3.vuejs.org/guide/migration/listeners-removed.html#overview  
+$listeners removed | Vue.js  
+https://vuejs.org/v2/guide/list.html#Maintaining-State  
+List Rendering — Vue.js  
+https://duckduckgo.com/?t=ffab&q=vue+h+function&ia=web  
+vue h function at DuckDuckGo  
+https://v3.vuejs.org/guide/render-function.html#creating-component-vnodes  
+Render Functions | Vue.js  
+https://v3.vuejs.org/api/instance-properties.html#slots  
+Instance Properties | Vue.js  
+
 
 ### Global libraries
 

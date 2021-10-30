@@ -1,26 +1,6 @@
 # Design 
 
-Design is a process of conveying ideas clearly.
-
-Illustration and the written word are wonderful tools for communication. For sharing concepts.
-
-Many design topics loop back and recurse. It's a broad scope.
-
-design component --
-<design></design>
--- design component
-
-
-[animation](animation/)  
-[components](components/)  
-[data](data/)  
-[fonts](fonts/)  
-[grids](grids/)  
-[html5](html5/)  
-[icons](icons/)  
-[style](style/)  
-[svg](svg/)  
-
+## General
 
 [colors](colors.md)  
 [design overview](design-overview.md)  
@@ -30,46 +10,77 @@ design component --
 [user experience](user-experience.md)  
 [user research](user-research.md)  
 
-[conferences.txt](conferences.md)  
-[designers.txt](designers.md)  
-[people](people)  
-
-
 ## Layout
 
-## HTML 
+### CSS / Style
 
-## Components
+[Tailwind](tailwind.md)
 
-## Markup
+Cascading Style Sheets (CSS)
 
-Includes many topics. Cascading Style Sheets (CSS) really feels like it belongs here.
+[style](style/)  
 
-[Plenty of other background guides to provide context.](../web/) This is a way to get going quickly to specify the element that you are working on.
+https://duckduckgo.com/?t=ffab&q=best+element+to+use+for+css+flex+row+div+span&ia=web  
+💤 best element to use for css flex row div span at DuckDuckGo  
+https://css-tricks.com/flexbox-like-just-put-elements-in-a-row-with-css-grid/  
+Flexbox-like "just put elements in a row" with CSS grid | CSS-Tricks  
+https://css-tricks.com/books/greatest-css-tricks/flexible-grids/  
+Flexible Grids - CSS-Tricks  
 
-To that end, archive remote resources so they're available locally. Be sure to give credit and attribution to your sources.
+[grids](grids/)  
 
-[Markup Topics](Sortable List)
 
-HTML
+### HTML 
+
+[html5](html5/)  
+
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element  
 HTML elements reference 
 
-## CSS / Style
+### Components
 
-## SVG
+[Sortable List]
 
-## Animation
+[components](components/)  
+
+
+## Illustration
+
+### SVG
+
+[svg](svg/)  
+
+### Animation
 
 Could be CSS, could be JS, could use both
 
+[animation](animation/)  
+
+### Fonts
+
+[fonts](fonts/)  
+
+### Icons
+
+[icons](icons/)  
 
 
-## Fonts
+## Data Structures
 
-## Icons
+[data](data/)  
 
 
-## Javascript
+## People
 
-[See Code](/code/)
+[conferences](conferences.md)  
+[designers](designers.md)  
+[people](people)  
+
+
+
+## See Also
+
+[Web topic -- background guides to provide context.](../web/) 
+
+[Javascript](/code/javascript/)
+

@@ -43,7 +43,7 @@ Data visualization with Python and JavaScript | by Veronika Rovnik | Python in P
 Many libraries to help with the visualization side. (especially in Javascript)
 
 https://github.com/topics/visualization  
-💤 visualization · GitHub Topics · GitHub  
+visualization · GitHub Topics · GitHub  
 
 TODO:
 
@@ -72,7 +72,26 @@ import Plotly from 'plotly.js-dist'
 
 
 https://github.com/plotly/plotly.js  
-💤 GitHub - plotly/plotly.js: Open-source JavaScript charting library behind Plotly and Dash  
+GitHub - plotly/plotly.js: Open-source JavaScript charting library behind Plotly and Dash  
+
+https://plotly.com/javascript/  
+Plotly JavaScript Graphing Library | JavaScript | Plotly  
+https://plotly.com/javascript/plotly-fundamentals/  
+Fundamentals | JavaScript | Plotly  
+https://plotly.com/javascript/setting-graph-size/  
+Setting Graph Size | JavaScript | Plotly  
+https://plotly.com/javascript/responsive-fluid-layout/  
+Responsive / Fluid Layouts | JavaScript | Plotly  
+https://plotly.com/javascript/configuration-options/  
+Configuration Options | JavaScript | Plotly  
+https://plotly.com/javascript/axes/  
+Axes | JavaScript | Plotly  
+https://plotly.com/javascript/horizontal-bar-charts/  
+Horizontal Bar Charts | JavaScript | Plotly  
+https://plotly.com/javascript/bar-charts/  
+Bar Charts | JavaScript | Plotly  
+
+
 https://plotly.com/javascript/  
 Plotly JavaScript Graphing Library | JavaScript | Plotly  
 https://plotly.com/javascript/configuration-options/  
@@ -86,29 +105,29 @@ GitHub - statnett/vue-plotly: A vue wrapper for plotly.js chart library
 https://github.com/David-Desmaisons/vue-plotly  
 GitHub - David-Desmaisons/vue-plotly: 📈 vue wrapper for plotly.js  
   
-https://duckduckgo.com/?t=ffab&q=d3&ia=web  
-💤 d3 at DuckDuckGo  
 https://d3js.org/  
-💤 D3.js - Data-Driven Documents  
+D3.js - Data-Driven Documents  
 https://github.com/d3/d3  
-💤 GitHub - d3/d3: Bring data to life with SVG, Canvas and HTML.  
+GitHub - d3/d3: Bring data to life with SVG, Canvas and HTML.  
 https://observablehq.com/@d3/learn-d3  
-💤 Learn D3: Introduction / D3 / Observable  
+Learn D3: Introduction / D3 / Observable  
 https://vega.github.io/vega-lite/  
-💤 A High-Level Grammar of Interactive Graphics | Vega-Lite  
+A High-Level Grammar of Interactive Graphics | Vega-Lite  
 https://observablehq.com/@d3/bar-chart-race  
-💤 Bar Chart Race / D3 / Observable  
+Bar Chart Race / D3 / Observable  
 https://github.com/airbnb/visx  
 GitHub - airbnb/visx: 🐯 visx | visualization components  
+https://duckduckgo.com/?t=ffab&q=d3&ia=web  
+d3 at DuckDuckGo  
 
 ### Echarts
 
 Very highly starred on githup
 
 https://github.com/apache/echarts  
-💤 GitHub - apache/echarts: Apache ECharts is a powerful, interactive charting and data visualization library for browser  
+GitHub - apache/echarts: Apache ECharts is a powerful, interactive charting and data visualization library for browser  
 https://echarts.apache.org/en/tutorial.html#ECharts%20Basic%20Concepts%20Overview  
-💤 Documentation - Apache ECharts  
+Documentation - Apache ECharts  
 
 ### Apex Charts
 
@@ -365,13 +384,13 @@ This space has heavy overlap with different tools for working with data.
 Open Tableau alternatives
 
 https://github.com/topics/charts  
-💤 charts · GitHub Topics · GitHub  
+charts · GitHub Topics · GitHub  
 https://github.com/metabase/metabase  
-💤 GitHub - metabase/metabase: The simplest, fastest way to get business intelligence and analytics to everyone in your company  
+GitHub - metabase/metabase: The simplest, fastest way to get business intelligence and analytics to everyone in your company  
 https://github.com/getredash/redash  
 GitHub - getredash/redash: Make Your Company Data Driven. Connect to any data source, easily visualize, dashboard and share your data.  
 https://github.com/keen/dashboards  
-💤 GitHub - keen/dashboards: Responsive dashboard templates 📊✨  
+GitHub - keen/dashboards: Responsive dashboard templates 📊✨  
 http://keen.github.io/dashboards/  
 Dashboards by Keen IO  
 
