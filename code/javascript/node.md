@@ -222,6 +222,33 @@ To remove a dependency:
 
 https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
 
+### pnpm
+
+https://pnpm.io/
+
+Seeing this used more frequently. Only downside is that it is not included by default in the main docker node image. 
+
+https://pnpm.io/installation
+
+With node:
+
+```
+curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+```
+
+With npm:
+
+```
+npm install -g pnpm
+```
+
+npx:
+
+```
+npx pnpm add -g pnpm
+```
+
+
 ## Lock files
 
 Is it really a good idea to track lock files under version control?

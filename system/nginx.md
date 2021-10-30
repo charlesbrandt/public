@@ -43,6 +43,48 @@ https://stackoverflow.com/questions/10631933/nginx-static-file-serving-confusion
 
 be sure to include trailing slash with `alias` directives!
 
+## Static Content
+
+When developing web applications, it's tempting to use the application server to serve static content:
+
+https://expressjs.com/en/starter/static-files.html
+
+This works for local development, but becomes a headache when it's time to deploy your application publicly. 
+
+Using a dedicated webserver like nginx for serving static files removes that burden from the application server.
+
+https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
+
+### Auto Indexes
+
+If you have static content that would benefit from a dynamic index, nginx can do that. 
+For example, want to get a list that includes new files without manually knowing the new file path. 
+Alternatively, an application server could navigate and iterate through the file system. 
+
+```
+    location /static {
+        alias /srv/static/;
+        autoindex on;
+        autoindex_format json;
+    }
+```
+
+https://fuzzyblog.io/blog/nginx/2020/06/15/configuring-nginx-to-serve-a-directory-listing.html
+Configuring NGINX to Serve a Directory Listing
+https://stackoverflow.com/questions/24387118/nginx-list-static-files-directories-as-xml-json
+Nginx list static files/directories as XML/Json - Stack Overflow
+
+https://duckduckgo.com/?q=nginx+list+directory+contents+as+json&t=ffab&ia=web
+nginx list directory contents as json at DuckDuckGo
+
+
+
+## Websockets
+
+https://www.serverlab.ca/tutorials/linux/web-servers-linux/how-to-proxy-wss-websockets-with-nginx/
+
+
+
 ## HTTPS / SSL
 
 ### Self-signed
@@ -68,26 +110,6 @@ Once it's time to publish your application, you'll need a domain name. If you ha
 
 https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
-
-## Static Content
-
-When developing web applications, it's tempting to use the application server to serve static content:
-
-https://expressjs.com/en/starter/static-files.html
-
-This works for local development, but becomes a headache when it's time to deploy your application publicly. 
-
-Using a dedicated webserver like nginx for serving static files removes that burden from the application server.
-
-https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
-
-See also:
-
-~/public/code/new_project.md
-
-## Websockets
-
-https://www.serverlab.ca/tutorials/linux/web-servers-linux/how-to-proxy-wss-websockets-with-nginx/
 
 ## Troubleshooting
 

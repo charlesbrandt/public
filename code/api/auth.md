@@ -165,13 +165,13 @@ Difference between Active directory and Identity and Access managment - Stack Ov
 A wealth of solutions available:
 
 https://github.com/topics/oauth2  
-💤 oauth2 · GitHub Topics  
+oauth2 · GitHub Topics  
 https://github.com/topics/authentication  
-💤 authentication · GitHub Topics  
+authentication · GitHub Topics  
 https://github.com/topics/authorization  
-💤 authorization · GitHub Topics  
+authorization · GitHub Topics  
 https://github.com/topics/sso-authentication  
-💤 sso-authentication · GitHub Topics  
+sso-authentication · GitHub Topics  
 
 https://github.com/topics/user-management
 user-management · GitHub Topics · GitHub
@@ -227,16 +227,16 @@ This looks like a well configured container setup for Ory modules
 https://github.com/radekg/ory-reference-compose  
 radekg/ory-reference-compose: Reference ORY Docker Compose setup  
 https://gruchalski.com/posts/2021-04-10-ory-reference-docker-compose-and-thoughts-on-the-platform/  
-💤 ORY reference Docker Compose and thoughts on the platform | gruchalski.com  
+ORY reference Docker Compose and thoughts on the platform | gruchalski.com  
 https://duckduckgo.com/?t=ffab&q=ory+docker+compose&ia=web  
 ory docker compose at DuckDuckGo  
 https://raw.githubusercontent.com/radekg/ory-reference-compose/master/compose/compose.yml  
 raw.githubusercontent.com/radekg/ory-reference-compose/master/compose/compose.yml  
 
 https://duckduckgo.com/?t=ffab&q=oauth2+ory&ia=web  
-💤 oauth2 ory at DuckDuckGo  
+oauth2 ory at DuckDuckGo  
 https://github.com/ory/hydra-login-consent-node  
-💤 ory/hydra-login-consent-node: This is an ExpressJS reference implementation for the ORY Hydra User Login and Consent interface written in TypeScript and ExpressJS.  
+ory/hydra-login-consent-node: This is an ExpressJS reference implementation for the ORY Hydra User Login and Consent interface written in TypeScript and ExpressJS.  
 
 
 ### Authelia
@@ -255,29 +255,29 @@ Should be easy enough to consume those headers as needed.
 How to tie this in with an OAuth model? 
 
 https://github.com/authelia/authelia  
-💤 authelia/authelia: The Single Sign-On Multi-Factor portal for web apps  
+authelia/authelia: The Single Sign-On Multi-Factor portal for web apps  
 https://github.com/authelia/authelia/blob/master/examples/compose/lite/docker-compose.yml  
-💤 authelia/docker-compose.yml at master · authelia/authelia  
+authelia/docker-compose.yml at master · authelia/authelia  
 https://www.authelia.com/  
-💤 Authelia - Authentication server providing two-factor and SSO  
+Authelia - Authentication server providing two-factor and SSO  
 https://www.authelia.com/docs/  
-💤 Home - Authelia  
+Home - Authelia  
 https://www.authelia.com/docs/features/  
-💤 Features - Authelia  
+Features - Authelia  
 https://www.authelia.com/docs/home/architecture.html  
-💤 Architecture - Authelia  
+Architecture - Authelia  
 https://www.authelia.com/docs/getting-started.html  
-💤 Getting Started - Authelia  
+Getting Started - Authelia  
 https://www.authelia.com/docs/deployment/  
-💤 Deployment - Authelia  
+Deployment - Authelia  
 https://www.authelia.com/docs/deployment/deployment-lite.html  
-💤 Deployment - Lite - Authelia  
+Deployment - Lite - Authelia  
 
 https://duckduckgo.com/?t=ffab&q=authelia+integrate+with+API&ia=web  
-💤 authelia integrate with API at DuckDuckGo  
+authelia integrate with API at DuckDuckGo  
 
 https://www.authelia.com/docs/home/architecture.html  
-💤 Architecture - Authelia  
+Architecture - Authelia  
 https://www.authelia.com/docs/configuration/session/  
 Session - Authelia  
 https://duckduckgo.com/?t=ffab&q=authelia+get+user+from+session+cookie&ia=web  
@@ -285,18 +285,29 @@ authelia get user from session cookie at DuckDuckGo
 https://www.reddit.com/r/selfhosted/comments/mcsuwq/authelia/  
 Authelia ? : selfhosted  
 https://medium.com/@findpritish/protect-your-application-on-kubernetes-with-authelia-4761c35d8ef4  
-💤 Protect your application on kubernetes with authelia | by Pritish Payaningal | Medium  
+Protect your application on kubernetes with authelia | by Pritish Payaningal | Medium  
 https://github.com/findpritish/k8s/blob/master/authelia/07_test_application_authelia.yaml  
-💤 k8s/07_test_application_authelia.yaml at master · findpritish/k8s  
+k8s/07_test_application_authelia.yaml at master · findpritish/k8s  
 https://github.com/findpritish/k8s  
 findpritish/k8s: Kubernetes  
 https://speakerdeck.com/thockin/  
 Tim Hockin (@thockin) on Speaker Deck  
 https://github.com/findpritish/k8s/tree/master/authelia  
-💤 k8s/authelia at master · findpritish/k8s  
+k8s/authelia at master · findpritish/k8s  
 https://www.authelia.com/docs/configuration/session/  
-💤 Session - Authelia  
+Session - Authelia  
 https://www.authelia.com/docs/configuration/session/  
-💤 Session - Authelia  
+Session - Authelia  
 https://www.google.com/search?channel=fs&client=ubuntu&q=authelia+get+user+from+session+cookie  
 authelia get user from session cookie - Google Search  
+
+### Keycloak
+
+Seems to be a standard choice. 
+
+https://www.keycloak.org/
+
+Sounds big based on: 
+
+https://gruchalski.com/posts/2021-04-10-ory-reference-docker-compose-and-thoughts-on-the-platform/  
+ORY reference Docker Compose and thoughts on the platform | gruchalski.com  

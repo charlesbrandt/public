@@ -1,19 +1,13 @@
 # Linux
 
-[]()
-[]()
-[]()
-
-[Android](../android/)
-[tmux](tmux.md)
+[Android](../android/)  
+[tmux](tmux.md)  
 
 There are many linux distributions available. Which one you run is a matter of personal preference. Communities create a distribution as a standard collection of linux applications and configurations. 
 
 [Notes about what happens before the Operating System (OS) is running](../startup.md)
 
 When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
-
-[Search](search.md)  
 
 [Upgrade](upgrade.md)  
 [Window Manager](window-managers/)  

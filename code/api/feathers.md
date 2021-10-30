@@ -121,7 +121,7 @@ Calls get mapped map as follows
 
 https://docs.feathersjs.com/api/client.html
 
-With Feathers you have the option to use a client that they've built for easy access to the API. 
+With Feathers you have the option to use a javascript client for easy access to the API. 
 
 Set this up to be available in the api container? or just install as part of API application? 
 

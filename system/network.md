@@ -4,14 +4,56 @@ The way computers talk to one another.
 
 Every computer on a network has it's own address. [IP address -- Internet Protocol](https://en.wikipedia.org/wiki/IP_address)
 
-https://www.google.com/search?q=ubuntu+gnome+3+change+IPs
-ubuntu gnome 3 change IP - Google Search
-https://www.lifewire.com/how-to-configure-networking-in-gnome-4682592
-How to Configure Networking in GNOME
+https://www.google.com/search?q=ubuntu+gnome+3+change+IPs  
+ubuntu gnome 3 change IP - Google Search  
+https://www.lifewire.com/how-to-configure-networking-in-gnome-4682592  
+How to Configure Networking in GNOME  
 
 There are ip address ranges that are designated for internal (private) networks.
 
 192.168.1.x is a common one. 
+
+## Interface Configuration
+
+Often it's pretty straightforward to use a GUI. If you want to configure an interface via a CLI, it's necessary to know where the OS stores the configuration settings. This varies from OS to OS. 
+
+### Ubuntu
+
+Find the interface in use
+
+    ip address
+
+enp0s25
+
+The netplan configuration is located in /etc/netplan
+
+    cd /etc/netplan
+    
+    sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml.bak
+    
+Modify the netplan configuration. 
+
+    sudo vi 01-network-manager-all.yaml
+
+add a section like: 
+
+```
+  ethernets:
+    eno2:
+      dhcp4: no
+      addresses: [192.168.1.200/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8,4.2.2.2]
+```
+
+Then
+
+    sudo netplan apply 
+
+to apply the configuration and changes to affect.
+
+[adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 
 
 ## Open Ports
@@ -107,46 +149,4 @@ Manito Networks / flowanalyzer · GitLab
 https://www.ntop.org/
 ntop – High Performance Network Monitoring Solutions based on Open Source and Commodity Hardware.
 
-
-## Interface Configuration
-
-Often it's pretty straightforward to use a GUI. If you want to configure an interface via a CLI, it's necessary to know where the OS stores the configuration settings. This varies from OS to OS. 
-
-### Ubuntu
-
-Find the interface in use
-
-    ip address
-
-enp0s25
-
-The netplan configuration is located in /etc/netplan
-
-    cd /etc/netplan
-    
-    sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml.bak
-    
-Modify the netplan configuration. 
-
-    sudo vi 01-network-manager-all.yaml
-
-add a section like: 
-
-```
-  ethernets:
-    eno2:
-      dhcp4: no
-      addresses: [192.168.1.200/24]
-      gateway4: 192.168.1.1
-      nameservers:
-        addresses: [8.8.8.8,4.2.2.2]
-```
-
-Then
-
-    sudo netplan apply 
-
-to apply the configuration and changes to affect.
-
-[adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 

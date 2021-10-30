@@ -364,9 +364,24 @@ https://stackoverflow.com/questions/51827290/how-to-define-many-to-many-with-fea
 
 ## Legacy Database Schema
 
-Sometimes it's necessary to work with an existing schema. Ideally, apply migrations as needed. 
+Sometimes it's necessary to work with an existing schema. Ideally, apply database migrations as needed. 
 
-It can be useful to assign different names to columns. Hint: use 'as' parameter
+https://sequelize.org/master/manual/legacy.html  
+Manual | Sequelize  
+
+It can be useful to assign different names to columns. 
+
+```
+class MyModel extends Model {}
+MyModel.init({
+  userId: {
+    type: DataTypes.INTEGER,
+    field: 'user_id'
+  }
+}, { sequelize });
+```
+
+When including related objects, it's possible to assign a different name. Use the 'as' parameter
 
 ```
 			include: [
@@ -377,14 +392,12 @@ It can be useful to assign different names to columns. Hint: use 'as' parameter
                     
 ```
 
-https://duckduckgo.com/?t=ffab&q=sequelize+specify+column+name&ia=web
-sequelize specify column name at DuckDuckGo
-https://stackoverflow.com/questions/55114922/change-column-name-sequilize
-node.js - Change column name Sequilize - Stack Overflow
-https://duckduckgo.com/?t=ffab&q=sequelize+specify+id&ia=web
-sequelize specify id at DuckDuckGo
-https://sequelize.org/master/manual/legacy.html
-Manual | Sequelize
-https://github.com/sequelize/sequelize/issues/741
-Don't have a column call id column · Issue #741 · sequelize/sequelize
+https://duckduckgo.com/?t=ffab&q=sequelize+specify+column+name&ia=web  
+sequelize specify column name at DuckDuckGo  
+https://stackoverflow.com/questions/55114922/change-column-name-sequilize  
+node.js - Change column name Sequilize - Stack Overflow  
+https://duckduckgo.com/?t=ffab&q=sequelize+specify+id&ia=web  
+sequelize specify id at DuckDuckGo  
+https://github.com/sequelize/sequelize/issues/741  
+Don't have a column call id column · Issue #741 · sequelize/sequelize  
 

@@ -25,7 +25,24 @@ If running 32bit os, don't buy anything bigger than 4GB of memory.
 
 seems to just hang. 
 
+Once you boot up, you can log in with 
 
+U: ubuntu
+P: ubuntu
+
+You will need to change this after logging in. Fire up your password manager to keep track. 
+
+### Networking
+
+These instructions cover setting up networking on the SD card before you boot the image:
+
+https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet
+
+In summary: Edit the `network-config` file on the system-boot partition
+
+With ethernet you only need to plug in the cable and you should be assigned an IP address via DHCP. Ideally do this after you change the password, just to be sure. 
+
+[Once the system is running, networking is configured like any other Ubuntu server.](/system/network.md)
 
 ## Raspberry Pi OS
 
