@@ -33,6 +33,20 @@ moby/moby: Moby Project - a collaborative project for the container ecosystem to
 
 ## Installation
 
+
+### Snap / Distro 
+
+Maybe this approach would help keep networking separate? 
+
+Command 'docker' not found, but can be installed with:
+
+sudo snap install docker     # version 18.09.9, or
+sudo apt  install docker.io
+
+Are these kept in sync with the apt versions?
+
+### Apt Repository
+
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 
@@ -111,14 +125,30 @@ Test that you have permissions to run docker commands without sudo:
 
     docker ps
 
-### Snap / Distro (not recommended)
+### Create bash aliases
 
-Command 'docker' not found, but can be installed with:
+dcu
+docker-compose up -d
 
-sudo snap install docker     # version 18.09.9, or
-sudo apt  install docker.io
+dcd
+docker-compose down --remove-orphans
 
-(those tend to be pretty old!)
+dce
+
+dcl
+
+Add the following to your `.bashrc` file (or equivalent)
+
+```
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down --remove-orphans'
+alias dcp='docker-compose ps'
+alias dce='docker-compose exec'
+alias dcl='docker-compose logs'
+```
+
+
+
 
 
 ## Status
