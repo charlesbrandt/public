@@ -316,45 +316,6 @@ To specify a Dockerfile, use -f:
     
 https://docs.docker.com/engine/reference/commandline/build/
 
-### Cleaning up old images
-
-```
-docker system prune 
-```
-
-This seems like a well maintained answer with up-to-date options & descriptions:
-
-https://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images
-
-[via](https://duckduckgo.com/?t=ffab&q=docker-compose+remove+old+images&ia=web)
-
-Some of the following options may be more aggressive in what they delete. Be careful if you have important data stored!
-
-Sometimes when testing builds, docker will complain about running out of space:
-
-```
-Thin Pool has 2738 free data blocks which is less than minimum required 2915 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
-```
-
-You can get rid of all images with:
-
-    docker image prune -a --force 
-
-https://stackoverflow.com/questions/41531962/docker-run-error-thin-pool-has-free-data-blocks-which-is-less-than-minimum-req
-
-Clear everything out (!!! dangerous !!!)
-
-    docker image rm $(docker image ls -a -q)
-    docker image rm -f $(docker image ls -a -q)
-
-See also:
-https://docs.docker.com/engine/reference/commandline/image_prune/
-
-Still not enough space?
-There are some nuclear options outlined here -- they will clear everything out, including volumes that may have data on them!
-
-https://stackoverflow.com/questions/36918387/space-issue-on-docker-devmapper-and-centos7
-
 ## Running a Container
 
 When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
@@ -398,6 +359,45 @@ or
 ### Removing a Container
 
     docker rm [container]
+
+### Cleaning up old images
+
+```
+docker system prune 
+```
+
+This seems like a well maintained answer with up-to-date options & descriptions:
+
+https://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images
+
+[via](https://duckduckgo.com/?t=ffab&q=docker-compose+remove+old+images&ia=web)
+
+Some of the following options may be more aggressive in what they delete. Be careful if you have important data stored!
+
+Sometimes when testing builds, docker will complain about running out of space:
+
+```
+Thin Pool has 2738 free data blocks which is less than minimum required 2915 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
+```
+
+You can get rid of all images with:
+
+    docker image prune -a --force 
+
+https://stackoverflow.com/questions/41531962/docker-run-error-thin-pool-has-free-data-blocks-which-is-less-than-minimum-req
+
+Clear everything out (!!! dangerous !!!)
+
+    docker image rm $(docker image ls -a -q)
+    docker image rm -f $(docker image ls -a -q)
+
+See also:
+https://docs.docker.com/engine/reference/commandline/image_prune/
+
+Still not enough space?
+There are some nuclear options outlined here -- they will clear everything out, including volumes that may have data on them!
+
+https://stackoverflow.com/questions/36918387/space-issue-on-docker-devmapper-and-centos7
 
 
 
