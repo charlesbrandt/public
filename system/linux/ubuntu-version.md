@@ -1,4 +1,5 @@
-*2014.04.25 12:41:08 
+# Version
+
 to determine the version of ubuntu on a machine, run:
 
 cat /etc/issue

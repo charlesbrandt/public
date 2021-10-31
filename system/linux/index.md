@@ -63,20 +63,9 @@ http://ftp.ussg.iu.edu/linux
 
 CentOS is another popular distribution that tracks Red Hat Enterprise Linux
 
-
 ## Raspberry Pi
 
-[Raspberry Pi](raspberry-pi.md)  
-
-[See also]((/pi/)  
-
-Hard to beat raspbian. Helps make sure you're starting from common ground when documenting your projects: 
-
-https://www.raspberrypi.org/downloads/raspbian/
-
-If you plan to use a Pi as a daily driver / desktop, you may want to customize the desktop / distribution:
-
-https://ubuntu-pi-flavour-maker.org/download/
+[Raspberry Pi](/pi/)  
 
 
 ## Arch Linux

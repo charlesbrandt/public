@@ -2,6 +2,8 @@
 
 [<img src="logos/RPi-Logo-Reg-SCREEN.svg" alt="raspberry pi logo" width="200px">](logos/logos-raspberry-pi.md)
 
+Need a computer?
+This is a great place to start. 
 
 ## Getting started
 
@@ -10,6 +12,15 @@
 - Choose any services
 
 ## Hardware
+
+There are many types of Pi computers. Choose the one that best fits your project's use case. At a minimum you'll need:
+
+  - Raspberry Pi Computer
+  - Power Supply
+  - Memory Card
+
+I also often like a power switch if the device will not be powered on all of the time. 
+
 
 TODO: hardware lists and references
 
@@ -67,4 +78,5 @@ https://docs.linuxserver.io/images/docker-plex
 
 [troubleshooting](troubleshooting.md)  
 [GPIO](./hardware/gpio.md)  
+
 

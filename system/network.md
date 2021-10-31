@@ -38,8 +38,9 @@ Modify the netplan configuration.
 add a section like: 
 
 ```
+network:
   ethernets:
-    eno2:
+    eth0:
       dhcp4: no
       addresses: [192.168.1.200/24]
       gateway4: 192.168.1.1
@@ -54,6 +55,47 @@ Then
 to apply the configuration and changes to affect.
 
 [adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
+
+
+[Copy SSH keys to the new machine](/public/system/ssh.md)
+
+
+## Remote Connections
+
+Ngrok looks like a cool service that can expose a local service via a remotely accessible address
+
+Following along with:
+
+https://www.endtoend.ai/tutorial/ngrok-ssh-forwarding/
+
+Sign in: https://dashboard.ngrok.com/signup
+
+On the server with the service you want to access, 
+
+```
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip
+unzip /path/to/ngrok.zip
+chmod +x ngrok
+
+```
+
+or
+
+```
+sudo snap install ngrok
+```
+
+Start up the forwarding
+
+```
+ngrok tcp 22
+```
+
+Connect to the service from any remote system:
+
+```
+ssh <YOUR_USERNAME>@0.tcp.jp.ngrok.io -p 11111
+```
 
 
 ## Open Ports
@@ -116,6 +158,8 @@ https://kb.iu.edu/d/ackg
 ## Traceroute
 
     sudo apt install inetutils-traceroute 
+
+
 
 
 ## Traffic Analysis

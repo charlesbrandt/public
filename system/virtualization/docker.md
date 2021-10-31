@@ -2,18 +2,18 @@
 
 Docker implements a container solution. Containers are a lighter weight alternative to a full virtual machine. They are run on the host operating system, but they are encapsulated to provide isolation, security, and compartmentalization. 
 
-Docker has great documentation:  
+Docker documentation:  
 https://docs.docker.com/
 
-A great overview:  
+Overview:  
 https://docs.docker.com/engine/understanding-docker/
 
 https://docs.docker.com/engine/userguide/
 
-This cheat sheet is another great overview, and closely resembles what these notes cover:  
+Cheat sheet with an overview (similar intent as this doc)  
 https://github.com/wsargent/docker-cheat-sheet
 
-This guide also has a nice introduction to what containers are:  
+Introduction to what containers are:  
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
 ## Dockerfiles
@@ -27,31 +27,33 @@ https://docs.docker.com/engine/reference/builder/
 
 [Docker Compose](docker-compose.md)
 
-https://github.com/moby/moby  
-moby/moby: Moby Project - a collaborative project for the container ecosystem to assemble container-based systems  
+[Orchestration](orchestration.md)
 
+[Kubernetes](kubernetes.md)
 
 ## Installation
 
+https://docs.docker.com/engine/install/
 
-### Snap / Distro 
+### Convenience Script
 
-Maybe this approach would help keep networking separate? 
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
 
-Command 'docker' not found, but can be installed with:
+This may be more up-to-date (and straightforward) than the process outlined below:
 
-sudo snap install docker     # version 18.09.9, or
-sudo apt  install docker.io
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
 
-Are these kept in sync with the apt versions?
+DRY_RUN=1 sh ./get-docker.sh
+```
+
 
 ### Apt Repository
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
-
-20.10
-(raspberry pi -- this worked: https://linuxhint.com/install_docker_raspberry_pi-2/)
+20.10 
+raspberry pi -- this worked: https://linuxhint.com/install_docker_raspberry_pi-2/
 
 ```
 sudo apt-get update
@@ -97,6 +99,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 ```
 
+### Docker Compose
+
 At this point Docker should be installed and you can verify with:
 
     sudo systemctl status docker
@@ -104,7 +108,6 @@ At this point Docker should be installed and you can verify with:
 Go ahead and grab docker-compose
 
     sudo apt-get install docker-compose -y
-
 
 ### Add user to docker group
 
@@ -146,6 +149,37 @@ alias dcp='docker-compose ps'
 alias dce='docker-compose exec'
 alias dcl='docker-compose logs'
 ```
+
+### Rootless & Permissions
+
+To run Docker as a non-privileged user, consider setting up the
+Docker daemon in rootless mode for your user:
+
+    dockerd-rootless-setuptool.sh install
+
+Visit https://docs.docker.com/go/rootless/ to learn about rootless mode.
+
+
+To run the Docker daemon as a fully privileged service, but granting non-root
+users access, refer to https://docs.docker.com/go/daemon-access/
+
+WARNING: Access to the remote API on a privileged Docker daemon is equivalent
+         to root access on the host. Refer to the 'Docker daemon attack surface'
+         documentation for details: https://docs.docker.com/go/attack-surface/
+
+
+### Snap 
+
+Maybe this approach would help keep networking devices separate? 
+
+Worth a try on future desktop setups. 
+
+Command 'docker' not found, but can be installed with:
+
+sudo snap install docker     # version 18.09.9, or
+sudo apt  install docker.io
+
+Are these kept in sync with the apt versions?
 
 
 

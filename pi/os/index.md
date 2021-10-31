@@ -2,6 +2,27 @@
 
 Choose the right foundation for the type of system you deploy. 
 
+## Distributions
+
+Choose a distribution.
+
+### Ubuntu
+
+Ubuntu has a server distribution tailored to the pi. For newer Pi's (e.g. >= 4, 400) you can also download a desktop version of Ubuntu. 
+
+https://ubuntu.com/download/raspberry-pi
+
+Choosing Ubuntu allows easy installation of any other packages in the Ubuntu / Debian ecosystem (as long as the software provides ARM binaries). 
+
+### Raspberry Pi OS
+
+Raspberry Pi OS is another popular choice. 
+
+Download an image from:
+Raspberry Pi Guide - Quick Start Guide for Raspberry Pi
+https://www.raspberrypi.org/downloads/
+
+
 ## Ubuntu
 
 https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#2-prepare-the-sd-card
@@ -25,6 +46,8 @@ If running 32bit os, don't buy anything bigger than 4GB of memory.
 
 seems to just hang. 
 
+### Change the default password
+
 Once you boot up, you can log in with 
 
 U: ubuntu
@@ -44,7 +67,19 @@ With ethernet you only need to plug in the cable and you should be assigned an I
 
 [Once the system is running, networking is configured like any other Ubuntu server.](/system/network.md)
 
+### Variants
+
+If you plan to use a Pi as a daily driver / desktop, you may want to customize the desktop / distribution:
+
+https://ubuntu-pi-flavour-maker.org/download/
+
+
+
 ## Raspberry Pi OS
+
+Hard to beat Raspberry Pi OS. Provides a common ground when documenting your projects: 
+
+https://www.raspberrypi.org/downloads/raspbian/
 
 Use for raspberry pi zero W
 
@@ -59,8 +94,28 @@ Can use a spare raspberry pi 4 (4GB memory) to run the install and set things up
 
 << --- install / setup on pi zero is slooooow
 
+### Configuration
 
-## Images / Flashing
+remove overscan which results in a black border for pi display
+1824x984
+sudo raspi-config
+Advanced -> Overscan
+
+After a restart, the issue was fixed!
+
+### Raspbian
+
+Previously, Raspberry Pi OS was called Raspbian. They're the same thing. Just something to be aware of if you come across documentation referring to Rasbian, you'll know. 
+
+
+
+
+
+
+
+## Flash the image
+
+After choosing and downloading the OS image
 
 https://www.raspberrypi.org/software/
 
@@ -70,8 +125,11 @@ run with `rpi-imager`
 
 decide on a base OS
 
+### Balena Etcher
 
-### Balena
+Download and run Etcher:
+
+https://etcher.io/
 
 This has been adopted by Rasperry Pi and rebranded and expanded. At least the overall process feels the same.
 
@@ -92,7 +150,7 @@ On linux, `dd` is a great option that's always available.
 
 ```
 sudo fdisk -l
-sudo dd bs=4M if=/dev/sde of=/home/account/MyImage.img
+sudo dd bs=4M if=/dev/sde of=~/MyImage.img
 ```
 
 Ideally you'd try recreating the image in reverse to make sure everything works as expected. And use a different SD card. 
@@ -109,3 +167,45 @@ How to mount sd-card image created with dd? - Ask Ubuntu
 
 https://duckduckgo.com/?t=ffab&q=create+an+image+of+an+sd+card&ia=web  
 create an image of an sd card at DuckDuckGo  
+
+
+
+### dd
+
+Run df -h to see what devices are currently mounted.
+Connect Card.
+Run df -h again.
+(dmesg and mount are also useful commands to hone in on the correct device)
+
+    umount /dev/sdi1
+
+    sudo dd bs=4M if=/c/out-data/2015-05-05-raspbian-wheezy.img of=/dev/sdi
+
+Via this guide for using dd to create images:
+Installing Operating System Images - Raspberry Pi Documentation
+https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
+
+
+## Install SD to Pi
+
+After the flash is complete, insert the SD card into the Pi and connect all the peripherals. Power on the Pi. 
+
+
+
+## See also
+
+Once the base OS has been installed, explore details about how you want to configure the system:
+
+[Linux Notes](/system/linux/index.md)
+
+On a pi server, installing docker is a good idea:
+
+
+
+
+Guide for the timetrack project that covers many similar 'getting started' topics
+
+https://city-of-bloomington.github.io/timetrack/
+
+https://github.com/City-of-Bloomington/timetrack
+
