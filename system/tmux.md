@@ -30,7 +30,7 @@ if the previous one is not the one you want:
 tmux attach-session -t 5
 ```
 
-## configuration
+## Configuration
 
 Put this at the bottom of ~/.tmux.conf ($XDG_CONFIG_HOME/tmux/tmux.conf works too):
 
@@ -51,6 +51,24 @@ bind r source-file ~/.tmux.conf
 unbind ^A
 bind ^A select-pane -t :.+
 
+
+
+From there, it helps to learn some basics. Here are a few good guides:
+
+https://thoughtbot.com/blog/a-tmux-crash-course
+
+For all keybindings, press ctrl-b first, then press the key you want.
+key 	what it does
+ctrl-b, % 	split the screen in half from left to right
+ctrl-b, " 	split the screen in half from top to bottom
+ctrl-b, x 	kill the current pane
+ctrl-b, <arrow key> 	switch to the pane in whichever direction you press
+ctrl-b, d 	detach from tmux, leaving everything running in the background
+
+This is an incomplete list; a more exhaustive list is available [here](https://gist.github.com/MohamedAlaa/2961058)
+
+https://www.ocf.berkeley.edu/~ckuehl/tmux/
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
@@ -69,10 +87,6 @@ run -b '~/.tmux/plugins/tpm/tpm'
 
 https://github.com/tmux-plugins/tmux-resurrect/blob/master/README.md
 
-
-From there, it helps to learn some basics. Here are a few good guides:
-
-https://thoughtbot.com/blog/a-tmux-crash-course
 
 
 ## tmux under termux
