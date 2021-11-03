@@ -40,6 +40,48 @@ FAT32 == /dev/sdb1 on /media/charles/8698-D9F8 type vfat
 Device     Boot Start       End   Sectors   Size Id Type
 /dev/sdb1          32 240254975 240254944 114.6G  c W95 FAT32 (LBA)
 
+## Partitions
+
+If the drive is not arranged the way you want it to be, for example, a new drive, you may need to create the partition table on your own. Many operating system installers will do this step for you, but there are cases where you may want to customize it manually. 
+
+### gdisk
+
+https://matthew.komputerwiz.net/2015/12/13/formatting-universal-drive.html
+
+    sudo gdisk /dev/sdb
+
+First, create a new partition table
+
+    Command (? for help): o
+    This option deletes all partitions and creates a new protective MBR.
+    Proceed? (Y/N): Y
+
+Now create a partition. The defaults will create a new partition that spans the whole drive with the first sector already aligned. Be sure to choose the correct type 0700!
+
+```
+Command (? for help): n
+Partition number (1-128, default 1):
+First sector (34-16326462, default = 2048) or {+-}size{KMGTP}:
+Last sector (2048-16326462, default = 16326462) or {+-}size{KMGTP}:
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): 0700
+Changed type of partition to 'Microsoft basic data'
+Write the changes to the drive and exit
+
+Command (? for help): w
+
+Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
+PARTITIONS!!
+
+Do you want to proceed? (Y/N): Y
+OK; writing new GUID partition table (GPT) to /dev/sdX.
+Warning: The kernel is still using the old partition table.
+The new table will be used at the next reboot.
+The operation has completed successfully.
+```
+
+
+
 ## Formats to use
 
 ### exfat
@@ -85,103 +127,6 @@ However, can also see:
 ~/public/system/drives/file_systems.md
 
 
-## Partitions
-
-If the drive is not arranged the way you want it to be, for example, a new drive, you may need to create the partition table on your own. Many operating system installers will do this step for you, but there are cases where you may want to customize it manually. 
-
-### gdisk
-
-// parted doesn't understand exfat. use gdisk option below
-// sudo parted -a optimal /dev/sdb mkpart primary exfat 0% 100%
-`
-https://matthew.komputerwiz.net/2015/12/13/formatting-universal-drive.html
-
-    sudo gdisk /dev/sdb
-
-First, create a new partition table
-
-    Command (? for help): o
-    This option deletes all partitions and creates a new protective MBR.
-    Proceed? (Y/N): Y
-
-Now create a partition. The defaults will create a new partition that spans the whole drive with the first sector already aligned. Be sure to choose the correct type 0700!
-
-```
-Command (? for help): n
-Partition number (1-128, default 1):
-First sector (34-16326462, default = 2048) or {+-}size{KMGTP}:
-Last sector (2048-16326462, default = 16326462) or {+-}size{KMGTP}:
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 0700
-Changed type of partition to 'Microsoft basic data'
-Write the changes to the drive and exit
-
-Command (? for help): w
-
-Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
-PARTITIONS!!
-
-Do you want to proceed? (Y/N): Y
-OK; writing new GUID partition table (GPT) to /dev/sdX.
-Warning: The kernel is still using the old partition table.
-The new table will be used at the next reboot.
-The operation has completed successfully.
-```
-
-
-## parted
-
-looking into Advanced Format drives
-wdc.com/advformat
-
-they recommend parted (2.2 and up) instead of fdisk:
-
-    parted -v
-
-this starts in an interactive mode similar to fdisk:
-
-    sudo parted -a optimal /dev/sdb
-
-
-can also supply commands via command line:
-
-
-```
-sudo ls #prime sudo
-
-# https://en.wikipedia.org/wiki/GUID_Partition_Table
-sudo parted -a optimal /dev/sdb mklabel gpt
-# for bootable usb flash drives 
-sudo parted -a optimal /dev/sdb mklabel msdos
-
-sudo parted -a optimal /dev/sdb print
-
-sudo parted -a optimal /dev/sdb rm 1
-sudo parted -a optimal /dev/sdb rm 2
-
-sudo parted -a optimal /dev/sdb mkpart primary NTFS 0% 100%
-
-
-sudo mkfs.ntfs -L DATA -f /dev/sdb1
-
-#old options:
-#sudo parted -a optimal /dev/sdb mkpart primary NTFS 1MB 2000GB
-(13.04: http://charlesmccolm.com/2013/06/14/making-ntfs-partitions-in-linux
-sudo mkntfs -L DATA -f /dev/sdb1
-
-or
-sudo parted -a optimal /dev/sdb mkpart primary hfs 1MB 2000GB
-format on mac
-
-or
-sudo parted -a optimal /dev/sdb mkpart primary ext4 1MB 2000GB
-sudo mkfs.ext4 -L backups /dev/sdb1
-
-or
-sudo parted -a optimal /dev/sdb mkpart primary fat32 1MB 100%
-sudo mkfs.vfat -n UBUNTU /dev/sdb1
-
-```
 
 
 ## Wipe / Erase
@@ -276,4 +221,5 @@ http://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance
 
     (parted) align-check optimal 1
     1 aligned
+
 

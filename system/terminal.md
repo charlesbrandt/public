@@ -9,8 +9,10 @@ ln -s ~/public/system/linux/.bashrc .bashrc
 
 ## Alias vs Functions
 
+interesting discussion came up here:  
 ~/public/system/virtualization/docker.md
 
+Which is better, an alias or a function? 
 
 #### Function
 

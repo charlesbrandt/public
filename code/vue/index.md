@@ -247,20 +247,6 @@ https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-chi
 Note:  
 If you've hit a situation where an event bus pattern comes up, it may be a good time to consider [State Management](#state-management) patterns.
 
-## Forms
-
-Heavy overlap with Web Components & UI Frameworks.
-
-It helps to study the underlying mechanisms of syncing form content with the local script and parent components. 
-
-TODO: v-model binding in vue2? or is that a new feature with vue3?
-
-https://duckduckgo.com/?t=ffab&q=creating+form+components+vue3&ia=web  
-💤 creating form components vue3 at DuckDuckGo  
-https://javascript.plainenglish.io/how-to-build-flexible-form-factory-by-vue-3-form-builder-pattern-b88edaf94776  
-Building a dynamic and scalable Form Factory by Vue 3 | JavaScript in Plain English  
-
-
 ## Slots & Props
 
 Use Props when you want to pass in a js object to a child component.
@@ -334,6 +320,20 @@ https://markus.oberlehner.net/blog/dynamic-vue-layout-components/
 Some vue-based framework pre-configure a layout pattern for us, however it can help to understand the pattern at work in cases where those frameworks are not a good fit. 
 
 https://awesome-vue.js.org/components-and-libraries/ui-layout.html
+
+## Forms
+
+Heavy overlap with Web Components & UI Frameworks.
+
+It helps to study the underlying mechanisms of syncing form content with the local script and parent components. 
+
+TODO: v-model binding in vue2? or is that a new feature with vue3?
+
+https://duckduckgo.com/?t=ffab&q=creating+form+components+vue3&ia=web  
+💤 creating form components vue3 at DuckDuckGo  
+https://javascript.plainenglish.io/how-to-build-flexible-form-factory-by-vue-3-form-builder-pattern-b88edaf94776  
+Building a dynamic and scalable Form Factory by Vue 3 | JavaScript in Plain English  
+
 
 ## Routing
 

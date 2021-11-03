@@ -101,11 +101,12 @@ network={
 }
 ```
 
-"""
-    Connect your Pi camera via the CSI connector or plug in a USB webcam using a Micro USB OTG adapter, then apply power. If your setup is correct, the Pi will boot up into MotionEyeOS, and you can use a network scanner like this one to find its IP address.
-    The device will have a default name, such as MEYE-12345678. Once you find the device name, navigate to the IP address on a web browser connected to the same network. A local website will appear, giving you a nice graphic interface on which to access your camera and settings.
-    To log in as a user, input user as the username with a blank password, or admin with a blank password as well. If you're setting up the system for the first time, use the admin username.
-"""
+> Connect your Pi camera via the CSI connector or plug in a USB webcam using a Micro USB OTG adapter, then apply power. If your setup is correct, the Pi will boot up into MotionEyeOS, and you can use a network scanner like this one to find its IP address.
+>
+> The device will have a default name, such as MEYE-12345678. Once you find the device name, navigate to the IP address on a web browser connected to the same network. A local website will appear, giving you a nice graphic interface on which to access your camera and settings.
+>
+> To log in as a user, input user as the username with a blank password, or admin with a blank password as well. If you're setting up the system for the first time, use the admin username.
+
 
 https://www.arrow.com/en/research-and-events/articles/motioneyeos-camera-setup-on-raspberry-pi-zero-w  
 MotionEyeOS Raspberry Pi Zero W Tutorial: Setup & Uses | Arrow.com | Arrow.com  
