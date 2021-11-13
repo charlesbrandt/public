@@ -31,23 +31,11 @@ Include the associations in with the model
 
 ## Migrations
 
-Migrations help your database schema stay up-to-date with the requirements of the current system architecture. 
-
-If nothing else, just use a simple text file to track the SQL commands that get applied
-
-Use SQL commands to `ALTER` tables
-
-[relational databases](relational-db.md)
-
 https://sequelize.org/master/manual/migrations.html
 
-The following notes are adapted from:
+Migrations keep your database schema in sync with the requirements of the current system architecture. 
 
-[Sequelize · feathers-docs-common](https://eddyystop.gitbooks.io/feathers-docs-common/content/databases/sequelize.html#migrations)
-
-Having trouble locating the original repo, and it seems this is an earlier version of the feathers docs that got cut. 
-
-The following assumes you have a `migrations` folder in the root of your app. (`/api/migrations`)
+The following assumes you have a `migrations` folder in the root of your app. (`api/migrations`)
 
 
 ### Initial Setup: one-time tasks
@@ -125,6 +113,15 @@ Undo the migrations with:
 ```
 npx sequelize-cli db:migrate:undo
 ```
+
+### See Also
+
+[relational databases](relational-db.md)
+
+[Sequelize · feathers-docs-common](https://eddyystop.gitbooks.io/feathers-docs-common/content/databases/sequelize.html#migrations)
+
+Having trouble locating the original repo, and it seems this is an earlier version of the feathers docs that got cut. 
+
 
 
 ## Queries

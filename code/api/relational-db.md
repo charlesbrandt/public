@@ -73,3 +73,9 @@ SET
 [WHERE
     condition];
 ```
+
+## Manual Migrations
+
+If you haven't configured an actual migration system (like [Sequelize Migrations](sequelize.md#migrations)), track changes using a simple text file to note the SQL commands that get applied
+
+Use SQL commands to `ALTER` tables

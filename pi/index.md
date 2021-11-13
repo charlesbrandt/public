@@ -26,7 +26,7 @@ TODO: hardware lists and references
 
 ### Power
 
-[power supplies](power-supply.md)  
+[power supplies](hardware/power-supply.md)  
 
 In addition to a good power supply
 it's important to make sure you have a good powered usb hub before attempting to connect peripherals. Even a wired usb keyboard and mouse can be too much for a pi zero, I've found. 

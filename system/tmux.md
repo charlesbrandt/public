@@ -10,13 +10,20 @@ from there you can launch `tmux` with
 
 $ tmux
 
-from there you'll need to know some basic commands to navigate within tmux. This is a good guide
-
-https://www.ocf.berkeley.edu/~ckuehl/tmux/
+once inside a tmux context, it helps to know some basic commands to navigate. 
 
 to detach
 
 ctrl-b d # (or ctrl-m d if remapped)
+
+to list all sessions
+
+```
+tmux ls
+```
+
+ctrl-b s # (or ctrl-m s if remapped)
+
 
 to re-attach to the previous session
 
@@ -29,6 +36,21 @@ if the previous one is not the one you want:
 ```
 tmux attach-session -t 5
 ```
+
+to cycle through sessions from within tmux
+
+ctrl-b ( # or ctrl-m ( if remapped
+ctrl-b ) # or ctrl-m ) if remapped
+
+to rename a session
+ctrl-b $ # (or ctrl-m $ if remapped)
+
+
+This is a good guide
+
+https://tmuxcheatsheet.com/
+
+https://www.ocf.berkeley.edu/~ckuehl/tmux/
 
 ## Configuration
 
