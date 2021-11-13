@@ -1,6 +1,6 @@
 # Raspberry Pi
 
-[<img src="logos/RPi-Logo-Reg-SCREEN.svg" alt="raspberry pi logo" width="200px">](logos/logos-raspberry-pi.md)
+[<img src="logos/RPi-Logo-Reg-SCREEN.svg" alt="raspberry pi logo" width="200px">](./logos/logos-raspberry-pi.md)
 
 Need a computer?
 This is a great place to start. 
