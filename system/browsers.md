@@ -151,6 +151,16 @@ rm -r hn95wtr8.example/*
 cp -r ~/repos/firefox-profile/* hn95wtr8.example/
 ```
 
+### Themes
+
+Colorway themes can be helpful for distinguishing one Firefox context from another, especially if they get spread across multiple workspaces. 
+
+https://support.mozilla.org/en-US/kb/personalize-firefox-colorways
+
+Menu -> Add-ons and Themes
+
+Not configured in "Settings". 
+
 ## Chrome / Chromium:
 
 For non-linux machines, go with Chrome:

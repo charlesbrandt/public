@@ -41,8 +41,8 @@ See below for details
 {
   "window.newWindowDimensions": "inherit",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.wrapTabs": true,
-  "breadcrumbs.enabled": false,
+  "workbench.editor.wrapTabs": false,
+  "breadcrumbs.enabled": true,
   "editor.minimap.enabled": false,
   "update.mode": "none",
   "explorer.confirmDragAndDrop": false,
@@ -133,7 +133,16 @@ https://stackoverflow.com/questions/44412233/how-to-set-window-size-and-position
 The miniature over view of the current file to the right.
 
     "editor.minimap.enabled": false
-    
+
+### Tabs & Breadcrumbs
+
+I go back and forth on this. Hoping that Tab Group helper will minimize the desire to see all of the tabs wrapped. It does take up a bit of vertical real estate when enabled. 
+
+```
+  "workbench.editor.wrapTabs": true,
+  "breadcrumbs.enabled": false,
+```
+
 ### Updates
 
 I prefer to handle updates when updating the OS.
@@ -354,11 +363,14 @@ Still requires adding custom bindings (included below).
 
 Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
-### Tailwind
+### Tab Groups
 
-Tailwind CSS IntelliSense
+Save collections of open files in a Tab Group
 
-https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
+https://marketplace.visualstudio.com/items?itemName=usama8800.tab-groups  
+Tab Groups - Visual Studio Marketplace  
+https://github.com/usama8800/VSCode-Tab-Groups  
+GitHub - usama8800/VSCode-Tab-Groups  
 
 ### Vue Language Features (Volar)
 
@@ -368,29 +380,21 @@ Volar is coming up as a preferred alternative.
 
 Seems to work. If you disable Vetur and install Volar, be sure to restart VS Code for changes to take effect. 
 
-https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar
-Vue Language Features (Volar) - Visual Studio Marketplace
-https://github.com/johnsoncodehk/volar
-GitHub - johnsoncodehk/volar: ⚡ Fast Vue Language Support Extension
+https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar  
+Vue Language Features (Volar) - Visual Studio Marketplace  
+https://github.com/johnsoncodehk/volar  
+GitHub - johnsoncodehk/volar: ⚡ Fast Vue Language Support Extension  
 
+### Tailwind
 
+Tailwind CSS IntelliSense
 
-### Bracket Pair Colorizer
-
-By: CoenraadS
+https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
 
 ### ES6 Mocha Snippets
 By: spoonscen.es6-mocha-snippets
 
 Better syntax support for Mocha style tests
-
-### Python
-
-I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available.
-
-Formatting can be disabled with:
-
-"python.formatting.provider": "none",
 
 ### YAML
 
@@ -402,15 +406,25 @@ By Street Side Software
 
 Seems to be the top pick these days
 
-https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
-Code Spell Checker - Visual Studio Marketplace
-https://github.com/streetsidesoftware/vscode-spell-checker
-streetsidesoftware/vscode-spell-checker: A simple source code spell checker for code
-https://duckduckgo.com/?t=canonical&q=vs+code+spell+checker+md&ia=web
-vs code spell checker md at DuckDuckGo
+https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker  
+Code Spell Checker - Visual Studio Marketplace  
+https://github.com/streetsidesoftware/vscode-spell-checker  
+streetsidesoftware/vscode-spell-checker: A simple source code spell checker for code  
+https://duckduckgo.com/?t=canonical&q=vs+code+spell+checker+md&ia=web  
+vs code spell checker md at DuckDuckGo  
 
-The Microsoft version has been deprecated:
-https://github.com/Microsoft/vscode-spell-check/blob/master/README.md
+The Microsoft version has been deprecated:  
+https://github.com/Microsoft/vscode-spell-check/blob/master/README.md  
+
+### Import Cost
+
+### Python
+
+I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available.
+
+Formatting can be disabled with:
+
+"python.formatting.provider": "none",
 
 ### Remote Development
 
@@ -440,7 +454,11 @@ https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 
 https://github.com/Microsoft/vscode-remote-release
 
-### Import Cost
+### Bracket Pair Colorizer
+
+By: CoenraadS
+
+Is this still necessary? I seem to recall reading something about this being included by default now, but I have not verified.
 
 
 ### Docker
@@ -464,9 +482,9 @@ By Zongmin Lei
 
 Similar to Emacs method for opening files via keyboard only
 
-Keybindings
-CTRL+⌘+O - Quick Open File
-CTRL+⌘+P - Quick Open Input Path
+Keybindings  
+CTRL+⌘+O - Quick Open File  
+CTRL+⌘+P - Quick Open Input Path  
 
 Does not appear to work with opening a new file? 
 
@@ -474,8 +492,8 @@ Does not appear to work with opening a new file?
 
 By: Pine Wu
 
-https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32
-Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium
+https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32  
+Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium  
 
 https://vuejs.github.io/vetur/
 
@@ -483,8 +501,8 @@ Frequently don't have the configs where the project is being loaded:
 
 "vetur.ignoreProjectWarning": true,
 
-May cause some issues with linting...
-https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx
+May cause some issues with linting...  
+https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx  
 
 In VS Code settings, I use:
 ```

@@ -142,6 +142,20 @@ Loop over an object's keys in ES6
       });
 ```
 
+### Loop & Remove
+
+If you want to remove items from an array that you are looping over, work backwards from the end:
+
+```
+for (var i = items.length - 1; i >= 0; i--) {
+    if (items[i].label == next.label) { 
+        items.splice(i, 1);
+    }
+}
+```
+
+https://stackoverflow.com/questions/9882284/looping-through-array-and-removing-items-without-breaking-for-loop
+
 
 ## Arrays & Objects
 
@@ -289,7 +303,18 @@ The slice() array method can be used to copy arrays by not passing any arguments
 
 https://tenmilesquare.com/5-uses-for-the-spread-operator/
 
+### Map, Filter, Reduce
 
+Higher level functions for working with items in an array
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+```
+// Arrow function
+map((element) => { ... })
+map((element, index) => { ... })
+map((element, index, array) => { ... })
+```
 
 ## Regular Expressions
 

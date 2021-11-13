@@ -45,6 +45,25 @@ Components Basics — Vue.js
 
 https://vuejs.org/v2/guide/syntax.html
 
+#### Conditional Rendering
+
+https://vuejs.org/v2/guide/conditional.html
+
+```
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+```
+
 #### For Loops
 
 List rendering  
@@ -140,15 +159,21 @@ Then in Vue you can just set this.myVar = true and it will disable the input.
 
 https://stackoverflow.com/questions/39247411/how-to-add-dynamically-attribute-in-vuejs
 
+It's possible to use a similar approach to add a class conditionally:
+
+```
+:class="{ 'light-background': index % 2 }"
+```
+
 #### Dynamic Styles
 
 Using variable in vue component to affect CSS styles
 
-https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables
-css - Vue.js dynamic style with variables - Stack Overflow
+https://stackoverflow.com/questions/47322875/vue-js-dynamic-style-with-variables  
+css - Vue.js dynamic style with variables - Stack Overflow  
 
-https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css/52280182#52280182
-In vue.js component, how to use props in css? - Stack Overflow
+https://stackoverflow.com/questions/42872002/in-vue-js-component-how-to-use-props-in-css/52280182#52280182  
+In vue.js component, how to use props in css? - Stack Overflow  
 
 ```
 <template>
