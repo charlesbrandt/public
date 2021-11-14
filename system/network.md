@@ -57,7 +57,7 @@ to apply the configuration and changes to affect.
 [adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 
 
-[Copy SSH keys to the new machine](/public/system/ssh.md)
+[Copy SSH keys to the new machine](ssh.md)
 
 
 ## Remote Connections

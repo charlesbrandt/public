@@ -84,7 +84,7 @@ key 	what it does
 ctrl-b, % 	split the screen in half from left to right
 ctrl-b, " 	split the screen in half from top to bottom
 ctrl-b, x 	kill the current pane
-ctrl-b, <arrow key> 	switch to the pane in whichever direction you press
+ctrl-b, `<arrow key>` 	switch to the pane in whichever direction you press
 ctrl-b, d 	detach from tmux, leaving everything running in the background
 
 This is an incomplete list; a more exhaustive list is available [here](https://gist.github.com/MohamedAlaa/2961058)
@@ -115,7 +115,7 @@ https://github.com/tmux-plugins/tmux-resurrect/blob/master/README.md
 
 dont do this
 
-run tmux on the remote server, not on a phone. For a phone, just install [termux](../android/termux.md)
+run tmux on the remote server, not on a phone. For a phone, just install [termux](android/termux.md)
 
 on something like termux on android, where you really only have a limited number of sessions. 
 
@@ -168,11 +168,11 @@ list sessions:
 
     tmux ls
 
-<a name="killSessions"></a>kill session:
+kill session:
 
     tmux kill-session -t myname
 
-<a name="killAllSessions"></a>Kill all the tmux sessions:
+Kill all the tmux sessions:
 
     tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill
 
@@ -189,11 +189,11 @@ In tmux, hit the prefix `ctrl+b` (my modified prefix is ctrl+m) and then:
 
 ## Sessions
 
-    :new<CR>  new session
+    :new`<CR>`  new session
     s  list sessions
     $  name session
 
-## <a name="WindowsTabs"></a>Windows (tabs)
+## Windows (tabs)
 
     c  create window
     w  list windows
@@ -203,7 +203,7 @@ In tmux, hit the prefix `ctrl+b` (my modified prefix is ctrl+m) and then:
     ,  name window
     &  kill window
 
-## <a name="PanesSplits"></a>Panes (splits) 
+## Panes (splits) 
 
     %  vertical split
     "  horizontal split
@@ -214,12 +214,12 @@ In tmux, hit the prefix `ctrl+b` (my modified prefix is ctrl+m) and then:
     +  break pane into window (e.g. to select text by mouse to copy)
     -  restore pane from window
     ⍽  space - toggle between layouts
-    <prefix> q (Show pane numbers, when the numbers show up type the key to goto that pane)
-    <prefix> { (Move the current pane left)
-    <prefix> } (Move the current pane right)
-    <prefix> z toggle pane zoom
+    `<prefix>` q (Show pane numbers, when the numbers show up type the key to goto that pane)
+    `<prefix>` { (Move the current pane left)
+    `<prefix>` } (Move the current pane right)
+    `<prefix>` z toggle pane zoom
 
-## <a name="syncPanes"></a>Sync Panes 
+## Sync Panes 
 
 You can do this by switching to the appropriate window, typing your Tmux prefix (commonly Ctrl-B or Ctrl-A) and then a colon to bring up a Tmux command line, and typing:
 
@@ -342,10 +342,10 @@ There is a lot of conceptual overlap with tmux and tiling windows managers
 where are these notes?
 wayland.txt
 
-https://www.slant.co/topics/1902/~best-tiling-window-managers-for-linux
-https://www.reddit.com/r/i3wm/comments/66ho9z/why_you_use_tmux_when_already_using_i3/
-https://www.slant.co/options/1288/~awesome-review
-https://www.slant.co/options/1287/~xmonad-review
+https://www.slant.co/topics/1902/~best-tiling-window-managers-for-linux  
+https://www.reddit.com/r/i3wm/comments/66ho9z/why_you_use_tmux_when_already_using_i3/  
+https://www.slant.co/options/1288/~awesome-review  
+https://www.slant.co/options/1287/~xmonad-review  
 
 
 ## Launchers / dmenu
