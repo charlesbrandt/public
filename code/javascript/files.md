@@ -45,7 +45,7 @@ fs.readFile('file', 'utf8', function (err, data) {
 https://duckduckgo.com/?q=node+js+load+content+from+file&t=canonical&ia=qa
 node js load content from file at DuckDuckGo
 
-This can quickly move beyond the scope of just being Javascript specific to a system level [Distributed File System](~/public/storage/storage.md)
+This can quickly move beyond the scope of just being Javascript specific to a system level Distributed File System.
 
 
 ## List files in a directory
@@ -123,12 +123,19 @@ https://deliciousbrains.com/using-javascript-file-api-to-avoid-file-upload-limit
 
 Example created/tested in music_server/ui/components/FileReader.vue and pages/Editor.vue
 
+## File Sizes
+
+https://github.com/sindresorhus/pretty-bytes
+sindresorhus/pretty-bytes: Convert bytes to a human readable string: 1337 → 1.34 kB
+https://web.archive.org/web/20150324153922/https://pacoup.com/2009/05/26/kb-kb-kib-whats-up-with-that/
+kb, kB, KiB… What’s Up With That? | Pacoup.com
+
 
 ## Node file system interaction
 
-If you want to work programmaticly with a filesystem from node, not many libraries available. Maybe because it's not necessary to work at that level? See above 
+Just use the built in `fs` library. 
 
-See also [WebDAV](webdav.md)
+See also WebDAV
 
 https://duckduckgo.com/?q=node+list+files+in+folder&t=canonical&ia=web
 node list files in folder at DuckDuckGo
@@ -148,11 +155,4 @@ https://github.com/mihneadb/node-directory-tree
 GitHub - mihneadb/node-directory-tree: Convert a directory tree to a JS object.
 https://github.com/MrRaindrop/tree-cli
 GitHub - MrRaindrop/tree-cli: 🌴List contents of directories in tree-like format.
-
-## File Sizes
-
-https://github.com/sindresorhus/pretty-bytes
-sindresorhus/pretty-bytes: Convert bytes to a human readable string: 1337 → 1.34 kB
-https://web.archive.org/web/20150324153922/https://pacoup.com/2009/05/26/kb-kb-kib-whats-up-with-that/
-kb, kB, KiB… What’s Up With That? | Pacoup.com
 

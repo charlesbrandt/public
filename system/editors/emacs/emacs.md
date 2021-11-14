@@ -43,7 +43,7 @@ Emacs is built on a language called lisp.
 
 Custom commands can be written in lisp.
 
-One of the ones I like is [moments.el](.emacs.d/moments.el)
+I've written some of my own in this repository. See also `moments.el` / `.emacs.d/moments.el`
 
 ### Melpa
 
