@@ -39,7 +39,6 @@ https://duckduckgo.com/?t=ffab&q=node+pass+parameters+to+script&ia=web
 #!/usr/bin/env node
 
 var fs = require('fs');
-const { exec } = require("child_process");
 
 var args = process.argv.slice(2);
 console.log("Parameters passed in: ", args);
@@ -51,41 +50,47 @@ if (args.length == 0) {
   process.exit(1);
 }
 
-exec(`ls -la ${args[0]}`, (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
-
-
-/*
-// for reading files and loading them as JSON
-// var obj;
-fs.readFile(args[0], 'utf8', (err, data) => {
-  if (err) throw err;
-  // parse data as json:
-  // obj = JSON.parse(data);
-
-  // iterate over lines:
-  const lines = data.split('\n');
-  for(var i=0; i < lines.length; i++) {
-    console.log(lines[i]);
-  }
-});
-*/
-
+console.log();
+console.log("Directory contents:", args[0]);
+console.log();
 // for scanning a directory
 fs.readdir(args[0], (err, files) => {
-  files.forEach(file => {
-    console.log(file);
+  files.forEach((file) => {
+    console.log(`[${file}](${file})  `);
   });
+  console.log();
 });
+
+// For system calls
+// const { exec } = require("child_process");
+
+// exec(`ls -la ${args[0]}`, (error, stdout, stderr) => {
+//     if (error) {
+//         console.log(`error: ${error.message}`);
+//         return;
+//     }
+//     if (stderr) {
+//         console.log(`stderr: ${stderr}`);
+//         return;
+//     }
+//     console.log(`stdout: ${stdout}`);
+// });
+
+// For reading files and loading them as JSON
+
+// var obj;
+// fs.readFile(args[0], 'utf8', (err, data) => {
+//   if (err) throw err;
+
+//   // parse data as json:
+//   // obj = JSON.parse(data);
+
+//   // iterate over lines:
+//   const lines = data.split('\n');
+//   for(var i=0; i < lines.length; i++) {
+//     console.log(lines[i]);
+//   }
+// });
 
 
 ```
