@@ -3,7 +3,316 @@
 https://nodejs.org/en/  
 https://github.com/nodejs/node  
 
-Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+Node.js® is a [JavaScript](index.md) runtime built on Chrome's V8 JavaScript engine.
+
+Useful for running Javascript on a server with access to local system resources.
+
+## Running
+
+```
+node
+```
+
+### Parameters / Args
+
+```
+var args = process.argv.slice(2);
+```
+
+https://stackoverflow.com/questions/4351521/how-do-i-pass-command-line-arguments-to-a-node-js-program  
+javascript - How do I pass command line arguments to a Node.js program? - Stack Overflow  
+
+For more involved command line parameter parsing:
+
+https://github.com/substack/minimist  
+💤 GitHub - substack/minimist: parse argument options  
+
+https://nodejs.org/docs/latest/api/process.html#process_process_argv  
+💤 Process | Node.js v17.1.0 Documentation  
+
+https://duckduckgo.com/?t=ffab&q=node+pass+parameters+to+script&ia=web  
+💤 node pass parameters to script at DuckDuckGo  
+
+### Sample Script
+
+```
+#!/usr/bin/env node
+
+var fs = require('fs');
+const { exec } = require("child_process");
+
+var args = process.argv.slice(2);
+console.log("Parameters passed in: ", args);
+
+// require arguments
+if (args.length == 0) {
+  console.log("Usage:");
+  console.log("template.js [source] [destination]");
+  process.exit(1);
+}
+
+exec(`ls -la ${args[0]}`, (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+});
+
+
+/*
+// for reading files and loading them as JSON
+// var obj;
+fs.readFile(args[0], 'utf8', (err, data) => {
+  if (err) throw err;
+  // parse data as json:
+  // obj = JSON.parse(data);
+
+  // iterate over lines:
+  const lines = data.split('\n');
+  for(var i=0; i < lines.length; i++) {
+    console.log(lines[i]);
+  }
+});
+*/
+
+// for scanning a directory
+fs.readdir(args[0], (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
+
+```
+
+https://www.codegrepper.com/code-examples/shell/node+run+shell+command
+
+## Modules
+
+Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
+
+https://nodejs.org/api/modules.html#modules_all_together
+
+https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
+
+https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
+
+### Import vs Require
+
+ES6 modules use the import syntax. Seems like the way to go moving forward.
+
+https://stackoverflow.com/questions/46677752/the-difference-between-requirex-and-import-x  
+node.js - The difference between "require(x)" and "import x" - Stack Overflow  
+
+https://stackoverflow.com/questions/31354559/using-node-js-require-vs-es6-import-export  
+javascript - Using Node.js require vs. ES6 import/export - Stack Overflow  
+
+https://duckduckgo.com/?t=ffab&q=javascript+require+vs+import&ia=web  
+javascript require vs import at DuckDuckGo  
+
+### Local Development
+
+https://duckduckgo.com/?t=ffab&q=work+on+npm+module+in+development&ia=web  
+work on npm module in development at DuckDuckGo  
+https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/  
+An Absolute Beginner's Guide to Using npm - NodeSource  
+https://www.deadcoderising.com/how-to-smoothly-develop-node-modules-locally-using-npm-link/  
+How to smoothly develop node modules locally using npm link  
+
+
+## Package Managers
+
+Package managers ensure that all of the modules that your application depends on are compatible and available to the local code base.
+
+### Types of dependencies
+
+https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
+
+> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
+
+
+### Choosing a package manager
+
+NPM vs Yarn vs PNPM
+
+The answer? Use what your team is using. Be consistent there. Working on an open project? Use what the project is using.
+
+All are good. No need to get hung up here. See what works best and make a change when necessary. 
+
+### pnpm
+
+PNPM uses links to node modules so you don't end up with 100 copies of the same module on your local drive. This is useful in development when you may want to use a large development module in multiple projects. 
+
+https://pnpm.io/
+
+Only downside is that it is not included by default in the main docker node image. 
+
+https://pnpm.io/installation
+
+With node:
+
+```
+curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+```
+
+With npm:
+
+```
+npm install -g pnpm
+```
+
+npx:
+
+```
+npx pnpm add -g pnpm
+```
+
+
+
+### Yarn
+
+It should be available in most Node containers.
+
+Once you have `yarn` available, you can add packages as a requirement with:
+
+    yarn add <name>
+
+or as a dev dependency with:
+
+    yarn add <package...> [--dev/-D]
+
+https://classic.yarnpkg.com/en/docs/cli/add/  
+https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-dev-d  
+
+To install a package globally, the order of the parameters is important:
+
+    yarn global <add/bin/list/remove/upgrade> [--prefix]
+    
+To remove a dependency
+
+     yarn remove <name>
+     
+Note: manually deleting from `package.json` removes the dependency from the project, but will not remove the files from `node_modules` of the local instance.
+
+#### Reinstall Modules
+
+Reinstalling a package after just deleting the node module works with:
+
+    yarn install --check-files
+
+[via](https://stackoverflow.com/questions/41864099/how-do-i-force-yarn-to-reinstall-a-package)
+
+#### Install / update yarn:
+
+    npm install -g yarn
+
+or use a system level package manager
+
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+then, with apt-get:
+
+    sudo apt-get install --no-install-recommends yarn
+
+via https://yarnpkg.com/lang/en/docs/install/
+
+### Npm
+
+NPM is the default package manager for Node.
+
+Install everything as configured in package.json file
+
+    npm install
+
+Calls to
+
+    npm install --save [package name]
+
+or
+
+    npm install --save-dev [package name]
+
+or
+
+    npm install --save-optional [package name]
+
+will update the package.json to list your dependencies.
+
+To remove a dependency:
+
+     npm uninstall <name> --save
+
+https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
+
+
+## Lock files
+
+Is it really a good idea to track lock files under version control?
+Seems like it adds a lot of noise to the process
+
+Yes, it can add noise if you manage it manually. However, without it you may run into situations where deployments to a different environment may not work due to different versions of modules being installed. It's better to test with a set of locked versions. In that case, lock files are necessary.
+
+### Resolve yarn.lock conflicts
+
+It's as easy as running `yarn` or `yarn install` to automatically resolve version control conflicts in a yarn.lock file. Sweet!
+
+### Resolving package-lock.json conflicts
+
+Occasionally, two separate calls to `npm install` will create package locks that cause merge conflicts in source control systems. As of npm@5.7.0, these conflicts can be resolved by manually fixing any package.json conflicts, and then running npm install [--package-lock-only] again. npm will automatically resolve any conflicts for you and write a merged package lock that includes all the dependencies from both branches in a reasonable tree. If --package-lock-only is provided, it will do this without also modifying your local node_modules/.
+
+To make this process seamless on git, consider installing npm-merge-driver, which will teach git how to do this itself without any user interaction. In short:
+
+    $ npx npm-merge-driver install -g
+
+will let you do this, and even works with pre-npm@5.7.0 versions of npm 5, albeit a bit more noisily. Note that if package.json itself conflicts, you will have to resolve that by hand and run npm install manually, even with the merge driver.
+
+[via](https://docs.npmjs.com/cli/v6/configuring-npm/package-locks)
+
+See also
+https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
+
+
+## Process Monitoring
+
+If you have a service running live using a node based (e.g. [express](../api/express.md)) server, a monitoring tool can make sure it stays up. Options include...
+
+
+### Docker
+
+[Docker](/system/virtualization/docker.md) is a great option.
+
+
+### PM2
+
+https://www.google.com/search?client=ubuntu&channel=fs&q=pm2&ie=utf-8&oe=utf-8  
+pm2 - Google Search  
+https://pm2.keymetrics.io/  
+PM2 - Home  
+
+### Nodemon
+
+https://github.com/remy/nodemon  
+GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development  
+https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8&oe=utf-8  
+nodemon vs pm2 - Google Search  
+
+
+## Environment Variables (.env) dotenv
+
+Variables set in a `.env` file are automatically loaded by node and made available via `process.env.*` variables. 
+
+Try out a ui/.env file. Is the value available via process.env.whatever?
+
+Many frameworks leverage these variables for configuration. 
+
+See also: [nuxt configuration variables](../vue/nuxt.html#configuration-variables-env-dotenv)
 
 ## Install
 
@@ -91,222 +400,3 @@ Nodesource is another popular way to install node
 
 https://github.com/nodesource/distributions/blob/master/README.md
 
-## Modules
-
-Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
-
-https://nodejs.org/api/modules.html#modules_all_together
-
-https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
-
-https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
-
-### Import vs Require
-
-ES6 modules use the import syntax. Seems like the way to go moving forward.
-
-https://stackoverflow.com/questions/46677752/the-difference-between-requirex-and-import-x  
-node.js - The difference between "require(x)" and "import x" - Stack Overflow  
-
-https://stackoverflow.com/questions/31354559/using-node-js-require-vs-es6-import-export  
-javascript - Using Node.js require vs. ES6 import/export - Stack Overflow  
-
-https://duckduckgo.com/?t=ffab&q=javascript+require+vs+import&ia=web  
-javascript require vs import at DuckDuckGo  
-
-## Local Development
-
-https://duckduckgo.com/?t=ffab&q=work+on+npm+module+in+development&ia=web  
-work on npm module in development at DuckDuckGo  
-https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/  
-An Absolute Beginner's Guide to Using npm - NodeSource  
-https://www.deadcoderising.com/how-to-smoothly-develop-node-modules-locally-using-npm-link/  
-How to smoothly develop node modules locally using npm link  
-
-
-## Package Managers
-
-Package managers ensure that all of the modules that your application depends on are compatible and available to the local code base.
-
-### Types of dependencies
-
-https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
-
-> Dependencies serve many different purposes. Some dependencies are needed to build your project, others are needed when you’re running your program. As such there are a number of different types of dependencies that you can have (e.g. dependencies, devDependencies, and peerDependencies).
-
-
-### Choosing a package manager
-
-NPM vs Yarn vs PNPM
-
-The answer? Use what your team is using. Be consistent there. Working on an open project? Use what the project is using.
-
-DIY? Flip a coin.
-
-All are good. No need to get hung up here.
-
-### Yarn
-
-It should be available in most Node containers.
-
-Once you have `yarn` available, you can add packages as a requirement with:
-
-    yarn add <name>
-
-or as a dev dependency with:
-
-    yarn add <package...> [--dev/-D]
-
-https://classic.yarnpkg.com/en/docs/cli/add/  
-https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-dev-d  
-
-To install a package globally, the order of the parameters is important:
-
-    yarn global <add/bin/list/remove/upgrade> [--prefix]
-    
-To remove a dependency
-
-     yarn remove <name>
-     
-Note: manually deleting from `package.json` removes the dependency from the project, but will not remove the files from `node_modules` of the local instance.
-
-#### Reinstall Modules
-
-Reinstalling a package after just deleting the node module works with:
-
-    yarn install --check-files
-
-[via](https://stackoverflow.com/questions/41864099/how-do-i-force-yarn-to-reinstall-a-package)
-
-#### Install / update yarn:
-
-    npm install -g yarn
-
-or use a system level package manager
-
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-then, with apt-get:
-
-    sudo apt-get install --no-install-recommends yarn
-
-via https://yarnpkg.com/lang/en/docs/install/
-
-### Npm
-
-NPM is the default package manager for Node.
-
-Install everything as configured in package.json file
-
-    npm install
-
-Calls to
-
-    npm install --save [package name]
-
-or
-
-    npm install --save-dev [package name]
-
-or
-
-    npm install --save-optional [package name]
-
-will update the package.json to list your dependencies.
-
-To remove a dependency:
-
-     npm uninstall <name> --save
-
-https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
-
-### pnpm
-
-https://pnpm.io/
-
-Seeing this used more frequently. Only downside is that it is not included by default in the main docker node image. 
-
-https://pnpm.io/installation
-
-With node:
-
-```
-curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
-```
-
-With npm:
-
-```
-npm install -g pnpm
-```
-
-npx:
-
-```
-npx pnpm add -g pnpm
-```
-
-
-## Lock files
-
-Is it really a good idea to track lock files under version control?
-Seems like it adds a lot of noise to the process
-
-Yes, it can add noise if you manage it manually. However, without it you may run into situations where deployments to a different environment may not work due to different versions of modules being installed. It's better to test with a set of locked versions. In that case, lock files are necessary.
-
-### Resolve yarn.lock conflicts
-
-It's as easy as running `yarn` or `yarn install` to automatically resolve version control conflicts in a yarn.lock file. Sweet!
-
-### Resolving package-lock.json conflicts
-
-Occasionally, two separate calls to `npm install` will create package locks that cause merge conflicts in source control systems. As of npm@5.7.0, these conflicts can be resolved by manually fixing any package.json conflicts, and then running npm install [--package-lock-only] again. npm will automatically resolve any conflicts for you and write a merged package lock that includes all the dependencies from both branches in a reasonable tree. If --package-lock-only is provided, it will do this without also modifying your local node_modules/.
-
-To make this process seamless on git, consider installing npm-merge-driver, which will teach git how to do this itself without any user interaction. In short:
-
-    $ npx npm-merge-driver install -g
-
-will let you do this, and even works with pre-npm@5.7.0 versions of npm 5, albeit a bit more noisily. Note that if package.json itself conflicts, you will have to resolve that by hand and run npm install manually, even with the merge driver.
-
-[via](https://docs.npmjs.com/cli/v6/configuring-npm/package-locks)
-
-See also
-https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json
-
-
-## Process Monitoring
-
-If you have a service running live using a node based (e.g. [express](../api/express.md)) server, a monitoring tool can make sure it stays up. Options include...
-
-
-### Docker
-
-[Docker](/system/virtualization/docker.md) is a great option.
-
-
-### PM2
-
-https://www.google.com/search?client=ubuntu&channel=fs&q=pm2&ie=utf-8&oe=utf-8  
-pm2 - Google Search  
-https://pm2.keymetrics.io/  
-PM2 - Home  
-
-### Nodemon
-
-https://github.com/remy/nodemon  
-GitHub - remy/nodemon: Monitor for any changes in your node.js application and automatically restart the server - perfect for development  
-https://www.google.com/search?client=ubuntu&channel=fs&q=nodemon+vs+pm2&ie=utf-8&oe=utf-8  
-nodemon vs pm2 - Google Search  
-
-
-## Environment Variables (.env) dotenv
-
-Variables set in a `.env` file are automatically loaded by node and made available via `process.env.*` variables. 
-
-Try out a ui/.env file. Is the value available via process.env.whatever?
-
-Many frameworks leverage these variables for configuration. 
-
-See also: [nuxt configuration variables](../vue/nuxt.html#configuration-variables-env-dotenv)

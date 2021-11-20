@@ -4,10 +4,13 @@ Next generation js bundler & deployment tool (???)
 
 The new build / bundler. And so much more. 
 
+https://vitejs.dev/guide/#overview
+
 https://vitejs.dev/guide/#community-templates  
-Getting Started | Vite  
+Community templates  
+
 https://vitejs.dev/guide/#index-html-and-project-root  
-Getting Started | Vite  
+Project Root | Vite  
 
 
 https://duckduckgo.com/?t=ffab&q=vite+setup&ia=web  
@@ -17,9 +20,8 @@ vite setup at DuckDuckGo
 https://github.com/vitejs/awesome-vite  
 💤 vitejs/awesome-vite: ⚡️ A curated list of awesome things related to Vite.js  
 
-## Getting Started
-
-https://vitejs.dev/guide/#overview
+https://github.com/vitejs  
+vite  
 
 
 ## Configuration
@@ -35,7 +37,68 @@ Backend Integration | Vite
 https://duckduckgo.com/?t=ffab&q=vite+server+proxy&ia=web  
 vite server proxy at DuckDuckGo  
 
+### Dev Server Proxy
 
+It is possible to configure the Vite dev server to act as a proxy to the API, even if the API is at a different address. This is useful to proxy to an API being served by a local container. 
+
+### SSL
+
+https://duckduckgo.com/?t=ffab&q=vite+ssl&ia=web  
+vite ssl at DuckDuckGo  
+https://github.com/web2033/vite-vue3-tailwind-starter/discussions/112  
+Enabling https on localhost · Discussion #112 · web2033/vite-vue3-tailwind-starter  
+https://github.com/FiloSottile/mkcert  
+FiloSottile/mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.  
+
+
+
+### Nginx / Docker / Proxies
+
+Getting vite to run behind a proxy in development mode requires forwarding ports used for websockets. 
+
+https://github.com/vitejs/vite/discussions/4795  
+Noticable page refresh when using nginx proxy in front of vite · Discussion #4795 · vitejs/vite  
+
+https://vitejs.dev/config/#publicdir  
+💤 Configuring Vite | Vite  
+https://duckduckgo.com/?t=ffab&q=vite+local+development+allow+CORS+access+to+api+at+a+different+url&ia=web  
+vite local development allow CORS access to api at a different url at DuckDuckGo  
+https://dev.to/alirezahamid/how-to-fix-cors-issue-in-vuejs-545o  
+How to fix the CORS issue in Vuejs - DEV Community  
+https://duckduckgo.com/?t=ffab&q=vite+devserver+proxy&ia=web  
+vite devserver proxy at DuckDuckGo  
+https://stackoverflow.com/questions/64677212/how-to-configure-proxy-in-vite  
+vuejs3 - How to configure proxy in Vite? - Stack Overflow  
+https://duckduckgo.com/?q=vite+dev+server+ssl&t=ffab&ia=web  
+vite dev server ssl at DuckDuckGo  
+https://duckduckgo.com/?t=ffab&q=vite+run+dev+server+on+port+80&ia=web  
+vite run dev server on port 80 at DuckDuckGo  
+https://github.com/vitejs/vite/issues/726  
+Allow different frontend port · Issue #726 · vitejs/vite · GitHub  
+https://github.com/vitejs/vite/issues/652  
+WebSocket connection can not work inside Docker container · Issue #652 · vitejs/vite · GitHub  
+https://github.com/angela-1/azalea  
+💤 GitHub - angela-1/azalea: 人员管理系统  
+https://github.com/vitejs/vite/issues/3093  
+💤 Vite HMR is unusable behind reverse proxies with random port numbers for client · Issue #3093 · vitejs/vite · GitHub  
+https://github.com/vitejs/vite/discussions/2563  
+💤 Caddy Server Reverse Proxy SSL Infinite Loop · Discussion #2563 · vitejs/vite  
+
+https://duckduckgo.com/?t=ffab&q=vite+nginx+proxy+visible+refresh&ia=web  
+vite nginx proxy visible refresh at DuckDuckGo  
+
+https://github.com/vitejs/vite/issues?q=is%3Aissue+is%3Aopen+visible+refresh  
+Issues · vitejs/vite  
+https://github.com/vitejs/vite/issues/3208  
+Issues with real world app - slow refresh, rendering parts. · Issue #3208 · vitejs/vite  
+https://github.com/vitejs/vite/discussions/4795  
+Noticable page refresh when using nginx proxy in front of vite · Discussion #4795 · vitejs/vite · GitHub  
+https://github.com/vitejs/vite/discussions/4577  
+How do I debug HMR/React Fast Refresh not working? · Discussion #4577 · vitejs/vite  
+https://www.google.com/search?channel=fs&client=ubuntu&q=vite+nginx+proxy+visible+refresh  
+vite nginx proxy visible refresh - Google Search  
+https://linuxtut.com/en/2c321374e917cc679efb/  
+Points stuck when running vite + Nginx in Docker environment  
 
 https://serverfault.com/questions/586586/nginx-redirect-via-proxy-rewrite-and-preserve-url  
 Nginx Redirect via Proxy, Rewrite and Preserve URL - Server Fault  
@@ -47,65 +110,21 @@ nginx - proxy_pass overwrites the URL changed by rewrite directive - Stack Overf
 
 ## Vitepress
 
-https://github.com/vuejs/vitepress  
-GitHub - vuejs/vitepress: Vite & Vue powered static site generator.  
-
-### Configuration
-
-Vitepress leverages vite for the build. Vite configurations apply here as well.   
-  
-https://vitepress.vuejs.org/guide/configuration.html  
-Configuration | VitePress  
-https://vitepress.vuejs.org/config/basics.html  
-App Config: Basics | VitePress  
-https://github.com/vuejs/vitepress/blob/main/src/node/config.ts#L15  
-vitepress/config.ts at main · vuejs/vitepress · GitHub  
-  
-https://duckduckgo.com/?q=vitepress&t=ffab&ia=web  
-vitepress at DuckDuckGo  
-
-
-
-https://duckduckgo.com/?t=ffab&q=vuepress+edit+content&ia=web  
-vuepress edit content at DuckDuckGo  
-https://vuepress.vuejs.org/config/#basic-config  
-Config Reference | VuePress  
-https://vuepress.vuejs.org/guide/  
-Introduction | VuePress  
-https://duckduckgo.com/?t=ffab&q=vuepress+vite&ia=web  
-vuepress vite at DuckDuckGo  
-https://vitepress.vuejs.org/  
-What is VitePress? | VitePress  
-https://vitepress.vuejs.org/guide/getting-started.html  
-Getting Started | VitePress  
-https://vitepress.vuejs.org/guide/deploy.html#github-pages  
-Deploying | VitePress  
-https://vitepress.vuejs.org/guide/using-vue.html#using-components  
-Using Vue in Markdown | VitePress  
-https://vitepress.vuejs.org/guide/theming.html  
-Theming | VitePress  
-https://vitepress.vuejs.org/guide/frontmatter.html#head  
-Frontmatter | VitePress  
-https://github.com/jonschlinkert/gray-matter  
-GitHub - jonschlinkert/gray-matter: Smarter YAML front matter parser, used by metalsmith, Gatsby, Netlify, Assemble, mapbox-gl, phenomic, and many others. Simple to use, and battle tested. Parses YAML by default but can also parse JSON Front Matter, Coffee Front Matter, TOML Front Matter, and has support for custom parsers.  
-https://duckduckgo.com/?t=ffab&q=TypeError%3A+Cannot+destructure+property+%27locales%27+of+%27siteData.themeConfig%27+as+it+is+undefined.&ia=web  
-TypeError: Cannot destructure property 'locales' of 'siteData.themeConfig' as it is undefined. at DuckDuckGo  
-https://github.com/vuejs/vitepress/issues/379  
-Cannot destructure property 'locales' of 'siteData.themeConfig' as it is undefined. · Issue #379 · vuejs/vitepress · GitHub  
-https://vitejs.dev/config/#server-middlewaremode  
-Configuring Vite | Vite  
-  
+[vitepress](vitepress.md)
 
 ## VVT
+
+https://github.com/web2033/vite-vue3-tailwind-starter  
+💤 web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
 
 I love how minimal this one is. Doesn't get in the way if you want to include other things or customize. 
 
 No need to include full git repo history though
 
-https://github.com/web2033/vite-vue3-tailwind-starter  
-💤 web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
-
-like the approach.
+```
+npx degit web2033/vite-vue3-tailwind-starter vvt-app
+cd vvt-app
+```
 
 ```
 yarn run dev

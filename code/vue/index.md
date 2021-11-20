@@ -329,12 +329,34 @@ Sometimes props arrive to the child component after the component's .mounted() c
 
 ### Slots
 
-https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots
-Slots — Vue.js
-https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md
-rfcs/0001-new-slot-syntax.md at master · vuejs/rfcs
-https://www.google.com/search?client=ubuntu&channel=fs&q=vue+props+vs+slots&ie=utf-8&oe=utf-8
-vue props vs slots - Google Search
+Pass in customized markup content from the parent template. 
+
+Named slots are handy for layout components:
+
+```
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+
+```
+
+via:  
+https://v3.vuejs.org/guide/component-slots.html#named-slots  
+
+https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots  
+Slots — Vue.js  
+https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md  
+rfcs/0001-new-slot-syntax.md at master · vuejs/rfcs  
+https://www.google.com/search?client=ubuntu&channel=fs&q=vue+props+vs+slots&ie=utf-8&oe=utf-8  
+vue props vs slots - Google Search  
 
 ## Layouts
 

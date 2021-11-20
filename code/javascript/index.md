@@ -4,11 +4,11 @@ Javascript, JS, ECMAScript
 
 Javascript is not the same as Java (despite the confusing name similarities). 
 
-Here are some good introductions to working with javascript:
-https://developer.mozilla.org/en/JavaScript/Guide
-
-And a more detailed reference here:
-https://developer.mozilla.org/en/JavaScript/Reference
+Here are some good introductions to working with javascript:  
+https://developer.mozilla.org/en/JavaScript/Guide  
+  
+And a more detailed reference here:  
+https://developer.mozilla.org/en/JavaScript/Reference  
 
 [Basics](basics.md)  
 
