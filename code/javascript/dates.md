@@ -22,9 +22,7 @@ Date.parse('01 Jan 1970 00:00:00 GMT');
 
 ## Formatting
 
-Good options exist natively in newer versions of Javascript
-
-https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
+Options exist natively in newer versions of Javascript
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
 
@@ -35,6 +33,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ```
 
 https://stackoverflow.com/questions/45724975/date-tolocaledatestring-is-not-a-function
+
+To format a date for a filename, the following pattern works:
+
+```
+function toJSONLocal(date) {
+  var local = new Date(date);
+  local.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+  return local.toJSON().slice(0, 10);
+}
+
+let date = new Date();
+let name = toJSONLocal(date);
+console.log(name);
+```
+
+adapted via:  
+https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
+
 
 
 ## Adjustments

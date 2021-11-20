@@ -63,6 +63,26 @@ And for a laugh:
 https://www.youtube.com/watch?v=LH5dOVqqCc8
 Coding Style: CamelCase vs. snake_case - YouTube
 
+### _id vs id
+
+Personally, I'm not a fan of including the table name in front of all of the column names. 
+
+But what to name the `id` field? 
+
+Leaning toward `_id` because it should be easier to identify / find / search for in code. 
+
+https://duckduckgo.com/?t=ffab&q=best+name+to+use+for+database+id+field&ia=web  
+best name to use for database id field at DuckDuckGo  
+https://stackoverflow.com/questions/208580/naming-of-id-columns-in-database-tables  
+sql - Naming of ID columns in database tables - Stack Overflow  
+https://stackoverflow.com/questions/199498/foreign-key-naming-scheme  
+database - Foreign Key naming scheme - Stack Overflow  
+https://duckduckgo.com/?t=ffab&q=database+_id+vs+id&ia=web  
+database _id vs id at DuckDuckGo  
+https://stackoverflow.com/questions/9694460/difference-between-id-and-id-fields-in-mongodb  
+mongoid - Difference between "id" and "_id" fields in MongoDB - Stack Overflow  
+
+
 ### Vue
 
 Some well thought out conventions show up in the Vue Style Guide

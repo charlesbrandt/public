@@ -15,6 +15,26 @@ Manual | Sequelize
   
 https://github.com/feathersjs-ecosystem/feathers-sequelize  
 
+## Model Files
+
+I like using the pattern `model_name.model.js` 
+
+### Index
+
+For index fields, you can specify 
+
+```
+       id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+```
+
+https://stackoverflow.com/questions/33775165/auto-increment-id-with-sequelize-in-mysql
+
+> You must be sure you're not even sending the id key at all.
+
 ## Schema Generation
 
 Sequelize Auto can help generate schemas from an existing database
@@ -60,15 +80,30 @@ edit the `config/config.json` file to reflect your environment.
 
 ### Migration definitions
 
+Migrations make use of the Sequelize Query Interface to effect schema changes in the database:
+
+https://sequelize.org/master/manual/query-interface.html
+
+Create the migration file skeleton: 
+
 ```
+docker-compose exec api bash
+cd ../
+
 npx sequelize-cli migration:generate --name user-columns
 ```
 
-Create the migration file. Follow along with:
+It may be necessary to update permissions at the host level if the container writes new files as root. 
+
+```
+sudo chown -R account: api/migrations/
+```
+
+Follow along with:
 
 https://sequelize.org/master/manual/migrations.html#migration-skeleton
 
-Note: the database table name needs to be used here. The `queryInterface` hasn't applied model name mappings yet. 
+Note: the database table name needs to be used here (e.g. `users` below). The `queryInterface` hasn't applied model name mappings yet. 
 
 example -- adding columns:
 
@@ -97,6 +132,7 @@ and don't forget to do the reverse operation in `down`:
 		return queryInterface.sequelize.transaction((t) => {
 			return Promise.all([
 				queryInterface.removeColumn("users", "username", { transaction: t }),
+                ])
 ```
 
 
@@ -112,6 +148,29 @@ Undo the migrations with:
 
 ```
 npx sequelize-cli db:migrate:undo
+```
+
+### Migration Examples
+
+#### Raw SQL commands
+
+TODO: still need to confirm this works, but the general idea is there
+
+```
+"use strict";
+
+module.exports = {
+	up: async (queryInterface, Sequelize) => {
+		await queryInterface.sequelize.query(
+			"ALTER TABLE table_name MODIFY id INTEGER NOT NULL AUTO_INCREMENT; ALTER TABLE table_name AUTO_INCREMENT = 10;"
+		);
+	},
+
+	down: async (queryInterface, Sequelize) => {
+		// put things back the way they were (minus data)
+	},
+};
+
 ```
 
 ### See Also
@@ -138,12 +197,27 @@ Model.findAll({
 });
 ```
 
+`findAll` can also be used in a search capacity
+
+```
+	db.item
+		.findAll({
+			where: {
+				name: { [Op.like]: `%${req.params.query}%` },
+			},
+		})
+
+```
+
+
+
 ### Insert
 
 ```
 const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
 console.log("Jane's auto-generated ID:", jane.id);
 ```
+
 
 
 ## API Integration
@@ -398,3 +472,105 @@ sequelize specify id at DuckDuckGo
 https://github.com/sequelize/sequelize/issues/741  
 Don't have a column call id column · Issue #741 · sequelize/sequelize  
 
+
+## CRUD Express Example
+
+Replace `item` with your model
+
+```
+var express = require("express");
+var router = express.Router();
+var db = require("../db");
+const { Op } = require("sequelize");
+
+router.get("/find/:query", function (req, res, next) {
+	db.item
+		.findAll({
+			where: {
+				name: { [Op.like]: `%${req.params.query}%` },
+			},
+		})
+		.then((match) => {
+			console.log("Matched by find", match);
+			res.json(
+				match.map(({ name }) => {
+					return { value: name };
+				})
+			);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+/* GET the details of a item */
+router.get("/:id", function (req, res, next) {
+	db.item
+		.findOne({
+			where: { id: req.params.id },
+			// without this, sequelize only returns one result?
+			exclude: ["id"],
+		})
+		.then((match) => {
+			res.json(match);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+router.patch("/:id", function (req, res, next) {
+	db.item
+		.findOne({
+			where: { id: req.params.id },
+		})
+		.then((match) => {
+			console.log("Found a match", match);
+			match.update(req.body);
+			console.log("match updated", match);
+			res.json(match);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+router.delete("/:id", function (req, res, next) {
+	db.item
+		.destroy({
+			where: { id: req.params.id },
+		})
+		.then((match) => {
+			res.json({ result: "success" });
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+router.get("/", function (req, res, next) {
+	db.item
+		.findAll({})
+		.then((matches) => {
+			res.json(matches);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+router.post("/", function (req, res, next) {
+	// const newItem = JSON.parse(req.body);
+	// console.log("CREATE NEW ITEM", req.body);
+	db.item
+		.create(req.body)
+		.then((created) => {
+			res.json(created);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+module.exports = router;
+```
