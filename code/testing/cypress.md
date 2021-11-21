@@ -439,7 +439,7 @@ There is already a `package.json` and `node_modules` in ui
 
 ```
 cd ui
-yarn add cypress --dev
+pnpm i -D cypress # yarn add cypress --dev
 ```
 
 will need a cypress.json file that points to the right test source locations
@@ -463,6 +463,11 @@ export CYPRESS_BASE_URL=https://localhost
 export CYPRESS_API_URL=https://localhost/api
 
 
+```
+npx cypress open
+```
+
+This only works with yarn, not other node package managers
 ```
 yarn run cypress open
 ```

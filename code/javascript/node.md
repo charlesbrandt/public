@@ -155,7 +155,6 @@ PNPM uses links to node modules so you don't end up with 100 copies of the same 
 
 https://pnpm.io/
 
-Only downside is that it is not included by default in the main docker node image. 
 
 https://pnpm.io/installation
 
@@ -176,6 +175,10 @@ npx:
 ```
 npx pnpm add -g pnpm
 ```
+
+One downside is that it is not included by default in the main docker node image. May not be necessary to use it in a container context. `pnpm` is more helpful on development. 
+
+One downside is the addition of `_tmp_*` directories. These are easy to ignore in [VSCode](/system/editors/vs-code/vs-code.md#ignore-files)
 
 
 

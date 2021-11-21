@@ -119,6 +119,25 @@ https://code.visualstudio.com/docs/languages/html
 
 ## Preference Details
 
+### Ignore files
+
+Some package managers add extra files that you don't need to access in VSCode. 
+
+Configure VSCode to ignore them with the following settings
+
+```
+       "files.exclude": {
+            "**/.git": true,
+            "**/.DS_Store": true,
+            "node_modules" : true,
+            "**/_tmp_*": true,
+        }
+```
+
+Strangely, this answers the question I had, even though it doesn't answer the question of the post:
+
+https://stackoverflow.com/questions/30313805/how-to-ignore-node-modules-folder-during-typescript-build-in-vscode
+
 ### Default window size
 
 {
