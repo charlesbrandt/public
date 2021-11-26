@@ -50,6 +50,39 @@ Enabling https on localhost · Discussion #112 · web2033/vite-vue3-tailwind-sta
 https://github.com/FiloSottile/mkcert  
 FiloSottile/mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.  
 
+### Auto Import Components
+
+Generally, I like using auto importing with external packages that have a clear component name. Icons are a good fit. External component libraries (e.g. Element Plus) are also a good fit. 
+
+I don't like leaving out the import statements for local code (unless it's for something global like axios). It helps to know where components are being resolved from. It helps when importing a component to another project to know the dependencies. 
+
+https://github.com/antfu/unplugin-vue-components
+
+e.g.
+
+```
+npm i unplugin-vue-components -D
+```
+
+then update vite config to use the new resolver
+
+```
+// vite.config.js
+import Vue from '@vitejs/plugin-vue'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Components from 'unplugin-vue-components/vite'
+
+export default {
+  plugins: [
+    Vue(),
+    Components({
+      resolvers: IconsResolver(),
+    }),
+    Icons(),
+  ],
+}
+```
 
 
 ### Nginx / Docker / Proxies
