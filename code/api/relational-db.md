@@ -125,9 +125,73 @@ How to Rename a Column in MySQL {ALTER TABLE command}
 https://www.mysqltutorial.org/mysql-drop-table  
 MySQL DROP TABLE  
 
+#### Foreign keys
+
+https://stackoverflow.com/questions/43493889/cannot-delete-or-update-a-parent-row-a-foreign-key-constraint-fails-mysql
+
+```
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE CASCADE;
+```
+
+  - Add on delete cascade meaning that when user is deleted appointments relating to that user should also be deleted as suggested by Shadow (point number two)
+
+  - Add `on delete set null` meaning that when user is deleted appointments user_id relating to that user should be set to null (though you will have to change user_id int(10) UNSIGNED NOT NULL to user_id int(10) UNSIGNED DEFAULT NULL
 
 
-### Insert data
+
+### Manual Migrations
+
+If you haven't configured an actual migration system (like [Sequelize Migrations](sequelize.md#migrations)), track changes using a simple text file to note the SQL commands that get applied
+
+Use SQL commands to `ALTER` tables
+
+
+## Schema Diagrams
+
+### Diagrams.net 
+
+supports importing a sql file
+
+https://stackoverflow.com/questions/4108816/entity-relationship-diagram-software
+💤 database - Entity relationship diagram software - Stack Overflow
+
+### mysqlworkbench
+
+https://dev.mysql.com/downloads/workbench/
+
+Just downloading directly from the site
+
+```
+sudo dpkg -i mysql-workbench-community_8.0.27-1ubuntu20.04_amd64.deb
+
+sudo apt --fix-broken install
+```
+
+Using:
+
+File -> Import -> Reverse Engineer MySQL Create Script
+
+Will load the tables
+
+Then use 
+
+Model -> Create Diagram from Catalog Objects
+
+From here it's possible to move the objects around for an optimal layout. 
+
+It's also possible to access the database directly. If the database is available locally, there may not be an SSL proxy layer, which Workbench seems to want. 
+
+https://stackoverflow.com/questions/69747663/how-to-configure-mysql-workbench-to-not-require-ssl-encryption
+
+You can go to the Advanced tab and type the following in the Others field:
+
+    useSSL=0
+
+
+
+
+
+## Insert data
 
 No quotes are required around the column names, but quotes are required around the string values. (number values don't need quotes)
 
@@ -137,7 +201,7 @@ VALUES
 	(value1, value2,...);
 ```
 
-### Update data
+## Update data
 
 ```
 UPDATE [LOW_PRIORITY] [IGNORE] table_name 
@@ -149,8 +213,3 @@ SET
     condition];
 ```
 
-## Manual Migrations
-
-If you haven't configured an actual migration system (like [Sequelize Migrations](sequelize.md#migrations)), track changes using a simple text file to note the SQL commands that get applied
-
-Use SQL commands to `ALTER` tables

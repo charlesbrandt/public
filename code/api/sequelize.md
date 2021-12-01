@@ -93,7 +93,7 @@ cd ../
 npx sequelize-cli migration:generate --name user-columns
 ```
 
-It may be necessary to update permissions at the host level if the container writes new files as root. 
+It may be necessary to update permissions at the host level if the container writes new files as root. (Or just create the files manually outside of the container -- not that much to them). 
 
 ```
 sudo chown -R account: api/migrations/
@@ -150,22 +150,32 @@ Undo the migrations with:
 npx sequelize-cli db:migrate:undo
 ```
 
+### Seeds
+
+```
+npx sequelize-cli db:seed:all
+```
+
+
 ### Migration Examples
 
 #### Raw SQL commands
 
-TODO: still need to confirm this works, but the general idea is there
+Sometimes there are commands that needs to be run that don't have a query builder equivalent:
 
 ```
 "use strict";
-
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
+		await queryInterface.sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
 		await queryInterface.sequelize.query(
-			"ALTER TABLE table_name MODIFY id INTEGER NOT NULL AUTO_INCREMENT; ALTER TABLE table_name AUTO_INCREMENT = 10;"
+			"ALTER TABLE table MODIFY table_id INTEGER NOT NULL AUTO_INCREMENT"
 		);
+		await queryInterface.sequelize.query(
+			"ALTER TABLE table AUTO_INCREMENT = 167"
+		);
+		await queryInterface.sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
 	},
-
 	down: async (queryInterface, Sequelize) => {
 		// put things back the way they were (minus data)
 	},
