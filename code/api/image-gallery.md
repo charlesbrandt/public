@@ -17,29 +17,6 @@ of delivering the correct image for the most popular scenarios
 this also provides some avenue for analytics (how are users viewing your content?)
 
 
-## Searches
-
-https://duckduckgo.com/?t=canonical&q=node+image+gallery&ia=web
-node image gallery at DuckDuckGo
-https://node.qodeinteractive.com/image-gallery/
-Image Gallery – Node
-https://github.com/cianclarke/node-gallery
-GitHub - cianclarke/node-gallery: NodeJS Photo Gallery
-
-https://duckduckgo.com/?q=node+image+server&t=canonical&ia=images
-node image server at DuckDuckGo
-https://duckduckgo.com/?t=canonical&q=node+image+manager&ia=web
-node image manager at DuckDuckGo
-https://froala.com/wysiwyg-editor/docs/sdks/nodejs/image-manager/
-Node.JS Image Manager - Froala
-https://duckduckgo.com/?t=canonical&q=node+image+uploader&ia=images
-node image uploader at DuckDuckGo
-https://sabre.io/dav/
-sabre/dav - sabre/dav
-https://github.com/OpenMarshal/npm-WebDAV-Server
-GitHub - OpenMarshal/npm-WebDAV-Server: WebDAV Server for npm
-
-
 ## Image sizes
 
 Ideally, we only want to send clients the size of an image that will optimally fill the space on their display. Different devices have different resolutions, so that needs to be accounted for.
@@ -176,6 +153,68 @@ https://github.com/alexjc/neural-doodle
 
 https://github.com/nhn/tui.image-editor
 💤 GitHub - nhn/tui.image-editor: 🍞🎨 Full-featured photo image editor using canvas. It is really easy, and it comes with great filters.
+
+## Decentralized Photo Sharing
+
+https://github.com/pixelfed/pixelfed
+GitHub - pixelfed/pixelfed: Photo Sharing. For Everyone.
+https://pixelfed.org/
+Pixelfed - Federated Image Sharing
+https://docs.pixelfed.org/running-pixelfed/
+Run your own Pixelfed website | Pixelfed Documentation
+https://fedidb.org/software/pixelfed
+FediDB - Developer Tools for ActivityPub
+https://fedidb.org/network/instance?domain=pixelfed.anartist.org
+FediDB - Developer Tools for ActivityPub
+https://fediverse.party/en/fediverse/
+About Fediverse - Fediverse.Party - explore federated networks
+https://medium.com/we-distribute/a-quick-guide-to-the-free-network-c069309f334
+A quick guide to The Free Network | by Sean Tilley | We Distribute | Medium
+https://socialhome.network/
+Socialhome HQ - Socialhome
+https://git.feneas.org/socialhome/socialhome/-/issues
+Issues · Socialhome / socialhome · GitLab
+https://git.feneas.org/socialhome/socialhome
+Socialhome / socialhome · GitLab
+https://github.com/jaywink/socialhome
+GitHub - jaywink/socialhome: A federated social home
+https://github.com/topics/federation
+federation · GitHub Topics · GitHub
+https://github.com/topics/fediverse
+fediverse · GitHub Topics · GitHub
+https://github.com/topics/diaspora
+diaspora · GitHub Topics · GitHub
+https://github.com/topics/federated-social
+federated-social · GitHub Topics · GitHub
+https://github.com/LemmyNet/lemmy
+GitHub - LemmyNet/lemmy: 🐀 Building a federated alternative to reddit in rust
+https://pixelfed.anartist.org/
+Anartist Pixelfed
+
+
+## Node based image galleries
+
+(See also solutions noted previously)
+
+https://duckduckgo.com/?t=canonical&q=node+image+gallery&ia=web
+node image gallery at DuckDuckGo
+https://node.qodeinteractive.com/image-gallery/
+Image Gallery – Node
+https://github.com/cianclarke/node-gallery
+GitHub - cianclarke/node-gallery: NodeJS Photo Gallery
+
+https://duckduckgo.com/?q=node+image+server&t=canonical&ia=images
+node image server at DuckDuckGo
+https://duckduckgo.com/?t=canonical&q=node+image+manager&ia=web
+node image manager at DuckDuckGo
+https://froala.com/wysiwyg-editor/docs/sdks/nodejs/image-manager/
+Node.JS Image Manager - Froala
+https://duckduckgo.com/?t=canonical&q=node+image+uploader&ia=images
+node image uploader at DuckDuckGo
+https://sabre.io/dav/
+sabre/dav - sabre/dav
+https://github.com/OpenMarshal/npm-WebDAV-Server
+GitHub - OpenMarshal/npm-WebDAV-Server: WebDAV Server for npm
 
 
 ## Research
