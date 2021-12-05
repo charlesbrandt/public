@@ -29,7 +29,7 @@ The netplan configuration is located in /etc/netplan
 
     cd /etc/netplan
     
-    sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml.bak
+    sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml.dhcp
     
 Modify the netplan configuration. 
 
@@ -48,11 +48,10 @@ network:
         addresses: [8.8.8.8,4.2.2.2]
 ```
 
-Then
+To apply the configuration and have changes take effect, run:
 
     sudo netplan apply 
 
-to apply the configuration and changes to affect.
 
 [adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 

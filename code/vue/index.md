@@ -22,6 +22,12 @@ https://vueschool.io/articles/vuejs-tutorials/suspense-new-feature-in-vue-3/
 https://github.com/topics/vue3  
 💤 vue3 · GitHub Topics  
 
+## Script Setup
+
+In addition to the composition API, Vue 3 offers a new, simplified way for defining the script section of a component:
+
+
+
 ## Migration
 
 https://v3.vuejs.org/guide/migration/migration-build.html#upgrade-workflow
@@ -173,6 +179,17 @@ https://vue-composition-api-rfc.netlify.com/#api-introduction
 Composition API RFC | Vue Composition API  
 
 Lots more to explore on this topic
+
+## Vue Router
+
+It's good to learn how vue-router works. 
+
+It can also help when troubleshooting to be able to manually exclude problematic routes. 
+
+### Automatically Generate Routes for Pages
+
+Some cases, it may help to automatically generate the routes file based on the contents of the ui/pages directory. 
+
 
 
 

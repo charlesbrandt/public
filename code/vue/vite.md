@@ -54,7 +54,7 @@ FiloSottile/mkcert: A simple zero-config tool to make locally trusted developmen
 
 Generally, I like using auto importing with external packages that have a clear component name. Icons are a good fit. External component libraries (e.g. Element Plus) are also a good fit. 
 
-I don't like leaving out the import statements for local code (unless it's for something global like axios). It helps to know where components are being resolved from. It helps when importing a component to another project to know the dependencies. 
+I don't like leaving out the import statements for local code. It helps to know where components are being resolved from. It helps when importing a component to another project to know the dependencies. 
 
 https://github.com/antfu/unplugin-vue-components
 
@@ -83,7 +83,6 @@ export default {
   ],
 }
 ```
-
 
 ### Nginx / Docker / Proxies
 
