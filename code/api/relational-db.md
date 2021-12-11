@@ -47,6 +47,12 @@ describe [db_name.]table_name;
 
 https://stackoverflow.com/questions/1498777/how-do-i-show-the-schema-of-a-table-in-a-mysql-database
 
+### Create Database
+
+```
+CREATE DATABASE [IF NOT EXISTS] database_name
+```
+
 ### Export and Restore
 
 https://mariadb.com/kb/en/backup-and-restore-overview/
@@ -102,7 +108,11 @@ if the error shows a different user, change it in the command above.
 
 [via](https://stackoverflow.com/questions/10169960/mysql-error-1449-the-user-specified-as-a-definer-does-not-exist)
 
+```
+GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
+```
 
+https://chartio.com/resources/tutorials/how-to-grant-all-privileges-on-a-database-in-mysql/
 
 ### Schema Changes
 

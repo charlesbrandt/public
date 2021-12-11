@@ -402,6 +402,25 @@ Install Node via NVM:
 via:
 http://stackoverflow.com/a/24404451/1480391
 
+
+To install a specific version of node, use:
+
+```
+nvm install 14
+```
+
+https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/
+
+I needed to add the following to my `.bashrc` file in order for VSCode to see the new version of node:
+
+```
+PATH="/usr/local/bin:$(getconf PATH)"
+```
+
+https://stackoverflow.com/questions/44700432/visual-studio-code-to-use-node-version-specified-by-nvm
+
+
+
 ### Nodesource
 
 Nodesource is another popular way to install node

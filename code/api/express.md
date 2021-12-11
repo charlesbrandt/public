@@ -111,12 +111,39 @@ node express session management - Google Search
 https://codeforgeek.com/manage-session-using-node-js-express-4/  
 How to Manage Session using Node.js and Express - Codeforgeek  
 
+## Logging
+
+Morgan makes it easy to log all requests made to the service. 
+
+https://github.com/expressjs/morgan  
+GitHub - expressjs/morgan: HTTP request logger middleware for node.js  
+
+Winston allows logging custom messages. 
+
+https://github.com/winstonjs/winston  
+GitHub - winstonjs/winston: A logger for just about everything.  
+
+https://duckduckgo.com/?t=ffab&q=morgan+js+logger&ia=software  
+💤 morgan js logger at DuckDuckGo  
+https://www.npmjs.com/package/morgan  
+💤 morgan - npm  
+https://duckduckgo.com/?t=ffab&q=express+morgan+winston&ia=web  
+💤 express morgan winston at DuckDuckGo  
+https://jojozhuang.github.io/tutorial/express-combine-morgan-and-winston/  
+Combine Morgan & Winston @ https://jojozhuang.github.io  
+https://stackoverflow.com/questions/27906551/node-js-logging-use-morgan-and-winston  
+Node.js - logging / Use morgan and winston - Stack Overflow  
+http://tostring.it/2014/06/23/advanced-logging-with-nodejs/  
+Advanced logging with NodeJs | Ugo Lattanzi's tech world  
+https://dev.to/vassalloandrea/better-logs-for-expressjs-using-winston-and-morgan-with-typescript-516n  
+Better logs for ExpressJS using Winston and Morgan with Typescript - DEV Community  
+
+
 
 ## Links
 
 https://www.robinwieruch.de/node-express-server-rest-api  
 How to create a REST API with Express.js in Node.js - RWieruch  
-
 
 ## Boilerplates
 

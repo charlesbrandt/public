@@ -410,6 +410,19 @@ Tailwind CSS IntelliSense
 
 https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
 
+See also
+
+WindiCSS IntelliSense (recommended by Vitesse)
+
+## Iconify IntelliSense
+
+Iconify IntelliSense
+
+https://marketplace.visualstudio.com/items?itemName=antfu.iconify
+
+(recommended by Vitesse)
+
+
 ### ES6 Mocha Snippets
 By: spoonscen.es6-mocha-snippets
 
@@ -492,6 +505,20 @@ ms-vscode-remote.remote-containers
 
 
 ## Other Extensions
+
+### PostCSS Language Support
+
+https://marketplace.visualstudio.com/items?itemName=csstools.postcss
+
+(recommended by Vitesse)
+
+### i18n-ally
+
+Localization / i18n
+
+https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally
+
+(recommended by Vitesse)
 
 ### Kubernetes
 
