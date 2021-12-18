@@ -41,6 +41,52 @@ vite server proxy at DuckDuckGo
 
 It is possible to configure the Vite dev server to act as a proxy to the API, even if the API is at a different address. This is useful to proxy to an API being served by a local container. 
 
+```
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import Components from "unplugin-vue-components/vite";
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [
+        IconsResolver({
+          componentPrefix: '',
+          // enabledCollections: ['carbon']
+        }),
+
+      ],
+    }),
+
+    // https://github.com/antfu/unplugin-icons
+    Icons({
+      autoInstall: true,
+    }),
+  ],
+  server: {
+    // https://vitejs.dev/config/#server-https
+    https: true,
+    // https://vitejs.dev/config/#server-proxy
+    proxy: {
+      "/api": {
+        target: "http://localhost:3030",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
+});
+```
+
 ### SSL
 
 https://duckduckgo.com/?t=ffab&q=vite+ssl&ia=web  

@@ -43,6 +43,8 @@ See below for details
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.wrapTabs": false,
   "breadcrumbs.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs":"active",
   "editor.minimap.enabled": false,
   "update.mode": "none",
   "explorer.confirmDragAndDrop": false,
@@ -93,6 +95,9 @@ https://glebbahmutov.com/blog/configure-prettier-in-vscode/
 ```
 
 may require the project to install prettier as a dev dependency so that vscode has it available to use.
+
+TODO: consider beautify instead?
+https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify
 
 #### Prettier Path
 
@@ -486,13 +491,6 @@ https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 
 https://github.com/Microsoft/vscode-remote-release
 
-### Bracket Pair Colorizer
-
-By: CoenraadS
-
-Is this still necessary? I seem to recall reading something about this being included by default now, but I have not verified.
-
-
 ### Docker
 helps with formatting docker-compose.yml
 or is that just the redhat yml parser?
@@ -703,4 +701,12 @@ Important Notice: This option requires a restart of VS Code to take effect.
 https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
 Visual Studio Code Frequently Asked Questions
 
+
+### Bracket Pair Colorizer
+
+By: CoenraadS
+
+Is this still necessary? I seem to recall reading something about this being included by default now, but I have not verified.
+
+Officially deprecated. Configuration added. 
 
