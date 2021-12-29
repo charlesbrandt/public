@@ -1,31 +1,18 @@
-# Vue
+# Vue Basics
 
-Looking forward to getting [vue3](vue3.md) in the mix. 
+## Links
 
-## Install
-
-https://vuejs.org/v2/guide/installation.html
-
-Be sure you have [node installed](../javascript/node.md) and up-to-date. Verify with:
+Vue uses vue-router for links
 
 ```
-node -v
-nvm install node
-node -v
+<router-link to="/foo">Go to Foo</router-link>
 ```
 
-### Browser Dev Tools
+https://router.vuejs.org/guide/  
+Getting Started | Vue Router  
+https://router.vuejs.org/api/#router-link  
+API Reference | Vue Router  
 
-https://github.com/vuejs/vue-devtools#vue-devtools
-
-https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
-
-### New projects 
-
-`vue-cli` is another option.
-
-many templates to explore and learn from
-check awesome-vue
 
 
 ## Single File Components
