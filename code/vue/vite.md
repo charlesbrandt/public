@@ -12,11 +12,6 @@ Community templates
 https://vitejs.dev/guide/#index-html-and-project-root  
 Project Root | Vite  
 
-
-https://duckduckgo.com/?t=ffab&q=vite+setup&ia=web  
-vite setup at DuckDuckGo  
-
-
 https://github.com/vitejs/awesome-vite  
 💤 vitejs/awesome-vite: ⚡️ A curated list of awesome things related to Vite.js  
 
@@ -134,8 +129,19 @@ export default {
 
 Getting vite to run behind a proxy in development mode requires forwarding ports used for websockets. 
 
+https://vitejs.dev/config/#server-hmr  
+
 https://github.com/vitejs/vite/discussions/4795  
 Noticable page refresh when using nginx proxy in front of vite · Discussion #4795 · vitejs/vite  
+
+```
+    hmr: {
+      // vite@2.5.1 and older
+      port: 8888
+      // vite@2.5.2 and newer:
+      // clientPort: 8888,
+    },
+```
 
 https://vitejs.dev/config/#publicdir  
 💤 Configuring Vite | Vite  
@@ -441,4 +447,9 @@ https://github.com/vueuse
 VueUse · GitHub  
 https://github.com/vueuse/vueuse-vite-starter/tree/master/src  
 vueuse-vite-starter/src at master · vueuse/vueuse-vite-starter · GitHub  
+
+## See Also
+
+https://duckduckgo.com/?t=ffab&q=vite+setup&ia=web  
+vite setup at DuckDuckGo  
 
