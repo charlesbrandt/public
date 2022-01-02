@@ -8,13 +8,22 @@ Install tmux on the remote server:
 
 from there you can launch `tmux` with
 
+```
 $ tmux
+```
 
-once inside a tmux context, it helps to know some basic commands to navigate. 
+This is a good guide
+
+https://tmuxcheatsheet.com/
+
+Alternatively, these notes are less complete.  
+Once inside a tmux context, it helps to know some basic commands to navigate. 
 
 to detach
 
+```
 ctrl-b d # (or ctrl-m d if remapped)
+```
 
 to list all sessions
 
@@ -39,18 +48,32 @@ tmux attach-session -t 5
 
 to cycle through sessions from within tmux
 
-ctrl-b ( # or ctrl-m ( if remapped
-ctrl-b ) # or ctrl-m ) if remapped
+ctrl-b ( # or ctrl-m ( if remapped  
+ctrl-b ) # or ctrl-m ) if remapped  
 
-to rename a session
-ctrl-b $ # (or ctrl-m $ if remapped)
+to rename a session  
+ctrl-b $ # (or ctrl-m $ if remapped)  
 
+## Sessions, widows and panes
 
-This is a good guide
+See the previously mentioned cheat sheet. 
 
-https://tmuxcheatsheet.com/
+Each Session contains a group of windows.
+
+Each window is made up of one or more panes. 
+
+On a small screen like on Android, no room for more than one pane, but sessions and windows help a lot.
+
+## See Also
 
 https://www.ocf.berkeley.edu/~ckuehl/tmux/
+
+
+## TODO
+
+seeing an issue where pressing enter requires a double press. Seeing this on an SSH session to chip even. Maybe it has something to do with a filter in termux on an android phone? (current source)
+
+
 
 ## Configuration
 
@@ -91,6 +114,7 @@ This is an incomplete list; a more exhaustive list is available [here](https://g
 
 https://www.ocf.berkeley.edu/~ckuehl/tmux/
 
+```
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
@@ -104,6 +128,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'
+```
 
 
 
@@ -111,24 +136,11 @@ https://github.com/tmux-plugins/tmux-resurrect/blob/master/README.md
 
 
 
-## tmux under termux
-
-dont do this
-
-run tmux on the remote server, not on a phone. For a phone, just install [termux](android/termux.md)
-
-on something like termux on android, where you really only have a limited number of sessions. 
-
-Start with installation:
-
-    public/system/android/termux.md
-
-Specifically:
-
-    pkg install tmux
 
 
-Before too long, termux will crash. It will take your tmux sessions along with it. Unless you store the settings. 
+
+
+## Ressurect Restore Sessions
 
 Ressurect relies on Tmux Plugin Manager:
 
@@ -140,10 +152,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 https://gist.github.com/MohamedAlaa/2961058
 
 Pasting that here for personal edits:
-
-## TODO
-
-seeing an issue where pressing enter requires a double press. Seeing this on an SSH session to chip even. Maybe it has something to do with a filter in termux on an android phone? (current source)
 
 
 # tmux shortcuts & cheatsheet
@@ -318,6 +326,29 @@ For example, we can use "w" to jump to the next word and "b" to jump back one wo
 * [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
 * [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
  
+## tmux under termux
+
+dont do this
+
+run tmux on the remote server, not on a phone. For a phone, just install [termux](android/termux.md)
+
+on something like termux on android, where you really only have a limited number of sessions. 
+
+Start with installation:
+
+```
+public/system/android/termux.md
+```
+
+Specifically:
+
+```
+pkg install tmux
+```
+
+
+Before too long, termux will crash. It will take your tmux sessions along with it. Unless you store the settings. 
+
 
 
 

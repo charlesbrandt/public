@@ -13,6 +13,41 @@ There are ip address ranges that are designated for internal (private) networks.
 
 192.168.1.x is a common one. 
 
+## Documenting
+
+What's a good layout for ip assignments?
+Example documentation
+
+### CSV
+
+Keep your layout in your own csv file. eg.
+
+~/home/network.csv
+
+or
+
+~/notes/home/network/layout-network.csv
+
+for sharing, a spreadsheet is a lot easier. 
+can still track it in version control in the meantime
+
+### MD
+
+a text file is also ok
+whatever is easiest to keep up to date
+
+~/notes/home/network/layout-network.md
+
+### SVG
+
+Good for network diagrams
+
+What about keeping the data in an SVG? 
+
+Or a web-based SVG interface backed by a database? 
+
+
+
 ## Interface Configuration
 
 Often it's pretty straightforward to use a GUI. If you want to configure an interface via a CLI, it's necessary to know where the OS stores the configuration settings. This varies from OS to OS. 

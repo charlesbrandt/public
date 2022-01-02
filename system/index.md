@@ -16,8 +16,8 @@ If you're just getting familiar with this space, the [Raspberry Pi - /pi/) ecosy
 
 [Startup](startup.md)  
 
-## Operating Systems
 
+## Operating Systems
 
 Set up a computer with a fresh operating system.
 
@@ -42,15 +42,20 @@ In the mobile phone space, Android is a good open source solution.
 
 [Password Managers](password-manager.md)  
 
+## Terminals
+
+[Terminal](terminal/index.md)  
+
+https://tmuxcheatsheet.com/  
+[Tmux](terminal/tmux.md)  
+
+[SSH](terminal/ssh.md)  
+[Bash](terminal/bash.md)  
+[Shell](terminal/shell.md)  
+
+Bash Colors example available in `terminal/bash-colors.sh`
 
 ## Administration
-
-[Tmux](tmux.md)  
-[SSH](ssh.md)  
-[Terminal](terminal.md)  
-[Bash](linux/bash.md)  
-[Shell](linux/shell.md)  
-Bash Colors example available in `linux/bash-colors.sh`
 
 [Checksums](checksums.md)  
 [Firewall](firewall.md)  
