@@ -108,6 +108,86 @@ Using script Setup for Vue 3 SFCs - DEV Community
 
 It is possible to define lifecycle hooks in this context too. 
 
+https://v3.vuejs.org/api/sfc-script-setup.html  
+
+## Form Components
+
+Now we can create custom input elements that accept a `v-model`.
+
+https://v3.vuejs.org/guide/component-basics.html#emitting-a-value-with-an-event
+
+For example:
+
+```
+<script setup>
+
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
+  label: String,
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const value = computed({
+  get() {
+    return props.modelValue
+  },
+  set(val) {
+    emit('update:modelValue', val)
+  },
+})
+
+</script>
+
+<template>
+  <span class="flex">
+    <label>{{ label }}</label>
+    <input type="checkbox" v-model="value" />
+  </span>
+</template>
+```
+
+
+## Starter Template
+
+I've been very happy with:
+
+https://github.com/web2033/vite-vue3-tailwind-starter  
+web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
+
+All the necessities, nothing too wild
+
+Don't forget to disable automatic vscode launching if running under docker though
+
+ui/vite.config.js
+
+```
+  server: {
+    // open: true,
+  },
+  
+```
+
+## Vue Router
+
+It's good to learn how vue-router works. 
+
+It can also help when troubleshooting to be able to manually exclude problematic routes. 
+
+### Automatically Generate Routes for Pages
+
+Some cases, it may help to automatically generate the routes file based on the contents of the ui/pages directory. 
+
+## State management
+
+With the Composition API, if the composable only consists of Javascript, no need for a .vue file, just keep it in a .js file. (otherwise .vue files are an option too. Just pick the right one so syntax highlighting works)
+
+https://michael-verschoof.medium.com/keep-state-easily-using-a-composable-in-vue-3-2e01b2c68d7f
+
+
 ## Migration
 
 https://v3.vuejs.org/guide/migration/migration-build.html#upgrade-workflow
@@ -140,7 +220,9 @@ Instance Properties | Vue.js
 
 ### Global libraries
 
-registering at global app level now discouraged?
+Registering libraries at the global app level is discouraged.
+
+With the Composition API, if the module is imported directly where it is used, it will also be imported when the module using the submodule is imported. In other words, try to abstract a call out if you find you are importing it multiple times in to either a related service or a store call. 
 
 was looking at where to put axios
 ended up importing in each component that needs it (pages)
@@ -181,44 +263,6 @@ https://vueuse.org/integrations/useaxios/
 useAxios | VueUse  
 https://vueuse.org/guide/config.html  
 Configurations | VueUse  
-
-
-## Starter Template
-
-I've been very happy with:
-
-https://github.com/web2033/vite-vue3-tailwind-starter  
-web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
-
-All the necessities, nothing too wild
-
-Don't forget to disable automatic vscode launching if running under docker though
-
-ui/vite.config.js
-
-```
-  server: {
-    // open: true,
-  },
-  
-```
-
-## Vue Router
-
-It's good to learn how vue-router works. 
-
-It can also help when troubleshooting to be able to manually exclude problematic routes. 
-
-### Automatically Generate Routes for Pages
-
-Some cases, it may help to automatically generate the routes file based on the contents of the ui/pages directory. 
-
-## State management
-
-With the Composition API, if the composable only consists of Javascript, no need for a .vue file, just keep it in a .js file. (otherwise .vue files are an option too. Just pick the right one so syntax highlighting works)
-
-https://michael-verschoof.medium.com/keep-state-easily-using-a-composable-in-vue-3-2e01b2c68d7f
-
 
 
 
