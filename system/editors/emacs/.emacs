@@ -9,7 +9,7 @@
 
 ;; see also programming.el for commands for toggling comments
 
-;; After making any changes to any of these configurations,
+;; After making any changes to emacs configurations,
 ;; be sure to load a new instance of emacs.
 ;; Make sure everything still loads as expected, 
 ;; and that key functionality is still in place.
@@ -19,12 +19,6 @@
 
 ;; reload .emacs
 ;; call this anytime with 'M-x reload'
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
 
 (defun reload ()
   (interactive)
@@ -37,6 +31,12 @@
 ;; reloading can also be accomplished by selecting a specific region,
 ;; then executing it using the "Emacs-Lisp->Evaluate Region" option/command
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 
 ;; Receiving a warning message for this setting;
 ;; Warning (initialization): Your ‘load-path’ seems to contain
@@ -71,11 +71,7 @@ There are two things you can do about this warning:
   )
 (package-initialize)
 
-(setq load-path (cons "~/.emacs.d/themes" load-path))
-
-
 (setq confirm-kill-emacs 'y-or-n-p)
-
 
 (load-file "~/.emacs.d/keymaps.el")
 
@@ -91,11 +87,14 @@ There are two things you can do about this warning:
 ;; themes and start up settings that don't fall into above
 (load-file "~/.emacs.d/editor.el")
 
+;; (setq load-path (cons "~/.emacs.d/themes" load-path))
+
 
 ;; TODO:
 ;; way to automatically restore previous sessions?
 ;;  (persistent-session-save-alist-to-file)
-  
+;; tmux can help somewhat with this
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -22,7 +22,7 @@ Once inside a tmux context, it helps to know some basic commands to navigate.
 to detach
 
 ```
-ctrl-b d # (or ctrl-m d if remapped)
+ctrl-b d # (or ctrl-i d if remapped)
 ```
 
 to list all sessions
@@ -31,7 +31,7 @@ to list all sessions
 tmux ls
 ```
 
-ctrl-b s # (or ctrl-m s if remapped)
+ctrl-b s # (or ctrl-i s if remapped)
 
 
 to re-attach to the previous session
@@ -48,11 +48,12 @@ tmux attach-session -t 5
 
 to cycle through sessions from within tmux
 
-ctrl-b ( # or ctrl-m ( if remapped  
-ctrl-b ) # or ctrl-m ) if remapped  
+ctrl-b (     # or ctrl-i ( if remapped  
+ctrl-b )     # or ctrl-i ) if remapped  
 
 to rename a session  
-ctrl-b $ # (or ctrl-m $ if remapped)  
+ctrl-b $     # or ctrl-i $ if remapped  
+
 
 ## Sessions, widows and panes
 
@@ -64,14 +65,27 @@ Each window is made up of one or more panes.
 
 On a small screen like on Android, no room for more than one pane, but sessions and windows help a lot.
 
-## See Also
 
-https://www.ocf.berkeley.edu/~ckuehl/tmux/
+## Windows
+
+Ctrl + b p  
+Previous window  
+
+Ctrl + b n  
+Next window  
+
+Ctrl + b 0 ... 9  
+Switch/select window by number
 
 
-## TODO
+Ctrl + b c  
+Create window  
 
-seeing an issue where pressing enter requires a double press. Seeing this on an SSH session to chip even. Maybe it has something to do with a filter in termux on an android phone? (current source)
+Ctrl + b ,  
+Rename current window  
+
+Ctrl + b &  
+Close current window  
 
 
 
@@ -80,14 +94,23 @@ seeing an issue where pressing enter requires a double press. Seeing this on an 
 Put this at the bottom of ~/.tmux.conf ($XDG_CONFIG_HOME/tmux/tmux.conf works too):
 
 ```
-# remap prefix to Control + m
-set -g prefix C-m
+# remap prefix to Control + p
+set -g prefix C-p
 unbind C-b
-bind C-m send-prefix
+bind C-p send-prefix
 ```
 
+Control + m was used previously, but it overlaps with sending 'enter' in tmux, which results in needing to press enter twice. 
+Not using ctrl-m resolves the issue where pressing enter requires a double press. 
+
+Is ctrl-i used for tab key on the CLI. Using it as the bind key results in needing to press tab twice for auto-complete. 
+Running out of options -- maybe ctrl-p? Similar to what is used in visual studio code
 
 
+
+Other options
+
+```
 # force a reload of the config file
 unbind r
 bind r source-file ~/.tmux.conf
@@ -95,66 +118,94 @@ bind r source-file ~/.tmux.conf
 # quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
+```
+
+## Script Startup
+
+tmux can help manage the state needed for workspaces. In this case, create a script to configure the startup.
+
+```
+#!/bin/bash
+
+session="team"
+
+tmux new-session -d -s $session
+
+window=0
+tmux rename-window -t $session:$window 'launcher'
+tmux send-keys -t $session:$window '' C-m
+
+window=1
+tmux new-window -t $session:$window -n 'vpn'
+tmux send-keys -t $session:$window 'cd team; ./vpn.sh' C-m
+
+session="dev"
+
+tmux new-session -d -s $session
+
+window=0
+tmux rename-window -t $session:$window 'launcher'
+tmux send-keys -t $session:$window 'cd ~/alpha/code/api' C-m
+tmux send-keys -t $session:$window 'emacs instances-api.md &'
+
+session="project"
+
+tmux new-session -d -s $session
+
+window=0
+tmux rename-window -t $session:$window 'launcher'
+tmux send-keys -t $session:$window 'cd ~/projects/project' C-m
+tmux send-keys -t $session:$window 'emacs instances-project.md &'
+
+window=1
+tmux new-window -t $session:$window -n 'servers'
+tmux send-keys -t $session:$window 'cd ~/projects/project/project-code/ui' C-m
+tmux send-keys -t $session:$window 'pnpm run dev' C-m
+# this didn't work in my first attempt -- should be close
+#tmux split-window -t $session:$window 'dcp' C-m
+# no parameters works
+tmux split-window -t $session:$window 
+tmux send-keys -t $session:$window 'dcu' C-m
+tmux send-keys -t $session:$window 'dcp' C-m
+
+window=2
+tmux new-window -t $session:$window -n 'git'
+tmux send-keys -t $session:$window 'cd ~/projects/project/project-code/ui' C-m
+tmux send-keys -t $session:$window 'git status' C-m
+
+tmux attach-session -t team
+
+```
 
 
+A good reference that got me going
 
-From there, it helps to learn some basics. Here are a few good guides:
+https://how-to.dev/how-to-create-tmux-session-with-a-script  
+How to create tmux session with a script  
 
-https://thoughtbot.com/blog/a-tmux-crash-course
+https://unix.stackexchange.com/questions/292137/tmux-script-to-launch-several-commands  
+scripting - tmux script to launch several commands - Unix & Linux Stack Exchange  
 
-For all keybindings, press ctrl-b first, then press the key you want.
-key 	what it does
-ctrl-b, % 	split the screen in half from left to right
-ctrl-b, " 	split the screen in half from top to bottom
-ctrl-b, x 	kill the current pane
-ctrl-b, `<arrow key>` 	switch to the pane in whichever direction you press
-ctrl-b, d 	detach from tmux, leaving everything running in the background
+https://duckduckgo.com/?t=ffab&q=tmux+script+to+open+multiple+sessions&ia=web  
+tmux script to open multiple sessions at DuckDuckGo  
+https://stackoverflow.com/questions/58453982/spinning-up-multiple-tmux-sessions-in-bash  
+Spinning up multiple tmux sessions in bash - Stack Overflow  
 
-This is an incomplete list; a more exhaustive list is available [here](https://gist.github.com/MohamedAlaa/2961058)
+
+## Scrolling
+
+Using a terminal multiplexer, you lose the ability to use your system terminal's built in scrolling mechanism, if any. On something like a phone, this is not an issue, but on desktop contexts it may be limiting? 
+
+## See Also
 
 https://www.ocf.berkeley.edu/~ckuehl/tmux/
 
-```
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
+## Resources
 
+* [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
+* [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
 
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'git@github.com/user/plugin'
-# set -g @plugin 'git@bitbucket.com/user/plugin'
-
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run -b '~/.tmux/plugins/tpm/tpm'
-```
-
-
-
-https://github.com/tmux-plugins/tmux-resurrect/blob/master/README.md
-
-
-
-
-
-
-
-## Ressurect Restore Sessions
-
-Ressurect relies on Tmux Plugin Manager:
-
-https://github.com/tmux-plugins/tpm/blob/master/README.md
-
-mkdir -p ~/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-https://gist.github.com/MohamedAlaa/2961058
-
-Pasting that here for personal edits:
-
-
-# tmux shortcuts & cheatsheet
+## tmux shortcuts & cheatsheet
 
 start new:
 
@@ -321,44 +372,26 @@ For example, we can use "w" to jump to the next word and "b" to jump back one wo
     unbind Down
     bind Down last-window \; swap-pane -s tmp.1 \; kill-window -t tmp
 
-## Resources:
 
-* [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
-* [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
- 
-## tmux under termux
+## Cheatsheet
 
-dont do this
+From here, it helps to learn some basics. Here are a few good guides:
 
-run tmux on the remote server, not on a phone. For a phone, just install [termux](android/termux.md)
-
-on something like termux on android, where you really only have a limited number of sessions. 
-
-Start with installation:
+https://thoughtbot.com/blog/a-tmux-crash-course
 
 ```
-public/system/android/termux.md
+For all keybindings, press ctrl-b first, then press the key you want.
+key 	what it does
+ctrl-b, % 	split the screen in half from left to right
+ctrl-b, " 	split the screen in half from top to bottom
+ctrl-b, x 	kill the current pane
+ctrl-b, `<arrow key>` 	switch to the pane in whichever direction you press
+ctrl-b, d 	detach from tmux, leaving everything running in the background
 ```
 
-Specifically:
+This is an incomplete list; a more exhaustive list is available [here](https://gist.github.com/MohamedAlaa/2961058)
 
-```
-pkg install tmux
-```
-
-
-Before too long, termux will crash. It will take your tmux sessions along with it. Unless you store the settings. 
-
-
-
-
-
-
-
-
-
-
-
+https://www.ocf.berkeley.edu/~ckuehl/tmux/
 
 
 

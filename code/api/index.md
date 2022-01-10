@@ -18,13 +18,24 @@ For relationships and metadata, use a real database. Postgres seems hard to beat
 
 DBs are Databases.
 
-Databases often tie in closely to the API side.
+Databases tie in closely to the API side.
 
-[databases](databases.md)
+### Relational Databases
+
+[Relational Databases](relational-db.md)
+
+[sequelize](sequelize.md)
+
+### Document Databases
+
 
 [mongo](mongo.md)
 
-[sequelize](sequelize.md)
+## Deployment
+
+When it comes time to deploy databases, separate containers are ideal. See also system-architecture notes on web-ui-api-db:
+
+https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
 
 
 ## Auth

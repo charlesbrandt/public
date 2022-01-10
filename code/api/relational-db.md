@@ -7,17 +7,101 @@
 
 ## Postgres
 
+Postgres clients are different from mysql clients. 
+
+Postgres does not accept double quoted values in SQL statements -- be sure to use single quotes.
+
+```
+/usr/pgsql-13/bin/psql 
+```
+
+To connect as a different user
+
+```
+psql -U username -d database -h 127.0.0.1 -W
+```
+
+
+### Show databases
+
+Listing databases in PostgreSQL using psql command
+
+```
+\l
+```
+
+or with a select statement
+
+```
+SELECT datname FROM pg_database;
+```
+
+`show databases;` will not work
+
+via  
+https://www.geeksforgeeks.org/postgresql-show-tables/  
+
+### Show tables
+
+Supposedly `\dt` should work:
+
+```
+\dt
+```
+
+but I needed to use the following select statement
+
+```
+SELECT *
+FROM pg_catalog.pg_tables
+WHERE schemaname != 'pg_catalog' AND 
+    schemaname != 'information_schema';
+```
+
+via  
+https://www.geeksforgeeks.org/postgresql-show-tables/
+
+### Manage Users
+
+Show all users (may require logging in as `postgres` user with `pgsql -U postgres`):
+
+```
+\du
+```
+
+https://stackoverflow.com/questions/760210/how-do-you-create-a-read-only-user-in-postgresql
+
+
+```
+create user sam;
+```
+
+Is `create user` simply an alias for `create role`? Seems like it may be. 
+
+
+```
+GRANT CONNECT ON DATABASE mydb TO xxx;
+-- This assumes you're actually connected to mydb..
+GRANT USAGE ON SCHEMA public TO xxx;
+GRANT SELECT ON mytable TO xxx;
+```
+
+https://stackoverflow.com/questions/760210/how-do-you-create-a-read-only-user-in-postgresql
+
 
 ## MariaDB
 
-need a client where ever access is required. (The database container is currently exposed via 127.0.0.1:3306 for GUI access)
+Need a client where ever access is required.
 
 ```
 sudo apt-get install mariadb-client -y
 ```
 
-Connect with:
+If the database container is exposed via 127.0.0.1:3306, specify that via the `-h` parameter
+
 `-p` will prompt for a password
+
+Connect with:
 
 ```
 mysql -h 127.0.0.1 -u root -p database-name 
@@ -29,23 +113,6 @@ Don't provide password via the CLI (would be available in the CLI history then)
 ```
 mysql -h 127.0.0.1 -u root -pexample database-name 
 ```
-
-### Describe a table
-
-
-SQL statement that can be used to create a table:
-
-```
-show create table [db_name.]table_name;
-```
-
-Formatted output:
-
-```
-describe [db_name.]table_name;
-```
-
-https://stackoverflow.com/questions/1498777/how-do-i-show-the-schema-of-a-table-in-a-mysql-database
 
 ### Create Database
 
@@ -114,6 +181,54 @@ GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
 
 https://chartio.com/resources/tutorials/how-to-grant-all-privileges-on-a-database-in-mysql/
 
+#### User Accounts
+
+```
+USE mysql;
+
+UPDATE user 
+SET authentication_string = PASSWORD('dolphin')
+WHERE user = 'dbadmin' AND 
+      host = 'localhost';
+
+FLUSH PRIVILEGES;
+```
+
+via:  
+https://www.mysqltutorial.org/mysql-changing-password.aspx  
+
+
+### Switch to a different database
+
+Note: Once connected to a client, all commands require the trailing `;`
+
+```
+use database-name;
+```
+
+### See all tables in a database
+
+```
+show tables;
+```
+
+### Describe a table
+
+
+SQL statement that can be used to create a table:
+
+```
+show create table [db_name.]table_name;
+```
+
+Formatted output:
+
+```
+describe [db_name.]table_name;
+```
+
+https://stackoverflow.com/questions/1498777/how-do-i-show-the-schema-of-a-table-in-a-mysql-database
+
 ### Schema Changes
 
 ```
@@ -162,8 +277,8 @@ Use SQL commands to `ALTER` tables
 
 supports importing a sql file
 
-https://stackoverflow.com/questions/4108816/entity-relationship-diagram-software
-💤 database - Entity relationship diagram software - Stack Overflow
+https://stackoverflow.com/questions/4108816/entity-relationship-diagram-software  
+database - Entity relationship diagram software - Stack Overflow  
 
 ### mysqlworkbench
 

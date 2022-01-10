@@ -324,6 +324,10 @@ See also: [nuxt configuration variables](../vue/nuxt.html#configuration-variable
 
 ## Install
 
+See what the latest versions of node are:
+
+https://nodejs.org/en/about/releases/
+
 ### Docker
 
 [Docker containers](../../system/virtualization/docker.md) are a great way to ensure you're running the node environment that you think you're running. 

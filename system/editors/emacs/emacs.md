@@ -4,7 +4,7 @@ It's kind of old school. But it's still a great text editor.
 
 ## Installation
 
-Some systems come with emacs already installed. This is rare. Usually you'll need to install the editor. On linux systems, it's available through your package manager. For example:
+Some systems come with emacs already installed. This is rare. Usually you'll need to install it. On linux systems, it's available through your package manager. For example:
 
     sudo apt-get install emacs emacs-goodies-el
     

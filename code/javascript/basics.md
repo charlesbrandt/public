@@ -370,7 +370,7 @@ But `range(1,12)` is super easy to remember. Just have to remember if that upper
 
     console.log([...range(2, 5, 2)])
 
-May not be memory efficient for large ranges!! 
+Not memory efficient for large ranges!! 
 
 Adapted from:
 
@@ -378,15 +378,15 @@ https://dev.to/ycmjason/how-to-create-range-in-javascript-539i
 
 
 
-https://duckduckgo.com/?t=canonical&q=javascript+range&ia=web
-javascript range at DuckDuckGo
-https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp
-arrays - Does JavaScript have a method like "range()" to generate a range within the supplied bounds? - Stack Overflow
-https://2ality.com/2014/05/es6-array-methods.html
-ECMAScript 6’s new array methods
-https://dev.to/ycmjason/how-to-create-range-in-javascript-539i
-JavaScript Range: How to create range in Javascript - DEV Community
-https://duckduckgo.com/?t=canonical&q=javascript+array+slice&ia=web
-javascript array slice at DuckDuckGo
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
-Array.prototype.slice() - JavaScript | MDN
+https://duckduckgo.com/?t=canonical&q=javascript+range&ia=web  
+javascript range at DuckDuckGo  
+https://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-a-range-within-the-supp  
+arrays - Does JavaScript have a method like "range()" to generate a range within the supplied bounds? - Stack Overflow  
+https://2ality.com/2014/05/es6-array-methods.html  
+ECMAScript 6’s new array methods  
+https://dev.to/ycmjason/how-to-create-range-in-javascript-539i  
+JavaScript Range: How to create range in Javascript - DEV Community  
+https://duckduckgo.com/?t=canonical&q=javascript+array+slice&ia=web  
+javascript array slice at DuckDuckGo  
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice  
+Array.prototype.slice() - JavaScript | MDN  

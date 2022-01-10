@@ -74,8 +74,8 @@
 ;; use minimum of all maximums of viable height for machine
 ;; it is difficult to shrink the frame if too tall
 
-(set-frame-height (selected-frame) 54)
-(set-frame-width (selected-frame) 80)
+;; (set-frame-height (selected-frame) 54)
+;; (set-frame-width (selected-frame) 80)
 
 (message "SYSTEM NAME:")
 (setq hostname (car (split-string (system-name) "\\.")))

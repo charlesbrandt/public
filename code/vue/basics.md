@@ -107,6 +107,7 @@ https://stackoverflow.com/questions/58931647/nuxt-component-computed-vs-data
 
 A computed method will respond to changes made to data properties of the component. Similar to watch. Like a method that is called automatically. 
 
+Note: In Vue3 (maybe Vue2 also?), the computed function must be referenced somewhere in the template, otherwise it will not ever trigger!
 
 ### Binding values
 
@@ -461,3 +462,13 @@ Nuxt simplifies the configuration and structure of a Vue project to get up and r
 See: [Nuxt](nuxt.md)
 
 
+## Troubleshooting
+
+If a `console.print()` statement is not showing what you expect (especially in the context of a computed value), be sure to render the value in a template. 
+
+```
+    <button @click="selected = 1">
+      test select
+    </button>
+    {{ selected }}
+```
