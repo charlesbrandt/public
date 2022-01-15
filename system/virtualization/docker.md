@@ -16,6 +16,12 @@ https://github.com/wsargent/docker-cheat-sheet
 Introduction to what containers are:  
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
+## TODO
+
+How do these relate?  
+cri-o  
+containerd  
+
 ## Dockerfiles
 
 How you set up the image that gets run in a container
@@ -187,14 +193,22 @@ Are these kept in sync with the apt versions?
 
 ## Status
 
+```
+systemctl status docker
+```
+
 To see a list of *currently running* docker containers:
 
-    docker ps
-    
+```
+docker ps
+```
+
 To see the name of the container (and the size of disk in use):
 
-    docker ps -s 
-    
+```
+docker ps -s 
+```
+
 https://docs.docker.com/engine/reference/commandline/ps/
 
 

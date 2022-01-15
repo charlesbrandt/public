@@ -3,7 +3,7 @@
 ```
 cd
 rm .bashrc
-ln -s ~/public/system/linux/.bashrc .bashrc
+ln -s ~/public/system/.bashrc .bashrc
 ```
 
 
@@ -33,4 +33,53 @@ Docker Tip #26: Alias and Function Shortcuts for Common Commands — Nick Janeta
 
 ## See also
 
-~/public/system/.bashrc
+<a href=".bashrc">.bashrc</a>
+
+[tmux](tmux.md)
+
+## Emulators
+
+https://itsfoss.com/tilix-terminal-emulator/  
+💤 Tilix: Advanced Tiling Terminal Emulator for Power Users - It's FOSS  
+https://github.com/gnunn1/tilix/  
+💤 gnunn1/tilix: A tiling terminal emulator for Linux using GTK+ 3  
+https://duckduckgo.com/?t=ffab&q=Tilix&ia=web  
+💤 Tilix at DuckDuckGo  
+https://gnunn1.github.io/tilix-web/  
+💤 Tilix: A tiling terminal emulator  
+
+
+https://duckduckgo.com/?t=ffab&q=best+tiling+terminal+console&ia=web  
+💤 best tiling terminal console at DuckDuckGo  
+https://itsfoss.com/linux-terminal-emulators/  
+💤 14 Best Linux Terminal Emulators With Extra Features [2021]  
+https://github.com/topics/terminal-emulators  
+💤 terminal-emulators · GitHub Topics  
+https://github.com/topics/terminal  
+💤 terminal · GitHub Topics  
+https://github.com/nicolargo/glances  
+nicolargo/glances: Glances an Eye on your system. A top/htop alternative for GNU/Linux, BSD, Mac OS and Windows operating systems.  
+https://github.com/railsware/upterm  
+railsware/upterm: A terminal emulator for the 21st century.  
+https://github.com/yudai/gotty  
+yudai/gotty: Share your terminal as a web application  
+https://github.com/Eugeny/tabby  
+Eugeny/tabby: A terminal for a more modern age (formerly Terminus)  
+https://conemu.github.io/  
+ConEmu - Handy Windows Terminal  
+https://github.com/GitSquared/edex-ui  
+💤 GitSquared/edex-ui: A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.  
+https://github.com/alacritty/alacritty  
+💤 alacritty/alacritty: A cross-platform, OpenGL terminal emulator.  
+https://github.com/vercel/hyper  
+💤 vercel/hyper: A terminal built on web technologies  
+https://github.com/ohmyzsh/ohmyzsh  
+💤 ohmyzsh/ohmyzsh: 🙃 A delightful community-driven (with 1900+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community.  
+https://www.zsh.org/  
+💤 Zsh  
+https://ohmyz.sh/  
+💤 Oh My Zsh - a delightful & open source framework for Zsh  
+https://duckduckgo.com/?t=ffab&q=why+zsh&ia=web  
+💤 why zsh at DuckDuckGo  
+https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/  
+💤 What is ZSH, and Why Should You Use It Instead of Bash?  

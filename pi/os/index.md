@@ -34,17 +34,11 @@ If you're not installing a pre-made image configured for a specific application 
 
 A 64bit OS is required to use more than 4GB of memory. If you have a Pi with 8GB of memory, find a 64 bit OS. 
 
-Confirmed it works with Rasberry Pi 4 (8GB)
-
-Must use 64bit OS for 8GB of memory version...
-
 If running 32bit os, don't buy anything bigger than 4GB of memory.
 
 64 bit OS does not work with Raspberry Pi Zero W.
 
-32 Bit ubuntu (20.04) did not boot raspberry pi zero w
-
-seems to just hang. 
+32 Bit ubuntu (20.04) did not boot raspberry pi zero w -- seems to just hang. 
 
 ### Change the default password
 

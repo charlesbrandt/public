@@ -1,5 +1,11 @@
 # TMUX
 
+https://github.com/gpakosz/.tmux  
+gpakosz/.tmux: 🇫🇷 Oh my tmux! My self-contained, pretty & versatile tmux configuration made with ❤️  
+https://pragprog.com/titles/bhtmux2/tmux-2/  
+tmux 2: Productive Mouse-Free Development by Brian P. Hogan  
+
+
 A session / window manager for the console. Allows tracking tabs all within the same console. This is useful when connecting to remote servers, especially when connecting with something flakey like a phone. 
 
 Install tmux on the remote server:

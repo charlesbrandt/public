@@ -1,13 +1,17 @@
 # Kubernetes
 
+Container orchestration.
+
+Abbreviated as 'K8s' because there are eight letters between the 'k' and the 's' in 'kubernetes'. 
+
 https://kubernetes.io/  
 Kubernetes  
 
-Abbreviated as 'K8s'.
-
 https://en.wikipedia.org/wiki/Kubernetes
 
-Container orchestration.
+https://github.com/ramitsurana/awesome-kubernetes
+ramitsurana/awesome-kubernetes: A curated list for awesome kubernetes sources
+
 
 ## General Info
 
@@ -22,7 +26,13 @@ Understanding Kubernetes Objects | Kubernetes
 https://kubernetes.io/docs/concepts/workloads/pods/  
 Pods | Kubernetes  
 
-## Installation
+## Distributions
+
+There are many different ways to configure kubernetes clusters. A common way is to deploy them to a managed cloud service like Google, AWS, or Azure. The exact distribution you use may vary, but the concepts should transfer from one context to another. 
+
+These notes focus on local setups, since that's a good way to learn. 
+
+## Stock Kubernetes
 
 Currently following along and summarizing these resources:
 
@@ -34,7 +44,7 @@ https://kubernetes.io/docs/setup/
    
 https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
 
-## K3s
+### K3s
 
 Minimalistic and lightweight distribution. Allows running / developing on a single server. Works even on a Pi! 
 
@@ -66,35 +76,91 @@ Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc
 sudo k3s kubectl get node
 ```
 
-## Community
+### Distributions
 
-The Cloud Native group manages general community under the broader umbrella rather than one specific project / tool. 
+Running your own cluster
 
-https://radar.cncf.io/
-Home | CNCF Radars
+https://k3s.io/  
+💤 K3s: Lightweight Kubernetes  
+https://rancher.com/docs/k3s/latest/en/  
+💤 Rancher Docs: K3s - Lightweight Kubernetes  
+  
+https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
+💤 running a developer setup with kubernetes at DuckDuckGo  
+https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
+💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
+https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
+💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
 
-https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
+### Local Development
 
-https://landscape.cncf.io/
-CNCF Cloud Native Interactive Landscape
+https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
 
-## Access and Administration
-
-https://k8slens.dev 
-for accessing the cluster
-
-## TODO
-
-How do these relate?  
-cri-o  
-containerd  
+Microk8s and k3s also come up as options. 
+Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store. 
 
 
-## Interfaces
+
+
+## Access, Administration, Interfaces
+
+
+### Portainer
+
+[Portainer](portainer.md)
+
+
+https://192.168.2.85:9443/#!/2/docker/stacks
+Warning: Potential Security Risk Ahead
+
+https://github.com/portainer/portainer
+💤 portainer/portainer: Making Docker and Kubernetes management easy.
+
+https://docs.portainer.io/v/ce-2.11/user/docker/containers
+💤 Containers - Portainer Documentation
+
+https://howchoo.com/devops/how-to-add-a-health-check-to-your-docker-container
+💤 How to Add a Health Check to Your Docker Container - Howchoo
+https://duckduckgo.com/?q=container+health+check&t=fpas&ia=web
+💤 container health check at DuckDuckGo
+https://github.com/topics/docker
+💤 docker · GitHub Topics
+
+
 
 ### kubectl
 
 kubectl is the default CLI for managing kubernetes
+
+#### Install kubectl
+
+Make sure you have kubectl installed. You can install kubectl according to the instructions in Install and Set Up kubectl.
+
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+    chmod +x ./kubectl
+    
+    sudo mv ./kubectl /usr/local/bin/kubectl
+    
+    kubectl version
+
+
+### VS Code 
+
+Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code works.
+
+https://code.visualstudio.com/docs/azure/kubernetes
+
+### k8slens
+
+https://k8slens.dev 
+for accessing the cluster
+
+https://k8slens.dev/  
+💤 Lens | The Kubernetes IDE  
+https://github.com/lensapp/lens  
+💤 GitHub - lensapp/lens: Lens - The Kubernetes IDE  
+  
 
 ### K9s - Command line 
 
@@ -106,15 +172,16 @@ Binary releases
 
 https://github.com/derailed/k9s/releases
 
-### VS Code 
-
-Use a graphical tool to get an overview of the environment, something as simple as the Kubernetes extension for Visual Studio Code works.
-
-https://code.visualstudio.com/docs/azure/kubernetes
 
 
+
+## Deploy a service
+
+Start with something simple. Nginx serving static files seems like a good place to begin. 
 
 ## Helm
+
+Configuration Management for the services running on your cluster. Similar to docker-compose.yml files in the Docker ecosystem.
 
 From their site: 
 
@@ -140,139 +207,22 @@ Unpack it.
     
     helm create [chart-name]
 
-## Deploy a service
-
-Start with something simple. Nginx serving static files seems like a good place to begin. 
-
-
- packages. 
 
 
 
 
+## Auth
 
-## Distributions
-
-Running your own cluster
-
-https://k3s.io/  
-💤 K3s: Lightweight Kubernetes  
-https://rancher.com/docs/k3s/latest/en/  
-💤 Rancher Docs: K3s - Lightweight Kubernetes  
-  
-https://k8slens.dev/  
-💤 Lens | The Kubernetes IDE  
-https://github.com/lensapp/lens  
-💤 GitHub - lensapp/lens: Lens - The Kubernetes IDE  
-https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
-  
-💤 running a developer setup with kubernetes at DuckDuckGo  
-https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
-💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
-https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
-💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
-
-## Local Development
-
-https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
-
-Microk8s and k3s also come up as options. 
-Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store. 
-
-## Kind
-
-https://github.com/kubernetes-sigs/kind/
-
-Docker in Docker now references Kind:
-
-https://github.com/kubernetes-retired/kubeadm-dind-cluster
-
-Seems to be the way to go. Most compliant with what you would find in a production environment. 
-
-https://kind.sigs.k8s.io/
-
-Requires go language:
-https://golang.org/doc/install
-
-Then `GO111MODULE="on" go get sigs.k8s.io/kind@v0.7.0 && kind create cluster`
-
-for me, kind was downloaded to home
-
-```
-~/go/bin/kind
-
-sudo ~/go/bin/kind create cluster
-[sudo] password for charles: 
-Creating cluster "kind" ...
- ✓ Ensuring node image (kindest/node:v1.17.0) 
- ✓ Preparing nodes 
- ✓ Writing configuration 
- ✓ Starting control-plane 
- ✓ Installing CNI
- ✓ Installing StorageClass
-Set kubectl context to "kind-kind"
-You can now use your cluster with:
-
-kubectl cluster-info --context kind-kind
-
-Thanks for using kind!
-```
-
-## K3s
-
-https://github.com/rancher/k3s
-
-## Minikube
-
-"Minikube is a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node".
-
-https://kubernetes.io/docs/tasks/tools/install-minikube/
-
-Check if virtualization is supported on Linux
-
-    grep -E --color 'vmx|svm' /proc/cpuinfo
-    
-### Install kubectl
-
-Make sure you have kubectl installed. You can install kubectl according to the instructions in Install and Set Up kubectl.
-
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-
-    chmod +x ./kubectl
-    
-    sudo mv ./kubectl /usr/local/bin/kubectl
-    
-    kubectl version
-
-
-### Install Minikube
-
-```
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
- && chmod +x minikube
-    
-sudo mkdir -p /usr/local/bin/
-sudo install minikube /usr/local/bin/
-```
-
-### Confirm Installation 
-
-Depending on what virtualization layer you're using, you'll need to specify the correct driver type. [More information is available here](https://kubernetes.io/docs/setup/learning-environment/minikube/). 
-
-https://minikube.sigs.k8s.io/docs/reference/drivers/
-
-
-    minikube start --vm-driver=<driver_name>
-    
-    minikube start --vm-driver=virtualbox
-
-    minikube start --vm-driver=kvm2
-
-    minikube status
-    
-To stop your cluster, run:
-
-    minikube stop
+https://kubernetes.io/  
+Kubernetes  
+https://duckduckgo.com/?t=ffab&q=kubernetes+authentication&ia=web  
+kubernetes authentication at DuckDuckGo  
+https://kubernetes.io/docs/reference/access-authn-authz/authorization/  
+Authorization Overview | Kubernetes  
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/  
+Authenticating | Kubernetes  
+https://kubernetes.io/docs/concepts/security/controlling-access/  
+Controlling Access to the Kubernetes API | Kubernetes  
 
 
 
@@ -286,4 +236,16 @@ https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web
 💤 docker-compose vs kubernetes at DuckDuckGo  
 https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes  
 What's the difference between Docker Compose and Kubernetes? - Stack Overflow  
+
+## Community
+
+The Cloud Native group manages general community under the broader umbrella rather than one specific project / tool. 
+
+https://radar.cncf.io/
+Home | CNCF Radars
+
+https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
+
+https://landscape.cncf.io/
+CNCF Cloud Native Interactive Landscape
 
