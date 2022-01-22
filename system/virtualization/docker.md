@@ -102,7 +102,16 @@ update again
 ```
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
 
+on a Raspberry Pi 4 8gb using ubuntu 64bit
+
+```
+sudo add-apt-repository \
+   "deb [arch=arm64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
 ### Docker Compose
@@ -264,6 +273,17 @@ docker run -d \
   --mount type=bind,src="$(pwd)"/target,dst=/app \
   nginx:latest
 ```
+
+### Copy Data
+
+You can copy data into and out of a container manually:
+
+// don't use `*` with `docker cp`
+docker cp e9f10889f0da:/synthea/output/fhir ui/public/data/
+
+https://docs.docker.com/engine/reference/commandline/cp/  
+docker cp | Docker Documentation  
+
 
 
 ## Images

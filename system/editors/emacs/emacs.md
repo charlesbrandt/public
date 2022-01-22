@@ -25,6 +25,18 @@ Sometimes emacs will create a configuration directory if it is run and one doesn
 
     rm -rf .emacs.d/
 
+## Running
+
+```
+emacs
+```
+
+to ensure the editor runs in the terminal and does not launch a gui version
+
+```
+emacs -nw
+```
+
 
 ## Configuration
 

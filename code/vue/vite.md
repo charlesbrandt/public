@@ -192,6 +192,13 @@ https://stackoverflow.com/questions/54084239/proxy-pass-overwrites-the-url-chang
 nginx - proxy_pass overwrites the URL changed by rewrite directive - Stack Overflow  
 
 
+### Static Assets
+
+vite assets at DuckDuckGo  
+https://vitejs.dev/guide/assets.html#importing-script-as-a-worker  
+
+
+
 ## Vitepress
 
 [vitepress](vitepress.md)
@@ -300,8 +307,6 @@ JohnCampionJr/vite-plugin-vue-layouts: Vue layout plugin for Vite
 https://github.com/hannoeru/vite-plugin-pages  
 hannoeru/vite-plugin-pages: File system based route generator for ⚡️Vite  
 https://duckduckgo.com/?t=ffab&q=vite+assets&ia=web  
-vite assets at DuckDuckGo  
-https://vitejs.dev/guide/assets.html#importing-script-as-a-worker  
 Static Asset Handling | Vite  
 
 

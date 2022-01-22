@@ -150,6 +150,30 @@ const value = computed({
 </template>
 ```
 
+## Computed and Watcher
+
+Be sure to make use of a computed value in a template somewhere, otherwise it won't be called. 
+
+https://v3.vuejs.org/guide/reactivity-computed-watchers.html#computed-debugging  
+Computed and Watch | Vue.js  
+
+Vue3 also has `watchEffect` which does not need to return a value (as a computed does). 
+
+https://duckduckgo.com/?t=ffab&q=vue3+props+type+default&ia=web  
+💤 vue3 props type default at DuckDuckGo  
+https://v3.vuejs.org/guide/component-props.html#prop-types  
+💤 Props | Vue.js  
+https://duckduckgo.com/?t=ffab&q=vue3+computed&ia=web  
+💤 vue3 computed at DuckDuckGo  
+
+
+## Template References
+
+https://duckduckgo.com/?t=ffab&q=vue3+reference+element+in+template+from+script&ia=web  
+💤 vue3 reference element in template from script at DuckDuckGo  
+https://v3.vuejs.org/guide/composition-api-template-refs.html#usage-with-jsx  
+💤 Template Refs | Vue.js  
+
 
 ## Starter Template
 

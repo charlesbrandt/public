@@ -63,6 +63,10 @@ https://www.geeksforgeeks.org/postgresql-show-tables/
 
 ### Manage Users
 
+A good guide. 
+
+https://www.digitalocean.com/community/tutorials/how-to-use-roles-and-manage-grant-permissions-in-postgresql-on-a-vps-2
+
 Show all users (may require logging in as `postgres` user with `pgsql -U postgres`):
 
 ```

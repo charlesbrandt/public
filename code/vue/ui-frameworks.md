@@ -1,29 +1,19 @@
 # UI Frameworks / Libraries / Components
 
-## See Also
+TODO:  
+chakra-ui that is compatible with tailwind  
+would be nice to be able to use the two together  
 
-~/alpha/code/vue/components-libraries.md
-~/alpha/code/vue/instances-vue.md
-
-~/alpha/public/ui/tailwind.md
-~/alpha/public/code/javascript/vue/components.md
-~/alpha/public/code/data-visualization.md
-~/alpha/public/ui/chakra.md
-
-https://duckduckgo.com/?t=ffab&q=vue+component+library&ia=web  
-vue component library at DuckDuckGo  
 https://www.freecodecamp.org/news/how-to-create-and-publish-a-vue-component-library/  
 How to Create and Publish a Vue Component Library  
 
 ## Tailwind
 
-https://duckduckgo.com/?t=ffab&q=tailwindcss&ia=web  
-💤 tailwindcss at DuckDuckGo  
 https://tailwindcss.com/  
-💤 Tailwind CSS - Rapidly build modern websites without ever leaving your HTML.  
+Tailwind CSS - Rapidly build modern websites without ever leaving your HTML.  
 
 https://vuejsexamples.com/a-tailwind-css-component-library-for-vue-js/  
-💤 vuejsexamples.com | 504: Gateway time-out  
+vuejsexamples.com | 504: Gateway time-out  
 
 https://flaviocopes.com/vue-tailwind/  
 Using Tailwind with Vue.js  
@@ -41,29 +31,37 @@ https://stackoverflow.com/questions/62529550/overriding-tailwind-css-classes-in-
 vue.js - Overriding Tailwind CSS Classes in a Reusable VueJS Component - Stack Overflow  
 
 
-
 ### Headless UI
 
 See also Vite -> VVT 
 included by default with VVT
 
 https://headlessui.dev/  
-💤 Headless UI – Unstyled, fully accessible UI components  
+Headless UI – Unstyled, fully accessible UI components  
 
 This one is designed to be used with tailwind for styling. 
 
 https://github.com/web2033/vite-vue3-tailwind-starter  
-💤 web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
+web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter) ⚡  
 https://github.com/tailwindlabs/headlessui  
-💤 tailwindlabs/headlessui: Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.  
 
 
-### Chakra UI
+tailwindlabs/headlessui: Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.  
+
+## Quasar 
+
+https://github.com/quasarframework/quasar  
+quasarframework/quasar: Quasar Framework - Build high-performance VueJS user interfaces in record time  
+
+https://quasar.dev/  
+Quasar Framework  
+https://quasar.dev/vue-components/pagination#introduction  
+Pagination | Quasar Framework  
+
+## Chakra UI
+
 
 very promising. Love that it prioritizes accessibility (a11y) out of the box. It would be great -- as a community -- to collect and improve best approaches for a11y. We can't all be experts, so share the work of the experts. 
-
-See also
-~/alpha/public/code/javascript/vue/chakra-ui.md
 
 https://github.com/chakra-ui/chakra-ui-vue-next
 GitHub - chakra-ui/chakra-ui-vue-next: ⚡️ The next most epic version of Chakra UI Vue based on Vue 3 🚀(WIP)
@@ -139,17 +137,6 @@ https://vue-community.org/guide/ecosystem/ui-libraries.html#kendo-ui-for-vue
 UI Libraries | Vue Community  
 
 
-## Element Plus
-
-https://duckduckgo.com/?t=ffab&q=element+plus+ui+framework&ia=web  
-element plus ui framework at DuckDuckGo  
-https://element-plus.org/en-US/  
-A Desktop UI Toolkit for Web | Element Plus  
-https://element-plus.org/en-US/component/dialog.html  
-Dialog | Element Plus  
-https://duckduckgo.com/?q=element+plus+ui&t=ffab&ia=web  
-element plus ui at DuckDuckGo  
-
 ## FormKit
 
 https://duckduckgo.com/?q=vue3+forms&t=ffab&ia=web  
@@ -171,81 +158,100 @@ general
 moz-extension://ad0f81f8-b8eb-41e6-9098-fda95d328487/index.html  
 New Tab  
 
-## Next Gen UI framework
-
-TODO:
-chakra-ui that is compatible with tailwind
-no reason we shouldn't be able to use the two together
-
 ## Individual Components
 
-https://duckduckgo.com/?t=ffab&q=awesome+vue+components&ia=web
-awesome vue components at DuckDuckGo
-https://awesome-vue.js.org/components-and-libraries/ui-components.html
-UI Components | Awesome Vue.js
-https://awesome-vue.js.org/components-and-libraries/ui-components.html
-UI Components | Awesome Vue.js
+https://duckduckgo.com/?t=ffab&q=awesome+vue+components&ia=web  
+awesome vue components at DuckDuckGo  
+https://awesome-vue.js.org/components-and-libraries/ui-components.html  
+UI Components | Awesome Vue.js  
 
 
 ## General searches
 
-https://duckduckgo.com/?q=vue+awesome+component+collections&t=ffab&ia=web
-vue awesome component collections at DuckDuckGo
-https://awesome-vue.js.org/components-and-libraries/ui-components.html
-UI Components | Awesome Vue.js
-https://awesome-vue.js.org/components-and-libraries/ui-components.html#menu
-UI Components | Awesome Vue.js
-https://awesome-vue.js.org/components-and-libraries/frameworks.html
-Frameworks | Awesome Vue.js
-https://github.com/cristijora/vue-tabs
-GitHub - cristijora/vue-tabs: Simplified bootstrap tabs
-https://awesome-vue.js.org/components-and-libraries/ui-layout.html
-UI Layout | Awesome Vue.js
-https://github.com/fuxingloh/vue-horizontal-list
-GitHub - fuxingloh/vue-horizontal-list: A pure vue native horizontal list implementation for mobile/touch and responsive web.
+https://duckduckgo.com/?q=vue+awesome+component+collections&t=ffab&ia=web  
+vue awesome component collections at DuckDuckGo  
+https://awesome-vue.js.org/components-and-libraries/ui-components.html  
+UI Components | Awesome Vue.js  
+https://awesome-vue.js.org/components-and-libraries/ui-components.html#menu  
+UI Components | Awesome Vue.js  
+https://awesome-vue.js.org/components-and-libraries/frameworks.html  
+Frameworks | Awesome Vue.js  
+https://github.com/cristijora/vue-tabs  
+GitHub - cristijora/vue-tabs: Simplified bootstrap tabs  
+https://awesome-vue.js.org/components-and-libraries/ui-layout.html  
+UI Layout | Awesome Vue.js  
+https://github.com/fuxingloh/vue-horizontal-list  
+GitHub - fuxingloh/vue-horizontal-list: A pure vue native horizontal list implementation for mobile/touch and responsive web.  
+  
+https://duckduckgo.com/?q=vue3+ui+library&t=ffab&ia=web  
+vue3 ui library at DuckDuckGo  
+https://ui.black-kro.dev/  
+Kro UI - The Modern Vue 3 UI Library  
+https://athemes.com/collections/vue-ui-component-libraries/  
+14 Best Vue UI Component Libraries 2021 - aThemes  
+https://vue-community.org/guide/ecosystem/ui-libraries.html#element-ui  
+UI Libraries | Vue Community  
+  
+https://duckduckgo.com/?t=ffab&q=vue3+ui+framework&ia=web  
+vue3 ui framework at DuckDuckGo  
 
-https://duckduckgo.com/?q=vue3+ui+library&t=ffab&ia=web
-💤 vue3 ui library at DuckDuckGo
-https://ui.black-kro.dev/
-💤 Kro UI - The Modern Vue 3 UI Library
-https://athemes.com/collections/vue-ui-component-libraries/
-💤 14 Best Vue UI Component Libraries 2021 - aThemes
-https://vue-community.org/guide/ecosystem/ui-libraries.html#element-ui
-💤 UI Libraries | Vue Community
+https://blog.logrocket.com/the-best-ui-frameworks-for-vue-3/  
+The best UI frameworks for Vue 3 - LogRocket Blog  
+https://next-material.balmjs.com/#/  
+BalmUI  
+https://antoniandre.github.io/wave-ui/  
+Wave UI  
+https://quatrochan.github.io/Equal/  
+Equal components  
+
+
+https://github.com/topics/vue-components  
+vue-components · GitHub Topics  
+
+https://duckduckgo.com/?t=ffab&q=vue+component+library&ia=web  
+vue component library at DuckDuckGo  
+
+
+
+
+
+## Other Options
+
+### Element Plus
+
+In practice, it has been challenging to work with this framework in combination with something like Tailwind. The styles can be difficult to work with. 
+
+https://duckduckgo.com/?t=ffab&q=element+plus+ui+framework&ia=web  
+element plus ui framework at DuckDuckGo  
+https://element-plus.org/en-US/  
+A Desktop UI Toolkit for Web | Element Plus  
+https://element-plus.org/en-US/component/dialog.html  
+Dialog | Element Plus  
+https://duckduckgo.com/?q=element+plus+ui&t=ffab&ia=web  
+element plus ui at DuckDuckGo  
+
+### Vant 
+
+https://github.com/youzan/vant
+youzan/vant: Lightweight Mobile UI Components built on Vue
+https://youzan.github.io/vant/#/en-US/
+Vant - Mobile UI Components built on Vue
+https://github.com/youzan/vant/tree/dev/packages/vant-icons
+vant/packages/vant-icons at dev · youzan/vant
+
+### Prime Vue
+
+https://duckduckgo.com/?t=ffab&q=prime+vue+utility+classes&ia=web
+prime vue utility classes at DuckDuckGo
+
 https://www.primefaces.org/primevue/showcase/#/
 Tab crash reporter
 https://github.com/primefaces/primevue
-💤 primefaces/primevue: The Most Complete Vue UI Component Library
+primefaces/primevue: The Most Complete Vue UI Component Library
 https://github.com/primefaces
-💤 PrimeFaces
-https://github.com/topics/vue-components
-💤 vue-components · GitHub Topics
-https://github.com/ElemeFE/element
-💤 ElemeFE/element: A Vue.js 2.0 UI Toolkit for Web
-https://github.com/quasarframework/quasar
-💤 quasarframework/quasar: Quasar Framework - Build high-performance VueJS user interfaces in record time
+PrimeFaces
 
-
-
-## Vant 
-
-https://github.com/youzan/vant
-💤 youzan/vant: Lightweight Mobile UI Components built on Vue
-https://youzan.github.io/vant/#/en-US/
-💤 Vant - Mobile UI Components built on Vue
-https://github.com/youzan/vant/tree/dev/packages/vant-icons
-💤 vant/packages/vant-icons at dev · youzan/vant
-
-
-
-
-
-## Prime Vue
-https://duckduckgo.com/?t=ffab&q=prime+vue+utility+classes&ia=web
-💤 prime vue utility classes at DuckDuckGo
-
-
-## Form Widgets
+### Form Widgets
 
 https://duckduckgo.com/?t=ffab&q=vue+form+builder&ia=web
 vue form builder at DuckDuckGo
@@ -271,7 +277,7 @@ UI-Patterns.com
 http://ui-patterns.com/patterns/getting-input/list
 Design patterns: Getting input
 
-## Ant Design
+### Ant Design
 
 https://duckduckgo.com/?t=ffab&q=ant+ui&ia=web
 ant ui at DuckDuckGo
@@ -282,7 +288,7 @@ https://zhuanlan.zhihu.com/p/381448788
 https://antdv.com/docs/vue/faq/
 FAQ - Ant Design Vue
 
-## Vuetify
+### Vuetify
 
 https://duckduckgo.com/?t=ffab&q=vite+vuetify3+alpha&ia=web  
 vite vuetify3 alpha at DuckDuckGo  
@@ -321,7 +327,7 @@ Switch component — Vuetify
 https://vuetifyjs.com/en/components/selects/  
 Select component — Vuetify  
 https://vuetifyjs.com/en/api/v-select/  
-💤 v-select API — Vuetify  
+v-select API — Vuetify  
 https://vuetifyjs.com/en/components/data-tables/#search  
 Data table component — Vuetify  
 https://vuetifyjs.com/en/components/text-fields/  
@@ -348,3 +354,4 @@ https://materialdesignicons.com/
 Material Design Icons  
 https://www.starterstory.com/stories/i-built-a-300k-year-vue-js-component-library  
 I Built A $300K/Year Vue.js Component Library - Starter Story  
+

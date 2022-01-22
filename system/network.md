@@ -54,6 +54,16 @@ Often it's pretty straightforward to use a GUI. If you want to configure an inte
 
 ### Ubuntu
 
+On a Raspberry Pi, disable cloud config:
+To disable cloud-init's
+network configuration capabilities, write a file
+`/etc/cloud/cloud.cfg.d/99-disable-network-config.cfg`
+with the following:
+
+```
+network: {config: disabled}
+```
+
 Find the interface in use
 
     ip address
@@ -91,7 +101,9 @@ To apply the configuration and have changes take effect, run:
 [adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 
 
-[Copy SSH keys to the new machine](ssh.md)
+[Copy SSH keys to the new machine](terminal/ssh.md)
+
+[Configure a firewall](firewall.md)
 
 
 ## Remote Connections
@@ -187,6 +199,9 @@ To resolve a name associated with an IP address, try nslookup:
     nslookup 129.79.5.100
 
 https://kb.iu.edu/d/ackg
+
+Don't forget!
+You can always add the host & ip to your `/etc/hosts` file and then it will resolve and you can test the service before the dns entries propagate! :)
 
 
 ## Traceroute

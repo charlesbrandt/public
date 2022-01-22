@@ -1,6 +1,6 @@
 # Javascript Basics
 
-Coming from another language, sometimes it can be difficult to get up to speed in a new ecosystem. 
+Coming from another language, it can be difficult to get up to speed in a new ecosystem. 
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
@@ -12,29 +12,36 @@ Or there's [node](node.md) that you can install locally and run interactively.
 
 ## Dates
 
-    Date.now()
+``` js
+Date.now()
+```
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-See also: [dates.md](dates.md)
+See also: [dates](dates.md)
 
 
 ## Type Casting
 
 String to a Number:
 
-    var x = Number("1000")
-    
+``` js
+var x = Number("1000")
+```
+
 parseInt is another option
 
-    var x = parseInt("1000", 10); 
-
+``` js
+var x = parseInt("1000", 10); 
+```
 
 ## Strings 
 
 ### Remove whitespace
 
+``` js
 myString = myString.trim();
+```
 
 https://stackoverflow.com/questions/10032024/how-to-remove-leading-and-trailing-white-spaces-from-a-given-html-string
 
@@ -42,17 +49,21 @@ In python, this is equivalent to `.strip()`
 
 ### Replace string
 
-    p.replace('original', 'new')
+``` js
+p.replace('original', 'new')
+```
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 
 ### Split String
 
-    const parts = original.split('/')
+``` js
+const parts = original.split('/')
+```
 
 Suppose you just want the YYYY-MM-DD part of a string...
 
-```
+``` js
 var fulldate = "2021-04-30T18:06:15.625Z";
 var day = fulldate.substring(0, 10);
 ```
@@ -61,15 +72,21 @@ Looks like an alternative is `fulldate.substr(2, 2)` -- is there a difference?
 
 `substring` doesn't accept negative indexes like python:
 
-            cwd = line.substring(0, -1)  // won't work!
+``` js
+cwd = line.substring(0, -1)  // won't work!
+```
 
 Instead, use
 
-            cwd = line.substring(0, line.length - 1)
+``` js
+cwd = line.substring(0, line.length - 1)
+```
 
 ### Join Array into String
 
-    console.log(elements.join('-'));
+``` js
+console.log(elements.join('-'));
+```
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
 
@@ -77,7 +94,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 Template literals can be used to represent multi-line strings and may use "interpolation" to insert variables:
 
-```
+``` js
 var a = 123, str = `---
    a is: ${a}
 ---`;
@@ -89,7 +106,7 @@ Usage of the backtick character (`) in JavaScript - Stack Overflow
 
 ### Does one string contain another string
 
-```
+``` js
 const string = "foo";
 const substring = "oo";
 
@@ -100,112 +117,53 @@ https://stackoverflow.com/questions/1789945/how-to-check-whether-a-string-contai
 
 ### Formatting Numbers
 
-    const str1 = '5';
-    console.log(str1.padStart(2, '0'));
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
-
-https://www.google.com/search?&q=javascript+format+number+leading+zeros
-
-
-## `for` Loops
-
-Can always use the basic format of
-
-```
-   for (let i=0, i<10, i++) {
-      console.log(i);
-   }
+``` js
+const str1 = '5';
+console.log(str1.padStart(2, '0'));
 ```
 
-That's a bit verbose in most cases. Usually want to iterate over _something_, just be sure to use the right version:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart  
+https://duckduckgo.com/?q=javascript+format+number+leading+zeros&ia=web  
+  
+## Arrays
 
-https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+### Length
 
-`for - of` works for iterating items in a list
-
-    for (const x of xs) { console.log(x); }
-
-`for - in` is used to enumerate object properties 
-NOT GOOD FOR LISTS!
-
-There is also
-
-    xs.forEach((x, i) => console.log(x));
-
-Loop over an object's keys in ES6
-
-```
-      Object.keys(items).forEach((x, i) => {
-        console.log(x);
-        console.log(items[x]);
-      });
+``` js
+items.length
 ```
 
-### Loop & Remove
+Note: It's a property, not a method
 
-If you want to remove items from an array that you are looping over, work backwards from the end:
-
-```
-for (var i = items.length - 1; i >= 0; i--) {
-    if (items[i].label == next.label) { 
-        items.splice(i, 1);
-    }
-}
-```
-
-https://stackoverflow.com/questions/9882284/looping-through-array-and-removing-items-without-breaking-for-loop
-
-
-## Arrays & Objects
-
-### Show attributes of object
-
-    console.log(Object.keys(app));
-
-very similar to python dir() command
-
-
-### Check for item in object 
-
-If you want to frequently test if an item exists, using an Object / Hash / Dictionary / Map should perform better.
-
-    myObj.hasOwnProperty('myKey');
-    
-Note: when doing this in a Vue application with eslint enabled, you may get an error like:
-
-    error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
-
-To get around that, you can use the following pattern:
-
-    Object.prototype.hasOwnProperty.call(myObj, 'myKey')
 
 ### Check for item in array
 
-If an array is necessary / easier, `includes()` is a good option:
+For frequently checking if an item is part of a group, and object is more efficient. If an array is necessary / easier, `includes()` is a good option:
 
-
-    [1, 2, 3].includes(1) => true
-
+``` js
+[1, 2, 3].includes(1) => true
+```
 
 https://stackoverflow.com/questions/7378228/check-if-an-element-is-present-in-an-array
 
-
 `indexOf` is the most widely compatible method:
 
-    [1, 2, 3].indexOf(1) => 0
+``` js
+[1, 2, 3].indexOf(1) => 0
+```
 
 Important: to test for existence in an array, check if the result == -1:
 
-```
-    if ([1, 2, 3].indexOf(4) === -1) {
-       console.log("does not exist")
-    }
+``` js
+if ([1, 2, 3].indexOf(4) === -1) {
+   console.log("does not exist")
+}
 ```
 
 Sometimes, with arrays of complex objects, `indexOf()` or `includes()` doesn't work. In that case, a raw iteration over the array of elements is the next best option. 
 
-```
+``` js
 array.forEach((item, index) => {
   console.log(item)
 }
@@ -213,20 +171,20 @@ array.forEach((item, index) => {
 
 Once you know what you want to compare, update the check:
 
-```
-        this.otherProjects = []
-        this.projects.forEach((item, index) => {
-          if (item._id !== this.project._id) {
-            this.otherProjects.push(item)
-          } else {
-            // console.log('skipping current project', item)
-          }
-        })
+``` js
+this.otherProjects = []
+this.projects.forEach((item, index) => {
+  if (item._id !== this.project._id) {
+    this.otherProjects.push(item)
+  } else {
+    // console.log('skipping current project', item)
+  }
+})
 ```
 
 There is also `array.some()`. The `some()` method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value. 
 
-```
+``` js
 const array = [1, 2, 3, 4, 5];
 
 // checks whether an element is even
@@ -242,11 +200,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 To append a value to the end of an array:
 
-    array.push(item);
+``` js
+array.push(item);
+```
 
 To insert a value at the beginning of an array:
 
-    array.unshift(item);
+``` js
+array.unshift(item);
+```
 
 https://stackoverflow.com/questions/8073673/how-can-i-add-new-array-elements-at-the-beginning-of-an-array-in-javascript
 
@@ -254,7 +216,7 @@ splice() changes the original array
 slice() preserves the original array
 both return the modified array
 
-```
+``` js 
 //splice
 var array=[1,2,3,4,5];
 console.log(array.splice(2));
@@ -263,7 +225,6 @@ console.log(array.splice(2));
 var array2=[1,2,3,4,5]
 console.log(array2.slice(2));
 
-
 console.log("----after-----");
 console.log(array);
 console.log(array2);
@@ -271,37 +232,16 @@ console.log(array2);
 
 https://stackoverflow.com/questions/37601282/javascript-array-splice-vs-slice
 
-#### Remove item from array
+### Remove item from array
 
 To remove an element from an array:
 
-```
-    var index = array.indexOf(item);
-    if (index !== -1) array.splice(index, 1);
+``` js
+var index = array.indexOf(item);
+if (index !== -1) array.splice(index, 1);
 ```
 
 https://stackoverflow.com/questions/3954438/how-to-remove-item-from-array-by-value
-
-
-### Copy Objects
-
-For a quick deep copy: `JSON.parse(JSON.stringify(jsonObject))`
-
-For a shallow copy, the spread syntax may be enough:
-
-    var A3 = {...A1};  // Spread Syntax
-
-https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
-
-https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
-
-The slice() array method can be used to copy arrays by not passing any arguments arr1 = arr0.slice()
-
-#### Spread Operator
-
-'...' Three dots in front of an array expands it out. Can be used to copy. 
-
-https://tenmilesquare.com/5-uses-for-the-spread-operator/
 
 ### Map, Filter, Reduce
 
@@ -309,12 +249,117 @@ Higher level functions for working with items in an array
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
-```
+``` js
 // Arrow function
 map((element) => { ... })
 map((element, index) => { ... })
 map((element, index, array) => { ... })
 ```
+
+
+## Copy Objects / Arrays
+
+For a quick deep copy: `JSON.parse(JSON.stringify(jsonObject))`
+
+For a shallow copy, the spread syntax may be enough:
+
+``` js
+var A3 = {...A1};  // Spread Syntax
+```
+
+https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
+
+https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
+
+The slice() array method can be used to copy arrays by not passing any arguments `arr1 = arr0.slice()`
+
+### Spread Operator 
+
+'...' Three dots in front of an array expands it out. Can be used to copy. 
+
+https://tenmilesquare.com/5-uses-for-the-spread-operator/
+
+
+## `for` Loops
+
+Can always use the basic format of
+
+``` js
+for (let i=0, i<10, i++) {
+   console.log(i);
+}
+```
+
+That's a bit verbose in most cases. Usually want to iterate over _something_, just be sure to use the right version:
+
+https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+
+`for - of` works for iterating items in a list
+
+``` js
+for (const x of xs) { console.log(x); }
+```
+
+`for - in` is used to enumerate object properties 
+NOT GOOD FOR LISTS!
+
+There is also
+
+``` js 
+xs.forEach((x, i) => console.log(x));
+```
+
+Loop over an object's keys in ES6
+
+``` js
+Object.keys(items).forEach((x, i) => {
+  console.log(x);
+  console.log(items[x]);
+});
+```
+
+### Loop & Remove
+
+If you want to remove items from an array that you are looping over, work backwards from the end:
+
+``` js
+for (var i = items.length - 1; i >= 0; i--) {
+    if (items[i].label == next.label) { 
+        items.splice(i, 1);
+    }
+}
+```
+
+https://stackoverflow.com/questions/9882284/looping-through-array-and-removing-items-without-breaking-for-loop
+
+
+
+## Objects
+
+### Show attributes of object
+
+``` js
+console.log(Object.keys(app));
+```
+
+very similar to python dir() command
+
+
+### Check for item in object 
+
+If you want to frequently test if an item exists, using an Object / Hash / Dictionary / Map should perform better than an array.
+
+    myObj.hasOwnProperty('myKey');
+    
+Note: when doing this in a Vue application with eslint enabled, you may get an error like:
+
+    error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+
+To get around that, you can use the following pattern:
+
+    Object.prototype.hasOwnProperty.call(myObj, 'myKey')
+
+
 
 ## Regular Expressions
 
