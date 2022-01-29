@@ -55,8 +55,44 @@ quasarframework/quasar: Quasar Framework - Build high-performance VueJS user int
 
 https://quasar.dev/  
 Quasar Framework  
+
 https://quasar.dev/vue-components/pagination#introduction  
 Pagination | Quasar Framework  
+
+Looks like Quasar strongly encourages the use of the Quasar CLI in order to manage projects. This is likely where the ability to built for all of the different targets is managed -- makes sense. 
+
+Seems like a Vite version of the build is actively in the works.
+TODO: build a vite hosted project with the Quasar CLI
+TODO: run quasar in a UI container
+
+https://www.google.com/search?channel=fs&client=ubuntu&q=history+of+quasar+javascript+framework
+💤 history of quasar javascript framework - Google Search
+https://en.wikipedia.org/wiki/Quasar_framework
+💤 Quasar framework - Wikipedia
+https://www.google.com/search?channel=fs&client=ubuntu&q=quasar+vue3+
+💤 quasar vue3 - Google Search
+https://quasar.dev/
+💤 Quasar Framework
+https://quasar.dev/start/pick-quasar-flavour
+💤 Getting Started - Pick a Quasar Flavour | Quasar Framework
+https://quasar.dev/quasar-cli/installation
+💤 Quasar CLI Installation | Quasar Framework
+https://www.google.com/search?channel=fs&client=ubuntu&q=quasar+docker
+💤 quasar docker - Google Search
+https://medium.com/@jwdobken/develop-quasar-applications-with-docker-a19c38d4a6ac
+💤 Quasar applications with Docker; initialize, develop and build | by Joost Döbken | Medium
+https://hub.docker.com/r/woahbase/alpine-quasar/
+💤 woahbase/alpine-quasar - Docker Image | Docker Hub
+https://www.google.com/search?channel=fs&client=ubuntu&q=github+alpine+quasar
+💤 github alpine quasar - Google Search
+https://github.com/woahbase/alpine-quasar
+💤 woahbase/alpine-quasar: Quasar Framework and VueJS CLIs built on Alpine Linux + NodeJS
+https://www.google.com/search?channel=fs&client=ubuntu&q=quasar+vite+boilerplate
+💤 quasar vite boilerplate - Google Search
+https://github.com/ekoeryanto/vite-quasar
+💤 ekoeryanto/vite-quasar: Vite integration of quasar 2
+https://quasar.dev/start/vite-plugin
+Vite plugin for Quasar | Quasar Framework
 
 ## Chakra UI
 

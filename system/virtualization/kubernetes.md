@@ -225,6 +225,24 @@ https://kubernetes.io/docs/concepts/security/controlling-access/
 Controlling Access to the Kubernetes API | Kubernetes  
 
 
+https://duckduckgo.com/?t=ffab&q=how+to+manage+private+keys+store&ia=web
+how to manage private keys store at DuckDuckGo
+https://duckduckgo.com/?t=ffab&q=kubernetes+key+storage&ia=web
+kubernetes key storage at DuckDuckGo
+https://duckduckgo.com/?t=ffab&q=kubernetes+identity&ia=web
+kubernetes identity at DuckDuckGo
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+Authenticating | Kubernetes
+https://duckduckgo.com/?q=keystone+identity+manager&t=ffcm&ia=web
+keystone identity manager at DuckDuckGo
+https://keystonev1.docs.apiary.io/#
+Keystone Identity Manager SSO API v1 · Apiary
+https://docs.openstack.org/keystone/latest/
+Keystone, the OpenStack Identity Service — keystone 20.0.1.dev10 documentation
+https://docs.openstack.org/api-ref/identity/index.html
+💤 Welcome to keystone’s documentation! — keystone documentation
+
+
 
 ## Similar Tools
 

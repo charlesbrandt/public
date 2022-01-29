@@ -16,6 +16,8 @@ When downloading an image, torrents are a good way to share bandwidth. This supp
 
 [Backups](backup-system.md)  
 
+[Keyboard](keyboard.md)
+
 ## Create Bootable Media
 
 This process is the same for all systems.

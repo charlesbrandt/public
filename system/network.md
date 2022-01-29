@@ -196,9 +196,15 @@ iptables
 
 To resolve a name associated with an IP address, try nslookup:
 
-    nslookup 129.79.5.100
+```
+nslookup 129.79.5.100
+```
 
-https://kb.iu.edu/d/ackg
+To go the other way and find the IP of a configured domain name, `dig` can help:
+
+```
+dig +short unix.stackexchange.com
+```
 
 Don't forget!
 You can always add the host & ip to your `/etc/hosts` file and then it will resolve and you can test the service before the dns entries propagate! :)
@@ -230,16 +236,16 @@ To see statistics on TCP connection duration:
 
 ### Other tools
 
-https://www.reddit.com/r/networking/comments/78mtfj/looking_for_an_open_source_network_traffic/
-Looking for an open source Network Traffic Analyzer : networking
+https://www.reddit.com/r/networking/comments/78mtfj/looking_for_an_open_source_network_traffic/  
+Looking for an open source Network Traffic Analyzer : networking  
 
-https://github.com/robcowart/elastiflow
-GitHub - robcowart/elastiflow: Network flow analytics (Netflow, sFlow and IPFIX) with the Elastic Stack
-http://pmacct.net/
-pmacct project: IP accounting iconoclasm
-https://gitlab.com/thart/flowanalyzer
-Manito Networks / flowanalyzer · GitLab
-https://www.ntop.org/
-ntop – High Performance Network Monitoring Solutions based on Open Source and Commodity Hardware.
+https://github.com/robcowart/elastiflow  
+GitHub - robcowart/elastiflow: Network flow analytics (Netflow, sFlow and IPFIX) with the Elastic Stack  
+http://pmacct.net/  
+pmacct project: IP accounting iconoclasm  
+https://gitlab.com/thart/flowanalyzer  
+Manito Networks / flowanalyzer · GitLab  
+https://www.ntop.org/  
+ntop – High Performance Network Monitoring Solutions based on Open Source and Commodity Hardware.  
 
 

@@ -2,6 +2,20 @@
 
 Most front-end applications need a way to get data from the back end services they leverage.
 
+## Fetch
+
+Looks like there is a newer built in method, `fetch` to make a query:
+
+https://duckduckgo.com/?t=ffab&q=do+we+still+need+axios+with+fetch+api+available%3F&ia=web  
+do we still need axios with fetch api available? at DuckDuckGo  
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API  
+Fetch API - Web APIs | MDN  
+https://blog.logrocket.com/axios-or-fetch-api/  
+Axios or fetch(): Which should you use? - LogRocket Blog  
+
+Fetch may be a little bit more verbose, but only slightly
+
+
 ## Axios
 
 [Axios seems to be the way to go](https://github.com/axios/axios)

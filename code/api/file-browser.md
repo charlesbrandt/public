@@ -47,14 +47,14 @@ Then add the following block to your project's `docker-compose.yml` file:
   filebrowser:
     image: filebrowser/filebrowser
     container_name: boilerplate_filebrowser_1
-    # restart: always
+    restart: unless-stopped
     volumes:
       - /media/account:/srv
       - ./filebrowser/filebrowser.db:/database.db
       - ./filebrowser/.filebrowser.json:/.filebrowser.json
     #--user $(id -u):$(id -g)
     ports:
-      - 8890:80
+      - 9999:80
 
 ```
 
