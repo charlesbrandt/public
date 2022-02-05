@@ -42,6 +42,7 @@ See below for details
   "window.newWindowDimensions": "inherit",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.wrapTabs": false,
+  "workbench.sideBar.location": "right",
   "breadcrumbs.enabled": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs":"active",
@@ -71,6 +72,12 @@ See below for details
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
   "redhat.telemetry.enabled": false,
+  "files.exclude": {
+     "**/.git": true,
+     "**/.DS_Store": true,
+     "node_modules" : true,
+     "**/_tmp_*": true,
+  },
 }
 ```
 
@@ -500,6 +507,16 @@ By: Microsoft
 Also:
 ms-vscode-remote.remote-containers
 
+### SVG Preview
+
+Svg Preview
+Simon Siefke
+
+Helpful when you want to see what is in an SVG file. May also help with manually editing an SVG directly in VS Code.
+
+https://marketplace.visualstudio.com/items?itemName=SimonSiefke.svg-preview
+
+There were a few other options available, but this seems to work so far. 
 
 
 ## Other Extensions

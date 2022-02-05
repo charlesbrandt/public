@@ -18,10 +18,11 @@ Git is a distributed [version control system](index.md), popular for keeping [co
 
 ## What makes a good commit message
 
-  - Separate subject from body with a blank line
-  - Limit the subject line to 50 characters
-  - Do not end the subject line with a period
   - Use the imperative mood in the subject line
+  - Capitalize the subject line
+  - Do not end the subject line with a period
+  - Limit the subject line to 50 characters
+  - Separate subject from body with a blank line
   - Wrap the body at 72 characters
   - Use the body to explain what and why vs. how
   - Capitalize the subject line
@@ -233,10 +234,12 @@ Co-authored-by:
 
 Ideally, do this before pushing up to a public repo, otherwise it results in a branch merge. This will change the most recent commit:
 
-    git commit --amend
+```
+git commit --amend
+```
 
-https://docs.github.com/en/github/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message
-Changing a commit message - GitHub Docs
+https://docs.github.com/en/github/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message  
+Changing a commit message - GitHub Docs  
 
 ### Tag current position
 
@@ -251,11 +254,15 @@ git tag -a v1.4 -m 'version 1.4'
 
 ### Show current branch
 
-    git branch --show-current
+```
+git branch --show-current
+```
 
 ### Show a list of all branches available
 
-    git branch --all
+```
+git branch --all
+```
 
 ### Switch to existing branch
 
@@ -294,13 +301,17 @@ git remote prune origin
 
 To preview this action, use
 
-    git remote prune origin --dry-run
+```
+git remote prune origin --dry-run
+```
 
 ### Setting tracking source
 
 If a new local branch has not been pushed up to the origin, use
 
-    git push origin [branch-name]
+```
+git push origin [branch-name]
+```
 
 If you wish to set tracking information for this branch:
 
@@ -316,10 +327,12 @@ Use merge if your branch is already pushed.
 
 To merge changes
 
-    git merge origin/main
+```
+git merge origin/main
+```
 
-https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web
-git import changes on master to branch at DuckDuckGo
+https://duckduckgo.com/?q=git+import+changes+on+master+to+branch&t=canonical&ia=web  
+git import changes on master to branch at DuckDuckGo  
 
 See also web-ui-api-db/README.md for a branching strategy on handling changes to a foundation that exists outside of the current repository.
 
