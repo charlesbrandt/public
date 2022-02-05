@@ -44,14 +44,14 @@ In the mobile phone space, Android is a good open source solution.
 
 ## Terminals
 
+Other keywords include: bash, shell
+
 [Terminal](terminal/index.md)  
 
 https://tmuxcheatsheet.com/  
 [Tmux](terminal/tmux.md)  
 
 [SSH](terminal/ssh.md)  
-[Bash](terminal/bash.md)  
-[Shell](terminal/shell.md)  
 
 Bash Colors example available in `terminal/bash-colors.sh`
 

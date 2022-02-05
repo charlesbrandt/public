@@ -10,7 +10,7 @@ Related topics
 
 [Password manager](password-manager.md)  
 [remote desktop](remote-desktop.md)  
-[ssh](ssh.md)  
+[ssh](./terminal/ssh.md)  
 
 
 ## User ID

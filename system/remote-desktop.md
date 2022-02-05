@@ -1,6 +1,6 @@
 # Remote Desktops
 
-When [SSH](ssh.md) is not enough, there are different protocols that are used to connect to a desktop interface remotely. 
+When [SSH](./terminal/ssh.md) is not enough, there are different protocols that are used to connect to a desktop interface remotely. 
 
 
 ## Clients
@@ -88,7 +88,7 @@ An alternative approach is to launch a new virtual desktop that is not available
     tightvncserver
     sudo ufw allow 5901
 
-Consider if you need a full blown GUI in this case... it may be easier to just work at the command line over [SSH](ssh.md).
+Consider if you need a full blown GUI in this case... it may be easier to just work at the command line over [SSH](./terminal/ssh.md).
 
 To start tightvncserver at boot, you'll need an init script
 

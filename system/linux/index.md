@@ -1,7 +1,7 @@
 # Linux
 
 [Android](../android/)  
-[tmux](../tmux.md)  
+[tmux](../terminal/tmux.md)  
 
 There are many linux distributions available. Which one you run is a matter of personal preference. Communities create a distribution as a standard collection of linux applications and configurations. 
 

@@ -5,7 +5,7 @@ which git
 sudo apt-get install git
 ```
 
-[Generate ssh-keys](../ssh.md)
+[Generate ssh-keys](../terminal/ssh.md)
 Install an ssh server if you plan to connect to the machine remotely
 
 Install your preferred [editor](../editors/).
