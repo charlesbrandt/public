@@ -17,7 +17,7 @@ https://github.com/feathersjs-ecosystem/feathers-sequelize
 
 ## Model Files
 
-I like using the pattern `model_name.model.js` 
+For the file name of model files, I like using the pattern `model_name.model.js` 
 
 ### Index
 
@@ -31,9 +31,18 @@ For index fields, you can specify
         },
 ```
 
+Remember, when sending API calls to create new records, be sure NOT to include an `id` parameter if the model's `id` is set to be automatically updated. The error is a bit cryptic:
+
+```
+SequelizeDatabaseError: Field 'id' doesn't have a default value
+```
+
+
 https://stackoverflow.com/questions/33775165/auto-increment-id-with-sequelize-in-mysql
 
 > You must be sure you're not even sending the id key at all.
+
+
 
 ## Schema Generation
 
