@@ -26,7 +26,16 @@ Understanding Kubernetes Objects | Kubernetes
 https://kubernetes.io/docs/concepts/workloads/pods/  
 Pods | Kubernetes  
 
-## Distributions
+## Tools
+
+Make sure you have the basics installed locally:
+
+  - Docker  
+  - kubectl  
+  - kubeadm  
+
+
+## Cluster Distributions
 
 There are many different ways to configure kubernetes clusters. A common way is to deploy them to a managed cloud service like Google, AWS, or Azure. The exact distribution you use may vary, but the concepts should transfer from one context to another. 
 
