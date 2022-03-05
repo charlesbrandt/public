@@ -6,7 +6,7 @@ Development, Programming
 
 [api](api/) 
 
-[cypress](testing/cypress.md) ([testing](testing/))
+[cypress](test/cypress.md) ([testing](test/))
 
 [vue](vue/)
 
