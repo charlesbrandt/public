@@ -116,7 +116,7 @@ Django has a well designed permission system.
 
 ## Testing
 
-[Cypress Testing](/code/testing/cypress.md#authentication)
+[Cypress Testing](/code/test/cypress.md#authentication)
 
 ## Related processes
 
