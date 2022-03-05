@@ -97,17 +97,34 @@ fs.readdir(args[0], (err, files) => {
 
 https://www.codegrepper.com/code-examples/shell/node+run+shell+command
 
-## Modules
-
-Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
-
-https://nodejs.org/api/modules.html#modules_all_together
-
-https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
-
-https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
 
 ### Import vs Require
+
+```
+Cannot use import statement outside a module
+```
+
+To use ESModules syntax, need to switch package. (Note: all code will need to follow this pattern)
+
+```
+"type": "module"
+```
+
+https://stackoverflow.com/questions/62488898/node-js-syntaxerror-cannot-use-import-statement-outside-a-module
+
+Or Use commonjs syntax instead of es module syntax:
+
+```
+
+module.exports.func = function (){
+    console.log("Hello World");
+}
+```
+
+```
+const myMod = require("./mod")
+myMod.func()
+```
 
 ES6 modules use the import syntax. Seems like the way to go moving forward.
 
@@ -120,6 +137,7 @@ javascript - Using Node.js require vs. ES6 import/export - Stack Overflow
 https://duckduckgo.com/?t=ffab&q=javascript+require+vs+import&ia=web  
 javascript require vs import at DuckDuckGo  
 
+
 ### Local Development
 
 https://duckduckgo.com/?t=ffab&q=work+on+npm+module+in+development&ia=web  
@@ -128,6 +146,17 @@ https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/
 An Absolute Beginner's Guide to Using npm - NodeSource  
 https://www.deadcoderising.com/how-to-smoothly-develop-node-modules-locally-using-npm-link/  
 How to smoothly develop node modules locally using npm link  
+
+
+### Module Not Found
+
+Make sure you've actually installed the module if you get a message like `MODULE_NOT_FOUND`
+
+https://nodejs.org/api/modules.html#modules_all_together
+
+https://gist.github.com/MattGoldwater/78f89ea93b9f1dfc19d3440e172cfa49
+
+https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
 
 
 ## Package Managers

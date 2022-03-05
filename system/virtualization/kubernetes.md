@@ -34,14 +34,156 @@ Make sure you have the basics installed locally:
   - kubectl  
   - kubeadm  
 
+```
+cd ~/tools
+```
+
+TODO: consider best path for binaries for a user
+
+
+### kubectl
+
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+```
+
+Validate
+
+```
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(<kubectl.sha256)  kubectl" | sha256sum --check
+```
+
+Any reason to install as root?
+local bin seems sufficient
+Some notes about paths
+
+```
+vi ~/.bashrc
+
+PATH="${PATH}:~/tools/"  
+
+source ~/.bashrc
+```
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+
+### kubeadm
+
+Many good system checks to review here:
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+Saw many mentions about the importance of disabling swap. 
+Not sure what happens, but I'll heed the warning. 
+
+https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux
+
+```
+cat /proc/swaps
+sudo swapoff -a
+sudo vi /etc/fstab
+
+```
+
+Warning: These instructions exclude all Kubernetes packages from any system upgrades. This is because kubeadm and Kubernetes require special attention to upgrade. 
+
+https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
+These will install `kubectl` too! :)
+
+```
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+
+
+
+### kind
+
+Primarily for development and testing. Don't expect to deploy a local cluster using this approach?
+
+
+```
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64
+chmod +x ./kind
+mv ./kind /some-dir-in-your-PATH/kind
+```
+
+https://kind.sigs.k8s.io/docs/user/quick-start/
+
+```
+kind create cluster
+Creating cluster "kind" ...
+ ✓ Ensuring node image (kindest/node:v1.21.1) 🖼 
+ ✓ Preparing nodes 📦  
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Have a nice day! 👋
+```
+
+By default, the cluster access configuration is stored in ${HOME}/.kube/config if $KUBECONFIG environment variable is not set.
+
+
+```
+Security Goose Says:
+NOTE: You should really think thrice before exposing your kind cluster publicly! kind does not ship with state of the art security or any update strategy (other than disposing your cluster and creating a new one)! We strongly discourage exposing kind to anything other than loopback.
+```
+
+So not a great fit for local network service deployment then? 
+Ideally use the same tools everywhere. 
+
+
+
+https://kind.sigs.k8s.io/docs/user/quick-start/  
+kind – Quick Start  
+https://kind.sigs.k8s.io/docs/user/ingress  
+kind – Ingress  
+https://kind.sigs.k8s.io/docs/user/configuration/  
+kind – Configuration  
+https://kind.sigs.k8s.io/docs/design/principles/  
+kind – Principles  
+https://raw.githubusercontent.com/kubernetes-sigs/kind/main/site/content/docs/user/kind-example-config.yaml  
+raw.githubusercontent.com/kubernetes-sigs/kind/main/site/content/docs/user/kind-example-config.yaml  
+
+
+
 
 ## Cluster Distributions
 
 There are many different ways to configure kubernetes clusters. A common way is to deploy them to a managed cloud service like Google, AWS, or Azure. The exact distribution you use may vary, but the concepts should transfer from one context to another. 
 
-These notes focus on local setups, since that's a good way to learn. 
+These notes focus on local setups (running your own cluster), since that's a good way to learn. 
 
-## Stock Kubernetes
+Especially useful for development purposes
+
+https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
+ running a developer setup with kubernetes at DuckDuckGo  
+https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
+ Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
+https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
+ The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
+
+
+### Stock Kubernetes
 
 Currently following along and summarizing these resources:
 
@@ -52,6 +194,14 @@ Choose where you want to run your Kubernetes cluster
 https://kubernetes.io/docs/setup/
    
 https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
+
+### Local Development
+
+https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
+
+Microk8s and k3s also come up as options. 
+Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store. 
+
 
 ### K3s
 
@@ -85,28 +235,11 @@ Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc
 sudo k3s kubectl get node
 ```
 
-### Distributions
-
-Running your own cluster
 
 https://k3s.io/  
-💤 K3s: Lightweight Kubernetes  
+ K3s: Lightweight Kubernetes  
 https://rancher.com/docs/k3s/latest/en/  
-💤 Rancher Docs: K3s - Lightweight Kubernetes  
-  
-https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
-💤 running a developer setup with kubernetes at DuckDuckGo  
-https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
-💤 Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
-https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
-💤 The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
-
-### Local Development
-
-https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
-
-Microk8s and k3s also come up as options. 
-Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store. 
+ Rancher Docs: K3s - Lightweight Kubernetes  
 
 
 
@@ -123,17 +256,17 @@ https://192.168.2.85:9443/#!/2/docker/stacks
 Warning: Potential Security Risk Ahead
 
 https://github.com/portainer/portainer
-💤 portainer/portainer: Making Docker and Kubernetes management easy.
+ portainer/portainer: Making Docker and Kubernetes management easy.
 
 https://docs.portainer.io/v/ce-2.11/user/docker/containers
-💤 Containers - Portainer Documentation
+ Containers - Portainer Documentation
 
 https://howchoo.com/devops/how-to-add-a-health-check-to-your-docker-container
-💤 How to Add a Health Check to Your Docker Container - Howchoo
+ How to Add a Health Check to Your Docker Container - Howchoo
 https://duckduckgo.com/?q=container+health+check&t=fpas&ia=web
-💤 container health check at DuckDuckGo
+ container health check at DuckDuckGo
 https://github.com/topics/docker
-💤 docker · GitHub Topics
+ docker · GitHub Topics
 
 
 
@@ -166,9 +299,9 @@ https://k8slens.dev
 for accessing the cluster
 
 https://k8slens.dev/  
-💤 Lens | The Kubernetes IDE  
+ Lens | The Kubernetes IDE  
 https://github.com/lensapp/lens  
-💤 GitHub - lensapp/lens: Lens - The Kubernetes IDE  
+ GitHub - lensapp/lens: Lens - The Kubernetes IDE  
   
 
 ### K9s - Command line 
@@ -249,7 +382,7 @@ Keystone Identity Manager SSO API v1 · Apiary
 https://docs.openstack.org/keystone/latest/
 Keystone, the OpenStack Identity Service — keystone 20.0.1.dev10 documentation
 https://docs.openstack.org/api-ref/identity/index.html
-💤 Welcome to keystone’s documentation! — keystone documentation
+ Welcome to keystone’s documentation! — keystone documentation
 
 
 
@@ -260,7 +393,7 @@ Kubernetes is compared to Docker Swarm.
 Docker-compose is it's own thing (what to run on a local instance)
 
 https://duckduckgo.com/?t=ffab&q=docker-compose+vs+kubernetes&ia=web  
-💤 docker-compose vs kubernetes at DuckDuckGo  
+docker-compose vs kubernetes at DuckDuckGo  
 https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes  
 What's the difference between Docker Compose and Kubernetes? - Stack Overflow  
 

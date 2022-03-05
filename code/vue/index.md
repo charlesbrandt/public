@@ -5,13 +5,7 @@ For the foundation basic concepts common between vue 2 and vue 3, see [basics](b
 
 [For tools, setups, and installs](environment.md)
 
-## Vite
-
-[vite](vite.md)
-
-## UI Frameworks / Component Libraries
-
-[ui frameworks](ui-frameworks.md)
+[Boilerplates & Templates](boilerplates.md)
 
 ## General links
 
@@ -252,6 +246,8 @@ was looking at where to put axios
 ended up importing in each component that needs it (pages)
 is that desirable? help with build sites
 
+building a services object to handle importing and abstracting calls to the API so you don't need to recreate these in every component really helps!
+
 https://duckduckgo.com/?q=vite+axios&t=ffab&ia=web  
 vite axios at DuckDuckGo  
 https://github.com/Sensanaty/vue3-vite-template  
@@ -287,6 +283,5 @@ https://vueuse.org/integrations/useaxios/
 useAxios | VueUse  
 https://vueuse.org/guide/config.html  
 Configurations | VueUse  
-
 
 
