@@ -8,7 +8,6 @@ module.exports = {
       { text: 'System', link: '/system/' },
       { text: 'Web', link: '/web/' },
       { text: 'Documentation', link: '/documentation/' },
-      { text: 'Design', link: '/design/' },
       { text: 'Pi', link: '/pi/' },
     //  { text: '', link: '/' },
 

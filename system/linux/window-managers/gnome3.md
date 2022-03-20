@@ -17,6 +17,16 @@ https://github.com/mzur/gnome-shell-wsmatrix
 
 Settings -> Appearance -> Auto-hide the Dock
 
+## Dark Mode
+
+Good for testing if web pages respond to the operating system dark mode preference:
+
+Settings -> Appearance -> Dark Mode
+
+https://itsfoss.com/dark-mode-ubuntu/
+How to Enable Full Dark Mode in Ubuntu 20.04
+
+
 ## Alert Sounds
 
 Disable alert sounds like screenshot photo sound:

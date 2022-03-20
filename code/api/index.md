@@ -28,28 +28,23 @@ Databases tie in closely to the API side.
 
 ### Document Databases
 
-
 [mongo](mongo.md)
 
-## Deployment
+### Deployment
 
 When it comes time to deploy databases, separate containers are ideal. See also system-architecture notes on web-ui-api-db:
 
 https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
 
 
-## Auth
-
-[auth](auth.md)
-
-
 ## Frameworks
 
-[feathers](feathers.md)
 
-[image gallery](image-gallery.md)
+https://github.com/typicode/json-server#static-file-server  
+typicode/json-server: Get a full fake REST API with zero coding in less than 30 seconds (seriously)  
 
-[ipfs](ipfs.md)
+https://github.com/typicode/lowdb  
+typicode/lowdb: Simple to use local JSON database (supports Node, Electron and the browser)  
 
 [search](search.md)
 
@@ -57,8 +52,20 @@ https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
 [Express Server](express.md)  
 
 
+[feathers](feathers.md)
+
+[image gallery](image-gallery.md)
+
+[ipfs](ipfs.md)
+
+
+
 ### File Browser
 
 [File Browser](file-browser.md)
 
+
+## Auth
+
+[auth](auth.md)
 

@@ -52,16 +52,7 @@ See below for details
   "window.zoomLevel": 0,
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
-  "prettier.prettierPath": "./bin/prettier",
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "iconify.inplace": false,
   "python.showStartPage": false,
   "workbench.editorAssociations": [
     {
@@ -91,6 +82,8 @@ Configure automatic formatting of a document when it's saved. This also helps in
 
 ### Prettier Extension
 
+Note: (2022.03.18 16:45:59) ESLint extension may be sufficient
+
 By: Prettier
 
 Helps with code formatting
@@ -105,6 +98,20 @@ may require the project to install prettier as a dev dependency so that vscode h
 
 TODO: consider beautify instead?
 https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify
+
+```
+  "prettier.prettierPath": "./bin/prettier",
+
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+```
 
 #### Prettier Path
 

@@ -45,3 +45,14 @@ Many topics related to Vue.
 
 [Vue](/code/vue/)
 
+## Language Libraries
+
+https://duckduckgo.com/?q=lodash&t=ffab&ia=web  
+lodash at DuckDuckGo  
+https://lodash.com/  
+Lodash  
+https://github.com/lodash/lodash  
+lodash/lodash: A modern JavaScript utility library delivering modularity, performance, & extras.  
+
+https://github.com/topics/javascript  
+javascript · GitHub Topics · GitHub  

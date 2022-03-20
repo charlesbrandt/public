@@ -90,7 +90,7 @@ git pull
 Run
 
 ```
-git config user.email "you@example.com"
+git config user.email "you@example.org"
 git config user.name "Your Name"
 ```
 
@@ -98,10 +98,23 @@ to set the identity to use when making changes to the current repository. Differ
 
 If that's not something your work requires, you can also set a single account globally:
 
-```
-git config --global user.email "you@example.com"
+```sh
+git config --global user.email "you@example.org"
 git config --global user.name "Your Name"
 ```
+
+On a remote shared sever, it may not be appropriate to set user credentials at the account level. In this case, it is possible to provide your details as part of the commit:
+
+```sh
+git commit --author="Your Name <you@example.org>"
+```
+
+If you end up committing as a system user and need to update the last commit message, you can use:
+
+```sh
+git commit --amend --author="Your Name <you@example.org>"
+```
+
 
 ### SSH
 
