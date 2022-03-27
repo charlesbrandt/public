@@ -2,15 +2,13 @@
 
 Javascript, JS, ECMAScript
 
+The language of the web. The programming language available in your browser.
+
 Javascript is not the same as Java (despite the confusing name similarities). 
 
-Here are some good introductions to working with javascript:  
-https://developer.mozilla.org/en/JavaScript/Guide  
-  
-And a more detailed reference here:  
-https://developer.mozilla.org/en/JavaScript/Reference  
-
 [Basics](basics.md)  
+
+[Files](files.md)  
 
 [Date Handling](dates.md)  
 
@@ -20,7 +18,6 @@ https://developer.mozilla.org/en/JavaScript/Reference
 
 [Tree shaking](treeshaking.md)
 
-Many [APIs](../api/) leverage javascript
 
 ## Interpreters
 
@@ -44,6 +41,18 @@ if you need to install, see [Node](node.md) notes.
 Many topics related to Vue.
 
 [Vue](/code/vue/)
+
+## See Also
+
+
+Here are some good introductions to working with javascript:  
+https://developer.mozilla.org/en/JavaScript/Guide  
+  
+And a more detailed reference here:  
+https://developer.mozilla.org/en/JavaScript/Reference  
+
+Many [APIs](../api/) leverage javascript
+
 
 ## Language Libraries
 

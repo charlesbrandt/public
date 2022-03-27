@@ -1,8 +1,10 @@
 # Vite
 
-Next generation js bundler & deployment tool (???)
+"A build tool that aims to provide a faster and leaner development experience for modern web projects."
 
-The new build / bundler. And so much more. 
+Next generation js bundler & development server.
+
+The new build / bundler. And so much more.
 
 https://vitejs.dev/guide/#overview
 
@@ -13,7 +15,7 @@ https://vitejs.dev/guide/#index-html-and-project-root
 Project Root | Vite  
 
 https://github.com/vitejs/awesome-vite  
-vitejs/awesome-vite: ⚡️ A curated list of awesome things related to Vite.js  
+vitejs/awesome-vite: curated list of awesome things related to Vite.js  
 
 https://github.com/vitejs  
 vite  
@@ -32,11 +34,24 @@ Backend Integration | Vite
 https://duckduckgo.com/?t=ffab&q=vite+server+proxy&ia=web  
 vite server proxy at DuckDuckGo  
 
+### Nginx Server Proxy
+
+If you run your vite server behind an upstream proxy, it can be tricky to configure to prevent noticable page refreshes as the hot module reloading (HMR) (?) stays in sync with the dev server. 
+
+More discussion: 
+
+https://github.com/vitejs/vite/discussions/4795
+
+For a configuration example, see `docker-compose.yml`:
+
+https://gitlab.com/fern-seed/web-ui-api-db
+
 ### Dev Server Proxy
 
 It is possible to configure the Vite dev server to act as a proxy to the API, even if the API is at a different address. This is useful to proxy to an API being served by a local container. 
 
-```
+
+```js
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";

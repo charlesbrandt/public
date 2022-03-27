@@ -1,18 +1,22 @@
 # System
 
-It's easy to lose settings from one computer to another, so it's important to take notes and document the way you like things configured.
+The underlying systems can change over time, so I like to keep notes about the tools and configurations that help me use those systems more efficiently.
 
 ## Hardware
 
-Computers need hardware to run on. These are the systems that power the devices and applications we've come to rely on. 
+A computer is hardware that runs software. These devices power the systems and applications we've come to rely on. 
 
-If you're just getting familiar with this space, the [Raspberry Pi - /pi/) ecosystem is a great place to start. Heavy overlap with this space. 
+If you're just getting familiar with learning about computers, the [Raspberry Pi](/pi/) ecosystem is a great place to start. Heavy overlap and a great inexpensive entry point. Learning is part of the process.
+
+Computers are defined by three general properties; how much: computational processing power (CPU), memory, and storage. 
+
+Memory and storage may seem like the same, but for now memory is a fast storage system that only exists while power is supplied. Storage is slightly slower for reading and writing, but the information persists after power is removed. 
 
 [Hard Drives / Storage](drives/)   
 
+## Boot
 
-
-[Virtualization](virtualization/)  
+The boot sequence gets the system started so it is ready to run software. 
 
 [Startup](startup.md)  
 
@@ -42,29 +46,6 @@ In the mobile phone space, Android is a good open source solution.
 
 [Password Managers](password-manager.md)  
 
-## Terminals
-
-Other keywords include: bash, shell
-
-[Terminal](terminal/index.md)  
-
-https://tmuxcheatsheet.com/  
-[Tmux](terminal/tmux.md)  
-
-[SSH](terminal/ssh.md)  
-
-Bash Colors example available in `terminal/bash-colors.sh`
-
-## Administration
-
-[Checksums](checksums.md)  
-[Firewall](firewall.md)  
-[Network](network.md)  
-[Nginx](nginx.md)  
-[Remote Desktop](remote-desktop.md)  
-[Startup Services](startup-services.md)  
-
-
 ## Search
 
 From the command line
@@ -78,3 +59,33 @@ to find files that match a pattern.
 
 
 [More about Search](search.md)
+
+## Terminals
+
+Other keywords include: bash, shell
+
+[Terminal](terminal/index.md)  
+
+https://tmuxcheatsheet.com/  
+[Tmux](terminal/tmux.md)  
+
+[SSH](terminal/ssh.md)  
+
+Bash Colors example available in <a href="terminal/bash-colors.sh">terminal/bash-colors.sh</a>
+
+
+
+## Administration
+
+[Checksums](checksums.md)  
+[Firewall](firewall.md)  
+[Network](network.md)  
+[Nginx](nginx.md)  
+[Remote Desktop](remote-desktop.md)  
+[Startup Services](startup-services.md)  
+
+## Virtualization
+
+[Virtualization](virtualization/)  
+
+

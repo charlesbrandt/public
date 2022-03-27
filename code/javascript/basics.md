@@ -359,6 +359,24 @@ To get around that, you can use the following pattern:
 
     Object.prototype.hasOwnProperty.call(myObj, 'myKey')
 
+### Group Items by Key
+
+Handy when you want to know how many items share the same key, but you also want to keep track of the list of the original items
+
+```js
+let groups = {}
+
+originalList.forEach(item => {
+    const curName = item.attributeOfInterest?.toUpperCase()
+    // console.log("Looking for existing group:", curName);
+
+    if (Object.prototype.hasOwnProperty.call(groups, curName)) {
+      groups[curName].push(item)
+    } else {
+      groups[curName] = [item]
+    }
+})
+```
 
 
 ## Regular Expressions

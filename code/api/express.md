@@ -7,7 +7,7 @@ Installing Express
 
 For debugging system configurations, it helps to spin up a known working server. "Hello world" is always a good place to start:
 
-```
+```js
 const express = require('express')
 const app = express()
 const port = 3000

@@ -206,36 +206,30 @@ Elegant mongodb object modeling for node.js
 
 Closely follows the base MongoDB API for queries. 
 
-Mongoose ODM 
-http://mongoosejs.com/
+Mongoose ODM   
+http://mongoosejs.com/  
 
 
-https://duckduckgo.com/?q=is+mongodb+the+whole+backend%3F&t=canonical&ia=web
-is mongodb the whole backend? at DuckDuckGo
-https://medium.com/javascript-in-plain-english/full-stack-mongodb-react-node-js-express-js-in-one-simple-app-6cc8ed6de274
-Let’s build a full stack MongoDB, React, Node and Express (MERN) app
-https://duckduckgo.com/?q=mongodb+as+api+server&t=canonical&ia=web
-mongodb as api server at DuckDuckGo
-https://docs.atlas.mongodb.com/api/
-API — MongoDB Atlas
-https://nordicapis.com/building-a-restful-api-using-node-js-and-mongodb/
-Building a RESTful API Using Node.JS and MongoDB | Nordic APIs |
-https://duckduckgo.com/?q=mongoose+vs+mongodb+native&t=canonical&ia=web
-mongoose vs mongodb native at DuckDuckGo
-http://voidcanvas.com/mongoose-vs-mongodb-native/
-Mongoose vs mongodb native driver – what to prefer? | Void Canvas
-https://stackoverflow.com/questions/28712248/difference-between-mongodb-and-mongoose
-node.js - Difference between MongoDB and Mongoose - Stack Overflow
-https://mongoosejs.com/
-Mongoose ODM v5.9.4
-https://mongoosejs.com/docs/guide.html
-Mongoose v5.9.3: Schemas
+https://mongoosejs.com/docs/guide.html  
+Mongoose v5.9.3: Schemas  
+
+### Install
+
+```
+yarn add mongoose
+
+or
+
+npm install mongoose --save
+```
 
 ### Populate
 
-Mongoose can help populate arrays with references to other documents. 
+Mongoose can automatically populate references to other documents. This is a great feature to use mongoose for. 
 
-    .populate("users")
+```
+.populate("users")
+```
 
 It is even possible to run populate on nested objects to get what you need all in one go. 
 
@@ -256,6 +250,8 @@ To go the other direction, there is Reverse Populate
 
 ### findOneAndUpdate
 
+Major *gotcha* here. The return value is the original value before update has been applied. Not what I expected!
+
 https://mongoosejs.com/docs/tutorials/findoneandupdate.html
 
 Reminder: the value that is passed on is the value that was 'found' before the update is applied. If you make updates to that original value and re-save, you may lose your updated values. 
@@ -270,12 +266,14 @@ https://stackoverflow.com/questions/5794834/how-to-access-a-preexisting-collecti
 
 ### Saving Data
 
+```
 // if results is what is returned by mongoose findById (or equivalent)
 body = { 'something': 'plain old object here' }
 // this overrides the mongo attributes -- save() not available
 results = body;
 results.save(); <--- save not available!
 // rather than try to update all changed parameters, just subsequently call findByIdAndUpdate later
+```
 
 ### Pagination
 
@@ -413,39 +411,12 @@ if there is existing data in the database, `restore` will add/append the data. I
     
 [via](https://stackoverflow.com/questions/27666908/mongorestore-command-replace-existing-records)
 
-### Exporting JSON
-
-https://docs.mongodb.com/manual/reference/program/mongoexport/
-
-If you want to extract the data stored in a collection to a different format, `mongoexport` may be a better tool for the job. 
-
-    mongoexport --collection=<coll> [options]
-    
-example:
-
-    mongoexport --collection=events --db=reporting --out=events.json
-
-https://docs.mongodb.com/manual/reference/program/mongoexport/
-
-
-From there you'll have a number of different json files... one for each type of document. I find it better to split out each object to a separate .json file. This is a good chance to give it a unique file name. 
-
-TODO: abstract
-
-mongo/convert_projects.js
-
-If you have binary data stored in the database, if you want to extract it you'll need to convert the text blobs from base64 encoding to binary. Here's a script that does this:
-
-mongo/convert_files.js
-
-
 ## Migrations
 
-how to do migrations in Mongo?
+One idea with schemaless databases is that you don't need to do migrations. 
 
-collect the commands as you go in development
+There may be a need to change values in an existing dataset. In that case, write a script.
 
-Might be possible to write a script too. 
 
 
 ## Scripts
@@ -527,44 +498,89 @@ exports.mongoose = {
 
 https://hub.docker.com/_/mongo
 
+In a `docker-compose.yml` file, you can use something like:
+
+```
+  mongo:
+    # https://hub.docker.com/_/mongo
+    image: mongo:5
+    container_name: boilerplate_db
+    restart: unless-stopped
+    # ports:
+    # helpful for using a GUI client like compass for troubleshooting
+    # - 127.0.0.1:27017:27017
+    #environment:
+    # MONGO_INITDB_ROOT_USERNAME: root
+    # MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./db:/data/db
+      # for importing database files
+      # - ./mongodump:/srv/mongodump
+```
+
 
 ## Export Data
 
-Glossary — MongoDB Manual 2.6.7
-http://docs.mongodb.org/manual/reference/glossary/
-mongoimport — MongoDB Manual 2.6.7
-http://docs.mongodb.org/manual/reference/program/mongoimport/
-mongoexport — MongoDB Manual 2.6.7
-http://docs.mongodb.org/manual/reference/program/mongoexport/
-mongo-sync-files
-https://www.npmjs.com/package/mongo-sync-files
-IonicaBizau/node-mongo-sync-files · GitHub
-https://github.com/IonicaBizau/node-mongo-sync-files
+Glossary — MongoDB Manual 2.6.7  
+http://docs.mongodb.org/manual/reference/glossary/  
+mongoimport — MongoDB Manual 2.6.7  
+http://docs.mongodb.org/manual/reference/program/mongoimport/  
+mongoexport — MongoDB Manual 2.6.7  
+http://docs.mongodb.org/manual/reference/program/mongoexport/  
+mongo-sync-files  
+https://www.npmjs.com/package/mongo-sync-files  
+IonicaBizau/node-mongo-sync-files · GitHub  
+https://github.com/IonicaBizau/node-mongo-sync-files  
 
-https://github.com/IonicaBizau/node-mongof
-GitHub - IonicaBizau/node-mongof: Sync MongoDB collections with JSON files.
+https://github.com/IonicaBizau/node-mongof  
+GitHub - IonicaBizau/node-mongof: Sync MongoDB collections with JSON files.  
+
+### Exporting JSON
+
+https://docs.mongodb.com/manual/reference/program/mongoexport/
+
+If you want to extract the data stored in a collection to a different format, `mongoexport` may be a better tool for the job. 
+
+    mongoexport --collection=<coll> [options]
+    
+example:
+
+    mongoexport --collection=events --db=reporting --out=events.json
+
+https://docs.mongodb.com/manual/reference/program/mongoexport/
+
+
+From there you'll have a number of different json files... one for each type of document. I find it better to split out each object to a separate .json file. This is a good chance to give it a unique file name. 
+
+TODO: abstract
+
+mongo/convert_projects.js
+
+If you have binary data stored in the database, if you want to extract it you'll need to convert the text blobs from base64 encoding to binary. Here's a script that does this:
+
+mongo/convert_files.js
 
 
 ## Importing Data
 
-https://duckduckgo.com/?t=canonical&q=mongo+how+to+handle+foreign+keys&ia=web
-mongo how to handle foreign keys at DuckDuckGo
-https://stackoverflow.com/questions/6334048/foreign-keys-in-mongo
-sql - Foreign keys in mongo? - Stack Overflow
-https://duckduckgo.com/?t=canonical&q=mongoose+relationship&ia=web
-mongoose relationship at DuckDuckGo
-https://vegibit.com/mongoose-relationships-tutorial/
-Mongoose Relationships Tutorial – Vegibit
-https://duckduckgo.com/?q=mongoose+import+data&t=canonical&ia=web
-mongoose import data at DuckDuckGo
-https://stackoverflow.com/questions/30696946/how-to-import-json-into-mongodb-using-mongoose
-node.js - How to import json into MongoDB using Mongoose - Stack Overflow
-https://duckduckgo.com/?t=canonical&q=feathers+js+use+models+in+script&ia=web
-feathers js use models in script at DuckDuckGo
-https://duckduckgo.com/?t=canonical&q=mongo+script+to+import+collection+of+json+files&ia=web
-mongo script to import collection of json files at DuckDuckGo
-https://intercom.help/mongodb-compass/en/articles/1837498-import-documents-into-collection-from-a-json-or-csv-file
-Import documents into collection from a JSON or CSV file. | MongoDB Compass Frequently Asked Questions
+https://duckduckgo.com/?t=canonical&q=mongo+how+to+handle+foreign+keys&ia=web  
+mongo how to handle foreign keys at DuckDuckGo  
+https://stackoverflow.com/questions/6334048/foreign-keys-in-mongo  
+sql - Foreign keys in mongo? - Stack Overflow  
+https://duckduckgo.com/?t=canonical&q=mongoose+relationship&ia=web  
+mongoose relationship at DuckDuckGo  
+https://vegibit.com/mongoose-relationships-tutorial/  
+Mongoose Relationships Tutorial – Vegibit  
+https://duckduckgo.com/?q=mongoose+import+data&t=canonical&ia=web  
+mongoose import data at DuckDuckGo  
+https://stackoverflow.com/questions/30696946/how-to-import-json-into-mongodb-using-mongoose  
+node.js - How to import json into MongoDB using Mongoose - Stack Overflow  
+https://duckduckgo.com/?t=canonical&q=feathers+js+use+models+in+script&ia=web  
+feathers js use models in script at DuckDuckGo  
+https://duckduckgo.com/?t=canonical&q=mongo+script+to+import+collection+of+json+files&ia=web  
+mongo script to import collection of json files at DuckDuckGo  
+https://intercom.help/mongodb-compass/en/articles/1837498-import-documents-into-collection-from-a-json-or-csv-file  
+Import documents into collection from a JSON or CSV file. | MongoDB Compass Frequently Asked Questions  
 
 
 ## Hosting
