@@ -145,35 +145,58 @@ Connections - BullMQ
 https://github.com/luin/ioredis/blob/master/API.md  
 ioredis/API.md at master · luin/ioredis  
 
+## Bullboard
 
-https://duckduckgo.com/?t=ffab&q=bullboard&ia=web  
-bullboard at DuckDuckGo  
-https://www.npmjs.com/package/bull-board  
-bull-board - npm  
 https://github.com/felixmosh/bull-board  
 GitHub - felixmosh/bull-board: 🎯 Queue background jobs inspector  
-https://github.com/OptimalBits/bull  
-deadly0/bull-board at DuckDuckGo  
+
+### Install
+
+Seems best to integrate with an existing express stack  
+but also possible to put it in its own container if that works better
+
+```
+yarn add @bull-board/express
+```
+
+```
+const express = require('express')
+const Queue = require('bull')
+const { createBullBoard } = require('@bull-board/api')
+const { BullAdapter } = require('@bull-board/api/bullAdapter')
+const { ExpressAdapter } = require('@bull-board/express')
+
+const someQueue = new Queue('someQueueName')
+const someOtherQueue = new Queue('someOtherQueueName')
+
+const serverAdapter = new ExpressAdapter();
+
+const { addQueue, removeQueue, setQueues, replaceQueues } = createBullBoard({
+  queues: [
+    new BullAdapter(someQueue),
+    new BullAdapter(someOtherQueue),
+  ],
+  serverAdapter:serverAdapter
+})
+
+const app = express()
+
+serverAdapter.setBasePath('/admin/queues')
+app.use('/admin/queues', serverAdapter.getRouter());
+
+// other configurations of your server
+```
+
+
+### Docker
+
+https://github.com/Deadly0/bull-board-docker
+
 https://github.com/Deadly0/bull-board-docker/blob/master/Dockerfile  
 bull-board-docker/Dockerfile at master · Deadly0/bull-board-docker · GitHub  
 https://github.com/Deadly0/bull-board-docker/tree/master/src  
 bull-board-docker/src at master · Deadly0/bull-board-docker · GitHub  
 https://github.com/topics/message-queue  
-
-
-OptimalBits/bull: Premium Queue package for handling distributed jobs and messages in NodeJS.  
-https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md  
-bull/REFERENCE.md at develop · OptimalBits/bull  
-https://duckduckgo.com/?t=ffab&q=deadly0%2Fbull-board&ia=web  
-
-message-queue · GitHub Topics · GitHub  
-https://github.com/OptimalBits/bull  
-GitHub - OptimalBits/bull: Premium Queue package for handling distributed jobs and messages in NodeJS.  
-https://github.com/taskforcesh/bullmq  
-GitHub - taskforcesh/bullmq: BullMQ - Premium Message Queue for NodeJS based on Redis  
-
-https://duckduckgo.com/?q=bullmq+run+python+job&t=ffab&ia=web  
-bullmq run python job at DuckDuckGo  
 
 
 ## See Also

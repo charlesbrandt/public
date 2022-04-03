@@ -2,10 +2,10 @@
 
 Document Database
 
-https://www.duckduckgo.com/search?q=mongodb
-mongodb - Google Search
-https://www.tutorialspoint.com/mongodb/mongodb_overview.htm
-MongoDB - Overview - Tutorialspoint
+https://www.mongodb.com/
+
+https://www.tutorialspoint.com/mongodb/mongodb_overview.htm  
+MongoDB - Overview - Tutorialspoint  
 
 
 ## Connections
@@ -17,33 +17,46 @@ https://docs.mongodb.com/guides/server/drivers/
 
 If your container doesn't have it already, you can install the CLI with
 
-    sudo apt-get install -y mongodb-clients
+```
+sudo apt-get install -y mongodb-clients
+```
 
 https://docs.mongodb.com/manual/mongo/
 
 https://docs.mongodb.com/manual/reference/mongo-shell/
 
-    mongo mongodb://$[hostlist]/$[database]?authSource=$[authSource] --username $[username]
-    
+```
+mongo mongodb://$[hostlist]/$[database]?authSource=$[authSource] --username $[username]
+```
+
 or, for a local connection:
 
-    mongo
+```
+mongo
+```
 
 See the current database:
 
-    db
+```
+db
+```
 
 See all databases:
 
-    show dbs
-    
+```
+show dbs
+```
+
 `use database_name`
 
 To see all collections associated with a database:
 
-    db.getCollectionNames()
-    
+```
+db.getCollectionNames()
+```
+
 https://stackoverflow.com/questions/8866041/how-can-i-list-all-collections-in-the-mongodb-shell
+
 
 ## Queries
 
@@ -53,42 +66,62 @@ https://docs.mongodb.com/manual/tutorial/query-documents/
 
 Not sure what fields are in use in a given collection? 
 
-    Object.keys(db.messages.findOne())
-    
+```
+Object.keys(db.messages.findOne())
+```
+
 [via](https://stackoverflow.com/questions/5900792/how-to-view-document-fields-in-mongo-shell)
+
+### Object ID
+
+When you need to get a related document via Compass or CLI:
+
+```
+{ "_id" : ObjectId("4ecc05e55dd98a436ddcc47c") } 
+```
 
 ### Logical Operators
 
 pass checks in as part of a list
 
-	$and: [{ dataset: req.params.dataset }, { visible: false }],
+```
+$and: [{ dataset: req.params.dataset }, { visible: false }],
+```
 
 https://docs.mongodb.com/manual/reference/operator/query-logical/
 
 `not` works a little different
 
-  { status: {$not: {$eq: "completed"}}  }  
+```
+{ status: {$not: {$eq: "completed"}}  }  
+```
 
 #### Existence
 
 Sometime new fields may not exist in old records. Can check for a value or existence with:
 
-	$or: [{ visible: true }, { visible: { $exists: false } }],
+```
+$or: [{ visible: true }, { visible: { $exists: false } }],
+```
 
 ### Date range
 
+```
 return Episode.
       find({ airedAt: { $gte: '1987-10-19', $lte: '1987-10-26' } }).
       sort({ airedAt: 1 });
   })
-  
+```
+
 https://mongoosejs.com/docs/tutorials/dates.html
 
 ### Null Fields
 
 Match records that do not have a matching key:
 
-    db.collection.find( { key_name : { $exists: false } } )
+```
+db.collection.find( { key_name : { $exists: false } } )
+```
 
 https://docs.mongodb.com/manual/tutorial/query-for-null-fields/
 
@@ -96,7 +129,9 @@ https://docs.mongodb.com/manual/tutorial/query-for-null-fields/
 
 Place the full path to the field in quotes to use it in a query
 
-    "paths.staged": "",
+```
+"paths.staged": "",
+```
 
 https://stackoverflow.com/questions/19889313/mongodb-query-in-on-a-hash-field
 
@@ -114,8 +149,10 @@ https://stackoverflow.com/questions/43996930/regex-in-mongodb-for-iso-date-field
 
 ## Find
         
-    db.collection.find()
-    
+```
+db.collection.find()
+```
+
 Find accepts a json style dictionary/hash object of search parameters (queries)
 
 https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html
@@ -129,13 +166,27 @@ for await (const doc of Person.find()) {
   await doc.save()
 }
 ```
+
 [via](https://stackoverflow.com/questions/64481616/mongodb-mongoose-iterate-over-find-results)
 
 To exclude a specific field from the results, pass it in as the second parameter to find:
 
-    db.datasets.find( { 'name': '210212_M70445_0071_000000000-JHB88' }, { checksums: 0 } )
+```
+db.datasets.find( { 'name': '210212_M70445_0071_000000000-JHB88' }, { checksums: 0 } )
+```
 
 [via](https://stackoverflow.com/questions/14559200/how-to-exclude-one-particular-field-from-a-collection-in-mongoose)
+
+### Sorting / Order
+
+```
+db.collection.find().sort( { age: -1 } )
+```
+
+$orderby is deprecated
+https://docs.mongodb.com/manual/reference/operator/meta/orderby/
+
+
 
 
 ## Inserts / Updates
@@ -144,41 +195,44 @@ If using Mongoose, just call e.g. `Projects.save(project)`. It handles new and u
 
 For a new record in MongoDB directly
  
-    db.users.insertOne( {} )
-    
+```
+db.users.insertOne( {} )
+```
+
 https://docs.mongodb.com/guides/server/insert/
 
 To update an existing record
 
-    db.collection.updateOne() 
+```
+db.collection.updateOne() 
+```
 
 First parameter is same as find() (query parameter). Second one is a dictionary of update operation expressions:
 
-    db.users.updateOne( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
-    
+```
+db.users.updateOne( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
+```
+
 updateMany works the same way:
 
-    db.users.updateMany( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
+```
+db.users.updateMany( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
+```
 
 https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/
 
 All update operators are documented here:
 
 https://docs.mongodb.com/manual/reference/operator/update/#id1
-            
-## Sorting / Order
-
-    db.collection.find().sort( { age: -1 } )
-
-$orderby is deprecated
-https://docs.mongodb.com/manual/reference/operator/meta/orderby/
 
 
 ## Rename 
 
 To rename a collection:
 
-    db.collection.renameCollection(target, dropTarget)
+```
+db.collection.renameCollection(target, dropTarget)
+```
 
 dropTarget 	boolean 	Optional. If true, mongod drops the target of renameCollection prior to renaming the collection. The default value is false.
     
@@ -186,14 +240,18 @@ https://docs.mongodb.com/manual/reference/method/db.collection.renameCollection/
 
 To rename a field
 
-    db.students.updateMany( {}, { $rename: { "nmae": "name" } } )
+```
+db.students.updateMany( {}, { $rename: { "nmae": "name" } } )
+```
 
 ## Removing
 
 Remove one item / document:
 
-    db.collection.remove() 
-    
+```
+db.collection.remove() 
+```
+
 https://docs.mongodb.com/manual/reference/method/db.collection.remove/
 
 
@@ -209,11 +267,34 @@ Closely follows the base MongoDB API for queries.
 Mongoose ODM   
 http://mongoosejs.com/  
 
-
 https://mongoosejs.com/docs/guide.html  
 Mongoose v5.9.3: Schemas  
 
+
 ### Install
+
+If running in a container, add the settings in `docker-compose.yml`:
+
+```
+  mongo:
+    # https://hub.docker.com/_/mongo
+    image: mongo:5
+    container_name: boilerplate_mongo
+    restart: unless-stopped
+    # ports:
+    # helpful for using a GUI client like compass for troubleshooting
+    # - 127.0.0.1:27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./db_mongo:/data/db
+      # for importing database files
+      # - ./mongodump:/srv/mongodump
+```
+
+Connect to the container:
+
 
 ```
 yarn add mongoose
@@ -222,6 +303,19 @@ or
 
 npm install mongoose --save
 ```
+
+Configure in the application, e.g. `config/index.js`:
+
+```
+exports.mongoose = {
+  // https://stackoverflow.com/questions/60394290/mongo-db-docker-image-authentication-failed
+  // url: "mongodb://root:example@boilerplate_mongo:27017/example",
+  url: "mongodb://boilerplate_mongo:27017/boilerplate",
+  // replicaSet: "",
+};
+```
+
+
 
 ### Populate
 
@@ -561,37 +655,9 @@ If you have binary data stored in the database, if you want to extract it you'll
 mongo/convert_files.js
 
 
-## Importing Data
-
-https://duckduckgo.com/?t=canonical&q=mongo+how+to+handle+foreign+keys&ia=web  
-mongo how to handle foreign keys at DuckDuckGo  
-https://stackoverflow.com/questions/6334048/foreign-keys-in-mongo  
-sql - Foreign keys in mongo? - Stack Overflow  
-https://duckduckgo.com/?t=canonical&q=mongoose+relationship&ia=web  
-mongoose relationship at DuckDuckGo  
-https://vegibit.com/mongoose-relationships-tutorial/  
-Mongoose Relationships Tutorial – Vegibit  
-https://duckduckgo.com/?q=mongoose+import+data&t=canonical&ia=web  
-mongoose import data at DuckDuckGo  
-https://stackoverflow.com/questions/30696946/how-to-import-json-into-mongodb-using-mongoose  
-node.js - How to import json into MongoDB using Mongoose - Stack Overflow  
-https://duckduckgo.com/?t=canonical&q=feathers+js+use+models+in+script&ia=web  
-feathers js use models in script at DuckDuckGo  
-https://duckduckgo.com/?t=canonical&q=mongo+script+to+import+collection+of+json+files&ia=web  
-mongo script to import collection of json files at DuckDuckGo  
-https://intercom.help/mongodb-compass/en/articles/1837498-import-documents-into-collection-from-a-json-or-csv-file  
-Import documents into collection from a JSON or CSV file. | MongoDB Compass Frequently Asked Questions  
-
-
-## Hosting
-
-https://www.mongodb.com/cloud/atlas
-
-https://www.google.com/search?q=mongo+atlas
-mongo atlas - Google Search
-
-
 ## GUI
+
+### Compass 
 
 Download:
 
@@ -628,4 +694,16 @@ More details about the connection string format:
 https://docs.mongodb.com/manual/reference/connection-string/
 
 https://docs.mongodb.com/compass/master/connect/
+
+### DBeaver
+
+May have support for Mongo too!
+
+## Hosting
+
+https://www.mongodb.com/cloud/atlas
+
+https://www.google.com/search?q=mongo+atlas
+mongo atlas - Google Search
+
 

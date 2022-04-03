@@ -104,6 +104,20 @@ https://docs.docker.com/compose/compose-file/#ports
 
 https://stackoverflow.com/questions/40801772/what-is-the-difference-between-docker-compose-ports-vs-expose
 
+### Custom Network
+
+Usually it's sufficient to use the default network in a compose file so all containers specified will have access to each other, but not to anything else. 
+
+https://docs.docker.com/compose/networking/
+
+If you want to run a number of different applications, but proxy them all behind the same nginx host (running in a different container), it could help to specify the network in the compose file:
+
+```
+networks:
+  default:
+    name: my-pre-existing-network
+```
+
 
 ## Custom images (Dockerfile)
 

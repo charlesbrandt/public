@@ -25,6 +25,8 @@ The most common interpreter is the one that runs in every web browser.
 
 [Node](node.md)  
 
+[Child Processes](child-process.md)  
+
 NodeJS is a good interpreter to use for server side processing. 
 
 ```

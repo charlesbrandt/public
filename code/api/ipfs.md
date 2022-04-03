@@ -28,11 +28,21 @@ Wistful Books
 ## Installation
 
 ```
-pnpm add ipfs
+npm install ipfs-core
 ```
 
 Generate CID for file:
 
+```
+import * as IPFS from 'ipfs-core'
+
+const ipfs = await IPFS.create()
+const { cid } = await ipfs.add('Hello world', {onlyHash: true})
+console.info(cid)
+```
+
+The `add` api documentation is available:  
+https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/FILES.md#options  
 
 ## Topics of interest
 

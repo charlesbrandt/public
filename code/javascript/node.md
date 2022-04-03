@@ -25,17 +25,20 @@ javascript - How do I pass command line arguments to a Node.js program? - Stack 
 For more involved command line parameter parsing:
 
 https://github.com/substack/minimist  
-💤 GitHub - substack/minimist: parse argument options  
+GitHub - substack/minimist: parse argument options  
 
 https://nodejs.org/docs/latest/api/process.html#process_process_argv  
-💤 Process | Node.js v17.1.0 Documentation  
+Process | Node.js v17.1.0 Documentation  
 
 https://duckduckgo.com/?t=ffab&q=node+pass+parameters+to+script&ia=web  
-💤 node pass parameters to script at DuckDuckGo  
+node pass parameters to script at DuckDuckGo  
+
 
 ### Sample Script
 
-```
+See also [files](files.md)
+
+```js
 #!/usr/bin/env node
 
 var fs = require('fs');

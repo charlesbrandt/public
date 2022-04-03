@@ -68,9 +68,6 @@ This can quickly move beyond the scope of just being Javascript specific to a sy
 ## Walk a file system
 
 ```js
-const config = require("../config");
-const Queue = require("bull");
-
 const fs = require("fs");
 const path = require("path");
 
@@ -95,44 +92,8 @@ let walk = function (dir) {
   });
 };
 
-// walk(process.cwd());
+walk(process.cwd());
 
-const boilerplateQueue = new Queue("boilerplate", config.redis.url);
-
-// console.log("Queue:", boilerplateQueue)
-
-boilerplateQueue.process((job, done) => {
-  // console.log("Worker got a job!", job);
-
-  // job.progress(42);
-
-  const dir = job.data.source;
-
-  walk(job.data.root);
-  // exec(`ls ${dir}`, (error, stdout, stderr) => {
-  //   if (error) {
-  //     done(new Error(`error: ${error.message}`));
-  //     // console.log(`error: ${error.message}`);
-  //     return;
-  //   }
-  //   if (stderr) {
-  //     done(new Error(`error: ${stderr}`));
-  //     // console.log(`stderr: ${stderr}`);
-  //     return;
-  //   }
-  //   // call done when finished
-  //   done(null, `stdout: ${stdout}`);
-  //   // console.log(`stdout: ${stdout}`);
-  // });
-
-  console.log("boilerplate process started");
-});
-
-console.log("Boilerplate worker listening for jobs");
-
-// For testing the worker, add a job here.
-// reminder that worker container running node needs access to this path
-// boilerplateQueue.add({ root: "/srv" });
 
 ```
 
@@ -141,85 +102,81 @@ https://dustinpfister.github.io/2018/07/20/nodejs-ways-to-walk-a-file-system/
 Some Ways to walk a file system in node.js | Dustin John Pfister at github pages  
 
 https://duckduckgo.com/?t=ffab&q=javascript+node+walk+filesystem+&ia=web  
-💤 javascript node walk filesystem at DuckDuckGo  
+javascript node walk filesystem at DuckDuckGo  
 https://github.com/jprichardson/node-klaw  
-💤 jprichardson/node-klaw: A Node.js file system walker with a Readable stream interface. Extracted from fs-extra.  
+jprichardson/node-klaw: A Node.js file system walker with a Readable stream interface. Extracted from fs-extra.  
 https://www.npmjs.com/package/klaw  
-💤 klaw - npm  
+klaw - npm  
 https://www.npmjs.com/package/node-dir  
-💤 node-dir - npm  
+node-dir - npm  
 https://dustinpfister.github.io/2017/05/14/nodejs-rimraf/  
 
+https://stackabuse.com/node-list-files-in-a-directory/  
+Node: List Files in a Directory  
+https://duckduckgo.com/?q=node+directory-tree&t=canonical&ia=web  
+node directory-tree at DuckDuckGo  
+https://stackoverflow.com/questions/7041638/walking-a-directory-with-node-js  
+https://stackoverflow.com/questions/7041638/walking-a-directory-with-node-js  
+https://github.com/nspragg/filehound  
+GitHub - nspragg/filehound: Flexible and fluent interface for searching the file system  
 
 
+## Read & Parse a File in a Browser
 
-## Node file system interaction
+Loading files in the browser requires either local storage or input from the user. 
 
-Just use the built in `fs` library. 
-
-
-https://duckduckgo.com/?q=node+list+files+in+folder&t=canonical&ia=web
-node list files in folder at DuckDuckGo
-https://nodejs.org/api/fs.html
-File system | Node.js v15.1.0 Documentation
-https://stackabuse.com/node-list-files-in-a-directory/
-Node: List Files in a Directory
-https://duckduckgo.com/?q=node+directory-tree&t=canonical&ia=web
-node directory-tree at DuckDuckGo
-https://stackoverflow.com/questions/7041638/walking-a-directory-with-node-js
-https://stackoverflow.com/questions/7041638/walking-a-directory-with-node-js
-https://github.com/nspragg/filehound
-GitHub - nspragg/filehound: Flexible and fluent interface for searching the file system
-https://docs.npmjs.com/cli/v6/configuring-npm/folders
-folders | npm Docs
-https://github.com/mihneadb/node-directory-tree
-GitHub - mihneadb/node-directory-tree: Convert a directory tree to a JS object.
-https://github.com/MrRaindrop/tree-cli
-GitHub - MrRaindrop/tree-cli: 🌴List contents of directories in tree-like format.
+```js
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        console.log("Parsing file content");
+        
+        // console.log('File content:', fileReader.result)
+        
+        const lines = fileReader.result.split(/\r?\n/g);
+        
+        lines.forEach((line, i) => {
+            console.log('Current line: ', line.match(error1))
+          }
+        });
+      });
+      fileReader.readAsText(this.files[0]);
+```
 
 
+> One of the most common things you'll want to do with just about any programming language is open and read a file. With most languages, this is pretty simple, but for JavaScript veterans it might seem a bit weird. For so many years JavaScript was only available in the browser, so front-end developers may only be familiar with the FileReader API or similar.
 
-## How much space can javascript use in browser? 
+via: https://stackabuse.com/read-files-with-node-js/  
+Read Files with Node.js  
+
+
+### How much space can javascript use in browser? 
 
 2MB to 10MB
 
 [According to](https://www.sitepoint.com/html5-local-storage-revisited/)
 
 
-"""
-Unlike cookies, data stored using local storage isn't sent back to the server. All data stays on the client, and you can currently store from 2MB to 10MB. This limit is tied to the specific browser, protocol (HTTP or HTTPS), port, and top level domain in use. Mar 12, 2015
-"""
+> Unlike cookies, data stored using local storage isn't sent back to the server. All data stays on the client, and you can currently store from 2MB to 10MB. This limit is tied to the specific browser, protocol (HTTP or HTTPS), port, and top level domain in use. Mar 12, 2015
 
 Not a ton, but plenty for a robust database. 
 
 
-
-
-
-Loading files in the browser requires either local storage or input from the user. 
-
-> One of the most common things you'll want to do with just about any programming language is open and read a file. With most languages, this is pretty simple, but for JavaScript veterans it might seem a bit weird. For so many years JavaScript was only available in the browser, so front-end developers may only be familiar with the FileReader API or similar.
-
-via: https://stackabuse.com/read-files-with-node-js/
-Read Files with Node.js
-
-
 ## File Input
 
-https://duckduckgo.com/?t=canonical&q=javascript+access+uploaded+file&ia=web
-javascript access uploaded file at DuckDuckGo
-https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript
-html - get the data of uploaded file in javascript - Stack Overflow
-https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
-Using files from web applications - Web APIs | MDN
-https://web.dev/read-files/#toc-reading-files
-Read files in JavaScript
-https://duckduckgo.com/?q=vue+html5+input+file&t=canonical&ia=web
-vue html5 input file at DuckDuckGo
-https://stackoverflow.com/questions/45179061/file-input-on-change-in-vue-js
-javascript - File input on change in vue.js - Stack Overflow
-https://www.digitalocean.com/community/tutorials/vuejs-file-reader-component
-Creating a Vue.js File Reader Component Using the FileReader API | DigitalOcean
+https://duckduckgo.com/?t=canonical&q=javascript+access+uploaded+file&ia=web  
+javascript access uploaded file at DuckDuckGo  
+https://stackoverflow.com/questions/16505333/get-the-data-of-uploaded-file-in-javascript  
+html - get the data of uploaded file in javascript - Stack Overflow  
+https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications  
+Using files from web applications - Web APIs | MDN  
+https://web.dev/read-files/#toc-reading-files  
+Read files in JavaScript  
+https://duckduckgo.com/?q=vue+html5+input+file&t=canonical&ia=web  
+vue html5 input file at DuckDuckGo  
+https://stackoverflow.com/questions/45179061/file-input-on-change-in-vue-js  
+javascript - File input on change in vue.js - Stack Overflow  
+https://www.digitalocean.com/community/tutorials/vuejs-file-reader-component  
+Creating a Vue.js File Reader Component Using the FileReader API | DigitalOcean  
 
 
 Good example of splitting files up in the browser to work within max-upload-size limits on the server
@@ -231,20 +188,64 @@ Example created/tested in music_server/ui/components/FileReader.vue and pages/Ed
 
 ## File Sizes
 
-https://github.com/sindresorhus/pretty-bytes
-sindresorhus/pretty-bytes: Convert bytes to a human readable string: 1337 → 1.34 kB
-https://web.archive.org/web/20150324153922/https://pacoup.com/2009/05/26/kb-kb-kib-whats-up-with-that/
-kb, kB, KiB… What’s Up With That? | Pacoup.com
+https://github.com/sindresorhus/pretty-bytes  
+sindresorhus/pretty-bytes: Convert bytes to a human readable string: 1337 → 1.34 kB  
+https://web.archive.org/web/20150324153922/https://pacoup.com/2009/05/26/kb-kb-kib-whats-up-with-that/  
+kb, kB, KiB… What’s Up With That? | Pacoup.com  
+
+## CSV
+
+### Papa Parse
+
+Nice documentation (fun to read even! :) ) 
+
+https://www.papaparse.com/  
+Papa Parse - Powerful CSV Parser for JavaScript  
+
+```
+yarn add papaparse
+```
+
+Then use in a component with:
+
+```
+      Papa.parse(this.files[0], {
+        complete: (parsed) => {
+          parsed.data.forEach((row, i) => {
+            console.log("Current row:", i, row);
+          })
+        }
+      })
+```
+  
+https://www.papaparse.com/docs  
+Documentation - Papa Parse  
+  
+https://github.com/mholt/PapaParse  
+mholt/PapaParse: Fast and powerful CSV (delimited text) parser that gracefully handles large files and malformed input  
+
+### Other Options
+
+Many other interesting libraries available, but I didn't need to look any further. 
+
+https://duckduckgo.com/?t=ffab&q=javascript+csv+parse&ia=web  
+javascript csv parse at DuckDuckGo  
+https://csv.js.org/parse/  
+CSV Parse - Usage  
+https://github.com/adaltas/node-csv-parse  
+adaltas/node-csv-parse: CSV parsing implementing the Node.js `stream.Transform` API  
+https://github.com/adaltas/node-csv  
+adaltas/node-csv: Full featured CSV parser with simple api and tested against large datasets.  
+https://github.com/topics/csv  
+csv · GitHub Topics  
+https://github.com/SheetJS/sheetjs  
+SheetJS/sheetjs: SheetJS Community Edition -- Spreadsheet Data Toolkit  
+
+Don't want to parse csv's manually -- too many edge conditions to consider. 
+
+https://stackoverflow.com/questions/1293147/example-javascript-code-to-parse-csv-data  
+Example JavaScript code to parse CSV data - Stack Overflow  
 
 
 
-## Misc
-
-Some debate on what you can access from the web. Only other resources from the same address? The same source? (same-origin URLs)
-
-So that also gives rise to auth. Authentication (who are you?) and Authorization (what can you do?). 
-
-## WebDAV
-
-if you think you want to do a lot of interaction with filesystems, consider switching to WebDAV. It's an existing standard for working with files on a remote system. Python is another option for lots of custom system side automation. Might be possible in node, but if you have existing experience with Python, this is a good time to switch. 
 
