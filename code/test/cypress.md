@@ -33,6 +33,8 @@ From here use `cy.get` or `cy.find` to locate elements on the page, and check fo
 
 For API testing use cy.request instead of cy.visit
 
+https://docs.cypress.io/api/commands/request
+
 https://www.mariedrake.com/post/api-testing-with-cypress
 
 To show the json result of a cy.request() in the test runner, use console.log() and find the result in the test browser's console, or use `cy.api`
@@ -41,6 +43,18 @@ To show the json result of a cy.request() in the test runner, use console.log() 
 context('Network Requests', () => {
     beforeEach(() => {
       cy.visit('http://boilerplate_api_1:3030')
+    cy.request(Cypress.env("API_URL") + "/health")
+      .then((response) => {
+        console.log("The API health status is: ", response);
+        return response;
+      })
+      .its("body")
+      .should("be.an", "object")
+      .should("contain", {
+        status: "ok",
+        mode: "development",
+      });
+      
     })
   
   it('cy.request() with query parameters', () => {
@@ -170,7 +184,7 @@ cy.get('@users').then((users) => {
 
 ## Authentication
 
-For more details, see [Auth Guide](/code/api/auth.md#testing)
+For related topics, see [Auth Guide](/code/api/auth.md#testing)
 
 Handling authentication is one of the trickier parts of testing. 
 
@@ -226,15 +240,89 @@ The above example works with a [Feathers API](/code/api/feathers.md)
 
 ### Create a special route
 
-WIP: Use a development only route on the API that grants valid tokens to the test client. 
+If the UI authentication uses an external service that is difficult to automate (e.g. 2FA), it may be necessary to create a shortcut on the API.
 
-This way all subsequent requests to the API act the same way any other session would. Less fiddly than using a manually created session. 
+This is a development only route on the API that grants valid tokens to the test client. 
+
+This way, all subsequent requests to the API act the same way any other session would. 
 
 The danger here is that this route gets exposed in a production environment and becomes a security vulnerability. 
 
-Consider placing it in a file that is set to be ignored by git. Then, can be manually place in a development environment without concern for accidentally adding it.
-
 TODO: set up checks to ensure it is not being called? Via application monitoring. 
+
+```
+// Avoid commiting to version control
+// TODO: way to test if deploying to prod in development mode?
+router.get("/verify-test", function (req, res, next) {
+  console.log("request parameters", req.query.user);
+  if (config.site.mode === "development") {
+    db.user
+      .findOne({
+        where: { username: req.query.user },
+      })
+      .then(async (user) => {
+        if (user) {
+          common.issue_jwt(user, user.id, function (err, jwt, exp) {
+            if (err) return next(err);
+            console.log("issued token", jwt);
+            res.json({
+              jwt: jwt,
+              uid: req.query.user,
+              user_id: user.id,
+              role: user.primary_role,
+              roles: JSON.parse(user.roles),
+              jwt_exp: exp,
+            });
+          });
+          console.log("USER FOUND");
+        } else {
+          logger.error("No user matched");
+          res.sendStatus("403"); //Is 403:Forbidden appropriate return code?
+        }
+      })
+      .catch(function (thrown) {
+        console.log("Error creating test token");
+        return next(thrown);
+      });
+  }
+});
+```
+
+Then use it in tests with:
+
+```
+  it("POSTS a new user after authenticating first", () => {
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      // Sometimes may need a prefix
+      // const jwt = "Bearer " + jwtresponse.body.jwt;
+      const jwt = jwtresponse.body.jwt;
+      console.log("Still have jwt?", jwt);
+      cy.request({
+        method: "POST",
+        headers: { Authorization: jwt },
+        url: Cypress.env("API_URL") + "/user/",
+        // failOnStatusCode: false,
+        body: {
+          name: "Test User",
+          email: "tester@example.com",
+          role: "admin",
+        },
+      }).then((response) => {
+        // expect(response.status).to.eq(403);
+        console.log("The POST response was: ", response);
+        return response;
+      });
+    });
+  });
+```
+
+Ways to mitigate risk of a 
+Consider placing it in a file that is set to be ignored by git. Then, can be manually place in a development environment without concern for accidentally adding it. 
+Don't want to import a file that doesn't exist. Still have to worry about import statement getting committed to version control in this scenario
+
+
+
+
 
 ### Existing sessions
 
@@ -255,7 +343,34 @@ beforeEach(() => {
 
 For some challenging systems with lots of iframes and 2FA, this may be as good as it gets if you need a real authenticated session. 
 
-The alternative is to bypass a global Single Sign On (SSO) identity provider for your organization and just use the local hooks in your application to provide an authenticated session for testing. (However, be sure these mechanisms are not available in production!)
+[The alternative is to bypass a global Single Sign On (SSO) identity provider for your organization and just use the local hooks in your application to provide an authenticated session for testing. (However, be sure these mechanisms are not available in production!)](#create-a-special-route)
+
+### Make sure a route is protected
+
+It's a good idea to confirm that a route is set to block unauthenticated responses
+
+```
+  it("POSTS a new user without prior auth and fails", () => {
+    cy.request({
+      method: "POST",
+      url: Cypress.env("API_URL") + "/user/",
+      failOnStatusCode: false,
+      body: {
+        name: "Test User",
+        email: "tester@example.org",
+        role: "admin",
+      },
+    }).then(response => {
+      expect(response.status).to.eq(403);
+      console.log("The POST response was: ", response);
+      return response;
+    });
+  });
+
+```
+
+https://stackoverflow.com/questions/66727106/cypress-cy-request-expect-to-throw-fail
+
 
 ## File Uploads
 
@@ -447,21 +562,27 @@ will need a cypress.json file that points to the right test source locations
 ```
 {
   "chromeWebSecurity": false,
-  "supportFile": "../tests/support/index.js",
-  "pluginsFile": "../tests/plugins/index.js",
-  "fixturesFolder": "../tests/fixtures",
-  "integrationFolder": "../tests/integration",
-  "screenshotsFolder": "../tests/screenshots",
-  "videosFolder": "../tests/videos",
-  "downloadsFolder": "../tests/downloads"
+  "supportFile": "tests/support/index.js",
+  "pluginsFile": "tests/plugins/index.js",
+  "fixturesFolder": "tests/fixtures",
+  "integrationFolder": "tests/integration",
+  "screenshotsFolder": "tests/screenshots",
+  "videosFolder": "tests/videos",
+  "downloadsFolder": "tests/downloads"
 }
 ```
 
+I've started keeping the tests in the same directory as the ui code. This way cypress can leverage the UI's `node_modules` directory. 
+
+
 Be sure to set the BASE_URL in the shell
 
+```
 export CYPRESS_BASE_URL=https://localhost
 export CYPRESS_API_URL=https://localhost/api
+```
 
+Then run
 
 ```
 npx cypress open
@@ -476,3 +597,178 @@ yarn run cypress open
 ## See Also
 
 https://docs.cypress.io/guides/getting-started/testing-your-app#Stubbing-the-server
+
+## Example tests
+
+For making authenticated API calls, get the jwt first:
+
+```
+/// <reference types="cypress" />
+
+context("Authenticated User API Tests", () => {
+  beforeEach(() => {
+    cy.request(Cypress.env("API_URL") + "/verify-test?user=boilerplate-user").then(
+      (response) => {
+        cy.wrap(response).as("jwtresponse");
+        // window.localStorage.setItem("jwt", response.body.accessToken);
+        console.log("The VERIFY response was: ", response);
+        // return response;
+      }
+    );
+  });
+
+  it("POSTS a new user after authenticating first", () => {
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      // Sometimes may need a prefix
+      // const jwt = "Bearer " + jwtresponse.body.jwt;
+      const jwt = jwtresponse.body.jwt;
+      console.log("Still have jwt?", jwt);
+      cy.request({
+        method: "POST",
+        headers: { Authorization: jwt },
+        url: Cypress.env("API_URL") + "/user/",
+        // failOnStatusCode: false,
+        body: {
+          fullname: "Test User",
+          email: "tester@boilerplate.com",
+          role: "admin",
+        },
+      })
+        .then((response) => {
+          // expect(response.status).to.eq(403);
+          console.log("The POST response was: ", response);
+          return response;
+        })
+        .its("body")
+        .should("contain", {
+          fullname: "Test User",
+        });
+    });
+  });
+
+  // should be protected
+  it("GETS some user objects", () => {
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      // will execute request
+      // https://jsonplaceholder.cypress.io/comments?postId=1&id=3
+      const jwt = jwtresponse.body.jwt;
+      cy.request({
+        url: Cypress.env("API_URL") + "/user/",
+        headers: { Authorization: jwt },
+        //   qs: {
+        //     postId: 1,
+        //     id: 3,
+        //   },
+      })
+        .then((response) => {
+          console.log("The matching GET response is: ", response);
+          return response;
+        })
+        .its("body")
+        .should("be.an", "array")
+        .and("have.length", 1) // current count -- this will change over time
+        .its("0") // yields first element of the array
+        .should("contain", {
+          username: "boilerplate-user",
+        });
+    });
+  });
+
+  it("GETS one existing user", () => {
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      const jwt = jwtresponse.body.jwt;
+      cy.request({
+        method: "POST",
+        headers: { Authorization: jwt },
+        url: Cypress.env("API_URL") + "/user/search",
+        body: {
+          username: "tester",
+        },
+      })
+        .its("body")
+        .then((element) => {
+          console.log("The matching element is: ", element);
+
+          cy.request({
+            method: "GET",
+            headers: { Authorization: jwt },
+            url: Cypress.env("API_URL") + "/user/" + element[0].id,
+          })
+            .then((response) => {
+              // TODO check for expected data
+              console.log("The user GET response was: ", response);
+              return response;
+            })
+            .its("body")
+            .should("contain", {
+              username: "tester",
+            });
+        });
+    });
+  });
+
+  it("UPDATES one existing user", () => {
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      const jwt = jwtresponse.body.jwt;
+      cy.request({
+        method: "POST",
+        headers: { Authorization: jwt },
+        url: Cypress.env("API_URL") + "/user/search",
+        body: {
+          username: "tester",
+        },
+      })
+        .its("body")
+        .then((element) => {
+          console.log("The matching element for UPDATE is: ", element);
+
+          cy.request({
+            method: "PATCH",
+            headers: { Authorization: jwt },
+            url: Cypress.env("API_URL") + "/user/" + element[0].id,
+            body: {
+              fullname: "Updated Test User",
+            },
+          })
+            .then((response) => {
+              // TODO check for expected data
+              console.log("The user GET response was: ", response);
+              return response;
+            })
+            .its("body")
+            .should("contain", {
+              fullname: "Updated Test User",
+            });
+        });
+    });
+  });
+
+  it("DELETES an existing user", () => {
+    cy.get("@jwtresponse").then((jwtresponse) => {
+      const jwt = jwtresponse.body.jwt;
+      cy.request({
+        method: "POST",
+        headers: { Authorization: jwt },
+        url: Cypress.env("API_URL") + "/user/search",
+        body: {
+          username: "tester",
+        },
+      })
+        .its("body")
+        .then((element) => {
+          console.log("The matching element is: ", element);
+
+          cy.request({
+            method: "DELETE",
+            headers: { Authorization: jwt },
+            url: Cypress.env("API_URL") + "/user/" + element[0].id,
+          }).then((response) => {
+            console.log("The DELETE response was: ", response);
+            return response;
+          });
+        });
+    });
+  });
+});
+
+```

@@ -53,14 +53,15 @@ typicode/json-server: Get a full fake REST API with zero coding in less than 30 
 https://github.com/typicode/lowdb  
 typicode/lowdb: Simple to use local JSON database (supports Node, Electron and the browser)  
 
-[search](search.md)
+[Search](search.md)
 
 [Express Server](express.md)  
 
-[feathers](feathers.md)
+[Feathers](feathers.md)
 
-[image gallery](image-gallery.md)
+[Image Gallery](image-gallery.md)
 
+[Sending Email](email-sending.md)
 
 ## Message Queues
 

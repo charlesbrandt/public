@@ -353,6 +353,24 @@ See also web-ui-api-db/README.md for a branching strategy on handling changes to
 
     git diff branch1..branch2
 
+### Tags
+
+Tags are like branches that don't have separate revisions. I believe they can be turned in to branches later? 
+
+```
+git tag <tagname>
+```
+
+Creates a local tag
+
+```
+git push origin --tags
+```
+
+to push the tag up to the origin.
+
+https://stackoverflow.com/questions/18216991/create-a-tag-in-a-github-repository
+
 ### Renaming a branch
 
 ```

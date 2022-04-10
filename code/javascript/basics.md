@@ -378,6 +378,14 @@ originalList.forEach(item => {
 })
 ```
 
+### Remove a key from an object
+
+```
+delete exampleObject["key"];
+```
+
+https://stackoverflow.com/questions/3455405/how-do-i-remove-a-key-from-a-javascript-object
+
 
 ## Regular Expressions
 

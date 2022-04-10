@@ -58,6 +58,110 @@ db.getCollectionNames()
 https://stackoverflow.com/questions/8866041/how-can-i-list-all-collections-in-the-mongodb-shell
 
 
+## Find
+        
+```
+db.collection.find()
+```
+
+Find accepts a json style dictionary/hash object of search parameters (queries)
+
+https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html
+
+To iterate over the matched results immediately (vs returning all via an API):
+
+```
+for await (const doc of Person.find()) {
+  console.log(doc)
+  doc.set('field', 'value')
+  await doc.save()
+}
+```
+
+[via](https://stackoverflow.com/questions/64481616/mongodb-mongoose-iterate-over-find-results)
+
+To exclude a specific field from the results, pass it in as the second parameter to find:
+
+```
+db.datasets.find( { 'name': '210212_M70445_0071_000000000-JHB88' }, { checksums: 0 } )
+```
+
+[via](https://stackoverflow.com/questions/14559200/how-to-exclude-one-particular-field-from-a-collection-in-mongoose)
+
+### Sorting / Order
+
+```
+db.collection.find().sort( { age: -1 } )
+```
+
+$orderby is deprecated
+https://docs.mongodb.com/manual/reference/operator/meta/orderby/
+
+
+## Insert / Update
+
+If using Mongoose, just call e.g. `Projects.save(project)`. It handles new and updates at the same time.
+
+Alternatively, `create` is also available:
+
+```
+router.post("/", function (req, res, next) {
+  Datapath.create(req.body)  
+    .then((created) => {
+      res.json(created);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+```
+
+
+For a new record in MongoDB directly
+ 
+```
+db.users.insertOne( {} )
+```
+
+https://docs.mongodb.com/guides/server/insert/
+
+To update an existing record
+
+```
+db.collection.updateOne() 
+```
+
+First parameter is same as find() (query parameter). Second one is a dictionary of update operation expressions:
+
+```
+db.users.updateOne( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
+```
+
+updateMany works the same way:
+
+```
+db.users.updateMany( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
+```
+
+https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/
+
+All update operators are documented here:
+
+https://docs.mongodb.com/manual/reference/operator/update/#id1
+
+## Remove / Delete
+
+Remove one item / document:
+
+```
+db.collection.remove() 
+```
+
+https://docs.mongodb.com/manual/reference/method/db.collection.remove/
+
+
+
+
 ## Queries
 
 Queries are the first step in most operations that specify the content to work with. 
@@ -147,86 +251,7 @@ Seems like searching by a date range is a cumbersome process?
 https://stackoverflow.com/questions/43996930/regex-in-mongodb-for-iso-date-field
 
 
-## Find
-        
-```
-db.collection.find()
-```
-
-Find accepts a json style dictionary/hash object of search parameters (queries)
-
-https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html
-
-To iterate over the matched results immediately (vs returning all via an API):
-
-```
-for await (const doc of Person.find()) {
-  console.log(doc)
-  doc.set('field', 'value')
-  await doc.save()
-}
-```
-
-[via](https://stackoverflow.com/questions/64481616/mongodb-mongoose-iterate-over-find-results)
-
-To exclude a specific field from the results, pass it in as the second parameter to find:
-
-```
-db.datasets.find( { 'name': '210212_M70445_0071_000000000-JHB88' }, { checksums: 0 } )
-```
-
-[via](https://stackoverflow.com/questions/14559200/how-to-exclude-one-particular-field-from-a-collection-in-mongoose)
-
-### Sorting / Order
-
-```
-db.collection.find().sort( { age: -1 } )
-```
-
-$orderby is deprecated
-https://docs.mongodb.com/manual/reference/operator/meta/orderby/
-
-
-
-
-## Inserts / Updates
-
-If using Mongoose, just call e.g. `Projects.save(project)`. It handles new and updates at the same time?
-
-For a new record in MongoDB directly
- 
-```
-db.users.insertOne( {} )
-```
-
-https://docs.mongodb.com/guides/server/insert/
-
-To update an existing record
-
-```
-db.collection.updateOne() 
-```
-
-First parameter is same as find() (query parameter). Second one is a dictionary of update operation expressions:
-
-```
-db.users.updateOne( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
-```
-
-updateMany works the same way:
-
-```
-db.users.updateMany( { 'email': 'hello@example.com'}, { $set: {'uid': 'hello'} } )
-```
-
-https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/
-
-All update operators are documented here:
-
-https://docs.mongodb.com/manual/reference/operator/update/#id1
-
-
-## Rename 
+## Rename
 
 To rename a collection:
 
@@ -243,16 +268,6 @@ To rename a field
 ```
 db.students.updateMany( {}, { $rename: { "nmae": "name" } } )
 ```
-
-## Removing
-
-Remove one item / document:
-
-```
-db.collection.remove() 
-```
-
-https://docs.mongodb.com/manual/reference/method/db.collection.remove/
 
 
 

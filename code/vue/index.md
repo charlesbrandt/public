@@ -144,6 +144,9 @@ const value = computed({
 </template>
 ```
 
+See also [Components](components.md)
+
+
 ## Computed and Watcher
 
 Be sure to make use of a computed value in a template somewhere, otherwise it won't be called. 

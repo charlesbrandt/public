@@ -34,16 +34,6 @@ http://expressjs.com/en/4x/api.html#req.body
 
 http://expressjs.com/en/4x/api.html#req.query
 
-## Debugging
-
-To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
-
-    DEBUG=express:* node index.js
-
-https://expressjs.com/en/guide/debugging.html
-
-You can also use `curl` or `wget` to test specific routes that are available. 
-
 ## Routing
 
 Once a project grows beyond "Hello World", collect routes in various .js files. 
@@ -96,20 +86,70 @@ Express basic routing
 
 http://katieleonard.ca/blog/2016/nested-routes-with-expressjs/
 
+## Development
 
-## Sessions
+When developing an API, it can be cumbersome to have to manually restart the server every time there is a code change. Want some type of watch mode. 
 
-For more details see [Auth](auth.md)
+Be sure to disable this when deploying the API to production.
 
-Session management in Express
+Depending on what you use to manage the node processes, your options may vary
 
-http://www.passportjs.org/  
-Passport.js  
+### Docker
 
-https://www.duckduckgo.com/?q=node+express+session+management  
-node express session management - Google Search  
-https://codeforgeek.com/manage-session-using-node-js-express-4/  
-How to Manage Session using Node.js and Express - Codeforgeek  
+Nodemon may work here
+
+https://github.com/remy/nodemon
+
+```
+npm install --save-dev nodemon 
+```
+
+then run with 
+```
+npx nodemon
+```
+
+An example for `docker-compose.yml`
+
+```
+  api:
+    # image: node:14
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: boilerplate_api
+    volumes:
+      - .:/srv/boilerplate/
+      - boilerplate_api_modules:/srv/boilerplate/api/node_modules
+    ports:
+      - 127.0.0.1:3030:3030
+    working_dir: /srv/boilerplate/api
+
+    # development
+    command: sh -c "npm install && npx nodemon boilerplate-api.js"
+
+    # in production, no need to run with a watcher
+    # command: sh -c "npm install && npm run start"
+    # DEBUG=express:* node ./api/boilerplate-api.js
+    # entrypoint: ["tail", "-f", "/dev/null"]
+```
+
+### PM2
+
+PM2 watch mode
+
+
+
+### Debugging
+
+To see all the internal logs used in Express, set the DEBUG environment variable to express:* when launching your app.
+
+    DEBUG=express:* node index.js
+
+https://expressjs.com/en/guide/debugging.html
+
+You can also use `curl` or `wget` to test specific routes that are available. 
+
 
 ## Logging
 
@@ -138,6 +178,20 @@ Advanced logging with NodeJs | Ugo Lattanzi's tech world
 https://dev.to/vassalloandrea/better-logs-for-expressjs-using-winston-and-morgan-with-typescript-516n  
 Better logs for ExpressJS using Winston and Morgan with Typescript - DEV Community  
 
+
+## Sessions
+
+For more details see [Auth](auth.md)
+
+Session management in Express
+
+http://www.passportjs.org/  
+Passport.js  
+
+https://www.duckduckgo.com/?q=node+express+session+management  
+node express session management - Google Search  
+https://codeforgeek.com/manage-session-using-node-js-express-4/  
+How to Manage Session using Node.js and Express - Codeforgeek  
 
 
 ## Links
