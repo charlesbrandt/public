@@ -1,7 +1,7 @@
 ;;; atom-dark-theme.el --- An Emacs port of the Atom Dark theme from Atom.io.
 ;;
 ;;
-;; Author: Jeremy Whitlock <jwhitlock@apache.org
+;; Author: Jeremy Whitlock <jwhitlock@apache.org>
 ;; Version: 0.2
 ;; Keywords: themes atom dark
 ;; URL: https://github.com/whitlockjc/atom-dark-theme-emacs
@@ -86,6 +86,12 @@
  '(isearch ((((class color) (min-colors 88) (background light)) (:foreground "lightskyblue1" :background "magenta3")) (((class color) (min-colors 88) (background dark)) (:foreground "brown4" :background "palevioletred2")) (((class color) (min-colors 16)) (:foreground "cyan1" :background "magenta4")) (((class color) (min-colors 8)) (:foreground "cyan1" :background "magenta4")) (t (:inverse-video t))))
  '(isearch-fail ((((class color) (min-colors 88) (background light)) (:background "RosyBrown1")) (((class color) (min-colors 88) (background dark)) (:background "red4")) (((class color) (min-colors 16)) (:background "red")) (((class color) (min-colors 8)) (:background "red")) (((class color grayscale)) (:foreground "grey")) (t (:inverse-video t))))
 
+ ;; ido-mode
+ '(ido-first-match ((t (:foreground "violet" :weight bold))))
+ '(ido-only-match ((t (:foreground "#ff982d" :weight bold))))
+ '(ido-subdir ((t (:foreground "#8AE234"))))
+ '(ido-virtual ((t (:foreground "#7c7c7c"))))
+
  ;; diff-hl (https://github.com/dgutov/diff-hl)
  '(diff-hl-change ((t (:foreground "#E9C062" :background "#8b733a"))))
  '(diff-hl-delete ((t (:foreground "#CC6666" :background "#7a3d3d"))))
@@ -130,6 +136,11 @@
  ;; powerline (https://github.com/milkypostman/powerline)
  '(powerline-active2 ((t (:background "grey10"))))
 
+ ;; realgud
+ `(realgud-overlay-arrow1 ((t (:foreground "#7fff00"))))
+ `(realgud-overlay-arrow2 ((t (:foreground "#5FAF44"))))
+ `(realgud-overlay-arrow3 ((t (:foreground "#116600"))))
+
  ;; speedbar
  '(speedbar-button-face ((t (:foreground "#AAAAAA"))))
  '(speedbar-directory-face ((t (:inherit (font-lock-keyword-face)))))
@@ -138,6 +149,29 @@
  '(speedbar-selected-face ((t (:background "#4182C4" :foreground "#FFFFFF"))))
  '(speedbar-separator-face ((t (:background "grey11" :foreground "#C5C8C6" :overline "#7C7C7C"))))
  '(speedbar-tag-face ((t (:inherit (font-lock-function-name-face)))))
+
+ ;; whitespace
+ '(whitespace-empty ((t (:foreground "#333333"))))
+ '(whitespace-hspace ((t (:inherit (whitespace-empty)))))
+ '(whitespace-indentation ((t (:inherit (whitespace-empty)))))
+ '(whitespace-line ((t (:inherit (trailing-whitespace)))))
+ '(whitespace-newline ((t (:inherit (whitespace-empty)))))
+ '(whitespace-space ((t (:inherit (whitespace-empty)))))
+ '(whitespace-space-after-tab ((t (:inherit (whitespace-empty)))))
+ '(whitespace-space-before-tab ((t (:inherit (whitespace-empty)))))
+ '(whitespace-tab ((t (:inherit (whitespace-empty)))))
+ '(whitespace-trailing ((t (:inherit (trailing-whitespace)))))
+
+ ;; company
+ '(company-preview ((t (:foreground "#96CBFE"))))
+ '(company-preview-common ((t (:inherit company-preview :underline "#96CBFE"))))
+ '(company-preview-search ((t (:inherit company-preview))))
+ '(company-scrollbar-bg ((t (:inherit company-tooltip :background "dim grey"))))
+ '(company-scrollbar-fg ((t (:background "black"))))
+ '(company-tooltip ((t (:background "#c5c8c6" :foreground "#1d1f21"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :foreground "red4"))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :background "#96CBFE"))))
+ '(company-tooltip-selection ((t (:inherit company-tooltip :background "#96CBFE"))))
  )
 
 (defvar atom-dark-theme-force-faces-for-mode t
@@ -163,20 +197,20 @@ Current modes, and their faces, impacted by this variable:
 ;;   http://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Remapping.html
 ;;
 ;; Of course, this might be confusing to some when in one mode they see keywords highlighted in one face and in another
-;; mode they see a different face.  That being said, you can set the `atom-dark-theme-force-faces-for-mode` variable to `nil`
-;; to disable this feature.
+;; mode they see a different face.  That being said, you can set the `atom-dark-theme-force-faces-for-mode` variable to
+;; `nil` to disable this feature.
 (defun atom-dark-theme-change-faces-for-mode ()
   (interactive)
   (and (eq atom-dark-theme-force-faces-for-mode t)
        (cond
-	((member major-mode '(conf-mode conf-javaprop-mode html-mode yaml-mode))
-	 (face-remap-add-relative 'font-lock-variable-name-face '(:inherit (font-lock-keyword-face))))
-	((eq major-mode 'java-mode)
-	 (face-remap-add-relative 'font-lock-variable-name-face '(:inherit (js2-function-param))))
-	((eq major-mode 'markdown-mode)
-	 (face-remap-add-relative 'default '(:foreground "#999")))
-	((member major-mode '(javascript-mode js2-mode))
-	 (face-remap-add-relative 'font-lock-doc-face '(:inherit (font-lock-comment-face)))))))
+        ((member major-mode '(conf-mode conf-javaprop-mode html-mode yaml-mode))
+         (face-remap-add-relative 'font-lock-variable-name-face '(:inherit (font-lock-keyword-face))))
+        ((eq major-mode 'java-mode)
+         (face-remap-add-relative 'font-lock-variable-name-face '(:inherit (js2-function-param))))
+        ((eq major-mode 'markdown-mode)
+         (face-remap-add-relative 'default '(:foreground "#999")))
+        ((member major-mode '(javascript-mode js2-mode))
+         (face-remap-add-relative 'font-lock-doc-face '(:inherit (font-lock-comment-face)))))))
 
 (add-hook 'after-change-major-mode-hook 'atom-dark-theme-change-faces-for-mode)
 
@@ -184,7 +218,7 @@ Current modes, and their faces, impacted by this variable:
 (and load-file-name
      (boundp 'custom-theme-load-path)
      (add-to-list 'custom-theme-load-path
-		  (file-name-as-directory (file-name-directory load-file-name))))
+                  (file-name-as-directory (file-name-directory load-file-name))))
 
 (provide-theme 'atom-dark)
 

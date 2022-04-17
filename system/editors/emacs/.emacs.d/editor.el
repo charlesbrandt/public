@@ -30,7 +30,6 @@
 
 
 
-
 ;; Disable backup files:
 (setq make-backup-files nil) ; stop creating backup~ files
 ;; via: http://ergoemacs.org/emacs/emacs_set_backup_into_a_directory.html
@@ -153,58 +152,19 @@
 
 ;;;; Themes
 
-;; (load-file "~/.emacs.d/theme.el")
 
-;; ;keeping this around to undo the bad settings done elsewhere
-;; (my-color-theme-light)
+;; https://github.com/whitlockjc/atom-dark-theme-emacs
+;; (load-file "~/.emacs.d/themes/atom-dark-theme.el")
 
-;https://github.com/whitlockjc/atom-dark-theme-emacs
-(load-file "~/.emacs.d/atom-dark-theme.el")
+;; https://github.com/dracula/emacs
+;; (load-file "~/.emacs.d/themes/dracula-theme.el")
 
-;(color-theme-calm-forest)
-;;set default color theme
-;
-;(color-theme-gray30)
-;(color-theme-calm-forest)
-;(color-theme-euphoria)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-;;black bagkgrounds:netbook
-;(color-theme-oswald)
-;(color-theme-lawrence)
-;(color-theme-hober)
-;(color-theme-charcoal-black)
-;(color-theme-black)
-;(color-theme-billw)
-;(color-theme-midnight)
-;(color-theme-late-night)
-
-
-
-
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#242424" "#E5786D" "#95E454" "#CAE682" "#8AC6F2" "#333366" "#CCAA8F" "#F6F3E8"])
- '(custom-enabled-themes nil)
- '(global-font-lock-mode t)
- '(inhibit-startup-screen t)
- '(js-indent-level 2)
- '(tool-bar-mode nil))
-
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :family "Monaco")))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; not sure why this new approach is necessary, but it fixes the issue where theme doesn't load
+;; https://stackoverflow.com/questions/20541161/saved-theme-in-emacs-doesnt-load-on-launch
+(add-hook 'emacs-startup-hook
+   (lambda ()
+      ;; (load-theme 'dracula t)
+      (load-theme 'atom-dark t)
+      ))

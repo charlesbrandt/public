@@ -38,6 +38,10 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; https://github.com/kiwanami/emacs-epc/issues/35
+;; For message: Package cl is deprecated emacs
+(setq byte-compile-warnings '(cl-functions))
+
 ;; Receiving a warning message for this setting;
 ;; Warning (initialization): Your ‘load-path’ seems to contain
 ;; your ‘.emacs.d’ directory: ~/.emacs.d/
@@ -69,7 +73,6 @@ There are two things you can do about this warning:
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   )
-(package-initialize)
 
 (setq confirm-kill-emacs 'y-or-n-p)
 
