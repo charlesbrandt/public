@@ -26,6 +26,17 @@ http://askubuntu.com/questions/345588/what-is-the-safest-way-to-clean-up-boot-pa
 e.g.:
 sudo apt-get remove linux-image-4.2.0-16-generic
 
+## Repair /boot partition
+
+Occasionally, cleaning up old kernels can result in a system that won't boot. In that case, boot into a live instance of the OS to repair the system.
+
+https://linuxconfig.org/ubuntu-boot-repair
+
+Tried boot-repair utility
+
+It helped in identifying encrypted partitions to mount
+
+
 ## Stale repository
 
 Sometimes a source repository for apt changes location. This situation can cause "Software Updater" to report scary messages like "Could not retrieve updates at this time..."
@@ -44,100 +55,9 @@ Then, to remove it:
 [via](https://askubuntu.com/questions/717144/remove-source-from-software-updater)
 
 
-*2018.05.05 
-if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
 
+## Creating a bootable USB
 
-
-(Ideally do this before starting fresh... new installs don't have git)
-(TODO: move to shutdown or upgrade notes; link those two)
-If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
-
-    git tag 15.10
-
-
-
-*2018.02.05 06:13:50
-check home drive for any downloads
-any other browser settings?
-
-    sudo tar -zcvf /media/charles/DRIVE/20130514-old_macbook-c.tgz /c
-
-    sudo tar -zcvf /media/charles/DATA/20160728-chip-nuc-c.tgz /c
-
-*2016.09.30 14:05:28
-if not saving the original drive (which is difficult to do) do a full system backup first.
-Many ways to accomplish this:
-
-    sudo rsync -av --exclude-from /Volumes/Backup/excludes.txt / /Volumes/Backup/20160929-mbpr-breathe-everything-root
-
-and / or Timemachine (use disk as Timemachine backup)
-
-*2014.09.15 18:49:42 
-back up Thunderbird and those settings
-charles/communicate/email-backup.txt
-charles/communicate/email-configuration.txt
-
-*2014.09.15 18:38:52 
-extract any stored data in browser, especially in local apps like "Link Router"
-chrome://extensions-frame/#
-
-
-
-
-
-*2010.08.31 07:47:23 see_also
-/c/technical/system/upgrade.txt
-/c/technical/system/shutdown.txt
-
-*2018.05.05 20:42:44 
-(Ideally do this before starting fresh... new installs don't have git)
-(TODO: move to shutdown or upgrade notes; link those two)
-If you're upgrading to a new version, mark notes in git for the previous version so that you can go back, if needed:
-
-    git tag 16.04
-
-*2010.08.29 12:12:46 
-upgrading a system, 
-
-should follow all instructions in shutdown.txt 
-(up to actually turning computer off)
-
-usually this amounts to syncing mercurial repositories locally
-
-Binary data should be elsewhere. If not, export that now.
-
-check with:
-du -ms /c/out*
-du -ms /c/binaries*
-
-ls /c/binaries-local
-ls /c/out-backups
-
-*2014.09.16 15:14:42 
-check that nothing is in default system user directory
-
-cd
-du -ms *
-
-Desktop
-and
-Downloads are common options
-
-
-
-move personal data to a separate location
-
-be sure that all personal data and settings are backed up.  
-Settings should be backed up in the form of notes and install procedures.
-Once a structure is in place that is used, everything should be in that structure, and nothing unnecessary should be in it. 
-
-(currently under /c)
-
-
-
-
-creating a bootable USB:
 will need to do this before starting fresh.  On Ubuntu, there is usb-creator built in...
 you can use that on a standard Ubuntu machine, but XUbuntu does not run on Gnome, so usb-creator is not available for it.
 

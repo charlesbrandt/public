@@ -2,20 +2,16 @@
 
 Super L or Super R (often a 'windows' key) will usually bring up launcher for launching tasks
 
-
-## Restarting
-
-Restart GNOME by pressing Alt+F2 and running the command r (X.org) or log out and back in (Wayland). Do this whenever you want to apply and test a change of the code.
-
-This restores functionality without a full system restart! 
-This fixes when gnome-shell starts running full resources
-
-https://github.com/mzur/gnome-shell-wsmatrix
-
+Open `Settings` application to make many of these changes.
 
 ## Dock Settings
 
 Settings -> Appearance -> Auto-hide the Dock
+
+Auto-hide the Dock (Settings->Appearance->Dock)
+
+Update Blank Screen Preferences (Settings->Power->Blank Screen)
+
 
 ## Dark Mode
 
@@ -98,11 +94,8 @@ Use Tweaks application to move close, minimize, and maximize to the left of the 
 
 ## Desktop Icons
 
-Do you want to see icons on the desktop? Don't be fooled by the default being off... Trash and home folders are buried deeper. 
+Settings -> Appearance -> Desktop Icons -> Toggle "Show Personal folder"
 
-    Tweaks -> Extensions -> Desktop Icons -> Settings Icon -> Show icons
-
-Click on the settings icon next to the toggle to see additional settings for e.g. show Trash on desktop
 
 ## Desktop Background
 
@@ -145,7 +138,7 @@ it's annoying to have the screen dim if you get in front of the camera
 
 For laptops with a touch pad, I prefer the following settings: 
 
-Open gnome-tweak-tool and go to the "Keyboard and Mouse" tab and disable "Middle-click-Paste".
+Open gnome-tweaks and go to the "Keyboard and Mouse" tab and disable "Middle-click-Paste".
 
 Also set the "Mouse Click Emulation" to be "Fingers"
 
@@ -171,49 +164,16 @@ A bit tricky to find login screen customizations.
 Navigate to: 
 
     /org/gnome/login-screen/
-    
-## Keyboard Backlight
 
-By default, the keyboard backlight will time out after 10s on Ubuntu. Typically, if I turn on the backlight, I would prefer for it to stay on until I choose otherwise. This can be configured in Ubuntu:
+## Restarting
 
-To change the keyboard backlight time-out counter you will need to modify stop_timeout. You will find stop_timeout located in this directory:
+Restart GNOME by pressing Alt+F2 and running the command r (X.org) or log out and back in (Wayland). Do this whenever you want to apply and test a change of the code.
 
-    /sys/devices/platform/dell-laptop/leds/dell\:\:kbd_backlight/
+This restores functionality without a full system restart! 
+This fixes when gnome-shell starts running full resources
 
-Changes to this file are performed in Terminal.
+https://github.com/mzur/gnome-shell-wsmatrix
 
-    sudo vi /sys/devices/platform/dell-laptop/leds/dell\:\:kbd_backlight/stop_timeout
-    
-Tried using '0s'
-However, I'm unable to save the changes. 
 
-via:
-https://www.google.com/search?q=keyboard+backlight+timeout+ubuntu
-keyboard backlight timeout ubuntu - Google Search
-https://www.dell.com/support/article/us/en/04/sln308123/how-to-configure-the-keyboard-backlight-time-out-interval-in-ubuntu-linux?lang=en
-How to Configure the Keyboard Backlight Time-Out Interval in Ubuntu Linux | Dell US
-
-## .local Domain Warning
-
-    sudo vi /etc/avahi/avahi-daemon.conf 
-    
-uncomment and change the line with domain name to:
-    
-    domain-name=.alocal
-
-https://www.google.com/search?q=network+service+discovery+disabled+ubuntu
-network service discovery disabled ubuntu - Google Search
-https://askubuntu.com/questions/339702/network-service-discovery-disabled-what-does-this-mean-for-me
-wireless - Network service discovery disabled: What does this mean for me? - Ask Ubuntu
-
-## Hot Corner (See all windows)
-
-Can also use the Tweaks application to enable the "Activities Overview Hot Corner" in the Top Bar settings.
-
-standard guesture control
-  - Three finger swipe to different workspace
-Is there a desktop that allows seeing all windows currently open on a workspace (similar to mac os x)? Possible to use three finger gesture?
-
-Gnome3 has a very similar feature!! (Currently configured to be in the upper left hand corner of screen
 
 

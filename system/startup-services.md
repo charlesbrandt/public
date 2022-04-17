@@ -9,21 +9,31 @@ Often when thinking about running programs, we're used to launching them with a 
 
 ## Attaching file systems
 
-If you know there is a drive that is always going to be attached to a system, you can set up the server so that it automatically mounts the drive on startup. (Note: if the drive is not present, the startup process will stall.) Automatic drive mounting is done by adding an entry to the `/etc/fstab` file. You need administrator rights to do this. Open with your favorite editor
+If you know there is a drive that is always going to be attached to a system, you can set up the server so that it automatically mounts the drive on startup. (Note: if the drive is not present, the startup process will stall.) Automatic drive mounting is done by adding an entry to the `/etc/fstab` file. You need administrator rights to do this. 
 
-    sudo vi /etc/fstab
-    
 You'll need to know the device location (usually something like `/dev/sd*`)
 
-    sudo dmesg | grep \\[sd
-    
-```    
+```
+sudo dmesg | grep \\[sd
+```
+
+Open with your favorite editor
+
+```
+sudo vi /etc/fstab
+```
+
+Then add the configuration to `fstab`
+
+```
 /dev/sdb1       /media/account/My_Passport   ext4    defaults        0       0
 ```
 
 Unlike automatic mounting, the mount point needs to exist: 
 
-    mkdir -p /media/account/My_Passport
+```
+mkdir -p /media/account/My_Passport
+```
 
 Once mounted, ntfs drives will show up as type `fuseblk`. However, the format for ntfs drives in `/etc/fstab` appears to be 
 
@@ -35,22 +45,28 @@ dev/sda2   /mnt/excess ntfs-3g    permissions,locale=en_US.utf8    0   2
 https://askubuntu.com/questions/113733/how-to-mount-a-ntfs-partition-in-etc-fstab
 
 
-    sudo mount -a
-    
+```
+sudo mount -a
+```
+
 
 To replicate the GUI mount behavior from the CLI (maybe does not require root?): 
     
-    udisksctl mount -b /dev/sdb2
-    
+```
+udisksctl mount -b /dev/sdb2
+```
+
 Useful to see what settings should be used
 
 
 
 ## Starting services (systemd)
 
-Here's the way I did it with a systemd service.
+To make a service start automatically when the system starts, create a `systemd` service.
 
-nano /etc/systemd/system/filebrowser.service
+```
+vi /etc/systemd/system/filebrowser.service
+```
 
 ```
 [Unit]
@@ -67,21 +83,26 @@ ExecStart=/usr/local/bin/filebrowser -r /
 WantedBy=multi-user.target
 ```
 
+```
 systemctl start filebrowser
 systemctl enable filebrowser
+```
 
 P.S. this would be a dangerous setup if your filebrowser is accessible via the public internet. In my case it is only listening on the private network.
 
 https://github.com/filebrowser/filebrowser/issues/453
 
+```
 systemctl status filebrowser.service
-
+```
 
 
 ## Starting containers (docker)
 
 In docker-compose.yml use:
 
-    restart: always
+    restart: unless-stopped
     
+
+`restart: always` is another option, but I find it's too agressive in restarting services. If I stop it manually, I usually don't want it to come back automatically when the system restarts. 
 

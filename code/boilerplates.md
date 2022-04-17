@@ -2,7 +2,7 @@
 
 One is available here:
 
-https://gitlab.com/charlesbrandt/web-ui-api-db
+https://gitlab.com/fern-seed/web-ui-api-db
 
 There are many other goods ones to learn and grow from. 
 

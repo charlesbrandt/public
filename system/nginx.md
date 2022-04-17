@@ -1,12 +1,73 @@
 # Nginx
 
+## Installation
+
+### Docker 
+
+With docker, you can install nginx with something like:
+
+```yaml
+version: "3"
+services:
+  web:
+    # https://hub.docker.com/_/nginx/
+    # image: nginx:latest
+    image: nginx:stable
+    container_name: boilerplate_web
+    # restart: unless-stopped
+    volumes:
+      - ./ui/dist:/srv/boilerplate/dist
+      - ./web/static:/srv/boilerplate/static
+      - ./web/ssl:/etc/nginx/ssl
+      - ./web/default.conf:/etc/nginx/conf.d/default.conf
+      # mount any static / public content for efficient serving directly
+      # ./web/public;/srv/boilerplate/files/
+    working_dir: /srv/boilerplate/
+    ports:
+      # for development
+      - 127.0.0.1:8888:80
+      # leave off '127.0.0.1' if you want to expose the service beyond localhost
+      # (useful when you want to access dev instance of boilerplate remotely
+      #  from e.g. a phone)
+      # - 8888:80
+      # for production
+      # - 80:80
+      # - 443:443
+    # if the container doesn't run, there may be a problem with the nginx.conf
+    # try running `docker-compose log web` for clues
+    # (usually SSL keys have not yet been generated in `web/ssl`)
+    # keep the container running to debug or run interactively with
+    #     docker-compose exec web bash
+    # entrypoint: ["tail", "-f", "/dev/null"]
+    networks:
+      default:
+        aliases:
+          - boilerplate.local
+```
+
+This is a good option to encapsulate all necessary settings for an application stack. 
+
+### Local
+
+On some servers with multiple services running (e.g. a server instead of a development machine), it may help to run one nginx server at the host level and configure that to proxy to other services as needed. 
+
+```
+sudo apt-get install nginx
+```
+
+## Configuration
+
 http://nginx.org/en/docs/beginners_guide.html#conf_structure
 
 https://www.digitalocean.com/community/tutorials/understanding-the-nginx-configuration-file-structure-and-configuration-contexts
 
-The config file is typically found:
+The main config file is typically found:
 
     /etc/nginx/nginx.conf
+
+On a fresh install, by default it is configured to point to :
+
+
 
 Can have as many server contexts as needed:
 
@@ -36,6 +97,49 @@ Generally these are configured in separate files in
 
     /etc/nginx/conf.d/*.conf
 
+In:
+
+```
+sudo vi /etc/nginx/sites-enabled/default
+```
+
+You should look at the following URL's in order to grasp a solid understanding
+of Nginx configuration files in order to fully unleash the power of Nginx.
+
+https://www.nginx.com/resources/wiki/start/  
+https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/  
+https://wiki.debian.org/Nginx/DirectoryStructure  
+
+
+Then set it to run on startup
+
+```
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+[See also: Startup Services](startup-services.md)
+
+Disable the default site and add in the desired configuration:
+
+```
+sudo rm /etc/nginx/sites-enabled/default 
+```
+
+Ok to use either `/etc/nginx/conf.d/` or `/etc/nginx/sites-available` and link to the enabled ones in `/etc/nginx/sites-enabled`. Call the files `something.conf`
+
+```
+server {
+  listen 80;
+  listen [::]:80;
+
+  server_name example.com;
+
+  location / {
+      proxy_pass http://localhost:3000/;
+  }
+}
+```
 
 ## Alias vs Root
 

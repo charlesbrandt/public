@@ -409,3 +409,27 @@ https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
 https://landscape.cncf.io/
 CNCF Cloud Native Interactive Landscape
 
+## Ingress
+
+An Ingress Controller handles how traffic outside of a pod is routed within the pod. Nginx is a common option. Kong is built on Nginx and is another good option.
+
+### Kong
+
+https://duckduckgo.com/?t=ffab&q=kong+rbac&ia=web  
+💤 kong rbac at DuckDuckGo  
+https://github.com/mr5/kong-rbac  
+💤 mr5/kong-rbac: RBAC plugin for KongCE, it's still in development.DO NOT use it in production.  
+https://keyvatech.com/2020/01/15/setting-up-role-based-access-control-rbac-with-kong-enteprise/  
+💤 Setting up Role-Based Access Control (RBAC) with Kong Enteprise - Keyva  
+https://duckduckgo.com/?t=ffab&q=secure+kong+community+edition&ia=web  
+secure kong community edition at DuckDuckGo  
+https://medium.com/devopsturkiye/kong-api-gateway-installing-configuring-and-securing-dfea423ee53c  
+Kong Api Gateway: Installing, Configuring and Securing. | by Cagri Ersen | Devops Türkiye☁️ 🐧 🐳 ☸️ | Medium  
+https://duckduckgo.com/?t=ffab&q=kong+authentication+plugins&ia=web  
+kong authentication plugins at DuckDuckGo  
+https://docs.konghq.com/hub/kong-inc/oauth2/  
+OAuth 2.0 Authentication plugin | Kong Docs  
+https://duckduckgo.com/?t=ffab&q=kong+vs+nginx&ia=web  
+kong vs nginx at DuckDuckGo  
+https://discuss.konghq.com/t/kong-vs-nginx-kunernetes-ingress-controller/1985  
+Kong VS nginx kunernetes ingress controller - Questions - Kong Nation  

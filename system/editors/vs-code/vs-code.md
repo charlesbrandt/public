@@ -72,69 +72,6 @@ See below for details
 }
 ```
 
-## Formatting Files
-
-Configure automatic formatting of a document when it's saved. This also helps indicate if you have a syntax problem -- the formatting won't be applied if the file isn't being parsed due to a syntax error. 
-
-```
-"editor.formatOnSave": true
-```
-
-### Prettier Extension
-
-Note: (2022.03.18 16:45:59) ESLint extension may be sufficient
-
-By: Prettier
-
-Helps with code formatting
-
-https://glebbahmutov.com/blog/configure-prettier-in-vscode/
-
-```
-"editor.defaultFormatter": "esbenp.prettier-vscode",
-```
-
-may require the project to install prettier as a dev dependency so that vscode has it available to use.
-
-TODO: consider beautify instead?
-https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify
-
-```
-  "prettier.prettierPath": "./bin/prettier",
-
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-```
-
-#### Prettier Path
-
-Ideally VS Code will use the same prettier version that is being applied to your project. However, if that is tucked away in a container, on a remote machine, or not being applied at the project level, it may be necessary to use a different prettier instance:
-
-    "prettier.prettierPath": "./bin/prettier",
-
-Hoping that this will prevent needing to install node_modules outside of the container. VS Code looks for the local version of prettier, but if one is not installed (hidden by container), then it doesn't do anything.
-
-```
-prettier.prettierPath
-
-Supply a custom path to the prettier module. This path should be to the module folder, not the bin/script path. i.e. ./node_modules/prettier, not ./bin/prettier.
-```
-
-See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-
-### Auto Fix
-
-It's possible to apply the formatting manually, on demand. Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
-
-https://code.visualstudio.com/docs/languages/html
-
 
 ## Preference Details
 
@@ -186,6 +123,14 @@ I go back and forth on this. Hoping that Tab Group helper will minimize the desi
 I prefer to handle updates when updating the OS.
 https://code.visualstudio.com/docs/setup/linux
 https://stackoverflow.com/questions/42496935/disabling-visual-studio-code-update-notification
+
+### Bracket Matching
+
+It's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
+
+    Tip: You can jump to the matching bracket with Ctrl+Shift+\
+
+https://code.visualstudio.com/docs/editor/editingevolved
 
 
 
@@ -375,16 +320,6 @@ can't see the tabs any more!
 Right click on extension->Extension Settings
 
 
-### Bracket Matching
-
-TODO: [2021.09.25] check if this is built in now. I think I've seen mention about the feature in recent release notes. 
-
-Sometimes it's helpful to be able to jump to the corresponding matching bracket, especially if it's far away...
-
-    Tip: You can jump to the matching bracket with Ctrl+Shift+\
-
-https://code.visualstudio.com/docs/editor/editingevolved
-
 ### Space Block Jumper
 
 Space Block Jumper allows jumping to the next blank line. (Block Navigation)
@@ -401,15 +336,6 @@ Still requires adding custom bindings (included below).
 
 Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
-### Tab Groups
-
-Save collections of open files in a Tab Group
-
-https://marketplace.visualstudio.com/items?itemName=usama8800.tab-groups  
-Tab Groups - Visual Studio Marketplace  
-https://github.com/usama8800/VSCode-Tab-Groups  
-GitHub - usama8800/VSCode-Tab-Groups  
-
 ### Vue Language Features (Volar)
 
 By: Johnson Chu
@@ -422,52 +348,6 @@ https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar
 Vue Language Features (Volar) - Visual Studio Marketplace  
 https://github.com/johnsoncodehk/volar  
 GitHub - johnsoncodehk/volar: ⚡ Fast Vue Language Support Extension  
-
-### Tailwind
-
-Tailwind CSS IntelliSense
-
-https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
-
-See also
-
-WindiCSS IntelliSense (recommended by Vitesse)
-
-## Iconify IntelliSense
-
-Iconify IntelliSense
-
-https://marketplace.visualstudio.com/items?itemName=antfu.iconify
-
-(recommended by Vitesse)
-
-
-### ES6 Mocha Snippets
-By: spoonscen.es6-mocha-snippets
-
-Better syntax support for Mocha style tests
-
-### YAML
-
-By: Red Hat
-
-### Spell Checker
-
-By Street Side Software
-
-Seems to be the top pick these days
-
-https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker  
-Code Spell Checker - Visual Studio Marketplace  
-https://github.com/streetsidesoftware/vscode-spell-checker  
-streetsidesoftware/vscode-spell-checker: A simple source code spell checker for code  
-https://duckduckgo.com/?t=canonical&q=vs+code+spell+checker+md&ia=web  
-vs code spell checker md at DuckDuckGo  
-
-The Microsoft version has been deprecated:  
-https://github.com/Microsoft/vscode-spell-check/blob/master/README.md  
-
-### Import Cost
 
 ### Python
 
@@ -505,6 +385,44 @@ https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 
 https://github.com/Microsoft/vscode-remote-release
 
+### Tailwind
+
+Tailwind CSS IntelliSense
+
+https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
+
+See also
+
+WindiCSS IntelliSense (recommended by Vitesse)
+
+### Iconify IntelliSense
+
+Iconify IntelliSense
+
+https://marketplace.visualstudio.com/items?itemName=antfu.iconify
+
+(recommended by Vitesse)
+
+### YAML
+
+By: Red Hat
+
+### Spell Checker
+
+By Street Side Software
+
+Seems to be the top pick these days
+
+https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker  
+Code Spell Checker - Visual Studio Marketplace  
+https://github.com/streetsidesoftware/vscode-spell-checker  
+streetsidesoftware/vscode-spell-checker: A simple source code spell checker for code  
+https://duckduckgo.com/?t=canonical&q=vs+code+spell+checker+md&ia=web  
+vs code spell checker md at DuckDuckGo  
+
+The Microsoft version has been deprecated:  
+https://github.com/Microsoft/vscode-spell-check/blob/master/README.md  
+
 ### Docker
 helps with formatting docker-compose.yml
 or is that just the redhat yml parser?
@@ -513,6 +431,24 @@ By: Microsoft
 
 Also:
 ms-vscode-remote.remote-containers
+
+
+
+
+
+
+
+## Archived Extensions
+
+Less commonly used
+
+### Import Cost
+
+### ES6 Mocha Snippets
+By: spoonscen.es6-mocha-snippets
+
+Better syntax support for Mocha style tests
+
 
 ### SVG Preview
 
@@ -525,15 +461,6 @@ https://marketplace.visualstudio.com/items?itemName=SimonSiefke.svg-preview
 
 There were a few other options available, but this seems to work so far. 
 
-
-## Other Extensions
-
-### PostCSS Language Support
-
-https://marketplace.visualstudio.com/items?itemName=csstools.postcss
-
-(recommended by Vitesse)
-
 ### i18n-ally
 
 Localization / i18n
@@ -542,7 +469,27 @@ https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally
 
 (recommended by Vitesse)
 
+
+
+### PostCSS Language Support
+
+https://marketplace.visualstudio.com/items?itemName=csstools.postcss
+
+(recommended by Vitesse)
+
 ### Kubernetes
+
+
+
+
+### Tab Groups
+
+Save collections of open files in a Tab Group
+
+https://marketplace.visualstudio.com/items?itemName=usama8800.tab-groups  
+Tab Groups - Visual Studio Marketplace  
+https://github.com/usama8800/VSCode-Tab-Groups  
+GitHub - usama8800/VSCode-Tab-Groups  
 
 ### Quick Open
 
@@ -684,9 +631,79 @@ Evaluate:
 npm
 npm intellisense
 
+
+## Formatting Files
+
+Configure automatic formatting of a document when it's saved. This also helps indicate if you have a syntax problem -- the formatting won't be applied if the file isn't being parsed due to a syntax error. 
+
+```
+"editor.formatOnSave": true
+```
+
+### Prettier Extension
+
+Note: (2022.03.18 16:45:59) ESLint extension may be sufficient
+
+By: Prettier
+
+Helps with code formatting
+
+https://glebbahmutov.com/blog/configure-prettier-in-vscode/
+
+```
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+```
+
+may require the project to install prettier as a dev dependency so that vscode has it available to use.
+
+TODO: consider beautify instead?
+https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify
+
+```
+  "prettier.prettierPath": "./bin/prettier",
+
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+```
+
+#### Prettier Path
+
+Ideally VS Code will use the same prettier version that is being applied to your project. However, if that is tucked away in a container, on a remote machine, or not being applied at the project level, it may be necessary to use a different prettier instance:
+
+    "prettier.prettierPath": "./bin/prettier",
+
+Hoping that this will prevent needing to install node_modules outside of the container. VS Code looks for the local version of prettier, but if one is not installed (hidden by container), then it doesn't do anything.
+
+```
+prettier.prettierPath
+
+Supply a custom path to the prettier module. This path should be to the module folder, not the bin/script path. i.e. ./node_modules/prettier, not ./bin/prettier.
+```
+
+See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+### Auto Fix
+
+It's possible to apply the formatting manually, on demand. Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
+
+https://code.visualstudio.com/docs/languages/html
+
+
+
+
+
 ## Reporting
 
 Up to you if you want to leave this enabled or not. Both ways make sense!
+
+
 
 ### Telemetry reporting
 

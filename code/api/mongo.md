@@ -243,7 +243,50 @@ https://stackoverflow.com/questions/19889313/mongodb-query-in-on-a-hash-field
 
 https://docs.mongodb.com/manual/reference/operator/query/regex/#mongodb-query-op.-regex
 
-Not working:
+```
+db.users.find({username:/Son/})
+```
+
+https://stackoverflow.com/questions/10610131/checking-if-a-field-contains-a-string
+
+To make this work with variables, create a regular expression object in javascript:
+
+```
+function escapeRegex(string) {
+    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
+  const filtered = common.escapeRegex(req.params.query);
+  // no need to include forward slashes in the string
+  const regex = new RegExp(`${filtered}`, 'gi');
+
+```
+
+https://stackoverflow.com/questions/4029109/javascript-regex-how-to-put-a-variable-inside-a-regular-expression
+
+https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+
+
+
+Regular expressions will iterate all documents. That can be slow and inefficient if the collection is large. In that situation, it may be better to create an index. Note: Indexes will only match exact matches, not substrings:
+
+First, create the index:
+
+```
+db.users.createIndex( { "username": "text" } )
+```
+
+Then, to search:
+
+```
+db.users.find( { $text: { $search: "son" } } )
+```
+
+
+
+#### Dates
+
+Not good for dates. The following doesn't work:
 {createdAt: { $regex: /2021-06-30*/ } }
 
 Seems like searching by a date range is a cumbersome process? 
@@ -365,13 +408,16 @@ https://mongoosejs.com/docs/tutorials/findoneandupdate.html
 
 Reminder: the value that is passed on is the value that was 'found' before the update is applied. If you make updates to that original value and re-save, you may lose your updated values. 
 
-### Specify collection
+```
+  let user = await User.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    returnOriginal: false,
+  }).catch((err) => {
+    return next(err);
+  });
 
-Mongoose by default produces a collection name by passing the model name to the utils.toCollectionName method. This method pluralizes the name. Set this option if you need a different name for your collection.
-
-[via](https://mongoosejs.com/docs/guide.html#collection)
-
-https://stackoverflow.com/questions/5794834/how-to-access-a-preexisting-collection-with-mongoose
+  if (!user) return res.status(200).json([]);
+  res.status(200).send(user);
+```
 
 ### Saving Data
 
@@ -466,6 +512,14 @@ router.get("/all/:page/:limit/:filter?", function (req, res, next) {
 ```
 
 Result has the following keys [ 'docs', 'total', 'limit', 'page', 'pages' ]
+
+### Specify collection
+
+Mongoose by default produces a collection name by passing the model name to the utils.toCollectionName method. This method pluralizes the name. Set this option if you need a different name for your collection.
+
+[via](https://mongoosejs.com/docs/guide.html#collection)
+
+https://stackoverflow.com/questions/5794834/how-to-access-a-preexisting-collection-with-mongoose
 
 
 

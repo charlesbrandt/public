@@ -29,3 +29,7 @@ Downloads
 https://duckduckgo.com/?q=bitlocker&t=canonical&ia=web  
 bitlocker at DuckDuckGo  
   
+# 2022.04.16
+
+An error occurred while setting the recovery key. The installation will continue, but you may have to manually add the recovery key in the installed system with the command:
+cryptsetup luksAddKey device_name

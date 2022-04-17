@@ -86,6 +86,82 @@ Express basic routing
 
 http://katieleonard.ca/blog/2016/nested-routes-with-expressjs/
 
+## CRUD Example
+
+```js
+var express = require("express");
+var router = express.Router();
+var common = require("./common");
+
+const mongoose = require("mongoose");
+var db = require("../db-mongo");
+const Sample = mongoose.model("sample");
+
+// Search vs Find
+// Leaning toward `find` being a lightweight GET call to quickly filter a list of objects
+// `search` is a parameterized POST method that returns more details
+
+router.get("/find/:query", common.set_user, async (req, res, next) => {
+  const filtered = common.escapeRegex(req.params.query);
+  // do not include forward slashes in the string
+  const regex = new RegExp(`${filtered}`, "gi");
+  // console.log("using regex", regex);
+  const matches = await Sample.find({ name: regex }).catch((err) => {
+    next(err);
+  });
+  // console.log("Search for", req.params.query, matches);
+  // res.json(
+  //   match.map(({ name }) => {
+  //     return { value: name };
+  //   })
+  // );
+  res.json(matches);
+});
+
+router.get("/:id", common.set_user, async (req, res, next) => {
+  const match = await Sample.findOne({ _id: req.params.id }).catch((err) => {
+    next(err);
+  });
+  res.json(match);
+});
+
+router.patch("/:id", common.check_role("admin"), async (req, res, next) => {
+  let sample = await Sample.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    returnOriginal: false,
+  }).catch((err) => {
+    return next(err);
+  });
+
+  if (!sample) return res.status(200).json([]);
+  res.status(200).send(sample);
+});
+
+router.delete("/:id", common.check_role("admin"), async (req, res, next) => {
+  await Sample.deleteOne({ _id: req.params.id }).catch((err) => {
+    next(err);
+  });
+  res.json({ result: "success" });
+});
+
+router.get("/", common.set_user, async (req, res, next) => {
+  const matches = await Sample.find({}).catch((err) => {
+    next(err);
+  });
+  res.json(matches);
+});
+
+router.post("/", common.check_role("admin"), async (req, res, next) => {
+  // console.log("CREATE NEW SAMPLE", req.body);
+  const created = await Sample.create(req.body).catch((err) => {
+    next(err);
+  });
+  res.json(created);
+});
+
+module.exports = router;
+
+```
+
 ## Development
 
 When developing an API, it can be cumbersome to have to manually restart the server every time there is a code change. Want some type of watch mode. 
