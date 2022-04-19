@@ -16,7 +16,18 @@ Download | DBeaver Community
 
 ### Apt package
 
-Snap package cannot read `~/.ssh` by default (by design). Could grant access, etc, but probably easier to just use apt package
+Snap package cannot read `~/.ssh` by default (by design). Could grant access, etc, but probably easier to just use apt package.
+
+Download via: 
+
+https://dbeaver.io/download/
+
+Then
+
+```
+cd Downloads
+sudo dpkg -i dbeaver
+```
 
 When trying to establish a connection via an SSH tunnel using the DBeaver Snap version, I experienced an error like 
 
@@ -54,6 +65,13 @@ Then run with:
 /snap/bin/dbeaver-ce
 ```
 
+## Mongo Compass
+
+DBeaver only supports Mongo Databases in the Enterprise edition:
+
+https://dbeaver.com/databases/mongo/
+
+See [Mongo notes](mongo.md)
 
 
 

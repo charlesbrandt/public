@@ -396,9 +396,42 @@ It is even possible to run populate on nested objects to get what you need all i
 		.populate("users")
 ```
 
+### Reverse Populate
+
 To go the other direction, there is Reverse Populate
 
+Ideally, documents should be written to include references to children objects. This is counter to the way data is modeled with a relational database. This approach may require updating both the parent and children documents when a relationship is updated. That's ok. 
+
+But, for cases when the relationship is only defined on children objects, reverse populate can help.
+
+```
+npm -i mongoose-reverse-populate-v2
+```
+
 "mongoose-reverse-populate-v2": "^1.2.4",
+
+
+After querying for the parent object, you can find the items to populate with the following:
+
+```
+			const options = {
+				modelArray: result.dataproducts,
+				storeWhere: "downloads",
+				arrayPop: false,
+				mongooseModel: Downloads,
+				idField: "files",
+			};
+
+			reversePopulate(options, function (err, popDownloads) {
+				popDownloads.forEach((pc) => {
+					pc._doc["downloads"] = pc.downloads;
+				});
+
+				if (!result) return res.status(200).json([]);
+				res.status(200).send(result);
+			});
+```
+
 
 ### findOneAndUpdate
 
@@ -732,16 +765,17 @@ Download:
 
 https://www.mongodb.com/download-center/compass
 
-    cd ~/Downloads/
-    # unmet dependencies (as of 20.04)
-    sudo apt-get install gconf2-common libgconf-2-4
-    sudo dpkg -i mongodb-compass_1.21.1_amd64.deb
+```
+cd ~/Downloads/
+sudo dpkg -i mongodb-compass_
 
-https://www.mongodb.com/products/compass
-Compass | MongoDB
+sudo apt-get install --fix-broken
+# unmet dependencies (as of 22.04)
+sudo apt-get install gconf2-common libgconf-2-4
+```
 
-https://www.google.com/search?q=mongo+compass
-mongo compass - Google Search
+https://www.mongodb.com/products/compass  
+Compass | MongoDB  
 
 If you expose the mongo db port from the container to the host (in `docker-compose.yml1`):
 
@@ -766,7 +800,7 @@ https://docs.mongodb.com/compass/master/connect/
 
 ### DBeaver
 
-May have support for Mongo too!
+[DBeaver](gui-db.md) only supports Mongo connections in the Enterprise Edition.
 
 ## Hosting
 

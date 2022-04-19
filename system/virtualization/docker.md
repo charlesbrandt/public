@@ -117,16 +117,20 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 At this point Docker should be installed and you can verify with:
 
-    sudo systemctl status docker
+```
+sudo systemctl status docker
+```
 
 Go ahead and grab docker-compose
 
-    sudo apt-get install docker-compose -y
+```
+sudo apt-get install docker-compose -y
+```
 
 ### Add user to docker group
 
-This allows you to execute docker without using sudo
-that's a good thing!
+This allows you to execute docker without using `sudo` for every command.  
+`docker-compose` is a frequent command. 
 
 ```
 sudo groupadd docker

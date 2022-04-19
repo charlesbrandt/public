@@ -37,6 +37,20 @@ Docker Tip #26: Alias and Function Shortcuts for Common Commands — Nick Janeta
 
 [tmux](tmux.md)
 
+## Timing a process
+
+just prefix the command you want to time with `time`!
+
+```
+time ls
+```
+
+https://duckduckgo.com/?t=ffab&q=time+how+long+a+script+takes+bash&ia=web  
+time how long a script takes bash at DuckDuckGo  
+https://stackoverflow.com/questions/37695776/bash-calculate-how-long-it-takes-a-script-to-run  
+Bash: Calculate how long it takes a script to run - Stack Overflow  
+
+
 ## Emulators
 
 https://itsfoss.com/tilix-terminal-emulator/  

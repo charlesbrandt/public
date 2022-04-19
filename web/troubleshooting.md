@@ -56,4 +56,4 @@ With the curl command line tool, you disable this with -k/--insecure.
 
 [wget](wget.md)
 
-[Cypress](/code/testing/cypress.md)
+[Cypress](/code/test/cypress.md)

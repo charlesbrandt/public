@@ -15,9 +15,12 @@
 import Layout from './layout.vue'
 
 import DefaultTheme from 'vitepress/theme'
+// import DarkTheme from 'vitepress-dark-theme/index.js'
+// export default { ...DarkTheme }
 
 export default {
-  ...DefaultTheme,
+   ...DefaultTheme,
+  //...DarkTheme,
   enhanceApp({ app }) {
     // register global components
     app.component('MyGlobalComponent' /* ... */)

@@ -28,7 +28,7 @@ Once inside a tmux context, it helps to know some basic commands to navigate.
 to detach
 
 ```
-ctrl-b d # (or ctrl-i d if remapped)
+ctrl-b d # (or ctrl-p d if remapped)
 ```
 
 to list all sessions
@@ -37,7 +37,7 @@ to list all sessions
 tmux ls
 ```
 
-ctrl-b s # (or ctrl-i s if remapped)
+ctrl-b s # (or ctrl-p s if remapped)
 
 
 to re-attach to the previous session
@@ -54,11 +54,11 @@ tmux attach-session -t 5
 
 to cycle through sessions from within tmux
 
-ctrl-b (     # or ctrl-i ( if remapped  
-ctrl-b )     # or ctrl-i ) if remapped  
+ctrl-b (     # or ctrl-p ( if remapped  
+ctrl-b )     # or ctrl-p ) if remapped  
 
 to rename a session  
-ctrl-b $     # or ctrl-i $ if remapped  
+ctrl-b $     # or ctrl-p $ if remapped  
 
 
 ## Sessions, widows and panes
@@ -210,6 +210,22 @@ https://www.ocf.berkeley.edu/~ckuehl/tmux/
 
 * [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
 * [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
+
+## tmux vs screen
+
+Screen is a similar tool that has been around for a long time
+
+
+https://duckduckgo.com/?t=ffab&q=bash+screen&ia=web  
+💤 bash screen at DuckDuckGo  
+https://www.howtogeek.com/662422/how-to-use-linuxs-screen-command/  
+💤 How to Use Linux’s screen Command  
+https://duckduckgo.com/?t=ffab&q=screen+vs+tmux&ia=web  
+💤 screen vs tmux at DuckDuckGo  
+https://superuser.com/questions/236158/tmux-vs-screen  
+💤 tmux vs. screen - Super User  
+
+
 
 ## tmux shortcuts & cheatsheet
 
