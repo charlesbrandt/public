@@ -25,3 +25,5 @@ Native date picker expects strings to be "YYYY-MM-DD". Convert back and forth to
       }
     },
 ```
+
+See also [Date Handling](dates.md)  

@@ -6,13 +6,18 @@ tagline: Keep learning
 footer: Copyright © 2008-present Charles Brandt
 ---
 
-## [How to set up a web browser](/system/browsers)
+## Browsers
+
+[How to set up a web browser](/system/browsers)
 
 A clean, minimal set up is helpful when creating a new profile context for focus on a topic. 
 
 
+## Git
 
-## [Using git](/code/version-control/git.md)
+Version control is a handy tool to track revisions to a set of text files. 
+
+[Using git](/code/version-control/git.md)
 
 
 ## Topics
@@ -24,14 +29,3 @@ A clean, minimal set up is helpful when creating a new profile context for focus
 - [System](system/)
 
 
-## Git Repo
-
-These notes are available via git.
-
-Be sure to get the submodules:
-
-    git clone --recurse-submodules https://gitlab.com/charlesbrandt/public
-
-or
-
-    git submodule update --init --recursive

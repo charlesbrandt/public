@@ -11,9 +11,9 @@ https://gitlab.com/fern-seed/web-ui-api-data
 See also [docker with development](../../system/virtualization/docker-compose.md)
 
 
-## Writing Tests
+## Making Calls
 
-Once you have Cypress running, it's time to write some tests. If none exist, Cypress will scaffold out some examples for you. It can be instructive to read through those and follow along how the tests were implemented. 
+Once you have [Cypress running](cypress.md#setup-installation), it's time to write some tests. If none exist, Cypress will scaffold out some examples for you. It can be instructive to read through those and follow along how the tests were implemented. 
 
 ### cy.visit
 
@@ -37,10 +37,10 @@ https://docs.cypress.io/api/commands/request
 
 https://www.mariedrake.com/post/api-testing-with-cypress
 
-To show the json result of a cy.request() in the test runner, use console.log() and find the result in the test browser's console, or use `cy.api`
+To show the json result of a cy.request() in the test runner, use console.log() and find the result in the test browser's console.
 
-```
-context('Network Requests', () => {
+```js
+context('API Requests', () => {
     beforeEach(() => {
       cy.visit('http://boilerplate_api_1:3030')
     cy.request(Cypress.env("API_URL") + "/health")
@@ -83,21 +83,12 @@ context('Network Requests', () => {
 })
 ```
 
-The associated objects should be returned as part of a GET request (as seen in API tests), so be sure to check for their existence too. 
-
-#### cy.api
-
-`cy.api` can help by displaying json results in the cypress test browser (instead of using `console.log()` calls. Only try this if you have a local instance of Cypress running; my last attempt at installing in the cypress included docker container was a challenge. 
-
-https://github.com/bahmutov/cy-api
+The associated JSON objects should be returned as part of a GET request. Use them to check for an expected attribute to exist.
 
 
-## Base Urls
+### Base Urls
 
-If you're not testing your UI and API with a proxy web server that normalizes the base URL (Testing UI directly may eliminate a noticeable refresh from HMR...), then it may be necessary to handle
-
-cypress how to handle two baseUrls for different types of tests
-
+Cypress how to handle two baseUrls for different types of tests (e.g. UI & API tests)
 
 define CYPRESS_API_URL in the environment
 
@@ -114,38 +105,39 @@ Then utilize it explicitly in API tests
     })
 ```
 
-## Checking for JS console errors on the client
+## Writing Tests
 
-check for js console error
+Now that the resource has been loaded, it's time to write some tests.
 
-[via](https://stackoverflow.com/questions/53898085/check-if-an-error-has-been-written-to-the-console)
+### Naming Conventions
 
-Because the window is re-created with each cy.visit, Cypress recommends stubbing as a part of the cy.visit command.
+Start the name of the spec to match the route being tested. Sometimes the route name is the same for the UI and the API, so it helps to append `ui` or `api` accordingly. I also like to specify if the tests are using authentication with `auth`. So a complete example could be: `route.api.auth.spec.js`
 
-```
-cy.visit('/', {
-  onBeforeLoad(win) {
-    cy.stub(win.console, 'log').as('consoleLog')
-    cy.stub(win.console, 'error').as('consoleError')
-  }
-})
-
-//...
-cy.get('@consoleLog').should('be.calledWith', 'Hello World!')
-cy.get('@consoleError').should('be.calledOnce')
+Within a test file, tests can be grouped with `context` or `describe` functions. These do the same thing; personal preference which you use. In the statement, I like to mimic the filename (consider: just use the filename?) so it's easier to identify the source of failing tests (when running more than one):
 
 ```
+context("Import CSV data via the UI as an authenticated user", () => {
+```
 
-For more details see the official FAQ for stubbing out the console: https://docs.cypress.io/faq/questions/using-cypress-faq.html#How-do-I-spy-on-console-log
+### Checks & Assertions
 
-And the recipe repository: https://github.com/cypress-io/cypress-example-recipes/tree/master/examples/stubbing-spying__console
+Visiting a page or requesting an object is a good test in and of itself. From there it often makes sense to confirm that certain attributes or elements exist on the response content. 
+
+Most of these calls are chainable. 
+
+```
+cy.get('.main')
+``` 
+
+will get page elements with class `.main`
 
 
+```
+cy.contains("Hello World")
+``` 
 
+Will look for content with a matching string
 
-## Assertions
-
-Visiting a page or requesting an object is a good test in and of itself. From there it may make sense to confirm that certain attributes or elements exist on the response. 
 
 Rather than check for existence with something like:
 
@@ -172,7 +164,18 @@ Just use `.its()` to yield the item
 https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#List-of-Assertions
 
 
-## Variables and Aliases
+### Actions
+
+Once you have an element, you can simulate taking actions on it:
+
+`.click()` and `.type()` are probably the two most common. 
+
+There is also `.clear()`, `.check()` and `.select()`
+
+https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Interacting-With-Elements
+
+
+### Variables and Aliases
 
 https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Aliases
 
@@ -181,6 +184,8 @@ Define in a `beforeEach` hook with `.as('item')` and then use with `this.item`. 
 ```
 cy.get('@users').then((users) => {
 ```
+
+
 
 ## Authentication
 
@@ -238,6 +243,7 @@ context("Network Requests", () => {
 
 The above example works with a [Feathers API](/code/api/feathers.md)
 
+
 ### Create a special route
 
 If the UI authentication uses an external service that is difficult to automate (e.g. 2FA), it may be necessary to create a shortcut on the API.
@@ -250,7 +256,7 @@ The danger here is that this route gets exposed in a production environment and 
 
 TODO: set up checks to ensure it is not being called? Via application monitoring. 
 
-```
+```js
 // Avoid commiting to version control
 // TODO: way to test if deploying to prod in development mode?
 router.get("/verify-test", function (req, res, next) {
@@ -290,7 +296,7 @@ router.get("/verify-test", function (req, res, next) {
 
 Then use it in tests with:
 
-```
+```js
   it("POSTS a new user after authenticating first", () => {
     cy.get("@jwtresponse").then((jwtresponse) => {
       // Sometimes may need a prefix
@@ -316,13 +322,10 @@ Then use it in tests with:
   });
 ```
 
-Ways to mitigate risk of a 
-Consider placing it in a file that is set to be ignored by git. Then, can be manually place in a development environment without concern for accidentally adding it. 
-Don't want to import a file that doesn't exist. Still have to worry about import statement getting committed to version control in this scenario
-
-
-
-
+TODO:  
+Ways to mitigate risk of an accidental commit.  
+Consider placing it in a file that is set to be ignored by git. Then, can be manually place in a development environment without concern for accidentally adding it.  
+Don't want to import a file that doesn't exist. Still have to worry about import statement getting committed to version control in this scenario.
 
 ### Existing sessions
 
@@ -330,7 +333,7 @@ Cypress uses stored cookie / localstorage value for running tests
 
 Though not a recommended approach, this works if a valid login is initiated elsewhere: 
 
-```
+```js
 beforeEach(() => {
   localStorage.setItem("uid", Cypress.env("username"));
   localStorage.setItem("roles", Cypress.env("roles"));
@@ -349,7 +352,7 @@ For some challenging systems with lots of iframes and 2FA, this may be as good a
 
 It's a good idea to confirm that a route is set to block unauthenticated responses
 
-```
+```js
   it("POSTS a new user without prior auth and fails", () => {
     cy.request({
       method: "POST",
@@ -412,6 +415,8 @@ Then use it with
     // seems like the uploadFile would trigger this, but it didn't
     cy.get(".custom-file-input").trigger("change");
 ```
+
+For a complete example of handling file uploads in the UI with Vue, see [CSV Files](/code/javascript/csv.md#cypress-testing-template)
 
 References
 
@@ -524,31 +529,9 @@ https://www.cypress.io/blog/2021/04/06/getting-start-with-cypress-component-test
 
 [Cypress Installation Documentation](https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements)
 
-### Docker
-
-It is possible to launch Cypress from within your docker setup.
-
-This is the guide that ultimately enabled me to get this working:
-
-https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
-
-On the host run `xhost local:root` so the container is allowed to connect to the local X server
-
-via: https://github.com/cypress-io/cypress-docker-images/issues/29
-
-> if you get this error No protocol specified you just run this in your host machine xhost local:root 
-
-#### Docker Setup Resources
-
-https://github.com/cypress-io/cypress-docker-images
-
-https://mtlynch.io/painless-web-app-testing/
-
-https://docs.cypress.io/examples/examples/docker
-
-https://github.com/bahmutov/cypress-open-from-docker-compose
-
 ### Local
+
+Even if your application is running in a container, you can still run Cypress locally. 
 
 There is already a `package.json` and `node_modules` in ui
 
@@ -574,7 +557,6 @@ will need a cypress.json file that points to the right test source locations
 
 I've started keeping the tests in the same directory as the ui code. This way cypress can leverage the UI's `node_modules` directory. 
 
-
 Be sure to set the BASE_URL in the shell
 
 ```
@@ -588,24 +570,58 @@ Then run
 npx cypress open
 ```
 
-This only works with yarn, not other node package managers
+This only works with yarn, not other node package managers, so I recommend the npx approach.
+
 ```
 yarn run cypress open
 ```
+
+
+### Docker
+
+It is possible to launch Cypress from within your docker setup.
+
+This is the guide that ultimately enabled me to get this working:
+
+https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
+
+On the host run `xhost local:root` so the container is allowed to connect to the local X server
+
+via: https://github.com/cypress-io/cypress-docker-images/issues/29
+
+> if you get this error No protocol specified you just run this in your host machine xhost local:root 
+
+#### Docker Setup Resources
+
+https://github.com/cypress-io/cypress-docker-images
+
+https://mtlynch.io/painless-web-app-testing/
+
+https://docs.cypress.io/examples/examples/docker
+
+https://github.com/bahmutov/cypress-open-from-docker-compose
 
 
 ## See Also
 
 https://docs.cypress.io/guides/getting-started/testing-your-app#Stubbing-the-server
 
+## Ideas / Habits
+
+Consider leaving each day with a broken test  
+it's like having something on your todo list  
+the next day -- fix the bug  
+
+
+
 ## Example tests
 
 For making authenticated API calls, get the jwt first:
 
-```
+```js
 /// <reference types="cypress" />
 
-context("Authenticated User API Tests", () => {
+context("Authenticated API Tests", () => {
   beforeEach(() => {
     cy.request(Cypress.env("API_URL") + "/verify-test?user=boilerplate-user").then(
       (response) => {

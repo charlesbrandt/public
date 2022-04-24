@@ -195,57 +195,5 @@ kb, kB, KiB… What’s Up With That? | Pacoup.com
 
 ## CSV
 
-### Papa Parse
-
-Nice documentation (fun to read even! :) ) 
-
-https://www.papaparse.com/  
-Papa Parse - Powerful CSV Parser for JavaScript  
-
-```
-yarn add papaparse
-```
-
-Then use in a component with:
-
-```
-      Papa.parse(this.files[0], {
-        complete: (parsed) => {
-          parsed.data.forEach((row, i) => {
-            console.log("Current row:", i, row);
-          })
-        }
-      })
-```
-  
-https://www.papaparse.com/docs  
-Documentation - Papa Parse  
-  
-https://github.com/mholt/PapaParse  
-mholt/PapaParse: Fast and powerful CSV (delimited text) parser that gracefully handles large files and malformed input  
-
-### Other Options
-
-Many other interesting libraries available, but I didn't need to look any further. 
-
-https://duckduckgo.com/?t=ffab&q=javascript+csv+parse&ia=web  
-javascript csv parse at DuckDuckGo  
-https://csv.js.org/parse/  
-CSV Parse - Usage  
-https://github.com/adaltas/node-csv-parse  
-adaltas/node-csv-parse: CSV parsing implementing the Node.js `stream.Transform` API  
-https://github.com/adaltas/node-csv  
-adaltas/node-csv: Full featured CSV parser with simple api and tested against large datasets.  
-https://github.com/topics/csv  
-csv · GitHub Topics  
-https://github.com/SheetJS/sheetjs  
-SheetJS/sheetjs: SheetJS Community Edition -- Spreadsheet Data Toolkit  
-
-Don't want to parse csv's manually -- too many edge conditions to consider. 
-
-https://stackoverflow.com/questions/1293147/example-javascript-code-to-parse-csv-data  
-Example JavaScript code to parse CSV data - Stack Overflow  
-
-
-
+[CSV Parsing](csv.md)
 

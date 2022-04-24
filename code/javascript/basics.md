@@ -136,6 +136,13 @@ items.length
 
 Note: It's a property, not a method
 
+### Negative Indexing
+
+Cannot use a negative index to get an item a certain distance from the end of an array. Instead, use the array length property
+
+```js
+items[items.length - 2]
+```
 
 ### Check for item in array
 
@@ -338,7 +345,7 @@ https://stackoverflow.com/questions/9882284/looping-through-array-and-removing-i
 
 ### Show attributes of object
 
-``` js
+```js
 console.log(Object.keys(app));
 ```
 

@@ -21,7 +21,7 @@ https://github.com/vitejs
 vite  
 
 
-## Configuration
+## General Configuration 
 
 https://duckduckgo.com/?q=vite+server+configuration&t=ffab&ia=web  
 vite server configuration at DuckDuckGo  
@@ -34,21 +34,10 @@ Backend Integration | Vite
 https://duckduckgo.com/?t=ffab&q=vite+server+proxy&ia=web  
 vite server proxy at DuckDuckGo  
 
-### Nginx Server Proxy
 
-If you run your vite server behind an upstream proxy, it can be tricky to configure to prevent noticable page refreshes as the hot module reloading (HMR) (?) stays in sync with the dev server. 
+## Dev Server Proxy
 
-More discussion: 
-
-https://github.com/vitejs/vite/discussions/4795
-
-For a configuration example, see `docker-compose.yml`:
-
-https://gitlab.com/fern-seed/web-ui-api-db
-
-### Dev Server Proxy
-
-It is possible to configure the Vite dev server to act as a proxy to the API, even if the API is at a different address. This is useful to proxy to an API being served by a local container. 
+When running vite directly (i.e. not behind a separate `nginx` proxy), it is possible to configure the Vite dev server to act as a proxy to the API, even if the API is at a different address. This is useful to proxy to an API being served by a local container. 
 
 
 ```js
@@ -97,7 +86,7 @@ export default defineConfig({
 });
 ```
 
-### SSL
+## SSL
 
 https://duckduckgo.com/?t=ffab&q=vite+ssl&ia=web  
 vite ssl at DuckDuckGo  
@@ -106,7 +95,8 @@ Enabling https on localhost · Discussion #112 · web2033/vite-vue3-tailwind-sta
 https://github.com/FiloSottile/mkcert  
 FiloSottile/mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.  
 
-### Auto Import Components
+
+## Auto Import Components
 
 Generally, I like using auto importing with external packages that have a clear component name. Icons are a good fit. External component libraries (e.g. Element Plus) are also a good fit. 
 
@@ -122,7 +112,7 @@ npm i unplugin-vue-components -D
 
 then update vite config to use the new resolver
 
-```
+```js
 // vite.config.js
 import Vue from '@vitejs/plugin-vue'
 import Icons from 'unplugin-icons/vite'
@@ -140,11 +130,16 @@ export default {
 }
 ```
 
-### Nginx / Docker / Proxies
+
+## Nginx Server / Docker / Proxy / HMR
 
 Getting vite to run behind a proxy in development mode requires forwarding ports used for websockets. 
 
 https://vitejs.dev/config/#server-hmr  
+
+If you run your vite server behind an upstream proxy, it can be tricky to configure to prevent noticable page refreshes as the hot module reloading (HMR) (?) stays in sync with the dev server. 
+
+More discussion: 
 
 https://github.com/vitejs/vite/discussions/4795  
 Noticable page refresh when using nginx proxy in front of vite · Discussion #4795 · vitejs/vite  
@@ -157,6 +152,30 @@ Noticable page refresh when using nginx proxy in front of vite · Discussion #47
       // clientPort: 8888,
     },
 ```
+
+In nginx, be sure the `Upgrade` and `Connection` headers are set:
+
+```
+    location / {
+        proxy_read_timeout 300s;
+        proxy_connect_timeout 75s;
+        proxy_pass https://boilerplate_ui:3000/;
+
+        # allows websocket connections
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_buffering off;
+    }
+```
+
+https://www.nginx.com/blog/websocket-nginx/
+
+For a configuration example, see `docker-compose.yml`:
+
+https://gitlab.com/fern-seed/web-ui-api-db
+
+
 
 https://vitejs.dev/config/#publicdir  
 💤 Configuring Vite | Vite  
@@ -207,15 +226,12 @@ https://stackoverflow.com/questions/54084239/proxy-pass-overwrites-the-url-chang
 nginx - proxy_pass overwrites the URL changed by rewrite directive - Stack Overflow  
 
 
-### Static Assets
+## Static Assets
+
+Place static assets in the `/public` directory
 
 vite assets at DuckDuckGo  
 https://vitejs.dev/guide/assets.html#importing-script-as-a-worker  
-
-## Vitepress
-
-[vitepress](vitepress.md)
-
 
 
 ## Misc Links
@@ -284,4 +300,6 @@ vueuse-vite-starter/src at master · vueuse/vueuse-vite-starter · GitHub
 
 https://duckduckgo.com/?t=ffab&q=vite+setup&ia=web  
 vite setup at DuckDuckGo  
+
+[vitepress](vitepress.md)
 

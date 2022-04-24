@@ -67,17 +67,39 @@ https://github.com/antfu/vite-ssg/issues
 
 ## VVT
 
+I've been very happy with:
+
 https://github.com/web2033/vite-vue3-tailwind-starter  
 web2033/vite-vue3-tailwind-starter: Vite 2.x + Vue 3.x + Tailwind 2.x (starter)  
 
-I love how minimal this one is. Doesn't get in the way if you want to include other things or customize. 
+I love how minimal this one is. 
 
-No need to include full git repo history though
+All the necessities and that's it.
+
+Doesn't get in the way if you want to include other things or customize. 
+
+The main downside (IMO) is no automatic route generation for pages. 
+
+
+No need to include full git repo history
 
 ```
 npx degit web2033/vite-vue3-tailwind-starter vvt-app
 cd vvt-app
 ```
+
+If running under docker, don't forget to disable automatic vscode launching 
+
+ui/vite.config.js
+
+```
+  server: {
+    // open: true,
+  },
+  
+```
+
+Otherwise you may see an error like the following:
 
 ```
 yarn run dev
@@ -130,8 +152,11 @@ https://github.com/web2033/vite-vue3-tailwind-starter
   
 
 
+## Vitepress
 
+Not a true boilerplate, but a very useful related tool:
 
+[Vitepress](vitepress.md)
 
 
 ## Boilerplates / Templates Continued

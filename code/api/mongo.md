@@ -809,4 +809,50 @@ https://www.mongodb.com/cloud/atlas
 https://www.google.com/search?q=mongo+atlas
 mongo atlas - Google Search
 
+## Python
 
+Can connect to mongo from Python.
+
+TODO: how to synchronize mongoose models in python... is it even necessary? Just use mongo? What about populate? 
+
+```python
+def get_database():
+    import pymongo
+
+    # Provide the mongodb atlas url to connect python to mongodb using pymongo
+    # CONNECTION_STRING = "mongodb://<username>:<password>@<cluster-name>.mongodb.net/myFirstDatabase"
+    # TODO: extract to a config file before committing
+    CONNECTION_STRING = "mongodb://boilerplate-user:boilerplate-mongo-password@boilerplate_db:27017/boilerplate-db?authSource=boilerplate-db"
+
+    # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
+    client = pymongo.MongoClient(CONNECTION_STRING)
+
+    item_1 = {
+        "_id": "U1IT00001",
+        "item_name": "Blender",
+        "max_discount": "10%",
+        "batch_number": "RR450020FRG",
+        "price": 340,
+        "category": "kitchen appliance"
+    }
+
+    item_2 = {
+        "_id": "U1IT00002",
+        "item_name": "Egg",
+        "category": "food",
+        "quantity": 12,
+        "price": 36,
+        "item_description": "brown country eggs"
+    }
+    collection_name.insert_many([item_1, item_2])
+    # Create the database for our example (we will use the same database throughout the tutorial
+    client['user_shopping_list']
+
+
+# This is added so that many files can reuse the function get_database()
+if __name__ == "__main__":
+
+    # Get the database
+    dbname = get_database()
+    print(dbname)
+```

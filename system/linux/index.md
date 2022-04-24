@@ -28,6 +28,30 @@ To transfer image for use, see [creating a bootable usb](../drives/bootable-usb.
 
 ## Distributions
 
+To see what distribution is currently running on your system:
+
+```
+lsb_release -a
+```
+
+or 
+
+```
+cat /etc/*-release
+```
+
+or 
+
+```
+hostnamectl
+```
+
+Kernel details are available with:
+
+```
+uname -a
+```
+
 ## Ubuntu
 
 [Ubuntu](ubuntu.md)  

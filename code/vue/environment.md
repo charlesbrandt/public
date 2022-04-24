@@ -32,18 +32,17 @@ check awesome-vue
 
 Fast bundler for efficient development with Hot Module Reloading
 
-[vite](vite.md)
-
-## Vitepress
-
-[vitepress](vitepress.md)
+[Vite](vite.md)
 
 
 ## Templates & Boilerplates
 
+[Boilerplates & Templates](boilerplates.md)
+
+
 ## UI Frameworks / Component Libraries
 
-[ui frameworks](ui-frameworks.md)
+[UI Frameworks](ui-frameworks.md)
 
 
 ## Server Side Rendering
@@ -65,7 +64,4 @@ https://vitejs.dev/guide/ssr.html
 https://duckduckgo.com/?t=ffab&q=awesome+vite&ia=web  
 awesome vite at DuckDuckGo  
 
-
-## See Also
-[Boilerplates & Templates](boilerplates.md)
 

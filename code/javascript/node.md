@@ -181,6 +181,7 @@ The answer? Use what your team is using. Be consistent there. Working on an open
 
 All are good. No need to get hung up here. See what works best and make a change when necessary. 
 
+
 ### pnpm
 
 PNPM uses links to node modules so you don't end up with 100 copies of the same module on your local drive. This is useful in development when you may want to use a large development module in multiple projects. 
@@ -213,7 +214,6 @@ One downside is that it is not included by default in the main docker node image
 One downside is the addition of `_tmp_*` directories. These are easy to ignore in [VSCode](/system/editors/vs-code/vs-code.md#ignore-files)
 
 
-
 ### Yarn
 
 It should be available in most Node containers.
@@ -239,6 +239,7 @@ To remove a dependency
      
 Note: manually deleting from `package.json` removes the dependency from the project, but will not remove the files from `node_modules` of the local instance.
 
+
 #### Reinstall Modules
 
 Reinstalling a package after just deleting the node module works with:
@@ -246,6 +247,7 @@ Reinstalling a package after just deleting the node module works with:
     yarn install --check-files
 
 [via](https://stackoverflow.com/questions/41864099/how-do-i-force-yarn-to-reinstall-a-package)
+
 
 #### Install / update yarn:
 
@@ -263,31 +265,63 @@ then, with apt-get:
 
 via https://yarnpkg.com/lang/en/docs/install/
 
+
 ### Npm
 
 NPM is the default package manager for Node.
 
+
+#### Install packages
+
 Install everything as configured in package.json file
 
-    npm install
+```
+npm install
+```
 
 Calls to
 
-    npm install --save [package name]
+```
+npm install --save [package name]
+```
 
 or
 
-    npm install --save-dev [package name]
+```
+npm install --save-dev [package name]
+```
 
 or
 
-    npm install --save-optional [package name]
+```
+npm install --save-optional [package name]
+```
 
 will update the package.json to list your dependencies.
 
+
+#### Upgrade / Update packages
+
+To upgrade a package that has already been installed, use either:
+
+```
+npm install [package name]@latest
+```
+
+or
+
+```
+npm update [package name]
+```
+
+
+#### Remove packages
+
 To remove a dependency:
 
-     npm uninstall <name> --save
+```
+npm uninstall <name> --save
+```
 
 https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
 
@@ -383,7 +417,7 @@ RUN node --version # optional to check that it worked
 RUN npm --version # optional to check that it worked
 ```
 
-NVM is an alternative, but it's tricky to use NVM in a container:
+NVM is tricky to use NVM in a container:
 
 ```
 # nvm environment variables
@@ -419,21 +453,32 @@ https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
 ### NVM
 
 Node Version Manager - Simple bash script to manage multiple active node.js versions
+
 https://github.com/creationix/nvm
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+Visit the site for the latest version of the command
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
 
 Open a new shell and verify with:
 
-    command -v nvm
+```
+command -v nvm
+```
 
 Clean up old (non-nvm) node version(s):
 
-    npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | sudo xargs npm -g rm
+```
+npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | sudo xargs npm -g rm
+```
 
 Install Node via NVM:
 
-    nvm install node
+```
+nvm install node
+```
 
 via:
 http://stackoverflow.com/a/24404451/1480391
@@ -454,7 +499,6 @@ PATH="/usr/local/bin:$(getconf PATH)"
 ```
 
 https://stackoverflow.com/questions/44700432/visual-studio-code-to-use-node-version-specified-by-nvm
-
 
 
 ### Nodesource

@@ -8,15 +8,17 @@ Javascript is not the same as Java (despite the confusing name similarities).
 
 [Basics](basics.md)  
 
-[Files](files.md)  
-
 [Date Handling](dates.md)  
 
 [Fetching Data](fetching-data.md)  
 
+[Asynchronous](asynchronous.md)  
+
 [Search](search.md)
 
-[Tree shaking](treeshaking.md)
+[Files](files.md) 
+
+[CSV Parsing](csv.md)
 
 
 ## Interpreters
@@ -46,6 +48,7 @@ Many topics related to Vue.
 
 ## See Also
 
+[Tree shaking](treeshaking.md)
 
 Here are some good introductions to working with javascript:  
 https://developer.mozilla.org/en/JavaScript/Guide  

@@ -180,6 +180,15 @@ cd Downloads
 sudo dpkg -i zoom_amd64.deb 
 ```
 
+As of [2022.04.21], still need to use xorg session to allow screen sharing to work. 
+
+Don't forget to disable in Zoom -> Settings -> Audio
+
+Allow zoom to automatically adjust the level of the microphone. 
+
+For me, it always sets the level too low and no one can hear. 
+
+
 ## Microsoft Teams
 
 https://www.microsoft.com/en-us/microsoft-teams/download-app
