@@ -42,12 +42,18 @@ Sounds like `xmodmap` is an old way of mapping keys. As noted in the above threa
 
 On my Dell XPS13 laptop, I want to remap the 'pgup' to be 'left' and 'pgdn' to be 'right'. 
 
-    sudo vi /usr/share/X11/xkb/symbols/pc
+```
+sudo vi /usr/share/X11/xkb/symbols/pc
+```
+
+Find:
 
 ```
     key <PGUP> {        [  Prior                ]       };
     key <PGDN> {        [  Next                 ]       };
 ```
+
+And change to:
 
 ```
     key <PGUP> {        [  Left                 ]       };
@@ -62,9 +68,11 @@ For mapping the menu key to be a control key on the perixx keyboard:
 
 Apply the changes with
 
-    setxkbmap us 
+```
+setxkbmap us 
 
-    setxkbmap us intl 
+setxkbmap us intl 
+```
     
 This sets it up globally. In my case, that's what I want.
 

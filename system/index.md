@@ -73,6 +73,14 @@ https://tmuxcheatsheet.com/
 
 Bash Colors example available in <a href="terminal/bash-colors.sh">terminal/bash-colors.sh</a>
 
+### Moving Files
+
+`mv` command seems so basic, so straightforward. 
+
+Reminder: `mv -b` is useful for creating backups of any files that exist in the destination directory. If merging two big directories with some overlapping files, this is a useful option to be able to compare once everything is in the same place. 
+
+https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/
+
 
 
 ## Administration
@@ -83,6 +91,8 @@ Bash Colors example available in <a href="terminal/bash-colors.sh">terminal/bash
 [Nginx](nginx.md)  
 [Remote Desktop](remote-desktop.md)  
 [Startup Services](startup-services.md)  
+
+[Disk Usage](drives/disk-usage.md)  
 
 ## Virtualization
 

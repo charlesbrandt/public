@@ -133,54 +133,59 @@ tmux can help manage the state needed for workspaces. In this case, create a scr
 ```
 #!/bin/bash
 
-session="team"
-
+session="template"
 tmux new-session -d -s $session
-
 window=0
-tmux rename-window -t $session:$window 'launcher'
-tmux send-keys -t $session:$window '' C-m
+tmux rename-window -t $session:$window 'tmux'
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window 'emacs -nw tmux-start-template.sh' C-m
 
 window=1
-tmux new-window -t $session:$window -n 'vpn'
-tmux send-keys -t $session:$window 'cd team; ./vpn.sh' C-m
-
-session="dev"
-
-tmux new-session -d -s $session
-
-window=0
-tmux rename-window -t $session:$window 'launcher'
-tmux send-keys -t $session:$window 'cd ~/alpha/code/api' C-m
-tmux send-keys -t $session:$window 'emacs instances-api.md &'
-
-session="project"
-
-tmux new-session -d -s $session
-
-window=0
-tmux rename-window -t $session:$window 'launcher'
-tmux send-keys -t $session:$window 'cd ~/projects/project' C-m
-tmux send-keys -t $session:$window 'emacs instances-project.md &'
-
-window=1
-tmux new-window -t $session:$window -n 'servers'
-tmux send-keys -t $session:$window 'cd ~/projects/project/project-code/ui' C-m
-tmux send-keys -t $session:$window 'pnpm run dev' C-m
-# this didn't work in my first attempt -- should be close
-#tmux split-window -t $session:$window 'dcp' C-m
-# no parameters works
-tmux split-window -t $session:$window 
-tmux send-keys -t $session:$window 'dcu' C-m
-tmux send-keys -t $session:$window 'dcp' C-m
-
-window=2
 tmux new-window -t $session:$window -n 'git'
-tmux send-keys -t $session:$window 'cd ~/projects/project/project-code/ui' C-m
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
 tmux send-keys -t $session:$window 'git status' C-m
 
-tmux attach-session -t team
+window=2
+tmux new-window -t $session:$window -n 'template'
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window 'emacs -nw instances-template.md' C-m
 
+window=3
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window 'emacs -nw instances-' C-m
+
+window=4
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window 'emacs -nw instances-' C-m
+
+window=5
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window 'emacs -nw ' C-m
+
+window=6
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window '' C-m
+
+window=7
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window '' C-m
+
+window=8
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window '' C-m
+
+window=9
+tmux new-window -t $session:$window -n ''
+tmux send-keys -t $session:$window 'cd ~/notes/template' C-m
+tmux send-keys -t $session:$window '' C-m
+
+tmux attach-session -t template
 ```
 
 

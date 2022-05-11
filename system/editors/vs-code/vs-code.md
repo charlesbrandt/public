@@ -35,7 +35,7 @@ or
 
 ### Current settings
 
-See below for details
+See below for a description about what the settings do
 
 ```json
 {
@@ -309,18 +309,34 @@ https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
 
 ## Useful Extensions
 
-https://www.duckduckgo.com/search?q=vs+code+extensions+vue
-vs code extensions vue - Google Search
+Recommended extensions can be configured as part of a project. These settings are stored in `.vscode/extensions.json`
 
-TODO:
-How to remove all the extension shortcut icons?
-end up with tons of these...
-can't see the tabs any more!
+```json
+{
+  "recommendations": [
+    "jmfirth.vsc-space-block-jumper",
+    "vue.volar",
+    "dbaeumer.vscode-eslint",
+    "ms-python.python",
+    "ms-vscode-remote.remote-ssh",
+    "redhat.vscode-yaml",
+    "streetsidesoftware.code-spell-checker",
+    "csstools.postcss",
+    "antfu.unocss",
+    "wix.vscode-import-cost",
+    "lokalise.i18n-ally",
+  ]
+}
+```
 
-Right click on extension->Extension Settings
+https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-extensions
+
+Use `@recommended` to filter in extension panel
 
 
 ### Space Block Jumper
+
+jmfirth.vsc-space-block-jumper
 
 Space Block Jumper allows jumping to the next blank line. (Block Navigation)
 
@@ -336,7 +352,10 @@ Still requires adding custom bindings (included below).
 
 Adding multiple cursors is still available by default with alt-shift-down and alt-shift-up.
 
+
 ### Vue Language Features (Volar)
+
+    "vue.volar",
 
 By: Johnson Chu
 
@@ -346,10 +365,24 @@ Seems to work. If you disable Vetur and install Volar, be sure to restart VS Cod
 
 https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar  
 Vue Language Features (Volar) - Visual Studio Marketplace  
+
 https://github.com/johnsoncodehk/volar  
 GitHub - johnsoncodehk/volar: ⚡ Fast Vue Language Support Extension  
 
+https://www.duckduckgo.com/search?q=vs+code+extensions+vue
+vs code extensions vue - Google Search
+
+
+### eslint
+
+    "dbaeumer.vscode-eslint",
+
+
+
 ### Python
+
+    "ms-python.python",
+
 
 I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available.
 
@@ -357,7 +390,11 @@ Formatting can be disabled with:
 
 "python.formatting.provider": "none",
 
+
+
 ### Remote Development
+
+ms-vscode-remote.remote-ssh
 
 I've had success configuring the 'Remote - SSH' extension
 
@@ -385,29 +422,28 @@ https://code.visualstudio.com/remote-tutorials/ssh/connect-to-vm
 
 https://github.com/Microsoft/vscode-remote-release
 
-### Tailwind
 
-Tailwind CSS IntelliSense
-
-https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
-
-See also
-
-WindiCSS IntelliSense (recommended by Vitesse)
-
-### Iconify IntelliSense
-
-Iconify IntelliSense
-
-https://marketplace.visualstudio.com/items?itemName=antfu.iconify
-
-(recommended by Vitesse)
 
 ### YAML
 
+redhat.vscode-yaml
+
 By: Red Hat
 
+#### Docker
+helps with formatting docker-compose.yml
+or is that just the redhat yml parser?
+
+By: Microsoft
+
+Also:
+ms-vscode-remote.remote-containers
+
+
+
 ### Spell Checker
+
+streetsidesoftware.code-spell-checker
 
 By Street Side Software
 
@@ -423,331 +459,47 @@ vs code spell checker md at DuckDuckGo
 The Microsoft version has been deprecated:  
 https://github.com/Microsoft/vscode-spell-check/blob/master/README.md  
 
-### Docker
-helps with formatting docker-compose.yml
-or is that just the redhat yml parser?
 
-By: Microsoft
+### CSS
 
-Also:
-ms-vscode-remote.remote-containers
+    "csstools.postcss",
 
 
+Plus one of these should suffice
+
+    "antfu.unocss",
 
 
+WindiCSS IntelliSense (recommended by Vitesse)
 
 
+Tailwind CSS IntelliSense
 
-## Archived Extensions
+https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
 
-Less commonly used
 
 ### Import Cost
 
-### ES6 Mocha Snippets
-By: spoonscen.es6-mocha-snippets
+wix.vscode-import-cost
 
-Better syntax support for Mocha style tests
 
+### Il8n-ally
 
-### SVG Preview
+    "lokalise.i18n-ally",
 
-Svg Preview
-Simon Siefke
 
-Helpful when you want to see what is in an SVG file. May also help with manually editing an SVG directly in VS Code.
 
-https://marketplace.visualstudio.com/items?itemName=SimonSiefke.svg-preview
 
-There were a few other options available, but this seems to work so far. 
 
-### i18n-ally
+## Extension Icons
 
-Localization / i18n
+Some extensions add a lot of extra icons to the interface. This can get in the way of things like tabs. May be possible to change settings to remove them. May not need them installed at all. 
 
-https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally
+TODO:
+How to remove all the extension shortcut icons?
+end up with tons of these...
+can't see the tabs any more!
 
-(recommended by Vitesse)
+Right click on extension->Extension Settings
 
-
-
-### PostCSS Language Support
-
-https://marketplace.visualstudio.com/items?itemName=csstools.postcss
-
-(recommended by Vitesse)
-
-### Kubernetes
-
-
-
-
-### Tab Groups
-
-Save collections of open files in a Tab Group
-
-https://marketplace.visualstudio.com/items?itemName=usama8800.tab-groups  
-Tab Groups - Visual Studio Marketplace  
-https://github.com/usama8800/VSCode-Tab-Groups  
-GitHub - usama8800/VSCode-Tab-Groups  
-
-### Quick Open
-
-By Zongmin Lei
-
-Similar to Emacs method for opening files via keyboard only
-
-Keybindings  
-CTRL+⌘+O - Quick Open File  
-CTRL+⌘+P - Quick Open Input Path  
-
-Does not appear to work with opening a new file? 
-
-### Vue (Vetur)
-
-By: Pine Wu
-
-https://medium.com/@deepaksisodiya/top-vs-code-extensions-for-vue-js-development-93cb548baa32  
-Top VS Code Extensions For Vue.js Development - deepak sisodiya - Medium  
-
-https://vuejs.github.io/vetur/
-
-Frequently don't have the configs where the project is being loaded:
-
-"vetur.ignoreProjectWarning": true,
-
-May cause some issues with linting...  
-https://vuejs.github.io/vetur/guide/FAQ.html#vetur-can-t-find-package-json-in-xxxx-xxxxxx  
-
-In VS Code settings, I use:
-```
-  "vetur.ignoreProjectWarning": true,
-```
-
-### GitLens
-
-By: Eric Amodio
-
-I find the menu actions take away precious space for other file tabs:
-
-    "gitlens.menus": null,
-
-I want to like this extension, but I feel like the information it offers gets in the way more often than it helps me understand the code.
-
-```
-  "gitlens.advanced.messages": {
-    "suppressGitVersionWarning": true
-  },
-  "gitlens.menus": null,
-```
-
-### XML
-
-By: Red Hat
-
-Helpful for SVG formatting?
-Requires Java?
-
-### HTML Preview
-
-A few different options for this task. None of them receive high marks.
-
-https://marketplace.visualstudio.com/items?itemName=tht13.html-preview-vscode&ssr=false#review-details
-
-https://marketplace.visualstudio.com/items?itemName=SimonSiefke.html-preview&ssr=false#review-details
-
-https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer&ssr=false#review-details
-
-### Eslint
-
-https://github.com/Microsoft/vscode-eslint
-https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-
-### Live Server
-
-Launch a development local Server with live reload feature.
-I prefer using Docker containers for this.
-
-### Github
-
-https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github
-
-### Git History
-
-### Color Picker
-
-### Markdown
-
-Do these really add anything? If you want to work with converting Markdown, see Nuxt/Content module (in the context of Node JS)
-
-#### Markdown All in One
-
-ctrl-shift-v keybinding may conflict with HTML Preview (is it from here?)
-
-#### Useful Shortcuts
-
-https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
-
-https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts
-
-#### Linting
-
-markdownlint -- checks for formatting issues.
-
-#### Highlighting
-
-Looking for better syntax highlighting in .md files (editor view, not preview).
-
-This one set the theme for the whole editor, not just markdown files:
-https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit
-
-Could try some custom definitions for missing ones
-https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
-
-#### Preview
-
-https://code.visualstudio.com/Docs/languages/markdown
-
-To switch between views, press Ctrl+Shift+V in the editor. You can view the preview side-by-side (Ctrl+K V) with the file you are editing and see changes reflected in real-time as you edit.
-
-Outline view can act as an automatic Table Of Contents. Below File Explorer view.
-
-VS Code can even compile markdown to HTML!
-
-### Auto Close Tag
-
-I find this gets in the way more than it helps. YMMV.
-
-### Snippets
-
-Previously installed... not sure if they are actively being used:
-
-JavaScript (ES6) code snippets
-HTML Snippets
-HTML CSS Support
-
-Evaluate:
-
-npm
-npm intellisense
-
-
-## Formatting Files
-
-Configure automatic formatting of a document when it's saved. This also helps indicate if you have a syntax problem -- the formatting won't be applied if the file isn't being parsed due to a syntax error. 
-
-```
-"editor.formatOnSave": true
-```
-
-### Prettier Extension
-
-Note: (2022.03.18 16:45:59) ESLint extension may be sufficient
-
-By: Prettier
-
-Helps with code formatting
-
-https://glebbahmutov.com/blog/configure-prettier-in-vscode/
-
-```
-"editor.defaultFormatter": "esbenp.prettier-vscode",
-```
-
-may require the project to install prettier as a dev dependency so that vscode has it available to use.
-
-TODO: consider beautify instead?
-https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify
-
-```
-  "prettier.prettierPath": "./bin/prettier",
-
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-```
-
-#### Prettier Path
-
-Ideally VS Code will use the same prettier version that is being applied to your project. However, if that is tucked away in a container, on a remote machine, or not being applied at the project level, it may be necessary to use a different prettier instance:
-
-    "prettier.prettierPath": "./bin/prettier",
-
-Hoping that this will prevent needing to install node_modules outside of the container. VS Code looks for the local version of prettier, but if one is not installed (hidden by container), then it doesn't do anything.
-
-```
-prettier.prettierPath
-
-Supply a custom path to the prettier module. This path should be to the module folder, not the bin/script path. i.e. ./node_modules/prettier, not ./bin/prettier.
-```
-
-See https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-
-### Auto Fix
-
-It's possible to apply the formatting manually, on demand. Format Document command Ctrl+Shift+I to format the entire file or Format Selection Ctrl+K Ctrl+F to just format the selected text.
-
-https://code.visualstudio.com/docs/languages/html
-
-
-
-
-
-## Reporting
-
-Up to you if you want to leave this enabled or not. Both ways make sense!
-
-
-
-### Telemetry reporting
-
-Disable telemetry
-
-https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
-
-VS Code collects usage data and sends it to Microsoft to help improve our products and services. Read our privacy statement to learn more.
-
-If you don't wish to send usage data to Microsoft, you can set the telemetry.enableTelemetry setting to false.
-
-From File > Preferences > Settings (macOS: Code > Preferences > Settings), search for telemetry.enableTelemetry and uncheck the setting. This will silence all telemetry events from VS Code going forward. Telemetry information may have been collected and sent up until the point when you disable the setting.
-
-If you use the JSON editor for your settings, add the following line:
-
-    "telemetry.enableTelemetry": false
-
-You can inspect telemetry events in the Output panel by setting the log level to Trace using Developer: Set Log Level from the Command Palette.
-
-Important Notice: VS Code gives you the option to install Microsoft and third party extensions. These extensions may be collecting their own usage data and are not controlled by the telemetry.enableTelemetry setting. Consult the specific extension's documentation to learn about its telemetry reporting.
-
-### Crash reporting
-
-VS Code collects data about any crashes that occur and sends it to Microsoft to help improve our products and services. Read our privacy statement to learn more.
-
-If you don't wish to send crash data to Microsoft, you can set the telemetry.enableCrashReporter setting to false.
-
-From File > Preferences > Settings (macOS: Code > Preferences > Settings), search for telemetry.enableCrashReporter and uncheck the setting.
-
-If you use the JSON editor for your settings, add the following line:
-
-    "telemetry.enableCrashReporter": false
-
-Important Notice: This option requires a restart of VS Code to take effect.
-
-https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
-Visual Studio Code Frequently Asked Questions
-
-
-### Bracket Pair Colorizer
-
-By: CoenraadS
-
-Is this still necessary? I seem to recall reading something about this being included by default now, but I have not verified.
-
-Officially deprecated. Configuration added. 
 

@@ -126,6 +126,13 @@ Available on `about:support` using the "Open Directory" button in the "Profile D
 ~/.mozilla/firefox
 ```
 
+or under snap at
+
+```
+~/snap/firefox/common/.mozilla/firefox
+```
+
+
 Read up on how to backup and restore profiles:
 
 https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles

@@ -61,23 +61,55 @@ Then, to remove it:
 will need to do this before starting fresh.  On Ubuntu, there is usb-creator built in...
 you can use that on a standard Ubuntu machine, but XUbuntu does not run on Gnome, so usb-creator is not available for it.
 
-or use this utility:
-http://unetbootin.sourceforge.net/
+or use this utility:  
+http://unetbootin.sourceforge.net/  
 
 sudo apt-get install unetbootin
 
-Or you can make the USB manually:
-http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/
+Or you can make the USB manually:  
+http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/  
 
 
 (see also bootable_usb.txt)
 
-****
-make sure any data stored in browser extensions (link router) is also backed up
-****
 
-****
-make sure to synchronize /c 
-(especially if not restoring original directory structure)
-****
+## Setting up a new partition layout for a new system
 
+See also [partitions](../drives/partitions.md) or general [drive](../drives/) notes
+
+I'm always tempted to let the OS decide what scheme to use
+
+Especially for advanced features like an encrypted drive -- sometimes it's challenging to choose the right configuration.
+
+However, it's worth making a few good choices now. 
+
+Some things I like to change
+
+  - EFI partition  
+    I've been going with 512MB here -- has been sufficient so far
+
+  - A bigger /boot partition  
+    I know it's important to clean out old kernel images  
+    But I prefer to have some room to grow here  
+    Giving 4GB a try. Should be better than the default 768MB.   
+    Can increase more if problems still crop up.   
+    
+  - Enough swap to enable hibernation  
+    Will want to disable swap from being used by the OS. (Just use memory)  
+    But it is useful to have enough space for hibernation  
+    ideally it is not part of the / (root) filesystem  
+    
+  - Encrypted filesystem  
+    for portable machines this is more important than for desktops or data drives.   
+    Create a new partition  
+    Use the rest of the space  
+    Choose "physical volume for encryption"  
+    You'll be prompted to enter your encryption key
+    
+
+Future considerations
+
+  - Separate `/var` ???  
+    I like this idea in theory -- prevent an ailing service that generates a lot of log files from filling up the main partition.   
+    `/var/lib/docker` is also in here -- that can be pretty big too  
+    The trick is knowing how much space is enough to allocate without tying up space that doesn't get used. 

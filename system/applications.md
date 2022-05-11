@@ -1,4 +1,6 @@
-# Setup System
+# Applications
+
+Setup System
 
 Use the tools that work for you!
 
@@ -29,6 +31,14 @@ git submodule update --init --recursive
 [Version Control](../code/version-control/)
 
 
+## Password Managers
+
+See also [Password Managers](password-manager.md)
+
+```
+sudo apt-get install keepassx
+```
+
 ## Emacs
 
 ```
@@ -56,30 +66,31 @@ see also
 Or more generally
 [text editors](editors/)
 
-## VS Code
+## KVM
 
-[VS Code](editors/vs-code/vs-code.md)
-
-
-## Browsers
-
-[Browsers](browsers.md)
+[KVM](virtualization/kvm.md)
 
 
-## Password Managers
 
-See also [Password Managers](password-manager.md)
+## Docker
 
-```
-sudo apt-get install keepassx
-```
+[Docker](virtualization/docker.md)  
+[Docker Compose](virtualization/docker-compose.md)  
+
 
 
 ## Python
 
 ```
-sudo apt install python-is-python3
+sudo apt-get install python-is-python3
 ```
+
+Go ahead and grab pip here so it's available for things like `autopep8` for vscode. 
+
+```
+sudo apt-get install python3-pip
+```
+
 
 ## Utilities
 
@@ -129,6 +140,17 @@ Gnome3 -> Settings -> Applications -> VLC media player -> Notifcations -> Off
 can just go 'do not distrub'
 
 
+## VS Code
+
+[VS Code](editors/vs-code/vs-code.md)
+
+
+## Browsers
+
+[Browsers](browsers.md)
+
+
+
 
 ## Chromium
 
@@ -146,91 +168,7 @@ sudo apt update
 ```
 
 
-## Docker
 
-[Docker](virtualization/docker.md)  
-[Docker Compose](virtualization/docker-compose.md)  
+### File Browser 
 
-
-## KVM
-
-[KVM](virtualization/kvm.md)
-
-
-## DBeaver
-
-## Mongo Compass
-
-(Try DBeaver for connecting to Mongo)
-
-## Zoom
-
-https://zoom.us/download?os=linux
-
-Requires:
-
-```
-sudo apt-get install libgl1-mesa-glx libegl1-mesa libxcb-xtest0
-```
-
-Then install with
-
-```
-cd Downloads
-sudo dpkg -i zoom_amd64.deb 
-```
-
-As of [2022.04.21], still need to use xorg session to allow screen sharing to work. 
-
-Don't forget to disable in Zoom -> Settings -> Audio
-
-Allow zoom to automatically adjust the level of the microphone. 
-
-For me, it always sets the level too low and no one can hear. 
-
-
-## Microsoft Teams
-
-https://www.microsoft.com/en-us/microsoft-teams/download-app
-
-Install with:
-
-```
-sudo dpkg -i teams_1.4.00.26453_amd64.deb 
-```
-
-```
-sudo apt --fix-broken install
-```
-
-## Cypress
-
-see [cypress](/code/test/cypress.md)
-
-
-
-## IPFS
-
-[IPFS](../code/api/ipfs.md)
-
-
-## Screenshots
-
-apt install flameshot
-
-https://github.com/flameshot-org/flameshot
-GitHub - flameshot-org/flameshot: Powerful yet simple to use screenshot software
-https://flameshot.org/
-Flameshot
-
-
-
-## K4DirStat
-
-With `Disk Usage Analyzer` included by default, this is less critical. However, I do think that Kdirstat's ability to scan files is more efficient than `Disk Usage Analyzer`
-
-visual disk usage utility:
-http://kdirstat.sourceforge.net/
-
-    sudo apt-get install k4dirstat
-
+[File Browser](filebrowser.md) 

@@ -12,40 +12,40 @@ iptables -nvL | less
 
 
 http://firehol.org/guides/firehol-welcome/  
-💤 FireHOL - FireHOL Welcome Guide  
+FireHOL - FireHOL Welcome Guide  
 http://firehol.org/documentation/#firehol  
-💤 FireHOL - Documentation  
+FireHOL - Documentation  
 http://firehol.org/  
-💤 FireHOL - Linux firewalling and traffic shaping for humans  
+FireHOL - Linux firewalling and traffic shaping for humans  
 https://github.com/firehol/firehol  
-💤 firehol/firehol: A firewall for humans...  
+firehol/firehol: A firewall for humans...  
 https://github.com/trimstray/iptables-essentials  
-💤 trimstray/iptables-essentials: Iptables Essentials: Common Firewall Rules and Commands.  
+trimstray/iptables-essentials: Iptables Essentials: Common Firewall Rules and Commands.  
 https://major.io/2010/04/12/best-practices-iptables/  
-💤 Best practices: iptables | Major Hayden  
+Best practices: iptables | Major Hayden  
 https://duckduckgo.com/?t=ffab&q=iptables+init+&ia=web  
-💤 iptables init at DuckDuckGo  
+iptables init at DuckDuckGo  
 https://github.com/BorX/iptables-init  
-💤 BorX/iptables-init: Easy initialization iptables rules  
+BorX/iptables-init: Easy initialization iptables rules  
 https://github.com/topics/iptables  
-💤 iptables · GitHub Topics  
+iptables · GitHub Topics  
 https://github.com/cloudnativelabs/kube-router  
-💤 cloudnativelabs/kube-router: Kube-router, a turnkey solution for Kubernetes networking.  
+cloudnativelabs/kube-router: Kube-router, a turnkey solution for Kubernetes networking.  
 https://github.com/topics/firewall  
-💤 firewall · GitHub Topics  
+firewall · GitHub Topics  
 https://github.com/fatedier/frp  
-💤 fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.  
+fatedier/frp: A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.  
 https://github.com/topics/bastion  
-💤 bastion · GitHub Topics  
+bastion · GitHub Topics  
 https://duckduckgo.com/?q=firehol+router+hardware&t=ffab&ia=web  
-💤 firehol router hardware at DuckDuckGo  
+firehol router hardware at DuckDuckGo  
 https://avine.sh/b/robust-raspberry-pi-wifi-router-firewall-qos/  
-💤 Building robust Raspberry Pi wireless router with firewall and QoS inbuilt - Avinesh Singh  
+Building robust Raspberry Pi wireless router with firewall and QoS inbuilt - Avinesh Singh  
 https://wiki.archlinux.org/title/Router  
 Router - ArchWiki  
 https://www.raspberrypi.com/documentation/computers/configuration.html  
-💤 Raspberry Pi Documentation - Configuration  
+Raspberry Pi Documentation - Configuration  
 https://github.com/RaspAP/raspap-webgui/wiki/FAQs#can-i-integrate-raspap-with-adguard-home  
-💤 FAQs · RaspAP/raspap-webgui Wiki  
+FAQs · RaspAP/raspap-webgui Wiki  
 https://github.com/RaspAP/raspap-webgui  
-💤 RaspAP/raspap-webgui: Simple wireless AP setup & management for Debian-based devices  
+RaspAP/raspap-webgui: Simple wireless AP setup & management for Debian-based devices  

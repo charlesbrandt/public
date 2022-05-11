@@ -35,6 +35,15 @@ async function asyncForEach(array, callback) {
 }
 ```
 
+### Promise.all()
+
+It's also possible to group promises and wait for them all to complete
+
+https://duckduckgo.com/?t=ffab&q=javascript+promises+all&ia=web  
+javascript promises all at DuckDuckGo  
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all  
+Promise.all() - JavaScript | MDN  
+
 
 ## Async / Await
 
@@ -99,3 +108,9 @@ https://www.google.com/search?client=ubuntu&channel=fs&q=js+arrow+functions&ie=u
 js arrow functions - Google Search  
 
 
+## See Also
+
+Library to help with asynchronous patterns
+
+https://caolan.github.io/async/v3/  
+Home - Documentation  

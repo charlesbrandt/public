@@ -410,6 +410,44 @@ Remember, if using `search()` be sure to check if the position === -1.
 Just using `if-search` will always be true (because -1 is not false in javascript). 
 
 
+## Time
+
+Basic way is to use `setTimeout` with a callback function:
+
+```js
+setTimeout(() => {
+    console.log("Called after 1 second");
+}, 1000);
+```
+
+A more promise friendly approach
+
+```js
+function delay(milliseconds){
+    return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+    });
+}
+
+async function stuff(){
+    console.log("Called immediately");
+
+    await delay(1000);
+
+    console.log("Called after 1 second delay");
+}
+
+stuff();
+
+```
+
+
+
+https://duckduckgo.com/?q=javascript+wait+1+second&t=ffab&ia=web  
+javascript wait 1 second at DuckDuckGo  
+https://alvarotrigo.com/blog/wait-1-second-javascript/  
+Force to Wait 1 Second [JavaScript - 2022]  
+
 
 ## Range
 

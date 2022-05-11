@@ -4,18 +4,18 @@ Handy tool for distributing work across multiple systems.
 
 Very nice overview of the concept:
 
-https://www.cloudamqp.com/blog/what-is-message-queuing.html
-What is message queuing? - CloudAMQP
+https://www.cloudamqp.com/blog/what-is-message-queuing.html  
+What is message queuing? - CloudAMQP  
 
 More technical version:
 
-https://www.ibm.com/cloud/learn/message-queues
-Message Queues: An Introduction | IBM
+https://www.ibm.com/cloud/learn/message-queues  
+Message Queues: An Introduction | IBM  
 
 
 ## Bull & BullMQ
 
-Javascript original. Tried and true. Good if you need to support platforms that tail behind in the version of Node.
+Javascript original. Tried and true. Good if you need to support platforms that lag behind from the latest version of Node.
 
 https://github.com/OptimalBits/bull
 
@@ -63,6 +63,49 @@ const myWorker = new Worker('myworker', async (job)=>{}, { connection: {
   port: 32856
 }});
 ```
+
+### Jobs
+
+One nice thing about using Bull is that it's easy to kick off jobs via your API, especially if you're already running javascript there (e.g. Express)
+
+https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queueadd
+
+"Boilerplate Request" is the name of the job  
+without providing, displays show "__default__" for every job  
+however, the job queue needs to leverage that value too  
+// .add("Boilerplate Request", req.body)  
+
+
+```js
+var express = require("express");
+var router = express.Router();
+var config = require("../config");
+
+var Queue = require("bull");
+
+const boilerplateQueue = new Queue("boilerplate", config.redis.url);
+
+router.post("/new", (req, res, next) => {
+  console.log("CREATING NEW BOILERPLATE JOB", req.body);
+  boilerplateQueue
+    // .add("Boilerplate Request", req.body)
+    .add(req.body)
+    .then((created) => {
+      res.json(created);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+module.exports = router;
+```
+
+#### Child Processes
+
+Often useful to leverage a child process for calling jobs
+[Child Processes](/code/javascript/child-process.md)
+
 
 
 ### Docker

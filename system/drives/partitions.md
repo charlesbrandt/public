@@ -2,9 +2,7 @@
 
 Common layouts
 
-May be able to rely on the OS installation to set it up correctly for you.
-
-But if you want something like a swap partition so that you can hibernate the machine, it may be better to lay the drive partitions out manually. Manual layouts require knowing all the other things that the system is taking care of for you. 
+If you want something like a swap partition so that you can hibernate the machine, it's better to lay the drive partitions out manually. Manual layouts require knowing all the other things that the system is taking care of for you. 
 
 ## EFI System Partition
 

@@ -10,6 +10,51 @@ Etcher is a good tool for creating bootable USBs
 
 Download. Run. 
 
+
+## WoeUSB
+
+Unless you need to create a bootable Windows USB via linux. Then your options are more limited
+
+https://github.com/WoeUSB/WoeUSB
+
+Get the dependencies
+
+```
+sudo apt install \
+    bash \
+    dosfstools \
+    findutils \
+    grep \
+    gawk \
+    grub-common \
+    grub-pc-bin \
+    ntfs-3g \
+    p7zip-full \
+    parted \
+    util-linux \
+    wget \
+    wimtools
+```
+
+https://github.com/WoeUSB/WoeUSB/wiki/Dependencies
+
+Then download via releases (It's a very tiny bash script)
+
+https://github.com/WoeUSB/WoeUSB/releases
+
+```
+chmod +x woeusb-5.2.4.bash 
+```
+
+Then run with
+
+```
+woeusb-5 --device Windows7_x64.iso /dev/sdX
+```
+
+
+
+
 ## Unetbootin
 
 Rolls off the tongue! ;)

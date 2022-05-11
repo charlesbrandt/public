@@ -29,91 +29,41 @@ https://gitlab.com/fern-seed/web-ui-api-db/-/blob/main/README-docker.md
 [Kubernetes](kubernetes.md)
 
 
-## Dockerfiles
+## Dockerfile
 
 How you set up the image that gets run in a container
 
 https://docs.docker.com/engine/reference/builder/
 
+A Dockerfile determines how your image is configured (and ultimately what is run in your container). These can be tracked as part of the project's source code. 
+
+https://docs.docker.com/get-started/part2/
+
+to keep a container running, choose a process that won't exit:
+
+```
+CMD [ "tail", "-f", "/dev/null" ]
+```
+
+See also [dockerfiles](dockerfiles.md)
+
+```
+FROM node:lts
+
+# Set the working directory.
+WORKDIR /srv
+```
+
 
 ## Installation
 
+https://docs.docker.com/engine/install/ubuntu/
+
+Just follow along. These stay more up to date
+
+
 https://docs.docker.com/engine/install/
 
-### Convenience Script
-
-https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
-
-This may be more up-to-date (and straightforward) than the process outlined below:
-
-```
-curl -fsSL https://get.docker.com -o get-docker.sh
-
-DRY_RUN=1 sh ./get-docker.sh
-```
-
-
-### Apt Repository
-
-https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
-
-20.10 
-raspberry pi -- this worked: https://linuxhint.com/install_docker_raspberry_pi-2/
-
-```
-sudo apt-get update
-
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-    
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-20.04 and before
-
-
-```
-sudo apt-get update
-
-sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo apt-key fingerprint 0EBFCD88
-
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
-```
-
-update again
-
-```
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
-
-on a Raspberry Pi 4 8gb using ubuntu 64bit
-
-```
-sudo add-apt-repository \
-   "deb [arch=arm64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
-
-### Docker Compose
 
 At this point Docker should be installed and you can verify with:
 
@@ -121,11 +71,68 @@ At this point Docker should be installed and you can verify with:
 sudo systemctl status docker
 ```
 
+
+### Docker Compose
+
 Go ahead and grab docker-compose
 
 ```
 sudo apt-get install docker-compose -y
 ```
+
+
+### Rootless & Permissions
+
+Visit https://docs.docker.com/go/rootless/ to learn about rootless mode.
+
+Seems necessary to still install docker as usual above. 
+
+
+```
+sudo apt-get install -y uidmap
+```
+
+With Ubuntu, I already had:
+
+```
+sudo apt-get install -y dbus-user-session
+```
+
+If the system-wide Docker daemon is already running, consider disabling it: 
+
+```
+sudo systemctl disable --now docker.service docker.socket
+```
+
+To run Docker as a non-privileged user, consider setting up the
+Docker daemon in rootless mode for your user:
+
+```
+dockerd-rootless-setuptool.sh install
+```
+
+Automatically start up when user logs in:
+
+```
+systemctl --user enable docker
+sudo loginctl enable-linger $(whoami)
+```
+
+Make sure the following environment variables are set by adding them to `~/.bashrc`
+
+```
+export PATH=/usr/bin:$PATH
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+```
+
+To expose privileged ports (< 1024), set CAP_NET_BIND_SERVICE on rootlesskit binary and restart the daemon.
+
+```
+sudo setcap cap_net_bind_service=ep $(which rootlesskit)
+systemctl --user restart docker
+```
+
 
 ### Add user to docker group
 
@@ -145,6 +152,17 @@ Log out and log back in, or:
 Test that you have permissions to run docker commands without sudo:
 
     docker ps
+
+
+To run the Docker daemon as a fully privileged service, but granting non-root
+users access, refer to https://docs.docker.com/go/daemon-access/
+
+WARNING: Access to the remote API on a privileged Docker daemon is equivalent
+         to root access on the host. Refer to the 'Docker daemon attack surface'
+         documentation for details: https://docs.docker.com/go/attack-surface/
+
+
+
 
 ### Create bash aliases
 
@@ -168,38 +186,34 @@ alias dce='docker-compose exec'
 alias dcl='docker-compose logs'
 ```
 
-### Rootless & Permissions
 
-To run Docker as a non-privileged user, consider setting up the
-Docker daemon in rootless mode for your user:
+## Docker Desktop for Linux
 
-    dockerd-rootless-setuptool.sh install
+Looking forward to giving this a try. KVM/QEMU -- sounds promising!
 
-Visit https://docs.docker.com/go/rootless/ to learn about rootless mode.
+```
+sudo usermod -aG kvm $USER
+```
 
+Dependencies:
 
-To run the Docker daemon as a fully privileged service, but granting non-root
-users access, refer to https://docs.docker.com/go/daemon-access/
+Install docker as usual -- ends up expecting `docker-ce-cli` package anyway
 
-WARNING: Access to the remote API on a privileged Docker daemon is equivalent
-         to root access on the host. Refer to the 'Docker daemon attack surface'
-         documentation for details: https://docs.docker.com/go/attack-surface/
+Install KVM/QEMU ahead of time
 
+~/public/system/virtualization/kvm.md
 
-### Snap 
+```
+sudo apt-get install pass tree
+```
 
-Maybe this approach would help keep networking devices separate? 
+download package for system
 
-Worth a try on future desktop setups. 
+https://docs.docker.com/desktop/linux/install/
 
-Command 'docker' not found, but can be installed with:
-
-sudo snap install docker     # version 18.09.9, or
-sudo apt  install docker.io
-
-Are these kept in sync with the apt versions?
-
-
+```
+sudo dpkg -i docker-desktop-4.8.0-amd64.deb 
+```
 
 
 
@@ -224,29 +238,58 @@ docker ps -s
 https://docs.docker.com/engine/reference/commandline/ps/
 
 
-## Restarting
-
-Containers can be set to restart automatically. As long as the parent docker process is configured to run at start up (usually is by default), then those containers will restart automatically. 
-
-You could also do a systemctrl setup like:
-
-`sudo systemctl enable docker-MYPROJECT-oracle_db.service`
-
-As described in
-
-https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot
-How do I make a Docker container start automatically on system boot? - Stack Overflow
-
-https://docs.docker.com/config/containers/start-containers-automatically/
-💤 Start containers automatically | Docker Documentation
-
-https://duckduckgo.com/?q=docker+start+container+at+boot&t=ffab&ia=web
-💤 docker start container at boot at DuckDuckGo
 
 
-See also:
-Docker-compose
-Kubernetes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -293,16 +336,22 @@ docker cp | Docker Documentation
 
 See a list of available docker images (see what is currently available):
 
-    docker image ls -a
+```
+docker image ls -a
+```
 
 Is equivalent to:
 
-    docker images
+```
+docker images
+```
 
 docker images are stored in:
 
-    /var/lib/docker
-    
+```
+/var/lib/docker
+```
+
 (don't forget, docker sometimes run in a VM, so this location is on that VM)
 via:
 http://stackoverflow.com/questions/19234831/where-are-docker-images-stored-on-the-host-machine
@@ -316,26 +365,6 @@ Different dependencies will result in different sized containers. Smaller is gen
 https://www.brianchristner.io/docker-image-base-os-size-comparison/
 
 https://docs.docker.com/docker-hub/official_images/
-
-### Dockerfile
-
-A Dockerfile determines how your image is configured (and ultimately what is run in your container). These can be tracked as part of the project's source code. 
-
-https://docs.docker.com/get-started/part2/
-
-to keep a container running, choose a process that won't exit:
-
-    CMD [ "tail", "-f", "/dev/null" ]
-
-See also [dockerfiles](dockerfiles.md)
-
-```
-FROM node:lts
-
-# Set the working directory.
-WORKDIR /srv
-```
-
 
 
 ### Building
@@ -436,6 +465,30 @@ There are some nuclear options outlined here -- they will clear everything out, 
 
 https://stackoverflow.com/questions/36918387/space-issue-on-docker-devmapper-and-centos7
 
+### Restarting
+
+Containers can be set to restart automatically. As long as the parent docker process is configured to run at start up (usually is by default), then those containers will restart automatically. 
+
+You could also do a systemctrl setup like:
+
+`sudo systemctl enable docker-MYPROJECT-oracle_db.service`
+
+As described in
+
+https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot
+How do I make a Docker container start automatically on system boot? - Stack Overflow
+
+https://docs.docker.com/config/containers/start-containers-automatically/
+💤 Start containers automatically | Docker Documentation
+
+https://duckduckgo.com/?q=docker+start+container+at+boot&t=ffab&ia=web
+💤 docker start container at boot at DuckDuckGo
+
+
+See also:
+Docker-compose
+Kubernetes
+
 
 
 
@@ -443,25 +496,36 @@ https://stackoverflow.com/questions/36918387/space-issue-on-docker-devmapper-and
 
 See all networks currently configured:
 
-    docker network ls
-    
+```
+docker network ls
+```
+
 See details for a specific network:
 
-    docker network inspect bridge
+```
+docker network inspect bridge
+```
 
 Docker containers can be referenced from other containers using the container name. Be sure to use the full container name, not the abbreviated service name that is used in docker-compose files. 
 
 `ping` is not always available. On debian based containers, install it with:
 
-    apt-get update
-    apt-get install iputils-ping
+```
+apt-get update
+apt-get install iputils-ping
+```
 
 From there, can testing pinging containers by name:
 
-    ping nginx
+```
+ping nginx
+```
 
-see a list of all IP addresses for all containers:
+See a list of all IP addresses for all containers:
+
+```
 sudo docker ps | tail -n +2 | while read cid b; do echo -n "$cid\t"; sudo docker inspect $cid | grep IPAddress | cut -d \" -f 4; done
+```
 
 via:
 http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host

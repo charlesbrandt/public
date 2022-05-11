@@ -88,6 +88,27 @@ http://katieleonard.ca/blog/2016/nested-routes-with-expressjs/
 
 ## CRUD Example
 
+Async/await can be used with Express.
+
+https://zellwk.com/blog/async-await-express/
+
+In this case, it's good to enable:
+
+https://zellwk.com/blog/async-await-express/
+
+So that error conditions are handled correctly by routes
+
+```
+npm install express-async-errors --save
+```
+
+
+```
+const express = require('express')
+require('express-async-errors')
+```
+
+
 ```js
 var express = require("express");
 var router = express.Router();
@@ -172,7 +193,7 @@ Depending on what you use to manage the node processes, your options may vary
 
 ### Docker
 
-Nodemon may work here
+Nodemon works well here
 
 https://github.com/remy/nodemon
 

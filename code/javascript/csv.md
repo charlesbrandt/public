@@ -25,6 +25,7 @@ Then use in a component with:
   // parse the csv file into options
   Papa.parse(event.target.files[0], {
     dynamicTyping: true,
+    skipEmptyLines: true, 
     // worker: true,
     header: true,
     transformHeader: undefined,
@@ -47,6 +48,8 @@ With `header: true` you get a list of json objects with keys that use the corres
 
 
 ## Configuration Options
+
+`skipEmptyLines`: Sometimes there are empty lines at the end of CSVs. If you're checking for missing values, empty lines are all empty values, and can cause problems. 
 
 https://www.papaparse.com/faq#workers
 

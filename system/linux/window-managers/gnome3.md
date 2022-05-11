@@ -4,6 +4,24 @@ Super L or Super R (often a 'windows' key) will usually bring up launcher for la
 
 Open `Settings` application to make many of these changes.
 
+## Resetting
+
+Sometimes the Gnome window manager will consume a lot of memory. It's possible to restart the window manager without restarting all the applications. 
+
+Quickest:
+
+Alt-F2
+
+type `r` in the window that pops up
+
+https://duckduckgo.com/?t=ffab&q=gnome+restart+gnome-shell&ia=web  
+gnome restart gnome-shell at DuckDuckGo  
+https://www.linuxuprising.com/2020/07/how-to-restart-gnome-shell-from-command.html  
+How To Restart GNOME Shell From Command Line Without Closing Any Applications (X11 Only) - Linux Uprising Blog  
+
+
+
+
 ## Dock Settings
 
 Settings -> Appearance -> Auto-hide the Dock
@@ -12,22 +30,18 @@ Auto-hide the Dock (Settings->Appearance->Dock)
 
 Update Blank Screen Preferences (Settings->Power->Blank Screen)
 
+## Desktop Icons
 
-## Dark Mode
-
-Good for testing if web pages respond to the operating system dark mode preference:
-
-Settings -> Appearance -> Dark Mode
-
-https://itsfoss.com/dark-mode-ubuntu/
-How to Enable Full Dark Mode in Ubuntu 20.04
+Settings -> Appearance -> Desktop Icons -> Toggle "Show Personal folder"
 
 
 ## Alert Sounds
 
 Disable alert sounds like screenshot photo sound:
 
-    dconf write /org/gnome/desktop/sound/event-sounds "false"
+```
+dconf write /org/gnome/desktop/sound/event-sounds "false"
+```
 
 [via](https://unix.stackexchange.com/questions/444681/how-to-turn-off-alert-sounds-sound-effects-on-gnome-from-terminal)
 
@@ -76,13 +90,15 @@ sudo mv * originals/
 
 ## Gnome Tweaks
 
-Many configurations are not exposed via Settings. 
+Some configurations are not exposed via Settings. 
 
-There is also the Tweaks application (why 2?). This is where you can find the Themes setting
+For those there is the Tweaks application. This is where you can find the Themes setting
 
 For everything else, there is dconf-editor.
 
-    sudo apt-get install gnome-tweaks
+```
+sudo apt-get install gnome-tweaks
+```
 
 ## Titlebar Buttons
 
@@ -91,11 +107,6 @@ Adjust window button placement
 Use Tweaks application to move close, minimize, and maximize to the left of the Window Titlebars.
 
     Tweaks -> Window Titlebars -> Placement -> left
-
-## Desktop Icons
-
-Settings -> Appearance -> Desktop Icons -> Toggle "Show Personal folder"
-
 
 ## Desktop Background
 
@@ -124,6 +135,16 @@ https://duckduckgo.com/?q=gnome+3+svg+desktop+background&t=ffhp&ia=web
 gnome 3 svg desktop background at DuckDuckGo
 https://unix.stackexchange.com/questions/101613/cant-set-background-wallpaper-in-gnome-3
 gnome3 - Can't set background wallpaper in Gnome 3 - Unix & Linux Stack Exchange
+
+
+## Dark Mode
+
+Good for testing if web pages respond to the operating system dark mode preference:
+
+Settings -> Appearance -> Dark Mode
+
+https://itsfoss.com/dark-mode-ubuntu/  
+How to Enable Full Dark Mode in Ubuntu 20.04  
 
 
 ## Laptop specific

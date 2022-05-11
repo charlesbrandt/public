@@ -10,41 +10,6 @@ For documents that change, use git and .md
 
 For relationships and metadata, use a real database. Postgres seems hard to beat for this.
 
-## Schema & Models
-
-[Schema](schema.md)
-
-## DBs 
-
-DBs are Databases.
-
-Databases tie in closely to the API side.
-
-### Relational Databases
-
-[Relational Databases](relational-db.md)
-
-[sequelize](sequelize.md)
-
-### Document Databases
-
-[mongo](mongo.md)
-
-### Deployment
-
-When it comes time to deploy databases, separate containers are ideal. See also system-architecture notes on web-ui-api-db:
-
-https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
-
-## Data Files
-
-Big files don't change often. 
-
-Generate their id with IPFS
-
-[ipfs](ipfs.md)
-
-
 ## Frameworks
 
 https://github.com/typicode/json-server#static-file-server  
@@ -63,17 +28,59 @@ typicode/lowdb: Simple to use local JSON database (supports Node, Electron and t
 
 [Sending Email](email-sending.md)
 
+## Auth
+
+[auth](auth.md)
+
+
+
+
+## DBs 
+
+DBs are Databases.
+
+Databases tie in closely to the API side.
+
+
+### Schema & Models
+
+[Schema](schema.md)
+
+
+### Relational Databases
+
+[Relational Databases](relational-db.md)
+
+[sequelize](sequelize.md)
+
+
+### Document Databases
+
+[mongo](mongo.md)
+
+
+### In Memory
+
+[redis](redis.md)  
+
+
 ## Message Queues
 
 [Message Queues](message-queue.md)
 
 
-### File Browser
+## Deployment
 
-[File Browser](file-browser.md)
+When it comes time to deploy databases, separate containers are ideal. See also system-architecture notes on web-ui-api-db:
 
+https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
 
-## Auth
+## Data Files
 
-[auth](auth.md)
+Big files don't change often. 
+
+Generate their id with IPFS
+
+[ipfs](ipfs.md)
+
 
