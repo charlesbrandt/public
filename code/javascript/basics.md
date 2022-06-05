@@ -55,6 +55,16 @@ p.replace('original', 'new')
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 
+### Sanitize string
+
+Use a regular expression to remove all non-alphanumeric characters from a string:
+
+```js
+input.replace(/\W/g, '')
+```
+
+https://stackoverflow.com/questions/9364400/remove-not-alphanumeric-characters-from-string
+
 ### Split String
 
 ``` js

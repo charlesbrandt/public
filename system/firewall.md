@@ -49,3 +49,32 @@ https://github.com/RaspAP/raspap-webgui/wiki/FAQs#can-i-integrate-raspap-with-ad
 FAQs · RaspAP/raspap-webgui Wiki  
 https://github.com/RaspAP/raspap-webgui  
 RaspAP/raspap-webgui: Simple wireless AP setup & management for Debian-based devices  
+
+
+https://docs.opnsense.org/development/architecture.html
+Architecture — OPNsense documentation
+https://github.com/opnsense/core
+GitHub - opnsense/core: OPNsense GUI, API and systems backend
+https://github.com/topics/firewall
+firewall · GitHub Topics · GitHub
+https://duckduckgo.com/?q=UFW+Tutoria&t=fpas&ia=web
+UFW Tutoria at DuckDuckGo
+https://askubuntu.com/questions/1263586/whats-the-best-firewall-for-ubuntu
+security - Whats the best firewall for ubuntu? - Ask Ubuntu
+https://duckduckgo.com/?q=ubuntu+desktop+firewall&t=fpas&ia=web
+ubuntu desktop firewall at DuckDuckGo
+https://www.reddit.com/r/linuxquestions/comments/b4aowu/gui_firewall_to_allowblock_specific_applications/
+GUI Firewall To Allow/Block Specific Applications? : linuxquestions
+https://duckduckgo.com/?q=opensnitch+vs+ufw&t=fpas&ia=web
+opensnitch vs ufw at DuckDuckGo
+https://github.com/gravitational/teleport
+GitHub - gravitational/teleport: Certificate authority and access plane for SSH, Kubernetes, web apps, databases and desktops
+https://github.com/evilsocket/opensnitch/wiki/Configurations
+Configurations · evilsocket/opensnitch Wiki · GitHub
+https://github.com/evilsocket/opensnitch/wiki
+Home · evilsocket/opensnitch Wiki · GitHub
+https://github.com/evilsocket/opensnitch
+GitHub - evilsocket/opensnitch: OpenSnitch is a GNU/Linux port of the Little Snitch application firewall
+https://ubuntu.com/server/docs/security-firewall
+Security - Firewall | Ubuntu
+

@@ -26,6 +26,7 @@ http://askubuntu.com/questions/345588/what-is-the-safest-way-to-clean-up-boot-pa
 e.g.:
 sudo apt-get remove linux-image-4.2.0-16-generic
 
+
 ## Repair /boot partition
 
 Occasionally, cleaning up old kernels can result in a system that won't boot. In that case, boot into a live instance of the OS to repair the system.
@@ -94,11 +95,6 @@ Some things I like to change
     Giving 4GB a try. Should be better than the default 768MB.   
     Can increase more if problems still crop up.   
     
-  - Enough swap to enable hibernation  
-    Will want to disable swap from being used by the OS. (Just use memory)  
-    But it is useful to have enough space for hibernation  
-    ideally it is not part of the / (root) filesystem  
-    
   - Encrypted filesystem  
     for portable machines this is more important than for desktops or data drives.   
     Create a new partition  
@@ -108,6 +104,14 @@ Some things I like to change
     
 
 Future considerations
+
+  - If hibernation is actually necessary, just use a file based scratch drive. Easier to allocate, and prevents storage from getting allocated in a way that is sub optimal. 
+  - [previously] Enough swap to enable hibernation  
+    Will want to disable swap from being used by the OS. (Just use memory)  
+    But it is useful to have enough space for hibernation  
+    ideally it is not part of the / (root) filesystem  
+
+    
 
   - Separate `/var` ???  
     I like this idea in theory -- prevent an ailing service that generates a lot of log files from filling up the main partition.   

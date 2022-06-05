@@ -22,8 +22,6 @@ I like starting with a template script to include things I like when getting sta
 ```
 #!/usr/bin/env python3
 """
-#!/usr/bin/env python3
-"""
 # By: 
 # On: [date]
 # License: MIT 
@@ -131,6 +129,10 @@ def write_metadata(items, destination):
 
 [CSV Files](csv.md)
 
+## OS
+
+[OS modules](os.md)
+
 ## Sleep / Wait
 
 ```
@@ -158,6 +160,38 @@ Then, to print it in a format understood in JS:
 https://stackoverflow.com/questions/26193065/print-current-utc-datetime-with-special-format
 
 https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+
+## Logging
+
+```
+print(f"{stuff}")
+```
+
+Sooner or later it's a good idea to keep track of what was done when  
+and ensure that those activities are written no matter what happens in the code (e.g. a crash)
+
+enter logging
+
+https://docs.python.org/3/howto/logging.html
+
+
+```
+import logging
+import os
+log_dest = os.path.join(metadata_dir, "example.log")
+logging.basicConfig(filename=log_dest, level=logging.DEBUG, format='%(asctime)s: %(levelname)-8s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+
+logging.debug('This message should go to the log file')
+logging.info('So should this')
+logging.warning('And this, too')
+logging.error('And non-ASCII stuff, too, like Øresund and Malmö')
+```
+
+
+Initialize your logging instance in the main script to control the destination. 
+
+If all settings should be the same across an application, use a common library that gets imported to other scripts like `common.py` or `helpers.py`.
+
 
 
 ## Testing
