@@ -1,6 +1,6 @@
 # Browsers
 
-The window to the internet.  
+A window to the internet.  
 Settings for an optimal session. 
 
 
