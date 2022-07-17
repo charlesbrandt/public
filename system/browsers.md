@@ -85,25 +85,6 @@ https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus
 OneTab?
 
 
-### New Tab
-
-This is optional. 
-
-I love pocket. 
-
-Tabliss is a clean minimal alternative. 
-
-https://addons.mozilla.org/en-US/firefox/addon/tabliss/
-
-https://tabliss.io/
-
-https://github.com/joelshepherd/tabliss
-
-An open source, pluggable New Tab web extension written in TypeScript, React and Redux.
-
-No special permissions required!
-
-
 ### Copy Selection as Markdown
 
 https://addons.mozilla.org/en-US/firefox/addon/copy-selection-as-markdown/
@@ -157,6 +138,29 @@ cd .mozilla/firefox/
 rm -r hn95wtr8.example/*
 cp -r ~/repos/firefox-profile/* hn95wtr8.example/
 ```
+
+
+### New Tab
+
+This is optional. 
+
+I love pocket. 
+
+Tabliss is a clean minimal alternative. 
+
+https://addons.mozilla.org/en-US/firefox/addon/tabliss/
+
+https://tabliss.io/
+
+https://github.com/joelshepherd/tabliss
+
+An open source, pluggable New Tab web extension written in TypeScript, React and Redux.
+
+No special permissions required!
+
+
+
+
 
 ### Themes
 

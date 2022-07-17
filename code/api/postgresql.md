@@ -92,15 +92,15 @@ GRANT SELECT ON mytable TO xxx;
 https://stackoverflow.com/questions/760210/how-do-you-create-a-read-only-user-in-postgresql
 
 https://duckduckgo.com/?t=ffab&q=postgres+set+password+for+user&ia=web  
-💤 postgres set password for user at DuckDuckGo  
+postgres set password for user at DuckDuckGo  
 https://www.postgresqltutorial.com/postgresql-change-password/  
-💤 How To Change the Password of a PostgreSQL User  
+How To Change the Password of a PostgreSQL User  
 https://duckduckgo.com/?q=postgres+password+for+system+user+no+password&t=ffab&ia=web  
-💤 postgres password for system user no password at DuckDuckGo  
+postgres password for system user no password at DuckDuckGo  
 https://www.liquidweb.com/kb/what-is-the-default-password-for-postgresql/  
 What is the Default Password for PostgreSQL? - Liquid Web  
 https://www.educba.com/postgresql-user-password/  
-💤 PostgreSQL User Password | Create, Change, Delete Password for Users  
+PostgreSQL User Password | Create, Change, Delete Password for Users  
 
 ## Import / Export 
 
@@ -124,7 +124,7 @@ postgresql show size of tables at DuckDuckGo
 https://dbtut.com/index.php/2018/10/07/postgresql-list-of-table-sizes/  
 How To Find the Size of Tables and Indexes in PostgreSQL - Database Tutorials  
 https://www.geeksforgeeks.org/postgresql-size-of-a-table/  
-💤 PostgreSQL - Size of a Table - GeeksforGeeks  
+PostgreSQL - Size of a Table - GeeksforGeeks  
 
 https://duckduckgo.com/?t=ffab&q=dbeaver+show+size+of+tables&ia=web  
 dbeaver show size of tables at DuckDuckGo  
@@ -195,3 +195,13 @@ FROM pg_indexes i, tbl_spc ts
 )
 ORDER BY table_disc_size DESC,index_disc_size DESC;
 ```
+
+
+## IP Based Access Control
+
+Postgres can be configured to allow certain IP addresses.
+
+$PG_ROOT/data/pg_hba.conf
+usually /var/lib/pgsql or /var/lib/postgresql 
+
+vi /var/lib/pgsql/13/data/pg_hba.conf

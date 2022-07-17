@@ -32,14 +32,11 @@ typicode/lowdb: Simple to use local JSON database (supports Node, Electron and t
 
 [auth](auth.md)
 
-
-
-
 ## DBs 
 
 DBs are Databases.
 
-Databases tie in closely to the API side.
+Databases tie in closely with the API.
 
 
 ### Schema & Models
@@ -55,6 +52,8 @@ Databases tie in closely to the API side.
 
 
 ### Document Databases
+
+aka object databases
 
 [mongo](mongo.md)
 
@@ -79,7 +78,7 @@ https://gitlab.com/charlesbrandt/web-ui-api-db/ui/content/
 
 Big files don't change often. 
 
-Generate their id with IPFS
+Generate their id with IPFS or some other checksum strategy
 
 [ipfs](ipfs.md)
 

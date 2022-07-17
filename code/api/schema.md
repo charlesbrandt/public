@@ -27,3 +27,17 @@ http://editor.swagger.io/?_ga=2.216992021.268614673.1581966607-50034279.15813467
 Swagger Editor  
 https://raml.org/index.html  
 Welcome | RAML  
+
+
+## Entity Relationship Diagrams
+
+This is a commercial solution, but seems to be the best tool for the job:
+
+https://duckduckgo.com/?t=ffab&q=lucid+charts&ia=web  
+lucid charts at DuckDuckGo  
+https://www.lucidchart.com/pages/  
+Intelligent Diagramming | Lucidchart  
+https://www.lucidchart.com/pages/product  
+Lucidchart overview | Lucidchart  
+https://lucid.app/pricing/lucidchart#/pricing  
+(1) New Messages!  

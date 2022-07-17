@@ -4,13 +4,14 @@
 
 [PostgreSQL](postgresql.md)
 
+## SQLite
+
+[SQLite](sqlite.md)
+
 ## MySQL
 
 [MySQL](mysql.md)
 
-## SQLite
-
-[SQLite](sqlite.md)
 
 ## ORM
 

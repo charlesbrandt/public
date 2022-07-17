@@ -2,6 +2,15 @@
 
 Go is a programming language. 
 
+https://go.dev/
+
+```
+Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. It is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency
+```
+
+https://duckduckgo.com/?t=ffab&q=go+language&ia=web
+
+
 https://duckduckgo.com/?t=ffab&q=go+based+api+server+for+use+with+vuejs&ia=web  
 go based api server for use with vuejs at DuckDuckGo  
 https://juliensalinas.com/en/golang-API-backend-vuejs-SPA-frontend-docker-modern-application/  

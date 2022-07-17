@@ -126,7 +126,7 @@ unbind ^A
 bind ^A select-pane -t :.+
 ```
 
-## Script Startup
+## Launch Script Template
 
 tmux can help manage the state needed for workspaces. In this case, create a script to configure the startup.
 
@@ -216,20 +216,56 @@ https://www.ocf.berkeley.edu/~ckuehl/tmux/
 * [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
 * [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
 
-## tmux vs screen
+## Screen
 
-Screen is a similar tool that has been around for a long time
+Screen is a similar tool to TMUX that has been around for a long time
+
+On some systems it may be the only tool available.
+
+Launch a new `screen` session for long running jobs
+
+```
+screen
+```
+
+Once in a screen session, run the script:
+
+```
+time python3 my_job_that_takes_a_long_time.py
+```
+
+detach from the session using Clrl+A and then press d.
+
+
+```
+screen -ls
+
+screen -r [number]
+```
+
+to reattach
+
+
+
 
 
 https://duckduckgo.com/?t=ffab&q=bash+screen&ia=web  
-💤 bash screen at DuckDuckGo  
+bash screen at DuckDuckGo  
 https://www.howtogeek.com/662422/how-to-use-linuxs-screen-command/  
-💤 How to Use Linux’s screen Command  
+How to Use Linux’s screen Command  
 https://duckduckgo.com/?t=ffab&q=screen+vs+tmux&ia=web  
-💤 screen vs tmux at DuckDuckGo  
+screen vs tmux at DuckDuckGo  
 https://superuser.com/questions/236158/tmux-vs-screen  
-💤 tmux vs. screen - Super User  
+tmux vs. screen - Super User  
 
+https://tmuxcheatsheet.com/  
+Tmux Cheat Sheet & Quick Reference  
+
+https://duckduckgo.com/?t=ffab&q=screen+terminal+disconnect&ia=web  
+screen terminal disconnect at DuckDuckGo  
+
+https://medium.com/swlh/how-to-use-screen-on-linux-to-detach-and-reattach-your-terminal-2f52755ff45e  
+How to Use Screen on Linux to Detach and Reattach Your Terminal | by Zubair Ahmed | The Startup | Medium  
 
 
 ## tmux shortcuts & cheatsheet

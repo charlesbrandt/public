@@ -1,15 +1,7 @@
 # Linux
 
-[Android](../android/)  
-[tmux](../terminal/tmux.md)  
-
-There are many linux distributions available. Which one you run is a matter of personal preference. Communities create a distribution as a standard collection of linux applications and configurations. 
-
-[Notes about what happens before the Operating System (OS) is running](../startup.md)
-
-When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
-
 [Upgrade](upgrade.md)  
+
 [Window Manager](window-managers/)  
 
 [Workspaces](workspaces.md)  
@@ -18,15 +10,8 @@ When downloading an image, torrents are a good way to share bandwidth. This supp
 
 [Keyboard](keyboard.md)
 
-## Create Bootable Media
 
-This process is the same for all systems.
-
-Whatever you choose, start by downloading and burning an image of the operating system (OS) of your choice from their site.
-
-To transfer image for use, see [creating a bootable usb](../drives/bootable-usb.md).
-
-## Distributions
+## What is Running
 
 To see what distribution is currently running on your system:
 
@@ -79,8 +64,7 @@ Xubuntu ships with XFCE, which is another good choice.
 Ubuntu Studio is built on top of Xubuntu.
 https://ubuntustudio.org/
 
-
-## Servers
+### Servers
 
 For servers, ubuntu server is good
 
@@ -92,6 +76,28 @@ CentOS is another popular distribution that tracks Red Hat Enterprise Linux
 ## Raspberry Pi
 
 [Raspberry Pi](/pi/)  
+
+
+## Create Bootable Media
+
+This process is the same for all systems.
+
+Whatever you choose, start by downloading and burning an image of the operating system (OS) of your choice from their site.
+
+To transfer image for use, see [creating a bootable usb](../drives/bootable-usb.md).
+
+
+
+## Other Distributions
+
+[Android](../android/)  
+[tmux](../terminal/tmux.md)  
+
+There are many linux distributions available. Which one you run is a matter of personal preference. Communities create a distribution as a standard collection of linux applications and configurations. 
+[Notes about what happens before the Operating System (OS) is running](../startup.md)
+
+When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
+
 
 
 ## Arch Linux

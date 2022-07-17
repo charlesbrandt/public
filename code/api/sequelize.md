@@ -36,12 +36,9 @@ Remember, when sending API calls to create new records, be sure NOT to include a
 ```
 SequelizeDatabaseError: Field 'id' doesn't have a default value
 ```
-
+You must be sure you're not even sending the id key at all.
 
 https://stackoverflow.com/questions/33775165/auto-increment-id-with-sequelize-in-mysql
-
-> You must be sure you're not even sending the id key at all.
-
 
 
 ## Schema Generation
@@ -51,154 +48,91 @@ Sequelize Auto can help generate schemas from an existing database
 https://github.com/sequelize/sequelize-auto  
 sequelize/sequelize-auto: Automatically generate bare sequelize models from your database.  
 
-TODO - document how to incorporate these in with an API  
-fully automated vs grouping associations in with the model file  
-
-TODO - Output should be closer to the Feather's model definition approach  
-Include the associations in with the model  
-
-
-## Migrations
-
-https://sequelize.org/master/manual/migrations.html
-
-Migrations keep your database schema in sync with the requirements of the current system architecture. 
-
-The following assumes you have a `migrations` folder in the root of your app. (`api/migrations`)
-
-
-### Initial Setup: one-time tasks
-
-Configure dependencies in the API container. The database container may not have / need node installed. Install the [sequelize CLI](https://github.com/sequelize/cli):
- 
-```
-docker-compose exec api bash
-
-cd ../migrations
-yarn add sequelize-cli --dev # npm install --save-dev sequelize-cli
-```
-
-Set up necessary files
+I had difficulty generating this from within the container. It may be possible to do with a custom built container where all the dependencies are installed globally. Installing globally worked outside of the container:
 
 ```
-npx sequelize-cli init
+npm i -g sequelize 
+npm i -g sequelize-cli
+npm i -g sequelize-auto
+npm i -g sqlite3
 ```
 
-edit the `config/config.json` file to reflect your environment. 
-
-
-### Migration definitions
-
-Migrations make use of the Sequelize Query Interface to effect schema changes in the database:
-
-https://sequelize.org/master/manual/query-interface.html
-
-Create the migration file skeleton: 
+https://stackoverflow.com/questions/58067349/how-to-solve-sequelize-command-not-found
 
 ```
-docker-compose exec api bash
-cd ../
-
-npx sequelize-cli migration:generate --name user-columns
+sequelize-auto -h localhost -u user -d main --dialect sqlite -c sqlite/options.json -o sqlite/
 ```
 
-It may be necessary to update permissions at the host level if the container writes new files as root. (Or just create the files manually outside of the container -- not that much to them). 
+And options.json looks like this:
 
 ```
-sudo chown -R account: api/migrations/
+{
+    "storage":"./database_file_name.db"
+}
 ```
 
-Follow along with:
+## Configuration
 
-https://sequelize.org/master/manual/migrations.html#migration-skeleton
+https://sequelize.org/docs/v6/getting-started/
 
-Note: the database table name needs to be used here (e.g. `users` below). The `queryInterface` hasn't applied model name mappings yet. 
-
-example -- adding columns:
+### Sqlite
 
 ```
-		return queryInterface.sequelize.transaction((t) => {
-			return Promise.all([
-				queryInterface.addColumn(
-					"users",
-					"username",
-					{
-						type: Sequelize.DataTypes.STRING,
-					},
-					{ transaction: t }
-				),
-			]);
-		});
-                
+var config = require("./config");
+
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize(config.sqlite});
+var initModels = require("./sqlite/init-models");
+var models = initModels(sequelize);
+
+Object.keys(models).forEach((name) => {
+	if ("associate" in models[name]) {
+		models[name].associate(models);
+	}
+});
+
+models.sequelize = sequelize;
+
+module.exports = models;
 ```
 
-https://sequelize.org/v5/manual/data-types.html
-
-
-and don't forget to do the reverse operation in `down`:
+where `config.sqlite` is something like:
 
 ```
-		return queryInterface.sequelize.transaction((t) => {
-			return Promise.all([
-				queryInterface.removeColumn("users", "username", { transaction: t }),
-                ])
+{
+  dialect: 'sqlite',
+  storage: 'path/to/database.sqlite'
+}
 ```
 
 
-### Migration process
-
-Apply the migrations with:
+### MySQL
 
 ```
-npx sequelize-cli db:migrate
-```
+var config = require("./config");
 
-Undo the migrations with:
-
-```
-npx sequelize-cli db:migrate:undo
-```
-
-### Seeds
-
-```
-npx sequelize-cli db:seed:all
-```
-
-
-### Migration Examples
-
-#### Raw SQL commands
-
-Sometimes there are commands that needs to be run that don't have a query builder equivalent:
-
-```
-"use strict";
-module.exports = {
-	up: async (queryInterface, Sequelize) => {
-		await queryInterface.sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
-		await queryInterface.sequelize.query(
-			"ALTER TABLE table MODIFY table_id INTEGER NOT NULL AUTO_INCREMENT"
-		);
-		await queryInterface.sequelize.query(
-			"ALTER TABLE table AUTO_INCREMENT = 167"
-		);
-		await queryInterface.sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize(config.mysql, {
+	// logging: true,
+	define: {
+		// freezeTableName: true,
+		// https://stackoverflow.com/questions/50977198/is-there-a-way-to-disable-timestamp-columns-globally-for-all-models
+		timestamps: false,
 	},
-	down: async (queryInterface, Sequelize) => {
-		// put things back the way they were (minus data)
-	},
-};
+});
+var initModels = require("./models/init-models");
+var models = initModels(sequelize);
 
+Object.keys(models).forEach((name) => {
+	if ("associate" in models[name]) {
+		models[name].associate(models);
+	}
+});
+
+models.sequelize = sequelize;
+
+module.exports = models;
 ```
-
-### See Also
-
-[relational databases](relational-db.md)
-
-[Sequelize · feathers-docs-common](https://eddyystop.gitbooks.io/feathers-docs-common/content/databases/sequelize.html#migrations)
-
-Having trouble locating the original repo, and it seems this is an earlier version of the feathers docs that got cut. 
 
 
 
@@ -229,7 +163,6 @@ Model.findAll({
 ```
 
 
-
 ### Insert
 
 ```
@@ -238,118 +171,6 @@ console.log("Jane's auto-generated ID:", jane.id);
 ```
 
 
-
-## API Integration
-
-Roughly follows actions that a feathers server provides by default
-
-```
-var express = require("express");
-var router = express.Router();
-var db = require("../db");
-
-/* GET the associated records of a project */
-router.get("/:id", function (req, res, next) {
-	db.project
-		.findOne({
-			where: { _id: req.params.id },
-			include: [
-				{
-					model: db.sample,
-					as: "samples",
-					include: [
-						{ model: db.datafile, as: "files" },
-						{ model: db.source, as: "source" },
-					],
-				},
-				{ model: db.datafile, as: "files" },
-			],
-		})
-		.then((match) => {
-			res.json(match);
-		});
-});
-
-router.patch("/:id", function (req, res, next) {
-	db.project
-		.findOne({
-			where: { project_id: req.params.id },
-		})
-		.then((match) => {
-			console.log("Found a match", match);
-			match.update(req.body);
-			console.log("match updated", match);
-			res.json(match);
-		})
-		.catch((err) => {
-			next(err);
-		});
-
-	// this approach is not working for me
-	// maybe it requires all fields to be passed in for the update to work?
-	// https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
-	// db.project
-	// 	.update(req.body, { returning: true, where: { project_id: req.params.id } })
-	// 	.then(([rowsUpdated, [updatedItem]]) => {
-	// 		res.json(updatedItem);
-	// 	})
-	// 	.catch((err) => {
-	// 		next(err);
-	// 	});
-});
-
-router.delete("/:id", function (req, res, next) {
-	db.project
-		.destroy({
-			where: { _id: req.params.id },
-		})
-		.then((match) => {
-			res.json({ result: "success" });
-		})
-		.catch((err) => {
-			next(err);
-		});
-});
-
-router.get("/", function (req, res, next) {
-	db.project
-		.findAll({
-			include: [
-				// { model: users, attributes: ["email"] },
-				{
-					model: db.sample,
-					as: "samples",
-					include: [
-						{ model: db.datafile, as: "files" },
-						{ model: db.source, as: "source" },
-					],
-				},
-				{ model: db.datafile, as: "files" },
-
-				{ model: db.investigator, as: "investigators" },
-			],
-		})
-		.then((matches) => {
-			res.json(matches);
-		});
-});
-
-router.post("/", function (req, res, next) {
-	// const newProject = JSON.parse(req.body);
-	// console.log("CREATE NEW PROJECT", req.body);
-	db.project
-		.create(req.body)
-		.then((created) => {
-			res.json(created);
-		})
-		.catch((err) => {
-			next(err);
-		});
-});
-
-module.exports = router;
-
-```
 
 
 ## Relations / Associations
@@ -593,3 +414,261 @@ router.post("/", function (req, res, next) {
 
 module.exports = router;
 ```
+
+## API Integration
+
+CRUD like routes
+
+```
+var express = require("express");
+var router = express.Router();
+var db = require("../db");
+
+/* GET the associated records of a project */
+router.get("/:id", function (req, res, next) {
+	db.project
+		.findOne({
+			where: { _id: req.params.id },
+			include: [
+				{
+					model: db.sample,
+					as: "samples",
+					include: [
+						{ model: db.datafile, as: "files" },
+						{ model: db.source, as: "source" },
+					],
+				},
+				{ model: db.datafile, as: "files" },
+			],
+		})
+		.then((match) => {
+			res.json(match);
+		});
+});
+
+router.patch("/:id", function (req, res, next) {
+	db.project
+		.findOne({
+			where: { project_id: req.params.id },
+		})
+		.then((match) => {
+			console.log("Found a match", match);
+			match.update(req.body);
+			console.log("match updated", match);
+			res.json(match);
+		})
+		.catch((err) => {
+			next(err);
+		});
+
+	// this approach is not working for me
+	// maybe it requires all fields to be passed in for the update to work?
+	// https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
+	// db.project
+	// 	.update(req.body, { returning: true, where: { project_id: req.params.id } })
+	// 	.then(([rowsUpdated, [updatedItem]]) => {
+	// 		res.json(updatedItem);
+	// 	})
+	// 	.catch((err) => {
+	// 		next(err);
+	// 	});
+});
+
+router.delete("/:id", function (req, res, next) {
+	db.project
+		.destroy({
+			where: { _id: req.params.id },
+		})
+		.then((match) => {
+			res.json({ result: "success" });
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+router.get("/", function (req, res, next) {
+	db.project
+		.findAll({
+			include: [
+				// { model: users, attributes: ["email"] },
+				{
+					model: db.sample,
+					as: "samples",
+					include: [
+						{ model: db.datafile, as: "files" },
+						{ model: db.source, as: "source" },
+					],
+				},
+				{ model: db.datafile, as: "files" },
+
+				{ model: db.investigator, as: "investigators" },
+			],
+		})
+		.then((matches) => {
+			res.json(matches);
+		});
+});
+
+router.post("/", function (req, res, next) {
+	// const newProject = JSON.parse(req.body);
+	// console.log("CREATE NEW PROJECT", req.body);
+	db.project
+		.create(req.body)
+		.then((created) => {
+			res.json(created);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
+
+module.exports = router;
+
+```
+
+
+
+## Migrations
+
+https://sequelize.org/master/manual/migrations.html
+
+Migrations keep your database schema in sync with the requirements of the current system architecture. 
+
+The following assumes you have a `migrations` folder in the root of your app. (`api/migrations`)
+
+
+### Initial Setup: one-time tasks
+
+Configure dependencies in the API container. The database container may not have / need node installed. Install the [sequelize CLI](https://github.com/sequelize/cli):
+ 
+```
+docker-compose exec api bash
+
+cd ../migrations
+yarn add sequelize-cli --dev # npm install --save-dev sequelize-cli
+```
+
+Set up necessary files
+
+```
+npx sequelize-cli init
+```
+
+edit the `config/config.json` file to reflect your environment. 
+
+
+### Migration definitions
+
+Migrations make use of the Sequelize Query Interface to effect schema changes in the database:
+
+https://sequelize.org/master/manual/query-interface.html
+
+Create the migration file skeleton: 
+
+```
+docker-compose exec api bash
+cd ../
+
+npx sequelize-cli migration:generate --name user-columns
+```
+
+It may be necessary to update permissions at the host level if the container writes new files as root. (Or just create the files manually outside of the container -- not that much to them). 
+
+```
+sudo chown -R account: api/migrations/
+```
+
+Follow along with:
+
+https://sequelize.org/master/manual/migrations.html#migration-skeleton
+
+Note: the database table name needs to be used here (e.g. `users` below). The `queryInterface` hasn't applied model name mappings yet. 
+
+example -- adding columns:
+
+```
+		return queryInterface.sequelize.transaction((t) => {
+			return Promise.all([
+				queryInterface.addColumn(
+					"users",
+					"username",
+					{
+						type: Sequelize.DataTypes.STRING,
+					},
+					{ transaction: t }
+				),
+			]);
+		});
+                
+```
+
+https://sequelize.org/v5/manual/data-types.html
+
+
+and don't forget to do the reverse operation in `down`:
+
+```
+		return queryInterface.sequelize.transaction((t) => {
+			return Promise.all([
+				queryInterface.removeColumn("users", "username", { transaction: t }),
+                ])
+```
+
+
+### Migration process
+
+Apply the migrations with:
+
+```
+npx sequelize-cli db:migrate
+```
+
+Undo the migrations with:
+
+```
+npx sequelize-cli db:migrate:undo
+```
+
+### Seeds
+
+```
+npx sequelize-cli db:seed:all
+```
+
+
+### Migration Examples
+
+#### Raw SQL commands
+
+Sometimes there are commands that needs to be run that don't have a query builder equivalent:
+
+```
+"use strict";
+module.exports = {
+	up: async (queryInterface, Sequelize) => {
+		await queryInterface.sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
+		await queryInterface.sequelize.query(
+			"ALTER TABLE table MODIFY table_id INTEGER NOT NULL AUTO_INCREMENT"
+		);
+		await queryInterface.sequelize.query(
+			"ALTER TABLE table AUTO_INCREMENT = 167"
+		);
+		await queryInterface.sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
+	},
+	down: async (queryInterface, Sequelize) => {
+		// put things back the way they were (minus data)
+	},
+};
+
+```
+
+### See Also
+
+[relational databases](relational-db.md)
+
+[Sequelize · feathers-docs-common](https://eddyystop.gitbooks.io/feathers-docs-common/content/databases/sequelize.html#migrations)
+
+Having trouble locating the original repo, and it seems this is an earlier version of the feathers docs that got cut. 
+
+

@@ -30,32 +30,3 @@ also need some 1/4" nut attachments (epoxy plus wood?)
 
 
 
-## OS native features
-
-https://www.raspberrypi.com/documentation/computers/os.html#using-a-usb-webcam
-
-## Web cam setup
-
-Try Jeff Geerling's webcam setup
-
-https://github.com/geerlingguy/pi-webcam  
-GitHub - geerlingguy/pi-webcam: Automation to configure a Raspberry Pi as a USB OTG webcam  
-https://gist.github.com/justinschuldt/36469e2a89d95ef158a8c4df091e9cb4  
-Directions for setting up a RaspberryPi to act as a generic USB webcam · GitHub  
-https://newatlas.com/telecommunications/jeff-geerling-raspberry-pi-hq-camera-webcam/  
-Pi Zero W and HQ camera module used as cheap webcam  
-https://github.com/geerlingguy  
-geerlingguy (Jeff Geerling) · GitHub  
-
-
-https://duckduckgo.com/?t=ffab&q=geerlingguy+github&ia=web  
-geerlingguy github at DuckDuckGo  
-
-https://duckduckgo.com/?t=ffab&q=raspberry+pi+hq+camera+maximum+video+rate&ia=web  
-raspberry pi hq camera maximum video rate at DuckDuckGo  
-https://www.raspberrypi.org/documentation/raspbian/applications/camera.md  
-Raspberry Pi Camera Module - Raspberry Pi Documentation  
-https://duckduckgo.com/?t=canonical&q=use+raspberry+pi+hq+camera+as+web+camera&ia=web  
-use raspberry pi hq camera as web camera at DuckDuckGo  
-
-
