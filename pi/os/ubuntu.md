@@ -49,7 +49,7 @@ With ethernet you only need to plug in the cable and you should be assigned an I
 
 Alternative instructions for static IPs available:
 
-[Static IP](../system/network.md#interface-configuration)
+[Static IP](../../system/network.md#interface-configuration)
 
 
 

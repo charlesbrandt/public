@@ -43,7 +43,7 @@ The group name is changed to libvirt:
 sudo adduser `id -un` libvirt
 ```
 
-Adding user '<username>' to group 'libvirt' ...
+Adding user `<username>` to group `libvirt` ...
 
 Optional: Install virt-manager (graphical user interface)
 
