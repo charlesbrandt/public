@@ -388,67 +388,12 @@ Many frameworks leverage these variables for configuration.
 
 See also: [nuxt configuration variables](../vue/nuxt.html#configuration-variables-env-dotenv)
 
+
 ## Install
 
 See what the latest versions of node are:
 
 https://nodejs.org/en/about/releases/
-
-### Docker
-
-[Docker containers](../../system/virtualization/docker.md) are a great way to ensure you're running the node environment that you think you're running. 
-
-Containers for Node applications are maintained here
-
-https://hub.docker.com/_/node/
-
-In `docker-compose.yml`, this is a good place to start
-
-```
-image: node:lts
-```
-
-If you're using a container that does not have Node installed (e.g. Centos), installing from nodesource.com seems like the best option
-
-```
-RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash # for node version 10.x
-RUN yum -y install nodejs
-RUN node --version # optional to check that it worked
-RUN npm --version # optional to check that it worked
-```
-
-NVM is tricky to use NVM in a container:
-
-```
-# nvm environment variables
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 12.16.2
-
-# Install NVM for installing node
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-RUN source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
-
-```
-
-
-#### NPM Packages & Docker
-
-Official documentation for dockerizing node applications:
-
-https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
-
-May be possible to minimize the number of npm packages pulled down during an image build:
-
-https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
-
-Looks like Seth has another tactic for this here:
-
-https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
-
 
 ### NVM
 
@@ -480,15 +425,33 @@ Install Node via NVM:
 nvm install node
 ```
 
-via:
-http://stackoverflow.com/a/24404451/1480391
-
-
 To install a specific version of node, use:
 
 ```
 nvm install 14
 ```
+
+To see what version is currently installed
+
+```
+nvm ls # this should be equivalent to `node -v`
+```
+
+To see versions available to be installed via `nvm`
+
+```
+nvm ls-remote
+```
+
+https://github.com/nvm-sh/nvm#listing-versions
+
+To install the latest lts version of node:
+
+```
+nvm install --lts
+```
+
+https://stackoverflow.com/questions/64002438/installing-node-lts-with-nvm-on-windows
 
 https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/
 
@@ -506,4 +469,61 @@ https://stackoverflow.com/questions/44700432/visual-studio-code-to-use-node-vers
 Nodesource is another popular way to install node
 
 https://github.com/nodesource/distributions/blob/master/README.md
+
+
+### Docker
+
+[Docker containers](../../system/virtualization/docker.md) are a great way to ensure you're running the node environment that you think you're running. 
+
+Containers for Node applications are maintained here
+
+https://hub.docker.com/_/node/
+
+In `docker-compose.yml`, this is a good place to start
+
+```
+image: node:lts
+```
+
+If you're using a container that does not have Node installed (e.g. Centos), installing from nodesource.com seems like the best option
+
+```
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash # for node version 10.x
+RUN yum -y install nodejs
+RUN node --version # optional to check that it worked
+RUN npm --version # optional to check that it worked
+```
+
+NVM is tricky to use in a container:
+
+```
+# nvm environment variables
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 12.16.2
+
+# Install NVM for installing node
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+```
+
+
+#### NPM Packages & Docker
+
+Official documentation for dockerizing node applications:
+
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
+May be possible to minimize the number of npm packages pulled down during an image build:
+
+https://itnext.io/npm-install-with-cache-in-docker-4bb85283fa12
+
+Looks like Seth has another tactic for this here:
+
+https://github.com/City-of-Bloomington/myBloomington/blob/master/Dockerfile
+
 

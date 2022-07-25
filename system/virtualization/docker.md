@@ -18,15 +18,16 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 ## See Also
 
-https://gitlab.com/fern-seed/web-ui-api-db/
-
-https://gitlab.com/fern-seed/web-ui-api-db/-/blob/main/README-docker.md
-
 [Docker Compose](docker-compose.md)
 
 [Orchestration](orchestration.md)
 
 [Kubernetes](kubernetes.md)
+
+https://gitlab.com/fern-seed/web-ui-api-db/
+
+https://gitlab.com/fern-seed/web-ui-api-db/-/blob/main/README-docker.md
+
 
 
 ## Dockerfile
@@ -162,29 +163,6 @@ WARNING: Access to the remote API on a privileged Docker daemon is equivalent
          documentation for details: https://docs.docker.com/go/attack-surface/
 
 
-
-
-### Create bash aliases
-
-dcu
-docker-compose up -d
-
-dcd
-docker-compose down --remove-orphans
-
-dce
-
-dcl
-
-Add the following to your `.bashrc` file (or equivalent)
-
-```
-alias dcu='docker-compose up -d'
-alias dcd='docker-compose down --remove-orphans'
-alias dcp='docker-compose ps'
-alias dce='docker-compose exec'
-alias dcl='docker-compose logs'
-```
 
 
 ## Docker Desktop for Linux
@@ -479,16 +457,10 @@ https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-st
 How do I make a Docker container start automatically on system boot? - Stack Overflow
 
 https://docs.docker.com/config/containers/start-containers-automatically/
-💤 Start containers automatically | Docker Documentation
+Start containers automatically | Docker Documentation
 
 https://duckduckgo.com/?q=docker+start+container+at+boot&t=ffab&ia=web
-💤 docker start container at boot at DuckDuckGo
-
-
-See also:
-Docker-compose
-Kubernetes
-
+docker start container at boot at DuckDuckGo
 
 
 
@@ -594,45 +566,6 @@ To see what ports are open, install `netstat`. This approach will not persist ac
 
     netstat -pan | egrep " LISTEN "
     
-
-### Troubleshooting nginx
-
-Go inside the container
-
-`docker-compose exec web bash`
-
-Or to use docker directly:
-
-`docker exec -it <container-id> /bin/bash` 
-
-[Troubleshooting](../../web/troubleshooting.md)
-
-```
-curl http://boilerplate_ui_1:3000
-curl -X GET http://boilerplate_ui_1:3000
-```
-
-If blank, may be best to connect to the ui directly via host to make sure it's working as expected. 
-
-#### Nginx Logging
-
-Logs are routed to stdout/stderr so that docker can pass them through. 
-
-Verify with check the log location `ls -la /var/log/nginx/` you will see the following output:
-
-```
-lrwxrwxrwx 1 root root   11 Apr 30 23:05 access.log -> /dev/stdout
-lrwxrwxrwx 1 root root   11 Apr 30 23:05 error.log -> /dev/stderr
-```
-
-Execute `cat access.log` inside the container and it doesn't show anything.
-
-The way to get your logs is going outside the container and running
-
-    docker logs <container-id>
-
-https://stackoverflow.com/questions/30269672/unable-to-use-lt-when-running-nginx-docker-or-cat-logs
-
 
 
 ## Context Specific Applications

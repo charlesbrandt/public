@@ -90,6 +90,21 @@ OneTab?
 https://addons.mozilla.org/en-US/firefox/addon/copy-selection-as-markdown/
 Copy Selection as Markdown – Get this Extension for 🦊 Firefox (en-US)
 
+I prefer to change a few of the default settings:
+
+Uncheck the following:
+
+"Prepend quote (>) to the selection"
+"Include link to source page in the copied text"
+
+Be sure to still give attribution!
+
+Code block style
+
+```
+let code == "fenced";
+```
+
 https://duckduckgo.com/?t=ffab&q=firefox+extension+copy+html+as+markdown&ia=web
 firefox extension copy html as markdown at DuckDuckGo
 

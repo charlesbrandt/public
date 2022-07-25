@@ -2,14 +2,9 @@
 
 Tests are a form of documentation. Describe what your application should do and have a way to confirm that it still does what you think it does. Like configuration management, tests are runnable documentation. 
 
-Run Cypress wherever you run your UI. You can still test the API by accessing the API in the same way that the UI does. 
+I prefer to run Cypress on my local machine, even if the UI is running in a container.
 
-Using containers works. Decide if you want to run it headless (CI) or with a GUI (dev). web-ui-api-db has been configured to handle either scenario. Uncomment the one you want and start it up. 
-
-https://gitlab.com/fern-seed/web-ui-api-data
-
-See also [docker with development](../../system/virtualization/docker-compose.md)
-
+It is also possible to run Cypress in a container. (See Below)
 
 ## Making Calls
 
@@ -578,6 +573,64 @@ yarn run cypress open
 
 
 ### Docker
+
+
+Using containers works. Decide if you want to run it headless (CI) or with a GUI (dev). web-ui-api-db has been configured to handle either scenario. Uncomment the one you want and start it up. 
+
+https://gitlab.com/fern-seed/web-ui-api-data
+
+See also [docker with development](../../system/virtualization/docker-compose.md)
+
+```
+
+  test:
+    # https://github.com/cypress-io/cypress-docker-images/tree/master/included
+    # may need to run `xhost local:root` on the host
+    # so the container is allowed to connect to the local X server
+    # https://github.com/bahmutov/cypress-open-from-docker-compose
+    # https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
+    image: cypress/included:8.4.0
+    container_name: boilerplate_test_1
+    # depends_on:
+    #   - ui
+    # pass custom command to start Cypress otherwise it will use the entrypoint
+    # specified in the Cypress Docker image.
+    # also pass "--project <folder>" so that when Cypress opens
+    # it can find file "cypress.json" and show integration specs
+    # https://on.cypress.io/command-line#cypress-open
+    entrypoint: cypress open --project /e2e
+    environment:
+      - DISPLAY
+      # https://docs.cypress.io/guides/guides/environment-variables#Setting
+      # pass base url to tests for referencing the web application
+      # CYPRESS_BASE_URL == CYPRESS_baseUrl
+      # Using the UI container directly removes visible refresh of page
+      # that occurs with vite proxied by nginx
+      # however, it won't work if the UI makes calls to the API (xhr)
+      # - CYPRESS_BASE_URL=http://boilerplate_ui:3000
+      # - CYPRESS_BASE_URL=http://boilerplate_web
+      - CYPRESS_BASE_URL=http://boilerplate.local
+      # use in tests with `Cypress.env("API_URL")`
+      # - CYPRESS_API_URL=http://boilerplate_api:3030
+      - CYPRESS_API_URL=http://boilerplate.local/api
+      - DEBUG=cypress:*
+    working_dir: /e2e
+    volumes:
+      - ./tests:/e2e
+      # for Cypress to communicate with the X11 server pass this socket file
+      # in addition to any other mapped volumes
+      - /tmp/.X11-unix:/tmp/.X11-unix
+
+```
+
+Where to run Cypress? 
+
+Does it matter? 
+
+Run Cypress wherever you run your UI. You can still test the API by accessing the API in the same way that the UI does. 
+
+run tests where ever ui development is happening
+
 
 It is possible to launch Cypress from within your docker setup.
 

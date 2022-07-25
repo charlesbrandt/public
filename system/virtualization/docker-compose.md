@@ -1,53 +1,64 @@
 # Docker Compose
 
-Configuration file for current project is in `docker-compose.yml`.
+Create a configuration file for the current project's docker container setup in `docker-compose.yml`.
 
-## About
+## Basics
 
-Docker Compose relies on [docker.](docker.md) Be sure to install that first.
-
-https://docs.docker.com/compose/
-
-If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
-
-    sudo apt-get install docker-compose -y
-    
 After editing the docker-compose.yml file for the services, launch them with:
 
-    docker-compose up -d
-    
-    docker-compose up -d --no-deps --build
-
-via: 
-https://stackoverflow.com/questions/36884991/how-to-rebuild-docker-container-in-docker-compose-yml
+```
+docker-compose up -d
+```
 
 Then, to bring everything down again:
 
-    docker-compose down -v
+```
+docker-compose down -v
+```
 
-To rebuild, use:
+See what is currently running:
 
-    docker-compose build
+```
+docker-compose ps
+```
 
-ERROR: for seafile-mysql no such image:
-https://stackoverflow.com/questions/37454548/docker-compose-no-such-image
+If the container is not running, it may not show up in just `docker ps`. You can still see the status in `docker-compose ps`
 
-If the container is not running, it may not show up in just `docker ps`. You can see the status in `docker-compose ps`
+To connect to a running container (or run any command inside it):
 
-Check for existing images: 
+```
+docker-compose exec [name]
+```
 
-    docker-compose ps
-    
+You can use the short name here, not potentially more verbose container_name
 
-Remove all old images
+To see what has been happening in a container, check the logs
 
-    docker-compose rm
-    
-then rebuild again.
+```
+docker-compose logs [name]
+```
+
+
+## Shell shortcuts
+
+Create bash aliases
+
+The above commands can get tiring to type every time you want to take action with a compose environment. These shortcuts help.
+
+Add the following to your `.bashrc` file (or equivalent)
+
+```
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down --remove-orphans'
+alias dcp='docker-compose ps'
+alias dce='docker-compose exec'
+alias dcl='docker-compose logs'
+```
+
 
 ## docker-compose.yml
 
-This defines all containers to be used for the application. Ideally, there are existing images that meet the requirements. 
+The file that defines all containers to be used for the application. Frequently, container images already exist that meet the requirements. 
 
 One parameter that is helpful is
 
@@ -55,18 +66,8 @@ One parameter that is helpful is
     
 Typically the parent directory name is used to create a container name. The `container_name` parameter helps keep container names consistent regardless of where they are deployed. This, in turn, makes it easier to create other configuration files that work as expected within the docker network. 
 
-In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
 
-```
-command: bash -c "
-    python manage.py migrate
-    && python manage.py runserver 0.0.0.0:8000
-  "
-```
-
-https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
-
-Beyond that, and you may want to consider building a custom image with a dedicated Dockerfile. 
+If you need to run multiple commands, you may want to consider building a custom image with a dedicated Dockerfile. 
 
 The dockerfile can be specified in the docker-compose.yml file with:
 
@@ -81,6 +82,224 @@ container-name:
 
 Reminder
 Image for service was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+
+
+### Environment Variables
+
+In `docker-compose.yml`, add a section like:
+
+```yml
+    environment:
+      POSTGRES_PASSWORD: example
+```
+
+
+It's also possible to put variables in a `.env` file and then reference those variables in the `docker-compose.yml` file
+
+https://medium.com/@cybourgeoisie/docker-env-methods-for-passing-variables-through-docker-compose-801e6fdb4a75
+
+
+### Example compose file
+
+web ui api db
+
+A useful pattern and a good reference:
+
+```yml
+version: "3"
+services:
+  web:
+    # https://hub.docker.com/_/nginx/
+    # image: nginx:latest
+    image: nginx:stable
+    container_name: boilerplate_web
+    # restart: unless-stopped
+    volumes:
+      - ./ui/dist:/srv/boilerplate/dist
+      - ./web/static:/srv/boilerplate/static
+      - ./web/ssl:/etc/nginx/ssl
+      - ./web/default.conf:/etc/nginx/conf.d/default.conf
+      # mount any static / public content for efficient serving directly
+      # ./web/public;/srv/boilerplate/files/
+    working_dir: /srv/boilerplate/
+    ports:
+      # for development
+      - 127.0.0.1:8888:80
+      # leave off '127.0.0.1' if you want to expose the service beyond localhost
+      # (useful when you want to access dev instance of boilerplate remotely
+      #  from e.g. a phone)
+      # - 8888:80
+      # for production
+      # - 80:80
+      # - 443:443
+    # if the container doesn't run, there may be a problem with the nginx.conf
+    # try running `docker-compose log web` for clues
+    # (usually SSL keys have not yet been generated in `web/ssl`)
+    # keep the container running to debug or run interactively with
+    #     docker-compose exec web bash
+    # entrypoint: ["tail", "-f", "/dev/null"]
+    networks:
+      default:
+        aliases:
+          - boilerplate.local
+
+  ui:
+    # https://hub.docker.com/_/node/
+    # for production, it's a good idea to fix the version number
+    # image: node:14
+    # but to keep things fresh in development
+    # image: node:lts
+
+    # if you add packages to packages.json, be sure to run
+    # docker-compose up -d --build
+    # so that modules are available in container
+    build:
+      context: ui/
+      dockerfile: Dockerfile
+    container_name: boilerplate_ui
+    # restart: unless-stopped
+    volumes:
+      # - ./ui:/srv/boilerplate/ui
+      - ./ui:/data
+      # - boilerplate_ui_modules:/srv/boilerplate/ui/node_modules
+    # ports:
+    #   - 127.0.0.1:3000:3000
+    working_dir: /srv/boilerplate/ui
+    command: sh -c "yarn && yarn run build"
+    # command: sh -c "yarn && yarn run dev"
+    # entrypoint: ["tail", "-f", "/dev/null"]
+
+  api:
+    # image: node:lts
+    build:
+      context: api/
+      dockerfile: Dockerfile
+    container_name: boilerplate_api
+    # restart: unless-stopped
+    volumes:
+      - ./api:/srv/boilerplate/api
+      # - boilerplate_api_modules:/srv/boilerplate/api/node_modules
+    # ports:
+    #   - 127.0.0.1:3030:3030
+    working_dir: /srv/boilerplate/api
+    # command: sh -c "yarn && yarn run dev"
+    # DEBUG=express:* node ./api/boilerplate.js
+    entrypoint: ["tail", "-f", "/dev/null"]
+    # An example of chaining multiple commands for the container
+    # More complex customization is possible through a Dockerfile
+    # command: sh -c "
+    #   mkdir -p /srv/var/log
+    #   && node ./app.js
+    #   "
+
+  # db:
+  #   # https://hub.docker.com/_/postgres/
+  #   image: postgres:latest
+  #   container_name: boilerplate_db
+  #   # restart: unless-stopped
+  #   # ports:
+  #   # helpful for using a GUI client like compass for troubleshooting
+  #   # - 127.0.0.1:27017:27017
+  #   environment:
+  #     POSTGRES_PASSWORD: example
+  #   volumes:
+  #     - ./db:/data/db
+  #     # for importing database files
+  #     # - ./dump:/srv/dump
+
+  # db:
+  #   # https://hub.docker.com/_/mongo
+  #   image: mongo:5
+  #   container_name: boilerplate_db
+  #   restart: unless-stopped
+  #   # ports:
+  #   # helpful for using a GUI client like compass for troubleshooting
+  #   # - 127.0.0.1:27017:27017
+  #   #environment:
+  #   # MONGO_INITDB_ROOT_USERNAME: root
+  #   # MONGO_INITDB_ROOT_PASSWORD: example
+  #   volumes:
+  #     - ./db:/data/db
+  #     # for importing database files
+  #     # - ./mongodump:/srv/mongodump
+
+  # db:
+  #   image: mariadb:10.5
+  #   container_name: boilerplate_db
+  #   # restart: unless-stopped
+  #   expose:
+  #     - 3306
+  #   # helpful for using a GUI client like compass or sqlectron for troubleshooting
+  #   ports:
+  #     - 127.0.0.1:3306:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: example
+  #   volumes:
+  #     - ./db:/var/lib/mysql
+  #     # for importing database files
+  #     - ./dbdump:/srv/dbdump
+
+  # redis:
+  #   container_name: boilerplate_redis
+  #   image: redis:5.0-alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     # - db_redis:/data
+  #     - ./db_redis:/data
+
+  # docs:
+  #   image: node:lts
+  #   container_name: boilerplate_docs
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./:/srv/boilerplate
+  #     # this is a bit redundant, but shows that docs could be anywhere
+  #     - ./docs:/srv/boilerplate/docs
+  #   ports:
+  #     - 7777:7777
+  #   working_dir: /srv/boilerplate
+  #   command: sh -c "yarn && yarn docs:dev"
+  #   # keep the container running
+  #   # then connect directly to debug or run interactively
+  #   # entrypoint: ["tail", "-f", "/dev/null"]
+
+  # in a CI/CD situation, running in a container could be helpful
+  # test:
+  #   # Allows for running tests in a headless mode
+  #   image: cypress/included:8.4.0
+  #   container_name: boilerplate_test_1
+  #   # restart: unless-stopped
+  #   depends_on:
+  #     - ui
+  #   environment:
+  #     - CYPRESS_BASE_URL=http://boilerplate_ui:3000
+  #     # use in tests with `Cypress.env("API_URL")`
+  #     # - CYPRESS_API_URL=http://boilerplate_api:3030
+  #     - CYPRESS_API_URL=http://boilerplate.local/api
+  #     - DEBUG=cypress:*
+  #   working_dir: /e2e
+  #   # share the current folder as volume to avoid copying
+  #   volumes:
+  #     - ./:/e2e
+
+```
+
+## Volumes
+
+How to persist data across container restarts. 
+
+What is the difference between `external: true` and `external: false`? 
+
+```
+volumes:
+  boilerplate_ui_modules:
+    external: true
+
+  boilerplate_api_modules:
+    external: true
+```
 
 ## Networking
 
@@ -118,17 +337,40 @@ networks:
     name: my-pre-existing-network
 ```
 
+## Rebuilding
+
+Sometimes the Dockerfile changes and you need to let compose know to rebuild everything. 
+
+```
+docker-compose up -d --no-deps --build
+```
+
+via: 
+https://stackoverflow.com/questions/36884991/how-to-rebuild-docker-container-in-docker-compose-yml
+
+
+To rebuild, use:
+
+    docker-compose build
+
+
+Remove all old images
+
+    docker-compose rm
+    
+then rebuild again.
+
 
 ## Custom images (Dockerfile)
 
-It's a good idea to start with an existing docker image for the type of service you want to use as a foundation for your container. For example, if you're running a node application, in `docker-compose.yml` start with:
+Start with an existing docker image for the type of service your application runs in the container. For example, if you're running a node application, in `docker-compose.yml` start with:
 
 ``` yaml
   api:
-    image: node:14
+    image: node:lts
 ```
 
-Eventually you may want some other utilities to be available within the container context. (e.g. when you run `docker-compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so they persist across restarts. 
+Eventually other additional utilities will need to be available within the container context. (e.g. when you run `docker-compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so the changes persist across restarts. 
 
 ``` yaml
   api:
@@ -137,16 +379,10 @@ Eventually you may want some other utilities to be available within the containe
       dockerfile: Dockerfile
 ```
 
-Note that the dockerfile path is relative to the value for `context`
+Note: the `Dockerfile` path is relative to the value for `context`. In this case, the `Dockerfile` would be stored at `./api/Dockerfile`. 
 
-Then, in the Dockerfile, `image: node:14` becomes `FROM node:14` and you can add the rest of the configurations as needed. See also [docker.md](docker.md)
+The `image: node:lts` configuration from `docker-compose.yml` becomes `FROM node:lts` in a `Dockerfile` and you can add the rest of the configurations as needed. See also [docker#dockerfile](docker.md#dockerfile)
 
-
-## Environment Variables
-
-It's possible to put variables in a `.env` file and then reference those variables in the `docker-compose.yml` file
-
-https://medium.com/@cybourgeoisie/docker-env-methods-for-passing-variables-through-docker-compose-801e6fdb4a75
 
 ## Troubleshooting 
 
@@ -173,19 +409,44 @@ see also: [docker.md](docker.md)
 
 
 
-## Guides
+## Installation
 
-Straightforward guide for getting nginx running:  
-https://dev.to/aminnairi/quick-web-server-with-nginx-on-docker-compose-43ol
+Docker Compose relies on [docker.](docker.md) Be sure to install that first.
 
-Great article for using Docker for a local development environment:  
-https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
+https://docs.docker.com/compose/
 
-    docker-compose -f docker-compose.builder.yml run --rm install
+If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
+
+    sudo apt-get install docker-compose -y
+    
+
+## Multiple commands
+
+In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
+
+```
+command: bash -c "
+    python manage.py migrate
+    && python manage.py runserver 0.0.0.0:8000
+  "
+```
+
+https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
+
 
 ## Parameters
 
+### -f 
+
+Specify a configuration file with a name other than `docker-compose.yml`
+
+```
+docker-compose -f docker-compose.builder.yml 
+```
+
 ### -p
+
+Using a `container_name` setting in `docker-compose.yml` makes it easy to write configuration files that work as expected. In that case `-p` is rarely needed. 
 
 If no `container_name` parameter is set in docker-compose.yml, by default, the docker project name is the parent directory name. This is usually the case for local development setups.
 
@@ -200,8 +461,14 @@ This allows configuration files to be written ahead of time to work.
 If you've checked out the repository to a directory named `boilerplate`, the project name `boilerplate` will be assumed by docker and the `-p` option may be omitted.
 
 
+## Guides
+
+Great article for using Docker for a local development environment:  
+https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
+
+
 ## See Also
 
-orchestration.md
-kubernetes.md
- 
+[Orchestration](orchestration.md)
+
+[Kubernetes](kubernetes.md)
