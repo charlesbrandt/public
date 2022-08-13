@@ -172,7 +172,8 @@ and ensure that those activities are written no matter what happens in the code 
 
 enter logging
 
-https://docs.python.org/3/howto/logging.html
+https://docs.python.org/3/howto/logging.html  
+Logging HOWTO — Python 3.10.4 documentation  
 
 
 ```
@@ -191,6 +192,36 @@ logging.error('And non-ASCII stuff, too, like Øresund and Malmö')
 Initialize your logging instance in the main script to control the destination. 
 
 If all settings should be the same across an application, use a common library that gets imported to other scripts like `common.py` or `helpers.py`.
+
+### Multiple Logs
+
+```python
+
+    # log results from each validation separately for easier tracking
+    LOG_FORMAT = ('%(asctime)s: %(levelname)-8s: %(message)s')
+    LOG_LEVEL = logging.DEBUG
+
+    tar_file = os.path.basename(tar_path)
+
+    now_utc = datetime.now(timezone.utc)
+    destination_name = tar_file.replace('.tar', '.validate.')
+    destination_name += now_utc.strftime("%Y%m%d")
+    log_destination = os.path.join(
+        metadata_dir, snapshot, destination_name)
+
+    print("Logging to:", log_destination)
+
+    validate_logger = logging.getLogger("validate.details")
+    validate_logger.setLevel(LOG_LEVEL)
+    validate_logger_file_handler = logging.FileHandler(log_destination)
+    validate_logger_file_handler.setLevel(LOG_LEVEL)
+    validate_logger_file_handler.setFormatter(
+        logging.Formatter(LOG_FORMAT, datefmt='%Y-%m-%d %H:%M:%S'))
+    validate_logger.addHandler(validate_logger_file_handler)
+
+```
+
+Then pass the `validate_logger` around to use just like `logger`. Maybe there's a better way?
 
 
 

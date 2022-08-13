@@ -13,6 +13,59 @@ https://www.ibm.com/cloud/learn/message-queues
 Message Queues: An Introduction | IBM  
 
 
+## RabbitMQ
+
+Seems to be a favorite. Has the ability to be accessed from many different languages, which is a limitation of bullmq (js only). 
+
+https://duckduckgo.com/?t=ffab&q=amqp&ia=web  
+amqp at DuckDuckGo  
+https://www.amqp.org/  
+Home | AMQP  
+https://duckduckgo.com/?t=ffab&q=celery+python&ia=web  
+celery python at DuckDuckGo  
+https://pypi.org/project/celery/  
+celery · PyPI  
+https://docs.celeryq.dev/en/latest/  
+Celery - Distributed Task Queue — Celery 5.3.0b1 documentation  
+https://docs.celeryq.dev/en/latest/getting-started/introduction.html  
+Introduction to Celery — Celery 5.3.0b1 documentation  
+https://rabbitmq.com/  
+Messaging that just works — RabbitMQ  
+https://rabbitmq.com/#community  
+Messaging that just works — RabbitMQ  
+https://github.com/rabbitmq?q=rabbitmq  
+RabbitMQ  
+https://github.com/rabbitmq/rabbitmq-server  
+rabbitmq/rabbitmq-server: Open source RabbitMQ: core server and tier 1 (built-in) plugins  
+https://github.com/topics/amqp  
+amqp · GitHub Topics  
+https://github.com/topics/mqtt  
+mqtt · GitHub Topics  
+https://github.com/emqx/emqx  
+emqx/emqx: The most scalable open-source MQTT broker for IoT  
+https://github.com/mqttjs/MQTT.js  
+mqttjs/MQTT.js: The MQTT client for Node.js and the browser  
+https://mqtt.org/  
+MQTT - The Standard for IoT Messaging  
+https://duckduckgo.com/?t=ffab&q=redis+message+queue&ia=web  
+redis message queue at DuckDuckGo  
+https://hevodata.com/learn/redis-message-queue/  
+Redis Message Queue: 4 Easy Steps to Build a Message Broker - Learn | Hevo  
+https://duckduckgo.com/?t=ffab&q=redis+vs+rabbitmq&ia=web  
+redis vs rabbitmq at DuckDuckGo  
+https://stackoverflow.com/questions/29539443/redis-vs-rabbitmq-as-a-data-broker-messaging-system-in-between-logstash-and-elas  
+Redis Vs RabbitMQ as a data broker/messaging system in between Logstash and elasticsearch - Stack Overflow  
+https://www.educba.com/rabbitmq-vs-redis/  
+RabbitMQ vs Redis | Top 9 Differences You Should Know  
+https://duckduckgo.com/?t=ffab&q=celery+vs+bull&ia=web  
+celery vs bull at DuckDuckGo  
+https://stackoverflow.com/questions/28470796/equivalent-of-celery-in-node-js  
+node.js - Equivalent of Celery in Node JS - Stack Overflow  
+https://thenewstack.io/how-kafka-and-redis-solve-stream-processing-challenges/  
+How Kafka and Redis Solve Stream-Processing Challenges – The New Stack  
+
+
+
 ## Bull & BullMQ
 
 Javascript original. Tried and true. Good if you need to support platforms that lag behind from the latest version of Node.

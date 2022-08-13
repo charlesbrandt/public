@@ -472,3 +472,15 @@ https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
 [Orchestration](orchestration.md)
 
 [Kubernetes](kubernetes.md)
+
+
+https://github.com/veggiemonk/awesome-docker#container-composition  
+GitHub - veggiemonk/awesome-docker: A curated list of Docker resources and projects  
+https://github.com/magicmark/composerize  
+GitHub - magicmark/composerize: docker run asdlksjfksdf > docker-composerize up  
+https://github.com/kubernetes/kompose  
+GitHub - kubernetes/kompose: Go from Docker Compose to Kubernetes  
+https://github.com/jwilder/dockerize  
+GitHub - jwilder/dockerize: Utility to simplify running applications in docker containers  
+https://github.com/jenssegers/captain  
+GitHub - jenssegers/captain: E️asily start and stop docker compose projects  

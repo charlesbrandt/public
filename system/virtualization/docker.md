@@ -28,6 +28,8 @@ https://gitlab.com/fern-seed/web-ui-api-db/
 
 https://gitlab.com/fern-seed/web-ui-api-db/-/blob/main/README-docker.md
 
+https://github.com/veggiemonk/awesome-docker  
+GitHub - veggiemonk/awesome-docker: A curated list of Docker resources and projects  
 
 
 ## Dockerfile

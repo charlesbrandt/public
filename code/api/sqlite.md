@@ -54,7 +54,6 @@ pragma table_info('table_name');
 ```
 
 
-
 ## Export data to csv
 
 Comma separated
@@ -79,7 +78,20 @@ sqlite3 /path/to/file.sqlite
 SELECT * from data_table;
 ```
 
+## Views
+
+Views allow complex queries to be defined in the database itself. These are read only; writing or deleting values is not supported. 
+
+To see the definition of an existing view: 
+
+```
+.schema name_of_view
+```
+
+
 ## Search / Regular Expression
+
+Just general SQL syntax here
 
 `%` matches one or more characters. `_` matches one character
 
