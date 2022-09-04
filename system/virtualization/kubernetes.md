@@ -9,8 +9,8 @@ Kubernetes
 
 https://en.wikipedia.org/wiki/Kubernetes
 
-https://github.com/ramitsurana/awesome-kubernetes
-ramitsurana/awesome-kubernetes: A curated list for awesome kubernetes sources
+https://github.com/ramitsurana/awesome-kubernetes  
+ramitsurana/awesome-kubernetes: A curated list for awesome kubernetes sources  
 
 
 ## General Info
@@ -25,6 +25,62 @@ https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-obj
 Understanding Kubernetes Objects | Kubernetes  
 https://kubernetes.io/docs/concepts/workloads/pods/  
 Pods | Kubernetes  
+
+
+## K3s
+
+Minimalistic and lightweight distribution. Allows running / developing on a single server. Works even on a Pi! 
+
+https://k3s.io/
+
+https://rancher.com/docs/k3s/latest/en/architecture/
+
+```
+curl -sfL https://get.k3s.io | sh -
+```
+
+```
+[INFO]  Verifying binary download
+[INFO]  Installing k3s to /usr/local/bin/k3s
+[INFO]  Creating /usr/local/bin/kubectl symlink to k3s
+[INFO]  Creating /usr/local/bin/crictl symlink to k3s
+[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
+[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
+[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
+[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
+[INFO]  systemd: Enabling k3s unit
+Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
+[INFO]  systemd: Starting k3s
+```
+
+
+To install on worker nodes and add them to the cluster, run the installation script with the `K3S_URL` and `K3S_TOKEN` environment variables. Here is an example showing how to join a worker node:
+
+```bash
+curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+```
+
+Setting the `K3S_URL` parameter causes K3s to run in worker mode. The K3s agent will register with the K3s server listening at the supplied URL. The value to use for `K3S_TOKEN` is stored at `/var/lib/rancher/k3s/server/node-token` on your server node.
+
+
+via [Rancher Docs: Quick-Start Guide](https://rancher.com/docs/k3s/latest/en/quick-start/)
+
+
+
+```
+sudo k3s kubectl get node
+```
+
+
+https://k3s.io/  
+ K3s: Lightweight Kubernetes  
+https://rancher.com/docs/k3s/latest/en/  
+ Rancher Docs: K3s - Lightweight Kubernetes  
+
+
+
+
 
 ## Tools
 
@@ -201,46 +257,6 @@ https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernete
 
 Microk8s and k3s also come up as options. 
 Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store. 
-
-
-### K3s
-
-Minimalistic and lightweight distribution. Allows running / developing on a single server. Works even on a Pi! 
-
-https://k3s.io/
-
-https://rancher.com/docs/k3s/latest/en/architecture/
-
-```
-curl -sfL https://get.k3s.io | sh -
-```
-
-```
-[INFO]  Verifying binary download
-[INFO]  Installing k3s to /usr/local/bin/k3s
-[INFO]  Creating /usr/local/bin/kubectl symlink to k3s
-[INFO]  Creating /usr/local/bin/crictl symlink to k3s
-[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
-[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
-[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
-[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
-[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
-[INFO]  systemd: Enabling k3s unit
-Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
-[INFO]  systemd: Starting k3s
-```
-
-
-```
-sudo k3s kubectl get node
-```
-
-
-https://k3s.io/  
- K3s: Lightweight Kubernetes  
-https://rancher.com/docs/k3s/latest/en/  
- Rancher Docs: K3s - Lightweight Kubernetes  
-
 
 
 

@@ -383,6 +383,16 @@ Note: the `Dockerfile` path is relative to the value for `context`. In this case
 
 The `image: node:lts` configuration from `docker-compose.yml` becomes `FROM node:lts` in a `Dockerfile` and you can add the rest of the configurations as needed. See also [docker#dockerfile](docker.md#dockerfile)
 
+### Rebuilding Images
+
+Rebuild an image from scratch with docker-compose 
+
+```
+docker-compose build --no-cache
+```
+
+Useful in instances when, for example, you do a `RUN apt-get update` that rarely gets re-run and then package listings get out of date. 
+
 
 ## Troubleshooting 
 

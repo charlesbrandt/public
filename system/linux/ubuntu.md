@@ -10,6 +10,8 @@ sudo apt-get install git
 Change the Terminal background.   
   - Preferences -> Profiles -> Unnamed -> Colors"  
   - Uncheck "Use colors from system theme"  
+  - Set the default terminal height to be the full height of your desktop  
+    (Initial terminal size)
 
 Change the desktop background. (right-click on the desired image in a file explorer and choose "Set as Desktop Background.")
 

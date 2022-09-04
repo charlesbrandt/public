@@ -124,3 +124,22 @@ A few things about Redis security
 https://duckduckgo.com/?t=ffab&q=redis+multiple+users&ia=web  
 redis multiple users at DuckDuckGo  
 
+## See also
+
+[Message Queues](/code/api/message-queue.md)
+Message Queues | Notes  
+
+https://duckduckgo.com/?t=ffab&q=redis+&ia=web  
+redis at DuckDuckGo  
+https://duckduckgo.com/?t=ffab&q=redis+python&ia=web  
+redis python at DuckDuckGo  
+https://hub.docker.com/r/redis/redis-stack  
+redis/redis-stack - Docker Image | Docker Hub  
+https://developer.redis.com/develop/python/redis-om/  
+Getting Started With Redis OM for Python | Redis Developer Hub  
+https://docs.redis.com/latest/rs/references/client_references/client_python/  
+Redis with Python | Redis Documentation Center  
+https://docs.redis.com/latest/rs/databases/  
+Manage databases | Redis Documentation Center  
+https://docs.redis.com/latest/rs/concepts/  
+Concepts and architecture | Redis Documentation Center  

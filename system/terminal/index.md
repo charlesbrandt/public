@@ -75,6 +75,23 @@ history | cut -c 8-
 via:  
 https://stackoverflow.com/questions/7110119/bash-history-without-line-numbers  
 
+If you need to edit the history data (like if you accidentally pass sensitive information to a command via the CLI -- it happens), you can edit the data directly in either `~/.bash_history` or `~/.bash_profile`.
+
+The `history` command can be used to remove a specific line from history:
+
+```
+history -d 1
+```
+
+And if you want to clean the entire history:
+
+```
+history -c
+```
+
+via:  
+https://linuxconfig.org/how-to-manage-bash-history  
+
 
 ## Tools
 

@@ -20,7 +20,29 @@ Update firewall to allow Samba connections
 sudo ufw allow 'Samba'
 ```
 
-It's possible to configure the shares via finder. Right click on the folder / drive and go to either "Properties -> Sharing tab" or "Local Network Share"
+## Shares
+
+Edit `/etc/samba/smb.conf`
+
+Add a section for each share
+
+```
+[Home]
+   comment = Camera Feeds
+   path = /media/account/CAMERAS
+   guest ok = no
+   browseable = no
+   create mask = 0600
+   directory mask = 0700
+```
+
+Then restart `samba`
+
+```
+sudo service smbd restart
+```
+
+https://www.techrepublic.com/article/how-to-set-up-quick-and-easy-file-sharing-with-samba/
 
 Allowing "Guest" will not require a password. Anyone on the local network can connect to the share. 
 
@@ -29,6 +51,8 @@ If you want to use a standard user account to connect to them, you'll need to as
 ```
 sudo smbpasswd -a account
 ```
+
+It's possible to configure the shares via finder. Right click on the folder / drive and go to either "Properties -> Sharing tab" or "Local Network Share". This is useful when testing a setup. However, these settings will not persist across reboots. 
 
 ### See Also
 

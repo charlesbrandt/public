@@ -1,28 +1,17 @@
 # TMUX
 
-https://github.com/gpakosz/.tmux  
-gpakosz/.tmux: 🇫🇷 Oh my tmux! My self-contained, pretty & versatile tmux configuration made with ❤️  
-https://pragprog.com/titles/bhtmux2/tmux-2/  
-tmux 2: Productive Mouse-Free Development by Brian P. Hogan  
-
-
 A session / window manager for the console. Allows tracking tabs all within the same console. This is useful when connecting to remote servers, especially when connecting with something flakey like a phone. 
 
-Install tmux on the remote server:
+Install `tmux` on the remote server:
 
     sudo apt install tmux
 
 from there you can launch `tmux` with
 
 ```
-$ tmux
+tmux
 ```
 
-This is a good guide
-
-https://tmuxcheatsheet.com/
-
-Alternatively, these notes are less complete.  
 Once inside a tmux context, it helps to know some basic commands to navigate. 
 
 to detach
@@ -31,13 +20,30 @@ to detach
 ctrl-b d # (or ctrl-p d if remapped)
 ```
 
+`tmux` is controlled using a command mode that is accessed with a command prefix. By default it's set to `ctrl-b` but that interferes with switching buffers in emacs. [I like to switch to using `ctrl-p`](#configuration). It's similar to VS Code's command mode that way. The rest of these notes will use `ctrl-p` instead of the default `ctrl-b`. 
+
+## Sessions, windows and panes
+
+Each Session contains a group of windows.
+
+Each window is made up of one or more panes. 
+
+On a small screen like a mobile device running Android, there isn't room for more than one pane, but sessions and windows help a lot.
+
+
+This is a good guide
+
+https://tmuxcheatsheet.com/
+
+## Sessions
+
 to list all sessions
 
 ```
 tmux ls
 ```
 
-ctrl-b s # (or ctrl-p s if remapped)
+ctrl-p s 
 
 
 to re-attach to the previous session
@@ -54,44 +60,53 @@ tmux attach-session -t 5
 
 to cycle through sessions from within tmux
 
-ctrl-b (     # or ctrl-p ( if remapped  
-ctrl-b )     # or ctrl-p ) if remapped  
+ctrl-p ( 
+ctrl-p ) 
 
 to rename a session  
-ctrl-b $     # or ctrl-p $ if remapped  
+ctrl-p $ 
 
 
-## Sessions, widows and panes
-
-See the previously mentioned cheat sheet. 
-
-Each Session contains a group of windows.
-
-Each window is made up of one or more panes. 
-
-On a small screen like on Android, no room for more than one pane, but sessions and windows help a lot.
 
 
 ## Windows
 
-Ctrl + b p  
+ctrl-p p  
 Previous window  
 
-Ctrl + b n  
+ctrl-p n  
 Next window  
 
-Ctrl + b 0 ... 9  
+ctrl-p 0 ... 9  
 Switch/select window by number
 
-
-Ctrl + b c  
+ctrl-p c  
 Create window  
 
-Ctrl + b ,  
+ctrl-p ,  
 Rename current window  
 
-Ctrl + b &  
+ctrl-p &  
 Close current window  
+
+
+## Panes
+
+## Panes (splits) 
+
+    %  vertical split
+    "  horizontal split
+    
+    o  swap panes
+    q  show pane numbers
+    x  kill pane
+    +  break pane into window (e.g. to select text by mouse to copy)
+    -  restore pane from window
+    ⍽  space - toggle between layouts
+    `<prefix>` q (Show pane numbers, when the numbers show up type the key to goto that pane)
+    `<prefix>` { (Move the current pane left)
+    `<prefix>` } (Move the current pane right)
+    `<prefix>` z toggle pane zoom
 
 
 
@@ -111,6 +126,15 @@ Not using ctrl-m resolves the issue where pressing enter requires a double press
 
 Is ctrl-i used for tab key on the CLI. Using it as the bind key results in needing to press tab twice for auto-complete. 
 Running out of options -- maybe ctrl-p? Similar to what is used in visual studio code
+
+A very heavily customized and popular version of a `.tmux.conf`
+
+https://github.com/gpakosz/.tmux  
+gpakosz/.tmux: Oh my tmux! My self-contained, pretty & versatile tmux configuration made with   
+
+https://pragprog.com/titles/bhtmux2/tmux-2/  
+tmux 2: Productive Mouse-Free Development by Brian P. Hogan  
+
 
 
 
@@ -209,12 +233,9 @@ Using a terminal multiplexer, you lose the ability to use your system terminal's
 
 ## See Also
 
-https://www.ocf.berkeley.edu/~ckuehl/tmux/
-
-## Resources
-
-* [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
-* [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
+ - https://www.ocf.berkeley.edu/~ckuehl/tmux/
+ - [tmux: Productive Mouse-Free Development](http://pragprog.com/book/bhtmux/tmux)
+ - [How to reorder windows](http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows)
 
 ## Screen
 
@@ -244,8 +265,6 @@ screen -r [number]
 ```
 
 to reattach
-
-
 
 
 
@@ -300,7 +319,7 @@ Kill all the tmux sessions:
 
 
 
-In tmux, hit the prefix `ctrl+b` (my modified prefix is ctrl+m) and then:
+In tmux, hit the prefix `ctrl-p` and then:
 
 ## Misc
 
@@ -443,13 +462,13 @@ From here, it helps to learn some basics. Here are a few good guides:
 https://thoughtbot.com/blog/a-tmux-crash-course
 
 ```
-For all keybindings, press ctrl-b first, then press the key you want.
+For all keybindings, press ctrl-p first, then press the key you want.
 key 	what it does
-ctrl-b, % 	split the screen in half from left to right
-ctrl-b, " 	split the screen in half from top to bottom
-ctrl-b, x 	kill the current pane
-ctrl-b, `<arrow key>` 	switch to the pane in whichever direction you press
-ctrl-b, d 	detach from tmux, leaving everything running in the background
+ctrl-p, % 	split the screen in half from left to right
+ctrl-p, " 	split the screen in half from top to bottom
+ctrl-p, x 	kill the current pane
+ctrl-p, `<arrow key>` 	switch to the pane in whichever direction you press
+ctrl-p, d 	detach from tmux, leaving everything running in the background
 ```
 
 This is an incomplete list; a more exhaustive list is available [here](https://gist.github.com/MohamedAlaa/2961058)

@@ -56,18 +56,40 @@ Then, to remove it:
 [via](https://askubuntu.com/questions/717144/remove-source-from-software-updater)
 
 
+## Backup existing system
+
+if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
+
+
 
 ## Creating a bootable USB
 
-will need to do this before starting fresh.  On Ubuntu, there is usb-creator built in...
-you can use that on a standard Ubuntu machine, but XUbuntu does not run on Gnome, so usb-creator is not available for it.
+Download the latest version of the [image you want to install](index.md):
 
-or use this utility:  
+https://ubuntu.com/download/desktop
+
+### Etcher
+
+Balena Etcher is an easy to use utility that works the same on most OSes:
+
+https://www.balena.io/etcher/
+
+### usb-creator
+
+On Ubuntu, `usb-creator-gtk` is a built in.  
+XUbuntu does not run on Gnome, so `usb-creator` is not available for it.  
+
+### unetbootin
+
 http://unetbootin.sourceforge.net/  
 
+```
 sudo apt-get install unetbootin
+```
 
-Or you can make the USB manually:  
+### Manual
+
+You can make the USB manually:  
 http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/  
 
 

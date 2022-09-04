@@ -29,8 +29,13 @@ Development, Programming
 
 [local dev](local-development.md)  
 
-## Projects / About
+## Templates
 
+[templates](templates.md)  
 [boilerplate](boilerplates.md)  
+
+
+
+## Projects / About
 
 [repos](repositories.md)  
