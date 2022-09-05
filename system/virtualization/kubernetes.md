@@ -27,7 +27,337 @@ https://kubernetes.io/docs/concepts/workloads/pods/
 Pods | Kubernetes  
 
 
-## K3s
+## Minikube
+
+https://minikube.sigs.k8s.io/docs/start/
+
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+look for
+
+> Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+
+then 
+
+```
+minikube start
+```
+
+https://minikube.sigs.k8s.io/docs/start/
+
+
+```
+kubectl get po -A
+```
+
+
+Web interface for cluster
+
+```
+minikube dashboard
+```
+
+
+## Skaffold
+
+```
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+sudo install skaffold /usr/local/bin/
+```
+
+I had an easier time getting running with Minikube, but K3s should work equally well. 
+
+The examples are a great way to get started.
+
+- Clone the Skaffold repository:
+    
+    ```bash
+    git clone --depth 1 https://github.com/GoogleContainerTools/skaffold
+    ```
+    
+- Change to the `examples/getting-started` in skaffold directory.
+    
+    ```bash
+    cd skaffold/examples/getting-started
+    ```
+
+https://skaffold.dev/docs/quickstart/  
+Quickstart | Skaffold  
+
+Try running them and testing them out (locally).
+
+https://skaffold.dev/docs/design/config/  
+Skaffold Pipeline | Skaffold  
+https://skaffold.dev/docs/pipeline-stages/deployers/  
+Deploy | Skaffold  
+https://skaffold.dev/  
+Skaffold  
+
+https://skaffold.dev/docs/pipeline-stages/  
+Skaffold Pipeline Stages | Skaffold  
+https://skaffold.dev/docs/pipeline-stages/filesync/  
+File Sync | Skaffold  
+https://skaffold.dev/docs/design/  
+Architecture and Design | Skaffold  
+https://skaffold.dev/docs/tutorials/  
+Tutorials | Skaffold  
+
+
+
+
+
+## Tools
+
+Make sure you have the basics installed locally:
+
+  - Docker  
+  - kubectl  
+  - kubeadm  
+
+```
+cd ~/tools
+```
+
+TODO: consider best path for binaries for a user
+
+
+### kubectl
+
+`kubectl` is the main CLI for managing kubernetes
+
+Make sure you have `kubectl` installed. You can install `kubectl` according to the instructions in Install and Set Up kubectl.
+
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+```
+
+Validate
+
+```
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(<kubectl.sha256)  kubectl" | sha256sum --check
+```
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+#### global
+
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+chmod +x ./kubectl
+    
+sudo mv ./kubectl /usr/local/bin/kubectl
+    
+kubectl version
+```
+
+#### local
+
+Any reason to install as root?
+local bin seems sufficient
+Some notes about paths
+
+```
+vi ~/.bashrc
+
+PATH="${PATH}:~/tools/"  
+
+source ~/.bashrc
+```
+
+
+
+
+### kompose
+
+When migrating from docker-compose, Kompose is a useful utility for converting from a `docker-compose.yml` to a manifest
+
+https://github.com/kubernetes/kompose
+
+https://github.com/kubernetes/kompose/blob/master/docs/installation.md#ubuntudebian
+
+```
+wget https://github.com/kubernetes/kompose/releases/download/v1.26.1/kompose_1.26.1_amd64.deb # Replace 1.26.1 with latest tag
+sudo apt install ./kompose_1.26.1_amd64.deb
+```
+
+Skaffold has a convenience wrapper for calling kompose
+
+```
+skaffold init --compose-file docker-compose.yml
+```
+
+
+
+
+### kubeadm
+
+Many good system checks to review here:
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+Saw many mentions about the importance of disabling swap. 
+Not sure what happens, but I'll heed the warning. 
+
+https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux
+
+```
+cat /proc/swaps
+sudo swapoff -a
+sudo vi /etc/fstab
+
+```
+
+Warning: These instructions exclude all Kubernetes packages from any system upgrades. This is because kubeadm and Kubernetes require special attention to upgrade. 
+
+https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
+These will install `kubectl` too! :)
+
+```
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+## Manifests
+
+https://prefetch.net/blog/2019/10/16/the-beginners-guide-to-creating-kubernetes-manifests/
+
+Time to describe the service and its architecture. 
+
+Describe your service's architecture. 
+
+Start with something simple. Nginx serving static files seems like a good place to begin. 
+
+If you haven't yet, explore the way skaffold examples are configured. Those are good to leverage. 
+
+
+### Helm
+
+Configuration Management for the services running on your cluster. Similar to docker-compose.yml files in the Docker ecosystem.
+
+From their site: 
+
+```
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+```
+
+https://helm.sh/
+
+https://github.com/helm/helm
+
+Download an appropriate release:
+
+https://github.com/helm/helm/releases/tag/v3.0.3
+
+Unpack it.
+
+    cd ~/Downloads
+    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
+    cd [directory]
+    
+    helm create [chart-name]
+
+
+
+## Ingress
+
+An Ingress Controller handles how traffic outside of a pod is routed within the pod. Nginx is a common option. Kong is built on Nginx and is another good option.
+
+### traefik
+
+### 
+
+### Kong
+
+https://duckduckgo.com/?t=ffab&q=kong+rbac&ia=web  
+kong rbac at DuckDuckGo  
+https://github.com/mr5/kong-rbac  
+mr5/kong-rbac: RBAC plugin for KongCE, it's still in development.DO NOT use it in production.  
+https://keyvatech.com/2020/01/15/setting-up-role-based-access-control-rbac-with-kong-enteprise/  
+Setting up Role-Based Access Control (RBAC) with Kong Enteprise - Keyva  
+https://duckduckgo.com/?t=ffab&q=secure+kong+community+edition&ia=web  
+secure kong community edition at DuckDuckGo  
+https://medium.com/devopsturkiye/kong-api-gateway-installing-configuring-and-securing-dfea423ee53c  
+Kong Api Gateway: Installing, Configuring and Securing. | by Cagri Ersen | Devops Türkiye| Medium  
+https://duckduckgo.com/?t=ffab&q=kong+authentication+plugins&ia=web  
+kong authentication plugins at DuckDuckGo  
+https://docs.konghq.com/hub/kong-inc/oauth2/  
+OAuth 2.0 Authentication plugin | Kong Docs  
+https://duckduckgo.com/?t=ffab&q=kong+vs+nginx&ia=web  
+kong vs nginx at DuckDuckGo  
+https://discuss.konghq.com/t/kong-vs-nginx-kunernetes-ingress-controller/1985  
+Kong VS nginx kunernetes ingress controller - Questions - Kong Nation  
+
+
+## Auth
+
+https://kubernetes.io/  
+Kubernetes  
+https://duckduckgo.com/?t=ffab&q=kubernetes+authentication&ia=web  
+kubernetes authentication at DuckDuckGo  
+https://kubernetes.io/docs/reference/access-authn-authz/authorization/  
+Authorization Overview | Kubernetes  
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/  
+Authenticating | Kubernetes  
+https://kubernetes.io/docs/concepts/security/controlling-access/  
+Controlling Access to the Kubernetes API | Kubernetes  
+
+
+https://duckduckgo.com/?t=ffab&q=how+to+manage+private+keys+store&ia=web
+how to manage private keys store at DuckDuckGo
+https://duckduckgo.com/?t=ffab&q=kubernetes+key+storage&ia=web
+kubernetes key storage at DuckDuckGo
+https://duckduckgo.com/?t=ffab&q=kubernetes+identity&ia=web
+kubernetes identity at DuckDuckGo
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+Authenticating | Kubernetes
+https://duckduckgo.com/?q=keystone+identity+manager&t=ffcm&ia=web
+keystone identity manager at DuckDuckGo
+https://keystonev1.docs.apiary.io/#
+Keystone Identity Manager SSO API v1 · Apiary
+https://docs.openstack.org/keystone/latest/
+Keystone, the OpenStack Identity Service — keystone 20.0.1.dev10 documentation
+https://docs.openstack.org/api-ref/identity/index.html
+ Welcome to keystone’s documentation! — keystone documentation
+
+
+
+
+
+## Cluster Distributions
+
+There are many different ways to configure kubernetes clusters. A common way is to deploy them to a managed cloud service like Google, AWS, or Azure. The exact distribution you use may vary, but the concepts should transfer from one context to another. 
+
+These notes focus on local setups (running your own cluster), since that's a good way to learn. 
+
+Especially useful for development purposes
+
+https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
+ running a developer setup with kubernetes at DuckDuckGo  
+https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
+ Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
+https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
+ The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
+
+### K3s
 
 Minimalistic and lightweight distribution. Allows running / developing on a single server. Works even on a Pi! 
 
@@ -78,93 +408,16 @@ https://k3s.io/
 https://rancher.com/docs/k3s/latest/en/  
  Rancher Docs: K3s - Lightweight Kubernetes  
 
-
-
-
-
-## Tools
-
-Make sure you have the basics installed locally:
-
-  - Docker  
-  - kubectl  
-  - kubeadm  
+To uninstall
 
 ```
-cd ~/tools
-```
-
-TODO: consider best path for binaries for a user
-
-
-### kubectl
-
-```
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x kubectl
-```
-
-Validate
-
-```
-curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-echo "$(<kubectl.sha256)  kubectl" | sha256sum --check
-```
-
-Any reason to install as root?
-local bin seems sufficient
-Some notes about paths
-
-```
-vi ~/.bashrc
-
-PATH="${PATH}:~/tools/"  
-
-source ~/.bashrc
-```
-
-https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
-
-### kubeadm
-
-Many good system checks to review here:
-
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-
-Saw many mentions about the importance of disabling swap. 
-Not sure what happens, but I'll heed the warning. 
-
-https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux
-
-```
-cat /proc/swaps
-sudo swapoff -a
-sudo vi /etc/fstab
-
-```
-
-Warning: These instructions exclude all Kubernetes packages from any system upgrades. This is because kubeadm and Kubernetes require special attention to upgrade. 
-
-https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
-
-These will install `kubectl` too! :)
-
-```
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl
-
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
+/usr/local/bin/k3s-uninstall.sh
 ```
 
 
+### minikube
 
+see above
 
 ### kind
 
@@ -221,24 +474,6 @@ https://raw.githubusercontent.com/kubernetes-sigs/kind/main/site/content/docs/us
 raw.githubusercontent.com/kubernetes-sigs/kind/main/site/content/docs/user/kind-example-config.yaml  
 
 
-
-
-## Cluster Distributions
-
-There are many different ways to configure kubernetes clusters. A common way is to deploy them to a managed cloud service like Google, AWS, or Azure. The exact distribution you use may vary, but the concepts should transfer from one context to another. 
-
-These notes focus on local setups (running your own cluster), since that's a good way to learn. 
-
-Especially useful for development purposes
-
-https://duckduckgo.com/?t=ffab&q=running+a+developer+setup+with+kubernetes&ia=web  
- running a developer setup with kubernetes at DuckDuckGo  
-https://developer.ibm.com/components/kubernetes/articles/setup-guide-for-kubernetes-developers/  
- Setup guide for Kubernetes developers: So you want to fix Kubernetes? – IBM Developer  
-https://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/  
- The Kubernetes Development Workflow – 3 Critical Steps | Loft Blog  
-
-
 ### Stock Kubernetes
 
 Currently following along and summarizing these resources:
@@ -251,7 +486,7 @@ https://kubernetes.io/docs/setup/
    
 https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
 
-### Local Development
+### Microk8s
 
 https://developer.ibm.com/technologies/containers/blogs/options-to-run-kubernetes-locally/
 
@@ -286,22 +521,6 @@ https://github.com/topics/docker
 
 
 
-### kubectl
-
-kubectl is the default CLI for managing kubernetes
-
-#### Install kubectl
-
-Make sure you have kubectl installed. You can install kubectl according to the instructions in Install and Set Up kubectl.
-
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-
-    chmod +x ./kubectl
-    
-    sudo mv ./kubectl /usr/local/bin/kubectl
-    
-    kubectl version
-
 
 ### VS Code 
 
@@ -333,75 +552,6 @@ https://github.com/derailed/k9s/releases
 
 
 
-## Deploy a service
-
-Start with something simple. Nginx serving static files seems like a good place to begin. 
-
-## Helm
-
-Configuration Management for the services running on your cluster. Similar to docker-compose.yml files in the Docker ecosystem.
-
-From their site: 
-
-```
-Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
-
-Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
-```
-
-https://helm.sh/
-
-https://github.com/helm/helm
-
-Download an appropriate release:
-
-https://github.com/helm/helm/releases/tag/v3.0.3
-
-Unpack it.
-
-    cd ~/Downloads
-    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
-    cd [directory]
-    
-    helm create [chart-name]
-
-
-
-
-
-## Auth
-
-https://kubernetes.io/  
-Kubernetes  
-https://duckduckgo.com/?t=ffab&q=kubernetes+authentication&ia=web  
-kubernetes authentication at DuckDuckGo  
-https://kubernetes.io/docs/reference/access-authn-authz/authorization/  
-Authorization Overview | Kubernetes  
-https://kubernetes.io/docs/reference/access-authn-authz/authentication/  
-Authenticating | Kubernetes  
-https://kubernetes.io/docs/concepts/security/controlling-access/  
-Controlling Access to the Kubernetes API | Kubernetes  
-
-
-https://duckduckgo.com/?t=ffab&q=how+to+manage+private+keys+store&ia=web
-how to manage private keys store at DuckDuckGo
-https://duckduckgo.com/?t=ffab&q=kubernetes+key+storage&ia=web
-kubernetes key storage at DuckDuckGo
-https://duckduckgo.com/?t=ffab&q=kubernetes+identity&ia=web
-kubernetes identity at DuckDuckGo
-https://kubernetes.io/docs/reference/access-authn-authz/authentication/
-Authenticating | Kubernetes
-https://duckduckgo.com/?q=keystone+identity+manager&t=ffcm&ia=web
-keystone identity manager at DuckDuckGo
-https://keystonev1.docs.apiary.io/#
-Keystone Identity Manager SSO API v1 · Apiary
-https://docs.openstack.org/keystone/latest/
-Keystone, the OpenStack Identity Service — keystone 20.0.1.dev10 documentation
-https://docs.openstack.org/api-ref/identity/index.html
- Welcome to keystone’s documentation! — keystone documentation
-
-
-
 ## Similar Tools
 
 Kubernetes is compared to Docker Swarm.
@@ -425,27 +575,3 @@ https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
 https://landscape.cncf.io/
 CNCF Cloud Native Interactive Landscape
 
-## Ingress
-
-An Ingress Controller handles how traffic outside of a pod is routed within the pod. Nginx is a common option. Kong is built on Nginx and is another good option.
-
-### Kong
-
-https://duckduckgo.com/?t=ffab&q=kong+rbac&ia=web  
-💤 kong rbac at DuckDuckGo  
-https://github.com/mr5/kong-rbac  
-💤 mr5/kong-rbac: RBAC plugin for KongCE, it's still in development.DO NOT use it in production.  
-https://keyvatech.com/2020/01/15/setting-up-role-based-access-control-rbac-with-kong-enteprise/  
-💤 Setting up Role-Based Access Control (RBAC) with Kong Enteprise - Keyva  
-https://duckduckgo.com/?t=ffab&q=secure+kong+community+edition&ia=web  
-secure kong community edition at DuckDuckGo  
-https://medium.com/devopsturkiye/kong-api-gateway-installing-configuring-and-securing-dfea423ee53c  
-Kong Api Gateway: Installing, Configuring and Securing. | by Cagri Ersen | Devops Türkiye☁️ 🐧 🐳 ☸️ | Medium  
-https://duckduckgo.com/?t=ffab&q=kong+authentication+plugins&ia=web  
-kong authentication plugins at DuckDuckGo  
-https://docs.konghq.com/hub/kong-inc/oauth2/  
-OAuth 2.0 Authentication plugin | Kong Docs  
-https://duckduckgo.com/?t=ffab&q=kong+vs+nginx&ia=web  
-kong vs nginx at DuckDuckGo  
-https://discuss.konghq.com/t/kong-vs-nginx-kunernetes-ingress-controller/1985  
-Kong VS nginx kunernetes ingress controller - Questions - Kong Nation  

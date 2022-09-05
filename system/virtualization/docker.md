@@ -18,11 +18,11 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 ## See Also
 
+[Kubernetes](kubernetes.md)
+
 [Docker Compose](docker-compose.md)
 
 [Orchestration](orchestration.md)
-
-[Kubernetes](kubernetes.md)
 
 https://gitlab.com/fern-seed/web-ui-api-db/
 
