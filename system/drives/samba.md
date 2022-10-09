@@ -24,6 +24,10 @@ sudo ufw allow 'Samba'
 
 Edit `/etc/samba/smb.conf`
 
+```
+sudo vi /etc/samba/smb.conf 
+```
+
 Add a section for each share
 
 ```
@@ -39,7 +43,7 @@ Add a section for each share
 Then restart `samba`
 
 ```
-sudo service smbd restart
+sudo service smbd restart && sudo service smbd status
 ```
 
 https://www.techrepublic.com/article/how-to-set-up-quick-and-easy-file-sharing-with-samba/
@@ -56,7 +60,7 @@ It's possible to configure the shares via finder. Right click on the folder / dr
 
 ### See Also
 
-https://linuxhint.com/share-folder-on-local-network-with-ubuntu/
+ https://linuxhint.com/share-folder-on-local-network-with-ubuntu/
 
 
 ## Backup Configs
@@ -74,3 +78,7 @@ sudo /etc/init.d/samba reload
 ```
 sudo mount -t cifs //192.168.1.234/data ~/shared-drive
 ```
+
+Or, in finder / files browser use:
+
+Other Locations -> Connect to Server -> smb://192.168.1.234

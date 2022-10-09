@@ -4,11 +4,6 @@ The way computers talk to one another.
 
 Every computer on a network has it's own address. [IP address -- Internet Protocol](https://en.wikipedia.org/wiki/IP_address)
 
-https://www.google.com/search?q=ubuntu+gnome+3+change+IPs  
-ubuntu gnome 3 change IP - Google Search  
-https://www.lifewire.com/how-to-configure-networking-in-gnome-4682592  
-How to Configure Networking in GNOME  
-
 There are ip address ranges that are designated for internal (private) networks.
 
 192.168.1.x is a common one. 
@@ -18,41 +13,24 @@ There are ip address ranges that are designated for internal (private) networks.
 What's a good layout for ip assignments?
 Example documentation
 
-### CSV
-
-Keep your layout in your own csv file. eg.
-
-~/home/network.csv
-
-or
-
-~/notes/home/network/layout-network.csv
-
-for sharing, a spreadsheet is a lot easier. 
-can still track it in version control in the meantime
-
-### MD
-
-a text file is also ok
-whatever is easiest to keep up to date
-
-~/notes/home/network/layout-network.md
-
-### SVG
-
-Good for network diagrams
-
-What about keeping the data in an SVG? 
-
-Or a web-based SVG interface backed by a database? 
-
-
+Just use `/etc/hosts` and keep it around in your configurations repo (e.g. `~/alpha/system/hosts`)
 
 ## Interface Configuration
 
-Often it's pretty straightforward to use a GUI. If you want to configure an interface via a CLI, it's necessary to know where the OS stores the configuration settings. This varies from OS to OS. 
+You need to know a few details about your local network before you configure a static ip. 
 
-### Ubuntu
+Network IP range (TODO: network class, CIDR notation)
+Available IP
+Gateway
+DNS 
+
+
+Often it's pretty straightforward to use a GUI. 
+
+If you want to configure an interface via a CLI, it's necessary to know where the OS stores the configuration settings. This varies from OS to OS. 
+
+
+## Prerequisites (Pi)
 
 On a Raspberry Pi, disable cloud config:
 To disable cloud-init's
@@ -64,115 +42,143 @@ with the following:
 network: {config: disabled}
 ```
 
-Find the interface in use
+## NetworkManager
 
-    ip address
+NetworkManager is the system... well... umm.. managing the network. 
 
-enp0s25
+https://networkmanager.dev/docs/admins/
+NetworkManager for administrators
+https://en.wikipedia.org/wiki/NetworkManager
+NetworkManager - Wikipedia
+https://www.networkmanager.dev/
+NetworkManager
+https://www.networkmanager.dev/docs/
+Documentation
 
-The netplan configuration is located in /etc/netplan
 
-    cd /etc/netplan
-    
-    sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml.dhcp
-    
-Modify the netplan configuration. 
+It has a cli: `nmcli` that can be used to modify the network configuration. 
 
-    sudo vi 01-network-manager-all.yaml
+This is what allows you to enable wifi on a machine with only a CLI. 
+
+https://networkmanager.dev/docs/api/latest/nmcli.html
+nmcli: NetworkManager Reference Manual
+
+https://www.tecmint.com/nmcli-configure-network-connection/
+How to Configure Network Connection Using 'nmcli' Tool
+https://www.makeuseof.com/configure-static-ip-address-settings-ubuntu-22-04/
+How to Configure Static IP Address on Ubuntu 22.04 LTS
+https://www.makeuseof.com/connect-to-wifi-with-nmcli/
+How to Connect to Wi-Fi Through the Linux Terminal With Nmcli
+
+
+### Interfaces
+
+
+It is very convenient for seeing the status of the network. Dare I say better than `ip address`?
+
+```
+nmcli
+```
+
+
+An alternative way to find the interface in use:
+
+```
+ip address
+```
+
+Use the name that comes after the number, for example:
+
+```
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+```
+
+`eno1` would be the adapter name. 
+
+
+Don't assume `eth0` will just work.
+
+
+### Netplan
+
+https://netplan.io/
+Canonical Netplan
+
+Netplan configuration files are located in `/etc/netplan`
+
+When editing `yaml` files, it's easy to make syntax errors. To detect them, you'll want a linter:
+
+```
+sudo apt install yamllint
+
+yamllint /etc/netplan/01-netplan.yaml
+```
+
+https://unix.stackexchange.com/questions/681220/netplan-generate-gateway4-has-been-deprecated-use-default-routes-instead
+
+
+Create a new netplan configuration. 
+
+```
+cd /etc/netplan
+sudo vi 02-main-nic.yaml
+```
 
 add a section like: 
 
 ```
 network:
   ethernets:
-    eth0:
-      dhcp4: no
-      addresses: [192.168.1.200/24]
-      gateway4: 192.168.1.1
+    eno1:
+      dhcp4: false
+      addresses: [192.168.1.234/24]
+      routes:
+        - to: default
+          via: 192.168.1.1
       nameservers:
-        addresses: [8.8.8.8,4.2.2.2]
+        addresses: [8.8.8.8, 4.2.2.2]
+
 ```
 
 To apply the configuration and have changes take effect, run:
 
-    sudo netplan apply 
-
+```
+sudo netplan apply 
+```
 
 [adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 
+https://netplan.io/examples/
+Netplan | Backend-agnostic network configuration in YAML
+
+
+### Troubleshooting
+
+Ping the gateway. If that doesn't work, the configuration is incorrect. Check your settings, your network addresses, etc (is it on a different subnet?)
+
+```
+ping 192.168.1.1
+```
+
+
+### Related Tasks
 
 [Copy SSH keys to the new machine](terminal/ssh.md)
+
+
+### GUI
+
+https://www.google.com/search?q=ubuntu+gnome+3+change+IPs  
+ubuntu gnome 3 change IP - Google Search  
+https://www.lifewire.com/how-to-configure-networking-in-gnome-4682592  
+How to Configure Networking in GNOME  
+
+
 
 [Configure a firewall](firewall.md)
 
 
-## Remote Connections
-
-Ngrok looks like a cool service that can expose a local service via a remotely accessible address
-
-Following along with:
-
-https://www.endtoend.ai/tutorial/ngrok-ssh-forwarding/
-
-Sign in: https://dashboard.ngrok.com/signup
-
-On the server with the service you want to access, 
-
-```
-wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip
-unzip /path/to/ngrok.zip
-chmod +x ngrok
-
-```
-
-or
-
-```
-sudo snap install ngrok
-```
-
-Start up the forwarding
-
-```
-ngrok tcp 22
-```
-
-Connect to the service from any remote system:
-
-```
-ssh <YOUR_USERNAME>@0.tcp.jp.ngrok.io -p 11111
-```
-
-
-## Open Ports
-
-On a linux machine you can install `netstat` to see what ports are currently open:
-
-    sudo apt install net-tools
-
-    netstat -pan | egrep " LISTEN "
-    
-    netstat -tulnp
-    
-t – Show TCP
-u – Show UDP
-l – Show only listening processes (netstat can show both listening and all established connections, i.e. as a client too)
-n – Do not resolve network IP address names or port numbers
-p – Show the process name that is listening on the port
-
-Similar to `netstat`, but the focus is on processes:
-
-    ss -nutlp
-    
-    lsof -i
-
-via: 
-https://www.thegeekdiary.com/centos-rhel-how-to-find-if-a-network-port-is-open-or-not/
-
-    
-To scan open ports from another (external) machine that's on the same network
-
-    nmap [ip of machine to scan]
+## Security, Ports, Firewalls
 
 ### Common Ports
 
@@ -183,13 +189,72 @@ DNS servers    53	 tcp	potential trojan (probably dns)
 ipps	       631	        Internet Printing Protocol over HTTPS
 
 
-## Firewall
+### Firewall
 
 Firewalls block external traffic from entering internal networks and hosts. 
 
-iptables
+Ubuntu uses `ufw`. `ufw` is disabled by default. Enable this first on a new host machine! :)
 
-    iptables -xvn -L
+```
+sudo ufw enable
+```
+
+Then allow the ports that you want to be accessible on your local network 
+
+```
+sudo ufw allow 22
+```
+
+https://ubuntu.com/server/docs/security-firewall
+
+### iptables
+
+See what netfilter rules have been applied with `iptables` tool
+
+```
+iptables -xvn -L
+```
+
+
+### netstat
+
+On a linux machine you can install `netstat` to see what ports are currently open:
+
+```
+sudo apt install net-tools
+
+netstat -plan 
+
+netstat -pan | egrep " LISTEN "
+    
+netstat -tulnp
+```
+
+t – Show TCP
+u – Show UDP
+l – Show only listening processes (netstat can show both listening and all established connections, i.e. as a client too)
+n – Do not resolve network IP address names or port numbers
+p – Show the process name that is listening on the port
+
+Similar to `netstat`, but the focus is on processes:
+
+``
+ss -nutlp
+    
+lsof -i
+```
+
+via: 
+https://www.thegeekdiary.com/centos-rhel-how-to-find-if-a-network-port-is-open-or-not/
+
+### nmap
+    
+To scan open ports from another (external) machine that's on the same network
+
+```
+nmap [ip of machine to scan]
+```
+
 
 
 ## DNS
@@ -212,8 +277,9 @@ You can always add the host & ip to your `/etc/hosts` file and then it will reso
 
 ## Traceroute
 
-    sudo apt install inetutils-traceroute 
-
+```
+sudo apt install inetutils-traceroute 
+```
 
 
 

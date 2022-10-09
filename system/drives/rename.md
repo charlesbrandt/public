@@ -9,13 +9,13 @@
 once you've determined the filesystem type, you'll need to unmount the device. This is different than ejecting:
 
 ```
-    sudo umount <device>
+sudo umount <device>
 ```
 
 for example:
 
 ```
-    sudo umount /dev/sde1
+sudo umount /dev/sde1
 ```
 
 
@@ -44,6 +44,11 @@ sudo mlabel -i /dev/sdc2 -s ::
 ## NTFS
 
 ```
-ntfslabel /dev/sdc2 Seagate_Backup_Plus_Drive
+sudo ntfslabel /dev/sdc2 Seagate_Backup_Plus_Drive
 ```
 
+## Ext4
+
+```
+sudo tune2fs -L DATA-COPY /dev/sdb3 
+```

@@ -58,8 +58,47 @@ Then, to remove it:
 
 ## Backup existing system
 
-if backing things up to an NTFS drive, it might be better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle)
+Move out media first. Use Disk Analyzer to locate it.
+e.g.
 
+```
+mv ~/Pictures /media/account/path/to/external/drive
+```
+
+Ideally, get rid of any Spotify cached files. These are encrypted and only take up space. 
+
+```
+rm -R ~/snap/spotify
+```
+
+or
+
+```
+rm -R ~/.config/spotify
+```
+
+When backing things up to an external drive, it's better to make a tar file of everything so that permissions are preserved correctly (otherwise scripts get reset as not executable... a hassle) and you don't end up with a large number of inodes getting used on the destination drive.
+
+Close everything first? (e.g. browsers)
+
+```
+tar -zcvf /media/account/externaldrive/ ~/
+```
+
+```
+mkdir -p /media/account/T7/out-system/
+sudo tar -zcvf /media/account/T7/out-system/20221008-ubuntu-20.04-home-directory.tgz ~/
+sudo chown account: /media/account/T7/out-system/20221003-ubuntu-20.04-home-directory.tgz
+```
+
+Ideally get the system too, especially if wiping an existing system clean. This helps if there are cron configurations, git repos, etc
+
+```
+sudo tar -zcvf /media/account/T7/out-system/20221003-ubuntu-20.04-system.tgz --exclude=/media --exclude=/home/account /
+sudo chown account: /media/account/T7/out-system/20221003-ubuntu-20.04-system.tgz
+```
+
+Ideally don't make changes to anything if this is a live system. 
 
 
 ## Creating a bootable USB
@@ -104,7 +143,7 @@ I'm always tempted to let the OS decide what scheme to use
 
 Especially for advanced features like an encrypted drive -- sometimes it's challenging to choose the right configuration.
 
-However, it's worth making a few good choices now. 
+However, it's worth making a few good intentional choices now. 
 
 Some things I like to change
 

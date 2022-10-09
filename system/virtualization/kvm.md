@@ -1,31 +1,8 @@
 # KVM / QEMU
 
-Exploring KVM and Qemu for Virtual Machines on Linux
+KVM and Qemu provide Virtual Machines on Linux. Lighter weight and easier to manage remotely than virtualbox.
 
-https://www.tecmint.com/install-and-configure-kvm-in-linux/
-
-## Prerequisites
-
-Make sure that your system has the hardware virtualization extensions: For Intel-based hosts, verify the CPU virtualization extension [vmx] are available using following command.
-
-    [root@server ~]# grep -e 'vmx' /proc/cpuinfo
-
-For AMD-based hosts, verify the CPU virtualization extension [svm] are available.
-
-    [root@server ~]# grep -e 'svm' /proc/cpuinfo
-
-If there is no output make sure that virtualization extensions is enabled in BIOS. 
-
-Verify that KVM modules are loaded in the kernel “it should be loaded by default”.
-
-    [root@server ~]# lsmod | grep kvm
-
-The output should contains kvm_intel for intel-based hosts or kvm_amd for amd-based hosts.
-
-    sudo apt-get update
-    
-
-### Step 1: KVM Installation and Deployment
+### KVM Installation and Deployment
 
 Guide: https://help.ubuntu.com/community/KVM/Installation
 
@@ -45,18 +22,30 @@ sudo adduser `id -un` libvirt
 
 Adding user `<username>` to group `libvirt` ...
 
+After the installation, you need to relogin so that your user becomes an effective member of kvm and libvirtd user groups. The members of this group can run virtual machines. 
+
+## Virsh
+
+Verify everything works as expected by running:
+
+```
+virsh list --all
+```
+
+## Virt-manager
+
 Optional: Install virt-manager (graphical user interface)
 
 If you are working on a desktop computer you might want to install a GUI tool to manage virtual machines.
 
 ```
 sudo apt-get install virt-manager
-sudo apt install libosinfo-bin
 ````
 
 For a list of osinfo strings to use with the `--os-variant` option:
 
 ```
+sudo apt install libosinfo-bin
 osinfo-query os
 ```
 
@@ -79,3 +68,28 @@ sudo virt-manager
 ```
 
 To change the display size, just use the native OS settings to adjust the size. (No integration like VirtualBox Addons that changes the resolution dynamically when the window is resized)
+
+
+## Prerequisites / Troubleshooting
+
+Make sure that your system has the hardware virtualization extensions: For Intel-based hosts, verify the CPU virtualization extension [vmx] are available using following command.
+
+    [root@server ~]# grep -e 'vmx' /proc/cpuinfo
+
+For AMD-based hosts, verify the CPU virtualization extension [svm] are available.
+
+    [root@server ~]# grep -e 'svm' /proc/cpuinfo
+
+If there is no output make sure that virtualization extensions is enabled in BIOS. 
+
+Verify that KVM modules are loaded in the kernel “it should be loaded by default”.
+
+    [root@server ~]# lsmod | grep kvm
+
+The output should contains kvm_intel for intel-based hosts or kvm_amd for amd-based hosts.
+
+
+## See also
+
+https://www.tecmint.com/install-and-configure-kvm-in-linux/
+

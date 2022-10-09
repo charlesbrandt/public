@@ -2,6 +2,109 @@
 
 Take a physical computer and back up the operating system so that you can run it in a [virtual machine](virtual-machine.md).
 
+## libguestfs
+
+https://www.libguestfs.org/  
+libguestfs, library for accessing and modifying VM disk images  
+
+
+```
+sudo apt-get install libguestfs-tools
+```
+
+Includes tools like: `virt-p2v`
+
+Use `virt-p2v` to convert a physical machine to a virtual one.
+
+Requires:
+
+ - A bootable image of virt-p2v
+ - A destination machine on the same network that can receive the new image data
+ 
+### Create the image
+
+```
+virt-p2v-make-disk -o /dev/sdX [os-version]
+```
+
+However, when I did:
+
+```
+sudo virt-p2v-make-disk -o /dev/sdc
+```
+
+I received:
+
+```
+virt-p2v-make-disk: cannot find dependencies file (/share/virt-p2v/dependencies.debian)
+```
+
+You can use
+
+```
+virt-builder -l
+```
+
+To see available os versions. 
+
+TODO: how to download dependencies? 
+
+
+https://www.systutorials.com/docs/linux/man/1-virt-p2v-make-disk/  
+virt-p2v-make-disk: Build the virt-p2v disk using virt-builder - Linux Man Pages (1)  
+
+https://duckduckgo.com/?q=virt-p2v-make-disk&hps=1&atb=v343-5ja&ia=web  
+virt-p2v-make-disk at DuckDuckGo  
+https://duckduckgo.com/?q=ubuntu+virt-p2v&t=ffab&atb=v343-5ja&ia=web  
+ubuntu virt-p2v at DuckDuckGo  
+https://manpages.ubuntu.com/manpages/bionic/man1/virt-p2v.1.html  
+Ubuntu Manpage: virt-p2v - Convert a physical machine to use KVM  
+
+
+
+https://www.systutorials.com/docs/linux/man/1-virt-p2v/  
+virt-p2v: Convert a physical machine to use KVM - Linux Man Pages (1)  
+https://duckduckgo.com/?q=linux+p2v&hps=1&atb=v343-5ja&ia=web  
+linux p2v at DuckDuckGo  
+https://www.storix.com/asr/linux-p2v/  
+Linux P2V (Physical to Virtual) Migrations Made Easy | Storix Software  
+https://duckduckgo.com/?t=ffab&q=linux+p2v+kvm&atb=v343-5ja&ia=web  
+linux p2v kvm at DuckDuckGo  
+https://duckduckgo.com/?t=ffab&q=virt-v2v&atb=v343-5ja&ia=web  
+virt-v2v at DuckDuckGo  
+https://access.redhat.com/articles/1351473  
+Converting virtual machines from other hypervisors to KVM with virt-v2v in RHEL 7, RHEL 8, and RHEL 9 - Red Hat Customer Portal  
+https://duckduckgo.com/?t=ffab&q=proxmox&atb=v343-5ja&ia=web  
+proxmox at DuckDuckGo  
+https://www.proxmox.com/en/  
+Proxmox - Powerful open-source server solutions  
+https://duckduckgo.com/?t=ffab&q=proxmox+vs+virt-manager&atb=v343-5ja&ia=web  
+proxmox vs virt-manager at DuckDuckGo  
+https://www.reddit.com/r/homelab/comments/rfnuxl/advice_proxmox_vs_virtmanager/  
+Advice: proxmox vs virt-manager : homelab  
+https://duckduckgo.com/?t=ffab&q=kvm+qemu&atb=v343-5ja&ia=web  
+kvm qemu at DuckDuckGo  
+https://wiki.qemu.org/Features/KVM  
+Features/KVM - QEMU  
+https://www.qemu.org/  
+QEMU  
+https://libvirt.org/  
+libvirt: The virtualization API  
+https://sumit-ghosh.com/articles/virtualization-hypervisors-explaining-qemu-kvm-libvirt/  
+Virtualization and Hypervisors :: Explaining QEMU, KVM, and Libvirt | Sumit’s Dreams of Electric Sheeps  
+https://duckduckgo.com/?t=ffab&q=LXD&atb=v343-5ja&ia=web  
+LXD at DuckDuckGo  
+https://linuxcontainers.org/lxd/  
+Linux Containers - LXD - Introduction  
+https://duckduckgo.com/?t=ffab&q=virt-p2v+iso&atb=v343-5ja&ia=web  
+virt-p2v iso at DuckDuckGo  
+https://www.humblec.com/how-to-build-a-virt-p2v-iso-in-fedora-f18f17/  
+How to build a virt-p2v ISO in fedora ( F18/F17) using virt-p2v-image-builder ? – My Humble Abode  
+https://libguestfs.org/virt-p2v.1.html  
+virt-p2v  
+
+
+
 ## Clonezilla
 
 Download Clonezilla Live from http://clonezilla.org/downloads.php 
@@ -45,14 +148,13 @@ The backup should begin
 Exit Clonezilla when the backup is completed  
 
 
-# 2020.04.23 17:04:20 
+## VirtualBox
+
 this looks like a good guide -- may give this a try:
 
 https://www.linux.org/threads/physical-to-virtual-p2v-using-virtualbox.10928/
 
 Imported below for customization / review. 
-
-## Using VirtualBox
 
 Some people may want to run their existing system on another. Others may want to test an existing environment with specific apps or even updates. There may be many reasons to move an existing environment from one machine to another, or even the same, under VirtualBox.
 
@@ -84,8 +186,8 @@ Once done, you can open VirtualBox and create a new session. Set it up according
 If an error occurs similar to “The disk drive for UUID=### is not ready yet or not present.”, press “s” to skip the error until the OS loads. Once loaded, open an editor with root privileges and edit /etc/fstab to comment out with '#' any drive which is not accessible to the OS.
 
 
+### Virtual Box Alternative
 
-*2019.03.19 08:31:32
 This one has the most promise:
 https://askubuntu.com/questions/34802/convert-my-physical-operating-system-to-a-virtualbox-disk
 

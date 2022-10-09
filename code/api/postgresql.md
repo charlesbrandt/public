@@ -89,6 +89,19 @@ GRANT USAGE ON SCHEMA public TO xxx;
 GRANT SELECT ON mytable TO xxx;
 ```
 
+For full access
+
+```
+grant all on database mydb to xxx;
+```
+
+In some cases, if the schema is not listed as part of `\dt`, it may be necessary to grant permissions on the schema directly:
+
+```
+grant all on all tables in schema schemaname to username;
+```
+
+
 https://stackoverflow.com/questions/760210/how-do-you-create-a-read-only-user-in-postgresql
 
 https://duckduckgo.com/?t=ffab&q=postgres+set+password+for+user&ia=web  

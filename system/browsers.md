@@ -129,13 +129,13 @@ or under snap at
 ```
 
 
-Read up on how to backup and restore profiles:
+How to backup and restore profiles:
 
 https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles
 
 Recommendation is to use built in Firefox Profile manager to create a new profile first, then copy the contents of your default profile in to the newly created directory. That way all of the configurations in the browser are set up correctly. 
 
-If you need to update the order, can try manually editing:
+If you need to update the order, try manually editing:  
 ~/.mozilla/firefox/profiles.ini
 
 (make a backup first!)
@@ -159,9 +159,7 @@ cp -r ~/repos/firefox-profile/* hn95wtr8.example/
 
 This is optional. 
 
-I love pocket. 
-
-Tabliss is a clean minimal alternative. 
+Tabliss is a clean minimal alternative to the default new tab page. 
 
 https://addons.mozilla.org/en-US/firefox/addon/tabliss/
 
@@ -174,6 +172,19 @@ An open source, pluggable New Tab web extension written in TypeScript, React and
 No special permissions required!
 
 
+### Snap
+
+Newer versions of Ubuntu are shipping Firefox as a snap package. This leads to annoying "Close the app to avoid disruption messages". 
+
+It looks like it is possible to run the update manually:
+
+```
+killall firefox;
+sudo snap refresh;
+```
+
+https://askubuntu.com/questions/1412140/how-to-solve-pending-update-of-firefox-snap-close-the-app-to-avoid-disruptio  
+How to solve "Pending update of "firefox" snap. Close the app to avoid disruptions" error? - Ask Ubuntu  
 
 
 
@@ -186,6 +197,9 @@ https://support.mozilla.org/en-US/kb/personalize-firefox-colorways
 Menu -> Add-ons and Themes
 
 Not configured in "Settings". 
+
+
+
 
 ## Chrome / Chromium:
 

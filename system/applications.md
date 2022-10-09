@@ -66,18 +66,6 @@ see also
 Or more generally
 [text editors](editors/)
 
-## KVM
-
-[KVM](virtualization/kvm.md)
-
-
-
-## Docker
-
-[Docker](virtualization/docker.md)  
-[Docker Compose](virtualization/docker-compose.md)  
-
-
 
 ## Python
 
@@ -91,14 +79,25 @@ Go ahead and grab pip here so it's available for things like `autopep8` for vsco
 sudo apt-get install python3-pip
 ```
 
-
 ## Utilities
 
 ```
 sudo apt-get install ffmpeg 
-
 sudo apt-get install curl
 ```
+
+
+## KVM
+
+[KVM](virtualization/kvm.md)
+
+
+## Docker
+
+[Docker](virtualization/docker.md)  
+[Docker Compose](virtualization/docker-compose.md)  
+
+
 
 
 ## Recorder

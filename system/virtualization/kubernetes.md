@@ -36,22 +36,37 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 ```
 
-look for
-
-> Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
-
-
 then 
 
 ```
 minikube start
 ```
 
+look for
+
+> Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+
+
 https://minikube.sigs.k8s.io/docs/start/
 
+If you already have a `kubectl` client available locally, see what's running:
 
 ```
 kubectl get po -A
+```
+
+Or, have `minikube` get `kubectl` for you:
+
+
+```shell
+minikube kubectl -- get po -A
+```
+
+You can also make your life easier by adding the following to your shell config:
+
+```shell
+alias kubectl="minikube kubectl --"
 ```
 
 
@@ -60,6 +75,49 @@ Web interface for cluster
 ```
 minikube dashboard
 ```
+
+### Workflow (kubectl usage)
+
+Start with a deployment
+
+```
+kubectl create deployment hello-minikube --image=docker.io/nginx:1.23
+```
+
+This will create some pods which you can verify with kubectl
+
+To be able to access the pods, create a service:
+
+```
+kubectl expose deployment hello-minikube --type=NodePort --port=80
+```
+
+Now the cluster knows how to access it. To access the service running on the cluster:
+
+
+The easiest way to access this service is to let minikube launch a web browser for you:
+
+```
+minikube service hello-minikube
+```
+
+Alternatively, use kubectl to forward the port:
+
+```
+kubectl port-forward service/hello-minikube 7080:80
+```
+
+See all services
+
+kubectl get services hello-minikube
+
+You can try deleting the pod(s) powering the service. They should be restarted automatically. To stop the whole thing, remove the deployment:
+
+```
+kubectl delete deployment hello-minikube
+```
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 
 ## Skaffold
@@ -128,6 +186,9 @@ TODO: consider best path for binaries for a user
 ### kubectl
 
 `kubectl` is the main CLI for managing kubernetes
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
 
 Make sure you have `kubectl` installed. You can install `kubectl` according to the instructions in Install and Set Up kubectl.
 
@@ -236,6 +297,8 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 ## Manifests
 
+Configuration Management for the services running on your cluster. Similar to docker-compose.yml files in the Docker ecosystem.
+
 https://prefetch.net/blog/2019/10/16/the-beginners-guide-to-creating-kubernetes-manifests/
 
 Time to describe the service and its architecture. 
@@ -244,37 +307,70 @@ Describe your service's architecture.
 
 Start with something simple. Nginx serving static files seems like a good place to begin. 
 
+```
+# nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+Apply the manifest to the cluster
+
+```
+kubectl apply -f nginx-deployment.yaml
+```
+
+See the effects of the deployment
+
+```
+kubectl get deployments
+
+kubectl get pods
+```
+
+via: https://www.endpointdev.com/blog/2022/01/kubernetes-101/
+
+
+
+
+Then, to see the service, apply a 'service' to the cluster:
+
+```
+# nginx-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+```
+
 If you haven't yet, explore the way skaffold examples are configured. Those are good to leverage. 
-
-
-### Helm
-
-Configuration Management for the services running on your cluster. Similar to docker-compose.yml files in the Docker ecosystem.
-
-From their site: 
-
-```
-Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
-
-Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
-```
-
-https://helm.sh/
-
-https://github.com/helm/helm
-
-Download an appropriate release:
-
-https://github.com/helm/helm/releases/tag/v3.0.3
-
-Unpack it.
-
-    cd ~/Downloads
-    tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
-    cd [directory]
-    
-    helm create [chart-name]
-
 
 
 ## Ingress
@@ -282,8 +378,6 @@ Unpack it.
 An Ingress Controller handles how traffic outside of a pod is routed within the pod. Nginx is a common option. Kong is built on Nginx and is another good option.
 
 ### traefik
-
-### 
 
 ### Kong
 
@@ -306,6 +400,36 @@ kong vs nginx at DuckDuckGo
 https://discuss.konghq.com/t/kong-vs-nginx-kunernetes-ingress-controller/1985  
 Kong VS nginx kunernetes ingress controller - Questions - Kong Nation  
 
+
+## Helm
+
+Templating system for manifests.
+
+From their site: 
+
+```
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste.
+```
+
+https://helm.sh/
+
+https://github.com/helm/helm
+
+Download an appropriate release:
+
+https://github.com/helm/helm/releases/tag/v3.0.3
+
+Unpack it.
+
+```
+cd ~/Downloads
+tar zxvf helm-v3.0.3-linux-amd64.tar.gz 
+cd [directory]
+    
+helm create [chart-name]
+```
 
 ## Auth
 

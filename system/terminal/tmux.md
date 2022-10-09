@@ -112,7 +112,8 @@ Close current window
 
 ## Configuration
 
-Put this at the bottom of ~/.tmux.conf ($XDG_CONFIG_HOME/tmux/tmux.conf works too):
+Put this at the bottom of ~/.tmux.conf  
+($XDG_CONFIG_HOME/tmux/tmux.conf works too):  
 
 ```
 # remap prefix to Control + p

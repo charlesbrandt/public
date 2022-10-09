@@ -84,3 +84,14 @@ local port : remote address : remote port (??? TODO: confirm)
 ssh account@address -L 5900:192.168.2.81:5900
 
 For example, VNC often uses 5900
+
+
+## SSH Key Conversion
+
+If a user sends a public key in an SSH2 text format, convert it to the form expected in `authorized_keys`:
+
+```
+ssh-keygen -i -f publickey 
+```
+
+https://serverfault.com/questions/380712/ssh-public-key-format

@@ -6,9 +6,9 @@ It's kind of old school. But it's still a great text editor.
 
 Some systems come with emacs already installed. This is rare. Usually you'll need to install it. On linux systems, it's available through your package manager. For example:
 
-    sudo apt-get install emacs emacs-goodies-el
-    
-(emacs-goodies-el is optional!)
+```
+sudo apt-get install emacs
+```
     
 Link to your configurations:
  
@@ -23,7 +23,9 @@ ln -s ~/public/system/editors/emacs/.emacs.d .emacs.d
 
 Sometimes emacs will create a configuration directory if it is run and one doesn't already exist. (dangerous! make sure you don't have any old configurations here!)
 
-    rm -rf .emacs.d/
+```
+rm -rf .emacs.d/
+```
 
 ## Running
 

@@ -2,6 +2,8 @@
 
 [Upgrade](upgrade.md)  
 
+[Set up Ubuntu](ubuntu.md)  
+
 [Window Manager](window-managers/)  
 
 [Workspaces](workspaces.md)  
