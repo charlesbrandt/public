@@ -101,6 +101,33 @@ There are many linux distributions available. Which one you run is a matter of p
 When downloading an image, torrents are a good way to share bandwidth. This supports a good cause! Be sure to use a network that you have adequate bandwidth quotas.
 
 
+## Elementary OS
+
+Based on Ubuntu? Debian? Gnome 3? 
+This is one I've been interested to try out. 
+
+https://elementary.io/  
+The thoughtful, capable, and ethical replacement for Windows and macOS ⋅ elementary OS  
+https://elementary.io/docs/installation#installation  
+Installation  
+https://github.com/elementary/os/wiki/elementary-OS-6.1-J%C3%B3lnir-FAQ  
+elementary OS 6.1 Jólnir FAQ · elementary/os Wiki  
+https://store.elementary.io/  
+Store ⋅ elementary Store  
+https://duckduckgo.com/?t=ffab&q=elementary+os+ubuntu+22.04&ia=web  
+elementary os ubuntu 22.04 at DuckDuckGo  
+https://9to5linux.com/elementary-os-7-will-be-based-on-ubuntu-22-04-lts-offer-gtk4-apps-and-power-profiles  
+elementary OS 7 Will Be Based on Ubuntu 22.04 LTS, Offer GTK4 Apps and Power Profiles - 9to5Linux  
+
+## Nix OS
+
+https://nixos.org/  
+Nix: reproducible builds and deployments  
+https://en.wikipedia.org/wiki/NixOS  
+NixOS - Wikipedia  
+https://duckduckgo.com/?q=nix+os&hps=1&atb=v343-5ja&ia=web  
+nix os at DuckDuckGo  
+
 
 ## Arch Linux
 

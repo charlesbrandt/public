@@ -12,6 +12,9 @@ More technical version:
 https://www.ibm.com/cloud/learn/message-queues  
 Message Queues: An Introduction | IBM  
 
+## Celery
+
+TODO: Add notes 
 
 ## RabbitMQ
 
@@ -295,8 +298,17 @@ bull-board-docker/src at master · Deadly0/bull-board-docker · GitHub
 https://github.com/topics/message-queue  
 
 
+## Agenda
+
+https://github.com/agenda/agenda  
+agenda/agenda: Lightweight job scheduling for Node.js  
+
+
+
 ## See Also
 
 https://duckduckgo.com/?t=ffab&q=message+queuing&ia=web
 message queuing at DuckDuckGo
 
+
+[Redis](redis.md)

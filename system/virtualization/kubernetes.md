@@ -123,6 +123,7 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 ## Skaffold
 
 ```
+cd ~/Downloads
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
 sudo install skaffold /usr/local/bin/
 ```
