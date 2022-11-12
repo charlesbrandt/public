@@ -39,6 +39,13 @@ to ensure the editor runs in the terminal and does not launch a gui version
 emacs -nw
 ```
 
+## Using
+
+To close an unexpected frame in a window, it can be difficult via a terminal if `Alt-0` doesn't have an effect. 
+
+```
+M-x delete-window
+```
 
 ## Configuration
 
@@ -46,9 +53,9 @@ Settings are stored in `.emacs` and `.emacs.d` directories.
 
 Settings and configurations accumulate over time. The ones I use are available in this directory. I'm aiming for something that works reasonably well with other editors.
 
-I've moved over to Ergo Emacs to keep cut-copy-paste operations in line with other editors. 
+I like Ergo Emacs to keep cut-copy-paste operations in line with other editors. 
 
-I've mapped the action key to alt-a 
+I map the action key (typically ctrl-x) to alt-a 
 Overlaps with Select-all on many applications, but for the rare times that I use select all, I don't mind calling it manually. 
 
 ## Lisp
@@ -58,6 +65,18 @@ Emacs is built on a language called lisp.
 Custom commands can be written in lisp.
 
 I've written some of my own in this repository. See also `moments.el` / `.emacs.d/moments.el`
+
+## Themes
+
+```
+;; themes and start up settings 
+(load-file "~/.emacs.d/editor.el")
+```
+
+Not all themes are created equally. Considering all types of syntax highlighting is important. 
+A good source of inspiration:
+
+https://emacsthemes.com/popular/index.html
 
 ### Melpa
 
@@ -109,25 +128,3 @@ Then, when cloning this repository, you can get the latest version with:
 via: https://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules
 
 
-## Python (TODO)
-
-Would like to enable jedi for goto functionality:
-
-http://lgfang.github.io/mynotes/emacs/emacs-python.html#sec-9-3
-Python Coding in Emacs
-https://duckduckgo.com/?q=python+jedi&t=canonical&ia=software
-python jedi at DuckDuckGo
-https://pypi.org/project/jedi/
-jedi · PyPI
-
-## File Tree (TODO)
-
-This was a nice feature in Atom for quickly navigating to different files in a related project. 
-I especially liked being able to group directories that were spread across different locations into a single project:
-
-https://www.google.com/search?q=emacs+file+tree
-emacs file tree - Google Search
-https://www.emacswiki.org/emacs/NeoTree
-EmacsWiki: Neo Tree
-https://github.com/jaypei/emacs-neotree
-GitHub - jaypei/emacs-neotree: A emacs tree plugin like NerdTree for Vim.

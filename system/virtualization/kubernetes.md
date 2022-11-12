@@ -29,6 +29,13 @@ Pods | Kubernetes
 
 ## Minikube
 
+### Requirements
+
+Either [KVM](kvm.md) or docker should be enabled on the host system. I prefer KVM. Running many docker containers on the host system can clutter up disk mounts, firewall rules, etc. 
+
+
+### Launch
+
 https://minikube.sigs.k8s.io/docs/start/
 
 ```
@@ -42,6 +49,12 @@ then
 minikube start
 ```
 
+Or, to force to use a VM: 
+
+```
+minikube start --container-runtime=docker --vm=true
+```
+
 look for
 
 > Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
@@ -49,6 +62,62 @@ look for
 
 
 https://minikube.sigs.k8s.io/docs/start/
+
+Web interface for cluster
+
+```
+minikube dashboard
+```
+
+See the ip address of the minikube system:
+
+```
+minikube ip
+```
+
+To set up docker to reference what is running in minikube, 
+
+```
+minikube docker-env
+```
+
+Then, make it stick,
+
+```
+eval $(minikube docker-env)
+```
+
+https://www.containerlabs.kubedaily.com/Kubernetes/beginner/minikube-cmd.html
+
+### Ingress
+
+```
+minikube addons enable ingress
+```
+
+https://medium.com/@Oskarr3/setting-up-ingress-on-minikube-6ae825e98f82
+
+### Administration
+
+The username is `docker` and the password is `tcuser`.
+
+Connect via virt-manager console, or ssh with `minikube ssh`
+
+
+Set up persistent volumes in a way that data can persist across deployments. A few different options:
+
+NFS:
+
+https://mikebarkas.dev/2019/setup-nfs-for-minikube-persistent-storage/
+
+It may also be possible to set up Persistent Volumes in the minikube VM directly
+
+https://github.com/GoogleContainerTools/skaffold/issues/4366
+
+
+
+
+### kubectl
 
 If you already have a `kubectl` client available locally, see what's running:
 
@@ -70,11 +139,6 @@ alias kubectl="minikube kubectl --"
 ```
 
 
-Web interface for cluster
-
-```
-minikube dashboard
-```
 
 ### Workflow (kubectl usage)
 
@@ -123,12 +187,38 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 ## Skaffold
 
 ```
+which skaffold
 cd ~/Downloads
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
 sudo install skaffold /usr/local/bin/
 ```
 
-I had an easier time getting running with Minikube, but K3s should work equally well. 
+I had an easier time getting running with Minikube, but K3s should also work. 
+
+https://skaffold.dev/docs/quickstart/  
+Quickstart | Skaffold  
+
+An example of a nodejs API:  
+https://github.com/GoogleContainerTools/skaffold/tree/main/examples/nodejs
+
+Microservices example:  
+https://github.com/GoogleContainerTools/skaffold/tree/main/examples/microservices
+
+Minimal node js example application:  
+https://github.com/gergelyke/skaffold-nodejs-example
+
+This could be a good foundation to adapt:  
+https://github.com/GoogleContainerTools/skaffold/tree/main/examples/react-reload-docker
+
+
+To launch your project with reloading enabled:
+
+```
+skaffold dev
+```
+
+
+### Examples
 
 The examples are a great way to get started.
 
@@ -143,9 +233,6 @@ The examples are a great way to get started.
     ```bash
     cd skaffold/examples/getting-started
     ```
-
-https://skaffold.dev/docs/quickstart/  
-Quickstart | Skaffold  
 
 Try running them and testing them out (locally).
 
@@ -165,7 +252,161 @@ Architecture and Design | Skaffold
 https://skaffold.dev/docs/tutorials/  
 Tutorials | Skaffold  
 
+### Persistent Volumes
 
+https://github.com/GoogleContainerTools/skaffold/issues/4366#issuecomment-1060834228
+
+use a hook to create a pv outside of helm and skaffold with kubectl. Then have helm PVC point to the new static PV.
+
+Environment:
+
+    skaffold: v1.35.2
+    kubectl client: v1.21.5
+    kubectl server: v1.21.5
+    minikube: v1.24.0
+    helm: v3.7.2
+
+With the newer versions of the skaffold api (v2beta26), you can use hooks for before and after deploy for helm.
+
+```
+# skaffold.yaml
+
+apiVersion: skaffold/v2beta26
+kind: Config
+
+build:
+  # ... put build stuff here
+
+deploy:
+  helm:
+    hooks:
+      before:
+        - host:
+            command: ["kubectl", "apply", "-f", "./helm/local-database-pv.yaml"]
+            os: [darwin, linux]
+        - host:
+            command: ["kubectl", "patch", "pv", "local-database-pv", "-p", '{"spec":{"claimRef": null}}',] # we must clear the claim that is retained inorder to reclaim this pv.
+            os: [darwin, linux]
+    flags:
+      upgrade:
+        - "--install"
+    releases:
+      - name: local
+        chartPath: helm
+        skipBuildDependencies: true
+        artifactOverrides:
+          "api.image.fqn": *apiImage
+          "frontend.image.fqn": *frontendImage
+```
+
+the word "local" is important for me because it must match the name of .Release.Name. This particular file is deployed directly using kubectl and is not part of the helm release.
+
+```
+# helm/local-database-pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-database-pv
+  labels:
+    type: local
+    component: local-database-pv
+spec:
+  storageClassName: local-database-pv
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    # in my case i'm using postgres
+    path: /var/lib/postgresql/data
+```
+
+```
+# helm/templates/pvcs.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}-database-pvc
+  labels:
+    component: {{ .Release.Name }}-database
+spec:
+  storageClassName: local-database-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+```
+
+Make a database stateful set that will communicate with the PV via the PVC. In this case, I'm using a very old postgres and I'm not even doing secrets stuff yet, which you should.
+
+```
+# helm/templates/database-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-database
+spec:
+  serviceName: {{ .Release.Name }}-database-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      component: {{ .Release.Name }}-database
+  template:
+    metadata:
+      labels:
+        component: {{ .Release.Name }}-database
+    spec:
+      volumes: 
+        - name: {{ .Release.Name }}-database-pv
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-database-pvc
+      containers:
+        - name: {{ .Release.Name }}-database
+          image: postgres:10.7-alpine
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: {{ .Release.Name }}-database-pv
+              mountPath: /var/lib/postgresql/data
+          env:
+            - name: POSTGRES_USER
+              value: {{ .Values.database.user }}
+            - name: POSTGRES_PASSWORD
+              value: {{ .Values.database.password }}
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+```
+
+In my particular case, the apiImage is a rails app. I tested it out by doing the following.
+
+start skaffold dev
+
+```
+skaffold dev
+```
+
+Open another terminal
+
+```
+kubectl exec -it <api pod> -- bash
+
+rails db:create
+# => Database <my database> created
+```
+
+Now stop & restart skaffold dev ctrl + c
+
+Open another terminal
+
+```
+kubectl exec -it <api pod> -- bash
+
+rails db:create
+# => Database <my database> already exists
+```
+
+I hope this helps people, but it would be much better if skaffold provided a simple configuration option instead.
 
 
 

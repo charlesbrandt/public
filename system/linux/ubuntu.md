@@ -21,10 +21,14 @@ Launch the System Monitor. Select to see all processes.
 
 Install a [password manager](../password-manager.md)
 
-    sudo apt install keepassxc
+```
+sudo apt install keepassxc
+```
 
 [Generate ssh-keys](../terminal/ssh.md)  
 Install an ssh server if you plan to connect to the machine remotely  
+
+Clone any repositories that you plan to make use of locally
 
 Install your preferred [editor](../editors/)  
 

@@ -165,6 +165,13 @@
 ;; https://stackoverflow.com/questions/20541161/saved-theme-in-emacs-doesnt-load-on-launch
 (add-hook 'emacs-startup-hook
    (lambda ()
-      ;; (load-theme 'dracula t)
-      (load-theme 'atom-dark t)
+     ;; (load-theme 'dracula t)
+     ;; for the most part 'atom-dark is very nice
+     ;; however when editing markdown,
+     ;; quote lines ('> ') text is same color as background
+     ;; cannot read the document
+     ;; (load-theme 'atom-dark t)
+     ;; meh, this one does not handle lisp comments:
+     ;; (load-theme 'melancholy t)
+      (load-theme 'zenburn t)
       ))

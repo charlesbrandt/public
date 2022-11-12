@@ -74,7 +74,9 @@ There are two things you can do about this warning:
   (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   )
 
-(setq confirm-kill-emacs 'y-or-n-p)
+;; sometimes this results in multiple requests to confirms
+;; sometimes under termux it is not possible to send a viable response
+;; (setq confirm-kill-emacs 'y-or-n-p)
 
 (load-file "~/.emacs.d/keymaps.el")
 

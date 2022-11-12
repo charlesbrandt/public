@@ -25,13 +25,9 @@ code .
 
 Open Settings (Ctrl-Shift-P -> "Settings")
 
-Choose either:
-
-    "Preferences: Open Settings (JSON)"
-
-or
-
-    "Preferences:Open Settings (UI)"
+```
+"Preferences: Open User Settings (JSON)"
+```
 
 ### Current settings
 
@@ -73,7 +69,9 @@ See below for a description about what the settings do
 ```
 
 
-## Preference Details
+### Preference Details
+
+Descriptions of what the above options are setting
 
 ### Ignore files
 

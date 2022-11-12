@@ -58,7 +58,9 @@ Then, to remove it:
 
 ## Backup existing system
 
-Move out media first. Use Disk Analyzer to locate it.
+Export settings for Remmina and OBS. After updating the versions, may not be able to use the same configs? (Did not work for Remmina, did not try for OBS)
+
+Move out large media files. Use Disk Analyzer to locate it.
 e.g.
 
 ```

@@ -57,6 +57,11 @@ db.getCollectionNames()
 
 https://stackoverflow.com/questions/8866041/how-can-i-list-all-collections-in-the-mongodb-shell
 
+This also works:
+```
+show database_name
+```
+
 
 ## Find
         

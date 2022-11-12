@@ -36,7 +36,7 @@ git submodule update --init --recursive
 See also [Password Managers](password-manager.md)
 
 ```
-sudo apt-get install keepassx
+sudo apt-get install keepassxc
 ```
 
 ## Emacs

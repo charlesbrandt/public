@@ -6,20 +6,13 @@ Open `Settings` application to make many of these changes.
 
 ## Resetting
 
-Sometimes the Gnome window manager will consume a lot of memory. It's possible to restart the window manager without restarting all the applications. 
+Sometimes the Gnome window manager will consume a lot of memory. When running with X11 (not Wayland), it's possible to restart the window manager without restarting all the applications. 
 
 Quickest:
 
 Alt-F2
 
 type `r` in the window that pops up
-
-https://duckduckgo.com/?t=ffab&q=gnome+restart+gnome-shell&ia=web  
-gnome restart gnome-shell at DuckDuckGo  
-https://www.linuxuprising.com/2020/07/how-to-restart-gnome-shell-from-command.html  
-How To Restart GNOME Shell From Command Line Without Closing Any Applications (X11 Only) - Linux Uprising Blog  
-
-
 
 
 ## Dock Settings
@@ -33,6 +26,16 @@ Update Blank Screen Preferences (Settings->Power->Blank Screen)
 ## Desktop Icons
 
 Settings -> Appearance -> Desktop Icons -> Toggle "Show Personal folder"
+
+
+## Dark Mode
+
+Good for testing if web pages respond to the operating system dark mode preference:
+
+Settings -> Appearance -> Dark Mode
+
+https://itsfoss.com/dark-mode-ubuntu/  
+How to Enable Full Dark Mode in Ubuntu 20.04  
 
 
 ## Alert Sounds
@@ -51,28 +54,37 @@ AKA create silent versions of them all.
 
 Open Audacity. Generate 1 second silent audio. 
 
+System alert sounds are stored here:
+
 ```
 cd /usr/share/sounds/Yaru/stereo
+```
+
+Bring in the silence .ogg file 
+
+```
 sudo cp /path/to/silence-1sec.ogg .
 sudo chmod 644 silence-1sec.ogg
 
-sudo cp silence-1sec.ogg audio-volume-change.oga
-sudo cp silence-1sec.ogg battery-low.oga
-sudo cp silence-1sec.ogg bell.oga
-sudo cp silence-1sec.ogg complete.oga
-sudo cp silence-1sec.ogg desktop-login.oga
-sudo cp silence-1sec.ogg device-added.oga
-sudo cp silence-1sec.ogg device-removed.oga
-sudo cp silence-1sec.ogg dialog-error.oga
-sudo cp silence-1sec.ogg dialog-question.oga
-sudo cp silence-1sec.ogg dialog-warning.oga
-sudo cp silence-1sec.ogg message-new-email.oga
-sudo cp silence-1sec.ogg message-new-instant.oga
-sudo cp silence-1sec.ogg message.oga
-sudo cp silence-1sec.ogg power-plug.oga
-sudo cp silence-1sec.ogg power-unplug.oga
-sudo cp silence-1sec.ogg system-ready.oga
-sudo cp silence-1sec.ogg trash-empty.oga
+sudo cp silence.ogg audio-volume-change.oga
+sudo cp silence.ogg battery-low.oga
+sudo cp silence.ogg bell.oga
+sudo cp silence.ogg complete.oga
+sudo cp silence.ogg desktop-login.oga
+sudo cp silence.ogg desktop-logoff.oga
+sudo cp silence.ogg device-added.oga
+sudo cp silence.ogg device-removed.oga
+sudo cp silence.ogg dialog-error.oga
+sudo cp silence.ogg dialog-question.oga
+sudo cp silence.ogg dialog-warning.oga
+sudo cp silence.ogg message-new-email.oga
+sudo cp silence.ogg message-new-instant.oga
+sudo cp silence.ogg message.oga
+sudo cp silence.ogg power-plug.oga
+sudo cp silence.ogg power-unplug.oga
+sudo cp silence.ogg system-ready.oga
+sudo cp silence.ogg trash-empty.oga
+
 ```
 
 I needed to restart for this change to take effect. Eventually they were replaced / reinstalled automatically. 
@@ -137,22 +149,20 @@ https://unix.stackexchange.com/questions/101613/cant-set-background-wallpaper-in
 gnome3 - Can't set background wallpaper in Gnome 3 - Unix & Linux Stack Exchange
 
 
-## Dark Mode
-
-Good for testing if web pages respond to the operating system dark mode preference:
-
-Settings -> Appearance -> Dark Mode
-
-https://itsfoss.com/dark-mode-ubuntu/  
-How to Enable Full Dark Mode in Ubuntu 20.04  
-
 
 ## Laptop specific
 
 ### Automatic Brightness
 
-disable this under Settings -> Power ->
-it's annoying to have the screen dim if you get in front of the camera
+Disable this under:
+
+Settings -> Power -> Automatic Screen Brightness
+
+It's annoying to have the screen dim if you get in front of the camera
+
+### Show Battery Percentage
+
+Settings -> Power -> Show Battery Percentage
 
 
 ### Disable Middle Click
@@ -194,6 +204,11 @@ This restores functionality without a full system restart!
 This fixes when gnome-shell starts running full resources
 
 https://github.com/mzur/gnome-shell-wsmatrix
+
+https://duckduckgo.com/?t=ffab&q=gnome+restart+gnome-shell&ia=web  
+gnome restart gnome-shell at DuckDuckGo  
+https://www.linuxuprising.com/2020/07/how-to-restart-gnome-shell-from-command.html  
+How To Restart GNOME Shell From Command Line Without Closing Any Applications (X11 Only) - Linux Uprising Blog  
 
 
 
