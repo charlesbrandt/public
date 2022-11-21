@@ -202,7 +202,7 @@ simov/grant: OAuth Proxy
 
 A very popular library that could be applied in any number of Javascript API contexts. 
 
-[Feathers](feathers.md) uses this one under the hood. 
+Feathers uses this one under the hood. 
 
 ### Ory
 

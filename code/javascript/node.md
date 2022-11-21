@@ -386,8 +386,6 @@ Try out a ui/.env file. Is the value available via process.env.whatever?
 
 Many frameworks leverage these variables for configuration. 
 
-See also: [nuxt configuration variables](../vue/nuxt.html#configuration-variables-env-dotenv)
-
 
 ## Install
 

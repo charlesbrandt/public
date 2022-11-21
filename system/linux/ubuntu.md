@@ -32,7 +32,7 @@ Clone any repositories that you plan to make use of locally
 
 Install your preferred [editor](../editors/)  
 
-Install and configure [tmux](terminal/tmux.md)  
+Install and configure [tmux](../terminal/tmux.md)  
 
 If the system requires a static IP, update that now. [network](../network.md)
 

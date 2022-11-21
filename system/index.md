@@ -86,7 +86,7 @@ Linux is common on desktop machines in the open source world. There are many fla
 
 [Linux](linux/)  
 
-[Set up Ubuntu](ubuntu.md)  
+[Set up Ubuntu](linux/ubuntu.md)  
 
 In the mobile phone space, Android is a good open source solution.
 

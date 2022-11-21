@@ -24,8 +24,6 @@ typicode/lowdb: Simple to use local JSON database (supports Node, Electron and t
 
 [Sending Email](email-sending.md)
 
-[FastAPI](fastapi.md)
-
 [Image Gallery](image-gallery.md)
 
 

@@ -445,22 +445,6 @@ https://element-plus.org/en-US/guide/quickstart.html#on-demand-import
 https://rollupjs.org/guide/en/#tree-shaking
 
 
-## State Management
-
-### Vuex (Persistence)
-
-In Vue, variables can be passed in parameters to the component as properties and rendered in templates with slots. Eventually you may have variables that need to be referenced by multiple components. This is the time that you'll want to take advantage of something like Vuex
-
-See: [Vuex](vuex.md)
-
-See also Vuex-ORM
-
-## Nuxt
-
-Nuxt simplifies the configuration and structure of a Vue project to get up and running quickly.
-
-See: [Nuxt](nuxt.md)
-
 
 ## Troubleshooting
 

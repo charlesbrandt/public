@@ -236,7 +236,7 @@ context("Network Requests", () => {
 });
 ```
 
-The above example works with a [Feathers API](/code/api/feathers.md)
+The above example works with a Feathers API.
 
 
 ### Create a special route
