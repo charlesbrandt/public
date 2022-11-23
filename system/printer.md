@@ -35,7 +35,7 @@ If a printer is on a different subnet from the computer, it can be challenging t
 
 You can use the local CUPS interface to see more details
 
-http://localhost:631/jobs/?
+http://ip-of-printer:631/jobs/?
 
 via: 
 http://tips4pc.com/linux-tips/secret-hidden-interface-fix-linux-printer-problems.htm

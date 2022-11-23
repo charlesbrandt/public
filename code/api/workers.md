@@ -73,8 +73,7 @@ https://github.com/taskforcesh
 Taskforce.sh Inc. · GitHub  
 https://blog.taskforce.sh/  
 Taskforce.sh Blog  
-http://localhost:7777/code/api/  
-APIs | Notes  
+
 https://duckduckgo.com/?t=ffab&q=javascript+job+runner&ia=web  
 javascript job runner at DuckDuckGo  
 https://github.com/spilgames/job-runner/  

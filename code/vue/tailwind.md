@@ -109,20 +109,6 @@ see web-ui-api-db/ui/content/navbar.md
 
 ## Library References
 
-### Layout Utilities
-
-http://localhost:7777/design/style/layouts.html  
-Layouts | Notes  
-http://localhost:7777/design/  
-Design | Notes  
-http://localhost:7777/design/html5/  
-HTML | Notes  
-http://localhost:7777/design/style/layouts.html  
-Layouts | Notes  
-
-http://localhost:7777/design/style/  
-Style | Notes  
-
 ### Positioning
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/display  
