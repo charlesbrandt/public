@@ -866,9 +866,6 @@ Microk8s is by Canonical (ubuntu) and uses proprietary snapcraft store.
 
 ### Portainer
 
-[Portainer](portainer.md)
-
-
 https://192.168.2.85:9443/#!/2/docker/stacks
 Warning: Potential Security Risk Ahead
 
