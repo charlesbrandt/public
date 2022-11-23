@@ -88,7 +88,7 @@ Image for service was built because it did not already exist. To rebuild this im
 
 In `docker-compose.yml`, add a section like:
 
-```yml
+```yaml
     environment:
       POSTGRES_PASSWORD: example
 ```
@@ -105,7 +105,7 @@ web ui api db
 
 A useful pattern and a good reference:
 
-```yml
+```yaml
 version: "3"
 services:
   web:
