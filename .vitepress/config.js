@@ -1,4 +1,6 @@
-module.exports = {
+import { getSidebar } from 'vitepress-plugin-auto-sidebar'
+
+export default {
   title: 'Notes',
   description: 'Still learning. Topics of interest. Writing, Code Development, Computer Systems, The Web, Design',
   // base: '/charles-brandt/',
@@ -16,7 +18,8 @@ module.exports = {
     //  { text: 'Sidebar Test ', link: '/' },
     //  { text: '', link: '/' },
     //]
-  },
+    sidebar: getSidebar({ contentRoot: '/', contentDirs: ['code', 'documentation', 'pi', 'system', 'web'], collapsible: true, collapsed: true })
+  }
   // no effect in vitepress currently
   //dest: "./public"
 }
