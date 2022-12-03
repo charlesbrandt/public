@@ -7,6 +7,9 @@ A great system for writing documentation! The refresh is so fast -- it's a live 
 https://github.com/vuejs/vitepress  
 GitHub - vuejs/vitepress: Vite & Vue powered static site generator.  
 
+https://vitepress.vuejs.org/guide/getting-started  
+Getting Started | VitePress  
+
 
 ## Frontmatter
 
@@ -60,6 +63,19 @@ Then, once you commit and push the `.gitlab-ci.yml`, you can log in to gitlab to
 
 https://docs.gitlab.com/ee/ci/jobs/
 
+### Automatic Sidebars
+
+TODO
+
+https://duckduckgo.com/?q=vitepress+automatic+sidebar&t=ffab&atb=v343-1&ia=web  
+vitepress automatic sidebar at DuckDuckGo  
+https://github.com/jonathanschndr/vitepress-plugin-auto-sidebar  
+JonathanSchndr/vitepress-plugin-auto-sidebar: Generate the VitePress sidebar through the folder structure  
+https://techformist.com/automatic-dynamic-sidebar-vuepress/  
+Automatic Dynamic Sidebars in Vuepress – Techformist  
+
+
+
 ### Configuration
 
 Vitepress leverages vite for the build. [Vite configurations](vite.md) apply here as well.
@@ -105,3 +121,9 @@ Cannot destructure property 'locales' of 'siteData.themeConfig' as it is undefin
 https://vitejs.dev/config/#server-middlewaremode  
 Configuring Vite | Vite  
   
+## Upgrade / Migration
+
+https://duckduckgo.com/?t=ffab&q=vitepress+upgrade&atb=v343-1&ia=web  
+vitepress upgrade at DuckDuckGo  
+https://vitepress.vuejs.org/guide/migration-from-vitepress-0  
+Migration from VitePress 0.x | VitePress  

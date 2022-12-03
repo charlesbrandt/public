@@ -569,6 +569,51 @@ To see what ports are open, install `netstat`. This approach will not persist ac
     netstat -pan | egrep " LISTEN "
     
 
+### Restart docker
+
+I was getting an error like:
+
+```
+ERROR: for ui  Cannot start service ui: driver failed programming external connectivity on endpoint gpdb_ui (4625d0f53435c85529b8a8d6317401d6aba192fb2adbe742b4e98c828cb76125): Error starting userland proxy: error while calling PortManager.AddPort(): cannot expose privileged port 443, you can add 'net.ipv4.ip_unprivileged_port_start=443' to /etc/sysctl.conf (currently 1024), or set CAP_NET_BIND_SERVICE on rootlesskit binary, or choose a larger port number (>= 1024): listen tcp4 127.0.0.1:443: bind: permission denied
+ERROR: Encountered errors while bringing up the project.
+```
+
+It didn't look like anything was listening on port 443. 
+
+I think this is an issue with running in `rootlesskit` mode
+
+https://docs.docker.com/engine/security/rootless/#exposing-privileged-ports
+
+TODO: How-to determine which version of docker is being run locally
+
+```
+systemctl --user status docker
+```
+
+```
+sudo service docker stop
+sudo rm /var/lib/docker/network/files/local-kv.db
+sudo service docker start && service docker status
+```
+
+`service` -- that's cool, appears to be the same thing as `sysctl` in other distros. (or is it `systemctl` or `systemcontrol`? I forget.)
+
+I was curious, what is actually in this file that you are asking me to delete as sudo? Looks like `local-kv.db` is where the networking configurations are stored
+
+https://blog.qiqitori.com/2018/10/decoding-dockers-local-kv-db/  
+Decoding Docker’s local-kv.db – The Qiqitori Blogs  
+
+
+
+https://duckduckgo.com/?q=Cannot+start+service+driver+failed+programming+external+connectivity+on+endpoint+Error+starting+userland+proxy%3A+error+while+calling+PortManager.AddPort()%3A+cannot+expose+privileged+port+443%2C+you+can+add+%27net.ipv4.ip_unprivileged_port_start%3D443%27+to+%2Fetc%2Fsysctl.conf+(currently+1024)%2C+or+set+CAP_NET_BIND_SERVICE+on+rootlesskit+binary%2C+or+choose+a+larger+port+number+(%3E%3D+1024)%3A+listen+tcp4+127.0.0.1%3A443%3A+bind%3A+permission+denied&hps=1&atb=v343-1&ia=web  
+Cannot start service driver failed programming external connectivity on endpoint Error starting userland proxy: error while calling PortManager.AddPort(): cannot expose privileged port 443, you can add 'net.ipv4.ip_unprivileged_port_start=443' to /etc/sysctl.conf (currently 1024), or set CAP_NET_BIND_SERVICE on rootlesskit binary, or choose a larger port number (>= 1024): listen tcp4 127.0.0.1:443: bind: permission denied at DuckDuckGo  
+https://stackoverflow.com/questions/39508018/docker-driver-failed-programming-external-connectivity-on-endpoint-webserver  
+docker: driver failed programming external connectivity on endpoint webserver - Stack Overflow  
+
+https://duckduckgo.com/?t=ffcm&q=%2Fvar%2Flib%2Fdocker%2Fnetwork%2Ffiles%2Flocal-kv.db&atb=v343-1&ia=web  
+/var/lib/docker/network/files/local-kv.db at DuckDuckGo  
+
+
 
 ## Context Specific Applications
 

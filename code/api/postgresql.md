@@ -1,6 +1,12 @@
 # Postgres
 
-Postgres clients are different from mysql clients. 
+https://www.postgresql.org/  
+PostgreSQL: The world's most advanced open source database  
+
+
+## CLI Client
+
+The commands in Postgres clients are different from Mysql clients. 
 
 http://www.coderholic.com/postgresql-for-mysql-users/  
 PostgreSQL for MySQL users  
@@ -19,7 +25,7 @@ psql -U username -d database -h 127.0.0.1 -W
 ```
 
 
-## Show databases
+### Show databases
 
 Listing databases in PostgreSQL using psql command
 
@@ -38,7 +44,7 @@ SELECT datname FROM pg_database;
 via  
 https://www.geeksforgeeks.org/postgresql-show-tables/  
 
-## Show tables
+### Show tables
 
 Supposedly `\dt` should work:
 
@@ -60,7 +66,21 @@ https://www.geeksforgeeks.org/postgresql-show-tables/
 
 
 
-## Manage Users
+### Import / Export 
+
+https://www.a2hosting.com/kb/developer-corner/postgresql/import-and-export-a-postgresql-database  
+How to import and export PostgreSQL databases  
+
+```
+pg_dump -U username dbname > dbexport.pgsql
+```
+
+```
+psql -U username dbname < dbexport.pgsql
+```
+
+
+## Manage Users and Permissions
 
 A good guide. 
 
@@ -115,18 +135,6 @@ What is the Default Password for PostgreSQL? - Liquid Web
 https://www.educba.com/postgresql-user-password/  
 PostgreSQL User Password | Create, Change, Delete Password for Users  
 
-## Import / Export 
-
-https://www.a2hosting.com/kb/developer-corner/postgresql/import-and-export-a-postgresql-database  
-How to import and export PostgreSQL databases  
-
-```
-pg_dump -U username dbname > dbexport.pgsql
-```
-
-```
-psql -U username dbname < dbexport.pgsql
-```
 
 
 
@@ -218,3 +226,56 @@ $PG_ROOT/data/pg_hba.conf
 usually /var/lib/pgsql or /var/lib/postgresql 
 
 vi /var/lib/pgsql/13/data/pg_hba.conf
+
+
+## Metabases
+
+Ready to go APIs built on top of a database. Some rely on Postgres exclusively, others can use many types of different databases. 
+
+https://github.com/topics/postgresql  
+postgresql · GitHub Topics  
+https://github.com/supabase/supabase  
+supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.  
+https://github.com/metabase/metabase  
+metabase/metabase: The simplest, fastest way to get business intelligence and analytics to everyone in your company  
+https://github.com/cube-js/cube.js  
+cube-js/cube.js: 📊 Cube — Headless Business Intelligence for Building Data Applications  
+https://github.com/calcom/cal.com  
+calcom/cal.com: Scheduling infrastructure for absolutely everyone.  
+
+
+
+## Postgres & Kubernetes
+
+https://github.com/sorintlab/stolon/  
+sorintlab/stolon: PostgreSQL cloud native High Availability and more.  
+https://github.com/sorintlab/stolon/blob/master/examples/kubernetes/README.md  
+stolon/README.md at master · sorintlab/stolon  
+
+https://artifacthub.io/packages/search?ts_query_web=postgres&sort=stars&page=1  
+Artifact Hub  
+https://artifacthub.io/packages/helm/stolon/stolon  
+stolon 1.7.2 · iomed/stolon  
+
+
+### 
+https://duckduckgo.com/?t=ffab&q=bad+to+run+db+in+same+pod+as+api+kubernetes&ia=web  
+bad to run db in same pod as api kubernetes at DuckDuckGo  
+https://stackoverflow.com/questions/56007887/how-to-run-multiple-containers-within-the-same-pod-in-kubernetes-clusture  
+docker - How to run multiple containers within the same pod in kubernetes clusture? - Stack Overflow  
+https://stackoverflow.com/questions/68621970/two-kubernetes-pods-accessing-the-same-database  
+spring - Two Kubernetes pods accessing the same database - Stack Overflow  
+
+### 
+https://duckduckgo.com/?t=ffab&q=postgres+kubernetes&ia=web  
+postgres kubernetes at DuckDuckGo  
+https://adamtheautomator.com/postgres-to-kubernetes/  
+How to Deploy Postgres to Kubernetes  
+https://artifacthub.io/packages/search?ts_query_web=postgres&sort=stars&page=1  
+Artifact Hub  
+https://artifacthub.io/packages/helm/bitnami/postgresql-ha  
+postgresql-ha 9.4.1 · bitnami/bitnami  
+https://artifacthub.io/packages/helm/bitnami/postgresql-ha  
+postgresql-ha 9.4.6 · bitnami/bitnami  
+
+
