@@ -102,11 +102,6 @@ Template Refs | Vue.js
 
 ```
 
-See also
-
-[Boilerplates & Templates](boilerplates.md)
-
-
 ## Computed and Watcher
 
 When using computed values, be sure the value is instantiated / applied in a template somewhere, otherwise it won't ever be called. 

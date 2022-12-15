@@ -35,16 +35,6 @@ Fast bundler for efficient development with Hot Module Reloading
 [Vite](vite.md)
 
 
-## Templates & Boilerplates
-
-[Boilerplates & Templates](boilerplates.md)
-
-
-## UI Frameworks / Component Libraries
-
-[UI Frameworks](ui-frameworks.md)
-
-
 ## Server Side Rendering
 
 This is not necessarily the same thing as Static Site Generation, but it is usually a prerequisite
