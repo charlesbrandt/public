@@ -39,13 +39,15 @@ to ensure the editor runs in the terminal and does not launch a gui version
 emacs -nw
 ```
 
-## Using
+## Close Frame / Unsplit Window
 
-To close an unexpected frame in a window, it can be difficult via a terminal if `Alt-0` doesn't have an effect. 
+To close an unexpected frame in a window, it can be difficult via a terminal if `Alt-0`  or `C-x 0` doesn't have an effect. 
 
 ```
 M-x delete-window
 ```
+
+https://stackoverflow.com/questions/5360028/emacs-unsplit-a-particular-window-split
 
 ## Configuration
 

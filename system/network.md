@@ -46,29 +46,29 @@ network: {config: disabled}
 
 NetworkManager is the system... well... umm.. managing the network. 
 
-https://networkmanager.dev/docs/admins/
-NetworkManager for administrators
-https://en.wikipedia.org/wiki/NetworkManager
-NetworkManager - Wikipedia
-https://www.networkmanager.dev/
-NetworkManager
-https://www.networkmanager.dev/docs/
-Documentation
+https://networkmanager.dev/docs/admins/  
+NetworkManager for administrators  
+https://en.wikipedia.org/wiki/NetworkManager  
+NetworkManager - Wikipedia  
+https://www.networkmanager.dev/  
+NetworkManager  
+https://www.networkmanager.dev/docs/  
+Documentation  
 
 
 It has a cli: `nmcli` that can be used to modify the network configuration. 
 
 This is what allows you to enable wifi on a machine with only a CLI. 
+  
+https://networkmanager.dev/docs/api/latest/nmcli.html  
+nmcli: NetworkManager Reference Manual  
 
-https://networkmanager.dev/docs/api/latest/nmcli.html
-nmcli: NetworkManager Reference Manual
-
-https://www.tecmint.com/nmcli-configure-network-connection/
-How to Configure Network Connection Using 'nmcli' Tool
-https://www.makeuseof.com/configure-static-ip-address-settings-ubuntu-22-04/
-How to Configure Static IP Address on Ubuntu 22.04 LTS
-https://www.makeuseof.com/connect-to-wifi-with-nmcli/
-How to Connect to Wi-Fi Through the Linux Terminal With Nmcli
+https://www.tecmint.com/nmcli-configure-network-connection/  
+How to Configure Network Connection Using 'nmcli' Tool  
+https://www.makeuseof.com/configure-static-ip-address-settings-ubuntu-22-04/  
+How to Configure Static IP Address on Ubuntu 22.04 LTS  
+https://www.makeuseof.com/connect-to-wifi-with-nmcli/  
+How to Connect to Wi-Fi Through the Linux Terminal With Nmcli  
 
 
 ### Interfaces
@@ -101,8 +101,8 @@ Don't assume `eth0` will just work.
 
 ### Netplan
 
-https://netplan.io/
-Canonical Netplan
+https://netplan.io/  
+Canonical Netplan  
 
 Netplan configuration files are located in `/etc/netplan`
 
@@ -148,8 +148,8 @@ sudo netplan apply
 
 [adapted via](https://getlabsdone.com/static-ip-configuration-in-ubuntu-using-cli-gui/)
 
-https://netplan.io/examples/
-Netplan | Backend-agnostic network configuration in YAML
+https://netplan.io/examples/  
+Netplan | Backend-agnostic network configuration in YAML  
 
 
 ### Troubleshooting
@@ -244,8 +244,8 @@ ss -nutlp
 lsof -i
 ```
 
-via: 
-https://www.thegeekdiary.com/centos-rhel-how-to-find-if-a-network-port-is-open-or-not/
+via:   
+https://www.thegeekdiary.com/centos-rhel-how-to-find-if-a-network-port-is-open-or-not/  
 
 ### nmap
     
@@ -289,10 +289,12 @@ sudo apt install inetutils-traceroute
 
 To see what is happening on a network, use wireshark
 
-https://www.wireshark.org/
-Wireshark · Go Deep.
+https://www.wireshark.org/  
+Wireshark · Go Deep.  
 
-    sudo apt install wireshark
+```
+sudo apt install wireshark
+```
 
 https://jvns.ca/blog/2018/06/19/what-i-use-wireshark-for/
 

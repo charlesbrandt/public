@@ -305,7 +305,7 @@ https://tahoeninjas.blog/2019/03/30/multi-cursor-editing-in-visual-studio-code/
 
 
 
-## Useful Extensions
+## Workspace Extensions
 
 Recommended extensions can be configured as part of a project. These settings are stored in `.vscode/extensions.json`
 
@@ -331,6 +331,9 @@ https://code.visualstudio.com/docs/editor/extension-marketplace#_recommended-ext
 
 Use `@recommended` to filter in extension panel
 
+See also: 
+
+https://code.visualstudio.com/docs/getstarted/settings
 
 ### Space Block Jumper
 

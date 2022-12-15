@@ -64,3 +64,22 @@ uploader · GitHub Topics
 
 https://github.com/lian-yue/vue-upload-component  
 lian-yue/vue-upload-component: Vue.js file upload component, Multi-file upload, Upload directory, Drag upload, Drag the directory, Upload multiple files at the same time, html4 (IE 9), `PUT` method, Customize the filter  
+
+### 
+https://duckduckgo.com/?q=vue3+filebrowser+component&t=ffab&ia=web  
+vue3 filebrowser component at DuckDuckGo  
+https://www.smashingmagazine.com/2022/03/drag-drop-file-uploader-vuejs-3/  
+How To Make A Drag-and-Drop File Uploader With Vue.js 3 — Smashing Magazine  
+https://github.com/n1crack/vuefinder  
+n1crack/vuefinder: Vuefinder is a file manager component for vuejs  
+https://github.com/n1crack/vuefinder/tree/master/src/components/modals  
+vuefinder/src/components/modals at master · n1crack/vuefinder · GitHub  
+https://vuejsexamples.com/5-best-file-manager-for-vue-js/  
+5 Best File Manager For Vue.js  
+https://github.com/ashishdoneriya/vuedisk  
+GitHub - ashishdoneriya/vuedisk: File Manager using vuejs, element ui as frontend and php as backend  
+https://github.com/cyon/vue3-file-selector  
+GitHub - cyon/vue3-file-selector: A Vue 3 headless file selector component  
+https://github.com/semeniuk/vuetify-file-browser  
+semeniuk/vuetify-file-browser: Open source file manager component for web (Vue.js, Vuetify, Node.js)  
+

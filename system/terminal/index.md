@@ -24,19 +24,13 @@ dew() {
 
 The $@ part handles passing along all of the function’s arguments. 
 
-https://duckduckgo.com/?q=docker-compose+shortcut&t=ffab&ia=web
-docker-compose shortcut at DuckDuckGo
-https://stackoverflow.com/questions/40429508/shortcut-command-for-docker-compose-build-down-up
-Shortcut command for docker-compose build + down + up - Stack Overflow
-https://nickjanetakis.com/blog/docker-tip-26-alias-and-function-shortcuts-for-common-commands
-Docker Tip #26: Alias and Function Shortcuts for Common Commands — Nick Janetakis
-
-## See also
-
-<a href=".bashrc">.bashrc</a>
-
-[tmux](tmux.md)
-
+https://duckduckgo.com/?q=docker-compose+shortcut&t=ffab&ia=web  
+docker-compose shortcut at DuckDuckGo  
+https://stackoverflow.com/questions/40429508/shortcut-command-for-docker-compose-build-down-up  
+Shortcut command for docker-compose build + down + up - Stack Overflow  
+https://nickjanetakis.com/blog/docker-tip-26-alias-and-function-shortcuts-for-common-commands  
+Docker Tip #26: Alias and Function Shortcuts for Common Commands — Nick Janetakis  
+  
 ## Timing a process
 
 just prefix the command you want to time with `time`!

@@ -42,6 +42,18 @@ grep -ir "look for" *
 grep -ir "look for" * | grep -i "one more thing"
 ```
 
+Sometimes there are compiled javascript files that are quite large and will overflow the CLI buffer and prevent access to earlier results. It is possible to ignore these long "lines" in the output:
+
+```
+grep -rLZE '.{200}' . | xargs -r0 grep pattern
+```
+
+https://duckduckgo.com/?t=ffab&q=grep+skip+long+lines&ia=web  
+grep skip long lines at DuckDuckGo  
+https://unix.stackexchange.com/questions/113497/exclude-files-that-have-very-long-lines-of-text-from-grep-output  
+Exclude files that have very long lines of text from grep output - Unix & Linux Stack Exchange  
+
+
 
 ## Locating Files
 

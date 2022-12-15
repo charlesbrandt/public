@@ -39,6 +39,9 @@ https://tmuxcheatsheet.com/
 
 Bash Colors example available in <a href="terminal/bash-colors.sh">terminal/bash-colors.sh</a>
 
+<a href=".bashrc">Sample .bashrc file in the repository</a>
+
+
 ### Moving Files
 
 `mv` command seems so basic, so straightforward. 
@@ -46,6 +49,10 @@ Bash Colors example available in <a href="terminal/bash-colors.sh">terminal/bash
 Reminder: `mv -b` is useful for creating backups of any files that exist in the destination directory. If merging two big directories with some overlapping files, this is a useful option to be able to compare once everything is in the same place. 
 
 https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/
+
+## Virtualization
+
+[Virtualization](virtualization/)  
 
 ## Administration
 
@@ -56,18 +63,15 @@ https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/
 [Remote Desktop](remote-desktop.md)  
 [Startup Services](startup-services.md)  
 
+[Crontab (Scheduled Jobs)](crontab.md)  
+
 [Disk Usage](drives/disk-usage.md)  
-
-## Virtualization
-
-[Virtualization](virtualization/)  
-
 
 ## Hardware
 
 A computer is hardware that runs software. These devices power the systems and applications we've come to rely on. 
 
-If you're just getting familiar with learning about computers, the [Raspberry Pi](/pi/) ecosystem is a great place to start. Heavy overlap and a great inexpensive entry point. Learning is part of the process.
+If you're just getting familiar with learning about computers, the [Raspberry Pi](/pi/) ecosystem is a great place to start. Heavy overlap and an inexpensive entry point. Learning is part of the process.
 
 Computers are defined by three general properties; how much: computational processing power (CPU), memory, and storage. 
 
@@ -84,7 +88,7 @@ Set up a computer with a fresh operating system.
 
 Linux is common on desktop machines in the open source world. There are many flavors:
 
-[Linux](linux/)  
+[Linux](linux/) ([Upgrade](linux/upgrade.md))  
 
 [Set up Ubuntu](linux/ubuntu.md)  
 

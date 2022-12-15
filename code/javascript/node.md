@@ -175,14 +175,75 @@ https://classic.yarnpkg.com/en/docs/dependency-types#toc-dev-dependencies
 
 ### Choosing a package manager
 
-NPM vs Yarn vs PNPM
+NPM vs PNPM vs Yarn 
 
-The answer? Use what your team is using. Be consistent there. Working on an open project? Use what the project is using.
+The answer? Use what the project is using. Be consistent. 
 
 All are good. No need to get hung up here. See what works best and make a change when necessary. 
 
 
+### Npm
+
+NPM is the default package manager for Node. In some environments, it may be all you have access to. 
+
+#### Install packages
+
+Install everything as configured in package.json file
+
+```
+npm install
+```
+
+Calls to
+
+```
+npm install --save [package name]
+```
+
+or
+
+```
+npm install --save-dev [package name]
+```
+
+or
+
+```
+npm install --save-optional [package name]
+```
+
+will update the package.json to list your dependencies.
+
+
+#### Upgrade / Update packages
+
+To upgrade a package that has already been installed, use either:
+
+```
+npm install [package name]@latest
+```
+
+or
+
+```
+npm update [package name]
+```
+
+
+#### Remove packages
+
+To remove a dependency:
+
+```
+npm uninstall <name> --save
+```
+
+https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
+
+
 ### pnpm
+
+If you have a bit more control over the hosting environment and can install a user level package manager, pnpm is a good option. 
 
 PNPM uses links to node modules so you don't end up with 100 copies of the same module on your local drive. This is useful in development when you may want to use a large development module in multiple projects. 
 
@@ -266,64 +327,6 @@ then, with apt-get:
 via https://yarnpkg.com/lang/en/docs/install/
 
 
-### Npm
-
-NPM is the default package manager for Node.
-
-
-#### Install packages
-
-Install everything as configured in package.json file
-
-```
-npm install
-```
-
-Calls to
-
-```
-npm install --save [package name]
-```
-
-or
-
-```
-npm install --save-dev [package name]
-```
-
-or
-
-```
-npm install --save-optional [package name]
-```
-
-will update the package.json to list your dependencies.
-
-
-#### Upgrade / Update packages
-
-To upgrade a package that has already been installed, use either:
-
-```
-npm install [package name]@latest
-```
-
-or
-
-```
-npm update [package name]
-```
-
-
-#### Remove packages
-
-To remove a dependency:
-
-```
-npm uninstall <name> --save
-```
-
-https://stackoverflow.com/questions/13066532/how-to-uninstall-npm-modules-in-node-js
 
 
 ## Lock files
