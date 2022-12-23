@@ -1,103 +1,71 @@
 # Browsers
 
 A window to the internet.  
-Settings for an optimal session. 
+Settings and extensions for an optimal session. 
 
 
 ## Firefox
 
-Running multiple browsers with different profiles helps keeps active references in the right place. When the work is finished, just close that browser. Good for keeping memory free. 
+Running multiple browsers with different profiles helps keeps active references in the right place. When the work is finished, just close that browser. This strategy helps keep memory free. 
 
-If you need a browser context for a specific task / job
+If you need a browser context for a specific task / job, launch firefox with:
 
-`firefox -p` does the trick! 
+```
+firefox -p
+```
 
-If no relevant profile is available, just create one.
+If no relevant profile is available, create one from scratch, or clone an existing template. A template Firefox profile that tracks these notes is available here:
 
-Be sure to set Menu -> Settings -> Restore previous session.  
+https://gitlab.com/charlesbrandt/firefox-profile
 
-Ensure "Ctrl+Tab cycles through tabs in recently used order" option is unchecked.
-
-Pick your preferred search engine while you're at it!
-
-
-### Tab Suspender
-
-'Auto Tab Discard' does what I'm after. Closest working alternative to 'The Great Suspender'
-
-https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/  
-
-This feature goes by many names, including: 
-
-Tab Sleep, Tab Snooze, Tab Freeze, Tab Suspend, Tab Discard or Tab Hibernation.
-
-/search?q=firefox+tab+suspender
-
-https://www.askvg.com/tip-disable-or-enable-tab-sleep-or-tab-snooze-feature-in-web-browsers/
-
-May be a similar feature built in to Firefox
-
-in about:config
-browser.tabs.unloadOnLowMemory
-
-https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web  
-great suspender firefox at DuckDuckGo  
-https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/  
-Chrome's 'The Great Suspender' for firefox? : firefox  
-https://addons.mozilla.org/en-US/firefox/addon/unload-tabs/  
-UnloadTabs – Get this Extension for 🦊 Firefox (en-US)  
-
-this one didn't work so well for me.. major memory usage  
-https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/  
-Tab Suspender – Get this Extension for 🦊 Firefox (en-US)  
+[Profile Management](#profile-management)
 
 
-### Ad Blockers
+### Settings
 
-Instead of adblock, I have been exploring a more general filter / tracking blocker:  
-https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+Open via the menu: Menu -> Settings  
+or in a new window load: `about:preferences#general`
 
-https://github.com/gorhill/uBlock/
+Set the following:
 
-Beware of false immitations:  
-Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.  
-https://www.tomshardware.com/news/adblock-ublock-fake-google-chrome-browser-extensions,40422.html
+-> Open previous windows and tabs (AKA: Restore previous session)
 
-https://disconnect.me/  
-https://addons.mozilla.org/en-us/firefox/addon/disconnect/  
+-> Pick your preferred search engine
 
-[via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
+-> Update the homepage and new tabs preference.  
+  - Lately I've been opting for "Blank Page" to minimize distractions.  
+  - [Tabliss (see below)](#new-tab) is another nice option
+
+
+Ensure "Ctrl+Tab cycles through tabs in recently used order" option is unchecked. (This has been unchecked by default for a while.)
 
 
 ### Tab Links
 
-When creating documentation, it is useful to be able to copy all open tabs in a window. 
-
+When creating documentation, it is useful to be able to copy all open tabs in a window. I wrote this extension to help: 
 
 https://addons.mozilla.org/en-US/firefox/addon/copy-all-tabs/  
 Copy All Tabs :: Add-ons for Firefox
 
-have used this in the past as well:  
-https://addons.mozilla.org/en-US/firefox/addon/copy-urls-expert/?src=search  
-and this may have similar functionality  
-https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus  
+This may have similar functionality?  
+https://addons.mozilla.org/en-US/firefox/addon/tab-mix-plus-webextension/
 
 OneTab?
 
 
 ### Copy Selection as Markdown
 
-https://addons.mozilla.org/en-US/firefox/addon/copy-selection-as-markdown/
-Copy Selection as Markdown – Get this Extension for 🦊 Firefox (en-US)
+https://addons.mozilla.org/en-US/firefox/addon/copy-selection-as-markdown/  
+Copy Selection as Markdown – Get this Extension for Firefox (en-US)  
+
+https://github.com/0x6b/copy-selection-as-markdown
 
 I prefer to change a few of the default settings:
 
 Uncheck the following:
 
 "Prepend quote (>) to the selection"
-"Include link to source page in the copied text"
-
-Be sure to still give attribution!
+"Include link to source page in the copied text" (Be sure to still give attribution!)
 
 Code block style
 
@@ -105,54 +73,138 @@ Code block style
 let code == "fenced";
 ```
 
-https://duckduckgo.com/?t=ffab&q=firefox+extension+copy+html+as+markdown&ia=web
-firefox extension copy html as markdown at DuckDuckGo
+https://duckduckgo.com/?t=ffab&q=firefox+extension+copy+html+as+markdown&ia=web  
+firefox extension copy html as markdown at DuckDuckGo  
+
+
+### Tab Suspender
+
+'Auto Tab Discard' will automatically put non-active tabs to sleep. It's a good way to keep a lot of tabs loaded in the browser without consuming a lot of active memory or resources. 
+
+https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/  
+
+This feature goes by many names, including: 
+
+Tab Sleep, Tab Snooze, Tab Freeze, Tab Suspend, Tab Discard or Tab Hibernation.
+
+It's similar to Chrome's 'The Great Suspender'.
+
+Preferences:
+
+Remove: Prepend a symbol to the discarded tabs (e.g. 💤 or ⏻︎)
+
+#### Firefox Unload
+
+There is starting to be similar functionality built in to Firefox, however this still appears to be a manual process, and the tabs are prefixed with "firefox hibernate tabs" (too long)
+
+Type `about:unloads` in the address bar and press Enter. 
+
+https://firefox-source-docs.mozilla.org/browser/tabunloader/  
+https://support.mozilla.org/en-US/kb/unload-inactive-tabs-save-system-memory-firefox  
+
+Another old Firefox setting that came close, but does not provide unload on demand and automatically:
+
+in `about:config`
+```
+browser.tabs.unloadOnLowMemory
+```
+
+https://www.askvg.com/tip-disable-or-enable-tab-sleep-or-tab-snooze-feature-in-web-browsers/
+
+https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web  
+great suspender firefox at DuckDuckGo  
+https://www.reddit.com/r/firefox/comments/374gx3/chromes_the_great_suspender_for_firefox/  
+Chrome's 'The Great Suspender' for firefox? : firefox  
+https://addons.mozilla.org/en-US/firefox/addon/unload-tabs/  
+UnloadTabs – Get this Extension for Firefox (en-US)  
+
+this one didn't work so well for me.. major memory usage  
+https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/  
+Tab Suspender – Get this Extension for Firefox (en-US)  
+
+
+### Ad Blockers
+
+Instead of only blocking ads, ublock-origin is a general filter / tracking blocker:  
+https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+
+https://github.com/gorhill/uBlock/
+
+Beware of false imitations:  
+Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.  
+https://www.tomshardware.com/news/adblock-ublock-fake-google-chrome-browser-extensions,40422.html
+
+Disconnect me is a similar privacy focused extension:
+
+https://disconnect.me/  
+https://addons.mozilla.org/en-us/firefox/addon/disconnect/  
+
+[via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
+
+
 
 
 ### Profile Management
 
 If you make frequent use of profiles, it can help to create a default profile.
 
-Locate where your profiles are stored:
+Locate where your profiles are stored:  
 https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-data
 
 Available on `about:support` using the "Open Directory" button in the "Profile Directory" section. 
 
-```
-~/.mozilla/firefox
-```
-
-or under snap at
+Under snap at
 
 ```
 ~/snap/firefox/common/.mozilla/firefox
 ```
 
+Previously
 
-How to backup and restore profiles:
+```
+~/.mozilla/firefox
+```
+
+
+#### Backup and Restore Profiles
 
 https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles
 
-Recommendation is to use built in Firefox Profile manager to create a new profile first, then copy the contents of your default profile in to the newly created directory. That way all of the configurations in the browser are set up correctly. 
+Recommendation is to use built in Firefox Profile manager to create a new profile first, then copy the contents of your default profile in to the newly created directory. That way all of the configurations in the browser settings are initialized correctly. 
 
-If you need to update the order, try manually editing:  
-~/.mozilla/firefox/profiles.ini
-
-(make a backup first!)
-
-A template Firefox profile that tracks these notes is available here:
-
-https://gitlab.com/charlesbrandt/firefox-profile
+To apply your template profile
 
 ```
-mkdir repos
-cd repos/
+cd path/to/profiles
 git clone git@gitlab.com:charlesbrandt/firefox-profile.git
-cd .mozilla/firefox/
 # Create the new profile via Firefox
 rm -r hn95wtr8.example/*
-cp -r ~/repos/firefox-profile/* hn95wtr8.example/
+cp -r firefox-profile/* hn95wtr8.example/
 ```
+
+
+If you need to update the order, try manually editing the settings (make a backup copy first!)
+
+```
+cd [profile-directory]
+cp profiles.ini profiles.ini.backup.2
+edit profiles.ini
+```
+
+
+### Snap
+
+Newer versions of Ubuntu are shipping Firefox as a snap package. This leads to annoying "Close the app to avoid disruption messages". 
+
+It looks like it is possible to run the update manually:
+
+```
+killall firefox;
+sudo snap refresh;
+```
+
+https://askubuntu.com/questions/1412140/how-to-solve-pending-update-of-firefox-snap-close-the-app-to-avoid-disruptio  
+How to solve "Pending update of "firefox" snap. Close the app to avoid disruptions" error? - Ask Ubuntu  
 
 
 ### New Tab
@@ -170,21 +222,6 @@ https://github.com/joelshepherd/tabliss
 An open source, pluggable New Tab web extension written in TypeScript, React and Redux.
 
 No special permissions required!
-
-
-### Snap
-
-Newer versions of Ubuntu are shipping Firefox as a snap package. This leads to annoying "Close the app to avoid disruption messages". 
-
-It looks like it is possible to run the update manually:
-
-```
-killall firefox;
-sudo snap refresh;
-```
-
-https://askubuntu.com/questions/1412140/how-to-solve-pending-update-of-firefox-snap-close-the-app-to-avoid-disruptio  
-How to solve "Pending update of "firefox" snap. Close the app to avoid disruptions" error? - Ask Ubuntu  
 
 
 
