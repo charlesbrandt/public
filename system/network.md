@@ -185,15 +185,15 @@ netstat -pan | egrep " LISTEN "
 netstat -tulnp
 ```
 
-t – Show TCP
-u – Show UDP
-l – Show only listening processes (netstat can show both listening and all established connections, i.e. as a client too)
-n – Do not resolve network IP address names or port numbers
-p – Show the process name that is listening on the port
+  - t – Show TCP
+  - u – Show UDP
+  - l – Show only listening processes (netstat can show both listening and all established connections, i.e. as a client too)
+  - n – Do not resolve network IP address names or port numbers
+  - p – Show the process name that is listening on the port
 
 Similar to `netstat`, but the focus is on processes:
 
-``
+```
 ss -nutlp
     
 lsof -i
@@ -340,7 +340,7 @@ and transfer the config over from your server:
 
 ```
 cd /etc/wireguard/
-sudo rsync account@server:/home/account/wg0-client-
+sudo rsync account@server:/home/account/wg0-client-name.conf
 ```
 
 Bring up the client connection
@@ -358,8 +358,13 @@ sudo wg show
 How to Install WireGuard VPN Client on Ubuntu Linux | Serverspace  
 https://serverspace.io/support/help/how-to-install-wireguard-vpn-client-on-ubuntu-linux/  
 
+Note: On ubuntu, I needed to create a symlink for `resolvectl`
 
+```
+ln -s /usr/bin/resolvectl /usr/local/bin/resolvconf
+```
 
+https://superuser.com/questions/1500691/usr-bin-wg-quick-line-31-resolvconf-command-not-found-wireguard-debian
 
 
 ## Traffic Analysis
