@@ -74,7 +74,7 @@ How to Connect to Wi-Fi Through the Linux Terminal With Nmcli
 ### Interfaces
 
 
-It is very convenient for seeing the status of the network. Dare I say better than `ip address`?
+`nmcli` is very convenient for seeing the status of the network. Dare I say better than `ip address`?
 
 ```
 nmcli
@@ -152,20 +152,6 @@ https://netplan.io/examples/
 Netplan | Backend-agnostic network configuration in YAML  
 
 
-### Troubleshooting
-
-Ping the gateway. If that doesn't work, the configuration is incorrect. Check your settings, your network addresses, etc (is it on a different subnet?)
-
-```
-ping 192.168.1.1
-```
-
-
-### Related Tasks
-
-[Copy SSH keys to the new machine](terminal/ssh.md)
-
-
 ### GUI
 
 https://www.google.com/search?q=ubuntu+gnome+3+change+IPs  
@@ -175,44 +161,13 @@ How to Configure Networking in GNOME
 
 
 
-[Configure a firewall](firewall.md)
 
+## Connections & Troubleshooting
 
-## Security, Ports, Firewalls
-
-### Common Ports
-
-By convention, common services utilize specific ports to publish and connect to the service. Some examples include:
-
-SSH            22
-DNS servers    53	 tcp	potential trojan (probably dns)
-ipps	       631	        Internet Printing Protocol over HTTPS
-
-
-### Firewall
-
-Firewalls block external traffic from entering internal networks and hosts. 
-
-Ubuntu uses `ufw`. `ufw` is disabled by default. Enable this first on a new host machine! :)
+Ping the gateway. If that doesn't work, the configuration is incorrect. Check your settings, your network addresses, etc (is it on a different subnet?)
 
 ```
-sudo ufw enable
-```
-
-Then allow the ports that you want to be accessible on your local network 
-
-```
-sudo ufw allow 22
-```
-
-https://ubuntu.com/server/docs/security-firewall
-
-### iptables
-
-See what netfilter rules have been applied with `iptables` tool
-
-```
-iptables -xvn -L
+ping 192.168.1.1
 ```
 
 
@@ -255,9 +210,7 @@ To scan open ports from another (external) machine that's on the same network
 nmap [ip of machine to scan]
 ```
 
-
-
-## DNS
+### DNS
 
 To resolve a name associated with an IP address, try nslookup:
 
@@ -275,11 +228,137 @@ Don't forget!
 You can always add the host & ip to your `/etc/hosts` file and then it will resolve and you can test the service before the dns entries propagate! :)
 
 
-## Traceroute
+### Traceroute
 
 ```
 sudo apt install inetutils-traceroute 
 ```
+
+
+## Firewall, Security, Ports
+
+See also [Configure a firewall](firewall.md)
+
+### Common Ports
+
+By convention, common services utilize specific ports to publish and connect to the service. Some examples include:
+
+SSH            22
+DNS servers    53	 tcp	potential trojan (probably dns)
+ipps	       631	        Internet Printing Protocol over HTTPS
+
+
+### ufw
+
+Firewalls block external traffic from entering internal networks and hosts. 
+
+Ubuntu uses `ufw`. `ufw` is disabled by default. Enable this first on a new host machine! :)
+
+```
+sudo ufw enable
+```
+
+Then allow the ports that you want to be accessible on your local network 
+
+```
+sudo ufw allow 22
+```
+
+https://ubuntu.com/server/docs/security-firewall
+
+### iptables
+
+See what netfilter rules have been applied with `iptables` tool
+
+```
+iptables -xvn -L
+```
+
+### VPN
+
+Wireguard is now built in to most modern linux kernels. Give that a try. On the server
+
+```
+curl -O https://raw.githubusercontent.com/angristan/wireguard-install/master/wireguard-install.sh
+chmod +x wireguard-install.sh
+
+sudo ./wireguard-install.sh
+```
+
+If your VPN server will be responding via a NAT'd IP address, use that when configuring the VPN so clients know where to go to contact the server. 
+
+At the end of the process, the script will ask you for the name of the **clients** that will be connecting to the VPN. These names need to be less than 15 characters. It will also create a QR code in the terminal (cool!)
+
+Note where the config is saved for transfer to the clients. 
+
+
+
+If you have a firewall enabled, note the selected port in the configuration and allow it in the firewall rules:
+
+```
+sudo ufw allow 59984
+```
+
+You may also need to forward the port in any upstream routers. 
+
+
+https://github.com/angristan/wireguard-install
+
+https://www.makeuseof.com/vpn-wireguard/
+
+
+#### IP Forwarding
+
+```
+sudo vi /etc/sysctl.conf
+```
+
+Uncomment line:
+
+```
+net.ipv4.ip_forward=1
+```
+
+Save and apply with: 
+
+```
+sudo sysctl -p
+```
+
+#### VPN Client
+
+On Android, download the wireguard client and use QR codes to configure (nice!)
+
+On linux, install wireguard:
+
+```
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install wireguard
+```
+
+and transfer the config over from your server:
+
+```
+cd /etc/wireguard/
+sudo rsync account@server:/home/account/wg0-client-
+```
+
+Bring up the client connection
+
+```
+sudo wg-quick up wg0
+```
+
+See the connection status:
+
+```
+sudo wg show
+```
+
+How to Install WireGuard VPN Client on Ubuntu Linux | Serverspace  
+https://serverspace.io/support/help/how-to-install-wireguard-vpn-client-on-ubuntu-linux/  
+
+
 
 
 
@@ -315,5 +394,12 @@ https://gitlab.com/thart/flowanalyzer
 Manito Networks / flowanalyzer · GitLab  
 https://www.ntop.org/  
 ntop – High Performance Network Monitoring Solutions based on Open Source and Commodity Hardware.  
+
+
+### Related Tasks
+
+[Copy SSH keys to the new machine](terminal/ssh.md)
+
+
 
 
