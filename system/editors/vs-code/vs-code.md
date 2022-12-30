@@ -50,12 +50,6 @@ See below for a description about what the settings do
   "eslint.format.enable": true,
   "iconify.inplace": false,
   "python.showStartPage": false,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
   "redhat.telemetry.enabled": false,
@@ -320,9 +314,8 @@ Recommended extensions can be configured as part of a project. These settings ar
     "redhat.vscode-yaml",
     "streetsidesoftware.code-spell-checker",
     "csstools.postcss",
-    "antfu.unocss",
-    "wix.vscode-import-cost",
     "lokalise.i18n-ally",
+    "wix.vscode-import-cost"
   ]
 }
 ```

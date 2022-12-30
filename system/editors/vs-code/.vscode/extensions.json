@@ -7,9 +7,8 @@
     "ms-vscode-remote.remote-ssh",
     "redhat.vscode-yaml",
     "streetsidesoftware.code-spell-checker",
-    "wix.vscode-import-cost",
-    "lokalise.i18n-ally",
     "csstools.postcss",
-    "antfu.unocss",
+    "lokalise.i18n-ally",
+    "wix.vscode-import-cost"
   ]
 }
