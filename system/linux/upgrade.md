@@ -168,13 +168,7 @@ Some things I like to change
 
 Future considerations
 
-  - If hibernation is actually necessary, just use a file based scratch drive. Easier to allocate, and prevents storage from getting allocated in a way that is sub optimal. 
-  - [previously] Enough swap to enable hibernation  
-    Will want to disable swap from being used by the OS. (Just use memory)  
-    But it is useful to have enough space for hibernation  
-    ideally it is not part of the / (root) filesystem  
-
-    
+  - If hibernation is necessary, just use a file based scratch drive. Easier to allocate, and prevents storage from getting allocated in a way that is sub optimal. [Swap](../drives/swap.md)
 
   - Separate `/var` ???  
     I like this idea in theory -- prevent an ailing service that generates a lot of log files from filling up the main partition.   

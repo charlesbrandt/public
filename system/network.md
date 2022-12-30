@@ -340,7 +340,7 @@ and transfer the config over from your server:
 
 ```
 cd /etc/wireguard/
-sudo rsync account@server:/home/account/wg0-client-name.conf
+sudo rsync account@server:/home/account/wg0-client-name.conf wg0.conf
 ```
 
 Bring up the client connection
@@ -349,15 +349,6 @@ Bring up the client connection
 sudo wg-quick up wg0
 ```
 
-See the connection status:
-
-```
-sudo wg show
-```
-
-How to Install WireGuard VPN Client on Ubuntu Linux | Serverspace  
-https://serverspace.io/support/help/how-to-install-wireguard-vpn-client-on-ubuntu-linux/  
-
 Note: On ubuntu, I needed to create a symlink for `resolvectl`
 
 ```
@@ -365,6 +356,22 @@ ln -s /usr/bin/resolvectl /usr/local/bin/resolvconf
 ```
 
 https://superuser.com/questions/1500691/usr-bin-wg-quick-line-31-resolvconf-command-not-found-wireguard-debian
+
+See the connection status:
+
+```
+sudo wg show
+```
+
+Once finished, close the client connection
+
+```
+sudo wg-quick down wg0
+```
+
+How to Install WireGuard VPN Client on Ubuntu Linux | Serverspace  
+https://serverspace.io/support/help/how-to-install-wireguard-vpn-client-on-ubuntu-linux/  
+
 
 
 ## Traffic Analysis
