@@ -4,6 +4,7 @@
 
 [Format](format.md)  
 [Partitions](partitions.md), [File Systems](file-systems.md), [ExFAT](exfat.md)
+[Swap](swap.md)
 
 [Mount](mount.md)  
 [Disk In Use](disk-in-use.md)  

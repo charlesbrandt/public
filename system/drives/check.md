@@ -12,9 +12,11 @@ Install ntfs-3g with sudo apt-get install ntfs-3g. Then run the ntfsfix command 
 
 For example:
 
-
+```
 ntfsfix /dev/hda6
+```
 
+```
 ntfsfix v2.0.0 (libntfs 10:0:0)
 
 Usage: ntfsfix [options] device
@@ -42,6 +44,7 @@ Usage: ntfsfix [options] device
     -h, --help              Display this help
     -n, --no-action         Do not write anything
     -V, --version           Display version information
+```
 
 ## Testdisk
 
@@ -49,11 +52,16 @@ I've just fixed my USB drive using "testdisk", a Linux command line (yet friendl
 
 To use the utility, install it:
 
+```
 sudo apt-get install testdisk
+```
+
 Then run it:
 
-    sudo testdisk
-    
+```
+sudo testdisk
+```
+
 and follow the instructions. You must search for partitions and then write the changes.
 
 Hope this help anyone.
