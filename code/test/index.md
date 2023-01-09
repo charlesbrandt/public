@@ -4,5 +4,5 @@ If a project has an established testing framework, use that. Try running them. S
 
 If a project doesn't have an existing testing suite in place, consider [Cypress](cypress.md)
 
-
+[Selenium](selenium.md) is still a great swiss-army knife for web testing and automation. 
 
