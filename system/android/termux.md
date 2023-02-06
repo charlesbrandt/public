@@ -11,23 +11,77 @@ The Google Play version of the Termux app no longer
 receives updates. For more information, visit:
 https://wiki.termux.com/wiki/Termux_Google_Play
 
-## Steps for getting a termux install going
-
 A physcial keyboard makes things a lot easier!
 
-Early on, before you have a text editor available, it can be handy to use the script command to log what you're doing:
+## Core tools
 
-    script -a test.txt
+```
+pkg update
+```
 
-see also [topic of interest](./topic-of-interest.md) for an example
+install git:
+
+```
+pkg install git
+```
+
+install emacs:
+
+```
+pkg install emacs
+```
+
+Check out repos locally. You'll need to use a git server to synchronize repositories. 
+
+```
+git clone https://gitlab.com/charlesbrandt/public
+
+ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
+ln -s public/system/editors/emacs/.emacs .emacs
+```
+
+### SSH
+
+SSH is not available by default. 
+
+```
+pkg install openssh
+````
+
+This is also a good chance to generate ssh keys to simplify connecting to primary servers:
+
+```
+ssh-keygen -t rsa
+ssh-copy-id demo@198.51.100.0
+```
+
+`dropbear` is very lightweight... so much so it does not have `ssh-copy-id`. Better to go with `openssh` if you need that
+
+```
+pkg install dropbear
+```    
 
 
-## Termux extras
+### Rsync
 
-Set up shared storage. Enable it for the app in android system settings. Then:
-    
-    termux-setup-storage
+Another good one to have
 
+```
+pkg install rsync
+```
+
+
+for 'ps' cli command in termux:
+
+```
+pkg install procps
+```
+
+## Sessions
+
+https://wiki.termux.com/wiki/User_Interface
+
+> The navigation drawer is revealed by swiping inwards from the left part of the screen (if you have gesture navigation enabled in Android, you will need to hold briefly on the edge of the screen before swiping to bring up the navigation drawer instead of going back in Android). 
 
 ## Termux configuration
 
@@ -39,27 +93,10 @@ After changing the properties file the changes will take effect either by execut
 
 I've included my copy of the configuration in this repository 
 
-    mkdir .termux
-    cp public/system/android/termux.properties .termux/
-    
-
-### Sessions
-
 ```
-# Open a new terminal with...
-# 3 keys does not seem to work:
-# shortcut.create-session = ctrl + shift + n
-shortcut.create-session = ctrl + '
-
-# Go one session down with ...
-shortcut.next-session = ctrl + .
-
-# Go one session up 
-shortcut.previous-session = ctrl + ,
-
-# Rename a session
-shortcut.rename-session = ctrl + ;
-```
+mkdir .termux
+cp public/system/android/termux.properties .termux/
+```    
 
 ### Extra keys
 
@@ -101,66 +138,25 @@ extra-keys = [ \
  ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP'] \
 ]
 
+### Sessions
 
-## Core tools
+```
+# Open a new terminal with...
+# 3 keys does not seem to work:
+# shortcut.create-session = ctrl + shift + n
+shortcut.create-session = ctrl + '
 
-    pkg update
+# Go one session down with ...
+shortcut.next-session = ctrl + .
 
-install git:
+# Go one session up 
+shortcut.previous-session = ctrl + ,
 
-    pkg install git
+# Rename a session
+shortcut.rename-session = ctrl + ;
+```
 
-install emacs:
-
-    pkg install emacs
-    
-Check out repos locally. You'll need to use a git server to sychronize repositories. For ones that are public, put them in a public directory
-
-    mkdir public
-
-For now there aren't any other apps that are making use of these files. No need to bury them deep (from Termux's home perspective) in the shared/ folder.
-
-    git clone https://github.com/charlesbrandt/system public/system
-
-    ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
-    ln -s public/system/editors/emacs/.emacs .emacs
-
-## SSH
-
-SSH is not available by default. 
-
-    ssh charles@192.168.2.81
-    The program 'ssh' is not installed. Install it by executing:
-      pkg install dropbear
-    or
-      pkg install openssh
-     
-TODO: not sure what dropbear is
-
-    pkg install openssh
-    
-This is also a good chance to generate ssh keys to simplify connecting to primary servers:
-
-    ssh-keygen -t rsa
-    ssh-copy-id demo@198.51.100.0
-
-
-## Rsync
-
-Another good one to have
-
-    pkg install rsync
-
-
-
-for 'ps' cli command in termux:
-
-    pkg install procps
-
-
-
-
-### Termux API
+## Termux API
 
 The termux API's require another app to be installed from the app store, but seem like they could be handy for interacting with the underlying system. Once that app is installed, enable it in termux with:
 
@@ -257,6 +253,7 @@ termux-wifi-scaninfo
 
 ## Python
 
+```
 pkg install python
 pip install --upgrade pip
 python -V
@@ -264,39 +261,69 @@ python -V
 pip install ipython
 
 pip install pipenv
+```
 
 
 ## Sqlite3
 
-    pkg install sqlite
-    
+```
+pkg install sqlite
+```
+
 Then can run it with command
 
-    sqlite3
-    
+```
+sqlite3
+```
+
 https://sqlite.org/cli.html
 
-    .databases
-    .tables
-
-
-## Tmux
-
-    pkg install tmux
-    
+```
+.databases
+.tables
+```
 
 ## Upgrades
 
 Don't forget to run 
 
-    apt list --upgradable
-    
+```
+apt list --upgradable
+```
+
 and
   
-    pkg upgrade
-    
+```
+pkg upgrade
+```
+
 every now and again
 
+## Steps for getting a termux install going
+
+Early on, before you have a text editor available, it can be handy to use the script command to log what you're doing:
+
+    script -a test.txt
+
+see also [topic of interest](./topic-of-interest.md) for an example
+
+
+## Termux extras
+
+Set up shared storage. Enable it for the app in android system settings. Then:
+    
+    termux-setup-storage
+
+
+
+## Tmux
+
+At this point, you probably want to be working on a remote server, not on a mobile device
+
+```
+pkg install tmux
+```
+    
 ## Notes
 
 It's a good idea to work within the same editor rather than different console tab. This way copy and paste are using the same buffer. Emacs / termux has a different clipboard buffer than the native android os.

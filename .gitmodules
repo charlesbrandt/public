@@ -1,6 +1,3 @@
-[submodule "system/editors/emacs/.emacs.d/editors/emacs/.emacs.d/ergoemacs-mode"]
-	path = system/editors/emacs/.emacs.d/editors/emacs/.emacs.d/ergoemacs-mode
-	url = https://github.com/ergoemacs/ergoemacs-mode.git
 [submodule "editors/emacs/.emacs.d/modules/ergoemacs-mode"]
 	path = editors/emacs/.emacs.d/modules/ergoemacs-mode
 	url = https://github.com/ergoemacs/ergoemacs-mode.git

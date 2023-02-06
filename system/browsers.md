@@ -8,7 +8,8 @@ Settings and extensions for an optimal session.
 
 Running multiple browsers with different profiles helps keeps active references in the right place. When the work is finished, just close that browser. This strategy helps keep memory free. 
 
-If you need a browser context for a specific task / job, launch firefox with:
+If you need a browser context for a specific task / job, launch f
+irefox with:
 
 ```
 firefox -p

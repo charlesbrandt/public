@@ -19,15 +19,15 @@ Enter in the IP address of the printer.
 
 Note the Printer type if available: e.g. HL-2270DW
 
-Choose "LPD-Printer"
-
-For the Driver, choose from above notes. e.g.
-
-Brother HL-2170W Foomatic/hpijs-pcl5e (recommended)
+choose "JetDirect-Printer"
 Brother HL-2070N Foomatic/hl1250 (recommended)
 
+if that doesn't work try different protocol / driver combinations, eg:
 
-if that doesn't work, choose "JetDirect-Printer"
+Choose "LPD-Printer"
+Brother HL-2170W Foomatic/hpijs-pcl5e (recommended)
+
+
 
 ## Troubleshooting
 

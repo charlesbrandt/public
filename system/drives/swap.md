@@ -137,3 +137,14 @@ head /var/log/pm-suspend.log
 ## Memory cleanup strategies
 
 Browsers can be a big consumer of system resources if left unchecked and unmonitored. 
+
+## Links
+
+If you need swap, just use a swap-file
+
+https://duckduckgo.com/?t=ffab&q=do+i+need+a+swap+partition+linux&ia=web  
+do i need a swap partition linux at DuckDuckGo  
+https://askubuntu.com/questions/1117947/do-i-still-need-to-create-a-swap-partition-in-modern-linux  
+system installation - Do I still need to create a SWAP partition in modern Linux? - Ask Ubuntu  
+https://askubuntu.com/questions/1059108/swap-on-ssd-partition-or-file  
+partitioning - Swap on SSD: partition or file? - Ask Ubuntu  

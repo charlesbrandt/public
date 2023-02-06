@@ -17,6 +17,7 @@ system/editors/emacs/.emacs.d/modules/ergoemacs-mode
 system/editors/emacs/.emacs.d/var/
 system/editors/emacs/.emacs.d/url/
 system/editors/emacs/.emacs.d/.#recentf
+system/editors/emacs/.emacs.d/modules/ergoemacs-mode-master-branch-broken/
 *system/editors/emacs/.emacs.d/modules/ergoemacs-mode
 *editors/emacs/.emacs.d/recentf
 *editors/emacs/.emacs.d/.#recentf

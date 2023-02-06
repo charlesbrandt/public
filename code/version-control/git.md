@@ -6,15 +6,17 @@ Git is a distributed [version control system](index.md), popular for keeping [co
 
 ## CLI Cheat sheet
 
-    git pull
+```
+git pull
 
-    git status
+git status
 
-    git add .
+git add .
 
-    git commit -m "commit message"
+git commit -m "commit message"
 
-    git push
+git push
+```
 
 ## What makes a good commit message
 
@@ -523,6 +525,7 @@ Submodules are remote repositories that are tracked separately, but needed for t
 
 Submodles allow for external dependencies to be noted and included.
 
+
 ### Fetching
 
 To get submodules on clone:
@@ -569,6 +572,18 @@ To remove a submodule you need to:
     Delete the now untracked submodule files rm -rf path_to_submodule
 
 https://gist.github.com/myusuf3/7f645819ded92bda6677
+
+### Track a specific branch
+
+Typically a specific version of the submodule is tracked. 
+
+https://duckduckgo.com/?t=ffab&q=git+submodule+track+master&atb=v343-1&ia=web  
+git submodule track master at DuckDuckGo  
+https://stackoverflow.com/questions/9189575/git-submodule-tracking-latest  
+git submodule tracking latest - Stack Overflow  
+https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule/18799234#18799234  
+How can I specify a branch/tag when adding a Git submodule? - Stack Overflow  
+
 
 ### Merging two git repositories
 
