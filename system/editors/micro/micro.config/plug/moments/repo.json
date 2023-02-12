@@ -1,0 +1,9 @@
+
+[{
+  "Name": "moments",
+  "Description": "Add timestamps to documents",
+  "Tags": ["moments", "timestamp"],
+  "Website": "https://gitlab.com/charlesbrandt/moments-plugin",
+  "Versions": [
+  ]
+}]

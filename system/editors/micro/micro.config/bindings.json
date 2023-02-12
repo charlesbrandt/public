@@ -1,0 +1,18 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "CtrlUnderscore": "lua:comment.comment",
+    "CtrlUp": "ParagraphPrevious",
+    "CtrlDown": "ParagraphNext",
+    "Alt-<": "CursorStart",
+    "Alt->": "CursorEnd",
+    "Ctrl-d": "Delete",
+    "Ctrl-g": "DuplicateLine",
+    "Ctrl-k": "SelectToEndOfLine,Cut,CursorRight",
+    "Alt-(": "ToggleMacro",
+    "Alt-)": "PlayMacro",
+    "<Ctrl-u><Backspace>": "lua:initlua.todaytop",
+    "<Ctrl-u><Ctrl-u>": "lua:initlua.nowtop",
+    "Ctrl-j": "lua:initlua.now",
+    "Ctrl-a": "None",
+    "CtrlSpace": "lua:initlua.startselection"
+}

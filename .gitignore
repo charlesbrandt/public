@@ -11,6 +11,8 @@
 *.retry
 session.*
 repos/
+system/editors/micro/micro.config/backups
+system/editors/micro/micro.config/buffers
 system/editors/emacs/.emacs.d/recentf
 system/editors/emacs/.emacs.d/elpa/archives/
 system/editors/emacs/.emacs.d/modules/ergoemacs-mode

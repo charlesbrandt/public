@@ -1,0 +1,6 @@
+{
+    "basename": true,
+    "mkparents": true,
+    "savecursor": true,
+    "softwrap": true
+}

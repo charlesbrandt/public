@@ -1,6 +1,14 @@
 # Micro
 
-Promising cli terminal based editor. So encouraging, I've been looking for the desktop native application version.
+Lightweight cli terminal based editor. 
+
+```
+sudo apt-get install micro
+cd ~/.config
+ln -s ~/public/system/editors/micro/micro.config micro
+```
+
+A worthy alternative to emacs, vi, and nano.
 
 ## Wrap
 
@@ -13,10 +21,9 @@ run the command:
 set softwrap true
 ```
 
-: sets the option to value. See the options help topic for a list of options you can set. This will modify your settings.json with the new value.
+`set` sets the option to value. See the options help topic for a list of options you can set. This will modify your `settings.json` with the new value.
 
-
-In settings file (`~/.config/micro/settings.json`), enable the softwrap option:
+Or, if you want to edit the file directly, in the settings file (`~/.config/micro/settings.json`), enable the softwrap option:
 
 ```
 {
@@ -32,7 +39,11 @@ https://github.com/zyedidia/micro/blob/master/runtime/help/options.md
 
 Toggle line numbers on and off quickly with `ctrl-r`
 
+This is available by default. The binding looks like:
+
+```
     "Ctrl-r":          "ToggleRuler",
+```
 
 same as
 
@@ -40,31 +51,11 @@ same as
 set ruler true|false
 ```
 
-## Bindings
-
-open ~/.config/micro/bindings.json
-
-I remember reading in the documentation about "ctrl-backspace" to delete a whole word. There is some issue with that. It would be nice to be able to enable. 
-
-   "Alt-Backspace":  "DeleteWordLeft",
-
-
-`ctrl-d` is duplicate line by default
-might want to keep it as delete?
-
-Todo: how to be able to pass parameters after triggering a command:
-
-```
-    "Ctrl-b": "command:tabswitch",
-    "Alt-%": "command:replace"
-```
-
 ## Navigation / Moving Cursor
 
 Jump to next blank line
 By default "ctrl-up" and "ctrl-down" jump to the beginning and the end of the document / buffer. 
-They should jump to the next blank line instead. 
-
+I prefer when they jump to the next blank line instead. 
 ```
     "CtrlUp": "ParagraphPrevious",
     "CtrlDown": "ParagraphNext",
@@ -78,6 +69,7 @@ Built-in, Default: There is also emacs mode if you're willing to switch over to 
     "Alt-b": "WordLeft",
 ```
 
+This is difficult to let go of, especially since these bindings work on the shell. 
 Custom: Skip: These have existing, default equivalents ("Alt-right-arrow" and "Alt-left-arrow").
 
 ```
@@ -88,16 +80,20 @@ Custom: Skip: These have existing, default equivalents ("Alt-right-arrow" and "A
 
 ## Selection
 
+TODO: 
+
 Is there a way to bind "ctrl-space" to "start selection"?
 
 On mobile devices with touch keyboards, shift is not avaliable in the same way. I was unable to find a way to perform text block selection on a mobile device. 
 
 
-## Buffers
+## Buffers / Tabs
 
 Buffer switching?
 
-Doesn't seem to be the same as emacs here. There is only the concept of tabs:
+Doesn't seem to be the same as emacs here. There is only the concept of tabs.
+
+Remember: `alt-,` and `alt-.` to move to different tabs. 
 
 - `tab 'filename'`: opens the given file in a new tab.
     
@@ -118,11 +114,48 @@ keybinding equivalents
     "CtrlPageDown":   "NextTab",
 ```
 
-Maybe if the editor is so lightweight, it's easier to manage separate instances externally in something like tmux? 
+
+## Bindings
+
+Ctrl-o opens new files. 
+
+open ~/.config/micro/bindings.json
+
+I remember reading in the documentation about "ctrl-backspace" to delete a whole word. There is some issue with that. It would be nice to be able to enable. 
+
+   "Alt-Backspace":  "DeleteWordLeft",
+
+
+`ctrl-d` is duplicate line by default
+might want to keep it as delete?
+
+Todo: how to be able to pass parameters after triggering a command:
+
+```
+    "Ctrl-b": "command:tabswitch",
+    "Alt-%": "command:replace"
+```
+
+## TODO
 
 Plugin, Todo
 open buffer from list
 print open buffers as list
+
+
+## Tmux
+
+Custom: Skip: `Ctrl-p` gets in the way of current tmux bindings for running commands. Move that elsewhere if emacs bindings open up? 
+
+```
+    "Ctrl-p": "CommandMode",
+```
+
+Maybe if the editor is so lightweight, it's easier to manage separate instances externally in something like tmux? 
+
+tmux bindings may interfere with micro bindings? 
+
+Tried replacing `ctrl-e` -- seems easier to let go of chord for moving to end of line. 
 
 
 ## Failed Custom Bindings
@@ -131,14 +164,6 @@ This didn't seem to have any effect when in a command. Only Escape seems to work
 
 ```
     "Ctrl-g": "Escape",
-```
-
-
-Tried replacing `ctrl-e` -- seems easier to let go of chord for moving to end of line. 
-Custom: Skip: `Ctrl-p` gets in the way of current tmux bindings for running commands. Move that elsewhere if emacs bindings open up? 
-
-```
-    "Ctrl-p": "CommandMode",
 ```
 
 
