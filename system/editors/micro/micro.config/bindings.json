@@ -14,5 +14,7 @@
     "<Ctrl-u><Ctrl-u>": "lua:initlua.nowtop",
     "Ctrl-j": "lua:initlua.now",
     "Ctrl-a": "None",
+    "Ctrl-e": "None",
+    "Ctrl-p": "CommandMode",
     "CtrlSpace": "lua:initlua.startselection"
 }
