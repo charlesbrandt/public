@@ -119,22 +119,60 @@ keybinding equivalents
 
 Ctrl-o opens new files. 
 
+Can also run this as a command with `ctrl-e`
+
+* `open 'filename'`: Open a file in the current buffer.
+
+```
 open ~/.config/micro/bindings.json
+```
 
-I remember reading in the documentation about "ctrl-backspace" to delete a whole word. There is some issue with that. It would be nice to be able to enable. 
-
-   "Alt-Backspace":  "DeleteWordLeft",
-
-
-`ctrl-d` is duplicate line by default
-might want to keep it as delete?
-
+TODO: how is the `ctrl-o` binding defined? 
+would like to do something similar for replace and prompt for input
 Todo: how to be able to pass parameters after triggering a command:
 
 ```
     "Ctrl-b": "command:tabswitch",
     "Alt-%": "command:replace"
 ```
+
+## Deleting
+
+I remember reading in the documentation about "ctrl-backspace" to delete a whole word. There is some issue with that. It would be nice to be able to enable. 
+
+   "Alt-Backspace":  "DeleteWordLeft",
+
+`ctrl-d` is duplicate line by default  
+might want to keep it as delete?  
+have been using `ctrl-g` for duplicate line  
+
+
+## Commands
+
+Interesting commands from `ctrl-e help commands`
+
+* `cd 'path'`: Change the working directory to the given `path`.
+
+* `pwd`: Print the current working directory.
+
+* `raw`: micro will open a new tab and show the escape sequence for every event
+   it receives from the terminal. This shows you what micro actually sees from
+   the terminal and helps you see which bindings aren't possible and why. This
+   is most useful for debugging keybindings.
+
+* `showkey`: Show the action(s) bound to a given key. For example
+   running `> showkey Ctrl-c` will display `Copy`.
+
+## Other commands
+
+* `reload`: reloads all runtime files.
+
+* `reset 'option'`: resets the given option to its default value
+
+* `retab`: Replaces all leading tabs with spaces or leading spaces with tabs
+   depending on the value of `tabstospaces`.
+
+
 
 ## TODO
 
@@ -144,6 +182,12 @@ print open buffers as list
 
 
 ## Tmux
+
+* `term exec?`: Open a terminal emulator running the given executable. If no
+   executable is given, this will open the default shell in the terminal
+   emulator.
+
+with the `term` command, `micro` acts a bit like `tmux`... may not need `tmux` then? 
 
 Custom: Skip: `Ctrl-p` gets in the way of current tmux bindings for running commands. Move that elsewhere if emacs bindings open up? 
 
