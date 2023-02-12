@@ -17,16 +17,14 @@ You want to show it.
 
 Just pass those numbers to a PieChart object... it should be able to do the rest. 
 
-So defining those series becomes important.  
-the key is really in creating series
+Defining the series is important.  
+The key is really in creating series  
 
 Summarize your data. 
 
 Consider the basics. What data do you want to show? 
 
 The trick seems to be in getting the data converted into a format that works well for the visualization. 
-
-
 
 https://duckduckgo.com/?t=ffab&q=javascript+prepare+data+for+visualization+&ia=web  
 javascript prepare data for visualization at DuckDuckGo  
@@ -36,7 +34,33 @@ https://www.edwardtufte.com/tufte/books_vdqi
 Edward Tufte: Books - The Visual Display of Quantitative Information  
 https://python.plainenglish.io/data-visualization-with-python-and-javascript-c1c28a7212b2  
 Data visualization with Python and JavaScript | by Veronika Rovnik | Python in Plain English  
-  
+
+## Chart js
+
+https://duckduckgo.com/?q=chart.js+vs+plotly&hps=1&atb=v343-1&ia=web  
+chart.js vs plotly at DuckDuckGo  
+https://duckduckgo.com/?t=ffab&q=charts.js&atb=v343-1&ia=web  
+charts.js at DuckDuckGo  
+https://www.chartjs.org/docs/latest/getting-started/installation.html  
+Installation | Chart.js  
+https://www.chartjs.org/docs/latest/samples/scales/linear-step-size.html  
+Linear Scale - Step Size | Chart.js  
+https://github.com/chartjs/Chart.js  
+chartjs/Chart.js: Simple HTML5 Charts using the `<canvas>` tag  
+https://github.com/topics/html5-charts  
+html5-charts · GitHub Topics  
+https://github.com/timqian/chart.xkcd  
+timqian/chart.xkcd: xkcd styled chart lib  
+
+## Plotly
+
+https://duckduckgo.com/?t=ffab&q=plotly+github&atb=v343-1&ia=web  
+plotly github at DuckDuckGo  
+https://github.com/plotly  
+Plotly  
+https://github.com/plotly/plotly.js  
+plotly/plotly.js: Open-source JavaScript charting library behind Plotly and Dash  
+
 
 ## Libraries
 
