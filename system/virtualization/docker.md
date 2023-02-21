@@ -150,12 +150,15 @@ sudo usermod -aG docker ${USER}
 
 Log out and log back in, or:
 
-    su - ${USER}
+```
+su - ${USER}
+```
     
 Test that you have permissions to run docker commands without sudo:
 
-    docker ps
-
+```
+docker ps
+```
 
 To run the Docker daemon as a fully privileged service, but granting non-root
 users access, refer to https://docs.docker.com/go/daemon-access/
