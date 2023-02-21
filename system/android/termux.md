@@ -2,9 +2,9 @@
 
 Termux is like a minimal linux container running on your phone that you have full access to. 
 
-It used to be as simple as downloading from the Google Play store. That was sweet. Then Google changed some terms and locked that path. 
+It used to be possible downloading from the Google Play store. That was nice. Then Google changed some terms and blocked that path. 
 
-Seems like now you need to install F-Droid first. It's a good resource to have anyway. Allows you to install things that you want to install. 
+Now install F-Droid first. It's a good resource to have anyway. Allows browsing and installing open source apps.
 
 From the motd:
 The Google Play version of the Termux app no longer
@@ -303,10 +303,9 @@ every now and again
 
 Early on, before you have a text editor available, it can be handy to use the script command to log what you're doing:
 
-    script -a test.txt
-
-see also [topic of interest](./topic-of-interest.md) for an example
-
+```
+script -a test.txt
+```
 
 ## Termux extras
 
