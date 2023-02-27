@@ -24,7 +24,7 @@ function startselection(bp)
     cursor:SetSelectionStart(pos)
 end
 
-function now(Current)
+function now(bp)
     -- local buf = bp.Buf
     -- local cursor = buf:GetActiveCursor()
     -- -- TODO: assign location to be current cursor postion
@@ -32,8 +32,17 @@ function now(Current)
 	-- buf:Insert(location, )
 	local stamp = os.date("# %Y.%m.%d %H:%M:%S ")
     buffer.Log("Stamp " .. stamp .. "\n")
-	fmt.Printf(stamp)
+	-- fmt.Printf(stamp)
+	-- https://github.com/zyedidia/micro/issues/2183
+	bp.Buf:Insert(-bp.Cursor.Loc, stamp)
 end
+
+function complete(bp)
+	prefixEnd = bp.Cursor.Loc
+	prefixEnd:Move(2)
+	bp.Buf:Remove(-bp.Cursor.Loc, prefixEnd)
+end
+
 
 function nowtop(bp)
     local buf = bp.Buf

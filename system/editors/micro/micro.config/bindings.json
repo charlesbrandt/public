@@ -7,14 +7,13 @@
     "Alt->": "CursorEnd",
     "Ctrl-d": "Delete",
     "Ctrl-g": "DuplicateLine",
-    "Ctrl-k": "SelectToEndOfLine,Cut,CursorRight",
+    "Ctrl-k": "SelectToEndOfLine,Cut",
     "Alt-(": "ToggleMacro",
     "Alt-)": "PlayMacro",
-    "<Ctrl-u><Backspace>": "lua:initlua.todaytop",
-    "<Ctrl-u><Ctrl-u>": "lua:initlua.nowtop",
     "Ctrl-j": "lua:initlua.now",
-    "Ctrl-a": "None",
-    "Ctrl-e": "None",
+    "Ctrl-u": "lua:initlua.nowtop",
+    "Ctrl-a": "StartOfLine",
+    "Ctrl-e": "EndOfLine",
     "Ctrl-p": "CommandMode",
     "CtrlSpace": "lua:initlua.startselection"
 }

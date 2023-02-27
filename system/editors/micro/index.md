@@ -70,22 +70,16 @@ Built-in, Default: There is also emacs mode if you're willing to switch over to 
 ```
 
 This is difficult to let go of, especially since these bindings work on the shell. 
-Custom: Skip: These have existing, default equivalents ("Alt-right-arrow" and "Alt-left-arrow").
+Custom: These have existing, default equivalents ("Alt-right-arrow" and "Alt-left-arrow"), but if command execute is mapped to ctrl-p, it's available:
 
 ```
     "Ctrl-e": "EndOfLine",
     "Ctrl-a": "StartOfTextToggle",
 ```
 
+## Find / Search
 
-## Selection
-
-TODO: 
-
-Is there a way to bind "ctrl-space" to "start selection"?
-
-On mobile devices with touch keyboards, shift is not avaliable in the same way. I was unable to find a way to perform text block selection on a mobile device. 
-
+Find is available via `ctrl-f`, but you must complete your first search by pressing `enter` before you can use `ctrl-n` to findNext.
 
 ## Buffers / Tabs
 
@@ -132,7 +126,6 @@ would like to do something similar for replace and prompt for input
 Todo: how to be able to pass parameters after triggering a command:
 
 ```
-    "Ctrl-b": "command:tabswitch",
     "Alt-%": "command:replace"
 ```
 
@@ -140,7 +133,9 @@ Todo: how to be able to pass parameters after triggering a command:
 
 I remember reading in the documentation about "ctrl-backspace" to delete a whole word. There is some issue with that. It would be nice to be able to enable. 
 
+```
    "Alt-Backspace":  "DeleteWordLeft",
+```
 
 `ctrl-d` is duplicate line by default  
 might want to keep it as delete?  
@@ -172,13 +167,6 @@ Interesting commands from `ctrl-e help commands`
 * `retab`: Replaces all leading tabs with spaces or leading spaces with tabs
    depending on the value of `tabstospaces`.
 
-
-
-## TODO
-
-Plugin, Todo
-open buffer from list
-print open buffers as list
 
 
 ## Tmux

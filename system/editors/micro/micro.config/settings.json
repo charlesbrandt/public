@@ -1,6 +1,12 @@
 {
     "basename": true,
     "mkparents": true,
+    "pluginrepos": [
+        {
+            "name": "official",
+            "url": "https://github.com/micro-editor/plugin-repo/raw/master/repo.json"
+        }
+    ],
     "savecursor": true,
     "softwrap": true
 }
