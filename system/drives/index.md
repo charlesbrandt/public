@@ -28,3 +28,4 @@
 ## Sharing
 
 [Samba](samba.md)  
+[NFS](nfs.md)

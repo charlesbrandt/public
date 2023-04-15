@@ -178,13 +178,13 @@ Raspberry Pi High Quality Camera Lens Guide: The Key Topics
 
 MotionEyes is based on ThingOS, an iot system.
 
-https://duckduckgo.com/?t=ffab&q=thing+os&ia=web
-💤 thing os at DuckDuckGo
-https://github.com/ccrisan/thingos/wiki
-Home · ccrisan/thingos Wiki · GitHub
-https://thingos.io/en/products
-💤 ThingOS
-https://thingos.io/en/jobs/
-💤 ThingOS
+https://duckduckgo.com/?t=ffab&q=thing+os&ia=web  
+thing os at DuckDuckGo  
+https://github.com/ccrisan/thingos/wiki  
+Home · ccrisan/thingos Wiki · GitHub  
+https://thingos.io/en/products  
+ThingOS  
+https://thingos.io/en/jobs/  
+ThingOS  
 
 

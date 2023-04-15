@@ -247,7 +247,9 @@ https://www.google.com/intl/en/chrome/
 Otherwise:
 http://www.chromium.org
 
-   sudo apt-get install chromium-browser
+```
+sudo apt-get install chromium-browser
+```
 
 ### Settings
 
@@ -261,10 +263,9 @@ to restore previous session.
 
 #### The Great Suspender!
 
-Suspend Tabs after a certain period of inactivity
-This is great!
-Saves so much memory and resources!
-Wish I could find something equivalent that works for Firefox...
+Suspend Tabs after a certain period of inactivity.  
+This is great!  
+Saves so much memory and resources!  
 
 https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg/related
 
@@ -274,10 +275,12 @@ https://github.com/deanoemcke/thegreatsuspender
 
 https://chrome.google.com/webstore/detail/djdmadneanknadilpjiknlnanaolmbfk?hc=search&hcp=main
 
-need to configure the format to be equivalent to copy all urls
+Configure the format as desired. 
 
 right click, options,
+
+```
 $url
 $title
-
+```
 
