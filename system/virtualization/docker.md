@@ -16,6 +16,9 @@ https://github.com/wsargent/docker-cheat-sheet
 Introduction to what containers are:  
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
+Docker Tutorial for Beginners – Introduction & Getting Started:
+https://spacelift.io/blog/docker-tutorial
+
 ## See Also
 
 [Kubernetes](kubernetes.md)
