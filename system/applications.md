@@ -86,6 +86,10 @@ sudo apt-get install ffmpeg
 sudo apt-get install curl
 ```
 
+```
+sudo apt install build-essential
+```
+
 
 ## KVM
 
