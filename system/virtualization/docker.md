@@ -149,9 +149,7 @@ Alternatively, set CAP_NET_BIND_SERVICE on rootlesskit binary and restart the da
 
 ```
 sudo setcap cap_net_bind_service=ep $(which rootlesskit)
-systemctl --user restart docker
 ```
-
 
 
 ### Add user to docker group
@@ -165,7 +163,9 @@ sudo groupadd docker
 sudo usermod -aG docker ${USER}
 ```
 
-Log out and log back in, or:
+Log out and log back in.
+
+This usually doesn't work: 
 
 ```
 su - ${USER}
@@ -176,6 +176,14 @@ Test that you have permissions to run docker commands without sudo:
 ```
 docker ps
 ```
+
+If docker isn't running, start it up: 
+
+```
+systemctl --user restart docker
+```
+
+
 
 To run the Docker daemon as a fully privileged service, but granting non-root
 users access, refer to https://docs.docker.com/go/daemon-access/
