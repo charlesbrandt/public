@@ -21,13 +21,24 @@ echo $item
 
 How to print a formatted date in a command?
 
+```
 now="$(date +'%Y%m%d')"
 
 $(date +%F)
+```
 
 ### List contents of a directory sorted by modified timestamp
 
-    ls -lt
+
+```
+ls -lt
+```
+
+ls (deluxe), colors, etc:
+
+https://github.com/lsd-rs/lsd
+
+found via: https://github.com/topics/icons
 
 ### Sequential Commands
 
