@@ -15,7 +15,7 @@
 
 ## ORM
 
-[Sequelize](sequelize.md) for an ORM for working with a database from an application. 
+[Prisma](prisma.md) for an ORM for working with a database from an application. 
 
 ## Manual Migrations
 

@@ -3,8 +3,7 @@
 https://www.postgresql.org/  
 PostgreSQL: The world's most advanced open source database  
 
-
-## CLI Client
+Postgres does not accept double quoted values in SQL statements -- be sure to use single quotes.
 
 The commands in Postgres clients are different from Mysql clients. 
 
@@ -12,7 +11,9 @@ http://www.coderholic.com/postgresql-for-mysql-users/
 PostgreSQL for MySQL users  
 
 
-Postgres does not accept double quoted values in SQL statements -- be sure to use single quotes.
+## CLI Client
+
+
 
 ```
 /usr/pgsql-13/bin/psql 
@@ -244,8 +245,30 @@ https://github.com/calcom/cal.com
 calcom/cal.com: Scheduling infrastructure for absolutely everyone.  
 
 
+## Replication
 
-## Postgres & Kubernetes
+https://duckduckgo.com/?t=ffab&q=is+it+possible+to+synchronize+two+postgres+databases%3F+&ia=web
+is it possible to synchronize two postgres databases? at DuckDuckGo
+https://dba.stackexchange.com/questions/214055/postgresql-database-synchronization
+PostgreSQL database synchronization - Database Administrators Stack Exchange
+https://stackoverflow.com/questions/1292107/synchronize-two-pg-databases
+postgresql - synchronize two pg databases - Stack Overflow
+https://stackoverflow.com/questions/73544294/synchronize-data-between-two-postgres-database
+postgresql - Synchronize data between two postgres database - Stack Overflow
+https://duckduckgo.com/?t=ffab&q=postgres+replication&ia=web
+postgres replication at DuckDuckGo
+https://www.postgresql.org/docs/current/different-replication-solutions.html
+PostgreSQL: Documentation: 15: 27.1. Comparison of Different Solutions
+https://duckduckgo.com/?t=ffab&q=postgres+Bucardo&ia=web
+postgres Bucardo at DuckDuckGo
+https://bucardo.org/Bucardo/
+Bucardo
+https://bucardo.org/Bucardo/Overview
+Bucardo Overview
+
+Quickly moves into clustering strategies. 
+
+### Kubernetes
 
 https://github.com/sorintlab/stolon/  
 sorintlab/stolon: PostgreSQL cloud native High Availability and more.  
@@ -257,16 +280,6 @@ Artifact Hub
 https://artifacthub.io/packages/helm/stolon/stolon  
 stolon 1.7.2 · iomed/stolon  
 
-
-### 
-https://duckduckgo.com/?t=ffab&q=bad+to+run+db+in+same+pod+as+api+kubernetes&ia=web  
-bad to run db in same pod as api kubernetes at DuckDuckGo  
-https://stackoverflow.com/questions/56007887/how-to-run-multiple-containers-within-the-same-pod-in-kubernetes-clusture  
-docker - How to run multiple containers within the same pod in kubernetes clusture? - Stack Overflow  
-https://stackoverflow.com/questions/68621970/two-kubernetes-pods-accessing-the-same-database  
-spring - Two Kubernetes pods accessing the same database - Stack Overflow  
-
-### 
 https://duckduckgo.com/?t=ffab&q=postgres+kubernetes&ia=web  
 postgres kubernetes at DuckDuckGo  
 https://adamtheautomator.com/postgres-to-kubernetes/  

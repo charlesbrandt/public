@@ -39,3 +39,11 @@ Exporting reference | Learn Netdata
 
 Main site  
 https://www.netdata.cloud/  
+
+## Using
+
+Nice diagram of some of the recent improvements to monitoring:
+
+https://user-images.githubusercontent.com/43294513/236503200-b1c60298-d6d9-49bb-8927-ede3c78e25e3.png
+
+https://github.com/netdata/netdata/releases/tag/v1.39.0
