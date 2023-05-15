@@ -100,9 +100,6 @@ Most auth systems assume you'll bring your own database.
 
 When setting up a new system, it's a good time to include migrations. 
 
-TODO  
-[Sequelize](sequelize.md)
-
 ```
 user: {
   id:

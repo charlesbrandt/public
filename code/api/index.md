@@ -48,7 +48,7 @@ Databases tie in closely with the API.
 
 [Relational Databases](relational-db.md)
 
-[sequelize](sequelize.md)
+[Prisma](prisma.md)
 
 
 ### Document Databases

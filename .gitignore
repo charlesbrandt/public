@@ -30,3 +30,4 @@ system/editors/emacs/.emacs.d/modules/ergoemacs-mode-master-branch-broken/
 *editors/emacs/.emacs.d/session*
 *system/editors/emacs/.emacs.d/.#session*
 .vitepress/dist/
+.vitepress/cache/
