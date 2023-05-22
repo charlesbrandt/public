@@ -25,49 +25,49 @@ On the server, we don't want to keep lots of copies of different image resolutio
 
 We certainly want to keep the original. From there it may make sense to keep one more that would cover most large display scenarios. Usually these are much smaller than the original, and make a good starting point for generating even smaller versions dynamically.
 
-https://duckduckgo.com/?t=canonical&q=ideal+image+size+for+image+hosting&ia=web
-ideal image size for image hosting at DuckDuckGo
-https://flothemes.com/flothemes-image-sizes/
-Best Image Sizes and How to Save Images For the Web (2021)
+https://duckduckgo.com/?t=canonical&q=ideal+image+size+for+image+hosting&ia=web  
+ideal image size for image hosting at DuckDuckGo  
+https://flothemes.com/flothemes-image-sizes/  
+Best Image Sizes and How to Save Images For the Web (2021)  
 
 
 ## On demand image servers
 
-https://github.com/imgproxy/imgproxy
-💤 GitHub - imgproxy/imgproxy: Fast and secure standalone server for resizing and converting remote images
+https://github.com/imgproxy/imgproxy  
+GitHub - imgproxy/imgproxy: Fast and secure standalone server for resizing and converting remote images  
 
-https://www.sitepoint.com/improving-performance-perception-on-demand-image-resizing/
-Improving Performance Perception: On-demand Image Resizing - SitePoint
-https://www.sitepoint.com/how-to-build-responsive-images-with-srcset/
-How to Build Responsive Images with srcset - SitePoint
+https://www.sitepoint.com/improving-performance-perception-on-demand-image-resizing/  
+Improving Performance Perception: On-demand Image Resizing - SitePoint  
+https://www.sitepoint.com/how-to-build-responsive-images-with-srcset/  
+How to Build Responsive Images with srcset - SitePoint  
 
 In need of a system to help us initiate the sizing based on the requests. 
 
-https://github.com/pinterest/PINRemoteImage
-💤 GitHub - pinterest/PINRemoteImage: A thread safe, performant, feature rich image fetcher
+https://github.com/pinterest/PINRemoteImage  
+GitHub - pinterest/PINRemoteImage: A thread safe, performant, feature rich image fetcher  
 
-https://github.com/h2non/imaginary
-💤 GitHub - h2non/imaginary: Fast, simple, scalable, Docker-ready HTTP microservice for high-level image processing
+https://github.com/h2non/imaginary  
+GitHub - h2non/imaginary: Fast, simple, scalable, Docker-ready HTTP microservice for high-level image processing  
 
 This has a nice API example of what I would like, but it is written in Go. Maybe clone it using Node (feathers?) and Sharp
 
-https://github.com/abdollahpour/micro-image-manager
-GitHub - abdollahpour/micro-image-manager: Distributed, manage and optimise image for your microservices
+https://github.com/abdollahpour/micro-image-manager  
+GitHub - abdollahpour/micro-image-manager: Distributed, manage and optimise image for your microservices  
 
 
-https://duckduckgo.com/?t=canonical&q=node+js+image+server&ia=software
-node js image server at DuckDuckGo
-https://github.com/LoganHeinzelman/image-server
-GitHub - LoganHeinzelman/image-server: NodeJS image server
-https://stackoverflow.com/questions/5823722/how-to-serve-an-image-using-nodejs
-node.js - How to serve an image using nodejs - Stack Overflow
-https://duckduckgo.com/?t=canonical&q=node+image+server+resize&ia=web
-node image server resize at DuckDuckGo
+https://duckduckgo.com/?t=canonical&q=node+js+image+server&ia=software  
+node js image server at DuckDuckGo  
+https://github.com/LoganHeinzelman/image-server  
+GitHub - LoganHeinzelman/image-server: NodeJS image server  
+https://stackoverflow.com/questions/5823722/how-to-serve-an-image-using-nodejs  
+node.js - How to serve an image using nodejs - Stack Overflow  
+https://duckduckgo.com/?t=canonical&q=node+image+server+resize&ia=web  
+node image server resize at DuckDuckGo  
 
 this one is even more of a work in progress (abandoned?)
 
-https://github.com/weareoffsider/on-demand-resizer
-GitHub - weareoffsider/on-demand-resizer: On Demand Image Resizing for Node Templating and Views
+https://github.com/weareoffsider/on-demand-resizer  
+GitHub - weareoffsider/on-demand-resizer: On Demand Image Resizing for Node Templating and Views  
 
 
 ## Smart Cropping
@@ -78,14 +78,14 @@ Can take into account where the subject of interest is in the image
 then work to crop towards that
 
 
-https://github.com/jwagner/smartcrop.js
-GitHub - jwagner/smartcrop.js: Content aware image cropping
+https://github.com/jwagner/smartcrop.js  
+GitHub - jwagner/smartcrop.js: Content aware image cropping  
 
 
 There is also this crazy tool that manages to edit the image itself to compress or expand features in the picture -- automatically!
 
-https://github.com/esimov/caire
-💤 GitHub - esimov/caire: Content aware image resize library
+https://github.com/esimov/caire  
+GitHub - esimov/caire: Content aware image resize library  
 
 
 ## Display Images
@@ -93,30 +93,30 @@ https://github.com/esimov/caire
 Client side -- decide what needs to be displayed, at what size, and when
 then push the handling off to the server
 
-https://github.com/strues/retinajs
-💤 GitHub - strues/retinajs: JavaScript, SCSS, Sass, Less, and Stylus helpers for rendering high-resolution image variants
+https://github.com/strues/retinajs  
+GitHub - strues/retinajs: JavaScript, SCSS, Sass, Less, and Stylus helpers for rendering high-resolution image variants  
 
 
 ### Lazy loading
 
 An equally important part is on the client, only loading those images that are actually visible. A page may have a lot of content on it. No need to load it unless it's visible
 
-https://github.com/callmecavs/layzr.js
-GitHub - callmecavs/layzr.js: A modern lazy loading library for images.
+https://github.com/callmecavs/layzr.js  
+GitHub - callmecavs/layzr.js: A modern lazy loading library for images.  
 
 
 Not sure if any of these vue specific ones are necessary? 
 
-https://duckduckgo.com/?t=ffab&q=vite+lazy+load+images&ia=web
-vite lazy load images at DuckDuckGo
+https://duckduckgo.com/?t=ffab&q=vite+lazy+load+images&ia=web  
+vite lazy load images at DuckDuckGo  
 
-vue3
-https://github.com/jambonn/vue-lazyload
-GitHub - jambonn/vue-lazyload: Vue module for lazy-loading images in your vue 3 applications.
+vue3  
+https://github.com/jambonn/vue-lazyload  
+GitHub - jambonn/vue-lazyload: Vue module for lazy-loading images in your vue 3 applications.  
 
-vue2
-https://github.com/hilongjw/vue-lazyload
-GitHub - hilongjw/vue-lazyload: A Vue.js plugin for lazyload your Image or Component in your application.
+vue2  
+https://github.com/hilongjw/vue-lazyload  
+GitHub - hilongjw/vue-lazyload: A Vue.js plugin for lazyload your Image or Component in your application.  
 
 
 ## Image managers and Galleries
@@ -127,32 +127,30 @@ This brings to mind the idea of a gallery or meta data database for images
 
 much that can be done in this space in terms of automating content classification and identification
 
-https://github.com/opencv/opencv
-GitHub - opencv/opencv: Open Source Computer Vision Library
+https://github.com/opencv/opencv  
+GitHub - opencv/opencv: Open Source Computer Vision Library  
 
-https://github.com/JaidedAI/EasyOCR
-GitHub - JaidedAI/EasyOCR: Ready-to-use OCR with 80+ supported languages and all popular writing scripts including Latin, Chinese, Arabic, Devanagari, Cyrillic and etc.
-
-
-Sometimes it is useful to rasterize a vector graphic for display
-could be the case if a thumbnail is smaller than a complex svg
-
-https://github.com/axe312ger/sqip
-GitHub - axe312ger/sqip: "SQIP" (pronounced \skwɪb\ like the non-magical folk of magical descent) is a SVG-based LQIP technique.
+https://github.com/JaidedAI/EasyOCR  
+GitHub - JaidedAI/EasyOCR: Ready-to-use OCR with 80+ supported languages and all popular writing scripts including Latin, Chinese, Arabic, Devanagari, Cyrillic and etc.  
 
 
-https://github.com/fengyuanchen/viewerjs
-GitHub - fengyuanchen/viewerjs: JavaScript image viewer.
+Sometimes it is useful to rasterize a vector graphic for display  
+could be the case if a thumbnail is smaller than a complex svg  
 
-https://github.com/pqina/filepond
-💤 GitHub - pqina/filepond: 🌊 A flexible and fun JavaScript file upload library
-https://github.com/fengyuanchen/cropperjs
-💤 GitHub - fengyuanchen/cropperjs: JavaScript image cropper.
-https://github.com/alexjc/neural-doodle
-💤 GitHub - alexjc/neural-doodle: Turn your two-bit doodles into fine artworks with deep neural networks, generate seamless textures from photos, transfer style from one image to another, perform example-based upscaling, but wait... there's more! (An implementation of Semantic Style Transfer.)
+https://github.com/axe312ger/sqip  
+GitHub - axe312ger/sqip: "SQIP" (pronounced \skwɪb\ like the non-magical folk of magical descent) is a SVG-based LQIP technique.  
+
+
+https://github.com/fengyuanchen/viewerjs  
+GitHub - fengyuanchen/viewerjs: JavaScript image viewer.  
+
+https://github.com/pqina/filepond  
+GitHub - pqina/filepond: 🌊 A flexible and fun JavaScript file upload library  
+https://github.com/fengyuanchen/cropperjs  
+GitHub - fengyuanchen/cropperjs: JavaScript image cropper.  
 
 https://github.com/nhn/tui.image-editor
-💤 GitHub - nhn/tui.image-editor: 🍞🎨 Full-featured photo image editor using canvas. It is really easy, and it comes with great filters.
+GitHub - nhn/tui.image-editor: 🍞🎨 Full-featured photo image editor using canvas. It is really easy, and it comes with great filters.
 
 ## Decentralized Photo Sharing
 
@@ -224,15 +222,15 @@ https://github.com/topics/image-processing
 image-processing · GitHub Topics · GitHub
 
 https://github.com/topics/image
-💤 image · GitHub Topics · GitHub
+image · GitHub Topics · GitHub
 
 
 https://github.com/python-pillow/Pillow
-💤 GitHub - python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)
+GitHub - python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)
 https://github.com/topics/image-manager
-💤 image-manager · GitHub Topics · GitHub
+image-manager · GitHub Topics · GitHub
 https://github.com/jonathanong/ims
-💤 GitHub - jonathanong/ims: A basic Image Management System for managing your assets
+GitHub - jonathanong/ims: A basic Image Management System for managing your assets
 
 https://duckduckgo.com/?t=ffab&q=on+demand+image+resizing+&ia=web
 on demand image resizing at DuckDuckGo
@@ -278,7 +276,7 @@ GitHub - juliomrqz/nuxt-optimized-images: 🌅🚀 Automatically optimizes image
 
 
 https://github.com/lovell/sharp/network/dependents
-💤 Network Dependents · lovell/sharp · GitHub
+Network Dependents · lovell/sharp · GitHub
 https://github.com/lovell/sharp/network/dependents?dependent_type=PACKAGE&dependents_after=MTEwOTIwNTY0MDk
 Network Dependents · lovell/sharp · GitHub
 
