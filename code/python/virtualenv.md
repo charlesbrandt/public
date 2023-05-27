@@ -10,6 +10,12 @@ Virtual environments in Python are tools for managing dependencies and isolating
 
     Install dependencies within the virtual environment: After activating a virtual environment, use the appropriate package manager (such as pip or conda) to install the dependencies specific to your project within the virtual environment. This ensures that the dependencies are isolated to the virtual environment and won't affect your system-wide Python installation.
 
+## venv
+
+Included by default
+no extra dependencies 
+works with `requirements.txt`
+
 
 ## pipenv
 
