@@ -1,5 +1,24 @@
 # Database GUI
 
+## Beekeeper
+
+Spiritual successor to SQLectron? With write capabilities?
+
+https://www.beekeeperstudio.io/pricing/  
+Beekeeper Studio Pricing | Beekeeper Studio  
+https://github.com/beekeeper-studio/beekeeper-studio  
+beekeeper-studio/beekeeper-studio: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.  
+https://www.beekeeperstudio.io/get  
+Download Beekeeper Studio | Beekeeper Studio  
+
+## DBGate
+
+Might support Mongo too? 
+
+https://dbgate.org/  
+DbGate | Open Source SQL+noSQL Database Client  
+
+
 ## DBeaver
 
 Universal Database Tool
@@ -65,32 +84,29 @@ Then run with:
 /snap/bin/dbeaver-ce
 ```
 
-## Mongo Compass
+## Mongo 
+
+See [Mongo notes](mongo.md#compass) (Mongo Compass)
 
 DBeaver only supports Mongo Databases in the Enterprise edition:
 
 https://dbeaver.com/databases/mongo/
-
-See [Mongo notes](mongo.md)
-
 
 
 ## SQLectron
 
 Good for viewing, but does not allow modifying any of the data via the app. 
 
-
 https://duckduckgo.com/?t=canonical&q=postgres+gui&ia=web
 postgres gui at DuckDuckGo
 https://scalegrid.io/blog/which-is-the-best-postgresql-gui-2019-comparison/
 Which Is the Best PostgreSQL GUI? 2021 Comparison
 
-Additional research for sql based database guis done elsewhere. 
+Additional research for sql based database guis done elsewhere.  
 (these are just web apps, anyway)
 
+
 ## MySQL Workbench
-
-
 
 [MySQL Workbench](mysql.md#mysqlworkbench)
 
@@ -98,9 +114,9 @@ Additional research for sql based database guis done elsewhere.
 ## See also
 
 https://duckduckgo.com/?q=data+grip&t=ffab&ia=web  
-💤 data grip at DuckDuckGo  
+data grip at DuckDuckGo  
 https://www.jetbrains.com/datagrip/  
-💤 DataGrip: The Cross-Platform IDE for Databases & SQL by JetBrains  
+DataGrip: The Cross-Platform IDE for Databases & SQL by JetBrains  
 https://duckduckgo.com/?t=ffab&q=datagrip+open+source&ia=web  
 datagrip open source at DuckDuckGo  
 https://www.slant.co/options/210/alternatives/~datagrip-alternatives  

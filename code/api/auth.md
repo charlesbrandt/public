@@ -42,7 +42,7 @@ The underlying concepts and core requirements stay the same.
 
 The Auth system must run on a server operated by the service being protected. It will always be part of an API. 
 
-## Terms
+### Terms
 
 API == Application Programming Interface == server side == back end
 
@@ -115,46 +115,11 @@ Django has a well designed permission system.
 
 [Cypress Testing](/code/test/cypress.md#authentication)
 
-## Related processes
 
-Auth touches on many related topics
+## Comparison
 
-### Redirects
-
-If a user requests a protected resource, first they'll need to authenticate with the system. It's always best when the system remembers where they were headed and redirects back once the auth process completes. 
-
-Make use of the client's local storage to remember where to return. 
-
-Redirects are processed / handled by `ui/src/pages/login.vue`
-
-But where should they be initiated (e.g. added to the URL)
-On the API side when a token verification is made.
-
-### Sessions
-
-Sessions keep track of someone after they've logged in to the system. 
-
-JWT form the foundation for most authenticated sessions these days. 
-
-Cookies are another solution for browser based sessions. 
-
-### Analytics
-
-
-### Identity Access Management
-
-Umbrella term for systems that manage permissions for organizations?
-
-LDAP, SAML
-
-https://www.openiam.com/  
-Home - OpenIAM - Open Source Identity Governance & Administration, Web Access Management, MFA and CIAM Platform  
-https://duckduckgo.com/?t=ffab&q=IAM+vs+LDAP&ia=web  
-IAM vs LDAP at DuckDuckGo  
-https://medium.com/@robert.broeckelmann/authentication-vs-federation-vs-sso-9586b06b1380  
-Authentication vs. Federation vs. SSO | by Robert Broeckelmann | Medium  
-https://stackoverflow.com/questions/43987531/difference-between-active-directory-and-identity-and-access-managment  
-Difference between Active directory and Identity and Access managment - Stack Overflow  
+https://blog.hyperknot.com/p/comparing-auth-providers  
+Comparing Auth from Supabase, Firebase, Auth.js, Ory, Clerk and others  
 
 
 ## Solutions / Topics
@@ -170,36 +135,67 @@ authorization · GitHub Topics
 https://github.com/topics/sso-authentication  
 sso-authentication · GitHub Topics  
 
-https://github.com/topics/user-management
-user-management · GitHub Topics · GitHub
+https://github.com/topics/saml  
+saml · GitHub Topics  
 
-https://github.com/topics/users
-users · GitHub Topics · GitHub
+https://github.com/topics/user-management  
+user-management · GitHub Topics · GitHub  
 
-https://github.com/topics/iam
-iam · GitHub Topics
+https://github.com/topics/users  
+users · GitHub Topics · GitHub  
 
-https://github.com/topics/identity
-identity · GitHub Topics
+https://github.com/topics/iam  
+iam · GitHub Topics  
 
+https://github.com/topics/identity  
+identity · GitHub Topics  
 
-## Environment Documentation
-
-When documenting your environment, include references to which providers you are using. 
-
-TODO   
-SSO resources / links :
 
 ## Libraries
 
-### Grant
+### GoTrue
 
-https://github.com/simov/grant  
-simov/grant: OAuth Proxy  
+Leveraged by [Supabase](supabase.md)
+https://duckduckgo.com/?t=ffab&q=supabase+github&atb=v343-1&ia=web  
+supabase github at DuckDuckGo  
+https://github.com/supabase/gotrue  
+supabase/gotrue: A JWT based API for managing users and issuing JWT tokens  
+https://github.com/supabase/gotrue-js  
+supabase/gotrue-js: An isomorphic Javascript library for GoTrue.  
+https://github.com/supabase/supabase/blob/master/docker/docker-compose.yml  
+supabase/docker-compose.yml at master · supabase/supabase · GitHub  
+https://github.com/supabase/supabase/blob/master/docker/.env.example  
+supabase/.env.example at master · supabase/supabase · GitHub  
 
-A very popular library that could be applied in any number of Javascript API contexts. 
+### Supertokens
 
-Feathers uses this one under the hood. 
+https://duckduckgo.com/?q=supertokens+github&hps=1&atb=v343-1&ia=web  
+supertokens github at DuckDuckGo  
+https://github.com/supertokens  
+SuperTokens  
+https://github.com/search?q=topic%3Aauthentication+org%3Asupertokens+fork%3Atrue&type=repositories  
+Repository search results · GitHub  
+https://duckduckgo.com/?t=ffab&q=supertokens+server+to+server+&atb=v343-1&ia=web  
+supertokens server to server at DuckDuckGo  
+https://supertokens.com/  
+SuperTokens, Open Source Authentication  
+https://supertokens.com/docs/guides  
+User Recipes | SuperTokens Docs  
+https://supertokens.com/docs/microservice_auth/introduction  
+Introduction | SuperTokens Docs  
+https://supertokens.com/docs/microservice_auth/jwt-creation  
+Creating a JWT | SuperTokens Docs  
+
+https://github.com/search?q=topic%3Asupertokens+org%3Asupertokens+fork%3Atrue&type=repositories  
+Repository search results · GitHub  
+
+
+### Casbin
+
+https://github.com/casbin/casbin  
+casbin/casbin: An authorization library that supports access control models like ACL, RBAC, ABAC in Golang  
+https://duckduckgo.com/?t=ffab&q=casbin+server+to+server+&atb=v343-1&ia=web  
+casbin server to server at DuckDuckGo  
 
 ### Ory
 
@@ -234,7 +230,6 @@ https://duckduckgo.com/?t=ffab&q=oauth2+ory&ia=web
 oauth2 ory at DuckDuckGo  
 https://github.com/ory/hydra-login-consent-node  
 ory/hydra-login-consent-node: This is an ExpressJS reference implementation for the ORY Hydra User Login and Consent interface written in TypeScript and ExpressJS.  
-
 
 ### Authelia
 
@@ -304,7 +299,69 @@ Seems to be a standard choice.
 
 https://www.keycloak.org/
 
+https://github.com/topics/keycloak  
+keycloak · GitHub Topics  
+
 Sounds big based on: 
 
 https://gruchalski.com/posts/2021-04-10-ory-reference-docker-compose-and-thoughts-on-the-platform/  
 ORY reference Docker Compose and thoughts on the platform | gruchalski.com  
+### Grant
+
+https://github.com/simov/grant  
+simov/grant: OAuth Proxy  
+
+A very popular library that could be applied in any number of Javascript API contexts. 
+
+Feathers uses this one under the hood. 
+
+### Miscellaneous
+
+https://github.com/goauthentik/authentik  
+goauthentik/authentik: The authentication glue you need.  
+https://github.com/jaredhanson/passport  
+jaredhanson/passport: Simple, unobtrusive authentication for Node.js.  
+
+
+
+## Related processes
+
+Auth touches on many related topics
+
+### Redirects
+
+If a user requests a protected resource, first they'll need to authenticate with the system. It's always best when the system remembers where they were headed and redirects back once the auth process completes. 
+
+Make use of the client's local storage to remember where to return. 
+
+Redirects are processed / handled by `ui/src/pages/login.vue`
+
+But where should they be initiated (e.g. added to the URL)
+On the API side when a token verification is made.
+
+### Sessions
+
+Sessions keep track of someone after they've logged in to the system. 
+
+JWT form the foundation for most authenticated sessions these days. 
+
+Cookies are another solution for browser based sessions. 
+
+### Analytics
+
+
+### Identity Access Management
+
+Umbrella term for systems that manage permissions for organizations?
+
+LDAP, SAML
+
+https://www.openiam.com/  
+Home - OpenIAM - Open Source Identity Governance & Administration, Web Access Management, MFA and CIAM Platform  
+https://duckduckgo.com/?t=ffab&q=IAM+vs+LDAP&ia=web  
+IAM vs LDAP at DuckDuckGo  
+https://medium.com/@robert.broeckelmann/authentication-vs-federation-vs-sso-9586b06b1380  
+Authentication vs. Federation vs. SSO | by Robert Broeckelmann | Medium  
+https://stackoverflow.com/questions/43987531/difference-between-active-directory-and-identity-and-access-managment  
+Difference between Active directory and Identity and Access managment - Stack Overflow  
+

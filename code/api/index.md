@@ -15,7 +15,7 @@ For documents that change, use git and .md
 
 ## Auth
 
-[auth](auth.md)
+[Auth](auth.md)
 
 
 ## DBs 
@@ -23,6 +23,8 @@ For documents that change, use git and .md
 DBs are Databases.
 
 Databases tie in closely with the API.
+
+Sometimes, a [good GUI can help](gui-db.md)
 
 
 ### Schema & Models
@@ -60,32 +62,32 @@ database - Entity relationship diagram software - Stack Overflow
 
 [Prisma](prisma.md) for an ORM for working with a database from an application. 
 
-### Manual Migrations
+### Migrations
 
 If you haven't configured an actual migration system, track changes using a simple text file to note the SQL commands that get applied
 
 Use SQL commands to `ALTER` tables
 
 
-
-
-
 ## Document Databases
 
 aka object databases
 
+### Mongo
+
 [mongo](mongo.md)
 
+### Redis
 
-### In Memory
+In Memory
 
 [redis](redis.md)  
-
 
 
 ## Message Queues
 
 [Message Queues](message-queue.md)
+
 
 ## Frameworks
 
@@ -102,8 +104,6 @@ typicode/lowdb: Simple to use local JSON database (supports Node, Electron and t
 [Sending Email](email-sending.md)
 
 [Image Gallery](image-gallery.md)
-
-
 
 
 ## Data Files

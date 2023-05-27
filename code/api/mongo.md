@@ -105,6 +105,7 @@ https://docs.mongodb.com/manual/reference/operator/meta/orderby/
 
 ## Insert / Update
 
+
 If using Mongoose, just call e.g. `Projects.save(project)`. It handles new and updates at the same time.
 
 Alternatively, `create` is also available:
@@ -163,9 +164,6 @@ db.collection.remove()
 ```
 
 https://docs.mongodb.com/manual/reference/method/db.collection.remove/
-
-
-
 
 ## Queries
 
@@ -272,7 +270,6 @@ https://stackoverflow.com/questions/4029109/javascript-regex-how-to-put-a-variab
 https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
 
 
-
 Regular expressions will iterate all documents. That can be slow and inefficient if the collection is large. In that situation, it may be better to create an index. Note: Indexes will only match exact matches, not substrings:
 
 First, create the index:
@@ -287,14 +284,13 @@ Then, to search:
 db.users.find( { $text: { $search: "son" } } )
 ```
 
-
-
 #### Dates
 
-Not good for dates. The following doesn't work:
-{createdAt: { $regex: /2021-06-30*/ } }
+See above for a strategy for handling dates. Regular expressions are not good for dates. The following doesn't work:
 
-Seems like searching by a date range is a cumbersome process? 
+```
+{createdAt: { $regex: /2021-06-30*/ } }
+```
 
 https://stackoverflow.com/questions/43996930/regex-in-mongodb-for-iso-date-field
 
@@ -734,7 +730,7 @@ IonicaBizau/node-mongo-sync-files · GitHub
 https://github.com/IonicaBizau/node-mongo-sync-files  
 
 https://github.com/IonicaBizau/node-mongof  
-GitHub - IonicaBizau/node-mongof: Sync MongoDB collections with JSON files.  
+GitHub - IonicaBizau/node-mongof: Sync MongoDB collections with JSON files. 
 
 ### Exporting JSON
 
@@ -742,16 +738,22 @@ https://docs.mongodb.com/manual/reference/program/mongoexport/
 
 If you want to extract the data stored in a collection to a different format, `mongoexport` may be a better tool for the job. 
 
-    mongoexport --collection=<coll> [options]
+```
+mongoexport --collection=<coll> [options]
+```
     
 example:
 
-    mongoexport --collection=events --db=reporting --out=events.json
+```
+mongoexport --collection=events --db=reporting --out=events.json
+```
 
 https://docs.mongodb.com/manual/reference/program/mongoexport/
 
 
 From there you'll have a number of different json files... one for each type of document. I find it better to split out each object to a separate .json file. This is a good chance to give it a unique file name. 
+
+### Exporting binaries
 
 TODO: abstract
 

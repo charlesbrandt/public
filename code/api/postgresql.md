@@ -3,16 +3,39 @@
 https://www.postgresql.org/  
 PostgreSQL: The world's most advanced open source database  
 
+
+Heads up: the commands in Postgres clients are different from Mysql clients   
 Postgres does not accept double quoted values in SQL statements -- be sure to use single quotes.
 
-The commands in Postgres clients are different from Mysql clients. 
 
 http://www.coderholic.com/postgresql-for-mysql-users/  
 PostgreSQL for MySQL users  
 
+https://github.com/topics/postgresql  
+postgresql · GitHub Topics  
+
+https://github.com/dhamaniasad/awesome-postgres#gui  
+dhamaniasad/awesome-postgres: A curated list of awesome PostgreSQL software, libraries, tools and resources, inspired by awesome-mysql  
+
 
 ## CLI Client
 
+### pgcli
+
+https://github.com/dbcli/pgcli  
+dbcli/pgcli: Postgres CLI with autocompletion and syntax highlighting  
+
+
+### psql
+
+Standard postgres client
+
+```
+sudo apt install postgresql-client
+```
+
+https://ubuntu.com/server/docs/databases-postgresql  
+Install and configure PostgreSQL | Ubuntu  
 
 
 ```
@@ -229,42 +252,126 @@ usually /var/lib/pgsql or /var/lib/postgresql
 vi /var/lib/pgsql/13/data/pg_hba.conf
 
 
+## GUI
+
+Postgres specific. For general tools, see [DB Guis](gui-db.md)
+
+https://pgmodeler.io/  
+pgModeler - PostgreSQL Database Modeler  
+https://github.com/pgmodeler/pgmodeler  
+pgmodeler/pgmodeler: Open-source data modeling tool designed for PostgreSQL. No more typing DDL commands. Let pgModeler do the work for you!  
+
+### pgAdmin 
+
+pgAdmin is a GUI specific for Postgresql databases
+
+https://www.pgadmin.org/  
+pgAdmin - PostgreSQL Tools  
+https://www.pgadmin.org/download/  
+Download  
+https://www.pgadmin.org/download/pgadmin-4-apt/  
+Download via apt  
+
+```
+# Install the public key for the repository (if not done previously):
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+
+# Create the repository configuration file:
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
+# Install for desktop mode only:
+sudo apt install pgadmin4-desktop
+
+```
+
+https://www.enterprisedb.com/blog/google-cloud-sql-postgresql-deployment-pgadmin-4  
+Google Cloud SQL - PostgreSQL Deployment with pgAdmin 4 | EDB  
+
 ## Metabases
 
 Ready to go APIs built on top of a database. Some rely on Postgres exclusively, others can use many types of different databases. 
 
-https://github.com/topics/postgresql  
-postgresql · GitHub Topics  
 https://github.com/supabase/supabase  
 supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.  
 https://github.com/metabase/metabase  
 metabase/metabase: The simplest, fastest way to get business intelligence and analytics to everyone in your company  
-https://github.com/cube-js/cube.js  
-cube-js/cube.js: 📊 Cube — Headless Business Intelligence for Building Data Applications  
-https://github.com/calcom/cal.com  
-calcom/cal.com: Scheduling infrastructure for absolutely everyone.  
 
 
-## Replication
+## Backups 
 
-https://duckduckgo.com/?t=ffab&q=is+it+possible+to+synchronize+two+postgres+databases%3F+&ia=web
-is it possible to synchronize two postgres databases? at DuckDuckGo
-https://dba.stackexchange.com/questions/214055/postgresql-database-synchronization
-PostgreSQL database synchronization - Database Administrators Stack Exchange
-https://stackoverflow.com/questions/1292107/synchronize-two-pg-databases
-postgresql - synchronize two pg databases - Stack Overflow
-https://stackoverflow.com/questions/73544294/synchronize-data-between-two-postgres-database
-postgresql - Synchronize data between two postgres database - Stack Overflow
-https://duckduckgo.com/?t=ffab&q=postgres+replication&ia=web
-postgres replication at DuckDuckGo
-https://www.postgresql.org/docs/current/different-replication-solutions.html
-PostgreSQL: Documentation: 15: 27.1. Comparison of Different Solutions
-https://duckduckgo.com/?t=ffab&q=postgres+Bucardo&ia=web
-postgres Bucardo at DuckDuckGo
-https://bucardo.org/Bucardo/
-Bucardo
-https://bucardo.org/Bucardo/Overview
-Bucardo Overview
+It is possible to use a CLI / GUI tool for backups, but those are not commonly automated or scheduled. 
+
+If it's data worth keeping, set up a backup routine. 
+
+https://github.com/dhamaniasad/awesome-postgres#backups  
+dhamaniasad/awesome-postgres: A curated list of awesome PostgreSQL software, libraries, tools and resources, inspired by awesome-mysql  
+
+### wal-g
+
+https://github.com/wal-g/wal-g  
+wal-g/wal-g: Archival and Restoration for databases in the Cloud  
+https://www.citusdata.com/blog/2017/08/18/introducing-wal-g-faster-restores-for-postgres/  
+Introducing WAL-G by Citus: Faster Disaster Recovery for Postgres  
+
+### 
+
+https://github.com/pgbackrest/pgbackrest  
+pgbackrest/pgbackrest: Reliable PostgreSQL Backup & Restore  
+https://pgbackrest.org/  
+pgBackRest - Reliable PostgreSQL Backup & Restore  
+
+
+https://github.com/aiven/pghoard  
+aiven/pghoard: PostgreSQL® backup and restore service  
+https://pgbarman.org/index.html  
+Barman  
+https://github.com/EnterpriseDB/barman  
+EnterpriseDB/barman: Barman - Backup and Recovery Manager for PostgreSQL  
+https://github.com/omniti-labs/omnipitr  
+omniti-labs/omnipitr: Advanced WAL File Management Tools for PostgreSQL  
+https://github.com/postgrespro/pg_probackup  
+postgrespro/pg_probackup: Backup and recovery manager for PostgreSQL  
+https://github.com/orgrim/pg_back/  
+orgrim/pg_back: Simple backup tool for PostgreSQL  
+https://dalibo.github.io/pitrery/  
+
+
+
+## Migrations
+
+https://github.com/michaelsogos/pg-diff-api  
+michaelsogos/pg-diff-api: PostgreSQL migration strategy for NodeJS  
+
+https://github.com/dimitri/pgloader  
+dimitri/pgloader: Migrate to PostgreSQL in a single command!  
+https://pgloader.io/  
+pgloader  
+
+via:
+https://www.postgresql.org/download/products/1-administrationdevelopment-tools/  
+PostgreSQL: Software Catalogue - Administration/development tools  
+
+
+## Replication and Architecture
+
+https://duckduckgo.com/?t=ffab&q=is+it+possible+to+synchronize+two+postgres+databases%3F+&ia=web  
+is it possible to synchronize two postgres databases? at DuckDuckGo  
+https://dba.stackexchange.com/questions/214055/postgresql-database-synchronization  
+PostgreSQL database synchronization - Database Administrators Stack Exchange  
+https://stackoverflow.com/questions/1292107/synchronize-two-pg-databases  
+postgresql - synchronize two pg databases - Stack Overflow  
+https://stackoverflow.com/questions/73544294/synchronize-data-between-two-postgres-database  
+postgresql - Synchronize data between two postgres database - Stack Overflow  
+https://duckduckgo.com/?t=ffab&q=postgres+replication&ia=web  
+postgres replication at DuckDuckGo  
+https://www.postgresql.org/docs/current/different-replication-solutions.html  
+PostgreSQL: Documentation: 15: 27.1. Comparison of Different Solutions  
+https://duckduckgo.com/?t=ffab&q=postgres+Bucardo&ia=web  
+postgres Bucardo at DuckDuckGo  
+https://bucardo.org/Bucardo/  
+Bucardo  
+https://bucardo.org/Bucardo/Overview  
+Bucardo Overview  
 
 Quickly moves into clustering strategies. 
 

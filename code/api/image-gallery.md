@@ -154,88 +154,88 @@ GitHub - nhn/tui.image-editor: 🍞🎨 Full-featured photo image editor using c
 
 ## Decentralized Photo Sharing
 
-https://github.com/pixelfed/pixelfed
-GitHub - pixelfed/pixelfed: Photo Sharing. For Everyone.
-https://pixelfed.org/
-Pixelfed - Federated Image Sharing
-https://docs.pixelfed.org/running-pixelfed/
-Run your own Pixelfed website | Pixelfed Documentation
-https://fedidb.org/software/pixelfed
-FediDB - Developer Tools for ActivityPub
-https://fedidb.org/network/instance?domain=pixelfed.anartist.org
-FediDB - Developer Tools for ActivityPub
-https://fediverse.party/en/fediverse/
-About Fediverse - Fediverse.Party - explore federated networks
-https://medium.com/we-distribute/a-quick-guide-to-the-free-network-c069309f334
-A quick guide to The Free Network | by Sean Tilley | We Distribute | Medium
-https://socialhome.network/
-Socialhome HQ - Socialhome
-https://git.feneas.org/socialhome/socialhome/-/issues
-Issues · Socialhome / socialhome · GitLab
-https://git.feneas.org/socialhome/socialhome
-Socialhome / socialhome · GitLab
-https://github.com/jaywink/socialhome
-GitHub - jaywink/socialhome: A federated social home
-https://github.com/topics/federation
-federation · GitHub Topics · GitHub
-https://github.com/topics/fediverse
-fediverse · GitHub Topics · GitHub
-https://github.com/topics/diaspora
-diaspora · GitHub Topics · GitHub
-https://github.com/topics/federated-social
-federated-social · GitHub Topics · GitHub
-https://github.com/LemmyNet/lemmy
-GitHub - LemmyNet/lemmy: 🐀 Building a federated alternative to reddit in rust
-https://pixelfed.anartist.org/
-Anartist Pixelfed
-
+https://github.com/pixelfed/pixelfed  
+GitHub - pixelfed/pixelfed: Photo Sharing. For Everyone.  
+https://pixelfed.org/  
+Pixelfed - Federated Image Sharing  
+https://docs.pixelfed.org/running-pixelfed/  
+Run your own Pixelfed website | Pixelfed Documentation  
+https://fedidb.org/software/pixelfed  
+FediDB - Developer Tools for ActivityPub  
+https://fedidb.org/network/instance?domain=pixelfed.anartist.org  
+FediDB - Developer Tools for ActivityPub  
+https://fediverse.party/en/fediverse/  
+About Fediverse - Fediverse.Party - explore federated networks  
+https://medium.com/we-distribute/a-quick-guide-to-the-free-network-c069309f334  
+A quick guide to The Free Network | by Sean Tilley | We Distribute | Medium  
+https://socialhome.network/  
+Socialhome HQ - Socialhome  
+https://git.feneas.org/socialhome/socialhome/-/issues  
+Issues · Socialhome / socialhome · GitLab  
+https://git.feneas.org/socialhome/socialhome  
+Socialhome / socialhome · GitLab  
+https://github.com/jaywink/socialhome  
+GitHub - jaywink/socialhome: A federated social home  
+https://github.com/topics/federation  
+federation · GitHub Topics · GitHub  
+https://github.com/topics/fediverse  
+fediverse · GitHub Topics · GitHub  
+https://github.com/topics/diaspora  
+diaspora · GitHub Topics · GitHub  
+https://github.com/topics/federated-social  
+federated-social · GitHub Topics · GitHub  
+https://github.com/LemmyNet/lemmy  
+GitHub - LemmyNet/lemmy: 🐀 Building a federated alternative to reddit in rust  
+https://pixelfed.anartist.org/  
+Anartist Pixelfed  
+  
 
 ## Node based image galleries
 
 (See also solutions noted previously)
 
-https://duckduckgo.com/?t=canonical&q=node+image+gallery&ia=web
-node image gallery at DuckDuckGo
-https://node.qodeinteractive.com/image-gallery/
-Image Gallery – Node
-https://github.com/cianclarke/node-gallery
-GitHub - cianclarke/node-gallery: NodeJS Photo Gallery
-
-https://duckduckgo.com/?q=node+image+server&t=canonical&ia=images
-node image server at DuckDuckGo
-https://duckduckgo.com/?t=canonical&q=node+image+manager&ia=web
-node image manager at DuckDuckGo
-https://froala.com/wysiwyg-editor/docs/sdks/nodejs/image-manager/
-Node.JS Image Manager - Froala
-https://duckduckgo.com/?t=canonical&q=node+image+uploader&ia=images
-node image uploader at DuckDuckGo
-https://sabre.io/dav/
-sabre/dav - sabre/dav
-https://github.com/OpenMarshal/npm-WebDAV-Server
-GitHub - OpenMarshal/npm-WebDAV-Server: WebDAV Server for npm
+https://duckduckgo.com/?t=canonical&q=node+image+gallery&ia=web  
+node image gallery at DuckDuckGo  
+https://node.qodeinteractive.com/image-gallery/  
+Image Gallery – Node  
+https://github.com/cianclarke/node-gallery  
+GitHub - cianclarke/node-gallery: NodeJS Photo Gallery  
+  
+https://duckduckgo.com/?q=node+image+server&t=canonical&ia=images  
+node image server at DuckDuckGo  
+https://duckduckgo.com/?t=canonical&q=node+image+manager&ia=web  
+node image manager at DuckDuckGo  
+https://froala.com/wysiwyg-editor/docs/sdks/nodejs/image-manager/  
+Node.JS Image Manager - Froala  
+https://duckduckgo.com/?t=canonical&q=node+image+uploader&ia=images  
+node image uploader at DuckDuckGo  
+https://sabre.io/dav/  
+sabre/dav - sabre/dav  
+https://github.com/OpenMarshal/npm-WebDAV-Server  
+GitHub - OpenMarshal/npm-WebDAV-Server: WebDAV Server for npm  
 
 
 ## Research
 
 
-https://github.com/topics/image-processing
-image-processing · GitHub Topics · GitHub
+https://github.com/topics/image-processing  
+image-processing · GitHub Topics · GitHub  
 
-https://github.com/topics/image
-image · GitHub Topics · GitHub
+https://github.com/topics/image  
+image · GitHub Topics · GitHub  
 
 
-https://github.com/python-pillow/Pillow
-GitHub - python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)
-https://github.com/topics/image-manager
-image-manager · GitHub Topics · GitHub
-https://github.com/jonathanong/ims
-GitHub - jonathanong/ims: A basic Image Management System for managing your assets
+https://github.com/python-pillow/Pillow  
+GitHub - python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)  
+https://github.com/topics/image-manager  
+image-manager · GitHub Topics · GitHub  
+https://github.com/jonathanong/ims  
+GitHub - jonathanong/ims: A basic Image Management System for managing your assets  
 
-https://duckduckgo.com/?t=ffab&q=on+demand+image+resizing+&ia=web
-on demand image resizing at DuckDuckGo
-http://sizr.io/
-Sizr.io
+https://duckduckgo.com/?t=ffab&q=on+demand+image+resizing+&ia=web  
+on demand image resizing at DuckDuckGo  
+http://sizr.io/  
+Sizr.io  
 
 
 ## Image libraries
@@ -244,49 +244,49 @@ To handle generating different sizes, a library for your programming language wi
 
 Wrapping `libvips` seems like a good approach, and in node there is `sharp` for this.
 
-https://github.com/lovell/sharp
-GitHub - lovell/sharp: High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP, AVIF and TIFF images. Uses the libvips library.
+https://github.com/lovell/sharp  
+GitHub - lovell/sharp: High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP, AVIF and TIFF images. Uses the libvips library.  
 
 ### Sharp
 
 Sharp is the one to use in Node
 
-https://github.com/lovell/sharp
-GitHub - lovell/sharp: High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP, AVIF and TIFF images. Uses the libvips library.
+https://github.com/lovell/sharp  
+GitHub - lovell/sharp: High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP, AVIF and TIFF images. Uses the libvips library.  
 
-https://malcoded.com/posts/nodejs-image-resize-express-sharp/
-Resizing Images in Node.js using Express & Sharp | malcoded
+https://malcoded.com/posts/nodejs-image-resize-express-sharp/  
+Resizing Images in Node.js using Express & Sharp | malcoded  
 
 Many projects utilize it!!
 
-https://github.com/lovell/sharp/network/dependents?dependent_type=PACKAGE&dependents_after=MTEwODM5NTMyODA
-Network Dependents · lovell/sharp · GitHub
-https://github.com/ppvg/svelte-picture-source
-GitHub - ppvg/svelte-picture-source: Svelte picture <source> image optimization preprocessor
-https://github.com/gigasource/file-explorer-backend
-GitHub - gigasource/file-explorer-backend
-https://github.com/mariowix/imageCropper
-GitHub - mariowix/imageCropper: Automated tool for reduce image to the most small image possible
-https://github.com/paroi-tech/media-engine
-GitHub - paroi-tech/media-engine: A backend library to upload and store files in SQLite, then to serve them.
-https://github.com/MarcusCemes/image-processing-pipeline
-GitHub - MarcusCemes/image-processing-pipeline: An image build orchestrator for the modern web
-https://github.com/juliomrqz/nuxt-optimized-images
-GitHub - juliomrqz/nuxt-optimized-images: 🌅🚀 Automatically optimizes images used in Nuxt.js projects (JPEG, PNG, SVG, WebP and GIF).
+https://github.com/lovell/sharp/network/dependents?dependent_type=PACKAGE&dependents_after=MTEwODM5NTMyODA  
+Network Dependents · lovell/sharp · GitHub  
+https://github.com/ppvg/svelte-picture-source  
+GitHub - ppvg/svelte-picture-source: Svelte picture <source> image optimization preprocessor  
+https://github.com/gigasource/file-explorer-backend  
+GitHub - gigasource/file-explorer-backend  
+https://github.com/mariowix/imageCropper  
+GitHub - mariowix/imageCropper: Automated tool for reduce image to the most small image possible  
+https://github.com/paroi-tech/media-engine  
+GitHub - paroi-tech/media-engine: A backend library to upload and store files in SQLite, then to serve them.  
+https://github.com/MarcusCemes/image-processing-pipeline  
+GitHub - MarcusCemes/image-processing-pipeline: An image build orchestrator for the modern web  
+https://github.com/juliomrqz/nuxt-optimized-images  
+GitHub - juliomrqz/nuxt-optimized-images: 🌅🚀 Automatically optimizes images used in Nuxt.js projects (JPEG, PNG, SVG, WebP and GIF).  
 
 
-https://github.com/lovell/sharp/network/dependents
-Network Dependents · lovell/sharp · GitHub
-https://github.com/lovell/sharp/network/dependents?dependent_type=PACKAGE&dependents_after=MTEwOTIwNTY0MDk
-Network Dependents · lovell/sharp · GitHub
+https://github.com/lovell/sharp/network/dependents  
+Network Dependents · lovell/sharp · GitHub  
+https://github.com/lovell/sharp/network/dependents?dependent_type=PACKAGE&dependents_after=MTEwOTIwNTY0MDk  
+Network Dependents · lovell/sharp · GitHub  
 
 
-https://ahmadawais.com/resize-optimize-images-javascript-node/
-Resize & Optimize Images With JavaScript in Node.js
-https://duckduckgo.com/?t=canonical&q=node+image+library&ia=web
-node image library at DuckDuckGo
-https://stackoverflow.com/questions/10692075/which-library-should-i-use-for-server-side-image-manipulation-on-node-js
-javascript - Which library should I use for server-side image manipulation on Node.JS? - Stack Overflow
+https://ahmadawais.com/resize-optimize-images-javascript-node/  
+Resize & Optimize Images With JavaScript in Node.js  
+https://duckduckgo.com/?t=canonical&q=node+image+library&ia=web  
+node image library at DuckDuckGo  
+https://stackoverflow.com/questions/10692075/which-library-should-i-use-for-server-side-image-manipulation-on-node-js  
+javascript - Which library should I use for server-side image manipulation on Node.JS? - Stack Overflow  
 
 
 
@@ -297,10 +297,10 @@ smart caching should happen at this layer
 do not store different image sizes on disk like before
 (unless you keep one extra besides full size, for thumbs / default ?)
 
-see discussion here:
-https://github.com/imgproxy/imgproxy
+see discussion here:  
+https://github.com/imgproxy/imgproxy  
 
-caching may not be required here... 
+caching may not be required here...   
 may want it at a different layer of the web application when traffic scales to needing it
 
 
