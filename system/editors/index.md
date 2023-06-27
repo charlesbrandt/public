@@ -8,6 +8,17 @@ Being able to work with more than one editor is important. Depending on the reso
 
 Standardize on common keymaps for all editors (as much as possible). Standardizing makes it easier and more seamless to transition from one editor to another.
 
+## micro
+
+[Micro Editor](micro/index.md)
+
+Not an easy name to search for, but the editor is quickly becoming a favorite. Fast to start, easy to use. 
+
+## [VS Code](vs-code/vs-code.md)
+
+VS Code is a great environment for editing code. 
+
+My only complaint is it's very memory intensive. If you like to keep a lot of editors open at the same time, some of the lighter weight editors may be better options.
 
 ## [Emacs](emacs/emacs.md)
 
@@ -18,12 +29,6 @@ rm .emacs.d
 ln -s ~/public/system/editors/emacs/.emacs .emacs
 ln -s ~/public/system/editors/emacs/.emacs.d .emacs.d
 ```
-
-## [VS Code](vs-code/vs-code.md)
-
-VS Code is a great environment for editing code. 
-
-My only complaint is it's very memory intensive. If you like to keep a lot of editors open at the same time, some of the lighter weight editors may be better options.
 
 ## [vi](vi/) / nano
 

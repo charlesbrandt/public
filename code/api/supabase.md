@@ -4,6 +4,8 @@
 
 For running locally, use docker.
 
+https://supabase.com/docs/guides/self-hosting/docker
+
 ```
 # Get the code
 git clone --depth 1 https://github.com/supabase/supabase
@@ -36,7 +38,8 @@ Once you've edited your `.env` file, be sure to also edit your Kong config to us
 micro volumes/api/kong.yml
 ```
 
-> This was a tricky point to find. Many thanks to this blog post for helping sort it out: 
+Kong config must match what is set in `.env`
+
 > https://blog.devgenius.io/how-to-self-host-supabase-a-complete-guide-f4c68f449920
 
 
@@ -59,16 +62,68 @@ http://localhost:3000/**
 docker compose up
 ```
 
-Go to the host you configured: 192.168.1.2:3000 for the studio
-or configure your client to use the API 192.168.1.2:8000
+Go to the host you configured: 192.168.1.2:3000 for the studio  
+or configure your client to use the API 192.168.1.2:8000  
 
 ## Client
 
 https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3
 
+Add library to your project
+
+```
+npm install @supabase/supabase-js
+```
+
+Configure your `.env` file to have the necessary details:
+
+```
+VITE_SUPABASE_URL=YOUR_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+```
+
+Create a `src/supabase.js` helper file to initialize the Supabase client. These variables are exposed on the browser, and that's completely fine since we have Row Level Security enabled on our Database.
+
+```
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+```
+
+From here, you can import the helper to make use of the supabase client. 
+
+
 ## Auth
 
-Supabase uses GoTrue for auth in the stack. 
+There are many different ways to handle Authentication. I often like to start with the humble username / password to test things out. Use the admin interface to add the user, note the password someplace safe. 
+
+Then initiate the client on the client side:
+
+```
+async function signInWithEmail() {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: 'example@email.com',
+    password: 'example-password',
+  })
+}
+```
+
+Reminder: you can always pass those parameters in from a web form as needed
+
+
+https://supabase.com/docs/guides/auth/auth-email
+
+
+
+Also good strategies for managing user data:
+
+https://supabase.com/docs/guides/auth/managing-user-data
+
+
+On the API side, Supabase uses GoTrue for auth in the stack. 
 
 
 It may be possible to make use of Supertokens from a Supabase instance. 
@@ -78,6 +133,48 @@ supabase and supertokens at DuckDuckGo
 https://supabase.com/docs/guides/integrations/supertokens  
 SuperTokens | Supabase Docs  
 https://duckduckgo.com/?q=supabase+docker+compose&t=ffab&atb=v343-1&ia=web  
+## Database
+
+Supabase makes heavy use of Postgresql. There is a reason it does not support a different database. And it doesn't need to. Postgresql does the heavy lifting here. See the years and years of documentation on the project. 
+
+### Multiple schemas
+
+In a new schema, in order to be able to create new tables, functions and sequences you need to grant access to the right roles / users. 
+
+```
+create schema if not exists reddit;
+```
+        
+-- Grant access to default roles
+grant usage on schema reddit to postgres, anon, authenticated, service_role;
+```
+alter default privileges in schema reddit grant all on tables to postgres, anon, authenticated, service_role;
+alter default privileges in schema reddit grant all on functions to postgres, anon, authenticated, service_role;
+alter default privileges in schema reddit grant all on sequences to postgres, anon, authenticated, service_role;
+```
+        
+-- Grant access to default roles for anything new created by supabase admin
+grant usage on schema reddit to postgres, anon, authenticated, service_role;
+```
+alter default privileges in schema reddit grant all on tables to postgres, anon, authenticated, service_role;
+alter default privileges in schema reddit grant all on functions to postgres, anon, authenticated, service_role;
+alter default privileges in schema reddit grant all on sequences to postgres, anon, authenticated, service_role;
+```
+
+An don't forget to expose the schemas at the end in the API settings of your supabase project.
+
+Via:
+https://www.reddit.com/r/Supabase/comments/rluwrs/multiple_schemas/ 
+
+## Backups
+
+Supabase configures a lot of "best practice" default settings for you in your database. 
+
+TODO: Test exporting data and importing it into a newly created instance.
+Is that the best path in a recovery situation? 
+
+
+
 ## Prisma
 
 https://duckduckgo.com/?t=ffab&q=supabase+and+prisma+&atb=v343-1&ia=web  

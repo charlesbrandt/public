@@ -10,7 +10,7 @@ ln -s ~/public/system/.bashrc .bashrc
 ## Alias vs Functions
 
 interesting discussion came up here:  
-~/public/system/virtualization/docker.md
+[Docker Compose Notes](../virtualization/docker-compose.md)
 
 Which is better, an alias or a function? 
 

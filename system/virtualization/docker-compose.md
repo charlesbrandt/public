@@ -1,5 +1,7 @@
 # Docker Compose
 
+Docker Compose is included with docker by default.
+
 Create a configuration file for the current project's docker container setup in `docker-compose.yml`.
 
 ## Basics
@@ -7,27 +9,27 @@ Create a configuration file for the current project's docker container setup in 
 After editing the docker-compose.yml file for the services, launch them with:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 Then, to bring everything down again:
 
 ```
-docker-compose down -v
+docker compose down -v
 ```
 
 See what is currently running:
 
 ```
-docker-compose ps
+docker compose ps
 ```
 
-If the container is not running, it may not show up in just `docker ps`. You can still see the status in `docker-compose ps`
+If the container is not running, it may not show up in just `docker ps`. You can still see the status in `docker compose ps`
 
 To connect to a running container (or run any command inside it):
 
 ```
-docker-compose exec [name]
+docker compose exec [name]
 ```
 
 You can use the short name here, not potentially more verbose container_name
@@ -35,7 +37,7 @@ You can use the short name here, not potentially more verbose container_name
 To see what has been happening in a container, check the logs
 
 ```
-docker-compose logs [name]
+docker compose logs [name]
 ```
 
 
@@ -48,11 +50,11 @@ The above commands can get tiring to type every time you want to take action wit
 Add the following to your `.bashrc` file (or equivalent)
 
 ```
-alias dcu='docker-compose up -d'
-alias dcd='docker-compose down --remove-orphans'
-alias dcp='docker-compose ps'
-alias dce='docker-compose exec'
-alias dcl='docker-compose logs'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down --remove-orphans'
+alias dcp='docker compose ps'
+alias dce='docker compose exec'
+alias dcl='docker compose logs'
 ```
 
 
@@ -81,7 +83,7 @@ container-name:
 ```
 
 Reminder
-Image for service was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Image for service was built because it did not already exist. To rebuild this image you must use `docker compose build` or `docker compose up --build`.
 
 
 ### Environment Variables
@@ -99,7 +101,228 @@ It's also possible to put variables in a `.env` file and then reference those va
 https://medium.com/@cybourgeoisie/docker-env-methods-for-passing-variables-through-docker-compose-801e6fdb4a75
 
 
-### Example compose file
+## Volumes
+
+How to persist data across container restarts. 
+
+What is the difference between `external: true` and `external: false`? 
+
+```
+volumes:
+  boilerplate_ui_modules:
+    external: true
+
+  boilerplate_api_modules:
+    external: true
+```
+
+## Networking
+
+To restrict to local machine only, edit the docker-compose.yml file and change to:
+
+```
+        ports:
+            - "127.0.0.1:3000:3000"
+```
+
+To restrict a service so it's only available within the container network (not available on the host directly), then use `expose` instead:
+
+```
+    expose:
+      - 3306
+```
+
+https://stackoverflow.com/questions/35429837/docker-compose-port-mapping
+
+https://docs.docker.com/compose/compose-file/#ports
+
+https://stackoverflow.com/questions/40801772/what-is-the-difference-between-docker-compose-ports-vs-expose
+
+### Custom Network
+
+Usually it's sufficient to use the default network in a compose file so all containers specified will have access to each other, but not to anything else. 
+
+https://docs.docker.com/compose/networking/
+
+If you want to run a number of different applications, but proxy them all behind the same nginx host (running in a different container), it could help to specify the network in the compose file:
+
+```
+networks:
+  default:
+    name: my-pre-existing-network
+```
+
+## Rebuilding
+
+Sometimes the Dockerfile changes and you need to let compose know to rebuild everything. 
+
+```
+docker compose up -d --no-deps --build
+```
+
+via: 
+https://stackoverflow.com/questions/36884991/how-to-rebuild-docker-container-in-docker-compose-yml
+
+
+To rebuild, use:
+
+    docker compose build
+
+
+Remove all old images
+
+    docker compose rm
+    
+then rebuild again.
+
+
+## Custom images (Dockerfile)
+
+Start with an existing docker image for the type of service your application runs in the container. For example, if you're running a node application, in `docker-compose.yml` start with:
+
+``` yaml
+  api:
+    image: node:lts
+```
+
+Eventually other additional utilities will need to be available within the container context. (e.g. when you run `docker compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so the changes persist across restarts. 
+
+``` yaml
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+```
+
+Note: the `Dockerfile` path is relative to the value for `context`. In this case, the `Dockerfile` would be stored at `./api/Dockerfile`. 
+
+The `image: node:lts` configuration from `docker-compose.yml` becomes `FROM node:lts` in a `Dockerfile` and you can add the rest of the configurations as needed. See also [docker#dockerfile](docker.md#dockerfile)
+
+### Rebuilding Images
+
+Rebuild an image from scratch with docker compose 
+
+```
+docker compose build --no-cache
+```
+
+Useful in instances when, for example, you do a `RUN apt-get update` that rarely gets re-run and then package listings get out of date. 
+
+However, sometimes if you run an action in a Dockerfile like installilng software, the original image still will not be rebuilt. Over time, this can lead to very crusty layers in your docker containers. 
+
+To work around the situation, this seems pretty extreme (especially when there are potentially many other containers on the same system), but it does force docker to pull in all new images:
+
+```
+docker system prune -a
+```
+
+Heed the warning:
+
+```
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all images without at least one container associated to them
+  - all build cache
+```
+
+https://duckduckgo.com/?t=ffab&q=docker+compose+build+no+cache&ia=web
+docker compose build no cache at DuckDuckGo
+https://stackoverflow.com/questions/35594987/how-to-force-docker-for-a-clean-build-of-an-image
+How to force Docker for a clean build of an image - Stack Overflow
+
+
+## Troubleshooting 
+
+For troubleshooting, you can add a command that is sure to run in the docker-compose.yml, e.g.:
+
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+    entrypoint: ["sh", "-c", "sleep 2073600"]
+
+then connect with:
+
+    docker compose exec SERVICE_NAME bash
+
+via:  
+https://vsupalov.com/debug-docker-compose-service/
+
+Logging is available via docker directly:
+
+    docker logs repo_nginx_1
+    
+see also: [docker.md](docker.md)
+
+    docker network ls
+
+
+
+## Multiple commands
+
+In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
+
+```
+command: bash -c "
+    python manage.py migrate
+    && python manage.py runserver 0.0.0.0:8000
+  "
+```
+
+https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
+
+
+## Parameters
+
+### -f 
+
+Specify a configuration file with a name other than `docker-compose.yml`
+
+```
+docker compose -f docker-compose.builder.yml 
+```
+
+### -p
+
+Using a `container_name` setting in `docker-compose.yml` makes it easy to write configuration files that work as expected. In that case `-p` is rarely needed. 
+
+If no `container_name` parameter is set in docker-compose.yml, by default, the docker project name is the parent directory name. This is usually the case for local development setups.
+
+There are times, however, when it is useful to make directory names that are different than the project name. For example, working on a different branch, it may be easier to use the branch name instead of the project name for the parent directory.
+
+If the parent directory is **not** equal to the project name, you'll want to pass the project name in to all of the above docker compose commands.
+
+Using `-p boilerplate` allows the project name (and consequently the container name) to be consistent from one deployment to the next. That way containers are named with `boilerplate_[service]_1`.
+
+This allows configuration files to be written ahead of time to work.
+
+If you've checked out the repository to a directory named `boilerplate`, the project name `boilerplate` will be assumed by docker and the `-p` option may be omitted.
+
+
+## Guides
+
+Great article for using Docker for a local development environment:  
+https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
+
+
+## See Also
+
+[Orchestration](orchestration.md)
+
+[Kubernetes](kubernetes.md)
+
+
+https://github.com/veggiemonk/awesome-docker#container-composition  
+GitHub - veggiemonk/awesome-docker: A curated list of Docker resources and projects  
+https://github.com/magicmark/composerize  
+GitHub - magicmark/composerize: docker run asdlksjfksdf > docker-composerize up  
+https://github.com/kubernetes/kompose  
+GitHub - kubernetes/kompose: Go from Docker Compose to Kubernetes  
+https://github.com/jwilder/dockerize  
+GitHub - jwilder/dockerize: Utility to simplify running applications in docker containers  
+https://github.com/jenssegers/captain  
+GitHub - jenssegers/captain: E️asily start and stop docker compose projects  
+
+## Example compose file
 
 web ui api db
 
@@ -133,10 +356,10 @@ services:
       # - 80:80
       # - 443:443
     # if the container doesn't run, there may be a problem with the nginx.conf
-    # try running `docker-compose log web` for clues
+    # try running `docker compose log web` for clues
     # (usually SSL keys have not yet been generated in `web/ssl`)
     # keep the container running to debug or run interactively with
-    #     docker-compose exec web bash
+    #     docker compose exec web bash
     # entrypoint: ["tail", "-f", "/dev/null"]
     networks:
       default:
@@ -151,7 +374,7 @@ services:
     # image: node:lts
 
     # if you add packages to packages.json, be sure to run
-    # docker-compose up -d --build
+    # docker compose up -d --build
     # so that modules are available in container
     build:
       context: ui/
@@ -286,140 +509,15 @@ services:
 
 ```
 
-## Volumes
-
-How to persist data across container restarts. 
-
-What is the difference between `external: true` and `external: false`? 
-
-```
-volumes:
-  boilerplate_ui_modules:
-    external: true
-
-  boilerplate_api_modules:
-    external: true
-```
-
-## Networking
-
-To restrict to local machine only, edit the docker-compose.yml file and change to:
-
-```
-        ports:
-            - "127.0.0.1:3000:3000"
-```
-
-To restrict a service so it's only available within the container network (not available on the host directly), then use `expose` instead:
-
-```
-    expose:
-      - 3306
-```
-
-https://stackoverflow.com/questions/35429837/docker-compose-port-mapping
-
-https://docs.docker.com/compose/compose-file/#ports
-
-https://stackoverflow.com/questions/40801772/what-is-the-difference-between-docker-compose-ports-vs-expose
-
-### Custom Network
-
-Usually it's sufficient to use the default network in a compose file so all containers specified will have access to each other, but not to anything else. 
-
-https://docs.docker.com/compose/networking/
-
-If you want to run a number of different applications, but proxy them all behind the same nginx host (running in a different container), it could help to specify the network in the compose file:
-
-```
-networks:
-  default:
-    name: my-pre-existing-network
-```
-
-## Rebuilding
-
-Sometimes the Dockerfile changes and you need to let compose know to rebuild everything. 
-
-```
-docker-compose up -d --no-deps --build
-```
-
-via: 
-https://stackoverflow.com/questions/36884991/how-to-rebuild-docker-container-in-docker-compose-yml
-
-
-To rebuild, use:
-
-    docker-compose build
-
-
-Remove all old images
-
-    docker-compose rm
-    
-then rebuild again.
-
-
-## Custom images (Dockerfile)
-
-Start with an existing docker image for the type of service your application runs in the container. For example, if you're running a node application, in `docker-compose.yml` start with:
-
-``` yaml
-  api:
-    image: node:lts
-```
-
-Eventually other additional utilities will need to be available within the container context. (e.g. when you run `docker-compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so the changes persist across restarts. 
-
-``` yaml
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-```
-
-Note: the `Dockerfile` path is relative to the value for `context`. In this case, the `Dockerfile` would be stored at `./api/Dockerfile`. 
-
-The `image: node:lts` configuration from `docker-compose.yml` becomes `FROM node:lts` in a `Dockerfile` and you can add the rest of the configurations as needed. See also [docker#dockerfile](docker.md#dockerfile)
-
-### Rebuilding Images
-
-Rebuild an image from scratch with docker-compose 
-
-```
-docker-compose build --no-cache
-```
-
-Useful in instances when, for example, you do a `RUN apt-get update` that rarely gets re-run and then package listings get out of date. 
-
-
-## Troubleshooting 
-
-For troubleshooting, you can add a command that is sure to run in the docker-compose.yml, e.g.:
-
-    entrypoint: ["tail", "-f", "/dev/null"]
-
-    entrypoint: ["sh", "-c", "sleep 2073600"]
-
-then connect with:
-
-    docker-compose exec SERVICE_NAME bash
-
-via:  
-https://vsupalov.com/debug-docker-compose-service/
-
-Logging is available via docker directly:
-
-    docker logs repo_nginx_1
-    
-see also: [docker.md](docker.md)
-
-    docker network ls
-
 
 
 ## Installation
+
+### NOTE:
+The final Compose v1 release (v1.29.2) was May 10, 2021. These packages haven’t received any security updates since then. Use at your own risk.
+https://docs.docker.com/compose/migrate/
+
+It is no longer required to install Docker Compose separately
 
 Docker Compose relies on [docker.](docker.md) Be sure to install that first.
 
@@ -427,70 +525,6 @@ https://docs.docker.com/compose/
 
 If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
 
-    sudo apt-get install docker-compose -y
+    sudo apt-get install docker compose -y
     
 
-## Multiple commands
-
-In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
-
-```
-command: bash -c "
-    python manage.py migrate
-    && python manage.py runserver 0.0.0.0:8000
-  "
-```
-
-https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
-
-
-## Parameters
-
-### -f 
-
-Specify a configuration file with a name other than `docker-compose.yml`
-
-```
-docker-compose -f docker-compose.builder.yml 
-```
-
-### -p
-
-Using a `container_name` setting in `docker-compose.yml` makes it easy to write configuration files that work as expected. In that case `-p` is rarely needed. 
-
-If no `container_name` parameter is set in docker-compose.yml, by default, the docker project name is the parent directory name. This is usually the case for local development setups.
-
-There are times, however, when it is useful to make directory names that are different than the project name. For example, working on a different branch, it may be easier to use the branch name instead of the project name for the parent directory.
-
-If the parent directory is **not** equal to the project name, you'll want to pass the project name in to all of the above docker-compose commands.
-
-Using `-p boilerplate` allows the project name (and consequently the container name) to be consistent from one deployment to the next. That way containers are named with `boilerplate_[service]_1`.
-
-This allows configuration files to be written ahead of time to work.
-
-If you've checked out the repository to a directory named `boilerplate`, the project name `boilerplate` will be assumed by docker and the `-p` option may be omitted.
-
-
-## Guides
-
-Great article for using Docker for a local development environment:  
-https://hackernoon.com/a-better-way-to-develop-node-js-with-docker-cd29d3a0093
-
-
-## See Also
-
-[Orchestration](orchestration.md)
-
-[Kubernetes](kubernetes.md)
-
-
-https://github.com/veggiemonk/awesome-docker#container-composition  
-GitHub - veggiemonk/awesome-docker: A curated list of Docker resources and projects  
-https://github.com/magicmark/composerize  
-GitHub - magicmark/composerize: docker run asdlksjfksdf > docker-composerize up  
-https://github.com/kubernetes/kompose  
-GitHub - kubernetes/kompose: Go from Docker Compose to Kubernetes  
-https://github.com/jwilder/dockerize  
-GitHub - jwilder/dockerize: Utility to simplify running applications in docker containers  
-https://github.com/jenssegers/captain  
-GitHub - jenssegers/captain: E️asily start and stop docker compose projects  

@@ -7,6 +7,17 @@ A great choice for synchronous workflows. Synchronous workflows can help process
 
 Python doesn't run client-side on web browsers. For that you'll need Javascript (JS). Python shows up frequently on the API side or server side. 
 
+## Jupyter Notebooks
+
+[Jupyter Notebooks](jupyter-notebooks.md)
+
+## Virtual Environments
+
+Like docker, but for your code environment. Prevents installing modules in the global library. 
+
+[Virtual Environments](virtualenv.md)
+If you're already running in a docker container, the benefits may be moot.
+
 ## New Project
 
 Best practices for starting a python project
