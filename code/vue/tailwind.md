@@ -45,6 +45,19 @@ Transition Property - Tailwind CSS
 
 https://medium.com/@harrycresswell/building-a-responsive-card-system-d98f93794e1a
 
+### Responsive Design
+
+https://duckduckgo.com/?t=ffab&q=tailwind+breakpoints&ia=web  
+tailwind breakpoints at DuckDuckGo  
+https://blog.logrocket.com/tailwind-css-dynamic-breakpoints-and-container-queries/  
+Tailwind CSS: Using dynamic breakpoints and container queries - LogRocket Blog  
+https://duckduckgo.com/?t=ffab&q=vue+call+method+on+window+change+event&ia=web  
+vue call method on window change event at DuckDuckGo  
+https://masteringjs.io/tutorials/vue/resize-event  
+How to Handle Window Resize Events in Vue - Mastering JS  
+https://stackoverflow.com/questions/72190270/prisma-throwing-error-ambiguous-relation-detected  
+
+
 
 ### Flex
 

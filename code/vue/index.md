@@ -14,6 +14,24 @@ vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3
 https://github.com/topics/vue3  
 vue3 · GitHub Topics  
 
+## New projects 
+
+`vue-cli` is the default scaffolding option.
+
+many templates to explore and learn from
+check awesome-vue
+
+
+### Starter Template
+
+```js
+
+```
+
+### Components
+
+[Components](components.md)
+
 
 ## Composition API
 
@@ -21,7 +39,52 @@ Vue3 introduces a new "Composition API" alternative to the original "Options API
 
 https://v3.vuejs.org/guide/composition-api-introduction.html#standalone-computed-properties
 
+## Ref vs Reactive
+
 `ref` is used for single variables. Values must be accessed via `item.value()`
+
+
+`reactive` is used for javascript objects.
+
+In practice I'm not seeing reactive used as frequently as `ref()`
+
+https://softauthor.com/vue3-ref-vs-reactive/
+
+
+Now, in `<script>` sections of components, use
+
+```
+export default {
+  setup() {
+
+  ...
+
+  },
+}
+```
+
+and explicitly make reactive objects by calling `reactive()`
+
+https://vueue.org/functions.html  
+Core Functions | VueUse  
+  
+  
+https://vue-composition-api-rfc.netlify.com/api.html#setup  
+API Reference | Vue Composition API  
+  
+Roughly based on React Hooks
+  
+https://reactjs.org/docs/hooks-intro.html  
+Introducing Hooks – React  
+  
+https://www.google.com/search?client=ubuntu&channel=fs&q=vue3&ie=utf-8&oe=utf-8  
+vue3 - Google Search  
+https://madewithvuejs.com/blog/vue-3-roundup  
+Vue 3 – A roundup of infos about the new version of Vue.js - Made with Vue.js  
+https://vue-composition-api-rfc.netlify.com/#api-introduction  
+Composition API RFC | Vue Composition API  
+
+
 
 
 ### Script Setup
@@ -88,6 +151,44 @@ const value = computed({
 See also [Components](components.md)
 
 
+## Dark Mode
+
+Initialize your project
+
+```
+npm create vite@latest new-project-name
+```
+
+Install dependencies, including VueUse
+
+```
+npm i @vueuse/core
+```
+
+Then work with the setting in your application:
+
+``` js
+<script setup>
+import { useDark } from "@vueuse/core";
+const isDark = useDark();
+</script>
+
+<template>
+  <p>Dark theme: {{isDark}}</p>
+</template>
+```
+
+via: 
+https://www.vuemastery.com/blog/implementing-dark-mode-with-vueuse/  
+Implementing Dark Mode with VueUse | Vue Mastery  
+
+https://stackoverflow.com/questions/76579547/how-to-implement-dark-light-mode-in-vue3  
+css - How to implement dark/light mode in vue3? - Stack Overflow  
+  
+
+https://duckduckgo.com/?t=ffab&q=vue3+automatic+dark+mode&atb=v343-1&ia=web vue3 automatic dark mode at DuckDuckGo  
+
+
 ## Template References
 
 https://duckduckgo.com/?t=ffab&q=vue3+reference+element+in+template+from+script&ia=web  
@@ -95,12 +196,6 @@ vue3 reference element in template from script at DuckDuckGo
 https://v3.vuejs.org/guide/composition-api-template-refs.html#usage-with-jsx  
 Template Refs | Vue.js  
 
-
-## Starter Template
-
-```js
-
-```
 
 ## Computed and Watcher
 
@@ -117,6 +212,17 @@ https://v3.vuejs.org/guide/component-props.html#prop-types
 Props | Vue.js  
 https://duckduckgo.com/?t=ffab&q=vue3+computed&ia=web  
 vue3 computed at DuckDuckGo  
+
+
+## Vue Router
+
+It's good to learn how vue-router works. 
+
+It can also help when troubleshooting to be able to manually exclude problematic routes. 
+
+### Automatically Generate Routes for Pages
+
+Some cases, it may help to automatically generate the routes file based on the contents of the ui/pages directory. 
 
 
 ## Lifecycle Hooks
@@ -197,64 +303,12 @@ https://vueuse.org/guide/config.html
 Configurations | VueUse  
 
 
-## Vue Router
-
-It's good to learn how vue-router works. 
-
-It can also help when troubleshooting to be able to manually exclude problematic routes. 
-
-### Automatically Generate Routes for Pages
-
-Some cases, it may help to automatically generate the routes file based on the contents of the ui/pages directory. 
-
 
 ## Suspense
 
 https://vueschool.io/articles/vuejs-tutorials/suspense-new-feature-in-vue-3/  
 Suspense - new feature in Vue 3 - Vue.js Tutorials  
   
-
-## Ref vs Reactive
-
-`reactive` is used for javascript objects.
-
-In practice I'm not seeing reactive used as frequently as `ref()`
-
-https://softauthor.com/vue3-ref-vs-reactive/
-
-
-Now, in `<script>` sections of components, use
-
-```
-export default {
-  setup() {
-
-  ...
-
-  },
-}
-```
-
-and explicitly make reactive objects by calling `reactive()`
-
-https://vueue.org/functions.html  
-Core Functions | VueUse  
-  
-  
-https://vue-composition-api-rfc.netlify.com/api.html#setup  
-API Reference | Vue Composition API  
-  
-Roughly based on React Hooks
-  
-https://reactjs.org/docs/hooks-intro.html  
-Introducing Hooks – React  
-  
-https://www.google.com/search?client=ubuntu&channel=fs&q=vue3&ie=utf-8&oe=utf-8  
-vue3 - Google Search  
-https://madewithvuejs.com/blog/vue-3-roundup  
-Vue 3 – A roundup of infos about the new version of Vue.js - Made with Vue.js  
-https://vue-composition-api-rfc.netlify.com/#api-introduction  
-Composition API RFC | Vue Composition API  
 
 ## Markdown
 

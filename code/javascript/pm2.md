@@ -2,10 +2,11 @@
 
 > PM2 is a daemon process manager that will help you manage and keep your application online.
 
+https://pm2.keymetrics.io
 
 ## Installation
 
-Make sure you have node installed on the system (~/public/code/javascript/node.md)
+Make sure [node](node.md) is installed on the system. 
 
 ```
 npm install pm2@latest -g
@@ -90,7 +91,7 @@ pm2 restart id --name newName
 
 ## Configuration Files
 
-Can be a .yml or .json file
+`.yml` or `.json` files both work
 
 ```
 apps:
@@ -103,9 +104,12 @@ apps:
     err_file : /srv/var/log/boilerplate_api.err
     combine_logs : false
 ```
-can be loaded with same `pm2 start` command
 
+load with the same `pm2 start` command
+
+```
 pm2 start pm2.yml
+```
 
 (if processes with same name exist, do a `pm2 delete all/process_name` first)
 
@@ -225,23 +229,26 @@ node.js - How to start a package.json script in pm2 - Stack Overflow
 https://duckduckgo.com/?t=ffab&q=pm2+yml+configuration&ia=web  
 pm2 yml configuration at DuckDuckGo  
 
+## Python Virtual Environments
 
+If you activate the virtual environment eg. `source venv/Scripts/activate` then start your script via pm2 eg. `pm2 start main.py --name migration`, it will automatically use the environment you've activated.
+
+Alternatively, pass in the interpreter:
+
+```
+pm2 start ./strain_to_db --interpreter ./py3env/bin/python
+```
+
+via: https://stackoverflow.com/questions/36090655/running-a-python-script-in-virtual-environment-with-node-js-pm2
 
 
 ## Docker
 
-I had difficulty getting PM2 to run under Docker. It kind of doesn't make sense unless you're attempting to replicate a production environment. 
+I had difficulty getting PM2 to run under Docker. It doesn't make much sense unless you're attempting to replicate a production environment in docker. 
 
 If you need to run multiple python workers in the same container, look to `supervisord`
-
 
 It's possible to use `pm2` in a container.
 
 https://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/
-
-TODO: way to share the same config as production? 
-
-~/sca/ops/pm2.md
-
-(In practice, I had trouble getting this to work)
 

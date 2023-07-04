@@ -96,6 +96,26 @@ https://github.com/FiloSottile/mkcert
 FiloSottile/mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.  
 
 
+## Server Side Rendering
+
+This is not necessarily the same thing as Static Site Generation, but it is usually a prerequisite
+
+https://duckduckgo.com/?t=ffab&q=awesome+vue3&ia=web  
+awesome vue3 at DuckDuckGo  
+https://github.com/vuesomedev/awesome-vue-3  
+vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3  
+https://vueschool.io/articles/vuejs-tutorials/nuxt-composition-api/  
+Nuxt Composition API - Vue.js Tutorials  
+https://duckduckgo.com/?t=ffab&q=SSR+vue3&ia=web  
+SSR vue3 at DuckDuckGo  
+https://v3.vuejs.org/guide/ssr.html#quasar-framework-ssr-pwa  
+Server-Side Rendering | Vue.js  
+https://vitejs.dev/guide/ssr.html  
+Server-Side Rendering | Vite  
+https://duckduckgo.com/?t=ffab&q=awesome+vite&ia=web  
+awesome vite at DuckDuckGo  
+
+
 ## Auto Import Components
 
 Generally, I like using auto importing with external packages that have a clear component name. Icons are a good fit. External component libraries (e.g. Element Plus) are also a good fit. 
@@ -175,10 +195,8 @@ For a configuration example, see `docker-compose.yml`:
 
 https://gitlab.com/fern-seed/web-ui-api-db
 
-
-
 https://vitejs.dev/config/#publicdir  
-💤 Configuring Vite | Vite  
+Configuring Vite | Vite  
 https://duckduckgo.com/?t=ffab&q=vite+local+development+allow+CORS+access+to+api+at+a+different+url&ia=web  
 vite local development allow CORS access to api at a different url at DuckDuckGo  
 https://dev.to/alirezahamid/how-to-fix-cors-issue-in-vuejs-545o  
@@ -196,11 +214,11 @@ Allow different frontend port · Issue #726 · vitejs/vite · GitHub
 https://github.com/vitejs/vite/issues/652  
 WebSocket connection can not work inside Docker container · Issue #652 · vitejs/vite · GitHub  
 https://github.com/angela-1/azalea  
-💤 GitHub - angela-1/azalea: 人员管理系统  
+GitHub - angela-1/azalea: 人员管理系统  
 https://github.com/vitejs/vite/issues/3093  
-💤 Vite HMR is unusable behind reverse proxies with random port numbers for client · Issue #3093 · vitejs/vite · GitHub  
+Vite HMR is unusable behind reverse proxies with random port numbers for client · Issue #3093 · vitejs/vite · GitHub  
 https://github.com/vitejs/vite/discussions/2563  
-💤 Caddy Server Reverse Proxy SSL Infinite Loop · Discussion #2563 · vitejs/vite  
+Caddy Server Reverse Proxy SSL Infinite Loop · Discussion #2563 · vitejs/vite  
 
 https://duckduckgo.com/?t=ffab&q=vite+nginx+proxy+visible+refresh&ia=web  
 vite nginx proxy visible refresh at DuckDuckGo  

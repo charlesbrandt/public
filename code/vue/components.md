@@ -2,7 +2,24 @@
 
 Ideally, wrap native HTML elements with the minimum functionality. Maximize accessibility. 
 
-## Date picker
+## Libraries
+
+[Tailwind](tailwind.md)
+
+[Vuestic](vuestic.md)
+
+
+## Individual Components
+
+https://duckduckgo.com/?t=ffab&q=awesome+vue+components&ia=web  
+awesome vue components at DuckDuckGo  
+https://awesome-vue.js.org/components-and-libraries/ui-components.html  
+UI Components | Awesome Vue.js  
+
+
+
+
+### Date picker
 
 Native date picker expects strings to be "YYYY-MM-DD". Convert back and forth to native `Date` objects as needed. 
 
@@ -29,7 +46,7 @@ Native date picker expects strings to be "YYYY-MM-DD". Convert back and forth to
 See also [Date Handling](/code/javascript/dates.md)  
 
 
-## File Uploader
+### File Uploader
 
 Not Vue per-se, but should work well with vue. Looks to have a robust set of features:
 
@@ -65,7 +82,8 @@ uploader · GitHub Topics
 https://github.com/lian-yue/vue-upload-component  
 lian-yue/vue-upload-component: Vue.js file upload component, Multi-file upload, Upload directory, Drag upload, Drag the directory, Upload multiple files at the same time, html4 (IE 9), `PUT` method, Customize the filter  
 
-### 
+### File Browser
+
 https://duckduckgo.com/?q=vue3+filebrowser+component&t=ffab&ia=web  
 vue3 filebrowser component at DuckDuckGo  
 https://www.smashingmagazine.com/2022/03/drag-drop-file-uploader-vuejs-3/  
