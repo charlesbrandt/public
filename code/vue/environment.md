@@ -24,10 +24,3 @@ https://github.com/vuejs/vue-devtools#vue-devtools
 
 https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
-### Vite (bundler)
-
-Fast bundler for efficient development with Hot Module Reloading
-
-[Vite](vite.md)
-
-

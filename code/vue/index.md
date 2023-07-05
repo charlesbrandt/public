@@ -1,12 +1,6 @@
 # Vue 3
 
-Items specific to vue 3  
-
-[Basic concepts common between vue 2 and vue 3](basics.md).
-
 [Tools, setups, installs and environment configuration](environment.md)
-
-## General links
 
 https://github.com/vuesomedev/awesome-vue-3  
 vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3  
@@ -14,24 +8,51 @@ vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3
 https://github.com/topics/vue3  
 vue3 · GitHub Topics  
 
+## Common Topics
+
+Vue 3 builds on the ideas started in Vue 2
+
+[Basic concepts common between vue 2 and vue 3](basics.md).
+
 ## New projects 
 
 `vue-cli` is the default scaffolding option.
 
 many templates to explore and learn from
-check awesome-vue
+
+```
+npm create vite@latest
+```
+
+
+### Vite (bundler)
+
+Fast bundler for efficient development with Hot Module Reloading
+
+[Vite](vite.md)
 
 
 ### Starter Template
 
 ```js
+<script setup>
+// variable
+const msg = 'Hello!'
 
+// functions
+function log() {
+  console.log(msg)
+}
+</script>
+
+<template>
+  <button @click="log">{{ msg }}</button>
+</template>
 ```
 
 ### Components
 
 [Components](components.md)
-
 
 ## Composition API
 
@@ -107,48 +128,6 @@ https://v3.vuejs.org/api/sfc-script-setup.html
 
 https://duckduckgo.com/?q=vue+3+script+setup+&t=ffab&ia=web  
 vue 3 script setup at DuckDuckGo  
-
-
-## Form Components
-
-Now we can create custom input elements that accept a `v-model`.
-
-https://v3.vuejs.org/guide/component-basics.html#emitting-a-value-with-an-event
-
-
-```js
-<template>
-  <span class="flex">
-    <label>{{ label }}</label>
-    <input type="checkbox" v-model="value" />
-  </span>
-</template>
-
-<script setup>
-
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
-  label: String,
-})
-
-const emit = defineEmits(['update:modelValue'])
-
-const value = computed({
-  get() {
-    return props.modelValue
-  },
-  set(val) {
-    emit('update:modelValue', val)
-  },
-})
-
-</script>
-```
-
-See also [Components](components.md)
 
 
 ## Dark Mode

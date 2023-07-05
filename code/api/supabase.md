@@ -187,6 +187,11 @@ Prisma | Supabase Docs
 
 https://supabase.com/docs  
 Supabase Docs  
+
+https://supabase.com/docs/guides/storage  
+Storage | Supabase Docs  
+  
+
 https://supabase.com/docs/guides/auth/auth-email  
 Login With Email | Supabase Docs  
 https://supabase.com/docs/guides/api  
@@ -203,3 +208,30 @@ https://github.com/supabase/supabase/tree/master/examples/user-management/vue3-u
 supabase/examples/user-management/vue3-user-management at master · supabase/supabase · GitHub  
 https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3#get-the-api-keys  
 Build a User Management App with Vue 3 | Supabase Docs  
+
+
+  
+https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3  
+Build a User Management App with Vue 3 | Supabase Docs  
+https://supabase.com/docs/guides/getting-started/architecture  
+Architecture | Supabase Docs  
+https://supabase.com/docs/guides/auth/auth-email  
+Login With Email | Supabase Docs  
+https://github.com/supabase/supabase-js  
+GitHub - supabase/supabase-js: An isomorphic Javascript client for Supabase.  
+https://supabase.com/docs/guides/functions  
+Edge Functions | Supabase Docs  
+https://supabase.com/docs/guides/storage/image-transformations  
+Storage Image Transformations | Supabase Docs  
+https://supabase.com/docs/guides/auth/row-level-security  
+Row Level Security | Supabase Docs  
+https://duckduckgo.com/?t=ffab&q=supabase+User+Management+Starter&atb=v343-1&ia=web  
+supabase User Management Starter at DuckDuckGo  
+https://github.com/supabase/supabase  
+GitHub - supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.  
+https://supabase.com/docs/guides/self-hosting#api-keys  
+Self-Hosting | Supabase Docs  
+https://supabase.com/docs/guides/self-hosting/docker  
+Self-Hosting with Docker | Supabase Docs  
+  
+

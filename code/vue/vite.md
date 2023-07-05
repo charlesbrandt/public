@@ -86,6 +86,14 @@ export default defineConfig({
 });
 ```
 
+## Static Assets
+
+Place static assets in the `/public` directory
+
+vite assets at DuckDuckGo  
+https://vitejs.dev/guide/assets.html#importing-script-as-a-worker  
+
+
 ## SSL
 
 https://duckduckgo.com/?t=ffab&q=vite+ssl&ia=web  
@@ -95,25 +103,6 @@ Enabling https on localhost · Discussion #112 · web2033/vite-vue3-tailwind-sta
 https://github.com/FiloSottile/mkcert  
 FiloSottile/mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.  
 
-
-## Server Side Rendering
-
-This is not necessarily the same thing as Static Site Generation, but it is usually a prerequisite
-
-https://duckduckgo.com/?t=ffab&q=awesome+vue3&ia=web  
-awesome vue3 at DuckDuckGo  
-https://github.com/vuesomedev/awesome-vue-3  
-vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3  
-https://vueschool.io/articles/vuejs-tutorials/nuxt-composition-api/  
-Nuxt Composition API - Vue.js Tutorials  
-https://duckduckgo.com/?t=ffab&q=SSR+vue3&ia=web  
-SSR vue3 at DuckDuckGo  
-https://v3.vuejs.org/guide/ssr.html#quasar-framework-ssr-pwa  
-Server-Side Rendering | Vue.js  
-https://vitejs.dev/guide/ssr.html  
-Server-Side Rendering | Vite  
-https://duckduckgo.com/?t=ffab&q=awesome+vite&ia=web  
-awesome vite at DuckDuckGo  
 
 
 ## Auto Import Components
@@ -151,7 +140,30 @@ export default {
 ```
 
 
+## Server Side Rendering
+
+This is not necessarily the same thing as Static Site Generation, but it is usually a prerequisite
+
+https://duckduckgo.com/?t=ffab&q=awesome+vue3&ia=web  
+awesome vue3 at DuckDuckGo  
+https://github.com/vuesomedev/awesome-vue-3  
+vuesomedev/awesome-vue-3: A curated list of awesome things related to Vue 3  
+https://vueschool.io/articles/vuejs-tutorials/nuxt-composition-api/  
+Nuxt Composition API - Vue.js Tutorials  
+https://duckduckgo.com/?t=ffab&q=SSR+vue3&ia=web  
+SSR vue3 at DuckDuckGo  
+https://v3.vuejs.org/guide/ssr.html#quasar-framework-ssr-pwa  
+Server-Side Rendering | Vue.js  
+https://vitejs.dev/guide/ssr.html  
+Server-Side Rendering | Vite  
+https://duckduckgo.com/?t=ffab&q=awesome+vite&ia=web  
+awesome vite at DuckDuckGo  
+
+
 ## Nginx Server / Docker / Proxy / HMR
+
+Generally, once you get to the point of having a web server proxy in front of the application, it's probably best to build the application and let the server serve it statically. 
+
 
 Getting vite to run behind a proxy in development mode requires forwarding ports used for websockets. 
 
@@ -242,14 +254,6 @@ https://duckduckgo.com/?t=ffab&q=nginx+proxy_pass+change+url&ia=web
 nginx proxy_pass change url at DuckDuckGo  
 https://stackoverflow.com/questions/54084239/proxy-pass-overwrites-the-url-changed-by-rewrite-directive  
 nginx - proxy_pass overwrites the URL changed by rewrite directive - Stack Overflow  
-
-
-## Static Assets
-
-Place static assets in the `/public` directory
-
-vite assets at DuckDuckGo  
-https://vitejs.dev/guide/assets.html#importing-script-as-a-worker  
 
 
 ## Misc Links

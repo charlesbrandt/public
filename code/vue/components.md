@@ -16,7 +16,44 @@ awesome vue components at DuckDuckGo
 https://awesome-vue.js.org/components-and-libraries/ui-components.html  
 UI Components | Awesome Vue.js  
 
+## Form Components
 
+Now we can create custom input elements that accept a `v-model`.
+
+https://v3.vuejs.org/guide/component-basics.html#emitting-a-value-with-an-event
+
+
+```js
+<template>
+  <span class="flex">
+    <label>{{ label }}</label>
+    <input type="checkbox" v-model="value" />
+  </span>
+</template>
+
+<script setup>
+
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
+  label: String,
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const value = computed({
+  get() {
+    return props.modelValue
+  },
+  set(val) {
+    emit('update:modelValue', val)
+  },
+})
+
+</script>
+```
 
 
 ### Date picker

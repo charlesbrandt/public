@@ -20,6 +20,11 @@ Javascript is not the same as Java (despite the confusing name similarities).
 
 [CSV Parsing](csv.md)
 
+[3d](3d.md)
+
+[Text Editing](text-editing.md)
+
+[Audio](audio.md)
 
 ## Interpreters
 
