@@ -284,20 +284,36 @@ https://github.com/tailwindlabs/tailwindcss/issues/2848
 
 ## Installation
 
-https://tailwindcss.com/docs/installation  
-Installation - Tailwind CSS  
-https://tailwindcss.com/docs/configuring-variants  
-Configuring Variants - Tailwind CSS  
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
 
 https://tailwindcss.com/docs/guides/vue-3-vite
 
-in `tailwind.config.js`, configure the `purge` option
+in `tailwind.config.js`, 
+
+```
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+configure the `purge` option?
 
 ```
 purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 ```
 
-After adding in Tailwind to the main CSS file (e.g. `tailwind.css` or `index.css`), include some defaults:
+in `src/style.css`, include some defaults:
 
 ```
 @tailwind base;
@@ -321,6 +337,21 @@ After adding in Tailwind to the main CSS file (e.g. `tailwind.css` or `index.css
 ```
 
 https://tailwindcss.com/docs/adding-base-styles
+
+Import the style sheet. e.g. in `src/main.ts`:
+
+```
+import "./style.css";
+```
+
+
+
+
+https://tailwindcss.com/docs/installation  
+Installation - Tailwind CSS  
+https://tailwindcss.com/docs/configuring-variants  
+Configuring Variants - Tailwind CSS  
+
 
 
 ### Vue 2

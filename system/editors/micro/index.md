@@ -1,14 +1,19 @@
 # Micro
 
 Lightweight cli terminal based editor. 
+A worthy alternative to emacs, vi, and nano.
 
 ```
-sudo apt-get install micro
+cd /usr/bin
+curl https://getmic.ro | sudo bash
 cd ~/.config
 ln -s ~/public/system/editors/micro/micro.config micro
 ```
 
-A worthy alternative to emacs, vi, and nano.
+Note the version in ubuntu via apt-get [tends to be a bit old](https://github.com/zyedidia/micro/issues/1815) and can leave `log.txt` files everywhere. 
+```
+# sudo apt-get install micro
+```
 
 ## Wrap
 

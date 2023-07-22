@@ -51,4 +51,11 @@ Once in the right environment, run with:
 jupyter notebook
 ```
 
+### Environment Variables
 
+
+Use a `%` magic commands, like `%env`, e.g., `%env MY_VAR=MY_VALUE` or `%env MY_VAR MY_VALUE`. 
+Use `%env` by itself to print out current environmental variables.
+
+[python - How to set env variable in Jupyter notebook - Stack Overflow](https://stackoverflow.com/questions/37890898/how-to-set-env-variable-in-jupyter-notebook)
+]

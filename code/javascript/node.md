@@ -252,12 +252,6 @@ https://pnpm.io/
 
 https://pnpm.io/installation
 
-With node:
-
-```
-curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
-```
-
 With npm:
 
 ```
@@ -270,7 +264,13 @@ npx:
 npx pnpm add -g pnpm
 ```
 
-One downside is that it is not included by default in the main docker node image. May not be necessary to use it in a container context. `pnpm` is more helpful on development. 
+With node:
+
+```
+curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+```
+
+One downside is that it is not included by default in the main docker node image. May not be necessary to use it in a container context. `pnpm` is more helpful with local development. 
 
 One downside is the addition of `_tmp_*` directories. These are easy to ignore in [VSCode](/system/editors/vs-code/vs-code.md#ignore-files)
 

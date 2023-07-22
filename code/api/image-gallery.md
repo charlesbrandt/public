@@ -33,6 +33,16 @@ Best Image Sizes and How to Save Images For the Web (2021)
 
 ## On demand image servers
 
+I believe supabase also has something like this built in now, too. 
+
+https://github.com/h2non/imaginary
+GitHub - h2non/imaginary: Fast, simple, scalable, Docker-ready HTTP microservice for high-level image processing
+https://github.com/topics/image-processing
+image-processing · GitHub Topics · GitHub
+https://github.com/abdollahpour/micro-image-manager
+GitHub - abdollahpour/micro-image-manager: Distributed, manage and optimise image for your microservices
+
+
 https://github.com/imgproxy/imgproxy  
 GitHub - imgproxy/imgproxy: Fast and secure standalone server for resizing and converting remote images  
 

@@ -147,7 +147,9 @@ $ git config --global credential.helper 'cache --timeout=3600'
 
 ## Create New Repository
 
-    git init
+```
+git init
+```
 
 The default branch on `git init` is currently set to master.
 If you want to change it to `main`, this is a good point to do so.
@@ -160,7 +162,9 @@ git branch -a
 
 Confirm the remote server is set to your own repo:
 
-    git remote -v
+```
+git remote -v
+```
 
 From here you can add different remotes (origins and upstreams) as needed. 
 
@@ -518,6 +522,47 @@ https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/
 A fork is another term for a cloned copy of the repository.
 
 https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github
+
+
+## Large File Support (lfs)
+
+Find the latest version:
+
+https://git-lfs.com/
+Git Large File Storage | Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.
+
+Download it
+
+```
+cd ~/Downloads
+wget https://github.com/git-lfs/git-lfs/releases/download/v3.3.0/git-lfs-linux-amd64-v3.3.0.tar.gz
+tar zxvf git-lfs-linux-amd64-v3.3.0.tar.gz
+
+cd git-lfs-3.3.0/
+
+sudo ./install.sh 
+```
+
+Testing with: 
+```
+git lfs install
+```
+
+Should always yield once installed:
+
+```
+Git LFS initialized.
+```
+
+
+Adapted from:
+https://duckduckgo.com/?t=ffab&q=git+lfs&ia=web
+git lfs at DuckDuckGo
+https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage
+Installing Git Large File Storage - GitHub Docs
+
+
+
 
 ## Submodules
 

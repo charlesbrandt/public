@@ -1,0 +1,172 @@
+{
+  "main": {
+    "id": "af08626d09488656",
+    "type": "split",
+    "children": [
+      {
+        "id": "f4a8b2d547ee9ba8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86cb36574f301974",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b6871d67c286783c",
+    "type": "split",
+    "children": [
+      {
+        "id": "2933a41975308bdb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "663f420807cade8f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c3e3b91437ed8b47",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e7f7a88c39f4415e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0ad1bcbf02138298",
+    "type": "split",
+    "children": [
+      {
+        "id": "ac9721414b3b747d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7874799aa2eb60b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "49a1bcf134ae65f3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ab1f7e208ce756cf",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "740e217ad6c80d9f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "86cb36574f301974",
+  "lastOpenFiles": [
+    "system/editors/micro/micro.config/buffers/%home%account%public%code%vue%tailwind.md",
+    "system/editors/micro/micro.config/backups/%home%account%public%code%vue%tailwind.md",
+    "system/editors/micro/micro.config/buffers/%home%account%public%code%vue%components.md",
+    "system/editors/micro/micro.config/backups/%home%account%public%code%api%image-gallery.md",
+    "system/editors/micro/micro.config/buffers/%home%account%public%code%vue%vite.md",
+    "system/editors/micro/micro.config/backups/%home%account%public%code%vue%vite.md",
+    "system/editors/micro/micro.config/buffers/%home%account%public%code%vue%index.md",
+    "system/editors/micro/micro.config/backups/%home%account%public%code%vue%index.md",
+    "system/editors/micro/micro.config/backups/%home%account%public%code%javascript%node.md",
+    "code/vue/vuestic.md",
+    "code/python/jupyter-notebooks.md",
+    "code/javascript/text-editing.md",
+    "code/javascript/audio.md",
+    "code/javascript/3d.md",
+    "system/editors/micro/micro.config/buffers/%home%account%sca%ops%cloud-hosting.md",
+    "system/editors/micro/micro.config/backups/%home%account%sca%ops%cloud-hosting.md",
+    "system/editors/micro/micro.config/backups/%home%account%alpha%mind%chat%llm.md",
+    "system/editors/micro/micro.config/buffers/%home%account%alpha%mind%hardware.md",
+    "system/editors/micro/micro.config/backups/%home%account%alpha%mind%hardware.md",
+    "system/editors/micro/micro.config/backups/%home%account%alpha%mind%speech%bark.md",
+    "system/editors/micro/micro.config/buffers/%home%account%public%code%version-control%git.md",
+    "system/editors/micro/micro.config/backups/%home%account%public%code%version-control%git.md",
+    "system/editors/micro/micro.config/buffers/%home%account%alpha%mind%virtualenv.md",
+    "system/editors/micro/micro.config/backups/%home%account%alpha%mind%virtualenv.md",
+    "system/editors/micro/micro.config/buffers/%home%account%alpha%mind%chat%kobold.md",
+    "system/editors/micro/micro.config/backups/%home%account%alpha%mind%chat%kobold.md",
+    "Untitled.canvas",
+    "charles.svg"
+  ]
+}

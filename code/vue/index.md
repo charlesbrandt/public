@@ -16,20 +16,114 @@ Vue 3 builds on the ideas started in Vue 2
 
 ## New projects 
 
-`vue-cli` is the default scaffolding option.
-
-many templates to explore and learn from
+Many templates to explore and learn from
 
 ```
-npm create vite@latest
+npm create vite@latest [project-name]
 ```
-
-
-### Vite (bundler)
-
-Fast bundler for efficient development with Hot Module Reloading
 
 [Vite](vite.md)
+
+Should see something like:
+
+```
+Need to install the following packages:
+  create-vite@4.4.0
+Ok to proceed? (y) 
+✔ Project name: … project-name
+✔ Select a framework: › Vue
+✔ Select a variant: › TypeScript
+```
+
+Or, for a bit more customization:
+
+```
+✔ Project name: … project-name
+✔ Select a framework: › Vue
+✔ Select a variant: › Customize with create-vue ↗
+Need to install the following packages:
+  create-vue@3.7.1
+Ok to proceed? (y) 
+
+Vue.js - The Progressive JavaScript Framework
+
+✔ Add TypeScript? … / Yes
+✔ Add JSX Support? … No / 
+✔ Add Vue Router for Single Page Application development? …  / Yes
+✔ Add Pinia for state management? … / Yes
+✔ Add Vitest for Unit Testing? …  / Yes
+✔ Add an End-to-End Testing Solution? › Playwright
+✔ Add ESLint for code quality? … / Yes
+✔ Add Prettier for code formatting? … / Yes
+```
+
+```
+cd project-name
+pnpm install
+code .
+pnpm dev
+```
+
+Should be running: http://localhost:5173/
+
+If using Playwright, enable browsers via VS Code (Run command: (Ctrl-Shift-P) Install Playwright Browsers) which triggers running:
+
+```
+npx playwright install --with-deps chromium firefox webkit
+```
+
+Choose the Testing tab in VS-Code. Make sure `Show browser` is enabled. Run the test. Hopefully a browser for testing loads and shows the page. Edit. Rinse. Repeat. 
+
+### Components
+
+Install the pieces and parts needed for your application
+
+[Tailwind](tailwind.md)
+
+[Supabase](/code/api/supabase.md#client)
+
+[Components](components.md)
+
+
+
+
+## Dark Mode
+
+Initialize your project
+
+```
+npm create vite@latest new-project-name
+```
+
+Install dependencies, including VueUse
+
+```
+npm i @vueuse/core
+```
+
+Then work with the setting in your application:
+
+``` js
+<script setup>
+import { useDark } from "@vueuse/core";
+const isDark = useDark();
+</script>
+
+<template>
+  <p>Dark theme: {{isDark}}</p>
+</template>
+```
+
+via: 
+https://www.vuemastery.com/blog/implementing-dark-mode-with-vueuse/  
+Implementing Dark Mode with VueUse | Vue Mastery  
+
+https://stackoverflow.com/questions/76579547/how-to-implement-dark-light-mode-in-vue3  
+css - How to implement dark/light mode in vue3? - Stack Overflow  
+  
+
+https://duckduckgo.com/?t=ffab&q=vue3+automatic+dark+mode&atb=v343-1&ia=web vue3 automatic dark mode at DuckDuckGo  
+
 
 
 ### Starter Template
@@ -49,10 +143,6 @@ function log() {
   <button @click="log">{{ msg }}</button>
 </template>
 ```
-
-### Components
-
-[Components](components.md)
 
 ## Composition API
 
@@ -130,51 +220,6 @@ https://duckduckgo.com/?q=vue+3+script+setup+&t=ffab&ia=web
 vue 3 script setup at DuckDuckGo  
 
 
-## Dark Mode
-
-Initialize your project
-
-```
-npm create vite@latest new-project-name
-```
-
-Install dependencies, including VueUse
-
-```
-npm i @vueuse/core
-```
-
-Then work with the setting in your application:
-
-``` js
-<script setup>
-import { useDark } from "@vueuse/core";
-const isDark = useDark();
-</script>
-
-<template>
-  <p>Dark theme: {{isDark}}</p>
-</template>
-```
-
-via: 
-https://www.vuemastery.com/blog/implementing-dark-mode-with-vueuse/  
-Implementing Dark Mode with VueUse | Vue Mastery  
-
-https://stackoverflow.com/questions/76579547/how-to-implement-dark-light-mode-in-vue3  
-css - How to implement dark/light mode in vue3? - Stack Overflow  
-  
-
-https://duckduckgo.com/?t=ffab&q=vue3+automatic+dark+mode&atb=v343-1&ia=web vue3 automatic dark mode at DuckDuckGo  
-
-
-## Template References
-
-https://duckduckgo.com/?t=ffab&q=vue3+reference+element+in+template+from+script&ia=web  
-vue3 reference element in template from script at DuckDuckGo  
-https://v3.vuejs.org/guide/composition-api-template-refs.html#usage-with-jsx  
-Template Refs | Vue.js  
-
 
 ## Computed and Watcher
 
@@ -202,6 +247,14 @@ It can also help when troubleshooting to be able to manually exclude problematic
 ### Automatically Generate Routes for Pages
 
 Some cases, it may help to automatically generate the routes file based on the contents of the ui/pages directory. 
+
+
+## Template References
+
+https://duckduckgo.com/?t=ffab&q=vue3+reference+element+in+template+from+script&ia=web  
+vue3 reference element in template from script at DuckDuckGo  
+https://v3.vuejs.org/guide/composition-api-template-refs.html#usage-with-jsx  
+Template Refs | Vue.js  
 
 
 ## Lifecycle Hooks

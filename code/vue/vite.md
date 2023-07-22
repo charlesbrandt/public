@@ -1,5 +1,7 @@
 # Vite
 
+Fast bundler for efficient development with Hot Module Reloading
+
 "A build tool that aims to provide a faster and leaner development experience for modern web projects."
 
 Next generation js bundler & development server.

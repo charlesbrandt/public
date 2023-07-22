@@ -69,6 +69,8 @@ or configure your client to use the API 192.168.1.2:8000
 
 https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3
 
+https://supabase.com/docs/guides/getting-started/quickstarts/vue
+
 Add library to your project
 
 ```
@@ -82,7 +84,7 @@ VITE_SUPABASE_URL=YOUR_SUPABASE_URL
 VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
 ```
 
-Create a `src/supabase.js` helper file to initialize the Supabase client. These variables are exposed on the browser, and that's completely fine since we have Row Level Security enabled on our Database.
+Create a `src/lib/supabaseClient.js` helper file to initialize the Supabase client. These variables are exposed on the browser, and that's completely fine since we have Row Level Security enabled on our Database.
 
 ```
 import { createClient } from '@supabase/supabase-js'
@@ -93,7 +95,33 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 ```
 
-From here, you can import the helper to make use of the supabase client. 
+From here, you can import the helper to make use of the supabase client.
+Use the client in `App.vue` 
+
+```js
+<script setup>
+import { ref, onMounted } from 'vue'
+import { supabase } from './lib/supabaseClient'
+
+const artists = ref([])
+
+async function getArtists() {
+  const { data } = await supabase.from('artist').select()
+  artists.value = data
+}
+
+onMounted(() => {
+  getArtists()
+})
+</script>
+
+<template>
+  <ul>
+    <li v-for="artist in artists" :key="artist.id">{{ artist.name }}</li>
+  </ul>
+
+</template>
+```
 
 
 ## Auth
