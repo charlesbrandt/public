@@ -184,15 +184,18 @@ pm2 set pm2-logrotate:rotateInterval '0 0 5 * * 7'
 
 ## Removing Jobs
 
-If you really want to remove the processes, run `pm2 delete all` and then `pm2 save` 
+If you want to remove the processes, run `pm2 delete [id]` 
+
+To delete all jobs: `pm2 delete all` 
+
+Don't forget: `pm2 save` to make the changes persist
 
 
 ## Environment Variables
 
-https://duckduckgo.com/?q=pm2+specify+environment+variable&t=ffab&ia=web  
-pm2 specify environment variable at DuckDuckGo  
 https://pm2.io/docs/runtime/best-practices/environment-variables/  
 PM2 - Environment Variables | Best Practices | PM2 Documentation  
+
 
 ## Node scripts
 
@@ -248,7 +251,6 @@ I had difficulty getting PM2 to run under Docker. It doesn't make much sense unl
 
 If you need to run multiple python workers in the same container, look to `supervisord`
 
-It's possible to use `pm2` in a container.
-
+Using `pm2` in a container:
 https://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/
 
