@@ -53,8 +53,6 @@ https://supabase.com/docs/guides/auth#redirect-urls-and-wildcards
 
 > WARNING: While the "globstar" (**) is useful for local development and preview URLs, we recommend setting the exact redirect URL path for your site URL in production.
 
-http://localhost:3000/**
-
 
 
 ```

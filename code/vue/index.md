@@ -64,7 +64,7 @@ code .
 pnpm dev
 ```
 
-Should be running: http://localhost:5173/
+Should be running: `localhost:5173``
 
 If using Playwright, enable browsers via VS Code (Run command: (Ctrl-Shift-P) Install Playwright Browsers) which triggers running:
 
