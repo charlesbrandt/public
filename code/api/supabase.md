@@ -63,7 +63,7 @@ docker compose up
 Go to the host you configured: 192.168.1.2:3000 for the studio  
 or configure your client to use the API 192.168.1.2:8000  
 
-## Client
+## Client (JS)
 
 https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3
 
@@ -143,7 +143,6 @@ Reminder: you can always pass those parameters in from a web form as needed
 https://supabase.com/docs/guides/auth/auth-email
 
 
-
 Also good strategies for managing user data:
 
 https://supabase.com/docs/guides/auth/managing-user-data
@@ -159,6 +158,52 @@ supabase and supertokens at DuckDuckGo
 https://supabase.com/docs/guides/integrations/supertokens  
 SuperTokens | Supabase Docs  
 https://duckduckgo.com/?q=supabase+docker+compose&t=ffab&atb=v343-1&ia=web  
+
+## Client (Python)
+
+Community supported library.
+
+```
+pipenv shell
+pipenv install supabase
+pipenv install python-dotenv
+```
+
+Test your connection with code like the following
+
+```
+from typing import Union
+from fastapi import FastAPI
+import os
+from supabase import create_client, Client
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# https://stackoverflow.com/questions/40216311/reading-in-environment-variables-from-an-environment-file
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_KEY")
+# for these, load values into the actual shell env to work:
+#url: str = os.getenv("SUPABASE_URL")
+#key: str = os.getenv("SUPABASE_KEY")
+
+# print("Connecting to:", url, key)
+supabase: Client = create_client(url, key)
+
+app = FastAPI()
+
+data = supabase.table("artist").select("*").execute()
+print("Data", data)
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+```
+
+https://supabase.com/docs/reference/python/select
+
+https://dev.to/jakewitcher/using-env-files-for-environment-variables-in-python-applications-55a1
+
 ## Database
 
 Supabase makes heavy use of Postgresql. There is a reason it does not support a different database. And it doesn't need to. Postgresql does the heavy lifting here. See the years and years of documentation on the project. 
@@ -192,7 +237,7 @@ An don't forget to expose the schemas at the end in the API settings of your sup
 Via:
 https://www.reddit.com/r/Supabase/comments/rluwrs/multiple_schemas/ 
 
-## Backups
+### Backups
 
 Supabase configures a lot of "best practice" default settings for you in your database. 
 
@@ -200,8 +245,7 @@ TODO: Test exporting data and importing it into a newly created instance.
 Is that the best path in a recovery situation? 
 
 
-
-## Prisma
+### Prisma
 
 https://duckduckgo.com/?t=ffab&q=supabase+and+prisma+&atb=v343-1&ia=web  
 supabase and prisma at DuckDuckGo  

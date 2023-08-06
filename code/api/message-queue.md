@@ -12,9 +12,44 @@ More technical version:
 https://www.ibm.com/cloud/learn/message-queues  
 Message Queues: An Introduction | IBM  
 
+Many solutions available
+
+https://github.com/topics/job-queue  
+job-queue · GitHub Topics  
+https://github.com/topics/background-jobs  
+background-jobs · GitHub Topics  
+https://github.com/topics/task-queue  
+task-queue · GitHub Topics · GitHub  
+https://github.com/topics/worker-pool  
+worker-pool · GitHub Topics · GitHub  
+
+
 ## Celery
 
-TODO: Add notes 
+https://github.com/topics/celery  
+celery · GitHub Topics  
+https://github.com/celery/celery  
+celery/celery: Distributed Task Queue (development branch)  
+https://docs.celeryq.dev/en/stable/getting-started/first-steps-with-celery.html#keeping-results  
+First Steps with Celery — Celery 5.3.1 documentation  
+https://docs.celeryq.dev/en/stable/userguide/configuration.html#std-setting-result_backend  
+Configuration and defaults — Celery 5.3.1 documentation  
+https://docs.celeryq.dev/en/stable/userguide/configuration.html#conf-rpc-result-backend  
+Configuration and defaults — Celery 5.3.1 documentation  
+https://duckduckgo.com/?t=ffab&q=celery+chained+events&ia=web  
+celery chained events at DuckDuckGo  
+https://stackoverflow.com/questions/55279820/running-chained-celery-tasks-at-specific-times  
+python - Running Chained Celery tasks at specific times - Stack Overflow  
+## RQ
+
+https://github.com/rq/rq  
+rq/rq: Simple job queues for Python  
+https://duckduckgo.com/?t=ffab&q=using+redis+as+a+task+queue+python&ia=web  
+using redis as a task queue python at DuckDuckGo  
+https://realpython.com/flask-by-example-implementing-a-redis-task-queue/  
+Flask by Example – Implementing a Redis Task Queue – Real Python  
+
+
 
 ## RabbitMQ
 
