@@ -111,6 +111,8 @@ load with the same `pm2 start` command
 pm2 start pm2.yml
 ```
 
+https://pm2.keymetrics.io/docs/usage/application-declaration/
+
 (if processes with same name exist, do a `pm2 delete all/process_name` first)
 
 ### Restart options

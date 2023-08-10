@@ -8,4 +8,6 @@ Good for production or development.
 
 Works great as a proxy to other services running on the host. 
 
-
+```
+sudo systemctl status nginx
+```

@@ -57,6 +57,8 @@ Vue.js - The Progressive JavaScript Framework
 ✔ Add Prettier for code formatting? … / Yes
 ```
 
+Run with vite:
+
 ```
 cd project-name
 pnpm install
@@ -64,7 +66,7 @@ code .
 pnpm dev
 ```
 
-Should be running: `localhost:5173``
+Should be running: `localhost:5173`
 
 If using Playwright, enable browsers via VS Code (Run command: (Ctrl-Shift-P) Install Playwright Browsers) which triggers running:
 
