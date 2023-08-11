@@ -1,4 +1,4 @@
-# Postgres
+# PostgreSQL
 
 https://www.postgresql.org/  
 PostgreSQL: The world's most advanced open source database  
@@ -48,6 +48,8 @@ To connect as a different user
 psql -U username -d database -h 127.0.0.1 -W
 ```
 
+Default user is `postgres`
+
 
 ### Show databases
 
@@ -90,19 +92,18 @@ https://www.geeksforgeeks.org/postgresql-show-tables/
 
 
 
-### Import / Export 
+## Datatypes
 
-https://www.a2hosting.com/kb/developer-corner/postgresql/import-and-export-a-postgresql-database  
-How to import and export PostgreSQL databases  
+Formats to use when defining a schema
 
-```
-pg_dump -U username dbname > dbexport.pgsql
-```
+### text
 
-```
-psql -U username dbname < dbexport.pgsql
-```
+> Generally, there is no downside to using `text` in terms of performance/memory. On the contrary: `text` is the optimum. Other types have more or less relevant downsides. `text` is literally the "preferred" type among string types in the Postgres type system, which can affect function or operator type resolution.
 
+https://duckduckgo.com/?t=ffab&q=postgresql+best+column+type+for+strings&atb=v343-1&ia=web  
+postgresql best column type for strings at DuckDuckGo  
+https://stackoverflow.com/questions/20326892/any-downsides-of-using-data-type-text-for-storing-strings  
+sql - Any downsides of using data type "text" for storing strings? - Stack Overflow  
 
 ## Manage Users and Permissions
 
@@ -252,6 +253,90 @@ usually /var/lib/pgsql or /var/lib/postgresql
 vi /var/lib/pgsql/13/data/pg_hba.conf
 
 
+
+## Backups 
+
+It is possible to use a CLI / GUI tool for backups, but those are not commonly automated or scheduled. 
+
+If it's data worth keeping, set up a backup routine. 
+
+### Import / Export 
+
+https://www.a2hosting.com/kb/developer-corner/postgresql/import-and-export-a-postgresql-database  
+How to import and export PostgreSQL databases  
+
+```
+pg_dump -U username dbname > dbexport.pgsql
+```
+
+```
+psql -U username dbname < dbexport.pgsql
+```
+
+### wal-g
+
+https://github.com/wal-g/wal-g  
+wal-g/wal-g: Archival and Restoration for databases in the Cloud  
+https://www.citusdata.com/blog/2017/08/18/introducing-wal-g-faster-restores-for-postgres/  
+Introducing WAL-G by Citus: Faster Disaster Recovery for Postgres  
+
+https://duckduckgo.com/?t=ffab&q=using+wal-g+guide&atb=v343-1&ia=web  
+using wal-g guide at DuckDuckGo  
+https://www.fusionbox.com/blog/detail/postgresql-wal-archiving-with-wal-g-and-s3-complete-walkthrough/644/  
+Postgres WAL Archiving: A Complete Walkthrough  
+https://duckduckgo.com/?t=ffab&q=+how+to+use+WAL-G+to+back+up+a+local+postgresql+database&atb=v343-1&ia=web  
+how to use WAL-G to back up a local postgresql database at DuckDuckGo  
+https://stackoverflow.com/questions/56117363/postgres-backup-with-wal  
+postgresql - postgres backup with WAL - Stack Overflow  
+https://wal-g.readthedocs.io/PostgreSQL/  
+PostgreSQL - WAL-G  
+https://supabase.com/blog/continuous-postgresql-backup-walg  
+Continuous PostgreSQL Backups using WAL-G  
+https://github.com/wal-g/wal-g  
+wal-g/wal-g: Archival and Restoration for databases in the Cloud  
+https://www.citusdata.com/blog/2017/08/18/introducing-wal-g-faster-restores-for-postgres/  
+Introducing WAL-G by Citus: Faster Disaster Recovery for Postgres  
+
+
+### 
+
+https://github.com/pgbackrest/pgbackrest  
+pgbackrest/pgbackrest: Reliable PostgreSQL Backup & Restore  
+https://pgbackrest.org/  
+pgBackRest - Reliable PostgreSQL Backup & Restore  
+
+
+https://github.com/aiven/pghoard  
+aiven/pghoard: PostgreSQL® backup and restore service  
+https://pgbarman.org/index.html  
+Barman  
+https://github.com/EnterpriseDB/barman  
+EnterpriseDB/barman: Barman - Backup and Recovery Manager for PostgreSQL  
+https://github.com/omniti-labs/omnipitr  
+omniti-labs/omnipitr: Advanced WAL File Management Tools for PostgreSQL  
+https://github.com/postgrespro/pg_probackup  
+postgrespro/pg_probackup: Backup and recovery manager for PostgreSQL  
+https://github.com/orgrim/pg_back/  
+orgrim/pg_back: Simple backup tool for PostgreSQL  
+https://dalibo.github.io/pitrery/  
+
+
+## Migrations
+
+https://github.com/michaelsogos/pg-diff-api  
+michaelsogos/pg-diff-api: PostgreSQL migration strategy for NodeJS  
+
+https://github.com/dimitri/pgloader  
+dimitri/pgloader: Migrate to PostgreSQL in a single command!  
+https://pgloader.io/  
+pgloader  
+
+via:
+https://www.postgresql.org/download/products/1-administrationdevelopment-tools/  
+PostgreSQL: Software Catalogue - Administration/development tools  
+
+
+
 ## GUI
 
 Postgres specific. For general tools, see [DB Guis](gui-db.md)
@@ -287,6 +372,12 @@ sudo apt install pgadmin4-desktop
 https://www.enterprisedb.com/blog/google-cloud-sql-postgresql-deployment-pgadmin-4  
 Google Cloud SQL - PostgreSQL Deployment with pgAdmin 4 | EDB  
 
+## Utilities
+
+https://github.com/dhamaniasad/awesome-postgres#backups  
+dhamaniasad/awesome-postgres: A curated list of awesome PostgreSQL software, libraries, tools and resources, inspired by awesome-mysql  
+
+
 ## Metabases
 
 Ready to go APIs built on top of a database. Some rely on Postgres exclusively, others can use many types of different databases. 
@@ -296,60 +387,6 @@ supabase/supabase: The open source Firebase alternative. Follow to stay updated 
 https://github.com/metabase/metabase  
 metabase/metabase: The simplest, fastest way to get business intelligence and analytics to everyone in your company  
 
-
-## Backups 
-
-It is possible to use a CLI / GUI tool for backups, but those are not commonly automated or scheduled. 
-
-If it's data worth keeping, set up a backup routine. 
-
-https://github.com/dhamaniasad/awesome-postgres#backups  
-dhamaniasad/awesome-postgres: A curated list of awesome PostgreSQL software, libraries, tools and resources, inspired by awesome-mysql  
-
-### wal-g
-
-https://github.com/wal-g/wal-g  
-wal-g/wal-g: Archival and Restoration for databases in the Cloud  
-https://www.citusdata.com/blog/2017/08/18/introducing-wal-g-faster-restores-for-postgres/  
-Introducing WAL-G by Citus: Faster Disaster Recovery for Postgres  
-
-### 
-
-https://github.com/pgbackrest/pgbackrest  
-pgbackrest/pgbackrest: Reliable PostgreSQL Backup & Restore  
-https://pgbackrest.org/  
-pgBackRest - Reliable PostgreSQL Backup & Restore  
-
-
-https://github.com/aiven/pghoard  
-aiven/pghoard: PostgreSQL® backup and restore service  
-https://pgbarman.org/index.html  
-Barman  
-https://github.com/EnterpriseDB/barman  
-EnterpriseDB/barman: Barman - Backup and Recovery Manager for PostgreSQL  
-https://github.com/omniti-labs/omnipitr  
-omniti-labs/omnipitr: Advanced WAL File Management Tools for PostgreSQL  
-https://github.com/postgrespro/pg_probackup  
-postgrespro/pg_probackup: Backup and recovery manager for PostgreSQL  
-https://github.com/orgrim/pg_back/  
-orgrim/pg_back: Simple backup tool for PostgreSQL  
-https://dalibo.github.io/pitrery/  
-
-
-
-## Migrations
-
-https://github.com/michaelsogos/pg-diff-api  
-michaelsogos/pg-diff-api: PostgreSQL migration strategy for NodeJS  
-
-https://github.com/dimitri/pgloader  
-dimitri/pgloader: Migrate to PostgreSQL in a single command!  
-https://pgloader.io/  
-pgloader  
-
-via:
-https://www.postgresql.org/download/products/1-administrationdevelopment-tools/  
-PostgreSQL: Software Catalogue - Administration/development tools  
 
 
 ## Replication and Architecture

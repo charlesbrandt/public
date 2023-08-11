@@ -1,10 +1,21 @@
 # Supabase
 
+Postgres based API server. 
+
+A well architected, containerized stack for managing the back-end of your application. 
+
+https://github.com/supabase/supabase  
+GitHub - supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.  
+
+https://supabase.com/docs/guides/getting-started/architecture  
+Architecture | Supabase Docs  
+
 ## Server
 
 For running locally, use docker.
 
-https://supabase.com/docs/guides/self-hosting/docker
+https://supabase.com/docs/guides/self-hosting/docker  
+Self-Hosting with Docker | Supabase Docs  
 
 ```
 # Get the code
@@ -63,7 +74,14 @@ docker compose up
 Go to the host you configured: 192.168.1.2:3000 for the studio  
 or configure your client to use the API 192.168.1.2:8000  
 
+https://supabase.com/docs/guides/self-hosting#api-keys  
+Self-Hosting | Supabase Docs  
+
+
 ## Client (JS)
+
+https://github.com/supabase/supabase-js  
+GitHub - supabase/supabase-js: An isomorphic Javascript client for Supabase.
 
 https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3
 
@@ -140,7 +158,8 @@ async function signInWithEmail() {
 Reminder: you can always pass those parameters in from a web form as needed
 
 
-https://supabase.com/docs/guides/auth/auth-email
+https://supabase.com/docs/guides/auth/auth-email  
+Login With Email | Supabase Docs  
 
 
 Also good strategies for managing user data:
@@ -158,6 +177,19 @@ supabase and supertokens at DuckDuckGo
 https://supabase.com/docs/guides/integrations/supertokens  
 SuperTokens | Supabase Docs  
 https://duckduckgo.com/?q=supabase+docker+compose&t=ffab&atb=v343-1&ia=web  
+## User management
+
+https://supabase.com/docs/guides/getting-started/quickstarts/vue  
+Use Supabase with Vue | Supabase Docs  
+https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3  
+Build a User Management App with Vue 3 | Supabase Docs  
+https://github.com/supabase/supabase/tree/master/examples/user-management/vue3-user-management  
+supabase/examples/user-management/vue3-user-management at master · supabase/supabase · GitHub  
+https://duckduckgo.com/?t=ffab&q=supabase+User+Management+Starter&atb=v343-1&ia=web  
+supabase User Management Starter at DuckDuckGo  
+
+
+
 
 ## Client (Python)
 
@@ -242,7 +274,7 @@ https://www.reddit.com/r/Supabase/comments/rluwrs/multiple_schemas/
 Supabase configures a lot of "best practice" default settings for you in your database. 
 
 TODO: Test exporting data and importing it into a newly created instance.
-Is that the best path in a recovery situation? 
+I believe that is the best path in a recovery situation.
 
 
 ### Prisma
@@ -262,46 +294,18 @@ https://supabase.com/docs/guides/storage
 Storage | Supabase Docs  
   
 
-https://supabase.com/docs/guides/auth/auth-email  
-Login With Email | Supabase Docs  
+
 https://supabase.com/docs/guides/api  
 Serverless APIs | Supabase Docs  
 https://supabase.com/docs/guides/database/overview  
 Database | Supabase Docs  
 
-
-https://supabase.com/docs/guides/getting-started/quickstarts/vue  
-Use Supabase with Vue | Supabase Docs  
-https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3  
-Build a User Management App with Vue 3 | Supabase Docs  
-https://github.com/supabase/supabase/tree/master/examples/user-management/vue3-user-management  
-supabase/examples/user-management/vue3-user-management at master · supabase/supabase · GitHub  
-https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3#get-the-api-keys  
-Build a User Management App with Vue 3 | Supabase Docs  
-
-
   
-https://supabase.com/docs/guides/getting-started/tutorials/with-vue-3  
-Build a User Management App with Vue 3 | Supabase Docs  
-https://supabase.com/docs/guides/getting-started/architecture  
-Architecture | Supabase Docs  
-https://supabase.com/docs/guides/auth/auth-email  
-Login With Email | Supabase Docs  
-https://github.com/supabase/supabase-js  
-GitHub - supabase/supabase-js: An isomorphic Javascript client for Supabase.  
 https://supabase.com/docs/guides/functions  
 Edge Functions | Supabase Docs  
 https://supabase.com/docs/guides/storage/image-transformations  
 Storage Image Transformations | Supabase Docs  
 https://supabase.com/docs/guides/auth/row-level-security  
 Row Level Security | Supabase Docs  
-https://duckduckgo.com/?t=ffab&q=supabase+User+Management+Starter&atb=v343-1&ia=web  
-supabase User Management Starter at DuckDuckGo  
-https://github.com/supabase/supabase  
-GitHub - supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.  
-https://supabase.com/docs/guides/self-hosting#api-keys  
-Self-Hosting | Supabase Docs  
-https://supabase.com/docs/guides/self-hosting/docker  
-Self-Hosting with Docker | Supabase Docs  
   
 
