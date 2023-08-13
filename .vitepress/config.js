@@ -1,4 +1,4 @@
-import { getSidebar } from 'vitepress-plugin-auto-sidebar'
+// import { getSidebar } from 'vitepress-plugin-auto-sidebar'
 
 export default {
   title: 'Notes',
@@ -18,7 +18,7 @@ export default {
     //  { text: 'Sidebar Test ', link: '/' },
     //  { text: '', link: '/' },
     //]
-    sidebar: getSidebar({ contentRoot: '/', contentDirs: ['code', 'documentation', 'pi', 'system', 'web'], collapsible: true, collapsed: true })
+    // sidebar: getSidebar({ contentRoot: '/', contentDirs: ['code', 'documentation', 'pi', 'system', 'web'], collapsible: true, collapsed: true })
   }
   // no effect in vitepress currently
   //dest: "./public"

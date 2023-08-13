@@ -32,18 +32,15 @@ sudo apt install keepassxc
 
 To copy a password to the system clipboard, do not open the entry details. Ctrl-C is enabled on the find / filter list. It's not available in the details. 
 
-Older version
+### Merging databases
 
-https://www.keepassx.org/
- 
-```
-sudo apt-get install keepassx
-```
+It is possible to open one copy of a database and then merge in another one via File -> Synchronize -> Synchronize with File
 
-KeePass.info seems to be the official desktop client
+Very useful in the event of a git merge conflict.
 
-https://keepass.info/  
-KeePass Password Safe  
+https://www.ghacks.net/2022/03/25/how-to-merge-two-keepass-databases/
+
+### Disable expiration
 
 https://keepass.info/help/v2_dev/customize.html  
 0x8	8 	Disable controls to specify after how many days the master key should/must be changed.  
@@ -62,6 +59,20 @@ KeeWeb may be a good option to try. Found it via the Open Collective site.
 
 https://opencollective.com/keeweb
 
+### Older versions
+
+https://www.keepassx.org/
+ 
+```
+sudo apt-get install keepassx
+```
+
+KeePass.info seems to be the official desktop client
+
+https://keepass.info/  
+KeePass Password Safe  
+
+
 ### Others
 
 Don't like this one as much. 
@@ -69,6 +80,7 @@ Don't like this one as much.
 ```
 sudo apt-get install keepass2
 ```
+
 
 
 
