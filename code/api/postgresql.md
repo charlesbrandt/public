@@ -37,9 +37,16 @@ sudo apt install postgresql-client
 https://ubuntu.com/server/docs/databases-postgresql  
 Install and configure PostgreSQL | Ubuntu  
 
+Should be available someplace like:
 
 ```
 /usr/pgsql-13/bin/psql 
+```
+
+The default user is `postgres`
+
+```
+psql -U postgres -h 127.0.0.1 -W
 ```
 
 To connect as a different user
@@ -72,13 +79,13 @@ https://www.geeksforgeeks.org/postgresql-show-tables/
 
 ### Show tables
 
-Supposedly `\dt` should work:
+Usually `\dt` should work:
 
 ```
 \dt
 ```
 
-but I needed to use the following select statement
+Occasionally, I've needed to use the following select statement
 
 ```
 SELECT *
@@ -90,15 +97,176 @@ WHERE schemaname != 'pg_catalog' AND
 via  
 https://www.geeksforgeeks.org/postgresql-show-tables/
 
-
-
 ## Datatypes
 
 Formats to use when defining a schema
 
+
 ### text
 
+
 > Generally, there is no downside to using `text` in terms of performance/memory. On the contrary: `text` is the optimum. Other types have more or less relevant downsides. `text` is literally the "preferred" type among string types in the Postgres type system, which can affect function or operator type resolution.
+
+
+## Backups 
+
+If the system houses real data, set this up as soon as possible. 
+
+It is possible to use a CLI / GUI tool for backups, but those are not commonly automated or scheduled. 
+
+> pgAdmin uses `pg_dump` behind the scenes anyway
+
+If it's data worth keeping, set up a backup routine. 
+
+https://github.com/dhamaniasad/awesome-postgres#backups  
+dhamaniasad/awesome-postgres: A curated list of awesome PostgreSQL software, libraries, tools and resources, inspired by awesome-mysql  
+
+
+Export / Backup
+
+Import / Restore
+
+or 
+
+```
+psql -f globals.sql 
+```
+
+If you need to keep your users and roles, use `pg_dumpall`
+
+```
+pg_dumpall --globals-only to get users/roles/etc
+pg_dump -Fc for each database
+```
+
+https://stackoverflow.com/questions/16618627/pg-dump-vs-pg-dumpall-which-one-to-use-to-database-backups
+
+Then you would add this to your crontab to run nightly:
+
+```
+0 0 * * * /path/to/above/script.sh
+```
+
+#### Troubleshooting
+
+```
+pg_dumpall: error: server version: 15.1 (Debian 15.1-1.pgdg110+1); pg_dumpall version: 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
+```
+
+```
+sudo apt-get remove postgresql-client-14
+sudo apt-get install postgresql-client-15
+```
+
+### Retention
+
+A more complete example to manage a rotating batch of backups:
+
+``` sh
+#!/bin/bash
+
+# Load environment variables
+source /path/to/.env
+
+# Export the password for pg_dumpall and pg_dump to use
+export PGPASSWORD="${POSTGRES_PASSWORD}"
+
+# Configuration
+BACKUP_DIR="/path/to/backup/root" # Replace with your backup root path
+POSTGRES_USER="postgres" # Replace with the PostgreSQL user
+
+# Get date components
+YEAR=$(date +'%Y')
+MONTH=$(date +'%m')
+DAY=$(date +'%d')
+DAY_OF_WEEK=$(date +'%u')
+
+# Function to create backup directories if they don't exist
+create_directory() {
+    if [ ! -d "$1" ]; then
+        mkdir -p "$1"
+    fi
+}
+
+# 1. Nightly Backup
+DAILY_DIR="${BACKUP_DIR}/${YEAR}/${MONTH}/${DAY}"
+create_directory "${DAILY_DIR}"
+
+# Dump global metadata
+pg_dumpall --globals-only -U "${POSTGRES_USER}" > "${DAILY_DIR}/globals.sql"
+
+# Dump each database
+for DB in $(psql -U "${POSTGRES_USER}" -t -c "SELECT datname FROM pg_database WHERE NOT datistemplate AND datname != 'postgres';"); do
+    pg_dump -Fc -U "${POSTGRES_USER}" "${DB}" > "${DAILY_DIR}/${DB}.sql"
+done
+
+# 2. Backup Rotation
+
+# Week's first day: keep it as a weekly snapshot
+if [ "$DAY_OF_WEEK" -eq "1" ]; then
+    WEEKLY_DIR="${BACKUP_DIR}/${YEAR}/${MONTH}/week_${DAY}"
+    create_directory "${WEEKLY_DIR}"
+    mv "${DAILY_DIR}"/* "${WEEKLY_DIR}/"
+    rmdir "${DAILY_DIR}"  # Removing the now empty daily directory
+fi
+
+# Remove daily backups older than 7 days
+find "${BACKUP_DIR}/${YEAR}/${MONTH}" -maxdepth 1 -type d -name '[0-9]*' -mtime +7 -exec rm -rf {} \;
+
+# Month's first day: consider previous month for weekly cleanup
+if [ "$DAY" -eq "01" ]; then
+    LAST_MONTH=$(date --date="1 month ago" +'%m')
+    # Keep the first weekly backup of the previous month, remove others
+    FIRST_WEEK_DIR=$(find "${BACKUP_DIR}/${YEAR}/${LAST_MONTH}/week_*" -maxdepth 1 -type d | sort | head -n 1)
+    for DIR in $(find "${BACKUP_DIR}/${YEAR}/${LAST_MONTH}/week_*" -maxdepth 1 -type d); do
+        if [ "${DIR}" != "${FIRST_WEEK_DIR}" ]; then
+            rm -rf "${DIR}"
+        fi
+    done
+fi
+
+# Make this script executable and add it to cron
+
+```
+
+run it out and make sure it works
+
+
+
+
+
+### wal-g
+
+For more realtime and finegrained backups. Useful when nightly is no longer sufficient. 
+
+These may take up more space, are only restoreable to the same PostgreSQL version on the same platform, and back up all tables in all databases with no ability to exclude anything.
+
+https://github.com/wal-g/wal-g  
+wal-g/wal-g: Archival and Restoration for databases in the Cloud  
+https://www.citusdata.com/blog/2017/08/18/introducing-wal-g-faster-restores-for-postgres/  
+Introducing WAL-G by Citus: Faster Disaster Recovery for Postgres  
+
+https://github.com/omniti-labs/omnipitr  
+omniti-labs/omnipitr: Advanced WAL File Management Tools for PostgreSQL  
+### Others
+
+https://github.com/pgbackrest/pgbackrest  
+pgbackrest/pgbackrest: Reliable PostgreSQL Backup & Restore  
+https://pgbackrest.org/  
+pgBackRest - Reliable PostgreSQL Backup & Restore  
+
+https://github.com/aiven/pghoard  
+aiven/pghoard: PostgreSQL® backup and restore service  
+https://pgbarman.org/index.html  
+Barman  
+https://github.com/EnterpriseDB/barman  
+EnterpriseDB/barman: Barman - Backup and Recovery Manager for PostgreSQL  
+https://github.com/postgrespro/pg_probackup  
+postgrespro/pg_probackup: Backup and recovery manager for PostgreSQL  
+https://github.com/orgrim/pg_back/  
+orgrim/pg_back: Simple backup tool for PostgreSQL  
+https://dalibo.github.io/pitrery/  
+
 
 https://duckduckgo.com/?t=ffab&q=postgresql+best+column+type+for+strings&atb=v343-1&ia=web  
 postgresql best column type for strings at DuckDuckGo  

@@ -276,6 +276,64 @@ Supabase configures a lot of "best practice" default settings for you in your da
 TODO: Test exporting data and importing it into a newly created instance.
 I believe that is the best path in a recovery situation.
 
+```
+pg_dump -U postgres supabase > dbexport.pgsql
+```
+
+See also [postgres](postgresql.md#backups) for a more complete example.
+
+The hosted service offers backups automatically. (at least 7 days)
+
+Running backups using `postgres` user results in:
+
+```
+account@system:~/supabase/docker$ ./backup-db.sh 
+pg_dump: error: query failed: ERROR:  permission denied for table schema_migrations
+pg_dump: detail: Query was: LOCK TABLE _realtime.schema_migrations IN ACCESS SHARE MODE
+```
+
+When looking at the configured users and roles, it's clear `postgres` doesn't have what it takes:
+
+Here is the relevant output from the `\du` command:
+
+```
+postgres                   | Create role, Create DB, Replication, Bypass RLS            | {pg_monitor,anon,authenticated,service_role,supabase_auth_admin,supabase_functions_admin,supabase_storage_admin,pgsodium_keyiduser,pgsodium_keyholder,pgsodium_keymaker}
+ service_role               | No inheritance, Cannot login, Bypass RLS                   | {}
+ supabase_admin             | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+
+```
+
+
+Use the `supabase_admin` account to manage backups. The `postgres` user does not have full permissions (by design). To use `supabase_admin`, grant it a secure password
+
+
+```
+cd supabase/docker/
+dce db bash
+```
+
+Switch to the PostgreSQL user:
+
+Once you're in the Docker container's shell, switch to the postgres user, which will allow you to access the PostgreSQL instance without a password:
+
+```
+su - postgres
+```
+
+Change the supabase_admin password:
+
+Access the PostgreSQL prompt:
+
+``` bash
+psql
+```
+
+And then set a new password for supabase_admin:
+
+``` sql
+ALTER USER supabase_admin WITH PASSWORD 'newpassword';
+```
+
 
 ### Prisma
 

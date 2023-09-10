@@ -210,6 +210,13 @@ To scan open ports from another (external) machine that's on the same network
 nmap [ip of machine to scan]
 ```
 
+A few other tools could help 
+
+```
+sudo apt-get update
+sudo apt-get install nmap netdiscover arp-scan
+```
+
 ### DNS
 
 To resolve a name associated with an IP address, try nslookup:
