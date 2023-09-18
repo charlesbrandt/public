@@ -1,5 +1,6 @@
 {
     "Alt-/": "lua:comment.comment",
+    "Ctrl-;": "lua:linter.lint",
     "CtrlUnderscore": "lua:comment.comment",
     "CtrlUp": "ParagraphPrevious",
     "CtrlDown": "ParagraphNext",

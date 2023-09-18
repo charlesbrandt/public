@@ -5,6 +5,10 @@
         {
             "name": "official",
             "url": "https://github.com/micro-editor/plugin-repo/raw/master/repo.json"
+        },
+        {
+            "name": "prettier",
+            "url": "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
         }
     ],
     "savecursor": true,

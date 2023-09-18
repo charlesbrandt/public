@@ -1,18 +1,33 @@
 # Micro
 
-Lightweight cli terminal based editor. 
-A worthy alternative to emacs, vi, and nano.
+Lightweight terminal based text editor. 
+A good alternative to emacs, vi, and nano.
+
+## Installation
 
 ```
 cd /usr/bin
 curl https://getmic.ro | sudo bash
+sudo mv micro /usr/bin
 cd ~/.config
 ln -s ~/public/system/editors/micro/micro.config micro
 ```
 
-Note the version in ubuntu via apt-get [tends to be a bit old](https://github.com/zyedidia/micro/issues/1815) and can leave `log.txt` files everywhere. 
+## Build 
+
+It's also possible to build from source pretty easily if you have a Go compiler installed
+
+Make sure that you have Go version 1.16 or greater and Go modules are enabled.
+
 ```
-# sudo apt-get install micro
+sudo apt install golang
+```
+
+```
+git clone https://github.com/zyedidia/micro
+cd micro
+make build
+sudo mv micro /usr/bin # optional
 ```
 
 ## Wrap
@@ -39,6 +54,7 @@ Or, if you want to edit the file directly, in the settings file (`~/.config/micr
 There is also `wordwrap`, but it requires `softwrap` which seems to do what I'm after
 
 https://github.com/zyedidia/micro/blob/master/runtime/help/options.md
+
 
 ## Line Numbers
 
@@ -86,6 +102,71 @@ Custom: These have existing, default equivalents ("Alt-right-arrow" and "Alt-lef
 
 Find is available via `ctrl-f`, but you must complete your first search by pressing `enter` before you can use `ctrl-n` to findNext.
 
+
+## Autoformat
+
+One nice feature of bigger editors like VSCode is the ability to automatically format code so that things like spacing are clean. 
+
+It seems like this is something the built in linter may be able to do:
+
+https://github.com/zyedidia/micro/blob/master/runtime/plugins/linter/linter.lua
+
+At least with a `.vue` file [2023.09.16], spacing changes were not fixed. 
+
+### Autoformat Plugins
+
+https://github.com/a11ce/micro-autofmt  
+a11ce/micro-autofmt: Multi-language autoformatter for Micro  
+
+```
+micro --plugin install autofmt
+```
+
+
+use prettier to do the formatting
+
+https://github.com/gamemaker1/micro-plugin-prettier  
+gamemaker1/micro-plugin-prettier: A Micro plugin that formats your code using Prettier  
+
+Added the following to `settings.json`
+
+```
+    "pluginrepos": [
+        {
+            "name": "official",
+            "url": "https://github.com/micro-editor/plugin-repo/raw/master/repo.json"
+        },
+        {
+            "name": "prettier",
+            "url": "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
+        }
+    ],
+```
+
+Then tried installing with:
+
+```
+npm install --global prettier
+micro --plugin install prettier
+```
+
+I am getting `Unknown plugin "prettier"`
+
+
+https://prettier.io/docs/en/options.html  
+Options · Prettier  
+about:reader?url=https%3A%2F%2Fprettier.io%2Fdocs%2Fen%2F  
+What is Prettier? · Prettier  
+
+## Plugins
+
+https://micro-editor.github.io/plugins.html  
+Micro - Plugins  
+https://github.com/topics/micro-editor  
+micro-editor · GitHub Topics  
+
+
+
 ## Buffers / Tabs
 
 Buffer switching?
@@ -116,6 +197,8 @@ keybinding equivalents
 
 ## Bindings
 
+Map keystrokes to the desired command. 
+
 Ctrl-o opens new files. 
 
 Can also run this as a command with `ctrl-e`
@@ -134,7 +217,8 @@ Todo: how to be able to pass parameters after triggering a command:
     "Alt-%": "command:replace"
 ```
 
-## Deleting
+
+## Delete
 
 I remember reading in the documentation about "ctrl-backspace" to delete a whole word. There is some issue with that. It would be nice to be able to enable. 
 
@@ -173,8 +257,25 @@ Interesting commands from `ctrl-e help commands`
    depending on the value of `tabstospaces`.
 
 
+## Failed Custom Bindings
+
+This didn't seem to have any effect when in a command. Only Escape seems to work. 
+
+```
+    "Ctrl-g": "Escape",
+```
+
+`ctrl-i` is the same as `TAB` in most terminals. Difficult to bind to it
+
+https://duckduckgo.com/?t=ffab&q=terminal+ctrl-i+sends+tab&ia=web  
+terminal ctrl-i sends tab at DuckDuckGo  
+https://superuser.com/questions/638690/inputrc-tab-and-ctrl-i  
+terminal - .inputrc, TAB and CTRL-i - Super User  
+
 
 ## Tmux
+
+Tmux and micro don't work well together in my experience. Many of the commands overlap.
 
 * `term exec?`: Open a terminal emulator running the given executable. If no
    executable is given, this will open the default shell in the terminal
@@ -195,12 +296,10 @@ tmux bindings may interfere with micro bindings?
 Tried replacing `ctrl-e` -- seems easier to let go of chord for moving to end of line. 
 
 
-## Failed Custom Bindings
+## Troubleshooting
 
-This didn't seem to have any effect when in a command. Only Escape seems to work. 
-
+Note the version in ubuntu via apt-get [tends to be a bit old](https://github.com/zyedidia/micro/issues/1815) and can leave `log.txt` files everywhere. 
 ```
-    "Ctrl-g": "Escape",
+# sudo apt-get install micro
 ```
-
 

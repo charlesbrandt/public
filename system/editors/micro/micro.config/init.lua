@@ -31,7 +31,7 @@ function now(bp)
 	-- local location = buffer.Loc(0, 0)
 	-- buf:Insert(location, )
 	local stamp = os.date("# %Y.%m.%d %H:%M:%S ")
-    buffer.Log("Stamp " .. stamp .. "\n")
+    -- buffer.Log("Stamp " .. stamp .. "\n")
 	-- fmt.Printf(stamp)
 	-- https://github.com/zyedidia/micro/issues/2183
 	bp.Buf:Insert(-bp.Cursor.Loc, stamp)
