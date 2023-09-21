@@ -371,6 +371,7 @@ vs code extensions vue - Google Search
 
     "dbaeumer.vscode-eslint",
 
+It seems that eslint needs to be installed on the host os for the current project. This is a case where node_modules encapsulated in docker are not accessible to the host os, including vscode. `npm install` seems to do the trick
 
 
 ### Python

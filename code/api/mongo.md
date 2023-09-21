@@ -571,11 +571,15 @@ mongo
 show databases;
 ```
 
-    mongodump --host localhost --db DBNAME
+```
+mongodump --host localhost --db DBNAME
+```
 
 `mongodump` creates a folder called `dump`
 
-    ls -lash dump/
+```
+ls -lash dump/
+```
 
 ### Import / Restore
 
@@ -585,13 +589,17 @@ If using containers:
   - Ensure that the source of the dump file has been mounted in your db container via `docker-compose.yml`.
   - Connect to the container `docker-compose exec db bash`
 
-On db host:
+On db host (path will depend on how your local db files are structured... ):
 
-    # will depend on how your local db files are structured... 
-    cd /srv/mongodump/mongodump/
-    
-    # the db destination will depend on how your API is written... 
-    mongorestore --host localhost --db boilerplate
+
+```
+cd /srv/mongodump/mongodump/
+
+mongorestore --host localhost --db boilerplate
+
+mongorestore -u root --host localhost
+
+```
 
 Change to the directory
 

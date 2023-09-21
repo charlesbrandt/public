@@ -75,7 +75,9 @@ There are two things you can do about this warning:
   )
 
 ;; sometimes this results in multiple requests to confirms
-;; sometimes under termux it is not possible to send a viable response
+;; sometimes it is not possible to send a viable response
+;; however, if it's not set, it can result in lost sessions
+;; use `micro` on termux (figure out select there)
 ;; (setq confirm-kill-emacs 'y-or-n-p)
 
 (load-file "~/.emacs.d/keymaps.el")

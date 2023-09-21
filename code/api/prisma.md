@@ -26,4 +26,19 @@ GitHub - prisma/prisma: Next-generation ORM for Node.js & TypeScript | PostgreSQ
 https://github.com/prisma/studio  
 GitHub - prisma/studio: 🎙️ The easiest way to explore and manipulate your data in all of your Prisma projects.  
 
+## Introspection
+
+Get an existing schema out of a previously created database
+
+https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/mongodb/introspection-typescript-mongodb
+
+```
+npx prisma init --url mongodb://root:example@boilerplate_mongo:27017/db?authSource=admin&readPreference=primary&ssl=false&directConnection=true
+```
+
+then pull
+
+```
+npx prisma db pull
+```
 

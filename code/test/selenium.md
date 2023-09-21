@@ -107,9 +107,43 @@ This is a good point to update the script to go to any login page so you can do 
 
 From here create a `helpers.py` script that you can import and subsequently reload your module without needing to restart your active browser context (and consequently, re-login). 
 
-> Note: this approach
+> Note: this approach is more useful for data retrieval than it is for testing. Tests should not have side effects
+
+For python3, the import module functionality has moved
+
+```
+import importlib
+importlib.reload(module)
+```
+
+An example starter `helper.py` could look something like:
+
+```
+from selenium.webdriver.common.by import By
+
+def get_list(driver):
+  driver.get("https://python.org")
+```
 
 
+#### Locating content
+
+The `By` wrapper helps
+
+```
+from selenium.webdriver.common.by import By
+```
+
+Use the browser markup inspector to find the right way to select the element. 
+
+https://selenium-python.readthedocs.io/locating-elements.html
+
+
+From here, refine the child elements that you want, or work with the related markup directly
+
+```
+element.get_attribute('innerHTML')
+```
 
 
 ### Node Javascript

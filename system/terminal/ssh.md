@@ -54,8 +54,11 @@ via https://askubuntu.com/questions/20865/is-it-possible-to-remove-a-particular-
 
 If you migrate keys from one machine to another, be sure to update the ~/.ssh directory to have the correct permissions:
 
-    chmod 700 ~/.ssh
-    chmod 600 ~/.ssh/*
+```
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+```
 
 https://stackoverflow.com/questions/44250002/how-to-solve-sign-and-send-pubkey-signing-failed-agent-refused-operation
 
