@@ -57,7 +57,7 @@ dbeaver Can't initialize tunnelCannot run program "ssh-keygen": error=13, Permis
 Make sure to use the correct passphrase for your private key. You can test decoding it outside of dbeaver:
 
 ```
-ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.decoded
 ```
 
 DBeaver seems to expect the db user to have a password. Some postgres servers can be set up with ident mode where it relies on the system user accounts. 
