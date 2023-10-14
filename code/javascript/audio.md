@@ -15,6 +15,16 @@ VueJS Component to easily use AmplitudeJS within VueJS · Issue #371 · serversi
 https://opencollective.com/amplitudejs  
 AmplitudeJS - Open Collective  
 
+## Clapper 
+
+https://github.com/Metrakit/clappr-comment-plugin  
+GitHub - Metrakit/clappr-comment-plugin: A comments plugin for the Clappr player  
+https://github.com/clappr/clappr  
+GitHub - clappr/clappr: An extensible media player for the web.  
+https://github.com/joaopaulovieira/clappr-queue-plugin  
+GitHub - joaopaulovieira/clappr-queue-plugin: A queue plugin for Clappr Player to play videos in sequence.  
+
+
 ## Tone JS
 
 https://tonejs.github.io/  
@@ -33,7 +43,115 @@ Recorder
 https://tonejs.github.io/docs/14.7.39/Player  
 Player  
 
-### Record
+
+
+
+## Record
+
+``` vue
+<template>
+  <div>
+    <button @click="toggleRecording">
+      {{ isRecording ? 'Stop Recording' : 'Start Recording' }}
+    </button>
+    <div id="waveform"></div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import dayjs from 'dayjs'
+import WaveSurfer from 'wavesurfer.js'
+
+import { useSupabaseStore } from '@/stores/supabaseStore'
+
+const supabase = useSupabaseStore().client
+
+let wavesurfer
+
+function initWaveform() {
+  wavesurfer = WaveSurfer.create({
+    container: '#waveform', // id of the div where the waveform should be rendered
+    waveColor: 'violet',
+    progressColor: 'purple',
+  })
+}
+
+const isRecording = ref(false)
+let recorder
+let audioChunks = []
+
+async function toggleRecording() {
+  if (!isRecording.value) {
+    startRecording()
+  } else {
+    stopRecording()
+  }
+}
+
+let mediaRecorder
+
+async function startRecording() {
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+
+  mediaRecorder = new MediaRecorder(stream)
+  mediaRecorder.ondataavailable = (event) => {
+    if (event.data.size > 0) {
+      audioChunks.push(event.data)
+      wavesurfer.loadBlob(event.data)
+    }
+  }
+  // This event will trigger when the recorder is stopped
+  mediaRecorder.onstop = () => {
+    const completeBlob = new Blob(audioChunks, { type: 'audio/wav' })
+    sendToServer(completeBlob)
+  }
+
+  mediaRecorder.start(30000) // 30 seconds chunk
+  isRecording.value = true
+}
+
+async function stopRecording() {
+  mediaRecorder.stop()
+  isRecording.value = false
+}
+
+function onDataAvailable(e) {
+  console.log('onDataAvailable called')
+  audioChunks.push(e.data)
+  sendToServer(e.data)
+}
+
+async function sendToServer(data) {
+  const file = new Blob([data], { type: 'audio/wav' }) // adjust MIME type if needed
+  const formattedDate = dayjs().format('YYYY-MM-DD-HHmmss')
+  const fileName = `time/${formattedDate}.wav` // a unique filename based on current timestamp
+
+  console.log('Saving recording:', fileName)
+
+  const { error: uploadError } = await supabase.storage.from('recordings').upload(fileName, file)
+
+  if (uploadError) {
+    console.error('Failed to upload audio to storage:', uploadError)
+    return
+  }
+
+  // If you wish, you can then store the fileName or URL to the database
+  // const { data: audioData, error: dbError } = await supabase
+  //   .from('recordings')
+  //   .insert([{ file_name: fileName }]);
+  // if (dbError) {
+  //   console.error("Failed to save audio reference to database:", dbError);
+  // }
+}
+
+// Use onMounted to call the async function
+onMounted(() => {
+  initWaveform()
+})
+</script>
+
+```
 
 https://github.com/topics/audio-recorder  
 audio-recorder · GitHub Topics  
@@ -81,6 +199,70 @@ webaudio-examples/voice-change-o-matic/index.html at main · mdn/webaudio-exampl
 
 ## Waveform display
 
+Remember to consult the documentation of the chosen library for any nuances, additional configuration, or features. Also, take into consideration any additional performance implications, especially if you're processing large audio files or dealing with real-time data.
+
+### Wavesurfer
+
+1. **wavesurfer.js**: 
+    - **Description**: This is one of the most popular and feature-rich libraries for generating waveforms and spectrograms. It's easy to use, customizable, and comes with a variety of plugins.
+    - **Size**: The core library is lightweight, but if you include plugins, the size can increase.
+
+
+https://github.com/wavesurfer-js/wavesurfer.js  
+wavesurfer-js/wavesurfer.js: Navigable waveform built on Web Audio and Canvas  
+https://wavesurfer-js.org/projects/  
+wavesurfer.js  
+
+  
+
+#### Integration:
+
+For demonstration, here's a basic way to integrate `wavesurfer.js`:
+
+1. Install via npm:
+    ```bash
+    npm install wavesurfer.js
+    ```
+
+2. Integrate into your component:
+
+```javascript
+import WaveSurfer from 'wavesurfer.js';
+
+let wavesurfer;
+
+function initWaveform() {
+  wavesurfer = WaveSurfer.create({
+      container: '#waveform', // id of the div where the waveform should be rendered
+      waveColor: 'violet',
+      progressColor: 'purple'
+  });
+}
+
+// After recording or when you want to load the audio blob into the waveform
+function loadIntoWaveform(blob) {
+  wavesurfer.loadBlob(blob);
+}
+```
+
+3. In your template, include a container for the waveform:
+
+```html
+<div id="waveform"></div>
+```
+
+4. After recording, or when you want to display a previously recorded audio, call `loadIntoWaveform` with the audio blob.
+
+
+
+### Peaks
+
+3. **BBC/audiowaveform**:
+    - **Description**: Although not purely a frontend library (it has a backend component for generating the waveform data), the BBC's audiowaveform is worth mentioning. It's robust and was designed for broadcast applications.
+    - **Size**: Varies depending on how you integrate it.
+    - **URL**: [audiowaveform on GitHub](https://github.com/bbc/audiowaveform)
+
+
 https://betterprogramming.pub/peaks-js-interact-with-audio-waveforms-b7cb5bd3939a  
 Peaks.js — Interact With Audio Waveforms | by Trevor-Indrek Lasn | Better Programming  
 https://github.com/bbc/peaks.js  
@@ -88,21 +270,7 @@ GitHub - bbc/peaks.js: JavaScript UI component for interacting with audio wavefo
 https://waveform.prototyping.bbc.co.uk/  
 BBC Research and Development: Audio Waveforms  
 
-https://github.com/Metrakit/clappr-comment-plugin  
-GitHub - Metrakit/clappr-comment-plugin: A comments plugin for the Clappr player  
-https://github.com/clappr/clappr  
-GitHub - clappr/clappr: An extensible media player for the web.  
-https://github.com/joaopaulovieira/clappr-queue-plugin  
-GitHub - joaopaulovieira/clappr-queue-plugin: A queue plugin for Clappr Player to play videos in sequence.  
 
-
-
-### Wavesurfer
-
-https://github.com/wavesurfer-js/wavesurfer.js  
-wavesurfer-js/wavesurfer.js: Navigable waveform built on Web Audio and Canvas  
-https://wavesurfer-js.org/projects/  
-wavesurfer.js  
 
 ## Editors
 

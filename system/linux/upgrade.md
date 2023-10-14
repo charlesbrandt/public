@@ -153,6 +153,7 @@ Some things I like to change
     I've been going with 512MB here -- has been sufficient so far
 
   - A bigger /boot partition  
+    This can be an ext4 filesystem
     I know it's important to clean out old kernel images  
     But I prefer to have some room to grow here  
     Giving 4GB a try. Should be better than the default 768MB.   
@@ -174,3 +175,4 @@ Future considerations
     I like this idea in theory -- prevent an ailing service that generates a lot of log files from filling up the main partition.   
     `/var/lib/docker` is also in here -- that can be pretty big too  
     The trick is knowing how much space is enough to allocate without tying up space that doesn't get used. 
+512

@@ -45,12 +45,15 @@ If you want to see - what repo something pushes back to - the configured id for 
 
 Use
 
-    git config --list --show-origin
+```
+git config --list --show-origin
+```
 
 To see what the remote server is set to, use:
 
-    git remote -v
-
+```
+git remote -v
+```
 
 Sources that a repository is set up to track or follow.
 
@@ -177,15 +180,21 @@ From here you can add different remotes (origins and upstreams) as needed.
 
 To see the changes to the repository in reverse chronological order:
 
-    git log
+```
+git log
+```
     
 To see history for a specific file:
 
-    git log --follow -p -- file
+```
+git log --follow -p -- file
+```
 
 To see who has made commits to a repository.
 
-    git blame filename
+```
+git blame filename
+```
 
 see also:
 
@@ -199,7 +208,9 @@ https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
 Tracking a move with git with:
 
-    git mv [src] [destination]
+```
+git mv [src] [destination]
+```
 
 ** Important Note **
 
@@ -215,11 +226,15 @@ If you try to pull in changes to a file you've modified locally, Git does not tr
 
 Use stash to move local changes to the side while pulling in changes from remote.
 
-    git stash
+```
+git stash
+```
 
 Then to unstash:
 
-    git stash pop
+```
+git stash pop
+```
 
 https://www.atlassian.com/git/tutorials/saving-changes/git-stash
 https://dev.to/alediaferia/git-tips-for-trunk-based-development-1i1g
@@ -237,6 +252,19 @@ https://stackoverflow.com/questions/348170/how-do-i-undo-git-add-before-commit
 ### Revert local changes
 
 `git checkout path/to/file` will revert the local changes to `path/to/file`
+
+
+### Revert commit but keep changes 
+
+If the commit has not been pushed publicly (local only), it's easy:
+
+```
+git reset HEAD~1 --soft   
+```
+
+https://stackoverflow.com/questions/19859486/how-to-un-commit-last-un-pushed-git-commit-without-losing-the-changes  
+How to un-commit last un-pushed git commit without losing the changes - Stack Overflow  
+
 
 ### Collaborative Commits
 

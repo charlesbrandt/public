@@ -75,21 +75,11 @@ sudo systemctl status docker
 ```
 
 
-### Docker Compose
-
-Go ahead and grab docker-compose
-
-```
-sudo apt-get install docker-compose -y
-```
-
-
 ### Rootless & Permissions
 
 Visit https://docs.docker.com/go/rootless/ to learn about rootless mode.
 
 Seems necessary to still install docker as usual above. 
-
 
 ```
 sudo apt-get install -y uidmap
@@ -438,6 +428,12 @@ or
 
 ```
 docker system prune 
+```
+
+Sometimes this still doesn't notice changes to build layers. In that case, try:
+
+```
+docker builder prune
 ```
 
 This seems like a well maintained answer with up-to-date options & descriptions:

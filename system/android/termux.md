@@ -2,9 +2,9 @@
 
 Termux is like a minimal linux container running on your phone that you have full access to. 
 
-It used to be possible downloading from the Google Play store. That was nice. Then Google changed some terms and blocked that path. 
+Install F-Droid first. It's a good resource to have anyway. Allows browsing and installing open source apps.
 
-Now install F-Droid first. It's a good resource to have anyway. Allows browsing and installing open source apps.
+I now need to download f-droid directly from their website. It is delivered as an APK module that needs to be installed outside of the Google Play store. 
 
 From the motd:
 The Google Play version of the Termux app no longer
@@ -328,23 +328,4 @@ pkg install tmux
 It's a good idea to work within the same editor rather than different console tab. This way copy and paste are using the same buffer. Emacs / termux has a different clipboard buffer than the native android os.
 
 Additionally, copying from termux using android often includes line continuation characters ('\'). Doesn't work well.
-
-
-
-## Node
-
-At this point you should be compiling the javascript application. hosting on a webserver somewhere.
-
-develipment is better done on a full system. linux or mac. or virtual linux on windows.
-
-see also userland.md()
-
-both are similar in results for full node dev. (as of # 2019.08.25)
-
-
-    pkg install nodejs
-
-Not all npm modules are compatible with Termux. Userland isn't any better (worse in many ways!). Nuxt has problems... next to try is a more simple approach with Vue.
-
-https://dev.to/joelnet/getting-nodejs-and-express-up-and-running-on-my-android-phone-3plp    
 

@@ -152,6 +152,32 @@ Vue3 introduces a new "Composition API" alternative to the original "Options API
 
 https://v3.vuejs.org/guide/composition-api-introduction.html#standalone-computed-properties
 
+## Script Setup
+
+https://vuejs.org/api/sfc-script-setup.html#basic-syntax
+
+In addition to the composition API, Vue 3 offers a new, simplified way for defining the script section of a component:
+
+https://learnvue.co/2021/05/explaining-the-new-script-setup-type-in-vue-3-major-takeaways-from-the-rfc/  
+Explaining The New script setup Type in Vue 3 - RFC Takeaways - LearnVue  
+
+https://learnvue.co/2020/08/an-introduction-to-vue3-props-a-beginners-guide/  
+An Introduction to Vue3 Props - A Beginner’s Guide - LearnVue  
+
+https://v3.vuejs.org/guide/composition-api-setup.html#arguments  
+Setup | Vue.js  
+
+https://dev.to/alvarosaburido/using-script-setup-for-vue-3-sfcs-ba9  
+Using script Setup for Vue 3 SFCs - DEV Community  
+
+https://v3.vuejs.org/api/sfc-script-setup.html  
+
+https://duckduckgo.com/?q=vue+3+script+setup+&t=ffab&ia=web  
+vue 3 script setup at DuckDuckGo  
+
+
+
+
 ## Ref vs Reactive
 
 `ref` is used for single variables. Values must be accessed via `item.value()`
@@ -198,28 +224,6 @@ https://vue-composition-api-rfc.netlify.com/#api-introduction
 Composition API RFC | Vue Composition API  
 
 
-
-
-### Script Setup
-
-In addition to the composition API, Vue 3 offers a new, simplified way for defining the script section of a component:
-
-https://learnvue.co/2021/05/explaining-the-new-script-setup-type-in-vue-3-major-takeaways-from-the-rfc/  
-Explaining The New script setup Type in Vue 3 - RFC Takeaways - LearnVue  
-
-https://learnvue.co/2020/08/an-introduction-to-vue3-props-a-beginners-guide/  
-An Introduction to Vue3 Props - A Beginner’s Guide - LearnVue  
-
-https://v3.vuejs.org/guide/composition-api-setup.html#arguments  
-Setup | Vue.js  
-
-https://dev.to/alvarosaburido/using-script-setup-for-vue-3-sfcs-ba9  
-Using script Setup for Vue 3 SFCs - DEV Community  
-
-https://v3.vuejs.org/api/sfc-script-setup.html  
-
-https://duckduckgo.com/?q=vue+3+script+setup+&t=ffab&ia=web  
-vue 3 script setup at DuckDuckGo  
 
 
 
