@@ -2,6 +2,12 @@
 
 Web testing framework. Similar to Cypress. 
 
+https://playwright.dev/  
+Fast and reliable end-to-end testing for modern web apps | Playwright  
+
+https://playwright.dev/docs/intro
+Installation | Playwright
+
 ## Add to project
 
 Or, to scaffold out some examples and settings: 
@@ -40,6 +46,9 @@ npm -i --save-dev @playwright/test
 
 ## VS Code
 
+https://playwright.dev/docs/getting-started-vscode  
+Getting started - VS Code | Playwright  
+
 Nice integration with VS Code. Seems nice to have one less app open for testing purposes. 
 
 Add the extension to VS Code
@@ -51,7 +60,10 @@ Version: 1.0.15
 Publisher: Microsoft
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright
 
-## Running tests
+### Running tests
+
+https://playwright.dev/docs/running-tests
+Running Tests | Playwright
 
 Open the VS Code extension.
 
@@ -76,15 +88,11 @@ test('get data', async ({ request }) => {
 ```
 
 
+## Writing Tests
 
-https://playwright.dev/
-Fast and reliable end-to-end testing for modern web apps | Playwright
-https://playwright.dev/docs/intro
-Installation | Playwright
 https://playwright.dev/docs/writing-tests
 Writing Tests | Playwright
-https://playwright.dev/docs/running-tests
-Running Tests | Playwright
+
 https://playwright.dev/docs/codegen-intro
 Test Generator | Playwright
 https://playwright.dev/docs/debug#browser-developer-tools
@@ -100,6 +108,16 @@ https://playwright.dev/docs/testing-library
 Migrating from Testing Library | Playwright
 https://playwright.dev/docs/ci
 Continuous Integration | Playwright
+
+## Vue Template
+
+Playwright can also be added via vue cli scaffolding system. 
+
+https://github.com/mugi-uno/playwright-vite-vrt-sample  
+mugi-uno/playwright-vite-vrt-sample: Visual Regression Test (playwright & vite)  
+
+https://duckduckgo.com/?t=ffab&q=playwright+vite&atb=v343-1&ia=web  
+playwright vite at DuckDuckGo  
 
 ## Compared to Cypress
 

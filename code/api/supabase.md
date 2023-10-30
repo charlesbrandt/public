@@ -2,13 +2,29 @@
 
 Postgres based API server. 
 
-A well architected, containerized stack for managing the back-end of your application. 
+A well architected, open-source, containerized stack for managing the back-end of your application. 
 
 https://github.com/supabase/supabase  
 GitHub - supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.  
 
 https://supabase.com/docs/guides/getting-started/architecture  
 Architecture | Supabase Docs  
+
+## Hosted
+
+Nice to have something available publicly
+
+https://supabase.com/dashboard/
+
+First project is free! (!!)
+
+Configure your organization. If it's just you for now, use your first name. You can rename the organization later. 
+
+Configure your project
+
+Note the database password somewhere secure (e.g. [keepass](/system/password-manager.md))
+
+
 
 ## Server
 
@@ -76,6 +92,12 @@ or configure your client to use the API 192.168.1.2:8000
 
 https://supabase.com/docs/guides/self-hosting#api-keys  
 Self-Hosting | Supabase Docs  
+
+
+## New Project
+
+Once you have access to a Supabase instance, it's time to set up your project. 
+
 
 
 ## Client (JS)

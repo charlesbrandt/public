@@ -13,6 +13,17 @@ https://wiki.termux.com/wiki/Termux_Google_Play
 
 A physcial keyboard makes things a lot easier!
 
+## Shared Storage
+
+Set up shared storage
+    
+```
+termux-setup-storage
+```
+
+Useful for sharing git repos in the main storage area
+
+
 ## Core tools
 
 ```
@@ -25,19 +36,10 @@ install git:
 pkg install git
 ```
 
-install emacs:
-
-```
-pkg install emacs
-```
-
 Check out repos locally. You'll need to use a git server to synchronize repositories. 
 
 ```
 git clone https://gitlab.com/charlesbrandt/public
-
-ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
-ln -s public/system/editors/emacs/.emacs .emacs
 ```
 
 ### SSH
@@ -46,7 +48,7 @@ SSH is not available by default.
 
 ```
 pkg install openssh
-````
+```
 
 This is also a good chance to generate ssh keys to simplify connecting to primary servers:
 
@@ -71,17 +73,27 @@ pkg install rsync
 ```
 
 
-for 'ps' cli command in termux:
-
-```
-pkg install procps
-```
-
 ## Sessions
 
 https://wiki.termux.com/wiki/User_Interface
 
 > The navigation drawer is revealed by swiping inwards from the left part of the screen (if you have gesture navigation enabled in Android, you will need to hold briefly on the edge of the screen before swiping to bring up the navigation drawer instead of going back in Android). 
+
+
+## Emacs
+
+install emacs:
+
+```
+pkg install emacs
+```
+
+```
+ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
+ln -s public/system/editors/emacs/.emacs .emacs
+```
+
+
 
 ## Termux configuration
 
@@ -171,6 +183,7 @@ https://wiki.termux.com/wiki/Termux-microphone-record
 
 Current API implementations
 
+```
 termux-battery-status
     Get the status of the device battery.
 termux-brightness
@@ -249,7 +262,7 @@ termux-wifi-enable
     Toggle Wi-Fi On/Off.
 termux-wifi-scaninfo
     Get information about the last wifi scan.
-
+```
 
 ## Python
 
@@ -307,21 +320,6 @@ Early on, before you have a text editor available, it can be handy to use the sc
 script -a test.txt
 ```
 
-## Termux extras
-
-Set up shared storage. Enable it for the app in android system settings. Then:
-    
-    termux-setup-storage
-
-
-
-## Tmux
-
-At this point, you probably want to be working on a remote server, not on a mobile device
-
-```
-pkg install tmux
-```
     
 ## Notes
 

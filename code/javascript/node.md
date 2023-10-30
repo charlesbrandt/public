@@ -456,6 +456,20 @@ https://stackoverflow.com/questions/64002438/installing-node-lts-with-nvm-on-win
 
 https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/
 
+To switch to a different version of `node` with `nvm`, use:
+
+```
+nvm use 20
+```
+
+To make this the default version of node so that applications like VS Code will use this version too:
+
+```
+nvm alias default 7.8.0
+```
+
+Setting the default may make this setting unnecessary: (It didn't seem to have an effect anyway)
+
 I needed to add the following to my `.bashrc` file in order for VSCode to see the new version of node:
 
 ```
@@ -463,6 +477,8 @@ PATH="/usr/local/bin:$(getconf PATH)"
 ```
 
 https://stackoverflow.com/questions/44700432/visual-studio-code-to-use-node-version-specified-by-nvm
+
+
 
 
 ### Nodesource
