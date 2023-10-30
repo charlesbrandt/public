@@ -40,39 +40,50 @@ To see what has been happening in a container, check the logs
 docker compose logs [name]
 ```
 
-
-## Shell shortcuts
-
-Create bash aliases
-
-The above commands can get tiring to type every time you want to take action with a compose environment. These shortcuts help.
-
-Add the following to your `.bashrc` file (or equivalent)
-
-```
-alias dcu='docker compose up -d'
-alias dcd='docker compose down --remove-orphans'
-alias dcp='docker compose ps'
-alias dce='docker compose exec'
-alias dcl='docker compose logs'
-```
+The above commands can get tiring to type every time you want to take action with a compose environment. Shortcuts help. See [Docker notes](docker.md)
 
 
 ## docker-compose.yml
 
-The file that defines all containers to be used for the application. Frequently, container images already exist that meet the requirements. 
+The file that defines all containers to be used for the application. 
 
 One parameter that is helpful is
 
+```
     container_name: mycontainername
+```
     
-Typically the parent directory name is used to create a container name. The `container_name` parameter helps keep container names consistent regardless of where they are deployed. This, in turn, makes it easier to create other configuration files that work as expected within the docker network. 
+If `contianer_name` is not specified, the parent directory name is used to create a container name. The `container_name` parameter helps keep container names consistent regardless of where they are deployed. This, in turn, makes it easier to create other configuration files that work as expected within the docker network. 
 
+### Base Image
 
-If you need to run multiple commands, you may want to consider building a custom image with a dedicated Dockerfile. 
+Frequently, container images already exist that meet the requirements. 
 
-The dockerfile can be specified in the docker-compose.yml file with:
+Start with an existing docker image for the type of service your application runs in the container. For example, if you're running a node application, in `docker-compose.yml` start with:
 
+``` yaml
+  api:
+    image: node:lts
+```
+
+### Multiple commands
+
+In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
+
+```
+command: bash -c "
+    python manage.py migrate
+    && python manage.py runserver 0.0.0.0:8000
+  "
+```
+
+https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
+
+### Custom images (Dockerfile)
+
+If you need to run multiple commands, build a custom image with a dedicated Dockerfile. 
+
+The dockerfile can be specified in the `docker-compose.yml` file with:
 
 ```
 container-name:
@@ -82,11 +93,25 @@ container-name:
 
 ```
 
-Reminder
+Reminder:  
 Image for service was built because it did not already exist. To rebuild this image you must use `docker compose build` or `docker compose up --build`.
 
 
-### Environment Variables
+Eventually other additional utilities will need to be available within the container context. (e.g. when you run `docker compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so the changes persist across restarts. 
+
+``` yaml
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+```
+
+Note: the `Dockerfile` path is relative to the value for `context`. In this case, the `Dockerfile` would be stored at `./api/Dockerfile`. 
+
+The `image: node:lts` configuration from `docker-compose.yml` becomes `FROM node:lts` in a `Dockerfile` and you can add the rest of the configurations as needed. See also [docker#dockerfile](docker.md#dockerfile)
+
+
+## Environment Variables
 
 In `docker-compose.yml`, add a section like:
 
@@ -115,6 +140,7 @@ volumes:
   boilerplate_api_modules:
     external: true
 ```
+
 
 ## Networking
 
@@ -152,6 +178,7 @@ networks:
     name: my-pre-existing-network
 ```
 
+
 ## Rebuilding
 
 Sometimes the Dockerfile changes and you need to let compose know to rebuild everything. 
@@ -166,37 +193,18 @@ https://stackoverflow.com/questions/36884991/how-to-rebuild-docker-container-in-
 
 To rebuild, use:
 
-    docker compose build
-
+```
+docker compose build
+```
 
 Remove all old images
 
-    docker compose rm
+```
+docker compose rm
+```
     
 then rebuild again.
 
-
-## Custom images (Dockerfile)
-
-Start with an existing docker image for the type of service your application runs in the container. For example, if you're running a node application, in `docker-compose.yml` start with:
-
-``` yaml
-  api:
-    image: node:lts
-```
-
-Eventually other additional utilities will need to be available within the container context. (e.g. when you run `docker compose exec api bash` to connect to the container). In that case, use a `Dockerfile` to make those adjustments so the changes persist across restarts. 
-
-``` yaml
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-```
-
-Note: the `Dockerfile` path is relative to the value for `context`. In this case, the `Dockerfile` would be stored at `./api/Dockerfile`. 
-
-The `image: node:lts` configuration from `docker-compose.yml` becomes `FROM node:lts` in a `Dockerfile` and you can add the rest of the configurations as needed. See also [docker#dockerfile](docker.md#dockerfile)
 
 ### Rebuilding Images
 
@@ -236,39 +244,32 @@ How to force Docker for a clean build of an image - Stack Overflow
 
 For troubleshooting, you can add a command that is sure to run in the docker-compose.yml, e.g.:
 
+```
     entrypoint: ["tail", "-f", "/dev/null"]
 
     entrypoint: ["sh", "-c", "sleep 2073600"]
+```
 
 then connect with:
 
-    docker compose exec SERVICE_NAME bash
+```
+docker compose exec SERVICE_NAME bash
+```
 
 via:  
 https://vsupalov.com/debug-docker-compose-service/
 
 Logging is available via docker directly:
 
-    docker logs repo_nginx_1
-    
+```
+docker logs repo_nginx_1
+```
+ 
 see also: [docker.md](docker.md)
 
-    docker network ls
-
-
-
-## Multiple commands
-
-In some cases it may help to run more than one command. You can separate these out into separate compose files (e.g. docker-compose-build.yml), or you could run multiple commands by chaining them together in a `sh` call:
-
 ```
-command: bash -c "
-    python manage.py migrate
-    && python manage.py runserver 0.0.0.0:8000
-  "
+docker network ls
 ```
-
-https://stackoverflow.com/questions/30063907/using-docker-compose-how-to-execute-multiple-commands
 
 
 ## Parameters
@@ -513,18 +514,12 @@ services:
 
 ## Installation
 
+It is no longer required to install Docker Compose separately. Modern `docker` installations include it by default.
+
 ### NOTE:
 The final Compose v1 release (v1.29.2) was May 10, 2021. These packages haven’t received any security updates since then. Use at your own risk.
 https://docs.docker.com/compose/migrate/
 
-It is no longer required to install Docker Compose separately
-
-Docker Compose relies on [docker.](docker.md) Be sure to install that first.
-
 https://docs.docker.com/compose/
 
-If you want to run multiple containers to meet the requirements of a more complicated service, you can use Docker Compose to bring all of the containers up together. To install docker-compose:
-
-    sudo apt-get install docker compose -y
-    
 

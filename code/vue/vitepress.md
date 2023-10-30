@@ -4,11 +4,11 @@ The next incarnation of vuepress powered by vite!
 
 A great system for writing documentation! The refresh is so fast -- it's a live version of the application running!
 
+https://vitepress.dev/guide/getting-started
+Getting Started | VitePress
+
 https://github.com/vuejs/vitepress  
 GitHub - vuejs/vitepress: Vite & Vue powered static site generator.  
-
-https://vitepress.vuejs.org/guide/getting-started  
-Getting Started | VitePress  
 
 
 ## Frontmatter

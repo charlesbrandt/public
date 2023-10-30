@@ -98,16 +98,25 @@ Test Generator | Playwright
 https://playwright.dev/docs/debug#browser-developer-tools
 Debugging Tests | Playwright
 
+## Assertions
+
+https://duckduckgo.com/?t=ffab&q=playwright+api+testing&ia=web  
+playwright api testing at DuckDuckGo  
+https://playwright.dev/docs/api-testing  
+API testing | Playwright  
+https://duckduckgo.com/?t=ffab&q=playwright+expect+json+tests&ia=web  
+playwright expect json tests at DuckDuckGo  
+https://playwright.dev/docs/test-assertions  
+Assertions | Playwright  
+https://stackoverflow.com/questions/74254275/playwright-expect-assertion-poll-to-check-json-property-and-its-partial-value  
+typescript - Playwright Expect Assertion Poll to check JSON property and its partial value - Stack Overflow  
+
 ## Docker
 
 https://duckduckgo.com/?t=ffab&q=playwright+local+docker+&ia=web
 playwright local docker at DuckDuckGo
 https://playwright.dev/docs/docker
 Docker | Playwright
-https://playwright.dev/docs/testing-library
-Migrating from Testing Library | Playwright
-https://playwright.dev/docs/ci
-Continuous Integration | Playwright
 
 ## Vue Template
 
@@ -127,3 +136,17 @@ https://www.browserstack.com/guide/playwright-vs-cypress
 Playwright vs Cypress : Core Differences | BrowserStack  
 https://medium.com/geekculture/is-playwright-better-than-cypress-playwright-vs-cypress-151bd65a224f  
 Is Playwright better than Cypress? Playwright vs Cypress | by Ganesh Hegde | Geek Culture | Medium  
+
+https://playwright.dev/docs/testing-library  
+Migrating from Testing Library | Playwright  
+https://playwright.dev/docs/ci  
+Continuous Integration | Playwright  
+https://duckduckgo.com/?t=ffab&q=node+prevent+node_modules+in+directory&ia=web  
+node prevent node_modules in directory at DuckDuckGo  
+https://duckduckgo.com/?t=ffab&q=migrate+from+cypress+to+playwright&ia=web  
+migrate from cypress to playwright at DuckDuckGo  
+https://dev.to/gajus/migrating-from-cypress-to-playwright-using-gpt3-4mha  
+Migrating from Cypress to Playwright using GPT3 - DEV Community  
+https://contra.com/p/PWBcPYZc-rewriting-tests-from-cypress-to-playwright-using-gpt-3  
+Rewriting tests from Cypress to Playwright using GPT3 by Gajus Kuizinas | Contra  
+

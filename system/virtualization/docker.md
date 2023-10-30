@@ -97,8 +97,7 @@ If the system-wide Docker daemon is already running, consider disabling it:
 sudo systemctl disable --now docker.service docker.socket
 ```
 
-To run Docker as a non-privileged user, consider setting up the
-Docker daemon in rootless mode for your user:
+To run Docker as a non-privileged user, consider setting up the Docker daemon in rootless mode for your user. `dockerd-rootless-setuptool.sh` should be in `/usr/bin` if Docker was installed with packages.
 
 ```
 dockerd-rootless-setuptool.sh install
@@ -119,6 +118,21 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 ```
 
+
+Create bash aliases
+
+
+Add the following to your `.bashrc` file (or equivalent)
+
+```
+alias dcu='docker compose up -d'
+alias dcd='docker compose down --remove-orphans'
+alias dcp='docker compose ps'
+alias dce='docker compose exec'
+alias dcl='docker compose logs'
+```
+
+
 To expose privileged ports (< 1024), 
 
 ```
@@ -127,7 +141,7 @@ sudo micro /etc/sysctl.conf
 
 Add the line: 
 ```
-net.ipv4.ip_unprivileged_port_start=443
+net.ipv4.ip_unprivileged_port_start=80
 ```
 
 Then apply changes to the system
@@ -251,47 +265,6 @@ https://docs.docker.com/engine/reference/commandline/ps/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Shares & Storage
 
 It is possible to share storage between the host and containers. For a general overview:
@@ -367,16 +340,20 @@ https://docs.docker.com/docker-hub/official_images/
 
 ### Building
 
-    docker build -t simple-node .
-    docker run -p 3000:3000 simple-node
+```
+docker build -t simple-node .
+docker run -p 3000:3000 simple-node
+```
 
 Now you should be able to connect to localhost without specifying a VM host. Without the explicit forward for the port, the port won't be available:
 
-    http://localhost:3000/
+http://localhost:3000/
     
 To specify a Dockerfile, use -f:
 
-    docker build -t simple-node -f Dockerfile.debug .
+```
+docker build -t simple-node -f Dockerfile.debug .
+```
     
 https://docs.docker.com/engine/reference/commandline/build/
 
@@ -384,7 +361,9 @@ https://docs.docker.com/engine/reference/commandline/build/
 
 When you 'run' a command with docker, you specify the docker image to use to run it. The run command will download the image, build the container (if it doesn't exist already), and then run the command in the container.
 
-    docker run mhart/alpine-node node --version
+```
+docker run mhart/alpine-node node --version
+```
     
 Even with single container setups, it may make sense to use docker-compose to specify what the container is named and any volumes that should be mounted. That also makes it easier to integrate with other docker-compose setups. 
     
@@ -392,37 +371,51 @@ Even with single container setups, it may make sense to use docker-compose to sp
 
 start and connect to a docker container:
 
-    docker run -i -t --entrypoint /bin/bash <imageID>
-    docker run -i -t --entrypoint /bin/bash docker_web_run_1
+```
+docker run -i -t --entrypoint /bin/bash <imageID>
+docker run -i -t --entrypoint /bin/bash docker_web_run_1
+```
 
 start a new shell in an already running container:
 
-    docker exec -it <containerIdOrName> bash
-    docker exec -it 393b12a61839 /bin/sh
-    docker exec -it docker_web_run_1 bash
+```
+docker exec -it <containerIdOrName> bash
+docker exec -it 393b12a61839 /bin/sh
+docker exec -it docker_web_run_1 bash
+```
 
 connect to a (already running) docker container (Note: this will share the same shell if another instance is already connected interactively)
 
-    docker attach loving_heisenberg 
+```
+docker attach loving_heisenberg 
+```
 
 via:
 http://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode
 
 ### Stopping a Container
 
-    docker container stop devtest
+```
+docker container stop devtest
+```
 
 To stop everything:
 
-    docker stop $(docker ps -q)
+```
+docker stop $(docker ps -q)
+```
     
 or 
 
-    docker container stop $(docker container list -q)
+```
+docker container stop $(docker container list -q)
+```
 
 ### Removing a Container
 
-    docker rm [container]
+```
+docker rm [container]
+```
 
 ### Cleaning up old images
 
@@ -452,14 +445,18 @@ Thin Pool has 2738 free data blocks which is less than minimum required 2915 fre
 
 You can get rid of all images with:
 
-    docker image prune -a --force 
+```
+docker image prune -a --force 
+```
 
 https://stackoverflow.com/questions/41531962/docker-run-error-thin-pool-has-free-data-blocks-which-is-less-than-minimum-req
 
 Clear everything out (!!! dangerous !!!)
 
-    docker image rm $(docker image ls -a -q)
-    docker image rm -f $(docker image ls -a -q)
+```
+docker image rm $(docker image ls -a -q)
+docker image rm -f $(docker image ls -a -q)
+```
 
 See also:
 https://docs.docker.com/engine/reference/commandline/image_prune/
@@ -471,22 +468,34 @@ https://stackoverflow.com/questions/36918387/space-issue-on-docker-devmapper-and
 
 ### Restarting
 
-Containers can be set to restart automatically. As long as the parent docker process is configured to run at start up (usually is by default), then those containers will restart automatically. 
+Containers can be set to restart automatically. 
+
+In `docker-compose.yml`, configure this with:
+
+```
+   restart: unless-stopped
+```
+
+I prefer `unless-stopped` over `always` so you don't end up with lingering services that were launched while testing a service that didn't work out. 
+
+As long as the parent docker process is configured to run at start up (usually is by default), then those containers will restart automatically. 
 
 You could also do a systemctrl setup like:
 
-`sudo systemctl enable docker-MYPROJECT-oracle_db.service`
+```
+sudo systemctl enable docker-MYPROJECT-oracle_db.service
+```
 
 As described in
 
-https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot
-How do I make a Docker container start automatically on system boot? - Stack Overflow
+https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot  
+How do I make a Docker container start automatically on system boot? - Stack Overflow  
 
-https://docs.docker.com/config/containers/start-containers-automatically/
-Start containers automatically | Docker Documentation
+https://docs.docker.com/config/containers/start-containers-automatically/  
+Start containers automatically | Docker Documentation  
 
-https://duckduckgo.com/?q=docker+start+container+at+boot&t=ffab&ia=web
-docker start container at boot at DuckDuckGo
+https://duckduckgo.com/?q=docker+start+container+at+boot&t=ffab&ia=web  
+docker start container at boot at DuckDuckGo  
 
 
 
@@ -504,7 +513,7 @@ See details for a specific network:
 docker network inspect bridge
 ```
 
-Docker containers can be referenced from other containers using the container name. Be sure to use the full container name, not the abbreviated service name that is used in docker-compose files. 
+Docker containers can be referenced from other containers using the container name. Be sure to use the full container name, not the abbreviated service name that is used in `docker-compose` files. 
 
 `ping` is not always available. On debian based containers, install it with:
 
@@ -529,20 +538,20 @@ via:
 http://stackoverflow.com/questions/17157721/getting-a-docker-containers-ip-address-from-the-host
 
 
-wasn't sure about how to get one container to talk to another...
-they've documented that well:
+wasn't sure about how to get one container to talk to another...  
+there's good documentation on the topic:
 
 https://docs.docker.com/engine/userguide/containers/networkingcontainers/
 
 (on macs) set up a terminal to know how to interact with docker by running:
 
-    eval "$(docker-machine env default)"
+```
+eval "$(docker-machine env default)"
+```
 
-
-way to generalize reference to containers in configuration files?
-what if the IP for the api server changes?
-would require manually updating nginx.conf file
-just use docker name
+How to generalize reference to containers in configuration files?  
+Just use the docker container name. 
+The IP for containers will change. Unless it is statically set, using an IP directly would require manually updating configuration (e.g. nginx.conf) files.  
 
 ### DNS
 
@@ -552,91 +561,60 @@ This turned out to be an issue with the way lookups are configured on my host ma
 
 Docker uses the host's name resolution. Running this on the host fixes the resolution within containers: 
 
-    sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+```
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+```
 
-The link that helped:
-
-https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
+via:  
+https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host  
 
 Note:
-If you're using hosts defined in `/etc/hosts`, the updated symlink won't resolve those correctly. See also: ~/alpha/web_ui_api_db/local-development.md
+If you're using hosts defined in `/etc/hosts`, the updated symlink won't resolve those correctly. 
 
 
 ### Troubleshooting connections in docker
 
 https://www.docker.com/blog/why-you-dont-need-to-run-sshd-in-docker
 
-A successful approach was to launch the server, connect to the container using another shell
+A useful tactic is to launch the services and connect to the container directly using another shell. From there, you can install other tools for troubleshooting. The exact technique will vary based on what base distribution is being used in the container. 
 
-    apk update
+```
+apk update
+```
     
-this provides the "ss" command for "socket statistics"
+To install a testing tool permanently in the container, use a `Dockerfile` to bake tools in. For example, this provides the `ss` command for "socket statistics"
+
+```
 RUN apk add --no-cache iproute2
+```
+
 e.g. to see if a server is running on expected port:
 
-    ss -lntp
+```
+ss -lntp
+```
 
 verify server was on correct ports using above command
 
-    apk add lynx
+`curl` is a good option!
+
+lynx could also be installed
+
+```
+apk add lynx
 
 lynx 127.0.0.1:8080
-
-curl is another good option!
+```
 
 To see what ports are open, install `netstat`. This approach will not persist across restarts. 
 
 
-    apt update
-    apt install net-tools
-
-    netstat -pan | egrep " LISTEN "
-    
-
-### Restart docker
-
-I was getting an error like:
-
 ```
-ERROR: for ui  Cannot start service ui: driver failed programming external connectivity on endpoint gpdb_ui (4625d0f53435c85529b8a8d6317401d6aba192fb2adbe742b4e98c828cb76125): Error starting userland proxy: error while calling PortManager.AddPort(): cannot expose privileged port 443, you can add 'net.ipv4.ip_unprivileged_port_start=443' to /etc/sysctl.conf (currently 1024), or set CAP_NET_BIND_SERVICE on rootlesskit binary, or choose a larger port number (>= 1024): listen tcp4 127.0.0.1:443: bind: permission denied
-ERROR: Encountered errors while bringing up the project.
-```
+apt update
+apt install net-tools
 
-It didn't look like anything was listening on port 443. 
-
-I think this is an issue with running in `rootlesskit` mode
-
-https://docs.docker.com/engine/security/rootless/#exposing-privileged-ports
-
-TODO: How-to determine which version of docker is being run locally
-
-```
-systemctl --user status docker
-```
-
-```
-sudo service docker stop
-sudo rm /var/lib/docker/network/files/local-kv.db
-sudo service docker start && service docker status
-```
-
-`service` -- that's cool, appears to be the same thing as `sysctl` in other distros. (or is it `systemctl` or `systemcontrol`? I forget.)
-
-I was curious, what is actually in this file that you are asking me to delete as sudo? Looks like `local-kv.db` is where the networking configurations are stored
-
-https://blog.qiqitori.com/2018/10/decoding-dockers-local-kv-db/  
-Decoding Docker’s local-kv.db – The Qiqitori Blogs  
-
-
-
-https://duckduckgo.com/?q=Cannot+start+service+driver+failed+programming+external+connectivity+on+endpoint+Error+starting+userland+proxy%3A+error+while+calling+PortManager.AddPort()%3A+cannot+expose+privileged+port+443%2C+you+can+add+%27net.ipv4.ip_unprivileged_port_start%3D443%27+to+%2Fetc%2Fsysctl.conf+(currently+1024)%2C+or+set+CAP_NET_BIND_SERVICE+on+rootlesskit+binary%2C+or+choose+a+larger+port+number+(%3E%3D+1024)%3A+listen+tcp4+127.0.0.1%3A443%3A+bind%3A+permission+denied&hps=1&atb=v343-1&ia=web  
-Cannot start service driver failed programming external connectivity on endpoint Error starting userland proxy: error while calling PortManager.AddPort(): cannot expose privileged port 443, you can add 'net.ipv4.ip_unprivileged_port_start=443' to /etc/sysctl.conf (currently 1024), or set CAP_NET_BIND_SERVICE on rootlesskit binary, or choose a larger port number (>= 1024): listen tcp4 127.0.0.1:443: bind: permission denied at DuckDuckGo  
-https://stackoverflow.com/questions/39508018/docker-driver-failed-programming-external-connectivity-on-endpoint-webserver  
-docker: driver failed programming external connectivity on endpoint webserver - Stack Overflow  
-
-https://duckduckgo.com/?t=ffcm&q=%2Fvar%2Flib%2Fdocker%2Fnetwork%2Ffiles%2Flocal-kv.db&atb=v343-1&ia=web  
-/var/lib/docker/network/files/local-kv.db at DuckDuckGo  
-
+netstat -pan | egrep " LISTEN "
+```    
 
 
 ## Context Specific Applications
