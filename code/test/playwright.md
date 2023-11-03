@@ -1,16 +1,16 @@
 # Playwright
 
-Web testing framework. Similar to Cypress. 
+Web testing framework. Similar to Cypress.
 
 https://playwright.dev/  
-Fast and reliable end-to-end testing for modern web apps | Playwright  
+Fast and reliable end-to-end testing for modern web apps | Playwright
 
-https://playwright.dev/docs/intro
+https://playwright.dev/docs/intro  
 Installation | Playwright
 
 ## Add to project
 
-Or, to scaffold out some examples and settings: 
+Or, to scaffold out some examples and settings:
 
 ```
 npm init playwright@latest
@@ -31,8 +31,7 @@ Edit the `playwright.config.js` file to include default settings as needed:
     // },
 ```
 
-
-### Not needed? 
+### Not needed?
 
 ```
 sudo npx playwright install-deps
@@ -47,9 +46,9 @@ npm -i --save-dev @playwright/test
 ## VS Code
 
 https://playwright.dev/docs/getting-started-vscode  
-Getting started - VS Code | Playwright  
+Getting started - VS Code | Playwright
 
-Nice integration with VS Code. Seems nice to have one less app open for testing purposes. 
+Nice integration with VS Code. Seems nice to have one less app open for testing purposes.
 
 Add the extension to VS Code
 
@@ -62,12 +61,12 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-play
 
 ### Running tests
 
-https://playwright.dev/docs/running-tests
+https://playwright.dev/docs/running-tests  
 Running Tests | Playwright
 
 Open the VS Code extension.
 
-Play the `example.spec.ts` -- it should just work because it references external resources. 
+Play the `example.spec.ts` -- it should just work because it references external resources.
 
 Edit the example to reference your local code. (UI or API)
 
@@ -87,15 +86,14 @@ test('get data', async ({ request }) => {
 });
 ```
 
-
 ## Writing Tests
 
-https://playwright.dev/docs/writing-tests
+https://playwright.dev/docs/writing-tests  
 Writing Tests | Playwright
 
-https://playwright.dev/docs/codegen-intro
-Test Generator | Playwright
-https://playwright.dev/docs/debug#browser-developer-tools
+https://playwright.dev/docs/codegen-intro  
+Test Generator | Playwright  
+https://playwright.dev/docs/debug#browser-developer-tools  
 Debugging Tests | Playwright
 
 ## Assertions
@@ -109,24 +107,26 @@ playwright expect json tests at DuckDuckGo
 https://playwright.dev/docs/test-assertions  
 Assertions | Playwright  
 https://stackoverflow.com/questions/74254275/playwright-expect-assertion-poll-to-check-json-property-and-its-partial-value  
-typescript - Playwright Expect Assertion Poll to check JSON property and its partial value - Stack Overflow  
+typescript - Playwright Expect Assertion Poll to check JSON property and its partial value - Stack Overflow
 
 ## Docker
 
-https://duckduckgo.com/?t=ffab&q=playwright+local+docker+&ia=web
-playwright local docker at DuckDuckGo
-https://playwright.dev/docs/docker
-Docker | Playwright
+https://duckduckgo.com/?t=ffab&q=playwright+local+docker+&ia=web  
+playwright local docker at DuckDuckGo  
+https://playwright.dev/docs/docker  
+Docker | Playwright  
+https://playwright.dev/docs/ci  
+Continuous Integration | Playwright
 
 ## Vue Template
 
-Playwright can also be added via vue cli scaffolding system. 
+Playwright can also be added via vue cli scaffolding system.
 
 https://github.com/mugi-uno/playwright-vite-vrt-sample  
-mugi-uno/playwright-vite-vrt-sample: Visual Regression Test (playwright & vite)  
+mugi-uno/playwright-vite-vrt-sample: Visual Regression Test (playwright & vite)
 
 https://duckduckgo.com/?t=ffab&q=playwright+vite&atb=v343-1&ia=web  
-playwright vite at DuckDuckGo  
+playwright vite at DuckDuckGo
 
 ## Compared to Cypress
 
@@ -135,12 +135,10 @@ playwright testing vs cypress at DuckDuckGo
 https://www.browserstack.com/guide/playwright-vs-cypress  
 Playwright vs Cypress : Core Differences | BrowserStack  
 https://medium.com/geekculture/is-playwright-better-than-cypress-playwright-vs-cypress-151bd65a224f  
-Is Playwright better than Cypress? Playwright vs Cypress | by Ganesh Hegde | Geek Culture | Medium  
+Is Playwright better than Cypress? Playwright vs Cypress | by Ganesh Hegde | Geek Culture | Medium
 
 https://playwright.dev/docs/testing-library  
 Migrating from Testing Library | Playwright  
-https://playwright.dev/docs/ci  
-Continuous Integration | Playwright  
 https://duckduckgo.com/?t=ffab&q=node+prevent+node_modules+in+directory&ia=web  
 node prevent node_modules in directory at DuckDuckGo  
 https://duckduckgo.com/?t=ffab&q=migrate+from+cypress+to+playwright&ia=web  
@@ -148,5 +146,4 @@ migrate from cypress to playwright at DuckDuckGo
 https://dev.to/gajus/migrating-from-cypress-to-playwright-using-gpt3-4mha  
 Migrating from Cypress to Playwright using GPT3 - DEV Community  
 https://contra.com/p/PWBcPYZc-rewriting-tests-from-cypress-to-playwright-using-gpt-3  
-Rewriting tests from Cypress to Playwright using GPT3 by Gajus Kuizinas | Contra  
-
+Rewriting tests from Cypress to Playwright using GPT3 by Gajus Kuizinas | Contra

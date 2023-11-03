@@ -124,8 +124,9 @@ It's helpful to be able to jump to the corresponding matching bracket, especiall
 
 https://code.visualstudio.com/docs/editor/editingevolved
 
+### Linting
 
-
+If you run your node applications under docker, eslint may not be able to find the right libraries to format your code automatically. The solution is to run `npm install` on the host OS. 
 
 
 ## Keybindings
