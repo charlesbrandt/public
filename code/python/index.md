@@ -302,11 +302,17 @@ how to install a module for development with pip?
 
 https://pip.pypa.io/en/stable/reference/pip_install/
 
-    sudo pip install -e sortable/
+```
+sudo pip install -e sortable/
+```
 
 ## Installation
 
 The context you are running in will determine the python environment. 
+
+### Ubuntu
+
+
 
 ### Docker
 
@@ -391,7 +397,9 @@ Ubuntu systems come with Python installed by default. Is pip available?
 
 Pip is useful:
 
-    sudo apt install python3-pip
+```
+sudo apt install python3-pip
+```
 
 Add `.local/bin` to the PATH by editing ~/.bashrc
 
@@ -401,9 +409,4 @@ export PATH
 ```
 
 All other dependencies should be installed as part of the container so they can be tracked with the project.
-
-### Virtual Environment
-
-[Virtual Environments](virtualenv.md)
-
 

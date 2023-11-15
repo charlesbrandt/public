@@ -2,56 +2,24 @@
 
 Virtual environments in Python are tools for managing dependencies and isolating different projects from each other. 
 
-    Use a virtual environment for each project: Creating a separate virtual environment for each of your Python projects ensures that the dependencies of one project do not conflict with those of another project. This helps in keeping your projects isolated and avoids potential dependency issues.
+The basic pattern is to choose one of the virtual environment managers (see below). Then: 
 
-    Use a virtual environment manager: There are several popular virtual environment managers available for Python, such as venv, virtualenv, and conda. These tools provide an easy and convenient way to create, manage, and activate virtual environments. You can choose the one that suits your workflow and learn how to use it effectively.
+  - Activate the virtual environment
+    Once you've created a virtual environment, make sure to activate it before using it. Activating a virtual environment sets the appropriate Python interpreter and ensures that any packages you install or scripts you run are within the scope of the virtual environment. The activation command may vary depending on the virtual environment manager you are using. Some newer virtual environment managers activate automatically. 
 
-    Activate the virtual environment: Once you've created a virtual environment, make sure to activate it before using it. Activating a virtual environment sets the appropriate Python interpreter and ensures that any packages you install or scripts you run are within the scope of the virtual environment. The activation command may vary depending on the virtual environment manager you are using. Some newer virtual environment managers activate automatically. 
-
-    Install dependencies within the virtual environment: After activating a virtual environment, use the appropriate package manager (such as pip or conda) to install the dependencies specific to your project within the virtual environment. This ensures that the dependencies are isolated to the virtual environment and won't affect your system-wide Python installation.
-
-## venv
-
-Included by default
-no extra dependencies 
-works with `requirements.txt`
+  - Install dependencies within the virtual environment 
+    After activating a virtual environment, use the appropriate package manager (such as pip or conda) to install the dependencies specific to your project within the virtual environment. This ensures that the dependencies are isolated to the virtual environment and won't affect your system-wide Python installation.
 
 
-## pipenv
+## Virtual environment manager
 
-`pipenv` has the advantage of working with exiting `requirements.txt` files. This can be helpful for external projects. 
+There are several popular virtual environment managers available for Python, such as venv, virtualenv, and conda. These tools provide an easy and convenient way to create, manage, and activate virtual environments. You can choose the one that suits your workflow and learn how to use it effectively.
 
-Install `pipenv`
+### Poetry
 
-```
-pip install pipenv --user
-```
+Similar to npm, but for python. Still requires manually activating / deactivating the virtual environment. 
 
-Install dependencies using pipenv:
-
-```
-cd project_folder
-pipenv install moments
-```
-
-At this point you can launch the virtualenv shell (`pipenv shell`), or run individual commands within the environment (`pipenv run`). 
-
-If you are using pipenv for virtual environment and package management, you can easily install dependencies from the requirements.txt file. Here's an example:
-
-```sh
-# Create a Pipfile and virtual environment
-pipenv install --dev
-
-# previous command automatically installs requirements.txt for me
-
-# Install dependencies from requirements.txt
-pipenv run pip install -r requirements.txt
-```
-
-
-## Poetry
-
-Similar to npm, but for python. Does *not* require manually activating / deactivating the virtual environment. 
+https://python-poetry.org/docs/
 
 https://python-poetry.org/
 Poetry - Python dependency management and packaging made easy
@@ -59,15 +27,22 @@ https://github.com/python-poetry/poetry
 GitHub - python-poetry/poetry: Python packaging and dependency management made easy
 
 
-### Install
+#### Install
 
 ```
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-https://python-poetry.org/docs/
+Add `export PATH="/home/account/.local/bin:$PATH"` to your shell configuration file.
 
-### Usage
+Test that everything is set up by executing
+
+```
+poetry --version
+```
+
+
+#### Usage
 
 Add poetry to existing project
 
@@ -101,6 +76,63 @@ https://duckduckgo.com/?t=ffab&q=poetry+install+requirements.txt&ia=web
 poetry install requirements.txt at DuckDuckGo
 https://stackoverflow.com/questions/62764148/how-to-import-requirements-txt-from-an-existing-project-using-poetry
 python - How to import requirements.txt from an existing project using Poetry - Stack Overflow
+
+#### Running
+
+Similar to `pipenv`
+
+```
+poetry run python ./check_devices.py 
+```
+
+or go into a shell
+
+```
+poetry shell
+```
+
+
+
+
+### venv
+
+- Included by default  
+- no extra dependencies  
+- works with `requirements.txt`  
+
+- manual activation  
+
+### pipenv
+
+`pipenv` has the advantage of working with exiting `requirements.txt` files. This can be helpful for external projects. 
+
+Install `pipenv`
+
+```
+pip install pipenv --user
+```
+
+Install dependencies using pipenv:
+
+```
+cd project_folder
+pipenv install moments
+```
+
+At this point you can launch the virtualenv shell (`pipenv shell`), or run individual commands within the environment (`pipenv run`). 
+
+If you are using pipenv for virtual environment and package management, you can easily install dependencies from the requirements.txt file. Here's an example:
+
+```sh
+# Create a Pipfile and virtual environment
+pipenv install --dev
+
+# previous command automatically installs requirements.txt for me
+
+# Install dependencies from requirements.txt
+pipenv run pip install -r requirements.txt
+```
+
 
 
 
