@@ -6,10 +6,13 @@ https://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-shoul
 
 ## Label
 
-be sure to label the drive externally
-when it was first initialized
-what file system
-capacity (in case it's not clear from the drive)
+label the drive externally  
+post-it notes work well  
+
+things to include:
+ - when it was first initialized  
+ - what file system  
+ - capacity (in case it's not clear from the drive)  
 
 get creative if you want!
 
@@ -18,7 +21,9 @@ get creative if you want!
 
 see what device path gets assigned after mount:
 
-    dmesg
+```
+dmesg
+```
 
 ## Existing device format information
 
@@ -33,7 +38,9 @@ This yields more information than mount will (fuseblk is not specific enough)
 
 An alternative to determine current file system format:
 
-    sudo fdisk /dev/sdb
+```
+sudo fdisk /dev/sdb
+```
 
 FAT32 == /dev/sdb1 on /media/charles/8698-D9F8 type vfat
 
@@ -48,13 +55,17 @@ If the drive is not arranged the way you want it to be, for example, a new drive
 
 https://matthew.komputerwiz.net/2015/12/13/formatting-universal-drive.html
 
-    sudo gdisk /dev/sdb
+```
+sudo gdisk /dev/sdb
+```
 
 First, create a new partition table
 
-    Command (? for help): o
-    This option deletes all partitions and creates a new protective MBR.
-    Proceed? (Y/N): Y
+```
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): Y
+```
 
 Now create a partition. The defaults will create a new partition that spans the whole drive with the first sector already aligned. Be sure to choose the correct type 0700!
 
@@ -92,9 +103,12 @@ Use exfat
 
 This includes data repository type drives
 
-format the partition with the exFAT filesystem.
 
-    sudo apt-get install exfat-utils exfat-fuse
+```
+sudo apt-get install exfat-utils exfat-fuse
+```
+
+format the partition with the exFAT filesystem
 
 ```
 % sudo mkfs.exfat -n HOME /dev/sdX1
@@ -116,16 +130,20 @@ Use ext4
 
 If going this route, it may be a good idea to include a swap partition too!
 
-    sudo mkfs.ext4 -L DATA /dev/sde1
+```
+sudo mkfs.ext4 -L DATA /dev/sde1
+```
 
 Permissions will work on linux with this format, so go ahead and grant some sane ones:
 
-    sudo chown -R account: .
+```
+sudo chown -R account: .
+```
 
 More info is kept up-to-date in format.md.
 However, can also see:
-~/public/system/drives/file_systems.md
 
+[File systems](file-systems.md)
 
 
 
@@ -133,11 +151,15 @@ However, can also see:
 
 To wipe:
 
-    sudo dd if=/dev/urandom of=/dev/sdb bs=1M
+```
+sudo dd if=/dev/urandom of=/dev/sdb bs=1M
+```
 
 http://www.howtogeek.com/howto/15037/use-an-ubuntu-live-cd-to-securely-wipe-your-pcs-hard-drive/
 
-    sudo apt-get install wipe
+```
+sudo apt-get install wipe
+```
 
 make sure to get the right drive:
 
@@ -148,37 +170,6 @@ mount
 sudo wipe /dev/sdb2
 sudo wipe /dev/sdb1
 ```
-
-
-## Swap space
-
-If you're manually partitioning a system drive, you can create a swap partition. 
-In programs like fdisk / gdisk, change the type (press `t`) to value 82 
-That will designate it as swap space.
-
-https://www.howtogeek.com/196238/how-big-should-your-page-file-or-swap-partition-be/
-
-```
-Command (? for help): n       
-Partition number (1-128, default 1): 2
-First sector (34-3907029134, default = 2048) or {+-}size{KMGTP}: 
-Last sector (2048-3907029134, default = 3907029134) or {+-}size{KMGTP}: +32GB
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 8200
-Changed type of partition to 'Linux swap'
-
-Command (? for help): n
-Partition number (1-128, default 1): 
-First sector (34-3907029134, default = 67110912) or {+-}size{KMGTP}: 
-Last sector (67110912-3907029134, default = 3907029134) or {+-}size{KMGTP}: 
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 
-Changed type of partition to 'Linux filesystem'
-```
-
-Then format it with 
-
-    sudo mkswap /dev/sde2
 
 
 ## Disk Alignment
@@ -221,5 +212,43 @@ http://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance
 
     (parted) align-check optimal 1
     1 aligned
+
+
+
+## Swap space
+
+Generally, file based swap partitions are sufficient and more flexible than a dedicated partition on a device. 
+
+See also [swap](swap.md)
+
+If you're manually partitioning a system drive, you can create a swap partition. 
+In programs like fdisk / gdisk, change the type (press `t`) to value 82 
+That will designate it as swap space.
+
+https://www.howtogeek.com/196238/how-big-should-your-page-file-or-swap-partition-be/
+
+```
+Command (? for help): n       
+Partition number (1-128, default 1): 2
+First sector (34-3907029134, default = 2048) or {+-}size{KMGTP}: 
+Last sector (2048-3907029134, default = 3907029134) or {+-}size{KMGTP}: +32GB
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): 8200
+Changed type of partition to 'Linux swap'
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-3907029134, default = 67110912) or {+-}size{KMGTP}: 
+Last sector (67110912-3907029134, default = 3907029134) or {+-}size{KMGTP}: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): 
+Changed type of partition to 'Linux filesystem'
+```
+
+Then format it with 
+
+```
+sudo mkswap /dev/sde2
+```
 
 

@@ -1,27 +1,30 @@
 # Searching
 
-## Command Line
-
 On *nix systems, the following command line interface (CLI) tools are usually available. 
 
+## fd
 
-### Locate
+https://github.com/sharkdp/fd
 
-this uses a database to look for something. 
-This can be fast, and can include sources that are not currently online. 
-
-Should be easy to shard off searches (where do you want to look?). Base it on collections. 
+Like `find`, only a bit more concise. 
 
 ```
-locate
+sudo apt install fd-find
 ```
 
-Is there a way to limit the scope of the search? The whole system can often return too many values to parse through manually.
+Set up link:
+
+```
+$ which fd
+$ ln -s $(which fdfind) ~/.local/bin/fd
+$ which fd
+/home/account/.local/bin/fd
+```
 
 
-### Find 
+## Find 
 
-there is also find
+Default utility on most linux distributions
 
 if you just want to look for file names (not look within a file)
 this is a good place to start
@@ -34,7 +37,7 @@ find * -iname "*{{look_for}}*"
 lots of parameters that can help. What about narrow by extension?
 
 
-### Grep
+## Grep
 
 ```
 grep -ir "look for" * 
@@ -54,8 +57,20 @@ https://unix.stackexchange.com/questions/113497/exclude-files-that-have-very-lon
 Exclude files that have very long lines of text from grep output - Unix & Linux Stack Exchange  
 
 
+## Locate
 
-## Locating Files
+this uses a database to look for something. 
+This can be fast, and can include sources that are not currently online. 
+
+Should be easy to shard off searches (where do you want to look?). Base it on collections. 
+
+```
+locate
+```
+
+Is there a way to limit the scope of the search? The whole system can often return too many values to parse through manually.
+
+### Locating Files
 
 use updatedb to create indexes of different drives
 then use a locate command to quickly query different drive catalogs
@@ -64,11 +79,15 @@ Locate databases can be used to create an index of what exists on a filesystem. 
 
 ### updatedb & locate
 
-    sudo updatedb -U /media/account/ -o database.file.name
+```
+sudo updatedb -U /media/account/ -o database.file.name
+```
 
 (for more options, see:
 
-    man updatedb
+```
+man updatedb
+```
 
 Then, to use a previously generated database file to look for files, use locate:
 

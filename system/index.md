@@ -1,6 +1,6 @@
 # System
 
-The underlying systems can change over time, so I like to keep notes about the tools and configurations that help me use those systems more efficiently.
+Underlying systems change over time. These notes track the tools and configurations that help use systems more efficiently.
 
 ## Applications 
 
@@ -14,15 +14,17 @@ The underlying systems can change over time, so I like to keep notes about the t
 
 ## Search
 
-From the command line
+To find files that match a pattern from the command line
 
+```
+fd -E repos search-term
+```
+
+`fd` has easier syntax compared to the default `find`:
 
 ```
 find * -iname "*search-term*"
 ```
-
-to find files that match a pattern. 
-
 
 [More about Search](search.md)
 
