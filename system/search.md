@@ -21,6 +21,12 @@ $ which fd
 /home/account/.local/bin/fd
 ```
 
+If needed, add path to `.bashrc`
+
+```
+export PATH=$HOME/.local/bin:$PATH
+```
+
 
 ## Find 
 
@@ -36,6 +42,18 @@ find * -iname "*{{look_for}}*"
 
 lots of parameters that can help. What about narrow by extension?
 
+## Ripgrep
+
+
+https://github.com/BurntSushi/ripgrep
+
+```
+sudo apt-get install ripgrep
+```
+
+```
+rg "look for"
+```
 
 ## Grep
 

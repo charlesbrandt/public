@@ -5,7 +5,7 @@ Virtual environments in Python are tools for managing dependencies and isolating
 The basic pattern is to choose one of the virtual environment managers (see below). Then: 
 
   - Activate the virtual environment
-    Once you've created a virtual environment, make sure to activate it before using it. Activating a virtual environment sets the appropriate Python interpreter and ensures that any packages you install or scripts you run are within the scope of the virtual environment. The activation command may vary depending on the virtual environment manager you are using. Some newer virtual environment managers activate automatically. 
+    Once you've created a virtual environment, make sure to activate it before using it. Activating a virtual environment sets the appropriate Python interpreter and ensures that any packages you install or scripts you run are within the scope of the virtual environment. The activation command may vary depending on the virtual environment manager you are using. 
 
   - Install dependencies within the virtual environment 
     After activating a virtual environment, use the appropriate package manager (such as pip or conda) to install the dependencies specific to your project within the virtual environment. This ensures that the dependencies are isolated to the virtual environment and won't affect your system-wide Python installation.
