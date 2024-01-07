@@ -1,15 +1,6 @@
 # Database GUI
 
-## Beekeeper
-
-Spiritual successor to SQLectron? With write capabilities?
-
-https://www.beekeeperstudio.io/pricing/  
-Beekeeper Studio Pricing | Beekeeper Studio  
-https://github.com/beekeeper-studio/beekeeper-studio  
-beekeeper-studio/beekeeper-studio: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.  
-https://www.beekeeperstudio.io/get  
-Download Beekeeper Studio | Beekeeper Studio  
+One important feature of a database GUI is being able to reverse engineer an existing schema by looking at an "Entity Relationship Diagram" or ERD. Not all GUIs include this feature. 
 
 ## DBGate
 
@@ -18,6 +9,7 @@ Might support Mongo too?
 https://dbgate.org/  
 DbGate | Open Source SQL+noSQL Database Client  
 
+Does have ERD visualizer
 
 ## DBeaver
 
@@ -91,6 +83,18 @@ See [Mongo notes](mongo.md#compass) (Mongo Compass)
 DBeaver only supports Mongo Databases in the Enterprise edition:
 
 https://dbeaver.com/databases/mongo/
+
+## Beekeeper
+
+Spiritual successor to SQLectron? With write capabilities?
+Does not appear to have ESD visualization tools (based on GPT query. TODO: confirm)
+
+https://www.beekeeperstudio.io/pricing/  
+Beekeeper Studio Pricing | Beekeeper Studio  
+https://github.com/beekeeper-studio/beekeeper-studio  
+beekeeper-studio/beekeeper-studio: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.  
+https://www.beekeeperstudio.io/get  
+Download Beekeeper Studio | Beekeeper Studio  
 
 
 ## SQLectron

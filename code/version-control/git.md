@@ -39,6 +39,10 @@ https://gist.github.com/julienbourdeau/e605e4b8b47da97c249a0f72598529c8
 git config --list
 ```
 
+```
+git config --global init.defaultBranch main
+```
+
 ## Remotes
 
 If you want to see - what repo something pushes back to - the configured id for a given local repo

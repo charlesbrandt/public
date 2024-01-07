@@ -516,7 +516,9 @@ pgmodeler/pgmodeler: Open-source data modeling tool designed for PostgreSQL. No 
 
 ### pgAdmin 
 
-pgAdmin is a GUI specific for Postgresql databases
+pgAdmin is a GUI specific for Postgresql databases.
+
+Note: pgAdmin does not include an auto-generated ERD based on current database schema. 
 
 https://www.pgadmin.org/  
 pgAdmin - PostgreSQL Tools  
