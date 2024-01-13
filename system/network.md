@@ -259,7 +259,13 @@ ipps	       631	        Internet Printing Protocol over HTTPS
 
 Firewalls block external traffic from entering internal networks and hosts. 
 
-Ubuntu uses `ufw`. `ufw` is disabled by default. Enable this first on a new host machine! :)
+Ubuntu uses `ufw`. See if it's running:
+
+```
+sudo ufw status
+```
+
+`ufw` is disabled by default. Enable this first on a new host machine! :)
 
 ```
 sudo ufw enable

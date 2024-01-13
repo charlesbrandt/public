@@ -383,7 +383,7 @@ It helps to study the underlying mechanisms of syncing form content with the loc
 TODO: v-model binding in vue2? or is that a new feature with vue3?
 
 https://duckduckgo.com/?t=ffab&q=creating+form+components+vue3&ia=web  
-💤 creating form components vue3 at DuckDuckGo  
+creating form components vue3 at DuckDuckGo  
 https://javascript.plainenglish.io/how-to-build-flexible-form-factory-by-vue-3-form-builder-pattern-b88edaf94776  
 Building a dynamic and scalable Form Factory by Vue 3 | JavaScript in Plain English  
 

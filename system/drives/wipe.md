@@ -3,9 +3,9 @@
 If a drive has not failed physically, it's a good idea to wipe the drive before decommissioning it for recycling. 
 
 https://duckduckgo.com/?t=ffab&q=DBAN&ia=web  
-💤 DBAN at DuckDuckGo  
+DBAN at DuckDuckGo  
 https://dban.org/  
-💤 Data Removal: Darik's Boot and Nuke - DBAN  
+Data Removal: Darik's Boot and Nuke - DBAN  
 https://duckduckgo.com/?t=ffab&q=nwipe&ia=software  
 nwipe at DuckDuckGo  
 https://github.com/martijnvanbrummelen/nwipe  

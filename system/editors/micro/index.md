@@ -3,6 +3,8 @@
 Lightweight terminal based text editor. 
 A good alternative to emacs, vi, and nano.
 
+https://github.com/zyedidia/micro
+
 ## Installation
 
 ```
@@ -303,3 +305,11 @@ Note the version in ubuntu via apt-get [tends to be a bit old](https://github.co
 # sudo apt-get install micro
 ```
 
+## Links
+
+https://micro-editor.github.io/  
+Micro - Home  
+https://micro-editor.github.io/plugins.html  
+Micro - Plugins  
+https://github.com/zyedidia/micro  
+GitHub - zyedidia/micro: A modern and intuitive terminal-based text editor 

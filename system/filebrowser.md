@@ -142,7 +142,7 @@ It is also possible to disable authentication with
 ## Links
 
 https://github.com/filebrowser/filebrowser
-💤 GitHub - filebrowser/filebrowser: 📂 Web File Browser
+GitHub - filebrowser/filebrowser: 📂 Web File Browser
 
 https://filebrowser.org/installation
 Installation - File Browser
@@ -163,12 +163,12 @@ File Browser · GitHub
 
 
 https://github.com/filebrowser/filebrowser/blob/master/.docker.json
-💤 filebrowser/.docker.json at master · filebrowser/filebrowser · GitHub
+filebrowser/.docker.json at master · filebrowser/filebrowser · GitHub
 https://hub.docker.com/r/filebrowser/filebrowser
-💤 filebrowser/filebrowser - Docker Image | Docker Hub
+filebrowser/filebrowser - Docker Image | Docker Hub
 
 https://github.com/filebrowser
-💤 File Browser · GitHub
+File Browser · GitHub
 https://filebrowser.org/cli/filebrowser-users
 filebrowser users - File Browser
 

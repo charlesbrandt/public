@@ -70,25 +70,25 @@ Clone a template locally to make it easier to edit the included `cookiecutter.js
 
 
 https://pypi.org/project/cookiecutter/  
-💤 cookiecutter · PyPI  
+cookiecutter · PyPI  
 https://github.com/cookiecutter/cookiecutter  
-💤 GitHub - cookiecutter/cookiecutter: A cross-platform command-line utility that creates projects from cookiecutters (project templates), e.g. Python package projects, C projects.  
+GitHub - cookiecutter/cookiecutter: A cross-platform command-line utility that creates projects from cookiecutters (project templates), e.g. Python package projects, C projects.  
 https://github.com/topics/cookiecutter-template  
-💤 cookiecutter-template · GitHub Topics · GitHub  
+cookiecutter-template · GitHub Topics · GitHub  
 https://github.com/sourcery-ai/python-best-practices-cookiecutter  
-💤 GitHub - sourcery-ai/python-best-practices-cookiecutter: Python best practices project cookiecutter 🍪  
+GitHub - sourcery-ai/python-best-practices-cookiecutter: Python best practices project cookiecutter 🍪  
 
 https://duckduckgo.com/?q=cookiecutter+python+asks+for+username+for+%27https%3A%2F%2Fgithub.com%27&t=ffab&ia=web  
-💤 cookiecutter python asks for username for 'https://github.com' at DuckDuckGo  
+cookiecutter python asks for username for 'https://github.com' at DuckDuckGo  
 have to update `cookiecutter.json` with the defaults you want to use, if you don't want to enter them manually
 
 https://www.cookiecutter.io/article-post/cookiecutter-alternatives  
-💤 Cookiecutter  
+Cookiecutter  
 https://mlops-guide.github.io/Structure/starting/  
-💤 Starting a New Project with Cookiecutter - MLOps Guide  
+Starting a New Project with Cookiecutter - MLOps Guide  
 
 https://duckduckgo.com/?t=ffab&q=cookiecutter+python&ia=web  
-💤 cookiecutter python at DuckDuckGo  
+cookiecutter python at DuckDuckGo  
 
 
 ## Boilerplates
@@ -173,7 +173,7 @@ Contribute to github/docs
 https://github.com/github/docs/blob/4535fa5277cf165ee196b789d41cc1dac8c476a7/CONTRIBUTING.md
 docs/CONTRIBUTING.md at 4535fa5277cf165ee196b789d41cc1dac8c476a7 · github/docs
 https://github.com/github/docs/blob/main/CONTRIBUTING.md
-💤 docs/CONTRIBUTING.md at main · github/docs
+docs/CONTRIBUTING.md at main · github/docs
 https://opensource.guide/code-of-conduct/
 Your Code of Conduct | Open Source Guides
 https://docs.github.com/en/get-started/quickstart/create-a-repo#commit-your-first-change

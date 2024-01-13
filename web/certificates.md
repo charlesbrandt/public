@@ -43,6 +43,6 @@ I mounted the generated certificates so they are available within the Cypress co
 A long thread about getting Chrome to work -- wasn't able to get this working. 
 
 https://github.com/cypress-io/cypress/issues/771
-💤 cy.visit() results in ERR_SSL_VERSION_OR_CIPHER_MISMATCH · Issue #771 · cypress-io/cypress
+cy.visit() results in ERR_SSL_VERSION_OR_CIPHER_MISMATCH · Issue #771 · cypress-io/cypress
 
 

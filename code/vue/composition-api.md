@@ -11,15 +11,15 @@ Core Functions | VueUse
 https://github.com/vueuse/vueuse
 vueuse/vueuse: Collection of essential Vue Composition Utilities for Vue 2 and 3
 https://vueuse.org/functions.html
-💤 Core Functions | VueUse
+Core Functions | VueUse
 https://vueuse.org/guide/
-💤 Get Started | VueUse
+Get Started | VueUse
 https://vueuse.org/guide/best-practice.html
-💤 Best Practice | VueUse
+Best Practice | VueUse
 https://vueuse.org/guide/config.html
-💤 Configurations | VueUse
+Configurations | VueUse
 https://github.com/vueuse/vue-demi
-💤 vueuse/vue-demi: 🎩 Creates Universal Library for Vue 2 & 3
+vueuse/vue-demi: 🎩 Creates Universal Library for Vue 2 & 3
 
 
 

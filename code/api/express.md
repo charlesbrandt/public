@@ -261,11 +261,11 @@ https://github.com/winstonjs/winston
 GitHub - winstonjs/winston: A logger for just about everything.  
 
 https://duckduckgo.com/?t=ffab&q=morgan+js+logger&ia=software  
-💤 morgan js logger at DuckDuckGo  
+morgan js logger at DuckDuckGo  
 https://www.npmjs.com/package/morgan  
-💤 morgan - npm  
+morgan - npm  
 https://duckduckgo.com/?t=ffab&q=express+morgan+winston&ia=web  
-💤 express morgan winston at DuckDuckGo  
+express morgan winston at DuckDuckGo  
 https://jojozhuang.github.io/tutorial/express-combine-morgan-and-winston/  
 Combine Morgan & Winston @ https://jojozhuang.github.io  
 https://stackoverflow.com/questions/27906551/node-js-logging-use-morgan-and-winston  
