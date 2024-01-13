@@ -14,6 +14,28 @@ Alt-F2
 
 type `r` in the window that pops up
 
+## Zoom
+
+When screen sharing, it can be useful to zoom in on parts of the screen to make things easier to read. Gnome can do this, but it must be enabled first:
+
+[gnome - How to zoom screen on Ubuntu 20.04? - Ask Ubuntu](https://askubuntu.com/questions/1312980/how-to-zoom-screen-on-ubuntu-20-04)
+
+You should be able to do this if you're using Gnome (which you should be IMHO)
+
+- Super + Alt + 8 : Toggle zoom enabled/disabled (when enabled, the next two keyboard shortcuts become active)
+    
+- Super + Alt + '+' : Zoom in (increases zoom factor by 1.0)
+    
+- Super + Alt + '-' : Zoom out (decreases zoom factor by 1.0, until it is 1.0)
+
+I was not able to locate the Zoom increments settings in `gnome-tweaks` (2024.01.13)
+
+https://askubuntu.com/questions/1312980/how-to-zoom-screen-on-ubuntu-20-04  
+gnome - How to zoom screen on Ubuntu 20.04? - Ask Ubuntu  
+
+https://duckduckgo.com/?t=ffab&q=on+linux+gnome%2C+is+there+a+way+to+zoom+in+and+out+on+a+screen+the+way+there+is+on+mac%3F+&ia=web  
+on linux gnome, is there a way to zoom in and out on a screen the way there is on mac? at DuckDuckGo  
+
 
 ## Dock Settings
 
