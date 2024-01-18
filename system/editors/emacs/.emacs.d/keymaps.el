@@ -1,5 +1,7 @@
 ;; Keymaps
 
+;; https://www.masteringemacs.org/article/mastering-key-bindings-emacs
+
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 
 ;; To see what key syntax to use when defining a new keymap:
@@ -80,8 +82,9 @@
 (global-set-key (kbd "M->") 'end-of-buffer)
 (global-set-key (kbd "M-<") 'beginning-of-buffer)
 
-
-(global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
+;; this conflicts with micro's behavior: 
+;; (global-set-key (kbd "C-q") 'save-buffers-kill-emacs)
+(global-set-key (kbd "C-q") 'kill-buffer)
 
 ;; I'm not sure why ctrl-space is considered sub-optimal by ergo-emacs.
 ;; I like it though
