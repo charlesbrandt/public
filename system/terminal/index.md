@@ -6,6 +6,16 @@ rm .bashrc
 ln -s ~/public/system/.bashrc .bashrc
 ```
 
+## Environment Variables
+
+Add `.local/bin` to `PATH` in `~/.bashrc` (or `.bash_profile`)
+
+```
+PATH=$PATH:~/.local/bin
+```
+
+No need for `export ` if the variable already exists
+
 
 ## Alias vs Functions
 
@@ -44,19 +54,7 @@ time how long a script takes bash at DuckDuckGo
 https://stackoverflow.com/questions/37695776/bash-calculate-how-long-it-takes-a-script-to-run  
 Bash: Calculate how long it takes a script to run - Stack Overflow  
 
-## Environment Variables
 
-Often need to append to the `PATH` so a new executable is matched via the CLI. Should not put in `.bashrc` according to:
-
-https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
-
-I just put it in `.bashrc` :P
-
-```
-PATH=$PATH:~/.local/bin
-```
-
-No need for `export ` if the variable already exists
 
 ## history
 

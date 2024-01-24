@@ -30,17 +30,40 @@ Or, if you're adding the id to a remote service like [Github](https://github.com
 
 If the machine doesn't have an ssh server running, you can install one:
 
-    sudo apt-get update
-    sudo apt-get -y install openssh-server
+```
+sudo apt-get update
+sudo apt-get -y install openssh-server
+```
 
 
 To find out ip
 
-    ip address
+```
+ip a
+```
     
 On older systems it was:
 
-    ifconfig
+```
+ifconfig
+```
+
+To enable sshd on raspberry pi os:
+
+Enter `sudo raspi-config` in a terminal window
+
+Select Interfacing Options
+
+Navigate to and select SSH
+
+Choose Yes
+
+Select Ok
+
+Choose Finish
+
+via:  
+https://www.raspberrypi.com/documentation/computers/remote-access.html
 
 
 ## Known Hosts

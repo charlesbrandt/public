@@ -105,13 +105,13 @@ This includes data repository type drives
 
 
 ```
-sudo apt-get install exfat-utils exfat-fuse
+sudo apt install exfat-fuse exfatprogs
 ```
 
 format the partition with the exFAT filesystem
 
 ```
-% sudo mkfs.exfat -n HOME /dev/sdX1
+sudo mkfs.exfat -n HOME /dev/sdX1
 mkexfatfs 1.0.1
 Creating... done.
 Flushing... done.
