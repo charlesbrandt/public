@@ -91,6 +91,23 @@ or go into a shell
 poetry shell
 ```
 
+#### environments
+
+```
+poetry env list
+```
+
+You can remove an environment with:
+
+```
+poetry env remove [name of env from list]
+```
+
+Typically, virtualenvs are stored:
+
+```
+~/.cache/pypoetry/virtualenvs/
+```
 
 
 

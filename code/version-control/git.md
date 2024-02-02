@@ -18,6 +18,12 @@ git commit -m "commit message"
 git push
 ```
 
+You can also create aliases in your `.bashrc` file
+
+```
+alias gcu='git commit -m "Update notes"; git push'
+```
+
 ## What makes a good commit message
 
   - Use the imperative mood in the subject line

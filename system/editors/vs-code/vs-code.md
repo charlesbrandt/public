@@ -43,6 +43,7 @@ See below for a description about what the settings do
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs":"active",
   "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
   "update.mode": "none",
   "explorer.confirmDragAndDrop": false,
   "window.zoomLevel": 0,
@@ -59,6 +60,10 @@ See below for a description about what the settings do
      "node_modules" : true,
      "**/_tmp_*": true,
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
+
 }
 ```
 
@@ -377,8 +382,15 @@ It seems that eslint needs to be installed on the host os for the current projec
 
 ### Python
 
-    "ms-python.python",
+https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
 
+```
+ "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
+```
+  
+    "ms-python.python",
 
 I like to enable AutoPEP8 to format my python to automatically meet formatting rules. (i.e. linting for Python) Occasionally I've had scenarios where this can break things. Example: adding a path to the import path in a script, then that gets moved and the to-be-imported module is no longer available.
 
