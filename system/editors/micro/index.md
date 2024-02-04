@@ -160,14 +160,27 @@ Options · Prettier
 about:reader?url=https%3A%2F%2Fprettier.io%2Fdocs%2Fen%2F  
 What is Prettier? · Prettier  
 
-## Plugins
+## Plugins & Commands
 
 https://micro-editor.github.io/plugins.html  
 Micro - Plugins  
 https://github.com/topics/micro-editor  
 micro-editor · GitHub Topics  
 
+To register a function as a command, you need the following somewhere:
 
+```
+function init()
+        config.MakeCommand("enumbuffers", enumBuffers, config.NoComplete)
+end
+```
+
+For mapping a keybinding to a function in `init.lua`, in `bindings.json`
+
+```
+    "Ctrl-u": "lua:initlua.now",
+    "Ctrl-j": "lua:initlua.nowtop",
+```
 
 ## Buffers / Tabs
 
