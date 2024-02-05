@@ -18,17 +18,22 @@ function init()
     config.MakeCommand("today", todaytop, config.NoComplete)
     config.MakeCommand("complete", markcomplete, config.NoComplete)
     config.MakeCommand("com", markcomplete, config.NoComplete)
+    config.MakeCommand("req", requested, config.NoComplete)
     config.MakeCommand("also", also, config.NoComplete)
 end
 
 function also(bp)
 	local cursor = bp.Buf:GetActiveCursor()
+	bp.Buf:Insert(buffer.Loc(0, cursor.Y), 'also [' .. os.date('%Y.%m.%d %H:%M:%S') .. '] \n')
+end
+
+function requested(bp)
+	local cursor = bp.Buf:GetActiveCursor()
 	local line = bp.Buf:Line(cursor.Y)
 	if line:sub(1, 2) == '# ' then
 		local timestamp = line:sub(3, 21)
 		local tags = line:sub(22)
-		local newLine = 'also [' .. timestamp .. ']'
-		bp.Buf:Replace(buffer.Loc(0, cursor.Y), buffer.Loc(#line, cursor.Y), newLine)		
+		local newLine = 'requested [' .. timestamp .. ']' .. tags	
 	end
 end
 
@@ -42,7 +47,7 @@ function markcomplete(bp)
 		bp.Buf:Replace(buffer.Loc(0, cursor.Y), buffer.Loc(#line, cursor.Y), newLine)
 		
 		-- Insert a new line above the current one
-		bp.Buf:Insert(buffer.Loc(0, cursor.Y), '# ' .. os.date('%Y.%m.%d %H:%M:%S') .. tags .. '\n')
+		bp.Buf:Insert(buffer.Loc(0, cursor.Y), '# ' .. os.date('%Y.%m.%d %H:%M:%S complete') .. tags .. '\n')
 	end
 end
 
