@@ -60,9 +60,52 @@ Thank you for installing Anaconda3!
 
 ```
 
+## Environments
+
+**Create the Conda environment:** Open a terminal and navigate to the directory where you want the environment to be associated.
+
+```
+cd /path/to/your/directory
+```
+
+Create a new Conda environment with the desired name (e.g., `myenv`), and specify the packages and versions you need:
+
+```
+conda create --name myenv python=3.8 pandas numpy
+```
+    
+**Activate the Conda environment:**Whenever you need to use this environment, navigate to the directory in your terminal and then run the activation command:
+    
+```
+conda activate myenv
+```
+
+## Dependencies
+
+If a dependency is available through `conda` use that. Check to see:
+
+```
+conda install modulename
+```
+
+If not, `pip` is still available here
+
+```
+pip install modulename
+```
+Conda manages installed modules directly. No need for something like `pip` in this case. 
+
+keep track of the installed dependencies with
+
+```
+conda list --export > conda-requirements.txt
+pip freeze > pip-requirements.txt
+```
+
+
 ## Uninstall
 
-If you want to completely uninstall Conda from your system and start from scratch, you would follow a process similar to the steps outlined below. It may vary slightly depending on your operating system, but these general steps apply:
+If you want to completely uninstall Conda from your system and start from scratch, you would follow a process similar to the steps outlined below.
 
 For Anaconda Distribution:
 

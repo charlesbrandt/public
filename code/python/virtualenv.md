@@ -5,17 +5,18 @@ Virtual environments in Python are tools for managing dependencies and isolating
 The basic pattern is to choose one of the virtual environment managers (see below). Then: 
 
   - Activate the virtual environment
-    Once you've created a virtual environment, make sure to activate it before using it. Activating a virtual environment sets the appropriate Python interpreter and ensures that any packages you install or scripts you run are within the scope of the virtual environment. The activation command may vary depending on the virtual environment manager you are using. 
+    This sets the appropriate Python interpreter and ensures that any packages you install or scripts you run are within the scope of the virtual environment. 
 
   - Install dependencies within the virtual environment 
-    After activating a virtual environment, use the appropriate package manager (such as pip or conda) to install the dependencies specific to your project within the virtual environment. This ensures that the dependencies are isolated to the virtual environment and won't affect your system-wide Python installation.
-
-
-## Virtual environment manager
+    Use the appropriate package manager (such as pip or conda) to install the dependencies specific to your project within the virtual environment. This ensures that the dependencies are isolated to the virtual environment and won't affect your system-wide Python installation.
 
 There are several popular virtual environment managers available for Python, such as venv, virtualenv, and conda. These tools provide an easy and convenient way to create, manage, and activate virtual environments. You can choose the one that suits your workflow and learn how to use it effectively.
 
-### Poetry
+## Conda
+
+[Conda](conda.md)
+
+## Poetry
 
 Similar to npm, but for python. Still requires manually activating / deactivating the virtual environment. 
 
@@ -27,7 +28,7 @@ https://github.com/python-poetry/poetry
 GitHub - python-poetry/poetry: Python packaging and dependency management made easy
 
 
-#### Install
+### Install
 
 ```
 curl -sSL https://install.python-poetry.org | python3 -
@@ -42,7 +43,7 @@ poetry --version
 ```
 
 
-#### Usage
+### Usage
 
 Add poetry to existing project
 
@@ -66,7 +67,7 @@ https://python-poetry.org/docs/basic-usage/#specifying-dependencies
 Basic usage | Documentation | Poetry - Python dependency management and packaging made easy
 
 
-#### Add packages from requirements.txt
+### Add packages from requirements.txt
 
 ```
 cat requirements.txt | xargs -I % sh -c 'poetry add "%"'
@@ -77,7 +78,7 @@ poetry install requirements.txt at DuckDuckGo
 https://stackoverflow.com/questions/62764148/how-to-import-requirements-txt-from-an-existing-project-using-poetry
 python - How to import requirements.txt from an existing project using Poetry - Stack Overflow
 
-#### Running
+### Running
 
 Similar to `pipenv`
 
@@ -91,7 +92,7 @@ or go into a shell
 poetry shell
 ```
 
-#### environments
+### Environments
 
 ```
 poetry env list

@@ -564,6 +564,29 @@ https://stackoverflow.com/questions/3611256/forking-vs-branching-in-github
 
 ## Large File Support (lfs)
 
+
+https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md
+
+```
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+```
+
+Testing with: 
+```
+git lfs install
+```
+
+Should always yield once installed:
+
+```
+Git LFS initialized.
+```
+
+### Manual download / install
+
+https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage
+
 Find the latest version:
 
 https://git-lfs.com/
@@ -580,18 +603,6 @@ cd git-lfs-3.3.0/
 
 sudo ./install.sh 
 ```
-
-Testing with: 
-```
-git lfs install
-```
-
-Should always yield once installed:
-
-```
-Git LFS initialized.
-```
-
 
 Adapted from:
 https://duckduckgo.com/?t=ffab&q=git+lfs&ia=web
