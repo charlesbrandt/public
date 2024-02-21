@@ -309,6 +309,15 @@ git tag -a v1.4 -m 'version 1.4'
 
 ## Branches
 
+### Only check out one branch
+
+```
+git clone <url> --single-branch
+```
+
+via:
+https://stackoverflow.com/questions/1778088/how-do-i-clone-a-single-branch-in-git
+
 ### Show current branch
 
 ```
@@ -325,6 +334,12 @@ git branch --all
 
 ```
 git checkout name_of_branch
+```
+
+To create a local copy of the remote branch:
+
+```
+git checkout -b branch-name origin/feature/branch-name
 ```
 
 ### Creating a branch
@@ -378,7 +393,7 @@ git branch --set-upstream-to=<remote>/<branch> main
 
 ### Merging
 
-Allows you to pull in changes from master / different branch.
+Allows you to pull in changes from main / different branch.
 
 Use merge if your branch is already pushed.
 
