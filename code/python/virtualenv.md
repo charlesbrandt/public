@@ -110,6 +110,53 @@ Typically, virtualenvs are stored:
 ~/.cache/pypoetry/virtualenvs/
 ```
 
+#### Local modules
+
+How to use a local python module under a poetry managed environment?
+
+TODO: Untested:
+
+ To use a local Python module under a Poetry managed environment, you need to add it as a dependency in your `pyproject.toml` file and then install it locally. Here's a step-by-step guide:
+
+1. Navigate to your project directory where your `pyproject.toml` file is located.
+
+2. Open the `pyproject.toml` file in a text editor or IDE, and add the local package as a dependency under the `[tools.poetry]` section. For example:
+
+```toml
+[tools.poetry]
+name = "my_project"
+version = "0.1.0"
+
+[dependencies]
+local-package = { path = "/path/to/local/package", version = "0.1.2" }
+```
+Replace `/path/to/local/package` with the absolute path to your local package directory.
+
+3. Save and close the file.
+
+4. Install the local dependency using Poetry by running the following command in your terminal:
+
+```bash
+poetry add .
+```
+This will add your local package as a dev dependency in `pyproject.toml` and install it in your virtual environment.
+
+5. Now you can import and use the local module in your Python code as if it were any other installed package. For example, in your script or module:
+
+```python
+from local_package import MyLocalModule
+
+# Use MyLocalModule here...
+```
+
+6. Don't forget to activate your Poetry virtual environment before running your Python script or module. You can do this by running:
+
+```bash
+poetry shell
+```
+Then, you can run your Python script as usual with `python my_script.py`.
+
+
 
 
 ### venv

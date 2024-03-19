@@ -106,3 +106,7 @@ In docker-compose.yml use:
 
 `restart: always` is another option, but I find it's too agressive in restarting services. If I stop it manually, I usually don't want it to come back automatically when the system restarts. 
 
+
+## PM2
+
+PM2 is another good option for starting services automatically in a user space

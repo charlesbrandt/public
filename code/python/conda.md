@@ -102,6 +102,20 @@ conda list --export > conda-requirements.txt
 pip freeze > pip-requirements.txt
 ```
 
+### Delete Environment
+
+Find the path with 
+
+```
+conda env list
+```
+
+Then simply delete the corresponding directory 
+
+```
+rm -rf /home/account/anaconda3/envs/myenv
+```
+
 
 ## Uninstall
 

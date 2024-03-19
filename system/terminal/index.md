@@ -1,5 +1,7 @@
 # Terminal
 
+Bash focused shell configuration notes and topics
+
 ```
 cd
 rm .bashrc
@@ -54,6 +56,9 @@ time how long a script takes bash at DuckDuckGo
 https://stackoverflow.com/questions/37695776/bash-calculate-how-long-it-takes-a-script-to-run  
 Bash: Calculate how long it takes a script to run - Stack Overflow  
 
+/home/account/combined/alpha/mind/todo-mind.md
+/home/account/combined/alpha/mind/journal-ml.md
+/home/account/combined/public/system/terminal/index.md
 
 
 ## history
@@ -83,6 +88,21 @@ history -c
 
 via:  
 https://linuxconfig.org/how-to-manage-bash-history  
+
+### Ignore commands / prevent history
+
+To prevent commands from being saved to the bash history file 
+
+```
+set +o history # temporarily turn off history
+
+# commands here won't be saved
+
+set -o history # turn it back on
+```
+
+via 
+https://unix.stackexchange.com/questions/10922/temporarily-suspend-bash-history-on-a-given-shell
 
 
 ## Tools
