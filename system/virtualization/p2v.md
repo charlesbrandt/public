@@ -111,7 +111,7 @@ Download Clonezilla Live from http://clonezilla.org/downloads.php
 
 Verify the [checksums](../checksums.md).
 
-[Create bootable media with the image.](../drives/bootable-usb.md)
+[Create bootable media with the image.](../storage/bootable-usb.md)
 
 https://clonezilla.org/clonezilla-live.php
 

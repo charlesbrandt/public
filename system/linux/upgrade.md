@@ -139,7 +139,7 @@ http://www.pendrivelinux.com/usb-xubuntu-804-persistent-install-from-linux/
 
 ## Setting up a new partition layout for a new system
 
-See also [partitions](../drives/partitions.md) or general [drive](../drives/) notes
+See also [partitions](../storage/partitions.md) or general [drive](../storage/) notes
 
 I'm always tempted to let the OS decide what scheme to use
 
@@ -169,7 +169,7 @@ Some things I like to change
 
 Future considerations
 
-  - If hibernation is necessary, just use a file based scratch drive. Easier to allocate, and prevents storage from getting allocated in a way that is sub optimal. [Swap](../drives/swap.md)
+  - If hibernation is necessary, just use a file based scratch drive. Easier to allocate, and prevents storage from getting allocated in a way that is sub optimal. [Swap](../storage/swap.md)
 
   - Separate `/var` ???  
     I like this idea in theory -- prevent an ailing service that generates a lot of log files from filling up the main partition.   

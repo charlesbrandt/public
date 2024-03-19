@@ -86,7 +86,7 @@ This process is the same for all systems.
 
 Whatever you choose, start by downloading and burning an image of the operating system (OS) of your choice from their site.
 
-To transfer image for use, see [creating a bootable usb](../drives/bootable-usb.md).
+To transfer image for use, see [creating a bootable usb](../storage/bootable-usb.md).
 
 
 

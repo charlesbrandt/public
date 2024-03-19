@@ -67,7 +67,7 @@ https://linuxize.com/post/how-to-move-files-in-linux-with-mv-command/
 
 [Crontab (Scheduled Jobs)](crontab.md)  
 
-[Disk Usage](drives/disk-usage.md)  
+[Disk Usage](storage/disk-usage.md)  
 
 ## Hardware
 
@@ -81,7 +81,7 @@ Computers are defined by three general properties; how much: computational proce
 
 Memory and storage may seem like the same, but for now memory is a fast storage system that only exists while power is supplied. Storage is slightly slower for reading and writing, but the information persists after power is removed. 
 
-[Hard Drives / Storage](drives/)   
+[Hard Drives / Storage](storage/)   
 
 
 ## Operating Systems
