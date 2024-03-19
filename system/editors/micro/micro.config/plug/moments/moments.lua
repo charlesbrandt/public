@@ -20,8 +20,12 @@ function init()
     config.MakeCommand("com", markcomplete, config.NoComplete)
     config.MakeCommand("req", requested, config.NoComplete)
     config.MakeCommand("also", also, config.NoComplete)
-    config.MakeCommand("buffs", enumBuffers, config.NoComplete)
     config.MakeCommand("load", loadBuffers, config.NoComplete)
+    -- looking for an intuitive command name here
+    config.MakeCommand("list", enumBuffers, config.NoComplete)
+    config.MakeCommand("buffs", enumBuffers, config.NoComplete)
+    config.MakeCommand("files", enumBuffers, config.NoComplete)
+    config.MakeCommand("tabs", enumBuffers, config.NoComplete)
 end
 
 function also(bp)
