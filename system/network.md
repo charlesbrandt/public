@@ -314,11 +314,27 @@ These need to go into `/etc/wireguard`
 sudo cat /etc/wireguard/wg0.conf
 ```
 
+Clients need a few things to be installed first:
+
+```
+sudo apt-get install wireguard
+```
+
+On Ubuntu, I needed the following symlink before `wg-quick` works
+
+```
+ln -s /usr/bin/resolvectl /usr/local/bin/resolvconf
+```
+[via](https://superuser.com/questions/1500691/usr-bin-wg-quick-line-31-resolvconf-command-not-found-wireguard-debian)
+
+
 Then, on the client, you can start the connection with
 
 ```
 sudo wg-quick up wg0
 ```
+
+
 
 
 Back on the server, you can check the status of WireGuard with: 
