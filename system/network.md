@@ -298,18 +298,45 @@ chmod +x wireguard-install.sh
 sudo ./wireguard-install.sh
 ```
 
-If your VPN server will be responding via a NAT'd IP address, use that when configuring the VPN so clients know where to go to contact the server. 
+If your VPN server will be responding via a NAT'd IP address, use that when configuring the VPN's "IPv4 or IPv6 public address" so clients know where to go to contact the server. 
 
 At the end of the process, the script will ask you for the name of the **clients** that will be connecting to the VPN. These names need to be less than 15 characters. It will also create a QR code in the terminal (cool!)
 
-Note where the config is saved for transfer to the clients. 
+Note where the config is saved for transfer to the clients. From the client:
+
+```
+rsync -av account@server:/home/account/wg0-client-machine_name.conf wg0.conf
+```
+
+These need to go into `/etc/wireguard`
+
+```
+sudo cat /etc/wireguard/wg0.conf
+```
+
+Then, on the client, you can start the connection with
+
+```
+sudo wg-quick up wg0
+```
 
 
+Back on the server, you can check the status of WireGuard with: 
+
+```
+systemctl status wg-quick@wg0
+```
 
 If you have a firewall enabled, note the selected port in the configuration and allow it in the firewall rules:
 
 ```
 sudo ufw allow 59984
+```
+
+Note: I tried limiting the traffic so that only local IPs would be routed. This didn't work for me:
+
+```
+AllowedIPs = 192.168.0.0/24, 192.168.2.0/24
 ```
 
 You may also need to forward the port in any upstream routers. 
@@ -321,6 +348,10 @@ https://www.makeuseof.com/vpn-wireguard/
 
 https://github.com/firezone/firezone  
 GitHub - firezone/firezone: WireGuard®-based VPN server and firewall  
+
+
+
+https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/
 
 
 #### IP Forwarding
