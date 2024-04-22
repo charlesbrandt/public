@@ -279,6 +279,12 @@ sudo ufw allow 22
 
 https://ubuntu.com/server/docs/security-firewall
 
+If you see `Status: active` but you don't see any rules, it may be that everything incoming is currently blocked. To confirm, you can use `verbose`:
+
+```
+sudo ufw status verbose
+```
+
 ### iptables
 
 See what netfilter rules have been applied with `iptables` tool
@@ -334,6 +340,18 @@ Then, on the client, you can start the connection with
 sudo wg-quick up wg0
 ```
 
+The VPN tunnel will show up as a new network adapter 
+
+```
+ip a
+```
+
+To take down the connection:
+
+```
+sudo wg-quick down wg0
+```
+
 
 
 
@@ -349,13 +367,14 @@ If you have a firewall enabled, note the selected port in the configuration and 
 sudo ufw allow 59984
 ```
 
-Note: I tried limiting the traffic so that only local IPs would be routed. This didn't work for me:
-
-```
-AllowedIPs = 192.168.0.0/24, 192.168.2.0/24
-```
-
 You may also need to forward the port in any upstream routers. 
+
+To limit the traffic so that only local IPs are routed, change the `AllowedIPs` value in the corresponding client config file:
+
+```
+AllowedIPs = 192.168.0.0/24
+```
+
 
 
 https://github.com/angristan/wireguard-install

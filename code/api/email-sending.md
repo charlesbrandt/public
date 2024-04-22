@@ -189,3 +189,85 @@ context("Network Requests", () => {
 });
 
 ```
+
+## Hosted solutions
+
+https://sendgrid.com/en-us/pricing  
+Pricing and Plans | SendGrid  
+https://github.com/MoonMail/MoonMail  
+MoonMail/MoonMail: Email marketing platform for bulk emailing via Amazon SES (Google Cloud Platform and Azure coming soon)  
+https://moonmail.io/pricing  
+Email marketing software Pricing | MoonMail  
+https://github.com/MoonMail/MoonMail/forks  
+Forks · MoonMail/MoonMail  
+
+https://duckduckgo.com/?t=ffab&q=Amazon+SES&ia=web  
+Amazon SES at DuckDuckGo  
+https://duckduckgo.com/?t=ffab&q=Amazon+SES+google+equivalent&ia=web  
+Amazon SES google equivalent at DuckDuckGo  
+https://www.reddit.com/r/googlecloud/comments/gfzov7/ses_equivalent/  
+SES Equivalent? : r/googlecloud  
+https://cloud.google.com/compute/docs/tutorials/sending-mail#using_standard_email_ports  
+Sending email from an instance  |  Compute Engine Documentation  |  Google Cloud  
+https://mailtrap.io/blog/amazon-ses-alternatives/  
+Top 6 Amazon SES Alternatives [2024]: Best Options Compared  
+https://stackoverflow.com/questions/60088537/what-is-the-google-smtp-service-similar-to-amazon-ses-is-it-gmail-smtp  
+What is the google smtp service similar to amazon ses, is it gmail smtp? - Stack Overflow  
+https://stackshare.io/stackups/amazon-ses-vs-google-cloud-messaging  
+Amazon SES vs Google Cloud Messaging | What are the differences?  
+
+https://github.com/knadh/listmonk  
+knadh/listmonk: High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.  
+https://listmonk.app/  
+listmonk - Free and open source self-hosted newsletter, mailing list manager, and transactional mails  
+https://listmonk.app/docs/installation/  
+Installation - listmonk / Documentation  
+https://gist.github.com/MaximilianKohler/e5158fcfe6de80a9069926a67afcae11  
+Complete Listmonk setup guide. Step-by-step tutorial for installation and all basic functions. Amazon EC2 & SES  
+
+https://github.com/mjmlio/mjml  
+mjmlio/mjml: MJML: the only framework that makes responsive-email easy  
+https://www.mailjet.com/  
+Email Delivery Service for Marketing & Developer Teams | Mailjet  
+
+https://github.com/topics/email-campaigns  
+email-campaigns · GitHub Topics  
+https://github.com/freeCodeCamp/mail-for-good  
+GitHub - freeCodeCamp/mail-for-good: An open source email campaign management tool for nonprofits  
+https://github.com/TedGoas/Cerberus  
+GitHub - TedGoas/Cerberus: A few simple, but solid patterns for responsive HTML email templates and newsletters. Even in Outlook and Gmail.  
+https://github.com/zudochkin/awesome-newsletters  
+GitHub - zudochkin/awesome-newsletters: A list of amazing Newsletters  
+
+https://duckduckgo.com/?t=ffab&q=email+list+manager&ia=web  
+email list manager at DuckDuckGo  
+https://clean.email/best-email-list-management-software  
+5 Best Email List Management Software To Use in 2024  
+https://github.com/topics/email-list  
+email-list · GitHub Topics · GitHub  
+https://github.com/topics/email  
+email · GitHub Topics · GitHub  
+https://github.com/topics/newsletter  
+newsletter · GitHub Topics · GitHub  
+https://github.com/topics/subscriptions  
+subscriptions · GitHub Topics · GitHub  
+https://github.com/killbill/killbill  
+GitHub - killbill/killbill: Open-Source Subscription Billing & Payments Platform  
+https://github.com/dunglas/mercure  
+GitHub - dunglas/mercure: 🪽 An open, easy, fast, reliable and battery-efficient solution for real-time communications  
+https://github.com/topics/subscriptions-list  
+subscriptions-list · GitHub Topics · GitHub  
+
+https://duckduckgo.com/?t=ffab&q=listmonk+vs+mautic&ia=web  
+listmonk vs mautic at DuckDuckGo  
+https://www.reddit.com/r/selfhosted/comments/zp089g/comparison_of_ui_options_for_bulk_email_sending/  
+Comparison of UI options for bulk email sending with Amazon SES and other SMTP providers. Review of Sendy, Mailwizz, and Listmonk. : r/selfhosted  
+https://www.libhunt.com/compare-mautic-vs-listmonk  
+Mautic vs Listmonk - compare differences and reviews? | LibHunt  
+https://github.com/mautic/mautic  
+GitHub - mautic/mautic: Mautic: Open Source Marketing Automation Software.  
+https://github.com/topics/marketing-automation  
+marketing-automation · GitHub Topics · GitHub  
+https://github.com/Mailtrain-org/mailtrain  
+GitHub - Mailtrain-org/mailtrain: Self hosted newsletter app  
+
