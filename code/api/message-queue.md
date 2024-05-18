@@ -24,6 +24,7 @@ https://github.com/topics/worker-pool
 worker-pool · GitHub Topics · GitHub  
 
 
+
 ## Celery
 
 https://github.com/topics/celery  
@@ -40,14 +41,6 @@ https://duckduckgo.com/?t=ffab&q=celery+chained+events&ia=web
 celery chained events at DuckDuckGo  
 https://stackoverflow.com/questions/55279820/running-chained-celery-tasks-at-specific-times  
 python - Running Chained Celery tasks at specific times - Stack Overflow  
-## RQ
-
-https://github.com/rq/rq  
-rq/rq: Simple job queues for Python  
-https://duckduckgo.com/?t=ffab&q=using+redis+as+a+task+queue+python&ia=web  
-using redis as a task queue python at DuckDuckGo  
-https://realpython.com/flask-by-example-implementing-a-redis-task-queue/  
-Flask by Example – Implementing a Redis Task Queue – Real Python  
 
 
 
@@ -101,6 +94,19 @@ https://stackoverflow.com/questions/28470796/equivalent-of-celery-in-node-js
 node.js - Equivalent of Celery in Node JS - Stack Overflow  
 https://thenewstack.io/how-kafka-and-redis-solve-stream-processing-challenges/  
 How Kafka and Redis Solve Stream-Processing Challenges – The New Stack  
+
+
+## RQ
+
+Redis Queue. As the name implies, this will only work with Redis. If the Redis licensing is a problem, look elsewhere. Redis is still an amazingly performant and low resource shared state management system. 
+
+https://github.com/rq/rq  
+rq/rq: Simple job queues for Python  
+https://duckduckgo.com/?t=ffab&q=using+redis+as+a+task+queue+python&ia=web  
+using redis as a task queue python at DuckDuckGo  
+https://realpython.com/flask-by-example-implementing-a-redis-task-queue/  
+Flask by Example – Implementing a Redis Task Queue – Real Python  
+
 
 
 

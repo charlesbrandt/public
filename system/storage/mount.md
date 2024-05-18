@@ -22,6 +22,25 @@ To mount everything in `/etc/fstab`, run
 sudo mount -a
 ```
 
+### External drives
+
+Predictably mount usb drive linux fstab
+
+When the storage is connected externally (e.g. USB), it's possible that the device order or id may change. If not properly configured, this may cause the machine to not finish booting. If the machine is remote or a server, this situation can be difficult to troubleshoot. 
+
+To skip a missing drive at boot, add `nofail` to the options in fstab. It needs to come after `auto`.
+
+https://askubuntu.com/questions/14365/mount-an-external-drive-at-boot-time-only-if-it-is-plugged-in
+
+Using the drive's UUID as the source parameter prevents any issues if the device gets assigned a different device path in `/dev/`. How to find the UUID of a drive linux?
+
+```
+sudo blkid /dev/sd*
+```
+
+https://unix.stackexchange.com/questions/658/linux-how-can-i-view-all-uuids-for-all-available-disks-on-my-system
+
+
 ## Temporary
 
 This will not come back after a reboot. Not that the `mountpoint` needs to already exist. 
