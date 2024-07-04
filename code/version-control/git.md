@@ -818,6 +818,26 @@ https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-
 If someone adds a directory with large binary files, it may be useful to remove that directory from the history to avoid having to download the large binary data with every `clone` of the repo.
 
 ```
+git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch chats/transcriptions/*'
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+git push origin master --force
+
+```
+
+Worked on 2024.04.08
+
+https://stackoverflow.com/questions/2047465/how-do-i-delete-a-file-from-a-git-repository
+
+This is an alternative way to do the same thing:
+
+```
 git filter-branch --tree-filter "rm -rf node_modules" --prune-empty HEAD
 git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
 git gc
@@ -831,23 +851,7 @@ git push origin master --force
 
 [via](https://stackoverflow.com/questions/10067848/remove-folder-and-its-contents-from-git-githubs-history)
 
-This is an alternative way to do the same thing:
 
-```
-git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch chats/transcriptions/*'
-WARNING: git-filter-branch has a glut of gotchas generating mangled history
-	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
-	 alternative filtering tool such as 'git filter-repo'
-	 (https://github.com/newren/git-filter-repo/) instead.  See the
-	 filter-branch manual page for more details; to squelch this warning,
-	 set FILTER_BRANCH_SQUELCH_WARNING=1.
-Proceeding with filter-branch...
-
-```
-
-Worked on 2024.04.08
-
-https://stackoverflow.com/questions/2047465/how-do-i-delete-a-file-from-a-git-repository
 
 ### Changing a commit message
 
