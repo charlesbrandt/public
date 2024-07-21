@@ -142,8 +142,20 @@ https://addons.mozilla.org/en-us/firefox/addon/disconnect/
 
 [via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
 
+### Custom CSS 
+
+Some sites, like Wikipedia, don't yet have a user configurable dark mode for their site. (as of 2024) 
+
+https://addons.mozilla.org/en-US/firefox/addon/styl-us/
+Stylus – Get this Extension for 🦊 Firefox (en-US)
+
+It may be possible to use uBlock for this purpose, but I think that requires managing the CSS to be applied directly:
+
+https://www.reddit.com/r/firefox/comments/8w9nqm/ublock_can_style_css_you_dont_need_a_separate/
+uBlock can style CSS - you don't need a separate addon for that : r/firefox
 
 
+;
 
 ### Profile Management
 

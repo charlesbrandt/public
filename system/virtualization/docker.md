@@ -543,12 +543,6 @@ there's good documentation on the topic:
 
 https://docs.docker.com/engine/userguide/containers/networkingcontainers/
 
-(on macs) set up a terminal to know how to interact with docker by running:
-
-```
-eval "$(docker-machine env default)"
-```
-
 How to generalize reference to containers in configuration files?  
 Just use the docker container name. 
 The IP for containers will change. Unless it is statically set, using an IP directly would require manually updating configuration (e.g. nginx.conf) files.  

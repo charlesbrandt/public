@@ -271,3 +271,30 @@ marketing-automation · GitHub Topics · GitHub
 https://github.com/Mailtrain-org/mailtrain  
 GitHub - Mailtrain-org/mailtrain: Self hosted newsletter app  
 
+https://github.com/topics/email-campaigns  
+email-campaigns · GitHub Topics · GitHub  
+https://github.com/topics/email-marketing  
+email-marketing · GitHub Topics · GitHub  
+https://github.com/topics/newsletter  
+newsletter · GitHub Topics  
+https://github.com/knadh/listmonk  
+knadh/listmonk: High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.  
+https://github.com/topics/campaign-management  
+campaign-management · GitHub Topics  
+https://listmonk.app/  
+listmonk - Free and open source self-hosted newsletter, mailing list manager, and transactional mails  
+https://railway.app/pricing  
+Pricing | Railway  
+https://www.pikapods.com/login?redirect=/pods  
+PikaPods - Login  
+https://dash.elest.io/signup  
+Managed Service Dashboard  
+https://dash.elest.io/20308/default-project/services/creation  
+Managed Service Dashboard  
+https://github.com/topics/email-newsletter  
+email-newsletter · GitHub Topics · GitHub  
+https://github.com/rykov/paperboy  
+GitHub - rykov/paperboy: 💌💨 Email Campaign Delivery built with GoLang inspired by GoHugo  
+https://www.paperboy.email/  
+Paperboy  
+

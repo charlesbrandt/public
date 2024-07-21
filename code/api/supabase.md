@@ -48,8 +48,19 @@ micro .env
 ```
 
 Generate unique keys using functionality on this page:
-
 https://supabase.com/docs/guides/self-hosting#api-keys
+
+Once you've edited your `.env` file, be sure to also edit your Kong config to use matching `anon` and `service_role` keys.
+
+```
+micro volumes/api/kong.yml
+```
+
+Kong config must match what is set in `.env`. (This may have been fixed recently by using .env variables)
+
+> https://blog.devgenius.io/how-to-self-host-supabase-a-complete-guide-f4c68f449920
+
+
 
 replaceall localhost 192.168.1.2
 
@@ -58,16 +69,6 @@ Change:
 STUDIO_DEFAULT_ORGANIZATION=Default Organization
 STUDIO_DEFAULT_PROJECT=Default Project
 ```
-
-Once you've edited your `.env` file, be sure to also edit your Kong config to use matching `anon` and `service_role` keys.
-
-```
-micro volumes/api/kong.yml
-```
-
-Kong config must match what is set in `.env`
-
-> https://blog.devgenius.io/how-to-self-host-supabase-a-complete-guide-f4c68f449920
 
 
 I'm not sure if this is necessary in `.env`, but it works:
@@ -304,8 +305,6 @@ pg_dump -U postgres supabase > dbexport.pgsql
 
 See also [postgres](postgresql.md#backups) for a more complete example.
 
-The hosted service offers backups automatically. (at least 7 days)
-
 Running backups using `postgres` user results in:
 
 ```
@@ -343,7 +342,7 @@ su - postgres
 ```
 
 Change the supabase_admin password:
-
+	
 Access the PostgreSQL prompt:
 
 ``` bash
@@ -355,6 +354,9 @@ And then set a new password for supabase_admin:
 ``` sql
 ALTER USER supabase_admin WITH PASSWORD 'newpassword';
 ```
+
+The hosted service offers backups automatically. (at least 7 days)
+
 
 
 ### Prisma

@@ -293,7 +293,7 @@ See what netfilter rules have been applied with `iptables` tool
 iptables -xvn -L
 ```
 
-### VPN
+### VPN / Wireguard
 
 Wireguard is now built in to most modern linux kernels. Give that a try. On the server
 
@@ -306,6 +306,14 @@ sudo ./wireguard-install.sh
 
 If your VPN server will be responding via a NAT'd IP address, use that when configuring the VPN's "IPv4 or IPv6 public address" so clients know where to go to contact the server. 
 
+Similarly, it can be good to call the "WireGuard interface name" something other than 'wg0', otherwise you may end up with a lot of 'wg0' interfaces and not be sure what server those are being routed through. Note: dashes do not appear to be supported here.
+
+For 'Server WireGuard IPv4', I like to use the last octet of the server's IP to provide further clues where the traffic is being routed through. For example: 10.81.81.1
+
+Jot down the Server WireGuard port somewhere -- you'll need to configure your router to forward traffic to the server for that port. 
+
+Choose some real DNS servers that are available for you to use. 
+
 At the end of the process, the script will ask you for the name of the **clients** that will be connecting to the VPN. These names need to be less than 15 characters. It will also create a QR code in the terminal (cool!)
 
 Note where the config is saved for transfer to the clients. From the client:
@@ -314,7 +322,7 @@ Note where the config is saved for transfer to the clients. From the client:
 rsync -av account@server:/home/account/wg0-client-machine_name.conf wg0.conf
 ```
 
-These need to go into `/etc/wireguard`
+On the client machine, the config files need to go into `/etc/wireguard`
 
 ```
 sudo cat /etc/wireguard/wg0.conf
@@ -375,6 +383,7 @@ To limit the traffic so that only local IPs are routed, change the `AllowedIPs` 
 AllowedIPs = 192.168.0.0/24
 ```
 
+Note: sometimes I experience an issue where the first connection will prevent access to general internet sites even though the AllowedIPs range is set to a local range only. That would be better if it works, but when it doesn't, just add `0.0.0.0/0` back in to the range of AllowedIPs and that should fix the issue. 
 
 
 https://github.com/angristan/wireguard-install

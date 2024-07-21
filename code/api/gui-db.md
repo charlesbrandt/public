@@ -36,7 +36,7 @@ https://dbeaver.io/download/
 Then
 
 ```
-cd Downloads
+cd ~/Downloads
 sudo dpkg -i dbeaver
 ```
 
