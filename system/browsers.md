@@ -220,6 +220,21 @@ https://askubuntu.com/questions/1412140/how-to-solve-pending-update-of-firefox-s
 How to solve "Pending update of "firefox" snap. Close the app to avoid disruptions" error? - Ask Ubuntu  
 
 
+### Process Manager
+
+Even with Autotab Discard, browser contexts can still eat a lot of resources. Process Manager can help identify which sites are misbehaving. Available via: 
+
+Menu -> More Tools -> Task Manager
+
+about:processes  
+Process Manager  
+
+https://duckduckgo.com/?t=ffab&q=firefox+show+tab+consuming+cpu&ia=web  
+firefox show tab consuming cpu at DuckDuckGo  
+https://superuser.com/questions/234923/determine-which-tab-in-firefox-is-using-cpu-resources  
+cpu usage - Determine which tab in Firefox is using CPU resources? - Super User  
+
+
 ### New Tab
 
 This is optional. 

@@ -50,18 +50,6 @@ micro .env
 Generate unique keys using functionality on this page:
 https://supabase.com/docs/guides/self-hosting#api-keys
 
-Once you've edited your `.env` file, be sure to also edit your Kong config to use matching `anon` and `service_role` keys.
-
-```
-micro volumes/api/kong.yml
-```
-
-Kong config must match what is set in `.env`. (This may have been fixed recently by using .env variables)
-
-> https://blog.devgenius.io/how-to-self-host-supabase-a-complete-guide-f4c68f449920
-
-
-
 replaceall localhost 192.168.1.2
 
 Change:
