@@ -5,6 +5,21 @@ which git
 sudo apt-get install git
 ```
 
+[Generate ssh-keys](../terminal/ssh.md)  
+Install an ssh server if you plan to connect to the machine remotely  
+
+Clone any repositories that you plan to make use of locally
+
+```
+mkdir combined
+cd combined
+git clone https://gitlab.com/charlesbrandt/public.git
+```
+
+Edit `/etc/hosts`
+
+If the system requires a static IP, update that now. [network](../network.md)
+
 [Apply Gnome 3 settings](window-managers/gnome3.md) (for things like trackpad settings, screen brightness, etc)
 
 Change the Terminal background.   
@@ -25,16 +40,10 @@ Install a [password manager](../password-manager.md)
 sudo apt install keepassxc
 ```
 
-[Generate ssh-keys](../terminal/ssh.md)  
-Install an ssh server if you plan to connect to the machine remotely  
-
-Clone any repositories that you plan to make use of locally
-
 Install your preferred [editor](../editors/)  
 
 Install and configure [tmux](../terminal/tmux.md)  
 
-If the system requires a static IP, update that now. [network](../network.md)
 
 
 Install [Docker / Docker-compose](../virtualization/docker.md)  
