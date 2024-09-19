@@ -74,6 +74,45 @@ At this point Docker should be installed and you can verify with:
 sudo systemctl status docker
 ```
 
+### System Config
+
+Create bash aliases
+
+
+Add the following to your `.bashrc` file (or equivalent)
+
+```
+alias dcu='docker compose up -d'
+alias dcd='docker compose down --remove-orphans'
+alias dcp='docker compose ps'
+alias dce='docker compose exec'
+alias dcl='docker compose logs'
+```
+
+
+To expose privileged ports (< 1024), 
+
+```
+sudo micro /etc/sysctl.conf 
+```
+
+Add the line: 
+```
+net.ipv4.ip_unprivileged_port_start=80
+```
+
+Then apply changes to the system
+```
+sudo sysctl -p
+```
+
+Alternatively, set CAP_NET_BIND_SERVICE on rootlesskit binary and restart the daemon.
+
+```
+sudo setcap cap_net_bind_service=ep $(which rootlesskit)
+```
+
+
 
 ### Rootless & Permissions
 
@@ -119,41 +158,6 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 ```
 
 
-Create bash aliases
-
-
-Add the following to your `.bashrc` file (or equivalent)
-
-```
-alias dcu='docker compose up -d'
-alias dcd='docker compose down --remove-orphans'
-alias dcp='docker compose ps'
-alias dce='docker compose exec'
-alias dcl='docker compose logs'
-```
-
-
-To expose privileged ports (< 1024), 
-
-```
-sudo micro /etc/sysctl.conf 
-```
-
-Add the line: 
-```
-net.ipv4.ip_unprivileged_port_start=80
-```
-
-Then apply changes to the system
-```
-sudo sysctl -p
-```
-
-Alternatively, set CAP_NET_BIND_SERVICE on rootlesskit binary and restart the daemon.
-
-```
-sudo setcap cap_net_bind_service=ep $(which rootlesskit)
-```
 
 
 ### Add user to docker group
@@ -499,7 +503,54 @@ docker start container at boot at DuckDuckGo
 
 
 
-## Networking
+## Networkingservices:
+  ollama:
+    volumes:
+      - ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+    ports:
+      - ${OPEN_WEBUI_PORT-11434}:11434
+    # GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: ${OLLAMA_GPU_DRIVER-nvidia}
+              count: ${OLLAMA_GPU_COUNT-1}
+              capabilities:
+                - gpu
+
+
+  open-webui:
+    build:
+      context: .
+      args:
+        OLLAMA_BASE_URL: '/ollama'
+      dockerfile: Dockerfile
+    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    container_name: open-webui
+    volumes:
+      - open-webui:/app/backend/data
+      - /home/account/docker-volume-backups:/backups
+    depends_on:
+      - ollama
+    ports:
+      - ${OPEN_WEBUI_PORT-3000}:8080
+    environment:
+      - 'OLLAMA_BASE_URL=http://ollama:11434'
+      - 'WEBUI_SECRET_KEY='
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+
+volumes:
+  ollama: {}
+  open-webui: {}
+
 
 See all networks currently configured:
 

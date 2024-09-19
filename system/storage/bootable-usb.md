@@ -4,6 +4,20 @@ A bootable USB makes it easy to install a new system on a piece of hardware.
 
 (see also: upgrade.txt, toward the end of the file?)
 
+## rpi-imager
+
+`rpi-imager` works with compressed `.gz` images. No need to decompress manually (unless you want to try running the image in a VM?).
+
+Based on Etcher code base
+
+https://www.raspberrypi.com/software/
+
+```
+cd Downloads/
+udo dpkg -i imager_1.8.5_amd64.deb 
+sudo apt-get --fix-broken install
+```
+
 ## Etcher
 
 Etcher is a good tool for creating bootable USBs
@@ -51,8 +65,6 @@ Then run with
 ```
 woeusb-5 --device Windows7_x64.iso /dev/sdX
 ```
-
-
 
 
 ## Unetbootin
