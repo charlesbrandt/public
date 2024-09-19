@@ -16,9 +16,17 @@ cd combined
 git clone https://gitlab.com/charlesbrandt/public.git
 ```
 
-Edit `/etc/hosts`
-
 If the system requires a static IP, update that now. [network](../network.md)
+
+Install your preferred [editor](../editors/)  
+../editors/micro/index.md
+
+Search utilities
+../../search.md
+
+Install [Docker / Docker-compose](../virtualization/docker.md)  
+
+Edit `/etc/hosts`
 
 [Apply Gnome 3 settings](window-managers/gnome3.md) (for things like trackpad settings, screen brightness, etc)
 
@@ -40,13 +48,9 @@ Install a [password manager](../password-manager.md)
 sudo apt install keepassxc
 ```
 
-Install your preferred [editor](../editors/)  
-
 Install and configure [tmux](../terminal/tmux.md)  
 
 
-
-Install [Docker / Docker-compose](../virtualization/docker.md)  
 
 
 [Install other applications, as needed.](../applications.md)

@@ -15,9 +15,10 @@ sudo apt install fd-find
 Set up link:
 
 ```
-$ which fd
-$ ln -s $(which fdfind) ~/.local/bin/fd
-$ which fd
+which fd
+mkdir -p ~/.local/bin
+ln -s $(which fdfind) ~/.local/bin/fd
+which fd
 /home/account/.local/bin/fd
 ```
 

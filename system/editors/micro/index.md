@@ -8,11 +8,12 @@ https://github.com/zyedidia/micro
 ## Installation
 
 ```
-cd /usr/bin
+sudo apt install curl
+cd ~/Downloads 
 curl https://getmic.ro | sudo bash
 sudo mv micro /usr/bin
 cd ~/.config
-ln -s ~/public/system/editors/micro/micro.config micro
+ln -s ~/combined/public/system/editors/micro/micro.conf micro
 ```
 
 ## Build 

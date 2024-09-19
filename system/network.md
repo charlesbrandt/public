@@ -126,6 +126,7 @@ sudo vi 02-main-nic.yaml
 
 add a section like: 
 
+enp5s0
 ```
 network:
   ethernets:
@@ -138,6 +139,12 @@ network:
       nameservers:
         addresses: [8.8.8.8, 4.2.2.2]
 
+```
+
+Set the right permissions:
+
+```
+sudo chmod 700 0*
 ```
 
 To apply the configuration and have changes take effect, run:
