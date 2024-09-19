@@ -42,6 +42,21 @@ Test that everything is set up by executing
 poetry --version
 ```
 
+https://python-poetry.org/docs/#installing-with-the-official-installer
+
+### Upgrade
+
+Try uninstalling and then reinstall 
+```
+curl -sSL https://install.python-poetry.org | python3 - --uninstall
+curl -sSL https://install.python-poetry.org | POETRY_UNINSTALL=1 python3 -
+```
+
+This didn't work for me
+
+```
+poetry self update
+```
 
 ### Usage
 
