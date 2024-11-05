@@ -42,7 +42,16 @@ celery chained events at DuckDuckGo
 https://stackoverflow.com/questions/55279820/running-chained-celery-tasks-at-specific-times  
 python - Running Chained Celery tasks at specific times - Stack Overflow  
 
+## pg-boss
 
+https://duckduckgo.com/?q=MESSAGE_QUEUE_TYPE%3Dpg-boss&t=ffab&ia=web  
+MESSAGE_QUEUE_TYPE=pg-boss at DuckDuckGo  
+https://github.com/timgit/pg-boss  
+GitHub - timgit/pg-boss: Queueing jobs in Node.js using PostgreSQL like a boss  
+https://duckduckgo.com/?t=ffab&q=Error+response+from+daemon%3A+invalid+endpoint+settings%3A+network-scoped+alias+is+supported+only+for+containers+in+user+defined+networks+&ia=web  
+
+This is used by Twenty CRM
+Looks like a good solution if using postgres already
 
 ## RabbitMQ
 

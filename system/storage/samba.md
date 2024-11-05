@@ -82,3 +82,59 @@ sudo mount -t cifs //192.168.1.234/data ~/shared-drive
 Or, in finder / files browser use:
 
 Other Locations -> Connect to Server -> smb://192.168.1.234
+
+
+### fstab
+
+```
+//192.168.0.39/shared_data /mnt/samba cifs username=myusername,password=mypassword 0 0```
+
+https://linuxconfig.org/how-to-mount-a-samba-shared-directory-at-boot  
+How to mount a Samba shared directory at boot - LinuxConfig  
+
+
+### Credentials
+
+If you have credentials that you need to specify, this works, but is not ideal because credentials end up in cli history
+
+```
+sudo mount -t cifs //192.168.1.100/share /home/user/mnt/smb -o username=admin,password=password
+```
+
+TODO: currently credentials file path is not working
+
+Create a credentials file instead:
+
+```
+micro ~/.credentials
+```
+
+Add specifications
+
+```
+username=target_user_name
+password=target_user_password
+domain=domain
+```
+
+```
+sudo chown account: ~/.credentials
+sudo chmod 600 ~/.credentials
+```
+
+```
+sudo mount -t cifs -o credentials=~/.credentials //192.168.1.100/share /home/user/mnt/smb
+```
+
+https://www.linode.com/docs/guides/linux-mount-smb-share/
+
+
+## Troubleshooting
+
+```
+sudo apt-get install smbclient
+```
+
+```
+smbclient -L //server/share -U username
+```
