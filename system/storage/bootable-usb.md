@@ -14,7 +14,7 @@ https://www.raspberrypi.com/software/
 
 ```
 cd Downloads/
-udo dpkg -i imager_1.8.5_amd64.deb 
+sudo dpkg -i imager_1.8.5_amd64.deb 
 sudo apt-get --fix-broken install
 ```
 
