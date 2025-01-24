@@ -42,6 +42,15 @@ celery chained events at DuckDuckGo
 https://stackoverflow.com/questions/55279820/running-chained-celery-tasks-at-specific-times  
 python - Running Chained Celery tasks at specific times - Stack Overflow  
 
+https://medium.com/@kasperjuunge/how-to-use-celery-c34310e6bcba  
+How to Use Celery 🥦. Processing tasks asynchronously is a… | by Kasper Junge | Medium  
+https://duckduckgo.com/?t=ffab&q=celery+docker+compose&atb=v343-1&ia=web  
+celery docker compose at DuckDuckGo  
+https://reintech.io/blog/celery-docker-containerized-task-queues-guide  
+Celery and Docker: A Guide to Containerized Task Queues | Reintech media  
+https://nickjanetakis.com/blog/dockerize-a-flask-celery-and-redis-application-with-docker-compose  
+Dockerize a Flask, Celery, and Redis Application with Docker Compose — Nick Janetakis  
+
 ## pg-boss
 
 https://duckduckgo.com/?q=MESSAGE_QUEUE_TYPE%3Dpg-boss&t=ffab&ia=web  

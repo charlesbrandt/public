@@ -5,6 +5,23 @@
 # to compare an original, try:
 # cd ~/; diff .bashrc /c/public/moments/editors/.bashrc
 
+# Add ~/.local/ to PATH
+export PATH=$HOME/.local/bin:/usr/bin:$HOME/tools/:$PATH
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down --remove-orphans'
+alias dcp='docker-compose ps'
+alias dce='docker-compose exec'
+alias dcl='docker-compose logs'
+
+alias gcu='git commit -m "Update notes"; git push'
+
+alias todo='path=/home/account/combined/notes/time && mkdir -p $path/$(date +%Y) && micro /home/account/todo.md $path/$(date +%Y)/complete-$(date +%Y).md $path/$(date +%Y)/journal-$(date +%Y).md'
+
+export EDITOR=micro
+
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -21,15 +38,6 @@ export PATH
 #http://unix.stackexchange.com/questions/18231/scp-fails-without-error
 #MOTD (Message of the day)
 #echo "Deep Breath... Inhale.... Exhale.... :)"
-
-alias gcu='git commit -m "Update notes"; git push'
-alias dcu='docker compose up -d'
-alias dcd='docker compose down --remove-orphans'
-alias dcp='docker compose ps'
-alias dce='docker compose exec'
-alias dcl='docker compose logs'
-
-export EDITOR=micro
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

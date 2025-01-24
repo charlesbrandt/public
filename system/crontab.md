@@ -65,6 +65,26 @@ https://askubuntu.com/questions/56683/where-is-the-cron-crontab-log
 Where is the cron / crontab log? - Ask Ubuntu  
 
 
+## Python virtual environments
+
+If you need to call a python script from within a virtual envirnoment, you can create a wrapper script to set that up for the call
+
+```
+#!/bin/bash
+
+
+# Navigate to the project directory
+cd /home/account/repos/project
+
+# Activate the Poetry virtual environment
+source /home/account/.cache/pypoetry/virtualenvs/project-dPheY9em-py3.10/bin/activate
+
+# Run the Python script
+python buzz/everything.py
+
+```
+
+
 ## Finding old files
 
 ```
