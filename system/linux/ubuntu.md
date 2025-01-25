@@ -2,7 +2,7 @@
 
 ```
 which git
-sudo apt-get install git
+sudo apt-get install git curl
 ```
 
 [Generate ssh-keys](../terminal/ssh.md)  
@@ -48,10 +48,6 @@ Install a [password manager](../password-manager.md)
 sudo apt install keepassxc
 ```
 
-Install and configure [tmux](../terminal/tmux.md)  
-
-
-
-
 [Install other applications, as needed.](../applications.md)
+
 

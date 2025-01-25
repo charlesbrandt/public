@@ -87,7 +87,7 @@ Configure VSCode to ignore them with the following settings
         }
 ```
 
-Strangely, this answers the question I had, even though it doesn't answer the question of the post:
+This thread answers the question I had, even though it doesn't answer the question of the post:
 
 https://stackoverflow.com/questions/30313805/how-to-ignore-node-modules-folder-during-typescript-build-in-vscode
 

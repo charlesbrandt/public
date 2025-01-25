@@ -39,34 +39,6 @@ See also [Password Managers](password-manager.md)
 sudo apt-get install keepassxc
 ```
 
-## Emacs
-
-```
-which emacs
-```
-
-To install it:
-
-```
-sudo apt-get install emacs
-```
-
-Then configure it with:
-
-```
-cd
-ln -s public/system/editors/emacs/.emacs .emacs
-ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
-emacs &
-```
-
-see also 
-[editors/emacs/emacs.md](editors/emacs/emacs.md)
-
-Or more generally
-[text editors](editors/)
-
-
 ## Python
 
 ```
@@ -89,19 +61,6 @@ sudo apt-get install curl
 ```
 sudo apt install build-essential
 ```
-
-
-## KVM
-
-[KVM](virtualization/kvm.md)
-
-
-## Docker
-
-[Docker](virtualization/docker.md)  
-[Docker Compose](virtualization/docker-compose.md)  
-
-
 
 
 ## Recorder
@@ -152,6 +111,16 @@ can just go 'do not distrub'
 
 [Browsers](browsers.md)
 
+## KVM
+
+[KVM](virtualization/kvm.md)
+
+
+## Docker
+
+[Docker](virtualization/docker.md)  
+[Docker Compose](virtualization/docker-compose.md)  
+
 
 
 
@@ -170,6 +139,38 @@ sudo add-apt-repository ppa:canonical-chromium-builds/stage
 sudo apt update
 ```
 
+
+## tmux
+
+Install and configure [tmux](../terminal/tmux.md)  
+
+
+## Emacs
+
+```
+which emacs
+```
+
+To install it:
+
+```
+sudo apt-get install emacs
+```
+
+Then configure it with:
+
+```
+cd
+ln -s public/system/editors/emacs/.emacs .emacs
+ln -s public/system/editors/emacs/.emacs.d/ .emacs.d
+emacs &
+```
+
+see also 
+[editors/emacs/emacs.md](editors/emacs/emacs.md)
+
+Or more generally
+[text editors](editors/)
 
 
 ### File Browser 

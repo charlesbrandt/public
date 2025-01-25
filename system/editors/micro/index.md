@@ -16,6 +16,13 @@ cd ~/.config
 ln -s ~/combined/public/system/editors/micro/micro.conf micro
 ```
 
+On wayland, I need `xclip` to be installed for copy-and-paste to work outside of the terminal:
+
+```
+sudo apt-get install xclip
+```
+
+
 ## Build 
 
 It's also possible to build from source pretty easily if you have a Go compiler installed
