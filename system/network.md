@@ -335,6 +335,13 @@ On the client machine, the config files need to go into `/etc/wireguard`
 sudo cat /etc/wireguard/wg0.conf
 ```
 
+Make sure the file is owned by root:
+
+```
+sudo chown root: /etc/wireguard/wg0.conf
+sudo chmod 640 /etc/wireguard/wg0.conf 
+```
+
 Clients need a few things to be installed first:
 
 ```

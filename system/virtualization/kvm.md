@@ -40,7 +40,29 @@ If you are working on a desktop computer you might want to install a GUI tool to
 
 ```
 sudo apt-get install virt-manager
-````
+```
+
+To start and stop VMs:
+    
+```
+sudo virt-manager
+```
+
+Under main virt-viewer window:
+
+View -> Scale Display -> Always
+
+Under main virt-manager, current machine settings ('i')
+
+Video Virtio -> Video Model -> Virtio
+(set while machine is off?)
+
+
+spice-vdagent
+copy-paste for qemu
+
+
+
 
 For a list of osinfo strings to use with the `--os-variant` option:
 
@@ -59,12 +81,6 @@ Connect to the new VM using virt-viewer:
 
 ```
 virt-viewer -c qemu:///system xubuntu
-```
-
-To start and stop VMs:
-    
-```
-sudo virt-manager
 ```
 
 To change the display size, just use the native OS settings to adjust the size. (No integration like VirtualBox Addons that changes the resolution dynamically when the window is resized)
