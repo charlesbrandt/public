@@ -1,9 +1,22 @@
-
-[{
-  "Name": "moments",
-  "Description": "Add timestamps to documents",
-  "Tags": ["moments", "timestamp"],
-  "Website": "https://gitlab.com/charlesbrandt/moments-plugin",
-  "Versions": [
-  ]
-}]
+[
+  {
+    "Name": "moments",
+    "Description": "Add timestamps to documents and manage buffers",
+    "Tags": [
+      "moments",
+      "timestamp",
+      "buffers",
+      "tabs"
+    ],
+    "Website": "https://gitlab.com/charlesbrandt/moments-plugin",
+    "Versions": [
+      {
+        "Version": "1.0.0",
+        "Url": "https://gitlab.com/charlesbrandt/moments-plugin/-/archive/main/moments-plugin-main.zip",
+        "Require": {
+          "micro": ">=2.0.0"
+        }
+      }
+    ]
+  }
+]

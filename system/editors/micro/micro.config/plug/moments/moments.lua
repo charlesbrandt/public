@@ -1,3 +1,5 @@
+VERSION = "1.0.0"
+
 local micro = import("micro")
 local config = import("micro/config")
 local buffer = import("micro/buffer")
@@ -26,6 +28,9 @@ function init()
     config.MakeCommand("buffs", enumBuffers, config.NoComplete)
     config.MakeCommand("files", enumBuffers, config.NoComplete)
     config.MakeCommand("tabs", enumBuffers, config.NoComplete)
+    -- commands for opening files from a list
+    config.MakeCommand("openfiles", openFiles, config.NoComplete)
+    config.MakeCommand("opentabs", openFiles, config.NoComplete)
 end
 
 function also(bp)
@@ -40,6 +45,10 @@ function requested(bp)
         local timestamp = line:sub(3, 21)
         local tags = line:sub(22)
         local newLine = 'requested [' .. timestamp .. ']' .. tags
+        -- Replace the current line with the new line
+        bp.Buf:Replace(buffer.Loc(0, cursor.Y), buffer.Loc(#line, cursor.Y), newLine)
+    else
+        micro.InfoBar():Message("Current line is not a timestamp line (should start with '# ')")
     end
 end
 
@@ -96,27 +105,89 @@ function todaytop(bp)
     cursor:End()
 end
 
-function loadBuffers(bp)
-    -- TODO: this is not working
-    -- Get the selected text in the buffer
-    local selection = bp.Buf:GetSelection()
-
-    -- Split the selection into lines
+function openFiles(bp)
+    local buf = bp.Buf
+    local cursor = bp.Buf:GetActiveCursor()
     local files = {}
-    for path in selection:gmatch("[^\n]+") do
-        table.insert(files, path)
+    
+    -- Get the selection directly using GetSelection
+    local selection = bp.Buf:GetSelection()
+    
+    -- Debug info
+    micro.InfoBar():Message("Selection length: " .. #selection)
+    
+    if selection ~= "" then
+        -- Split the selection into lines
+        for path in selection:gmatch("[^\r\n]+") do
+            path = path:match("^%s*(.-)%s*$") -- Trim whitespace
+            if path ~= "" then
+                table.insert(files, path)
+                micro.InfoBar():Message("Added path: " .. path)
+            end
+        end
+    else
+        -- Fallback to checking cursor selection
+        if cursor:HasSelection() then
+            -- Get the selected text
+            local startLoc = cursor.CurSelection[1]
+            local endLoc = cursor.CurSelection[2]
+            
+            micro.InfoBar():Message("Using cursor selection from line " .. startLoc.Y .. " to " .. endLoc.Y)
+            
+            -- Process each line in the selection
+            for i = startLoc.Y, endLoc.Y do
+                local line = buf:Line(i)
+                if line:match("%S") then  -- Skip empty lines
+                    local path = line:match("^%s*(.-)%s*$")  -- Trim whitespace
+                    table.insert(files, path)
+                    micro.InfoBar():Message("Added path from line " .. i .. ": " .. path)
+                end
+            end
+        else
+            -- If no selection, get all lines in the buffer
+            micro.InfoBar():Message("No selection found, using all lines")
+            for i = 0, buf:LinesNum() - 1 do
+                local line = buf:Line(i)
+                if line:match("%S") then  -- Skip empty lines
+                    table.insert(files, line:match("^%s*(.-)%s*$"))  -- Trim whitespace
+                end
+            end
+        end
     end
-
-    -- Open each file in a new tab
+    
+    micro.InfoBar():Message("Found " .. #files .. " file paths")
+    
+    -- Count how many valid files we found
+    local count = 0
+    
+    -- Open each file in new tabs
     for i = 1, #files do
         local path = files[i]
         if path ~= "" then
-            micro.InfoBar():Message("Opening " .. path)
-            micro.InfoBar():Update()
-            -- create a new tab before opening the path
-            micro.Tabs():NewTab()
-            micro.CurPane():OpenFile(path)
+            -- Try to open the file
+            local success, err = pcall(function()
+                -- Create a new tab
+                micro.Tabs():NewTab()
+                -- The new tab becomes the current tab, so we can open the file in its pane
+                local err = micro.CurPane():OpenFile(path)
+                if err ~= nil then
+                    micro.InfoBar():Message("Error opening " .. path .. ": " .. err)
+                else
+                    count = count + 1
+                end
+            end)
+            
+            if not success then
+                micro.InfoBar():Message("Failed to open: " .. path .. " (" .. tostring(err) .. ")")
+            end
         end
+    end
+    
+    -- Show a summary message
+    if count > 0 then
+        micro.InfoBar():Message("Opened " .. count .. " file(s) in new tabs")
+    else
+        micro.InfoBar():Message("No valid files found to open")
     end
 end
 
