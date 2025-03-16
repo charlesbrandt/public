@@ -13,7 +13,7 @@ cd ~/Downloads
 curl https://getmic.ro | sudo bash
 sudo mv micro /usr/bin
 cd ~/.config
-ln -s ~/combined/public/system/editors/micro/micro.conf micro
+ln -s ~/combined/public/system/editors/micro/micro.config micro
 ```
 
 On wayland, I need `xclip` to be installed for copy-and-paste to work outside of the terminal:

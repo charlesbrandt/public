@@ -21,7 +21,7 @@ Use ssh-copy-id to transfer the public key to the machine you want to be able to
 
     ssh-copy-id user@hostname.example.com
 
-Or, if you're adding the id to a remote service like [Github](https://github.com/settings/keys), show the public key:
+Or, if you're adding the id to a remote service like [Gitlab](https://gitlab.com/-/user_settings/ssh_keys) or [Github](https://github.com/settings/keys), show the public key:
 
     cat .ssh/id_rsa.pub 
 

@@ -78,6 +78,24 @@ https://duckduckgo.com/?t=ffab&q=firefox+extension+copy+html+as+markdown&ia=web
 firefox extension copy html as markdown at DuckDuckGo  
 
 
+### Ad Blockers
+
+Instead of only blocking ads, ublock-origin is a general filter / tracking blocker:  
+https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
+
+https://github.com/gorhill/uBlock/
+
+Beware of false imitations:  
+Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.  
+https://www.tomshardware.com/news/adblock-ublock-fake-google-chrome-browser-extensions,40422.html
+
+Disconnect me is a similar privacy focused extension:
+
+https://disconnect.me/  
+https://addons.mozilla.org/en-us/firefox/addon/disconnect/  
+
+[via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
+
 ### Tab Suspender
 
 'Auto Tab Discard' will automatically put non-active tabs to sleep. It's a good way to keep a lot of tabs loaded in the browser without consuming a lot of active memory or resources. 
@@ -124,24 +142,6 @@ https://addons.mozilla.org/en-US/firefox/addon/ff-tab-suspender/
 Tab Suspender – Get this Extension for Firefox (en-US)  
 
 
-### Ad Blockers
-
-Instead of only blocking ads, ublock-origin is a general filter / tracking blocker:  
-https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/
-
-https://github.com/gorhill/uBlock/
-
-Beware of false imitations:  
-Tom's Hardware: Popular Ad Blockers AdBlock and uBlocker Deemed 'Fake'.  
-https://www.tomshardware.com/news/adblock-ublock-fake-google-chrome-browser-extensions,40422.html
-
-Disconnect me is a similar privacy focused extension:
-
-https://disconnect.me/  
-https://addons.mozilla.org/en-us/firefox/addon/disconnect/  
-
-[via](http://lifehacker.com/disconnect-2-speeds-up-the-web-protects-you-from-third-472942968)
-
 ### Custom CSS 
 
 Some sites, like Wikipedia, don't yet have a user configurable dark mode for their site. (as of 2024) 
@@ -162,7 +162,7 @@ uBlock can style CSS - you don't need a separate addon for that : r/firefox
 If you make frequent use of profiles, it can help to create a default profile.
 
 Locate where your profiles are stored:  
-https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-data
+https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-dat
 
 Available on `about:support` using the "Open Directory" button in the "Profile Directory" section. 
 
@@ -178,6 +178,28 @@ Previously
 ~/.mozilla/firefox
 ```
 
+#### Creating Profiles
+
+https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles
+
+```
+about:profiles
+```
+
+It's faster to create new profiles with the browser already loaded. 
+
+I make profiles for different domains of research. For example:
+
+```
+development
+shopping
+home
+music
+work
+design
+```
+
+Ideally each one starts with a unique letter/number to make it easier to update them with the default profile. 
 
 #### Backup and Restore Profiles
 
@@ -189,11 +211,15 @@ To apply your template profile
 
 ```
 cd path/to/profiles
-git clone git@gitlab.com:charlesbrandt/firefox-profile.git
 # Create the new profile via Firefox
 rm -r hn95wtr8.example/*
 cp -r firefox-profile/* hn95wtr8.example/
 ```
+
+There's a script that helps do this for 
+[browsers.py](./browsers.py)
+
+
 
 
 If you need to update the order, try manually editing the settings (make a backup copy first!)

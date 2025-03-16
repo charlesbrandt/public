@@ -16,19 +16,15 @@ cd combined
 git clone https://gitlab.com/charlesbrandt/public.git
 ```
 
-If the system requires a static IP, update that now. [network](../network.md)
+If the system requires a static IP, configure now: [network](../network.md)
 
 Install your preferred [editor](../editors/)  
-../editors/micro/index.md
-
-Search utilities
-../../search.md
-
-Install [Docker / Docker-compose](../virtualization/docker.md)  
+  - [micro](../editors/micro/index.md)
 
 Edit `/etc/hosts`
 
 [Apply Gnome 3 settings](window-managers/gnome3.md) (for things like trackpad settings, screen brightness, etc)
+Change the desktop background. (right-click on the desired image in a file explorer and choose "Set as Desktop Background.")
 
 Change the Terminal background.   
   - Preferences -> Profiles -> Unnamed -> Colors"  
@@ -36,7 +32,11 @@ Change the Terminal background.
   - Set the default terminal height to be the full height of your desktop  
     (Initial terminal size)
 
-Change the desktop background. (right-click on the desired image in a file explorer and choose "Set as Desktop Background.")
+Update your `.bashrc`
+
+```
+cp public/system/linux/.bashrc .bashrc
+```
 
 Launch and configure your [browser](../browsers.md)  
 
@@ -47,6 +47,11 @@ Install a [password manager](../password-manager.md)
 ```
 sudo apt install keepassxc
 ```
+
+Search utilities
+[search](../../search.md)
+
+Install [Docker / Docker-compose](../virtualization/docker.md)  
 
 [Install other applications, as needed.](../applications.md)
 

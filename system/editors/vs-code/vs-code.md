@@ -47,6 +47,7 @@ See below for a description about what the settings do
   "update.mode": "none",
   "explorer.confirmDragAndDrop": false,
   "window.zoomLevel": 0,
+  "window.titleBarStyle": "custom",
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "iconify.inplace": false,
@@ -71,6 +72,20 @@ See below for a description about what the settings do
 ### Preference Details
 
 Descriptions of what the above options are setting
+
+### Wiindow Title Bar Style
+
+Was not able to resize on Ubuntu 24.04. This fixes for me:
+
+```
+  "window.titleBarStyle": "custom",
+```
+
+https://askubuntu.com/questions/1515824/cant-resize-windows
+wayland - Cant resize windows - Ask Ubuntu
+https://github.com/microsoft/vscode/issues/212430#issuecomment-2109960783
+VSCode is not compatible with Ubuntu 24.04 with wayland default · Issue #212430 · microsoft/vscode
+
 
 ### Ignore files
 
@@ -314,14 +329,13 @@ Recommended extensions can be configured as part of a project. These settings ar
   "recommendations": [
     "jmfirth.vsc-space-block-jumper",
     "vue.volar",
-    "dbaeumer.vscode-eslint",
     "ms-python.python",
     "ms-vscode-remote.remote-ssh",
     "redhat.vscode-yaml",
     "streetsidesoftware.code-spell-checker",
-    "csstools.postcss",
-    "lokalise.i18n-ally",
-    "wix.vscode-import-cost"
+    "wix.vscode-import-cost",
+    "saoudrizwan.claude-dev",
+    "github.copilot"
   ]
 }
 ```
@@ -333,6 +347,23 @@ Use `@recommended` to filter in extension panel
 See also: 
 
 https://code.visualstudio.com/docs/getstarted/settings
+
+To have VScode install all extensions in [extensions.json](extensions.json):
+
+```
+cd ~/public/system/editors/vs-code
+code .
+```
+
+Recommended extensions archive:
+
+```json
+    "dbaeumer.vscode-eslint",
+    "csstools.postcss",
+    "lokalise.i18n-ally",
+
+```
+
 
 ### Space Block Jumper
 
@@ -371,13 +402,6 @@ GitHub - johnsoncodehk/volar: ⚡ Fast Vue Language Support Extension
 
 https://www.duckduckgo.com/search?q=vs+code+extensions+vue
 vs code extensions vue - Google Search
-
-
-### eslint
-
-    "dbaeumer.vscode-eslint",
-
-It seems that eslint needs to be installed on the host os for the current project. This is a case where node_modules encapsulated in docker are not accessible to the host os, including vscode. `npm install` seems to do the trick
 
 
 ### Python
@@ -468,6 +492,21 @@ The Microsoft version has been deprecated:
 https://github.com/Microsoft/vscode-spell-check/blob/master/README.md  
 
 
+### Import Cost
+
+wix.vscode-import-cost
+
+### Cline
+
+Once cline is installed, configure your model host / api keys as needed.
+
+### eslint
+
+    "dbaeumer.vscode-eslint",
+
+It seems that eslint needs to be installed on the host os for the current project. This is a case where node_modules encapsulated in docker are not accessible to the host os, including vscode. `npm install` seems to do the trick
+
+
 ### CSS
 
     "csstools.postcss",
@@ -485,10 +524,6 @@ Tailwind CSS IntelliSense
 
 https://blog.katherinempeterson.com/4-must-have-vscode-extensions-for-tailwindcss
 
-
-### Import Cost
-
-wix.vscode-import-cost
 
 
 ### Il8n-ally

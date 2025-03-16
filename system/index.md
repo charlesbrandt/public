@@ -2,6 +2,8 @@
 
 Underlying systems change over time. These notes track the tools and configurations that help use systems more efficiently.
 
+For the most up to date versions, check [Gitlab](https://gitlab.com/charlesbrandt/public/-/tree/main/system?ref_type=heads)
+
 ## Applications 
 
 [Browsers](browsers.md)  

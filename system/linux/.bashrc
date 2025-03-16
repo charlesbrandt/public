@@ -5,15 +5,15 @@
 # to compare an original, try:
 # cd ~/; diff .bashrc /c/public/moments/editors/.bashrc
 
-# Add ~/.local/ to PATH
-export PATH=$HOME/.local/bin:/usr/bin:$HOME/tools/:$PATH
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+# this setting works with docker.io
+export DOCKER_HOST=unix:///var/run/docker.sock
+# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
-alias dcu='docker-compose up -d'
-alias dcd='docker-compose down --remove-orphans'
-alias dcp='docker-compose ps'
-alias dce='docker-compose exec'
-alias dcl='docker-compose logs'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down --remove-orphans'
+alias dcp='docker compose ps'
+alias dce='docker compose exec'
+alias dcl='docker compose logs'
 
 alias gcu='git commit -m "Update notes"; git push'
 
@@ -30,6 +30,9 @@ esac
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+# Add ~/.local/ to PATH
+export PATH=$HOME/.local/bin:/usr/bin:$HOME/tools/:$PATH
 
 PATH=":/opt/local/bin:/usr/local/go/bin:~/go/bin:~/.yarn/bin:~/.local/bin:${PATH}"
 export PATH

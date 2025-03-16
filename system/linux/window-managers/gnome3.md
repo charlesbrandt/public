@@ -37,20 +37,7 @@ https://duckduckgo.com/?t=ffab&q=on+linux+gnome%2C+is+there+a+way+to+zoom+in+and
 on linux gnome, is there a way to zoom in and out on a screen the way there is on mac? at DuckDuckGo  
 
 
-## Dock Settings
-
-Settings -> Appearance -> Auto-hide the Dock
-
-Auto-hide the Dock (Settings->Appearance->Dock)
-
-Update Blank Screen Preferences (Settings->Power->Blank Screen)
-
-## Desktop Icons
-
-Settings -> Appearance -> Desktop Icons -> Toggle "Show Personal folder"
-
-
-## Dark Mode
+## Appearance -> Dark Mode
 
 Good for testing if web pages respond to the operating system dark mode preference:
 
@@ -58,6 +45,21 @@ Settings -> Appearance -> Dark Mode
 
 https://itsfoss.com/dark-mode-ubuntu/  
 How to Enable Full Dark Mode in Ubuntu 20.04  
+
+## Ubuntu Desktop
+
+### Dock Settings
+
+Settings -> Ubunut Desktop -> Auto-hide the Dock
+
+### Desktop Icons
+
+Settings -> Appearance -> Desktop Icons -> Toggle "Show Personal folder"
+
+## Power 
+
+Update Blank Screen Preferences (Settings->Power->Blank Screen)
+
 
 
 ## Gnome Tweaks
@@ -78,7 +80,9 @@ run `gnome-tweaks`
 gnome-tweaks
 ```
 
-## Titlebar Buttons
+## Windows 
+
+### Titlebar Buttons
 
 Adjust window button placement 
 
@@ -101,7 +105,7 @@ gsettings set org.gnome.desktop.background picture-options 'none'
 ```
 
 ```
-gsettings set org.gnome.desktop.background primary-color '#DDDDDD'
+gsettings set org.gnome.desktop.background primary-color '#333333'
 ```
 
 To see what options are available:

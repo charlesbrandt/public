@@ -16,68 +16,14 @@ https://github.com/wsargent/docker-cheat-sheet
 Introduction to what containers are:  
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
-## See Also
+## Tools 
 
-[Kubernetes](kubernetes.md)
+TODO:
+https://github.com/jesseduffield/lazydocker
 
-[Docker Compose](docker-compose.md)
-
-[Orchestration](orchestration.md)
-
-https://gitlab.com/fern-seed/web-ui-api-db/
-
-https://gitlab.com/fern-seed/web-ui-api-db/-/blob/main/README-docker.md
-
-https://github.com/veggiemonk/awesome-docker  
-GitHub - veggiemonk/awesome-docker: A curated list of Docker resources and projects  
-
-
-## Dockerfile
-
-How you set up the image that gets run in a container
-
-https://docs.docker.com/engine/reference/builder/
-
-A Dockerfile determines how your image is configured (and ultimately what is run in your container). These can be tracked as part of the project's source code. 
-
-https://docs.docker.com/get-started/part2/
-
-to keep a container running, choose a process that won't exit:
-
-```
-CMD [ "tail", "-f", "/dev/null" ]
-```
-
-See also [dockerfiles](dockerfiles.md)
-
-```
-FROM node:lts
-
-# Set the working directory.
-WORKDIR /srv
-```
-
-
-## Installation
-
-https://docs.docker.com/engine/install/ubuntu/
-
-Just follow along. These stay more up to date
-
-
-https://docs.docker.com/engine/install/
-
-
-At this point Docker should be installed and you can verify with:
-
-```
-sudo systemctl status docker
-```
-
-### System Config
+## Aliases
 
 Create bash aliases
-
 
 Add the following to your `.bashrc` file (or equivalent)
 
@@ -90,26 +36,148 @@ alias dcl='docker compose logs'
 ```
 
 
-To expose privileged ports (< 1024), 
+## Installation
+
+When it comes to installing Docker on Ubuntu, you have two main options: using the packages distributed via the official Ubuntu repositories or using the packages provided directly by Docker.
+
+
+### Packages distributed via Ubuntu
+
+Install Docker:
+
+```bash
+sudo apt update
+sudo apt install docker.io
+```
+    
+Add Your User to the Docker Group (Optional):
+While this step is not strictly necessary for rootless mode, it allows you to run Docker commands without using `sudo`. You can add your user to the `docker` group with the following command:
+    
+```bash
+sudo usermod -aG docker $USER
+```
+    
+Log out and log back in for this change to take effect.
+
+This version does not appear to support the newer `docker compose` syntax of the `docker-ce` version. Install it separately:
 
 ```
-sudo micro /etc/sysctl.conf 
+sudo apt install docker-compose 
 ```
 
-Add the line: 
-```
-net.ipv4.ip_unprivileged_port_start=80
-```
-
-Then apply changes to the system
-```
-sudo sysctl -p
-```
-
-Alternatively, set CAP_NET_BIND_SERVICE on rootlesskit binary and restart the daemon.
+Be sure to set `DOCKER_HOST` in `.bashrc`:
 
 ```
-sudo setcap cap_net_bind_service=ep $(which rootlesskit)
+# this setting works with docker.io
+export DOCKER_HOST=unix:///var/run/docker.sock
+```
+
+
+### Packages provided directly by Docker
+
+Just follow along. These stay more up to date
+
+https://docs.docker.com/engine/install/ubuntu/
+
+https://docs.docker.com/engine/install/
+
+
+### Verify
+
+At this point Docker should be installed and you can verify with:
+
+```
+sudo systemctl status docker
+```
+
+## GPU Support
+
+Using GPU via docker 
+
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+
+```
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+```
+
+```
+sudo apt-get update
+```
+
+```
+sudo apt-get install -y nvidia-container-toolkit
+```
+
+Alternative, concise version of the first command (untested)
+
+```
+distribution=$(. /etc/os-release;echo  $ID$VERSION_ID)  
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -  
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+```
+
+https://saturncloud.io/blog/how-to-install-pytorch-on-the-gpu-with-docker/
+
+
+### Verify
+
+
+```
+services:
+  inference:
+    build: .
+    container_name: inference
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+      - .:/app
+    command: sh -c "while true; do sleep 1; done"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    stop_signal: SIGINT
+```
+
+
+```
+sudo docker-compose up -d
+sudo docker-compose exec inference bash
+nvidia-smi
+```
+
+
+
+Or an ollama example:
+
+```
+services:
+  ollama:
+    volumes:
+      - ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+    ports:
+      - ${OPEN_WEBUI_PORT-11434}:11434
+    # GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: ${OLLAMA_GPU_DRIVER-nvidia}
+              count: ${OLLAMA_GPU_COUNT-1}
+              capabilities:
+                - gpu
+
 ```
 
 
@@ -118,7 +186,7 @@ sudo setcap cap_net_bind_service=ep $(which rootlesskit)
 
 Visit https://docs.docker.com/go/rootless/ to learn about rootless mode.
 
-Seems necessary to still install docker as usual above. 
+Seems necessary to still install docker as usual. 
 
 ```
 sudo apt-get install -y uidmap
@@ -154,8 +222,75 @@ Make sure the following environment variables are set by adding them to `~/.bash
 ```
 export PATH=/usr/bin:$PATH
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+```
+
+
+Alternate notes
+
+**Install the Rootless Kit:** To set up Docker to run in rootless mode, you need to install the `docker-rootless-extras` package. This can be done with the following command:
+    
+```bash
+sudo apt install docker-rootless-extras
+```
+
+yields
+```
+sudo apt install docker-rootless-extras
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package docker-rootless-extras
+```
+    
+**Start the Rootless Docker Daemon:** Once the `docker-rootless-extras` package is installed, you can start the rootless Docker daemon using the following command:
+    
+```bash
+dockerd-rootless-setuptool.sh install
+```
+    
+This script will set up the necessary environment and start the Docker daemon in rootless mode.
+    
+**Configure Systemd (Optional):** If you want the rootless Docker daemon to start automatically on system boot, you can enable the systemd service:
+    
+```bash
+systemctl --user enable docker
+systemctl --user start docker
+```
+
+
+
+
+
+
+
+
+
+
+
+## System configurations
+
+To expose privileged ports (< 1024), 
 
 ```
+sudo micro /etc/sysctl.conf 
+```
+
+Add the line: 
+```
+net.ipv4.ip_unprivileged_port_start=80
+```
+
+Then apply changes to the system
+```
+sudo sysctl -p
+```
+
+Alternatively, set CAP_NET_BIND_SERVICE on rootlesskit binary and restart the daemon.
+
+```
+sudo setcap cap_net_bind_service=ep $(which rootlesskit)
+```
+
 
 
 
@@ -269,41 +404,32 @@ https://docs.docker.com/engine/reference/commandline/ps/
 
 
 
-## Shares & Storage
 
-It is possible to share storage between the host and containers. For a general overview:
 
-https://docs.docker.com/storage/
+## Dockerfile
 
-Bind Mounts are shares data between the container and the host:
+How you set up the image that gets run in a container
 
-https://docs.docker.com/storage/bind-mounts/
+https://docs.docker.com/engine/reference/builder/
 
-Volumes are encapsulated in the container engine itself (managed separately from the host):
+A Dockerfile determines how your image is configured (and ultimately what is run in your container). These can be tracked as part of the project's source code. 
 
-https://docs.docker.com/storage/volumes/
+https://docs.docker.com/get-started/part2/
 
-For development, a bind mount may work well. For deployments, a volume is a better choice. 
-
-These can be specified when running a container, or as part of a compose setup:
+to keep a container running, choose a process that won't exit:
 
 ```
-docker run -d \
-  -it \
-  --name devtest \
-  --mount type=bind,src="$(pwd)"/target,dst=/app \
-  nginx:latest
+CMD [ "tail", "-f", "/dev/null" ]
 ```
 
-### Copy Data
+See also [dockerfiles](dockerfiles.md)
 
-You can copy data into and out of a container manually:
+```
+FROM node:lts
 
-// don't use `*` with `docker cp`
-docker cp e9f10889f0da:/synthea/output/fhir ui/public/data/
-
-https://docs.docker.com/engine/reference/commandline/cp/  
-docker cp | Docker Documentation  
+# Set the working directory.
+WORKDIR /srv
+```
 
 
 
@@ -341,7 +467,6 @@ https://www.brianchristner.io/docker-image-base-os-size-comparison/
 
 https://docs.docker.com/docker-hub/official_images/
 
-
 ### Building
 
 ```
@@ -360,6 +485,9 @@ docker build -t simple-node -f Dockerfile.debug .
 ```
     
 https://docs.docker.com/engine/reference/commandline/build/
+
+
+
 
 ## Running a Container
 
@@ -503,54 +631,44 @@ docker start container at boot at DuckDuckGo
 
 
 
-## Networkingservices:
-  ollama:
-    volumes:
-      - ollama:/root/.ollama
-    container_name: ollama
-    pull_policy: always
-    tty: true
-    restart: unless-stopped
-    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
-    ports:
-      - ${OPEN_WEBUI_PORT-11434}:11434
-    # GPU support
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: ${OLLAMA_GPU_DRIVER-nvidia}
-              count: ${OLLAMA_GPU_COUNT-1}
-              capabilities:
-                - gpu
+## Shares & Storage
+
+It is possible to share storage between the host and containers. For a general overview:
+
+https://docs.docker.com/storage/
+
+Bind Mounts are shares data between the container and the host:
+
+https://docs.docker.com/storage/bind-mounts/
+
+Volumes are encapsulated in the container engine itself (managed separately from the host):
+
+https://docs.docker.com/storage/volumes/
+
+For development, a bind mount may work well. For deployments, a volume is a better choice. 
+
+These can be specified when running a container, or as part of a compose setup:
+
+```
+docker run -d \
+  -it \
+  --name devtest \
+  --mount type=bind,src="$(pwd)"/target,dst=/app \
+  nginx:latest
+```
+
+### Copy Data
+
+You can copy data into and out of a container manually:
+
+// don't use `*` with `docker cp`
+docker cp e9f10889f0da:/synthea/output/fhir ui/public/data/
+
+https://docs.docker.com/engine/reference/commandline/cp/  
+docker cp | Docker Documentation  
 
 
-  open-webui:
-    build:
-      context: .
-      args:
-        OLLAMA_BASE_URL: '/ollama'
-      dockerfile: Dockerfile
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-    container_name: open-webui
-    volumes:
-      - open-webui:/app/backend/data
-      - /home/account/docker-volume-backups:/backups
-    depends_on:
-      - ollama
-    ports:
-      - ${OPEN_WEBUI_PORT-3000}:8080
-    environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
-      - 'WEBUI_SECRET_KEY='
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    restart: unless-stopped
-
-volumes:
-  ollama: {}
-  open-webui: {}
-
+## Networking
 
 See all networks currently configured:
 
@@ -662,6 +780,17 @@ netstat -pan | egrep " LISTEN "
 ```    
 
 
+## Users
+
+https://medium.com/@mccode/processes-in-containers-should-not-run-as-root-2feae3f0df3b
+
+```
+RUN groupadd --gid 9876 projectgroup
+RUN useradd -ms /bin/bash --uid 1234567 --gid 9876 projectdev
+USER projectdev
+```
+
+
 ## Context Specific Applications
 
 ### Node
@@ -684,12 +813,19 @@ https://hub.docker.com/_/python/
 https://stackoverflow.com/questions/34398632/docker-how-to-run-pip-requirements-txt-only-if-there-was-a-change
 
 
-## Users
+## See Also
 
-https://medium.com/@mccode/processes-in-containers-should-not-run-as-root-2feae3f0df3b
+[Kubernetes](kubernetes.md)
 
-```
-RUN groupadd --gid 9876 projectgroup
-RUN useradd -ms /bin/bash --uid 1234567 --gid 9876 projectdev
-USER projectdev
-```
+[Docker Compose](docker-compose.md)
+
+[Orchestration](orchestration.md)
+
+https://gitlab.com/fern-seed/web-ui-api-db/
+
+https://gitlab.com/fern-seed/web-ui-api-db/-/blob/main/README-docker.md
+
+https://github.com/veggiemonk/awesome-docker  
+GitHub - veggiemonk/awesome-docker: A curated list of Docker resources and projects  
+
+

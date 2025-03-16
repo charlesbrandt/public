@@ -2,13 +2,12 @@
   "recommendations": [
     "jmfirth.vsc-space-block-jumper",
     "vue.volar",
-    "dbaeumer.vscode-eslint",
     "ms-python.python",
     "ms-vscode-remote.remote-ssh",
     "redhat.vscode-yaml",
     "streetsidesoftware.code-spell-checker",
-    "csstools.postcss",
-    "lokalise.i18n-ally",
-    "wix.vscode-import-cost"
+    "wix.vscode-import-cost",
+    "saoudrizwan.claude-dev",
+    "github.copilot"
   ]
 }
