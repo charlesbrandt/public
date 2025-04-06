@@ -1,5 +1,7 @@
 # Inkscape
 
+sudo apt-get install inkscape
+
 Add Inskape to favorites in application launcher
 
 Launch Inkscape
