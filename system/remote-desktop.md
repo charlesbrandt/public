@@ -134,6 +134,122 @@ try restarting the machine after peripherals unplugged. Still able to access? Ye
 
 VNC is free and open source and available by default on Ubuntu.
 
+#### Main Desktop (Login Server)
+
+##### Confirm X11 is in use
+
+```
+echo $XDG_SESSION_TYPE
+```
+
+If the output is "wayland", edit the GDM configuration file to enable Xorg:
+
+```
+sudo nano /etc/gdm3/custom.conf
+```
+
+Uncomment the line `#WaylandEnable=false` by removing the `#` at the beginning of the line. Save the file and exit the editor.
+
+Reboot the system for the changes to take effect:
+```
+sudo reboot
+```
+
+##### x11vnc
+
+To attach to the existing (main, console) desktop, you'll want to use "x11vnc":
+
+```
+sudo apt-get update && sudo apt-get install x11vnc net-tools
+```
+
+Set VNC Password: Set a password for the VNC connection. 
+
+Use the correct user that the service will be run by
+```
+x11vnc -storepasswd
+```
+
+This password will be stored in a file that requires root privileges to read: 
+
+```
+sudo x11vnc -storepasswd /etc/x11vnc.pass
+```
+
+Configure the service
+
+```
+sudo micro /etc/systemd/system/x11vnc.service
+```
+
+**Populate x11vnc.service:** 
+Add the following content to the file. Adjust the `User` parameter if you configured automatic login for a specific user (replace `account` with the username):
+
+```
+[Unit]
+Description=VNC Server for X11
+Requires=graphical.target
+After=graphical.target
+
+[Service]
+Type=simple
+User=account
+ExecStart=/usr/bin/x11vnc -forever -usepw -rfbport 5900 -display :0 
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+Save the file and exit the editor.
+
+**Enable and Start the Service:** Enable the service to start at boot and start it immediately:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable x11vnc.service
+sudo systemctl start x11vnc.service
+```
+
+
+
+TODO: This looks like the same scenario as the native Ubuntu screen sharing option (quick share) where remote connections are only available after local login. 
+
+Try out setting up via services
+
+
+##### testing and other approaches
+
+```
+x11vnc -storepasswd
+
+x11vnc -forever -bg -usepw -display :0
+```
+
+
+
+With this approach, the service will only start after the desktop logs in. (Might be okay if automatic login is enabled.)
+
+To start x11vnc automatically at login, create a script `x11vnc.sh`:
+
+```
+echo "/usr/bin/x11vnc -forever -bg -usepw -display :0" > ~/x11vnc.sh
+chmod +x ~/x11vnc.sh
+```
+
+Then use the desktop's GUI to add the automatic startup:
+
+    Start -> Settings -> Session and Startup -> Application Autostart -> Add
+
+Be sure to specify the full path to the script:
+
+    /home/username/x11vnc.sh
+
+via:
+http://www.olij.co.uk/whitenoise/set-up-vnc-with-a-ubuntu-server-and-mac-client-simple-ssh-tunnel/
+
+
+
 #### Quick Share (Ubuntu)
 
 Quick share is available, but requires logging in every time. 
@@ -157,34 +273,6 @@ Don't enable it on the network. This way an SSH tunnel must be established first
 !! NOTE !! 
 This will only be enabled after the host has logged in to the desktop
 Not a good option if you don't have a local keyboard / monitor to log in with
-
-#### Main Desktop (Login Server)
-
-TODO: This looks like the same scenario as the native Ubuntu screen sharing option (above) where remote connections are only available after local login. 
-
-To attach to the existing (main, console) desktop, you'll want to use "x11vnc":
-
-    sudo apt-get install x11vnc
-
-    x11vnc -storepasswd
-
-    x11vnc -forever -bg -usepw -display :0
-
-To start x11vnc automatically at login, create a script:
-
-    echo "/usr/bin/x11vnc -forever -bg -usepw -display :0" > ~/x11vnc.sh
-    chmod +x ~/x11vnc.sh
-
-Then use the desktop's GUI to add the automatic startup:
-
-    Start -> Settings -> Session and Startup -> Application Autostart -> Add
-
-Be sure to specify the full path to the script:
-
-    /home/username/x11vnc.sh
-
-via:
-http://www.olij.co.uk/whitenoise/set-up-vnc-with-a-ubuntu-server-and-mac-client-simple-ssh-tunnel/
 
 
 #### Separate Virtual Desktop
@@ -258,3 +346,34 @@ It is possible to launch the VNC server when logging in to the desktop (see belo
 
 
 
+### x11vnc startup test runs
+
+```
+[Unit]
+Description=VNC Server for X11
+Requires=graphical.target
+After=graphical.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/x11vnc -rfbauth /etc/x11vnc.pass -rfbport 5900 -display :0 -auth /var/run/lxdm/lxdm-\:0.auth \
+ -forever -bg -o /var/log/x11vnc.log -xkb -noxrecord -noxfixes -noxdamage -nomodtweak
+
+[Install]
+WantedBy=multi-user.target
+```
+
+broken
+```
+[Unit]
+Description=Start x11vnc server at boot
+After=graphical.target network.target syslog.target
+
+
+Type=simple
+User=account
+ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared
+
+[Install]
+WantedBy=multi-user.target
+```

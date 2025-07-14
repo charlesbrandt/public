@@ -365,6 +365,74 @@ Recommended extensions archive:
 ```
 
 
+### Cline
+
+saoudrizwan.claude-dev
+
+Ah... this is it for me. Open source. Automatic. 
+
+It does require some pretty smart models. OpenRouter has been helpful for that. 
+
+### Mermaid Charts Preview
+
+bierner.markdown-mermaid
+
+When working with markdown files in VSCode, you can preview them with ctrl-shift-v.
+This extension will allow mermaid diagrams to render
+
+
+### Github Copilot
+
+github.copilot-chat
+
+This is useful for enabling auto-complete for the github commit message. That feature is so useful! It's often more informative than anything I would write on my own. 
+It allows more time to be spent in reviewing the availble changes and making sure they fit together. 
+
+Note: 
+
+The autocomplete drives me crazy. 
+When I want help writing code, I much prefer to use GitHub Copilot Chat style interfaces. (or Cline) 
+It may be possible to try to disable autocomplete behavior with the following 
+`github.copilot.enable` settings in the Settings editor.
+
+```
+"github.copilot.enable": {
+  "*": false,
+  "scminput": true
+},
+"github.copilot.inlineSuggest.enable": false
+```
+
+Note this may need to be set on the remote host if connecting over SSH:
+
+__Apply Settings in the Right Location__: You'll need to modify the settings on the remote host. You can do this by:
+
+- Opening the Command Palette (Ctrl+Shift+P or Cmd+Shift+P)
+- Typing "Preferences: Open Remote Settings"
+- Selecting "Remote [SSH: your-host]"
+-
+
+
+
+This did not seem to have any effect (at least on localhost)
+```
+  "github.copilot.enable": false,
+  "github.copilot.advanced": {
+    "disableForComments": true
+  }
+}
+```
+
+https://code.visualstudio.com/docs/copilot/ai-powered-suggestions
+
+
+If you install Github Copilot Chat, you will need Github Copilot installed too. If you install one, you get them both. 
+
+VSCode Copilot Chat may be available natively now?  Look for it:
+View -> Chat
+
+
+
 ### Space Block Jumper
 
 jmfirth.vsc-space-block-jumper

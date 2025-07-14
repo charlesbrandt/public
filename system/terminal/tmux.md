@@ -486,9 +486,6 @@ There is a lot of conceptual overlap with tmux and tiling windows managers
 
 [Window Managers]()
 
-where are these notes?
-wayland.txt
-
 https://www.slant.co/topics/1902/~best-tiling-window-managers-for-linux  
 https://www.reddit.com/r/i3wm/comments/66ho9z/why_you_use_tmux_when_already_using_i3/  
 https://www.slant.co/options/1288/~awesome-review  
