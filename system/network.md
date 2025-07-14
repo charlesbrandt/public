@@ -185,6 +185,8 @@ On a linux machine you can install `netstat` to see what ports are currently ope
 ```
 sudo apt install net-tools
 
+sudo netstat -tulpen
+
 netstat -plan 
 
 netstat -pan | egrep " LISTEN "
@@ -208,6 +210,8 @@ lsof -i
 
 via:   
 https://www.thegeekdiary.com/centos-rhel-how-to-find-if-a-network-port-is-open-or-not/  
+
+https://linuxconfig.org/how-to-monitor-network-activity-on-a-linux-system
 
 ### nmap
     

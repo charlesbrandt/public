@@ -45,8 +45,38 @@ sudo apt-get install virt-manager
 To start and stop VMs:
     
 ```
-sudo virt-manager
+virt-manager
 ```
+
+Note: may need to log out and log back in (restart system)
+
+or
+
+```
+newgrp libvirt
+```
+
+via:
+https://askubuntu.com/questions/345218/virt-manager-cant-connect-to-libvirt
+
+### Import Existing
+
+QCOW images are expected to be in 
+
+```
+/var/lib/libvirt/images
+```
+
+Then choose create new machine from existing by selecting qcow and specifying the OS.
+
+Find IP in machine settings and then add a map in `/etc/hosts`
+
+```
+vm 192.168.122.25
+```
+
+### Creating new machine
+
 
 Under main virt-viewer window:
 
