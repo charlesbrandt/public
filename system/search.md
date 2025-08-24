@@ -2,6 +2,20 @@
 
 On *nix systems, the following command line interface (CLI) tools are usually available. 
 
+## Ripgrep
+
+
+https://github.com/BurntSushi/ripgrep
+
+```
+sudo apt-get install ripgrep
+```
+
+```
+rg "look for"
+```
+
+
 ## fd
 
 https://github.com/sharkdp/fd
@@ -42,19 +56,6 @@ find * -iname "*{{look_for}}*"
 ```
 
 lots of parameters that can help. What about narrow by extension?
-
-## Ripgrep
-
-
-https://github.com/BurntSushi/ripgrep
-
-```
-sudo apt-get install ripgrep
-```
-
-```
-rg "look for"
-```
 
 ## Grep
 

@@ -216,8 +216,7 @@ rm -r hn95wtr8.example/*
 cp -r firefox-profile/* hn95wtr8.example/
 ```
 
-There's a script that helps do this for 
-[browsers.py](./browsers.py)
+There's a script that helps do this: `browsers.py`
 
 
 

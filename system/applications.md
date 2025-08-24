@@ -142,7 +142,7 @@ sudo apt update
 
 ## tmux
 
-Install and configure [tmux](../terminal/tmux.md)  
+Install and configure [tmux](./terminal/tmux.md)  
 
 
 ## Emacs

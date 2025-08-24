@@ -49,7 +49,7 @@ sudo apt install keepassxc
 ```
 
 Search utilities
-[search](../../search.md)
+[search](../search.md)
 
 Install [Docker / Docker-compose](../virtualization/docker.md)  
 

@@ -476,7 +476,7 @@ docker run -p 3000:3000 simple-node
 
 Now you should be able to connect to localhost without specifying a VM host. Without the explicit forward for the port, the port won't be available:
 
-http://localhost:3000/
+localhost:3000
     
 To specify a Dockerfile, use -f:
 
