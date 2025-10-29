@@ -405,7 +405,7 @@ https://github.com/creationix/nvm
 Visit the site for the latest version of the command
 
 ```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 ```
 
 Open a new shell and verify with:

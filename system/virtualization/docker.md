@@ -75,7 +75,7 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 
 ### Packages provided directly by Docker
 
-Just follow along. These stay more up to date
+Just follow along with Docker's instructions. These stay more up to date
 
 https://docs.docker.com/engine/install/ubuntu/
 

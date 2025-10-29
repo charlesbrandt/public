@@ -42,6 +42,11 @@ If needed, add path to `.bashrc`
 export PATH=$HOME/.local/bin:$PATH
 ```
 
+## fzf
+
+```
+sudo apt-get install fzf
+```
 
 ## Find 
 

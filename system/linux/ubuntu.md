@@ -2,7 +2,8 @@
 
 ```
 which git
-sudo apt-get install git curl
+sudo apt-get install git curl 
+sudo apt install git-lfs
 ```
 
 [Generate ssh-keys](../terminal/ssh.md)  
