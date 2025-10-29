@@ -61,6 +61,14 @@ Log out and log back in for this change to take effect.
 
 This version does not appear to support the newer `docker compose` syntax of the `docker-ce` version. Install it separately:
 
+newer `docker compose` functionality [as discussed here](https://stackoverflow.com/a/79555851)
+
+```
+sudo apt install docker-compose-v2
+```
+
+older `docker-compose` functionality
+
 ```
 sudo apt install docker-compose 
 ```

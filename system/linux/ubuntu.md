@@ -4,6 +4,7 @@
 which git
 sudo apt-get install git curl 
 sudo apt install git-lfs
+git config --global init.defaultBranch main
 ```
 
 [Generate ssh-keys](../terminal/ssh.md)  
