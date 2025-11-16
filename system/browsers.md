@@ -37,6 +37,9 @@ Set the following:
   - Lately I've been opting for "Blank Page" to minimize distractions.  
   - [Tabliss (see below)](#new-tab) is another nice option
 
+-> In order to transfer links from mobile using sync tabs to a browser on the desktop, this is a new setting that needs to be disabled:
+  - Show sidebar
+    Quickly access bookmarks, tabs from your phone, AI chatbots, and more without leaving your main view.
 
 Ensure "Ctrl+Tab cycles through tabs in recently used order" option is unchecked. (This has been unchecked by default for a while.)
 
