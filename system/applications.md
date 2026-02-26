@@ -51,6 +51,28 @@ Go ahead and grab pip here so it's available for things like `autopep8` for vsco
 sudo apt-get install python3-pip
 ```
 
+## Ghostty
+
+```
+snap install ghostty --classic
+```
+
+https://ghostty.org/docs/install/binary#linux  
+Binaries and Packages - Install  
+
+
+Many other options too. I'm liking Ghostty so far!
+https://itsfoss.com/comparison/ghostty-vs-kitty/  
+Ghostty vs Kitty: Which Modern Terminal is the Best for Linux Users?  
+https://duckduckgo.com/?t=ffab&q=kitty+vs+wezterm+vs+ghostty&ia=web  
+kitty vs wezterm vs ghostty at DuckDuckGo  
+https://www.linuxnest.com/the-best-linux-terminals-in-2025-a-head-to-head-comparison/  
+The Best Linux Terminal in 2025: A Head-to-Head Comparison - LINUX NEST  
+https://duckduckgo.com/?t=ffab&q=kitty+vs+ghostty&ia=web  
+kitty vs ghostty at DuckDuckGo  
+
+
+
 ## Utilities
 
 ```
