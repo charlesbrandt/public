@@ -39,7 +39,8 @@ Graphics -> 168 DPI
 Make a link to the .desktop file:
 
 ```
-sudo ln -s /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/```
+sudo ln -s /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/
+```
 
 Now you can run windows executable files. Download the application.
 
