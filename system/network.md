@@ -1,5 +1,38 @@
 # Networking
 
+## Troubleshooting Toolkit
+### Connectivity & Routing
+- `ping` (Default)
+- `traceroute` (`inetutils-traceroute`)
+- `mtr` (`mtr`)
+
+### Interface & Configuration
+- `ip` (`iproute2` - Default)
+- `nmcli` (`network-manager` - Default)
+- `yamllint` (`yamllint`)
+
+### DNS
+- `dig`, `nslookup` (`dnsutils`)
+
+### Ports & Sockets
+- `netstat` (`net-tools`)
+- `ss` (`iproute2` - Default)
+- `lsof` (`lsof`)
+- `nmap` (`nmap`)
+
+### Traffic Analysis & Discovery
+- `tcpdump` (`tcpdump`)
+- `wireshark` (`wireshark`)
+- `arp-scan` (`arp-scan`)
+- `netdiscover` (`netdiscover`)
+
+### VPN
+- `wg`, `wg-quick` (`wireguard`)
+
+```bash
+sudo apt update && sudo apt install -y inetutils-traceroute mtr yamllint dnsutils net-tools lsof nmap tcpdump arp-scan netdiscover wireguard
+```
+
 The way computers talk to one another. 
 
 Every computer on a network has it's own address. [IP address -- Internet Protocol](https://en.wikipedia.org/wiki/IP_address)

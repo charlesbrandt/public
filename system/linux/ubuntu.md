@@ -55,6 +55,28 @@ Search utilities
 
 Install [Docker / Docker-compose](../virtualization/docker.md)  
 
+## Network Storage (NAS / CIFS mounts)
+
+To mount CIFS/Samba shares (e.g. from a NAS via `/etc/fstab`), install:
+
+```
+sudo apt install cifs-utils
+```
+
+Without this, fstab CIFS entries silently fail at boot. Also add `_netdev,nofail` to mount options so the system doesn't hang if the NAS is unreachable at boot:
+
+```
+//192.168.x.x/share /media/mountpoint cifs uid=1000,username=user,password=pass,_netdev,nofail 0 0
+```
+
+Editors like `micro` may prompt "file changed on disk" after every save on CIFS mounts — CIFS generates an inotify event when you write via the mount, which micro's file watcher picks up as an external change. Pressing `n` is safe (the file is already correct on disk).
+
+After installing, mount all fstab entries with:
+
+```
+sudo mount -a
+```
+
 [Install other applications, as needed.](../applications.md)
 
 
