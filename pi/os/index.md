@@ -53,6 +53,12 @@ sudo dd if=/dev/sda of=~/2024-pi-64bit-os-plex-calibre-web-sd.img bs=1M count=90
 
 ### Shrinking
 
+Note: PiShrink mainly reclaims genuinely free space inside the filesystem (it zeroes slack
+before compressing). If the partition is mostly full of already-compressed data — media files,
+SQLite databases, container images/layers — gzip won't shrink that further, so don't expect a
+dramatic size reduction on a nearly-full, media-heavy card. The savings are roughly proportional
+to how much free space the card actually had, not to its total size.
+
 Install a shrink script
 
 ```
@@ -79,7 +85,26 @@ pishrink.sh: ERROR occurred in line 288: parted failed with rc 1
 
 ### Verify in VM
 
-Try running an image as a virtual machine.  Alternatively, mount it as a file system and extract necessary information from the device. 
+Try running an image as a virtual machine.  Alternatively, mount it as a file system and extract necessary information from the device. This is the Pi-specific case of the more general [P2V](/system/virtualization/p2v.md) workflow.
+
+**Machine-type support varies by QEMU version.** `qemu-system-aarch64`'s native Pi machine types
+have landed gradually — `raspi3b` and earlier have been available for a while, but `raspi4b`
+wasn't added until QEMU 9.0. Check `qemu-system-aarch64 -M help | grep -i raspi` before assuming
+your version supports the Pi model you're verifying; older distro-packaged QEMU builds commonly
+stop at `raspi3b`.
+
+**If your Pi model isn't supported for native VM boot** (or you just want a quicker integrity
+check), mount-and-inspect is a solid fallback — it won't prove the system actually boots, but it
+does confirm the backup isn't corrupted and the expected files are present:
+
+```
+sudo losetup -fP --show myimg.img   # -> /dev/loopN
+sudo fsck -fn /dev/loopNp2          # read-only check on the root/writable partition
+sudo mkdir -p /mnt/rpi && sudo mount -o ro /dev/loopNp2 /mnt/rpi
+ls /mnt/rpi; cat /mnt/rpi/etc/fstab; cat /mnt/rpi/etc/hostname
+# inspect whatever else matters for your use case, then:
+sudo umount /mnt/rpi && sudo losetup -d /dev/loopN
+```
 
 https://linuxconfig.org/how-to-run-the-raspberry-pi-os-in-a-virtual-machine-with-qemu-and-kvm
 
@@ -173,6 +198,8 @@ After the flash is complete, insert the SD card into the Pi and connect all the 
 Once the base OS has been installed, explore details about how you want to configure the system:
 
 [Linux Notes](/system/linux/index.md)
+
+For a full-disk Linux backup (non-Pi), see [Upgrades — Backup existing system](/system/linux/upgrade.md). For the general P2V workflow, see [P2V](/system/virtualization/p2v.md). For what to do when a Pi misbehaves, see [Troubleshooting](../troubleshooting.md).
 
 https://raspberrytips.com/best-os-for-raspberry-pi/
 

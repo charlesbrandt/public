@@ -2,6 +2,8 @@
 
 Take a physical computer and back up the operating system so that you can run it in a [virtual machine](virtual-machine.md).
 
+For Raspberry Pi specifically (dd image + PiShrink + qemu-rpi-kernel boot test), see [Pi backing up](/pi/os/index.md#backing-up).
+
 ## libguestfs
 
 https://www.libguestfs.org/  

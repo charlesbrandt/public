@@ -58,6 +58,8 @@ Then, to remove it:
 
 ## Backup existing system
 
+For a Raspberry Pi SD card, see [Pi backing up](/pi/os/index.md#backing-up) (dd image + PiShrink) instead — this section covers a full-disk Linux install via tar.
+
 Export settings for Remmina and OBS. After updating the versions, may not be able to use the same configs? (Did not work for Remmina, did not try for OBS)
 
 Move out large media files. Use Disk Analyzer to locate it.

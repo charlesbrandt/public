@@ -60,6 +60,8 @@ Via this guide for using dd to create images:
 Installing Operating System Images - Raspberry Pi Documentation
 https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
 
+This is the write direction (image → card). For the reverse — backing up an existing card to an image file, e.g. before decommissioning a Pi — see [Backing up](os/index.md#backing-up).
+
 
 ## Install SD to Pi
 

@@ -45,7 +45,7 @@ A server should have more memory available.
 
 ## Operating System
 
-Common topics like flashing your SD media for OS installation
+Common topics like flashing your SD media for OS installation, and [backing up an existing card](./os/index.md#backing-up) before decommissioning a Pi.
 
 [OS Selection & Installation](./os/index.md)  
 
