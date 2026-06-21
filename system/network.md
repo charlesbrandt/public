@@ -341,6 +341,10 @@ iptables -xvn -L
 
 Wireguard is now built in to most modern linux kernels. Give that a try. On the server
 
+For an easier alternative that avoids manual port forwarding and per-device `wg-quick up/down` (Tailscale, built on WireGuard) — see private notes at `~/combined/notes/home/network/vpn-network.md`.
+
+On the server
+
 ```
 curl -O https://raw.githubusercontent.com/angristan/wireguard-install/master/wireguard-install.sh
 chmod +x wireguard-install.sh
