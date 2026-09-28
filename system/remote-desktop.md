@@ -188,8 +188,8 @@ Add the following content to the file. Adjust the `User` parameter if you config
 ```
 [Unit]
 Description=VNC Server for X11
-Requires=graphical.target
 After=graphical.target
+Wants=graphical.target
 
 [Service]
 Type=simple
@@ -197,9 +197,18 @@ User=account
 ExecStart=/usr/bin/x11vnc -forever -usepw -rfbport 5900 -display :0 
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
 
 ```
+
+⚠️ **`WantedBy=graphical.target`, not `multi-user.target`** — got this wrong on nuc10 (garage
+projector host) for over a year: the service showed `enabled` but never actually started on
+boot, silently, so the workaround at the time was just "SSH in and start it by hand." Root
+cause: `multi-user.target` is reached *before* `graphical.target` during a normal boot, so a
+unit pulled in via `WantedBy=multi-user.target` while also `Requires`/`After`-ing
+`graphical.target` doesn't reliably end up ordered after the desktop session (X server) it
+actually needs. Binding it to `graphical.target` directly fixes it — see
+`~/combined/notes/home/homelab/services.md`'s nuc10 section for the live diagnosis.
 
 Save the file and exit the editor.
 
