@@ -16,6 +16,33 @@ cd ~/.config
 ln -s ~/combined/public/system/editors/micro/micro.config micro
 ```
 
+### Keep buffer and backup state out of the repo
+
+Sharing `micro.config` across machines means micro also writes its per-machine
+state into a public git repo. Two of those directories are not configuration:
+
+- `buffers/` — cursor position and open-file state, one file per file you have opened
+- `backups/` — crash-recovery copies of file contents
+
+Micro names both after the full path of the file, percent-encoded
+(`%home%account%notes%private-thing.md`), so the *filenames alone* disclose your
+directory layout even when nobody reads the contents. Both have been in
+`.gitignore` since the config was first committed, and nothing from either has
+ever been published — but an ignore rule is one `git add -f` away from being
+bypassed, so point them outside the repo as well. Once per machine, after the
+config symlink above:
+
+```
+mkdir -p ~/.cache/micro
+cd ~/.config/micro
+mv buffers ~/.cache/micro/buffers 2>/dev/null; ln -sfn ~/.cache/micro/buffers buffers
+mv backups ~/.cache/micro/backups 2>/dev/null; ln -sfn ~/.cache/micro/backups backups
+```
+
+The symlinks are themselves ignored, so they do not travel with a clone — this is
+a per-machine setup step, not something a fresh checkout inherits. Micro silently
+recreates real directories if you skip it.
+
 On wayland, I need `xclip` to be installed for copy-and-paste to work outside of the terminal:
 
 ```

@@ -131,6 +131,8 @@ in `about:config`
 browser.tabs.unloadOnLowMemory
 ```
 
+Worth getting set up eventually: if you install tab-unloading, the `browser.tabs.unloadOnLowMemory` setting helps. Run `about:processes` (see Process Manager below) to see which extension or tab is the worst. Long-running Firefox sessions (weeks of uptime) also grow steadily from extension background pages and tab caches, so an occasional restart helps too (2026-11: a 16-day session reached ~12 GB on a 32 GB machine and got OOM-killed).
+
 https://www.askvg.com/tip-disable-or-enable-tab-sleep-or-tab-snooze-feature-in-web-browsers/
 
 https://duckduckgo.com/?q=great+suspender+firefox&t=canonical&ia=web  
